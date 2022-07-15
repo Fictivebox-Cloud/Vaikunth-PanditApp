@@ -26,7 +26,7 @@ class _Notifications_screenState extends State<Notifications_screen> {
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-         title: Center(child: Text("Notifications")),
+         title: Text("Notifications"),
       ),
        backgroundColor: white ,
       body: ListView.builder(itemBuilder: (context , int index){

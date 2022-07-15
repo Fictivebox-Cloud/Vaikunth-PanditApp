@@ -154,22 +154,26 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
               ),
             ),
             Expanded(child: Center(
-              child: Container(
-                width: wt * 0.9,
-                height: ht * 0.06,
+              child:
+                 Padding(
+                   padding: const EdgeInsets.only(left: 16,right: 16),
+                   child: Container(
+                width: double.infinity,
+                height: 48,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
+                      borderRadius: BorderRadius.circular(4),
 
-                    color: kPrimaryColor
+                      color: kPrimaryColor
                 ),
                 child: TextButton(
 
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen()));
-                    }, child: Text('Next',style: GoogleFonts.lato(
-                    color: Color(0xffFFFFFF),fontSize: 24,
-                    fontWeight: FontWeight.w600),)),
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen()));
+                      }, child: Text('Next',style: GoogleFonts.lato(
+                      color: Color(0xffFFFFFF),fontSize: 24,
+                      fontWeight: FontWeight.w600),)),
               ),
+                 ),
             ),)
 
           ],

@@ -36,7 +36,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
 
 
       appBar: AppBar(
-        title: const Center(child: Text("Booking Details")),
+        title:  Text("Booking Details"),
       ),
        body: SafeArea(
          child: SingleChildScrollView(

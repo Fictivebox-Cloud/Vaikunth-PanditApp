@@ -24,7 +24,9 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Bank Account Details")),
+        title: Center(child: Hero(
+            tag: "_text",
+            child: Text("Bank Account Details"))),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

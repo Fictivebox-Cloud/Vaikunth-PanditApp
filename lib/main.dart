@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'Screen/Splash_onboarding/splash_screen.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
     Color white = Color(0xffFFFFFF);
     Color h1Color =Color(0xff343D48);
     return MaterialApp(
+
       debugShowCheckedModeBanner: false,
 
       theme: ThemeData(

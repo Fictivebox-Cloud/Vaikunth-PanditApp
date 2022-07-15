@@ -16,88 +16,88 @@ class _Account_detailsState extends State<Account_details> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30,top: 10),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 30, right: 30,top: 10),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                        children: [
-                          Container(
+                          children: [
+                            Container(
 
-                            width: 48,
-                            height: 2,
-                            color: Color(0xffFF7D33),
-                          ),
-                          Container(
+                              width: 48,
+                              height: 2,
+                              color: Color(0xffFF7D33),
+                            ),
+                            Container(
 
-                            width: 48,
-                            height: 2,
-                            color: Color(0xffFF7D33),
-                          ),
-                          Container(
+                              width: 48,
+                              height: 2,
+                              color: Color(0xffFF7D33),
+                            ),
+                            Container(
 
-                            width: 48,
-                            height: 2,
-                            color: Color(0xffFF7D33),
-                          ),
-                          Container(
+                              width: 48,
+                              height: 2,
+                              color: Color(0xffFF7D33),
+                            ),
+                            Container(
 
-                            width: 48,
-                            height: 2,
-                            color: Color(0xffFF7D33),
-                          ),
-                          Container(
+                              width: 48,
+                              height: 2,
+                              color: Color(0xffFF7D33),
+                            ),
+                            Container(
 
-                            width: 48,
-                            height: 2,
-                            color: Color(0xffFF7D33),
-                          ),
-                          Container(
+                              width: 48,
+                              height: 2,
+                              color: Color(0xffFF7D33),
+                            ),
+                            Container(
 
-                            width: 48,
-                            height: 2,
-                            color: Color(0xffFF7D33),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 24,
-                      ),
-
-
-                      Text("Account details",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
-
-                      SizedBox(
-                        height: 32,
-                      ),
-                      Text("Account No",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18),),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(
-                                width: 1,
-                                color: Colors.black
-                             )
+                              width: 48,
+                              height: 2,
+                              color: Color(0xffFF7D33),
+                            ),
+                          ],
                         ),
-                        child: TextFormField(keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
+                        SizedBox(
+                          height: 24,
+                        ),
 
 
-                              hintStyle: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                  color: Color(0xffCACACA,)),
+                        Text("Account details",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
+
+                        SizedBox(
+                          height: 32,
+                        ),
+                        Text("Account No",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18),),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              border: Border.all(
+                                  width: 1,
+                                  color: Colors.black
+                              )
+                          ),
+                          child: TextFormField(keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+
+
+                                hintStyle: GoogleFonts.lato(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                    color: Color(0xffCACACA,)),
 
 
 
@@ -105,98 +105,101 @@ class _Account_detailsState extends State<Account_details> {
 
                           ),
                         ),
-                      SizedBox(
-                        height: 36,
-                      ),
-                      Text("Choose Bank",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18),),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(
-                                width: 1,
-                                color: Colors.black
-                            )
+                        SizedBox(
+                          height: 36,
                         ),
-                        child: TextFormField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-
-
-                              hintStyle: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                  color: Color(0xffCACACA,)),
-
-
-
-                            )
-
+                        Text("Choose Bank",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18),),
+                        SizedBox(
+                          height: 8,
                         ),
-                      ),
-                      SizedBox(
-                        height: 36,
-                      ),
-                      Text("IFSC Code",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18),),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(
-                                width: 1,
-                                color: Colors.black
-                            )
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              border: Border.all(
+                                  width: 1,
+                                  color: Colors.black
+                              )
+                          ),
+                          child: TextFormField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+
+
+                                hintStyle: GoogleFonts.lato(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                    color: Color(0xffCACACA,)),
+
+
+
+                              )
+
+                          ),
                         ),
-                        child: TextFormField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-
-
-                              hintStyle: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                  color: Color(0xffCACACA,)),
-
-
-
-                            )
-
+                        SizedBox(
+                          height: 36,
                         ),
-                      ),
+                        Text("IFSC Code",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18),),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              border: Border.all(
+                                  width: 1,
+                                  color: Colors.black
+                              )
+                          ),
+                          child: TextFormField(
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+
+
+                                hintStyle: GoogleFonts.lato(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                    color: Color(0xffCACACA,)),
+
+
+
+                              )
+
+                          ),
+                        ),
 
 
 
 
 
 
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(child: Center(
-              child: Container(
-                width: 328,
-                height: 48,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
+              Expanded(child: Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16),
+                child: Center(
+                  child: Container(
+                    width: double.infinity,
+                    height: 48,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
 
-                    color: Color(0xffFF7D33)
+                        color: Color(0xffFF7D33)
+                    ),
+                    child: TextButton(
+
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Home_Screen()));
+                        }, child: Text('Finish',style: GoogleFonts.lato(
+                        color: Color(0xffFFFFFF),fontSize: 24,
+                        fontWeight: FontWeight.w600),)),
+                  ),
                 ),
-                child: TextButton(
-
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Home_Screen()));
-                    }, child: Text('Finish',style: GoogleFonts.lato(
-                    color: Color(0xffFFFFFF),fontSize: 24,
-                    fontWeight: FontWeight.w600),)),
-              ),
-            ),)
-          ],
+              ),)
+            ],
         ),
       ),
     );

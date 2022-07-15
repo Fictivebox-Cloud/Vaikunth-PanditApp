@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:panditapp/Screen/Home/Pages/Notifications_screen.dart';
+import 'package:panditapp/Screen/Profile/Profile.dart';
 
 
 
@@ -41,12 +42,19 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
               child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const CircleAvatar(
-                  radius: 20,
-                  backgroundImage:
-                  NetworkImage('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80'),
-                  backgroundColor: Colors.transparent,
+                 InkWell(
+                   onTap: (){
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile_Screen()));
+                   },
+                   child: Container(
+                     child: CircleAvatar(
+                      radius: 20,
+                      backgroundImage:
+                      NetworkImage('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80'),
+                      backgroundColor: Colors.transparent,
                 ),
+                   ),
+                 ),
                 SizedBox(
                   height: 31,
                   width: 120,
@@ -121,7 +129,7 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                           child: Container(
                             alignment: Alignment.bottomCenter,
                             width: double.infinity,
-                            height: 226,
+                            height: 239,
                             decoration:  BoxDecoration(
                               color: white,
                               borderRadius: BorderRadius.only(topRight: Radius.circular(4),topLeft: Radius.circular(4)),
@@ -140,11 +148,25 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                                        // SizedBox(width: 11,),
                                        Text("Mon 05/Oct/2021",style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w600,color: Color(0xff232323)),),
                                        // SizedBox(width: 105,),
-                                       Icon(Icons.location_on,color: kPrimaryColor,),
+                                       GestureDetector(
+                                           onTap: (){
+                                             print("Vikrant");
+                                           },
+                                           child: Icon(Icons.location_on,color: kPrimaryColor,)),
                                        // SizedBox(width: 19.32,),
-                                       Image.asset("assets/images/manu.png")
+                                       IconButton(
+                                           onPressed: (){
+
+                                           },
+                                           icon:
+                                           Image.asset("assets/images/manu.png")
+
+
+
+                                       ),
 
                                      ],
+
                                    ),
 
 
@@ -228,6 +250,10 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
 
     );
   }
+
+
+
+
 
 
   }

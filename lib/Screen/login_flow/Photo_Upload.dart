@@ -107,28 +107,31 @@ class _Photo_UploadState extends State<Photo_Upload> {
               ),
             ),
             Expanded(child:  Center(
-              child: Container(
-                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.09),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16),
                 child: Container(
-                  width: wt * 0.9,
-                  height: ht * 0.06,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
+                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.09),
+                  child: Container(
+                    width: double.infinity,
+                    height: 48,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
 
-                      color: kPrimaryColor
+                        color: kPrimaryColor
+                    ),
+                    child: TextButton(
+
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen()));
+                        }, child: Text('Next',style:
+                    GoogleFonts.lato(
+                        color: white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600
+
+                    ),
+                    )),
                   ),
-                  child: TextButton(
-
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen()));
-                      }, child: Text('Next',style:
-                  GoogleFonts.lato(
-                      color: white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600
-
-                  ),
-                  )),
                 ),
               ),
             ),)

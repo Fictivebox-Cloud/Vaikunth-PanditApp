@@ -29,9 +29,9 @@ class _Documents_ScreenState extends State<Documents_Screen> {
           children: [
             Expanded(
               flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30,top: 10),
-                child: SingleChildScrollView(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -94,17 +94,10 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Container(
-                            width:  wt *0.3,
-                            height: ht * 0.1,
-                            color: Colors.red,
-                          ),
+                           Image.asset("assets/images/Aadhar Front.png"),
+                          Image.asset("assets/images/Aadhar Back.png")
 
-                          Container(
-                            width:  wt *0.3,
-                            height: ht * 0.1,
-                            color: Colors.red,
-                          )
+
                         ],
                       ),
                       SizedBox(
@@ -138,7 +131,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                             ),
                         ),
                         ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Text("PAN",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18),),
@@ -148,16 +141,12 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       Row(
 
                         children: [
-                          Container(
-                            width:  wt *0.3,
-                            height: ht * 0.1,
-                            color: Colors.red,
-                          ),
+                          Image.asset("assets/images/PAN.png")
 
 
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Container(
@@ -196,24 +185,27 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                 ),
               ),
             ),
-            Expanded(child: Center(
-              child: Container(
-                width: 328,
-                height: 48,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
+            Padding(
+              padding: const EdgeInsets.only(left:16,right:16,bottom: 15),
+              child: Center(
+                child: Container(
+                  width: double.infinity,
+                  height: 48,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
 
-                    color: kPrimaryColor
+                      color: kPrimaryColor
+                  ),
+                  child: TextButton(
+
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Account_details()));
+                      }, child: Text('Next',style: GoogleFonts.lato(
+                      color: white,fontSize: 24,
+                      fontWeight: FontWeight.w600),)),
                 ),
-                child: TextButton(
-
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Account_details()));
-                    }, child: Text('Next',style: GoogleFonts.lato(
-                    color: white,fontSize: 24,
-                    fontWeight: FontWeight.w600),)),
               ),
-            ),)
+            )
           ],
         ),
       ),

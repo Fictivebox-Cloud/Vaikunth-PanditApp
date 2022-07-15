@@ -125,25 +125,28 @@ class _Name_ScreenState extends State<Name_Screen> {
               ),
             ),
             Expanded(child: Center(
-              child: Container(
-
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16),
                 child: Container(
-                  width: wt * 0.9,
-                  height: ht * 0.06,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
 
-                      color: kPrimaryColor
+                  child: Container(
+                    width: double.infinity,
+                    height: 48,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+
+                        color: kPrimaryColor
+                    ),
+                    child: TextButton(
+
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload()));
+                        }, child: Text('Next',style: GoogleFonts.lato(
+                        color: white,fontSize: 24,
+                        fontWeight: FontWeight.w600),)),
                   ),
-                  child: TextButton(
 
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload()));
-                      }, child: Text('Next',style: GoogleFonts.lato(
-                      color: white,fontSize: 24,
-                      fontWeight: FontWeight.w600),)),
                 ),
-
               ),
             ),)
           ],

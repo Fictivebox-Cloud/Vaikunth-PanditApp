@@ -126,21 +126,24 @@ class _City_ScreenState extends State<City_Screen> {
               ),
             ),
             Expanded(child: Center(
-              child: Container(
-                width: 328,
-                height: 48,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16),
+                child: Container(
+                  width: double.infinity,
+                  height: 48,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
 
-                    color: kPrimaryColor
+                      color: kPrimaryColor
+                  ),
+                  child: TextButton(
+
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen()));
+                      }, child: Text('Next',style: GoogleFonts.lato(
+                      color: Color(0xffFFFFFF),fontSize: 24,
+                      fontWeight: FontWeight.w600),)),
                 ),
-                child: TextButton(
-
-                    onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen()));
-                    }, child: Text('Next',style: GoogleFonts.lato(
-                    color: Color(0xffFFFFFF),fontSize: 24,
-                    fontWeight: FontWeight.w600),)),
               ),
             ),)
           ],

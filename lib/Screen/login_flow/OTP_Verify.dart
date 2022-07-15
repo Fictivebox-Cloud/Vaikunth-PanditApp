@@ -49,7 +49,7 @@ class _OTP_verifyState extends State<OTP_verify> {
                             fontSize: 14
                           ),),
                     Padding(
-                      padding: const EdgeInsets.all(39),
+                      padding: const EdgeInsets.only(left: 2,right:2 ,top: 30),
                       child: Form(child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -78,6 +78,7 @@ class _OTP_verifyState extends State<OTP_verify> {
                               decoration: InputDecoration(fillColor: Color(0xffCACACA)),
                             ),),
                           ),
+
                           Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4),
@@ -165,25 +166,28 @@ class _OTP_verifyState extends State<OTP_verify> {
             ),
             Expanded(child: Column(
               children: [
-            Container(
-              width: 328,
-              height: 48,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
+            Padding(
+              padding: const EdgeInsets.only(left: 16,right: 16),
+              child: Container(
+                width: double.infinity,
+                height: 48,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
 
-                  color: kPrimaryColor
-              ),
-              child: TextButton(
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Name_Screen()));
-                  }, child: Text('Verify',style:
-              GoogleFonts.lato(
-                  color: white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600
+                    color: kPrimaryColor
+                ),
+                child: TextButton(
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Name_Screen()));
+                    }, child: Text('Verify',style:
+                GoogleFonts.lato(
+                    color: white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600
 
+                ),
+                )),
               ),
-              )),
             ),
         TextButton(
           style: TextButton.styleFrom(

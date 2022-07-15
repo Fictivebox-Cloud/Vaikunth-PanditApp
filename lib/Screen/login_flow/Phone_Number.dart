@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nav_router/nav_router.dart';
 import 'package:panditapp/Screen/login_flow/OTP_Verify.dart';
 class PhoneNumber_Screen extends StatefulWidget {
   const PhoneNumber_Screen({Key? key}) : super(key: key);
@@ -56,25 +58,32 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                ),
                ),
                Expanded(child: Center(
-                 child: Container(
-                   
+                 child: Padding(
+                   padding: const EdgeInsets.only(left: 16,right: 16),
                    child: Container(
-                     width: 328,
-                     height: 48,
-                     decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(4),
 
-                         color: kPrimaryColor
-                     ),
-                     child: TextButton(
+                     child: Container(
+                       width: double.infinity,
+                       height: 48,
+                       decoration: BoxDecoration(
+                           borderRadius: BorderRadius.circular(4),
 
-                         onPressed: (){
+                           color: kPrimaryColor
+                       ),
+                       child: FlatButton(
+
+
+                           onPressed: (){
                            Navigator.push(context, MaterialPageRoute(builder: (context)=>OTP_verify()));
-                         }, child: Text('Send OTP',style: GoogleFonts.lato(
-                         color: white,fontSize: 24,
-                         fontWeight: FontWeight.w600),)),
-                   ),
 
+
+                           },
+                           child: Text('Send OTP',style: GoogleFonts.lato(
+                           color: white,fontSize: 24,
+                           fontWeight: FontWeight.w600),)),
+                     ),
+
+                   ),
                  ),
                ),)
              ],

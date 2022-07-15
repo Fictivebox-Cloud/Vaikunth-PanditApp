@@ -27,7 +27,7 @@ class _Life_Time_PujaState extends State<Life_Time_Puja> {
   return Scaffold(
     backgroundColor: white,
     appBar: AppBar(
-      title: Center(child: Text("Life Time Puja’s",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w600,color: white),)),
+      title: Text("Life Time Puja’s",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w600,color: white),),
     ),
 
     body: ListView.builder(itemBuilder: (context , int index){

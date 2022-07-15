@@ -3,7 +3,9 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
-import 'package:panditapp/constant/color.dart';
+
+
+
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

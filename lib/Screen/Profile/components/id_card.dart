@@ -26,7 +26,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
       backgroundColor: white ,
 
       appBar: AppBar(
-        title: Center(child: Text("ID Card")),
+        title: Text("ID Card"),
 
 
 
