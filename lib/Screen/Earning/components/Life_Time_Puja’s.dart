@@ -30,33 +30,56 @@ class _Life_Time_PujaState extends State<Life_Time_Puja> {
       title: Text("Life Time Puja’s",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w600,color: white),),
     ),
 
-    body: ListView.builder(itemBuilder: (context , int index){
+    body:
+    Container(
+      padding: EdgeInsets.only(top: 23),
+      child: ListView.builder(itemBuilder: (context , int index){
 
-      return Padding(
-        padding: const EdgeInsets.only(left: 16,right: 16,top: 32),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              width: 1,
-              color: kSecondaryColor
+        return Padding(
+          padding: const EdgeInsets.only(left: 16,right: 16,top: 12),
+          child: Container(
+            padding: EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                width: 1,
+                color: kSecondaryColor
+              )
+            ),
+
+
+            child: Column(
+              children: [
+
+                Text("Arvind Singh",style: GoogleFonts.lato(color: kPrimaryColor,fontSize: 14,fontWeight: FontWeight.w600),),
+                SizedBox(height: 8,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(children: [
+                      Icon(Icons.calendar_month,color: kPrimaryColor,),
+                      SizedBox(width: 11,),
+                      Text("Mon 05/Oct/2021",style: GoogleFonts.lato(fontSize: 12,color: Colors.black,fontWeight: FontWeight.w600),),
+                    ],),
+
+                    Text("Total Earnings: ₹568",style: GoogleFonts.lato(fontWeight: FontWeight.w600,fontSize: 12),),
+                ],)
+              ],
             )
+
+            // ListTile(
+            //   leading: Icon(Icons.calendar_month,color: kPrimaryColor,),
+            //   title: Text("Arvind Singh",style: GoogleFonts.lato(color: kPrimaryColor,fontSize: 14,fontWeight: FontWeight.w600),),
+            //   subtitle: Text("Mon 05/Oct/2021",style: GoogleFonts.lato(fontSize: 12,color: Colors.black,fontWeight: FontWeight.w600),),
+            //   trailing: Text("Total Earnings: ₹568",style: GoogleFonts.lato(fontWeight: FontWeight.w600,fontSize: 12),),
+            // ),
           ),
+        );
 
-
-          child:  ListTile(
-            leading: Icon(Icons.calendar_month,color: kPrimaryColor,),
-            title: Text("Arvind Singh",style: GoogleFonts.lato(color: kPrimaryColor,
-            fontSize: 14,fontWeight: FontWeight.w600),),
-            subtitle: Text("Mon 05/Oct/2021",style: GoogleFonts.lato(fontSize: 12,color: Colors.black,fontWeight: FontWeight.w600),),
-            trailing: Text("Total Earnings: ₹568",style: GoogleFonts.lato(fontWeight: FontWeight.w600,fontSize: 12),),
-
-          ),
-        ),
-      );
-
-    },
-    itemCount: 20,
+      },
+      itemCount: 20,
+      ),
     ),
 
 

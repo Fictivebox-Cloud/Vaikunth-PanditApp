@@ -145,6 +145,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                         padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
                         child: GestureDetector(
                           onTap: (){
+
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>Bank_Account_Screen()));
                           },
                           child: Container(

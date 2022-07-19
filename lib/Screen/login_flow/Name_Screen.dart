@@ -38,7 +38,7 @@ class _Name_ScreenState extends State<Name_Screen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 30, right: 30,top: 10),
+                      padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
 
@@ -86,7 +86,7 @@ class _Name_ScreenState extends State<Name_Screen> {
                       height: 24,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 30),
+                      padding: const EdgeInsets.only(left: 16),
                       child: Text("Name",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
                     ),
                 SizedBox(
@@ -97,7 +97,7 @@ class _Name_ScreenState extends State<Name_Screen> {
                   child: Center(
                     child: SizedBox(
                       height: ht * 0.4,
-                      width: wt * 0.8,
+                      //width: wt * 0.8,
                       child: TextField(
                         //keyboardType: TextInputType.number,
                         decoration: InputDecoration(
@@ -114,41 +114,35 @@ class _Name_ScreenState extends State<Name_Screen> {
                     ),
                   ),
                 ),
-                    
 
                   ],
-
-
-
 
                 ),
               ),
             ),
-            Expanded(child: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16,right: 16),
+            Padding(
+              padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
+              child: Container(
+
                 child: Container(
+                  width: double.infinity,
+                  height: 48,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
 
-                  child: Container(
-                    width: double.infinity,
-                    height: 48,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-
-                        color: kPrimaryColor
-                    ),
-                    child: TextButton(
-
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload()));
-                        }, child: Text('Next',style: GoogleFonts.lato(
-                        color: white,fontSize: 24,
-                        fontWeight: FontWeight.w600),)),
+                      color: kPrimaryColor
                   ),
+                  child: TextButton(
 
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload()));
+                      }, child: Text('Next',style: GoogleFonts.lato(
+                      color: white,fontSize: 24,
+                      fontWeight: FontWeight.w600),)),
                 ),
+
               ),
-            ),)
+            )
           ],
         ),
       )

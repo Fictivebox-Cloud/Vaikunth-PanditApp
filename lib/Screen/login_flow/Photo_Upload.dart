@@ -34,107 +34,107 @@ class _Photo_UploadState extends State<Photo_Upload> {
           children: [
             Expanded(
               flex: 2,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, right: 30,top: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                      children: [
-                        Container(
+                        children: [
+                          Container(
 
-                          width: 48,
-                          height: 2,
-                          color: kPrimaryColor,
-                        ),
-                        Container(
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor,
+                          ),
+                          Container(
 
-                          width: 48,
-                          height: 2,
-                          color: kPrimaryColor,
-                        ),
-                        Container(
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor,
+                          ),
+                          Container(
 
-                          width: 48,
-                          height: 2,
-                          color: kSecondaryColor,
-                        ),
-                        Container(
+                            width: 48,
+                            height: 2,
+                            color: kSecondaryColor,
+                          ),
+                          Container(
 
-                          width: 48,
-                          height: 2,
-                          color: kSecondaryColor,
-                        ),
-                        Container(
+                            width: 48,
+                            height: 2,
+                            color: kSecondaryColor,
+                          ),
+                          Container(
 
-                          width: 48,
-                          height: 2,
-                          color: kSecondaryColor,
-                        ),
-                        Container(
+                            width: 48,
+                            height: 2,
+                            color: kSecondaryColor,
+                          ),
+                          Container(
 
-                          width: 48,
-                          height: 2,
-                          color: kSecondaryColor,
-                        ),
-                      ],
+                            width: 48,
+                            height: 2,
+                            color: kSecondaryColor,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 24,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30),
-                    child: Text("Photo",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
-                  ),
-                  SizedBox(
-                    height: 32,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30),
-                    child: Text("Upload your photo",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: Color(0xff343D48)),),
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  imageProfile(),
-
-
-
-                ],
-              ),
-            ),
-            Expanded(child:  Center(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16,right: 16),
-                child: Container(
-                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.09),
-                  child: Container(
-                    width: double.infinity,
-                    height: 48,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-
-                        color: kPrimaryColor
+                    SizedBox(
+                      height: 24,
                     ),
-                    child: TextButton(
-
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen()));
-                        }, child: Text('Next',style:
-                    GoogleFonts.lato(
-                        color: white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600
-
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: Text("Photo",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
                     ),
-                    )),
-                  ),
+                    SizedBox(
+                      height: 32,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: Text("Upload your photo",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: Color(0xff343D48)),),
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    imageProfile(),
+
+
+
+                  ],
                 ),
               ),
-            ),)
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
+              child: Container(
+                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.09),
+                child: Container(
+                  width: double.infinity,
+                  height: 48,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+
+                      color: kPrimaryColor
+                  ),
+                  child: TextButton(
+
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen()));
+                      }, child: Text('Next',style:
+                  GoogleFonts.lato(
+                      color: white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600
+
+                  ),
+                  )),
+                ),
+              ),
+            )
           ],
         ),
 
@@ -226,7 +226,11 @@ class _Photo_UploadState extends State<Photo_Upload> {
               )
             ]
       ),
-                child: Icon(Icons.folder_open,color: Color(0xffF06414),),
+                child: InkWell(
+                    onTap: (){
+
+                    },
+                    child: Icon(Icons.folder_open,color: Color(0xffF06414),)),
               ),
             ],
           ),

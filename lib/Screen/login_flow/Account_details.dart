@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Screen/Home/Home_Screen.dart';
 
@@ -10,8 +11,13 @@ class Account_details extends StatefulWidget {
 }
 
 class _Account_detailsState extends State<Account_details> {
+  var ht,wt;
+
   @override
   Widget build(BuildContext context) {
+    wt = MediaQuery.of(context).size.width;
+    ht = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -20,7 +26,7 @@ class _Account_detailsState extends State<Account_details> {
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30,top: 10),
+                  padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,13 +161,10 @@ class _Account_detailsState extends State<Account_details> {
                               decoration: InputDecoration(
                                 border: InputBorder.none,
 
-
                                 hintStyle: GoogleFonts.lato(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 14,
                                     color: Color(0xffCACACA,)),
-
-
 
                               )
 
@@ -169,17 +172,15 @@ class _Account_detailsState extends State<Account_details> {
                         ),
 
 
-
-
-
-
                       ],
                     ),
                   ),
                 ),
               ),
-              Expanded(child: Padding(
-                padding: const EdgeInsets.only(left: 16,right: 16),
+              Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
+
+               // padding: EdgeInsets.only(top:MediaQuery.of(context).size.height * 0.22),
                 child: Center(
                   child: Container(
                     width: double.infinity,
@@ -198,7 +199,7 @@ class _Account_detailsState extends State<Account_details> {
                         fontWeight: FontWeight.w600),)),
                   ),
                 ),
-              ),)
+              )
             ],
         ),
       ),

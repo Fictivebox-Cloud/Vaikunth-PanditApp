@@ -30,7 +30,7 @@ class _City_ScreenState extends State<City_Screen> {
             Expanded(
               flex: 2,
               child: Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30,top: 10),
+                padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,27 +125,25 @@ class _City_ScreenState extends State<City_Screen> {
                 ),
               ),
             ),
-            Expanded(child: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16,right: 16),
-                child: Container(
-                  width: double.infinity,
-                  height: 48,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
+            Padding(
+              padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
+              child: Container(
+                width: double.infinity,
+                height: 48,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
 
-                      color: kPrimaryColor
-                  ),
-                  child: TextButton(
-
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen()));
-                      }, child: Text('Next',style: GoogleFonts.lato(
-                      color: Color(0xffFFFFFF),fontSize: 24,
-                      fontWeight: FontWeight.w600),)),
+                    color: kPrimaryColor
                 ),
+                child: TextButton(
+
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen()));
+                    }, child: Text('Next',style: GoogleFonts.lato(
+                    color: Color(0xffFFFFFF),fontSize: 24,
+                    fontWeight: FontWeight.w600),)),
               ),
-            ),)
+            )
           ],
         ),
       ),

@@ -29,7 +29,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
             Expanded(
               flex: 2,
               child: Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30,top: 10),
+                padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -153,28 +153,25 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                 ),
               ),
             ),
-            Expanded(child: Center(
-              child:
-                 Padding(
-                   padding: const EdgeInsets.only(left: 16,right: 16),
-                   child: Container(
+            Padding(
+              padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
+              child: Container(
                 width: double.infinity,
                 height: 48,
                 decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
+                 borderRadius: BorderRadius.circular(4),
 
-                      color: kPrimaryColor
+                 color: kPrimaryColor
                 ),
                 child: TextButton(
 
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen()));
-                      }, child: Text('Next',style: GoogleFonts.lato(
-                      color: Color(0xffFFFFFF),fontSize: 24,
-                      fontWeight: FontWeight.w600),)),
+                 onPressed: (){
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen()));
+                 }, child: Text('Next',style: GoogleFonts.lato(
+                 color: Color(0xffFFFFFF),fontSize: 24,
+                 fontWeight: FontWeight.w600),)),
               ),
-                 ),
-            ),)
+            )
 
           ],
         ),

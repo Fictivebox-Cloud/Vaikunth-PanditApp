@@ -22,6 +22,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
   Color buttonColor = const Color(0xff109D03);
   Color b1Color =const Color(0xff6363BE);
 
+  bool Small = false;
   @override
   void initState() {
     super.initState();
@@ -41,9 +42,11 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
             child: Column(
               children: [
                 TabBar(
+                  labelStyle: TextStyle(fontSize: Small ? 13.0 : 18.0),
                   labelColor: h1Color,
-                  unselectedLabelColor: Colors.black,
+                  unselectedLabelColor: Color(0Xff999EA3),
                   tabs: const [
+
                     Tab(
                       text: 'Upcoming',
                     ),
@@ -52,6 +55,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                     ),
                     Tab(
                       text: 'Cancelled',
+
                     ),
                   ],
                 ),
@@ -91,7 +95,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                height: 226,
                                decoration: BoxDecoration(
 
-                                   borderRadius: BorderRadius.circular(4)
+                                   borderRadius: BorderRadius.circular(10)
                                    ,border: Border.all(
                                    width: 1,
                                    color: kSecondaryColor
@@ -127,9 +131,6 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                          )
                                        ],
                                      ),
-
-
-
 
                                    ),
 
@@ -206,7 +207,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                         height: 226,
                         decoration: BoxDecoration(
 
-                            borderRadius: BorderRadius.circular(4)
+                            borderRadius: BorderRadius.circular(10)
                             ,border: Border.all(
                             width: 1,
                             color: kSecondaryColor
@@ -252,7 +253,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                             Center(child: Text("Vikrant Bhawani saini",style: GoogleFonts.lato(fontWeight: FontWeight.w700,fontSize: 12,color: kPrimaryColor),)),
                             SizedBox(height: 3,),
                             Padding(
-                              padding: const EdgeInsets.only(left: 16),
+                              padding: const EdgeInsets.only(left: 16,top:2),
                               child: Text("Booking List",style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w600),),
                             ),
                             SizedBox(height: 4,),
@@ -321,7 +322,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                         height: 174,
                         decoration: BoxDecoration(
 
-                            borderRadius: BorderRadius.circular(4)
+                            borderRadius: BorderRadius.circular(10)
                             ,border: Border.all(
                             width: 1,
                             color: kSecondaryColor
@@ -331,7 +332,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 19,right: 19,top: 10),
+                              padding: const EdgeInsets.only(left: 15,right: 8,top: 12),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
@@ -366,21 +367,21 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
 
                             ),
 
-                            SizedBox(height: 3,),
+                            SizedBox(height: 8,),
                             Center(child: Text("Vikrant Bhawani saini",style: GoogleFonts.lato(fontWeight: FontWeight.w700,fontSize: 12,color: kPrimaryColor),)),
                             SizedBox(height: 3,),
                             Padding(
-                              padding: const EdgeInsets.only(left: 16),
+                              padding: const EdgeInsets.only(left: 16,top:16),
                               child: Text("Booking List",style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w600),),
                             ),
-                            SizedBox(height: 4,),
+                            SizedBox(height: 6,),
                             Padding(
                               padding: const EdgeInsets.only(left: 16),
                               child: Text("1 x Puranmashi katha(Offline)",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: h1Color),),
                             ),
-                            SizedBox(height: 4,),
+                           // SizedBox(height: 4,),
                             Padding(
-                              padding: const EdgeInsets.only(left: 16),
+                              padding: const EdgeInsets.only(left: 16,top: 4),
                               child: Text("1 x Astrology",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: h1Color),),
                             ),
 

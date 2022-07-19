@@ -26,6 +26,10 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
   Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
+
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor:Color(0XFFFF7D33),
+    ));
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -57,35 +61,33 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                    ),
                ),
                ),
-               Expanded(child: Center(
-                 child: Padding(
-                   padding: const EdgeInsets.only(left: 16,right: 16),
+               Padding(
+                 padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
+                 child: Container(
+
                    child: Container(
+                     width: double.infinity,
+                     height: 48,
+                     decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(4),
 
-                     child: Container(
-                       width: double.infinity,
-                       height: 48,
-                       decoration: BoxDecoration(
-                           borderRadius: BorderRadius.circular(4),
-
-                           color: kPrimaryColor
-                       ),
-                       child: FlatButton(
-
-
-                           onPressed: (){
-                           Navigator.push(context, MaterialPageRoute(builder: (context)=>OTP_verify()));
-
-
-                           },
-                           child: Text('Send OTP',style: GoogleFonts.lato(
-                           color: white,fontSize: 24,
-                           fontWeight: FontWeight.w600),)),
+                         color: kPrimaryColor
                      ),
+                     child: FlatButton(
 
+
+                         onPressed: (){
+                         Navigator.push(context, MaterialPageRoute(builder: (context)=>OTP_verify()));
+
+
+                         },
+                         child: Text('Send OTP',style: GoogleFonts.lato(
+                         color: white,fontSize: 24,
+                         fontWeight: FontWeight.w600),)),
                    ),
+
                  ),
-               ),)
+               )
              ],
            )),
          ),

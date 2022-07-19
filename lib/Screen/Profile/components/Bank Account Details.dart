@@ -58,9 +58,18 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Text("917704087638",style: GoogleFonts.lato(
+                    child: TextFormField(
+
+                      decoration: InputDecoration(
+
+                        border: InputBorder.none,
+                      ),
+                      style: GoogleFonts.lato(
                         fontSize: 16,fontWeight: FontWeight.w500,
-                        color: kSecondaryColor),),
+                        color: Colors.black),
+                      keyboardType: TextInputType.number,
+                   
+                    ),
                   ),
 
                 ),

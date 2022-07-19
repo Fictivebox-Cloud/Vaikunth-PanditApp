@@ -88,8 +88,6 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
 
                        children: [
                          Text(
-
-
                            currentIndex==onboardingContents.length -0 ?'Back':"Skip",
                            textAlign: TextAlign.end,
                            style: GoogleFonts.lato(fontSize: 18,
@@ -116,9 +114,11 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
               flex: 1,
 
                 child: Container(
+                  padding: EdgeInsets.only(left: 16,right: 16),
                   color: Colors.white,
                   child: Column(
                     children: [
+
                          SizedBox(
                            height: ht*0.032,
                   ),
@@ -146,9 +146,9 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                         height: ht*0.032,
                       ),
                       Container(
-                        width: wt* 0.7,
-                        height: ht * 0.06
-                        ,
+                        //padding: EdgeInsets.only(left: 16,right: 16,top),
+                        width: double.infinity,
+                        height: ht * 0.06,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
                               color: kPrimaryColor

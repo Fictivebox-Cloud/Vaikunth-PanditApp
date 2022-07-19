@@ -164,10 +164,10 @@ class _OTP_verifyState extends State<OTP_verify> {
                 ),
               ),
             ),
-            Expanded(child: Column(
+            Column(
               children: [
             Padding(
-              padding: const EdgeInsets.only(left: 16,right: 16),
+              padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
               child: Container(
                 width: double.infinity,
                 height: 48,
@@ -189,16 +189,19 @@ class _OTP_verifyState extends State<OTP_verify> {
                 )),
               ),
             ),
-        TextButton(
-          style: TextButton.styleFrom(
-            // padding: const EdgeInsets.all(16.0),
-            primary: p1Color,
-            textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.w500),
+        Padding(
+          padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
+          child: TextButton(
+            style: TextButton.styleFrom(
+              // padding: const EdgeInsets.all(16.0),
+              primary: p1Color,
+              textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.w500),
+            ),
+            onPressed: () {},
+            child: const Text('Resend OTP'),
           ),
-          onPressed: () {},
-          child: const Text('Resend OTP'),
         )],
-            ))
+            )
           ],
         ),
       ),
