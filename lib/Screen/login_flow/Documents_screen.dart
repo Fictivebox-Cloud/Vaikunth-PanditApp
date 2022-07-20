@@ -17,6 +17,8 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   Color p1Color =  Color(0xff6E798C);
   Color white = Color(0xffFFFFFF);
   Color h1Color =Color(0xff343D48);
+  TextEditingController _addharno = TextEditingController();
+  TextEditingController _panno = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
