@@ -1,14 +1,20 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+import 'package:panditapp/API/ApiCallHomePage.dart';
 import 'package:panditapp/Screen/Home/Pages/Notifications_screen.dart';
 import 'package:panditapp/Screen/Profile/Profile.dart';
+
+import '../../../model/bookingModel.dart';
 
 
 
 class Home_page_Screen extends StatefulWidget {
-  const Home_page_Screen({Key? key}) : super(key: key);
+  ApiCallHomePage apiCallHomePage = Get.put(ApiCallHomePage());
+
+   Home_page_Screen({Key? key}) : super(key: key);
 
   @override
   State<Home_page_Screen> createState() => _Home_page_ScreenState();
@@ -25,12 +31,17 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
   Color buttonColor = const Color(0xff109D03);
 
 
+  var isLoading =true.obs;
+  var booking = <BookingModel>[].obs;
+
+ 
 
 
   @override
   Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: white,
       body: SafeArea(
@@ -252,24 +263,30 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                                         , Padding(
                                           padding: const EdgeInsets.only(
                                               left: 16, right: 16, top: 10),
-                                          child: Container(
-                                            width: double.infinity,
-                                            height: 48,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius
-                                                    .circular(7),
-                                                color: buttonColor
-                                            ),
-                                            child: Center(child: TextButton(
-                                                onPressed: () {
+                                          child: InkWell(
+                                            onTap: ()
+                {
+                                           ApiCallHomePage.fetchBooking();
+                                            },
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 48,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius
+                                                      .circular(7),
+                                                  color: buttonColor
+                                              ),
+                                              child: Center(child: TextButton(
+                                                  onPressed: () {
 
-                                                },
-                                                child: Text("Accept Booking",
-                                                  style: GoogleFonts.lato(
-                                                      fontSize: 16,
-                                                      color: white,
-                                                      fontWeight: FontWeight
-                                                          .w500),))),
+                                                  },
+                                                  child: Text("Accept Booking",
+                                                    style: GoogleFonts.lato(
+                                                        fontSize: 16,
+                                                        color: white,
+                                                        fontWeight: FontWeight
+                                                            .w500),))),
+                                            ),
                                           ),
                                         )
                                       ],
@@ -301,7 +318,7 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                 itemCount: 5,
               ),
             ),
-            
+
 
 
 

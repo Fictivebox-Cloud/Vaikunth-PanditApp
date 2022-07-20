@@ -366,6 +366,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
+  nav_router:
+    dependency: "direct main"
+    description:
+      name: nav_router
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.7"
   nested:
     dependency: transitive
     description:
