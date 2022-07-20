@@ -45,97 +45,151 @@ class _Profile_ScreenState extends State<Profile_Screen> {
       body: SafeArea(
         child: Column(
           children: [
-              Container(
-                width: double.infinity,
-                height: 48,
-                color: kPrimaryColor,
-                child: Center(child: Text("My Profile",style: GoogleFonts.lato(fontWeight: FontWeight.w600,fontSize: 20,color: white),)),
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: CircleAvatar(
+            Container(
+              width: double.infinity,
+              height: 48,
+              color: kPrimaryColor,
+              child: Center(child: Text("My Profile",style: GoogleFonts.lato(fontWeight: FontWeight.w600,fontSize: 20,color: white),)),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: CircleAvatar(
 
-                          radius: 50.0,
-                          child: Image.network(
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwihVNuLOzSu0timFcUZ0z1t23FrAEJ2EPghv3aKtvitpJlZ1wBmUPwXmb2GEDgSdnqeA&usqp=CAU"),
-                        ),
+                        radius: 50.0,
+                        child: Image.network(
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwihVNuLOzSu0timFcUZ0z1t23FrAEJ2EPghv3aKtvitpJlZ1wBmUPwXmb2GEDgSdnqeA&usqp=CAU"),
                       ),
-                      Text("Thunder",style: GoogleFonts.lato(fontSize: 24,fontWeight: FontWeight.w500),),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: GestureDetector(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Edit_Details_Screen()));
-                          },
-                          child: Container(
-                            width: 119,
-                            height: 30,
-                            decoration: BoxDecoration(
+                    ),
+                    Text("Thunder",style: GoogleFonts.lato(fontSize: 24,fontWeight: FontWeight.w500),),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Edit_Details_Screen()));
+                        },
+                        child: Container(
+                          width: 119,
+                          height: 30,
+                          decoration: BoxDecoration(
                               color: kPrimaryColor,
                               borderRadius: BorderRadius.circular(20)
-                            ),
-                            child:
-                            Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text("Edit Details",style: GoogleFonts.lato(fontWeight:FontWeight.w400,fontSize: 14,color: white),
+                          ),
+                          child:
+                          Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text("Edit Details",style: GoogleFonts.lato(fontWeight:FontWeight.w400,fontSize: 14,color: white),
 
-                                  ),
-                                  Icon(
+                                ),
+                                Icon(
 
                                     Icons.arrow_forward_ios,color: white,size: 15.0
-                                  )
-                                ],
-                              ),
+                                )
+                              ],
                             ),
                           ),
                         ),
                       ),
-                      GestureDetector(
+                    ),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Id_card_Screen()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
+                        child: Container(
+                          width: double.infinity,
+                          height: 64,
+                          decoration: BoxDecoration(
+                            color: white,
+
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                                width: 1,
+                                color: kSecondaryColor
+
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: kSecondaryColor,
+                                  spreadRadius: 2,
+                                  blurRadius: 4,
+                                  offset: Offset(-1,1)
+                              )
+                            ],
+
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image.asset("assets/images/idcard.png"),
+                              Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Vaikunth ID Card",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
+                                    Text("View your Vaikunth ID card",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
+                                  ],
+                                ),
+                              ),
+                              Icon(Icons.arrow_forward)
+                            ],
+
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
+                      child: GestureDetector(
                         onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Id_card_Screen()));
+
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Bank_Account_Screen()));
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
-                          child: Container(
-                            width: double.infinity,
-                            height: 64,
-                            decoration: BoxDecoration(
-                              color: white,
+                        child: Container(
+                          width: double.infinity,
+                          height: 64,
+                          decoration: BoxDecoration(
+                            color: white,
 
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(
-                                    width: 1,
-                                    color: kSecondaryColor
-
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: kSecondaryColor,
-                                    spreadRadius: 2,
-                                    blurRadius: 4,
-                                    offset: Offset(-1,1)
-                                  )
-                                ],
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                                width: 1,
+                                color: kSecondaryColor
 
                             ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: kSecondaryColor,
+                                  spreadRadius: 2,
+                                  blurRadius: 4,
+                                  offset: Offset(-1,1)
+                              )
+                            ],
+
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Image.asset("assets/images/idcard.png"),
+                                Image.asset("assets/images/bank.png"),
                                 Center(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text("Vaikunth ID Card",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-                                      Text("View your Vaikunth ID card",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
+                                      Hero(
+                                          tag: "_text",
+                                          child: Text("Bank Account Details",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),)),
+                                      Text("Manage your bank account details",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
                                     ],
                                   ),
                                 ),
@@ -146,215 +200,161 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
-                        child: GestureDetector(
-                          onTap: (){
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Bookings_Screen()));
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 64,
+                          decoration: BoxDecoration(
+                            color: white,
 
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Bank_Account_Screen()));
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: 64,
-                            decoration: BoxDecoration(
-                              color: white,
-
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                  width: 1,
-                                  color: kSecondaryColor
-
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: kSecondaryColor,
-                                    spreadRadius: 2,
-                                    blurRadius: 4,
-                                    offset: Offset(-1,1)
-                                )
-                              ],
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                                width: 1,
+                                color: kSecondaryColor
 
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 10,right: 10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Image.asset("assets/images/bank.png"),
-                                  Center(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Hero(
-                                            tag: "_text",
-                                            child: Text("Bank Account Details",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),)),
-                                        Text("Manage your bank account details",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
-                                      ],
-                                    ),
-                                  ),
-                                  Icon(Icons.arrow_forward)
-                                ],
+                            boxShadow: [
+                              BoxShadow(
+                                  color: kSecondaryColor,
+                                  spreadRadius: 2,
+                                  blurRadius: 4,
+                                  offset: Offset(-1,1)
+                              )
+                            ],
 
-                              ),
-                            ),
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
-                        child: GestureDetector(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Bookings_Screen()));
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: 64,
-                            decoration: BoxDecoration(
-                              color: white,
-
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                  width: 1,
-                                  color: kSecondaryColor
-
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: kSecondaryColor,
-                                    spreadRadius: 2,
-                                    blurRadius: 4,
-                                    offset: Offset(-1,1)
-                                )
-                              ],
-
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset("assets/images/order.png"),
-                                Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text("My Bookings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-                                      Text("Track all your orders here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
-                                    ],
-                                  ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image.asset("assets/images/order.png"),
+                              Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("My Bookings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
+                                    Text("Track all your orders here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
+                                  ],
                                 ),
-                                Icon(Icons.arrow_forward)
-                              ],
-
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
-                        child: GestureDetector(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Earnings_Screen()));
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: 64,
-                            decoration: BoxDecoration(
-                              color: white,
-
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                  width: 1,
-                                  color: kSecondaryColor
-
                               ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: kSecondaryColor,
-                                    spreadRadius: 2,
-                                    blurRadius: 4,
-                                    offset: Offset(-1,1)
-                                )
-                              ],
+                              Icon(Icons.arrow_forward)
+                            ],
 
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset("assets/images/rupss.png"),
-                                Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text("My earnings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-                                      Text("Track all your orders here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
-                                    ],
-                                  ),
-                                ),
-                                Icon(Icons.arrow_forward)
-                              ],
-
-                            ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
-                        child: GestureDetector(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Setting_Screen()));
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: 64,
-                            decoration: BoxDecoration(
-                              color: white,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Earnings_Screen()));
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 64,
+                          decoration: BoxDecoration(
+                            color: white,
 
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                  width: 1,
-                                  color: kSecondaryColor
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                                width: 1,
+                                color: kSecondaryColor
 
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: kSecondaryColor,
+                                  spreadRadius: 2,
+                                  blurRadius: 4,
+                                  offset: Offset(-1,1)
+                              )
+                            ],
+
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image.asset("assets/images/rupss.png"),
+                              Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("My earnings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
+                                    Text("Track all your orders here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
+                                  ],
+                                ),
                               ),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: kSecondaryColor,
-                                    spreadRadius: 2,
-                                    blurRadius: 4,
-                                    offset: Offset(-1,1)
-                                )
-                              ],
+                              Icon(Icons.arrow_forward)
+                            ],
 
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Image.asset("assets/images/settings.png"),
-                                Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text("Settings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-                                      Text("Access app settings here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
-                                    ],
-                                  ),
-                                ),
-                                Icon(Icons.arrow_forward)
-                              ],
-
-                            ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 16,right: 16,top: 15),
-                        child: GestureDetector(
-                          onTap: (){
-                             _showlogoutDigalog();
-                          },
-                          child: Container(
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Setting_Screen()));
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 64,
+                          decoration: BoxDecoration(
+                            color: white,
+
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                                width: 1,
+                                color: kSecondaryColor
+
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: kSecondaryColor,
+                                  spreadRadius: 2,
+                                  blurRadius: 4,
+                                  offset: Offset(-1,1)
+                              )
+                            ],
+
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image.asset("assets/images/settings.png"),
+                              Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Settings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
+                                    Text("Access app settings here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
+                                  ],
+                                ),
+                              ),
+                              Icon(Icons.arrow_forward)
+                            ],
+
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16,right: 16,top: 15),
+                      child: GestureDetector(
+                        onTap: (){
+                          _showlogoutDigalog();
+                        },
+                        child: Container(
                             width: double.infinity,
                             height: 48,
                             decoration: BoxDecoration(
@@ -381,17 +381,17 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.red),))
-                          ),
                         ),
                       ),
-                      SizedBox(
-                        height: 17,
-                      )
-                    ],
+                    ),
+                    SizedBox(
+                      height: 17,
+                    )
+                  ],
 
-                  ),
                 ),
-              )
+              ),
+            )
           ],
         ),
       ),
@@ -420,17 +420,17 @@ class _Profile_ScreenState extends State<Profile_Screen> {
 
                 ),
                 child: FlatButton(onPressed: (){}, child: Text("Cancel",style:
-                  GoogleFonts.lato(
+                GoogleFonts.lato(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
                     color: kSecondaryColor
-                  ),))),
+                ),))),
             Container(
                 width: 100,
                 height: 58,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  color: kPrimaryColor
+                    borderRadius: BorderRadius.circular(4),
+                    color: kPrimaryColor
                 ),
                 child:
                 BlocConsumer<AuthCubit, AuthState>(
