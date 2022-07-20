@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "238550610107",
+    "project_id": "vaikunth-7f2c0",
+    "storage_bucket": "vaikunth-7f2c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238550610107:android:e5916371c4b9eac870399e",
+        "android_client_info": {
+          "package_name": "com.example.panditapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238550610107-f9fa256jt3p0hvcbrqckmcp7ilkc9kha.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.panditapp",
+            "certificate_hash": "a6b8693efab3aa77186a578bdc9ce10fab43c914"
+          }
+        },
+        {
+          "client_id": "238550610107-p6ee5abt7nutupocqled6joguj7eiqsd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOo764uDx08NAYx7O1mmiM1S37G_uTxH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238550610107-p6ee5abt7nutupocqled6joguj7eiqsd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
