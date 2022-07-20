@@ -1,10 +1,12 @@
-
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nav_router/nav_router.dart';
+import 'package:panditapp/Phone_Auth/auth_cubit.dart';
+import 'package:panditapp/Phone_Auth/auth_state.dart';
+
 import 'package:panditapp/Screen/login_flow/OTP_Verify.dart';
 class PhoneNumber_Screen extends StatefulWidget {
   const PhoneNumber_Screen({Key? key}) : super(key: key);
@@ -14,6 +16,10 @@ class PhoneNumber_Screen extends StatefulWidget {
 }
 
 class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
+
+  TextEditingController phoneController = TextEditingController();
+
+
   var ht,wt;
   Color kPrimaryColor = Color(0xffFF7D33);
   Color kSecondaryColor = Color(0xffCACACA);
@@ -22,6 +28,10 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
   Color white = Color(0xffFFFFFF);
   Color h1Color =Color(0xff343D48);
   Color textFiledColor = Color(0xffCACACA);
+
+
+
+
   @override
   Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
@@ -61,33 +71,67 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                    ),
                ),
                ),
-               Padding(
-                 padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
-                 child: Container(
 
-                   child: Container(
-                     width: double.infinity,
-                     height: 48,
-                     decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(4),
+               BlocConsumer<AuthCubit, AuthState>(
+                 listener: (context,state){
+                   if(state is AuthCodeSentState){
+                     Navigator.push(context, CupertinoPageRoute(
+                         builder: (context)=>
+                             OTP_verify()
+                     ));
+                   }
 
-                         color: kPrimaryColor
+                 },
+                 builder: (context,state) {
+
+                   if(state is AuthLoadingState){
+                     return Center(
+                       child: CircularProgressIndicator(),
+                     );
+                   }
+
+                   return
+                   Padding(
+                     padding: const EdgeInsets.only(
+                         left: 16, right: 16, bottom: 24),
+                     child: Container(
+
+                       child: Container(
+                         width: double.infinity,
+                         height: 48,
+                         decoration: BoxDecoration(
+                             borderRadius: BorderRadius.circular(4),
+
+                             //color: Colors.red
+                         ),
+                         child:
+                         ElevatedButton(
+
+                             onPressed: () {
+                               String phoneNumber = "+91" + phoneController.text;
+                               BlocProvider.of<AuthCubit>(context).sendOTP(phoneNumber);
+                               // Navigator.push(context, MaterialPageRoute(
+                               //     builder: (context) => OTP_verify()));
+                             },
+                             child: Text('Send OTP', style: GoogleFonts.lato(
+                                 color: white, fontSize: 24,
+                                 fontWeight: FontWeight.w600,),),
+
+                             style: ElevatedButton.styleFrom(
+                             primary: Color(0XFFFF7D33),
+                             //padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                             textStyle: TextStyle(
+                                 fontSize: 30,
+                                 fontWeight: FontWeight.bold)),
+
+                         ),
+                       ),
+
                      ),
-                     child: FlatButton(
+                   );
+                 }
+               ),
 
-
-                         onPressed: (){
-                         Navigator.push(context, MaterialPageRoute(builder: (context)=>OTP_verify()));
-
-
-                         },
-                         child: Text('Send OTP',style: GoogleFonts.lato(
-                         color: white,fontSize: 24,
-                         fontWeight: FontWeight.w600),)),
-                   ),
-
-                 ),
-               )
              ],
            )),
          ),
@@ -126,6 +170,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: TextFormField(
+                  controller: phoneController,
                   inputFormatters: [
                     LengthLimitingTextInputFormatter(10),
                   ],

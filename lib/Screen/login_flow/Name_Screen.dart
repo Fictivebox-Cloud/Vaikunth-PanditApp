@@ -1,5 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/Phone_Auth/auth_cubit.dart';
+import 'package:panditapp/Phone_Auth/auth_state.dart';
+import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
 import 'package:panditapp/Screen/login_flow/Photo_Upload.dart';
 
 
@@ -114,6 +119,9 @@ class _Name_ScreenState extends State<Name_Screen> {
                     ),
                   ),
                 ),
+
+
+
 
                   ],
 

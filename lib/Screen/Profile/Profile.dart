@@ -1,12 +1,17 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/Phone_Auth/auth_cubit.dart';
+import 'package:panditapp/Phone_Auth/auth_state.dart';
 import 'package:panditapp/Screen/Booking/Bookings_screen.dart';
 import 'package:panditapp/Screen/Booking/pages/Booking_Details.dart';
 import 'package:panditapp/Screen/Earning/Earnings.dart';
 import 'package:panditapp/Screen/Profile/components/Edit_Details_Screen.dart';
 import 'package:panditapp/Screen/Profile/components/Settinng_Screen.dart';
 import 'package:panditapp/Screen/Profile/components/id_card.dart';
+import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
 
 import 'components/Bank Account Details.dart';
 
@@ -422,16 +427,35 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                   ),))),
             Container(
                 width: 100,
-                height: 48,
+                height: 58,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   color: kPrimaryColor
                 ),
-                child: FlatButton(onPressed: (){}, child: Text("Logout",style: GoogleFonts.lato(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20,
-                  color: white
-                ),)))
+                child:
+                BlocConsumer<AuthCubit, AuthState>(
+                    listener: (context, state){
+                      if(state is AuthLoggedOutState){
+
+                        Navigator.popUntil(context, (route) => route.isFirst);
+
+                        Navigator.pushReplacement(context, CupertinoPageRoute(
+                            builder: (context)=>
+                                PhoneNumber_Screen()
+                        ));
+                      }
+                    },
+                    builder: (context, state) {
+                      return
+                        CupertinoButton(
+                            child: Text("LogOut"),
+                            onPressed: () {
+                              BlocProvider.of<AuthCubit>(context).logout();
+                            }
+                        );
+                    }
+                )
+            )
           ],
         )
       ],
