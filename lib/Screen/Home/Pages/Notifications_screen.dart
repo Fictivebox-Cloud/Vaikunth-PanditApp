@@ -32,7 +32,7 @@ class _Notifications_screenState extends State<Notifications_screen> {
       body: ListView.builder(itemBuilder: (context , int index){
 
         return Padding(
-          padding: const EdgeInsets.only(left: 16,right: 16,top: 32),
+          padding: const EdgeInsets.only(left: 16,right: 16,top: 12),
           child: ListTile(
             leading: Icon(Icons.notifications,color: Colors.black,),
             title: Text("There are many variations of passages of Lorem Ipsum available.",style: GoogleFonts.lato(color: h1Color,

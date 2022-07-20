@@ -83,11 +83,22 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
 
                  },
                  builder: (context,state) {
-
                    if(state is AuthLoadingState){
-                     return Center(
-                       child: CircularProgressIndicator(),
-                     );
+                     return
+                       Container(
+                         padding: EdgeInsets.only(bottom: 150),
+
+                         child:Column(
+                           mainAxisAlignment: MainAxisAlignment.end,
+                           crossAxisAlignment: CrossAxisAlignment.end,
+                           children:
+                           [
+                           CircularProgressIndicator(),
+                         ],)
+                     //     Center(
+                     //     child: CircularProgressIndicator(),
+                     // ),
+                       );
                    }
 
                    return
@@ -152,9 +163,11 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
           children: [
             Padding(
               padding: EdgeInsets.only(left: 10),
-              child: Image.network("https://media.istockphoto.com/vectors/flag-of-india-vector-id472317739?k=20&m=472317739&s=612x612&w=0&h=EyWmhj952ZyJEgDStLz3fd0WZjqYIpSvnK3OpPfJ4eA=",
-              width: 30,
-              height: 30,),
+              child:
+                Image.asset('assets/images/flag.jpg',)
+                //Image.network("https://media.istockphoto.com/vectors/flag-of-india-vector-id472317739?k=20&m=472317739&s=612x612&w=0&h=EyWmhj952ZyJEgDStLz3fd0WZjqYIpSvnK3OpPfJ4eA=",
+              // width: 30,
+              // height: 30,),
             ),
             SizedBox(width: 10,),
             Text("+91"),
@@ -173,7 +186,9 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                   controller: phoneController,
                   inputFormatters: [
                     LengthLimitingTextInputFormatter(10),
+                    FilteringTextInputFormatter.allow(RegExp("[0-9]")),
                   ],
+
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: "Enter You Phone Number",
