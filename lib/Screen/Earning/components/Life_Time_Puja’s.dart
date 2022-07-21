@@ -48,9 +48,10 @@ class _Life_Time_PujaState extends State<Life_Time_Puja> {
             ),
 
 
-            child: Column(
-              children: [
+            child:
 
+            Column(
+              children: [
                 Text("Arvind Singh",style: GoogleFonts.lato(color: kPrimaryColor,fontSize: 14,fontWeight: FontWeight.w600),),
                 SizedBox(height: 8,),
                 Row(
@@ -68,12 +69,6 @@ class _Life_Time_PujaState extends State<Life_Time_Puja> {
               ],
             )
 
-            // ListTile(
-            //   leading: Icon(Icons.calendar_month,color: kPrimaryColor,),
-            //   title: Text("Arvind Singh",style: GoogleFonts.lato(color: kPrimaryColor,fontSize: 14,fontWeight: FontWeight.w600),),
-            //   subtitle: Text("Mon 05/Oct/2021",style: GoogleFonts.lato(fontSize: 12,color: Colors.black,fontWeight: FontWeight.w600),),
-            //   trailing: Text("Total Earnings: ₹568",style: GoogleFonts.lato(fontWeight: FontWeight.w600,fontSize: 12),),
-            // ),
           ),
         );
 

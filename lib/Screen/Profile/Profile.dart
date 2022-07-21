@@ -125,24 +125,31 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                             ],
 
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset("assets/images/idcard.png"),
-                              Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Vaikunth ID Card",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-                                    Text("View your Vaikunth ID card",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
-                                  ],
-                                ),
-                              ),
-                              Icon(Icons.arrow_forward)
-                            ],
+                          child:
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16,right: 16),
+                            child:
 
+                            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset("assets/images/idcard.png"),
+                                    SizedBox(width: 20,),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Vaikunth ID Card",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
+                                        Text("View your Vaikunth ID card",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
+                                      ],),],),
+
+                                Image.asset("assets/images/arow.png"),
+                              ],
+                            ),
                           ),
+
+
                         ),
                       ),
                     ),
@@ -176,26 +183,30 @@ class _Profile_ScreenState extends State<Profile_Screen> {
 
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 10,right: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            padding: const EdgeInsets.only(left: 16,right: 16),
+                            child:
+                            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Image.asset("assets/images/bank.png"),
-                                Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Hero(
-                                          tag: "_text",
-                                          child: Text("Bank Account Details",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),)),
-                                      Text("Manage your bank account details",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
-                                    ],
-                                  ),
-                                ),
-                                Icon(Icons.arrow_forward)
-                              ],
+                                Row(
+                                  //
+                                  children: [
+                                    Image.asset("assets/images/bank.png"),
+                                    SizedBox(width: 33,),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Hero(
+                                            tag: "_text",
+                                            child: Text("Bank Account Details",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),)),
+                                        Text("Manage your bank account details",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
+                                      ],
+                                    ),
 
+                                  ],
+                                ),
+                                Image.asset("assets/images/arow.png"),
+                              ],
                             ),
                           ),
                         ),
@@ -229,23 +240,31 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                             ],
 
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset("assets/images/order.png"),
-                              Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("My Bookings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-                                    Text("Track all your orders here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
-                                  ],
-                                ),
-                              ),
-                              Icon(Icons.arrow_forward)
-                            ],
+                          child:
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16,right: 16),
+                            child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
 
+                                  children: [
+                                    Image.asset("assets/images/order.png"),
+                                    SizedBox(width: 30,),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text("My Bookings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
+                                        Text("Track all your orders here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
+                                      ],
+                                    ),
+
+                                  ],
+
+                                ),
+                                Image.asset("assets/images/arow.png"),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -278,23 +297,33 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                             ],
 
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset("assets/images/rupss.png"),
-                              Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("My earnings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-                                    Text("Track all your orders here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
-                                  ],
-                                ),
-                              ),
-                              Icon(Icons.arrow_forward)
-                            ],
+                          child:
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16,right: 16),
+                            child:
+                            Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
 
+                                  children: [
+                                    Image.asset("assets/images/rupss.png"),
+                                   SizedBox(width: 33,),
+                                   Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text("My earnings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
+                                          Text("Track all your orders here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
+                                        ],
+                                      ),
+
+
+                                  ],
+
+                                ),
+                                Image.asset("assets/images/arow.png"),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -327,23 +356,32 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                             ],
 
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset("assets/images/settings.png"),
-                              Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Settings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-                                    Text("Access app settings here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
-                                  ],
-                                ),
-                              ),
-                              Icon(Icons.arrow_forward)
-                            ],
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 16,right: 16),
+                            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
 
+                                  children: [
+                                    Image.asset("assets/images/settings.png"),
+
+                                    SizedBox(width: 21,),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text("Settings",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
+                                        Text("Access app settings here",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: kSecondaryColor),)
+                                      ],
+                                    ),
+
+                                  ],
+
+                                ),
+                                Image.asset("assets/images/arow.png"),
+                               // Icon(Icons.arrow_forward)
+                              ],
+                            ),
                           ),
                         ),
                       ),

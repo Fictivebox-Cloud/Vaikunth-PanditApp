@@ -195,7 +195,7 @@ class _OTP_verifyState extends State<OTP_verify> {
               textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.w500),
             ),
             onPressed: () {},
-            child: const Text('Resend OTPppp'),
+            child: const Text('Resend OTP'),
           ),
         ),
 
