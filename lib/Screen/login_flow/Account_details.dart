@@ -3,6 +3,8 @@ import 'package:get/get_utils/get_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Screen/Home/Home_Screen.dart';
 
+import '../../API/ApiCallLogin.dart';
+
 class Account_details extends StatefulWidget {
   const Account_details({Key? key}) : super(key: key);
 
@@ -193,7 +195,14 @@ class _Account_detailsState extends State<Account_details> {
                     child: TextButton(
 
                         onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Home_Screen()));
+                          ApiCallLogin api = ApiCallLogin();
+                          api.fechingloginApi(mobile: "8218772191",
+                          name: "Vikran",
+                            services: "vvvv"
+
+
+                          );
+                          // Navigator.push(context, MaterialPageRoute(builder: (context)=>Home_Screen()));
                         }, child: Text('Finish',style: GoogleFonts.lato(
                         color: Color(0xffFFFFFF),fontSize: 24,
                         fontWeight: FontWeight.w600),)),

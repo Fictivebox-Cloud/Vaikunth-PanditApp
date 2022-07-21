@@ -9,7 +9,17 @@ class ApiCallLogin extends GetxController{
 
 
 
-Future  fechingloginApi(String mobile, String name,String services,String city, String aadharnumber, String pannumber, String account_number,String bank,String ifsc)async{
+Future  fechingloginApi(
+    {String? mobile,
+      String? name,
+      String? services,
+      String? city,
+      String? aadharnumber,
+      String? pannumber,
+      String? account_number,
+      String? bank,
+      String? ifsc
+    })async{
 
 
   var jsonResponse ;

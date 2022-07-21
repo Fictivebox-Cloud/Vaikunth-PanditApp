@@ -1,10 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
 import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
 import 'package:panditapp/Screen/login_flow/Photo_Upload.dart';
+import 'package:panditapp/model/getterSetter.dart';
+
+import '../../API/ApiCallLogin.dart';
 
 
 class Name_Screen extends StatefulWidget {
@@ -23,6 +27,9 @@ class _Name_ScreenState extends State<Name_Screen> {
   Color p1Color =  Color(0xff6E798C);
   Color white = Color(0xffFFFFFF);
   Color h1Color =Color(0xff343D48);
+
+  var isLoading =true.obs;
+  var _controller = TextEditingController();
 
 
   @override
@@ -103,6 +110,7 @@ class _Name_ScreenState extends State<Name_Screen> {
                       height: ht * 0.4,
                       //width: wt * 0.8,
                       child: TextField(
+                        controller: _controller,
                         //keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                             fillColor: Colors.grey.shade100,
@@ -142,7 +150,10 @@ class _Name_ScreenState extends State<Name_Screen> {
                   child: TextButton(
 
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload()));
+                    GetterloginSetter s = GetterloginSetter();
+                    s.name = _controller.text;
+                    print("Bhawani ${s.name}");
+                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload()));
                       }, child: Text('Next',style: GoogleFonts.lato(
                       color: white,fontSize: 24,
                       fontWeight: FontWeight.w600),)),
