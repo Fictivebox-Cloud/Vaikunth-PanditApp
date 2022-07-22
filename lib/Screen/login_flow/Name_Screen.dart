@@ -29,7 +29,7 @@ class _Name_ScreenState extends State<Name_Screen> {
   Color h1Color =Color(0xff343D48);
 
   var isLoading =true.obs;
-  var _controller = TextEditingController();
+  var _namecontroller = TextEditingController();
 
 
   @override
@@ -110,7 +110,7 @@ class _Name_ScreenState extends State<Name_Screen> {
                       height: ht * 0.4,
                       //width: wt * 0.8,
                       child: TextField(
-                        controller: _controller,
+                        controller: _namecontroller,
                         //keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                             fillColor: Colors.grey.shade100,
@@ -151,7 +151,7 @@ class _Name_ScreenState extends State<Name_Screen> {
 
                       onPressed: (){
                     GetterloginSetter s = GetterloginSetter();
-                    s.name = _controller.text;
+                    s.name = _namecontroller.text;
                     print("Bhawani ${s.name}");
                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload()));
                       }, child: Text('Next',style: GoogleFonts.lato(

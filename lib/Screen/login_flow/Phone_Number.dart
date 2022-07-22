@@ -8,6 +8,7 @@ import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
 
 import 'package:panditapp/Screen/login_flow/OTP_Verify.dart';
+import 'package:panditapp/model/getterSetter.dart';
 class PhoneNumber_Screen extends StatefulWidget {
   const PhoneNumber_Screen({Key? key}) : super(key: key);
 
@@ -28,6 +29,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
   Color white = Color(0xffFFFFFF);
   Color h1Color =Color(0xff343D48);
   Color textFiledColor = Color(0xffCACACA);
+
 
 
 
@@ -119,6 +121,11 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                          ElevatedButton(
 
                              onPressed: () {
+                               GetterloginSetter s = GetterloginSetter();
+                               s.mobile = phoneController.text;
+                               print("Govind ${s.mobile}");
+
+
                                String phoneNumber = "+91" + phoneController.text;
                                BlocProvider.of<AuthCubit>(context).sendOTP(phoneNumber);
                                // Navigator.push(context, MaterialPageRoute(
