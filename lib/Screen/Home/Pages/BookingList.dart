@@ -5,15 +5,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Services/remote_bookinglist.dart';
 import 'package:provider/provider.dart';
 
-import '../../../API/ApiCallHomePage.dart';
+
 import '../../../model/BookingModel.dart';
 
 class BookingListTitl extends StatelessWidget {
 
 
 
-int? index;
-BookingListTitl({this.index});
+int index;
+BookingListTitl({required this.index});
 
 
   Color kPrimaryColor = const Color(0xffFF7D33);
@@ -89,7 +89,7 @@ BookingListTitl({this.index});
                                     Icon(Icons.calendar_month,
                                       color: kPrimaryColor,),
                                     // SizedBox(width: 11,),
-                                    Text("Mon 05/Oct/2021",
+                                    Text(data.bookingModel.response!.bookinglist![index].bookingPujaDate ?? '',
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight
@@ -124,7 +124,7 @@ BookingListTitl({this.index});
                               ),
                               SizedBox(height: 3,),
                               Center(child: Text(
-                                data.bookingModel.response!.bookinglist![0].hostname ?? '',
+                                data.bookingModel.response!.bookinglist![index].hostname ?? '',
                                 style: GoogleFonts.lato(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 12,
@@ -170,9 +170,9 @@ BookingListTitl({this.index});
                               ),
                               SizedBox(height: 4,),
                               Center(child: Text(
-                                data.bookingModel.response!.bookinglist![0].hostname ?? '',
 
-                                // "Total Earnings: ₹568",
+                                data.bookingModel.response!.bookinglist![index].totalEarning.toString(),
+
                                 style: GoogleFonts.lato(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
