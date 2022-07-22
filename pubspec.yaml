@@ -53,6 +53,7 @@ dependencies:
   flutter_bloc: ^8.0.1
   pin_code_fields: ^7.4.0
 
+
   nav_router: ^0.0.7
   get: ^4.6.5
   awesome_dialog: ^2.2.1

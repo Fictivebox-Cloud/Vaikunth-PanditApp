@@ -9,6 +9,7 @@ class GetterloginSetter {
   String? _city;
   String? _Documents;
   String? _Account;
+  String? _Photo;
 
   String? get mobile => _mobile;
 
@@ -44,5 +45,11 @@ class GetterloginSetter {
 
   set name(String? value) {
     _name = value;
+  }
+
+  String? get Photo => _Photo;
+
+  set Photo(String? value) {
+    _Photo = value;
   }
 }

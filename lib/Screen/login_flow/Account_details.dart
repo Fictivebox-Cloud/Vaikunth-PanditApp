@@ -199,8 +199,6 @@ class _Account_detailsState extends State<Account_details> {
                           api.fechingloginApi(mobile: "8218772191",
                           name: "Vikran",
                             services: "vvvv"
-
-
                           );
                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Home_Screen()));
                         }, child: Text('Finish',style: GoogleFonts.lato(
