@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
-import 'package:panditapp/API/ApiCallHomePage.dart';
+
 import 'package:panditapp/Screen/Home/Pages/BookingList.dart';
 import 'package:panditapp/Screen/Home/Pages/Notifications_screen.dart';
 import 'package:panditapp/Screen/Profile/Profile.dart';
@@ -53,10 +53,14 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
     return Scaffold(
       backgroundColor: white,
       body: Consumer<RemoteBookinglist>(builder: (_, data, __) {
+
+
         return SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
+
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
                 child: Row(
