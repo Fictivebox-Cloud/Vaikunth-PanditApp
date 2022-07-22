@@ -3,40 +3,36 @@ import 'dart:math';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:panditapp/Services/remote_bookinglist.dart';
 
 import '../model/bookingModel.dart';
 
 
 class ApiCallHomePage extends GetxController {
+  var isLoading =true.obs;
 
+var bookingList = <BookingModel>[].obs;
+ @override
+ void onInit() {
+    // TODO: implement onInit
+   fetchBooking();
+    super.onInit();
+  }
 
+     void fetchBooking() async{
+   isLoading(true);
+    try {
+      var bookingr=   await RemoteBookinglist.fetchBooking();
 
- static Future<Bookinglist?> fetchBooking() async{
+      if(bookingr != null){
+        bookingList.value= bookingr as List<BookingModel>;
+      }
+    } on Exception catch (e) {
+      // TODO
+      isLoading(false);
+    }
 
-
-   String username = 'am9uZUAyOTc4';
-   String password = 'RklUTkVTU0AjMTIz';
-   String basicAuth =
-       'Basic ' + base64.encode(utf8.encode('$username:$password'));
-   print(basicAuth);
-
-   var response =await  http.post(Uri.parse("https://vaikunth.fictivebox.com/api/getbookinglist"),
-       headers: <String, String>{'authorization': basicAuth},
-       body: {
-         "pandit_id": "8"
-       }
-
-   );
-
-
-
-   if(response.statusCode ==200){
-     var responsedata =jsonDecode(response.body);
-   }
-   else{
-     Get.snackbar("Error", "Eroor while communicating with API");
-   }
- }
+     }
 
 
 }
