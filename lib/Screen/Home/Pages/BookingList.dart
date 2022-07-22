@@ -170,7 +170,9 @@ BookingListTitl({this.index});
                               ),
                               SizedBox(height: 4,),
                               Center(child: Text(
-                                "Total Earnings: ₹568",
+                                data.bookingModel.response!.bookinglist![0].hostname ?? '',
+
+                                // "Total Earnings: ₹568",
                                 style: GoogleFonts.lato(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
