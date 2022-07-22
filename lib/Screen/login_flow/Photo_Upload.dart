@@ -23,7 +23,7 @@ class Photo_Upload extends StatefulWidget {
 class _MyAppState extends State<Photo_Upload> {
   File? pickedImage;
   var ht,wt;
-  var _photocontroller = TextEditingController();
+ // var _photocontroller = TextEditingController();
 
   Color kPrimaryColor = Color(0xffFF7D33);
   Color kSecondaryColor = Color(0xffCACACA);
@@ -265,11 +265,12 @@ class _MyAppState extends State<Photo_Upload> {
                       color: kPrimaryColor
                   ),
                   child: TextButton(
-
+                     // File? pickedImage;
                       onPressed: (){
+
                         GetterloginSetter s = GetterloginSetter();
-                        s.Photo = _photocontroller.text;
-                        print("Bha ${s.Photo}");
+                        s.Photo = pickedImage;
+                        print("abhi ${s.Photo}");
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen()));
                       }, child: Text('Next',style: GoogleFonts.lato(
                       color: white,fontSize: 24,

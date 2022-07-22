@@ -104,7 +104,7 @@ class _City_ScreenState extends State<City_Screen> {
                         )
                     ),
                     child: TextFormField(
-
+                          cursorColor: Color(0xff6E798C),
                       decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: "Search for your city",
@@ -112,7 +112,6 @@ class _City_ScreenState extends State<City_Screen> {
                               fontWeight: FontWeight.w400,
                               fontSize: 14,
                               color: kSecondaryColor),
-
                              prefixIcon: const Icon(Icons.search,color: Color(0xff6E798C),
 
                           )

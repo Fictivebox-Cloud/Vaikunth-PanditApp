@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 
 class GetterloginSetter {
@@ -9,7 +11,7 @@ class GetterloginSetter {
   String? _city;
   String? _Documents;
   String? _Account;
-  String? _Photo;
+  File? _Photo;
 
   String? get mobile => _mobile;
 
@@ -47,9 +49,9 @@ class GetterloginSetter {
     _name = value;
   }
 
-  String? get Photo => _Photo;
+  File? get Photo => _Photo;
 
-  set Photo(String? value) {
+  set Photo(File? value) {
     _Photo = value;
   }
 }

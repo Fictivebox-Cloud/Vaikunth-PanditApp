@@ -95,11 +95,8 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                            crossAxisAlignment: CrossAxisAlignment.end,
                            children:
                            [
-                           CircularProgressIndicator(),
+                           CircularProgressIndicator(color: Color(0xFFFF7D33),),
                          ],)
-                     //     Center(
-                     //     child: CircularProgressIndicator(),
-                     // ),
                        );
                    }
 

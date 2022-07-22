@@ -151,9 +151,13 @@ class _OTP_verifyState extends State<OTP_verify> {
             },
               builder: (context, state) {
                 if(state is AuthLoadingState){
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 100),
+                      child: Center(
+                      child: CircularProgressIndicator(color: Color(0xFFFF7D33),),
+                  ),
+                    );
                 }
 
                 return Padding(
@@ -198,12 +202,6 @@ class _OTP_verifyState extends State<OTP_verify> {
             child: const Text('Resend OTP'),
           ),
         ),
-
-
-
-
-
-
 
 
               ],

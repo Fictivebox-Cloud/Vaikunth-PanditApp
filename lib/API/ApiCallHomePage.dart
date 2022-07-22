@@ -20,21 +20,22 @@ class ApiCallHomePage extends GetxController {
        'Basic ' + base64.encode(utf8.encode('$username:$password'));
    print(basicAuth);
 
-   var response =await  http.post(Uri.parse("https://vaikunth.fictivebox.com/api/getbookinglist"),
-       headers: <String, String>{'authorization': basicAuth},
-       body: {
-         "pandit_id": "8"
-       }
+   try {
+     var response =await  http.post(Uri.parse("https://vaikunth.fictivebox.com/api/getbookinglist"),
+         headers: <String, String>{'authorization': basicAuth},
+         body: {
+           "pandit_id": "8"
+         }
+     );
+     if(response.statusCode ==200){
+       Map responsedata =jsonDecode(response.body);
 
-   );
-
-
-
-   if(response.statusCode ==200){
-     var responsedata =jsonDecode(response.body);
-   }
-   else{
-     Get.snackbar("Error", "Eroor while communicating with API");
+     }
+     else{
+       Get.snackbar("Error", "Eroor while communicating with API");
+     }
+   } on Exception catch (e) {
+     // TODO
    }
  }
 

@@ -110,12 +110,19 @@ class _Name_ScreenState extends State<Name_Screen> {
                       height: ht * 0.4,
                       //width: wt * 0.8,
                       child: TextField(
+                          cursorColor: Color(0xFFFF7D33),
                         controller: _namecontroller,
                         //keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                             fillColor: Colors.grey.shade100,
                             hintText:'Enter Your Name',
                             hintStyle: TextStyle(fontSize: 15),
+
+                            focusedBorder:OutlineInputBorder(
+                              borderSide: const BorderSide(color: Color(0xFFFF7D33), width: 2.0),
+                             // borderRadius: BorderRadius.circular(25.0),
+                            ),
+
 
                             border: OutlineInputBorder(
 

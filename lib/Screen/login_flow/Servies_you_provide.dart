@@ -10,6 +10,9 @@ class Servies_you_screen extends StatefulWidget {
 
 class _Servies_you_screenState extends State<Servies_you_screen> {
   var ht,wt;
+
+  var _servicecontroller;
+
   Color kPrimaryColor = Color(0xffFF7D33);
   Color kSecondaryColor = Color(0xffCACACA);
   Color kScaffoldBackground = Color(0xffFFF3E9);
@@ -87,9 +90,10 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                     ),
                     GestureDetector(
                       onTap: (){
-                        print("Container clicked");
+                        print("Container clicked first ");
                       },
                       child: Container(
+
                          width: wt*0.9,
                         height: ht* 0.07,
                         decoration: BoxDecoration(
@@ -97,8 +101,11 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                             border: Border.all(color: kSecondaryColor)
 
                         ),
-                        child: Center(child: Text("Puja"
-                        , style: GoogleFonts.lato(fontWeight: FontWeight.w500,
+                        child: Center(child:
+
+                        Text(
+                            "Puja",
+                          style: GoogleFonts.lato(fontWeight: FontWeight.w500,
                           fontSize: 16),
                         )),
                       ),
@@ -108,7 +115,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                     ),
                     GestureDetector(
                       onTap: (){
-                        print("Container clicked");
+                        print("Container clicked second");
                       },
                       child: Container(
                         width: wt*0.9,
@@ -129,7 +136,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                     ),
                     GestureDetector(
                       onTap: (){
-                        print("Container clickedd");
+                        print("Container clicked third");
                       },
                       child: Container(
                         width: wt*0.9,
