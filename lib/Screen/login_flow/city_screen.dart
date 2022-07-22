@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/API/SearchbarApi.dart';
 import 'package:panditapp/Screen/login_flow/Documents_screen.dart';
+import 'package:panditapp/model/City_Model.dart';
 class City_Screen extends StatefulWidget {
   const City_Screen({Key? key}) : super(key: key);
 
@@ -18,8 +20,14 @@ class _City_ScreenState extends State<City_Screen> {
   Color white = Color(0xffFFFFFF);
   Color h1Color =Color(0xff343D48);
 
+  final controller  = TextEditingController();
+
+
+
   @override
   Widget build(BuildContext context) {
+
+
 
 
     return Scaffold(
@@ -97,25 +105,31 @@ class _City_ScreenState extends State<City_Screen> {
                     ),
                     child: TextFormField(
 
-
                       decoration: InputDecoration(
-
                           border: InputBorder.none,
-
                           hintText: "Search for your city",
                           hintStyle: GoogleFonts.lato(
                               fontWeight: FontWeight.w400,
                               fontSize: 14,
                               color: kSecondaryColor),
 
-                          prefixIcon: const Icon(Icons.search,color: Color(0xff6E798C),
+                             prefixIcon: const Icon(Icons.search,color: Color(0xff6E798C),
 
                           )
 
                       ),
-                    ),
-                  )
+                      onChanged: (text){
+                        ApiCallCitylistPage api = ApiCallCitylistPage();
+                        ApiCallCitylistPage.fetchCityList();
+                        // showSearch(context: context,
+                        //     delegate: );
 
+
+                      },
+                    ),
+                  ),
+
+                   
 
 
 
@@ -125,6 +139,7 @@ class _City_ScreenState extends State<City_Screen> {
                 ),
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
               child: Container(
@@ -138,6 +153,8 @@ class _City_ScreenState extends State<City_Screen> {
                 child: TextButton(
 
                     onPressed: (){
+
+
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen()));
                     }, child: Text('Next',style: GoogleFonts.lato(
                     color: Color(0xffFFFFFF),fontSize: 24,
@@ -149,4 +166,6 @@ class _City_ScreenState extends State<City_Screen> {
       ),
     );
   }
+
 }
+

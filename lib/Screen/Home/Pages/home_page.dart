@@ -265,8 +265,8 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                                               left: 16, right: 16, top: 10),
                                           child: InkWell(
                                             onTap: ()
-                {
-                                           ApiCallHomePage.fetchBooking();
+                                           {
+                                             ApiCallHomePage.fetchBooking();
                                             },
                                             child: Container(
                                               width: double.infinity,

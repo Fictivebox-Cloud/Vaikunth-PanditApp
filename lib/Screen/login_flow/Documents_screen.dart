@@ -79,25 +79,39 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 24,
                       ),
 
 
                       Text("Documents",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
 
-                      SizedBox(
+                      const SizedBox(
                         height: 17,
                       ),
                       Text("Aadhar",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18),),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                           Image.asset("assets/images/Aadhar Front.png"),
-                          Image.asset("assets/images/Aadhar Back.png")
+                           InkWell(
+                               onTap: (){
+                                 showModalBottomSheet(
+                                   context: context,
+                                   builder: (builder)=> bottomSheet(),
+                                 );
+                               },
+                               child: Image.asset("assets/images/Aadhar Front.png")),
+                          InkWell(
+                              onTap: (){
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (builder)=> bottomSheet(),
+                                );
+                              },
+                              child: Image.asset("assets/images/Aadhar Back.png"))
 
 
                         ],
@@ -143,7 +157,14 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       Row(
 
                         children: [
-                          Image.asset("assets/images/PAN.png")
+                          InkWell(
+                              onTap: (){
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (builder)=> bottomSheet(),
+                                );
+                              },
+                              child: Image.asset("assets/images/PAN.png"))
 
 
                         ],
@@ -211,6 +232,89 @@ class _Documents_ScreenState extends State<Documents_Screen> {
           ],
         ),
       ),
+    );
+  }
+  Widget bottomSheet(){
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 200,
+      margin:  EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 20
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                width: wt * 0.30,
+                height: ht * 0.20,
+
+                decoration: BoxDecoration(
+                    color: Color(0xffECF1F6),
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color(0xffECF1F6)
+                          ,
+                          blurRadius: 10,
+                          spreadRadius: 1
+                          ,offset: Offset(4,4)
+                      )
+                    ]
+                ),
+                child:  InkWell(
+                  onTap: (){
+
+                  },
+                  child: Icon(Icons.camera,color: Color(0xffF06414),),
+
+
+
+
+                ),
+              ),
+              Container(
+                width: wt * 0.30,
+                height: ht * 0.20,
+                decoration: BoxDecoration(
+                    color: Color(0xffECF1F6),
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color(0xffECF1F6)
+                          ,
+                          blurRadius: 10,
+                          spreadRadius: 1
+                          ,offset: Offset(4,4)
+                      )
+                    ]
+                ),
+                child: InkWell(
+                    onTap: (){
+
+                    },
+                    child: Icon(Icons.folder_open,color: Color(0xffF06414),)),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text("Open Camera",style: GoogleFonts.lato(fontSize: 12,
+                  fontWeight: FontWeight.w500
+              ),),
+              Text("Open Files",style: GoogleFonts.lato(fontSize: 12,
+                  fontWeight: FontWeight.w500
+              ),)
+            ],
+
+          )
+        ],
+      ),
+
+
     );
   }
 }

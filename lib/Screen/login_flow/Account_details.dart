@@ -202,7 +202,7 @@ class _Account_detailsState extends State<Account_details> {
 
 
                           );
-                          // Navigator.push(context, MaterialPageRoute(builder: (context)=>Home_Screen()));
+                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Home_Screen()));
                         }, child: Text('Finish',style: GoogleFonts.lato(
                         color: Color(0xffFFFFFF),fontSize: 24,
                         fontWeight: FontWeight.w600),)),
