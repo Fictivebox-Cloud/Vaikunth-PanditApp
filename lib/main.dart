@@ -6,14 +6,25 @@ import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
 import 'package:panditapp/Screen/login_flow/Name_Screen.dart';
 import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
+import 'package:provider/provider.dart';
 
 import 'Screen/Splash_onboarding/splash_screen.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import 'Services/remote_bookinglist.dart';
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => RemoteBookinglist(),),
+        //ChangeNotifierProvider(create: (_) => RemoteBookinglist(),),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

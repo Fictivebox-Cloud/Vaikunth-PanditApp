@@ -59,7 +59,7 @@ dependencies:
   awesome_dialog: ^2.2.1
   responsive_builder: ^0.4.2
 
-
+  provider: ^6.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

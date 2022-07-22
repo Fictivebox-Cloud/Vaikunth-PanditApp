@@ -1,118 +1,114 @@
-// To parse this JSON data, do
-//
-//     final bookingModel = bookingModelFromJson(jsonString);
-
 import 'dart:convert';
 
-BookingModel bookingModelFromJson(String str) => BookingModel.fromJson(json.decode(str));
+BookModel bookModelFromJson(String str) => BookModel.fromJson(json.decode(str));
 
-String bookingModelToJson(BookingModel data) => json.encode(data.toJson());
+String bookModelToJson(BookModel data) => json.encode(data.toJson());
 
-class BookingModel {
-  BookingModel({
-    required this.success,
-    required this.message,
-    required this.response,
+class BookModel {
+  BookModel({
+    this.success,
+    this.message,
+    this.response,
   });
 
-  bool success;
-  String message;
-  Response response;
+  bool? success;
+  String? message;
+  Response? response;
 
-  factory BookingModel.fromJson(Map<String, dynamic> json) => BookingModel(
-    success: json["success"],
-    message: json["message"],
-    response: Response.fromJson(json["response"]),
+  factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
+    success: json["success"] == null ? null : json["success"],
+    message: json["message"] == null ? null : json["message"],
+    response: json["response"] == null ? null : Response.fromJson(json["response"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "success": success,
-    "message": message,
-    "response": response.toJson(),
+    "success": success == null ? null : success,
+    "message": message == null ? null : message,
+    "response": response == null ? null : response?.toJson(),
   };
 }
 
 class Response {
   Response({
-    required this.bookinglist,
+    this.bookinglist,
   });
 
-  List<Bookinglist> bookinglist;
+  List<Bookinglist>? bookinglist;
 
   factory Response.fromJson(Map<String, dynamic> json) => Response(
-    bookinglist: List<Bookinglist>.from(json["bookinglist"].map((x) => Bookinglist.fromJson(x))),
+    bookinglist: json["bookinglist"] == null ? null : List<Bookinglist>.from(json["bookinglist"].map((x) => Bookinglist.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "bookinglist": List<dynamic>.from(bookinglist.map((x) => x.toJson())),
+    "bookinglist": bookinglist == null ? null : List<dynamic>.from(bookinglist!.map((x) => x.toJson())),
   };
 }
 
 class Bookinglist {
   Bookinglist({
-    required this.id,
-    required this.bookingId,
-    required this.poojaTitle,
-    required this.poojaDate,
-    required this.address,
-    required this.country,
-    required this.cityname,
-    required this.statename,
-    required this.pinCode,
-    required this.panditId,
-    required this.bookingPujaDate,
-    required this.time,
-    required this.totalEarning,
-    required this.hostname,
+    this.id,
+    this.bookingId,
+    this.poojaTitle,
+    this.poojaDate,
+    this.address,
+    this.country,
+    this.cityname,
+    this.statename,
+    this.pinCode,
+    this.panditId,
+    this.bookingPujaDate,
+    this.time,
+    this.totalEarning,
+    this.hostname,
   });
 
-  int id;
-  int bookingId;
-  String poojaTitle;
-  String poojaDate;
-  String address;
+  int? id;
+  int? bookingId;
+  String? poojaTitle;
+  String? poojaDate;
+  String? address;
   Country? country;
-  String cityname;
-  String statename;
-  int pinCode;
-  int panditId;
-  String bookingPujaDate;
-  DateTime time;
-  int totalEarning;
-  String hostname;
+  String? cityname;
+  String? statename;
+  int? pinCode;
+  int? panditId;
+  String? bookingPujaDate;
+  DateTime? time;
+  int? totalEarning;
+  String? hostname;
 
   factory Bookinglist.fromJson(Map<String, dynamic> json) => Bookinglist(
-    id: json["id"],
-    bookingId: json["booking_id"],
-    poojaTitle: json["pooja_title"],
-    poojaDate: json["pooja_date"],
-    address: json["address"],
-    country: countryValues.map![json["country"]],
-    cityname: json["cityname"],
-    statename: json["statename"],
-    pinCode: json["pin_code"],
-    panditId: json["pandit_id"],
-    bookingPujaDate: json["booking_puja_date"],
-    time: DateTime.parse(json["time"]),
-    totalEarning: json["total_earning"],
-    hostname: json["hostname"],
+    id: json["id"] == null ? null : json["id"],
+    bookingId: json["booking_id"] == null ? null : json["booking_id"],
+    poojaTitle: json["pooja_title"] == null ? null : json["pooja_title"],
+    poojaDate: json["pooja_date"] == null ? null : json["pooja_date"],
+    address: json["address"] == null ? null : json["address"],
+    country: json["country"] == null ? null : countryValues.map![json["country"]],
+    cityname: json["cityname"] == null ? null : json["cityname"],
+    statename: json["statename"] == null ? null : json["statename"],
+    pinCode: json["pin_code"] == null ? null : json["pin_code"],
+    panditId: json["pandit_id"] == null ? null : json["pandit_id"],
+    bookingPujaDate: json["booking_puja_date"] == null ? null : json["booking_puja_date"],
+    time: json["time"] == null ? null : DateTime.parse(json["time"]),
+    totalEarning: json["total_earning"] == null ? null : json["total_earning"],
+    hostname: json["hostname"] == null ? null : json["hostname"],
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "booking_id": bookingId,
-    "pooja_title": poojaTitle,
-    "pooja_date": poojaDate,
-    "address": address,
-    "country": countryValues.reverse[country],
-    "cityname": cityname,
-    "statename": statename,
-    "pin_code": pinCode,
-    "pandit_id": panditId,
-    "booking_puja_date": bookingPujaDate,
-    "time": time.toIso8601String(),
-    "total_earning": totalEarning,
-    "hostname": hostname,
+    "id": id == null ? null : id,
+    "booking_id": bookingId == null ? null : bookingId,
+    "pooja_title": poojaTitle == null ? null : poojaTitle,
+    "pooja_date": poojaDate == null ? null : poojaDate,
+    "address": address == null ? null : address,
+    "country": country == null ? null : countryValues.reverse[country],
+    "cityname": cityname == null ? null : cityname,
+    "statename": statename == null ? null : statename,
+    "pin_code": pinCode == null ? null : pinCode,
+    "pandit_id": panditId == null ? null : panditId,
+    "booking_puja_date": bookingPujaDate == null ? null : bookingPujaDate,
+    "time": time == null ? null : time!.toIso8601String(),
+    "total_earning": totalEarning == null ? null : totalEarning,
+    "hostname": hostname == null ? null : hostname,
   };
 }
 
