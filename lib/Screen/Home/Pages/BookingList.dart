@@ -144,7 +144,7 @@ BookingListTitl({required this.index});
                                 padding: const EdgeInsets.only(
                                     left: 16),
                                 child: Text(
-                                  "1 x Puranmashi katha(Offline)",
+                                   data.bookingModel.response!.bookinglist![index].poojaTitle.toString(),
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
@@ -154,7 +154,7 @@ BookingListTitl({required this.index});
                               Padding(
                                 padding: const EdgeInsets.only(
                                     left: 16),
-                                child: Text("1 x Astrology",
+                                child: Text(data.bookingModel.response!.bookinglist![index].address.toString(),
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,

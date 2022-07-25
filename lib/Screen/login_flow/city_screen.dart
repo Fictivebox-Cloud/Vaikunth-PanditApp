@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/API/SearchbarApi.dart';
 import 'package:panditapp/Screen/login_flow/Documents_screen.dart';
 import 'package:panditapp/model/City_Model.dart';
+
+import '../../model/City_Model.dart';
+
 class City_Screen extends StatefulWidget {
   const City_Screen({Key? key}) : super(key: key);
 
@@ -11,25 +15,20 @@ class City_Screen extends StatefulWidget {
 }
 
 class _City_ScreenState extends State<City_Screen> {
-  var ht,wt;
+  var ht, wt;
 
   Color kPrimaryColor = Color(0xffFF7D33);
   Color kSecondaryColor = Color(0xffCACACA);
   Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
+  Color p1Color = Color(0xff6E798C);
   Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
+  Color h1Color = Color(0xff343D48);
 
-  final controller  = TextEditingController();
-
+  final controller = TextEditingController();
 
 
   @override
   Widget build(BuildContext context) {
-
-
-
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -38,7 +37,7 @@ class _City_ScreenState extends State<City_Screen> {
             Expanded(
               flex: 2,
               child: Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
+                padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,38 +48,38 @@ class _City_ScreenState extends State<City_Screen> {
                         children: [
                           Container(
 
-                            width: 48,
-                            height: 2,
-                            color: kPrimaryColor
-                          ),
-                          Container(
-
-                            width: 48,
-                            height: 2,
+                              width: 48,
+                              height: 2,
                               color: kPrimaryColor
                           ),
                           Container(
 
-                            width: 48,
-                            height: 2,
+                              width: 48,
+                              height: 2,
                               color: kPrimaryColor
                           ),
                           Container(
 
-                            width: 48,
-                            height: 2,
+                              width: 48,
+                              height: 2,
                               color: kPrimaryColor
                           ),
                           Container(
 
-                            width: 48,
-                            height: 2,
+                              width: 48,
+                              height: 2,
+                              color: kPrimaryColor
+                          ),
+                          Container(
+
+                              width: 48,
+                              height: 2,
                               color: kSecondaryColor
                           ),
                           Container(
 
-                            width: 48,
-                            height: 2,
+                              width: 48,
+                              height: 2,
                               color: kSecondaryColor
                           ),
                         ],
@@ -90,47 +89,61 @@ class _City_ScreenState extends State<City_Screen> {
                       ),
 
 
-                      Text("Select your city",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
+                      Text("Select your city", style: GoogleFonts.lato(
+                          fontWeight: FontWeight.w500, fontSize: 24),),
 
                       SizedBox(
                         height: 32,
                       ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        border: Border.all(
-                            width: 1,
-                            color: Colors.black
-                        )
-                    ),
-                    child: TextFormField(
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            border: Border.all(
+                                width: 1,
+                                color: Colors.black
+                            )
+                        ),
+                        child: TextFormField(
                           cursorColor: Color(0xff6E798C),
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Search for your city",
-                          hintStyle: GoogleFonts.lato(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              color: kSecondaryColor),
-                             prefixIcon: const Icon(Icons.search,color: Color(0xff6E798C),
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Search for your city",
+                              hintStyle: GoogleFonts.lato(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: kSecondaryColor),
+                              prefixIcon: const Icon(
+                                Icons.search, color: Color(0xff6E798C),
 
-                          )
+                              )
 
+                          ),
+                          onChanged: (text) {
+                            ApiCallCitylistPage api = ApiCallCitylistPage();
+                            ApiCallCitylistPage.fetchCityList();
+
+
+
+                          },
+                        ),
                       ),
-                      onChanged: (text){
-                        ApiCallCitylistPage api = ApiCallCitylistPage();
-                        ApiCallCitylistPage.fetchCityList();
-                        // showSearch(context: context,
-                        //     delegate: );
 
-
-                      },
-                    ),
-                  ),
-
-                   
-
-
+                      // Expanded(child: Obx(() {
+                      //   return ListView.builder(
+                      //       itemCount: TextEditingController,
+                      //       itemBuilder: (context, index) =>
+                      //
+                      //       ListTile(
+                      //         title: Text(
+                      //           "City Name", style:
+                      //         GoogleFonts.lato(
+                      //             fontSize: 12, color: kSecondaryColor),
+                      //         ),
+                      //       )
+                      //
+                      //   );
+                      // })
+                      // )
 
 
                     ],
@@ -140,7 +153,7 @@ class _City_ScreenState extends State<City_Screen> {
             ),
 
             Padding(
-              padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
               child: Container(
                 width: double.infinity,
                 height: 48,
@@ -151,12 +164,11 @@ class _City_ScreenState extends State<City_Screen> {
                 ),
                 child: TextButton(
 
-                    onPressed: (){
-
-
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen()));
-                    }, child: Text('Next',style: GoogleFonts.lato(
-                    color: Color(0xffFFFFFF),fontSize: 24,
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => Documents_Screen()));
+                    }, child: Text('Next', style: GoogleFonts.lato(
+                    color: Color(0xffFFFFFF), fontSize: 24,
                     fontWeight: FontWeight.w600),)),
               ),
             )
