@@ -53,7 +53,7 @@ Future  fechingloginApi(
        'pandit_pan_file':aadharpanfile,
     
      };
-    print(data);
+    // print(data);
     String body = json.encode(data);
     var url= "https://vaikunth.fictivebox.com/api/register";
     var response = await http.post(Uri.parse(url),body: body,

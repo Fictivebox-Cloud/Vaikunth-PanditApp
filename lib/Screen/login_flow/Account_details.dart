@@ -242,7 +242,7 @@ class _Account_detailsState extends State<Account_details> {
                          // GetterloginSetter s = GetterloginSetter();
                           s.Account = _accountno.text;
                           s.choosebank = _choosebank.text;
-                         // s.name = _namecontroller.text;
+                          // s.name = _namecontroller.text;
                           s.ifsc = _ifsccode.text;
 
 
@@ -250,6 +250,7 @@ class _Account_detailsState extends State<Account_details> {
                           print("Bhawani choosebank: ${s.choosebank}");
                           print("Bhawani ifsc: ${s.name}");
                           print("Bhawani ifsc: ${s}");
+
 
                           ApiCallLogin api = ApiCallLogin();
                           api.fechingloginApi(
@@ -277,6 +278,8 @@ class _Account_detailsState extends State<Account_details> {
 
                           );
                           Navigator.push(context, MaterialPageRoute(
+
+
                               //register(email.text, contact.text, password.text, conpassword.text);
 
                               builder: (context) => Home_Screen()));
@@ -293,4 +296,3 @@ class _Account_detailsState extends State<Account_details> {
 
   }
   }
-
