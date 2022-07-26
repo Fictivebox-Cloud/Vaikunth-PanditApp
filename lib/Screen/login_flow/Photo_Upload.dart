@@ -9,12 +9,11 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:panditapp/Screen/login_flow/Servies_you_provide.dart';
 import 'package:panditapp/model/getterSetter.dart';
 
-void main() {
-  runApp(const Photo_Upload());
-}
 
 class Photo_Upload extends StatefulWidget {
-  const Photo_Upload({Key? key}) : super(key: key);
+  final String? name,mobile;
+
+  const Photo_Upload({Key? key,this.name,this.mobile}) : super(key: key);
 
   @override
   State<Photo_Upload> createState() => _MyAppState();
@@ -251,6 +250,7 @@ class _MyAppState extends State<Photo_Upload> {
               height: 20,
             ),
 
+            //Text("NAme: ${widget.name}"),
             Spacer(),
             Padding(
               padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
@@ -271,7 +271,7 @@ class _MyAppState extends State<Photo_Upload> {
                         GetterloginSetter s = GetterloginSetter();
                         s.Photo = pickedImage;
                         print("abhi ${s.Photo}");
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen(name: widget.name,photo:pickedImage.toString(),mobile: widget.mobile)));
                       }, child: Text('Next',style: GoogleFonts.lato(
                       color: white,fontSize: 24,
                       fontWeight: FontWeight.w600),)),

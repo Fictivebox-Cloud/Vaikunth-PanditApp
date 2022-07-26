@@ -4,7 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/model/getterSetter.dart';
 import 'city_screen.dart';
 class Servies_you_screen extends StatefulWidget {
-  const Servies_you_screen({Key? key}) : super(key: key);
+  final String? name,photo,mobile;
+
+
+
+  const Servies_you_screen({Key? key,this.name,this.photo,this.mobile}) : super(key: key);
 
   @override
   State<Servies_you_screen> createState() => _Servies_you_screenState();
@@ -90,6 +94,11 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                     SizedBox(
                       height: 32,
                     ),
+
+                    //Text("Photo url${widget.photo}"),
+                    //Text("name${widget.name}"),
+
+
                     GestureDetector(
                       onTap: (){
 
@@ -181,7 +190,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                    // s.services =_servicecontroller.text;
                    // print("Bhawani ${s.services}");
 
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen()));
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen(name3: widget.name,photo3: widget.photo,mobile: widget.mobile)));
                  }, child: Text('Next',style: GoogleFonts.lato(
                  color: Color(0xffFFFFFF),fontSize: 24,
                  fontWeight: FontWeight.w600),)),

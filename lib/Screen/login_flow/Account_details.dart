@@ -9,9 +9,9 @@ import 'package:provider/provider.dart';
 import '../../API/ApiCallLogin.dart';
 
 class Account_details extends StatefulWidget {
-  final String? aadhar,pancard;
+  final String? aadhar,pancard,name5,photo5,mobile;
 
-   Account_details({Key? key,this.aadhar,this.pancard}) : super(key: key);
+   Account_details({Key? key,this.aadhar,this.pancard,this.name5,this.photo5,this.mobile}) : super(key: key);
 
   @override
   State<Account_details> createState() => _Account_detailsState();
@@ -258,25 +258,27 @@ class _Account_detailsState extends State<Account_details> {
                             // name = _namecontroller.text;
                             // print("Bhawani ${s.name}");
 
-                              mobile: "",
-                              name: s.name,
-                              services: "",
-                              city: "",
+                              mobile: widget.mobile,
+                              name: widget.name5,
+                              services: "puja",
+                              city: "noida",
                               //Text("${widget.aadhar}"),
                               aadharnumber: widget.aadhar,
                               pannumber:widget.pancard,
                               account_number:s.Account,
                               bank: s.choosebank,
                               ifsc:s.ifsc,
-                              photo:"",
-                              aadharbackphoto: "",
-                              aadharfrontphoto: "",
-                              aadharpanfile: "",
+                              photo:widget.photo5,
+                              aadharbackphoto: widget.photo5,
+                              aadharfrontphoto: widget.photo5,
+                              aadharpanfile: widget.photo5,
 
                              // photo:"https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg",
 
                           );
                           Navigator.push(context, MaterialPageRoute(
+                              //register(email.text, contact.text, password.text, conpassword.text);
+
                               builder: (context) => Home_Screen()));
                         }, child: Text('Finish', style: GoogleFonts.lato(
                         color: Color(0xffFFFFFF), fontSize: 24,

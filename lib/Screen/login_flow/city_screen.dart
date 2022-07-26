@@ -5,7 +5,9 @@ import 'package:panditapp/Services/CityListApi.dart';
 import 'package:panditapp/model/City_Model.dart';
 import 'package:provider/provider.dart';
 class City_Screen extends StatefulWidget {
-  const City_Screen({Key? key}) : super(key: key);
+  final String? name3,photo3,mobile;
+
+  const City_Screen({Key? key,this.name3,this.photo3,this.mobile}) : super(key: key);
 
   @override
   State<City_Screen> createState() => _City_ScreenState();
@@ -98,6 +100,9 @@ class _City_ScreenState extends State<City_Screen> {
 
                         Text("Select your city",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
 
+                        //Text("Photo url${widget.photo3}"),
+                        //Text("name${widget.name3}"),
+
                         SizedBox(
                           height: 32,
                         ),
@@ -172,7 +177,7 @@ class _City_ScreenState extends State<City_Screen> {
                   child: TextButton(
 
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen(name4: widget.name3,photo4: widget.photo3,mobile: widget.mobile)));
                       }, child: Text('Next',style: GoogleFonts.lato(
                       color: Color(0xffFFFFFF),fontSize: 24,
                       fontWeight: FontWeight.w600),)),

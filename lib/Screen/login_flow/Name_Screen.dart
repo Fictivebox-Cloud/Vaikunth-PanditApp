@@ -12,7 +12,8 @@ import '../../API/ApiCallLogin.dart';
 
 
 class Name_Screen extends StatefulWidget {
-  const Name_Screen({Key? key}) : super(key: key);
+  String? mobile;
+   Name_Screen({Key? key, this.mobile}) : super(key: key);
 
   @override
   State<Name_Screen> createState() => _Name_ScreenState();
@@ -96,6 +97,8 @@ class _Name_ScreenState extends State<Name_Screen> {
                       SizedBox(
                         height: 24,
                       ),
+
+                     // Text("Mobile${widget.mobile}"),
                       Padding(
                         padding: const EdgeInsets.only(left: 16),
                         child: Text("Name",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
@@ -160,7 +163,7 @@ class _Name_ScreenState extends State<Name_Screen> {
                           GetterloginSetter s = GetterloginSetter();
                           s.name = _namecontroller.text;
                           print("Bhawani ${s.name}");
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload(name:_namecontroller.text,mobile: widget.mobile,)));
                         }, child: Text('Next',style: GoogleFonts.lato(
                         color: white,fontSize: 24,
                         fontWeight: FontWeight.w600),)),

@@ -4,7 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Screen/login_flow/Account_details.dart';
 import 'package:panditapp/model/getterSetter.dart';
 class Documents_Screen extends StatefulWidget {
-  const Documents_Screen({Key? key}) : super(key: key);
+  final String? name4,photo4,mobile;
+
+  const Documents_Screen({Key? key,this.name4,this.photo4,this.mobile}) : super(key: key);
 
   @override
   State<Documents_Screen> createState() => _Documents_ScreenState();
@@ -233,7 +235,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
 
                         print("Bhawani addhar ${s.pancard}");
                         print("Bhawani pan ${s.aadhar}");
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Account_details(aadhar: _addharno.text,pancard: _panno.text,)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Account_details(aadhar: _addharno.text,pancard: _panno.text,name5: widget.name4,photo5: widget.photo4,mobile: widget.mobile)));
                       }, child: Text('Next',style: GoogleFonts.lato(
                       color: white,fontSize: 24,
                       fontWeight: FontWeight.w600),)),

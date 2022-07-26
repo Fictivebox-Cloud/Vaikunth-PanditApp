@@ -79,7 +79,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                    if(state is AuthCodeSentState){
                      Navigator.push(context, CupertinoPageRoute(
                          builder: (context)=>
-                             OTP_verify()
+                             OTP_verify(mobile:phoneController.text,)
                      ));
                    }
 

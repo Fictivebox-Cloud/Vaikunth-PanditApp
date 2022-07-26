@@ -10,7 +10,9 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 
 class OTP_verify extends StatefulWidget {
-  const OTP_verify({Key? key}) : super(key: key);
+  String? mobile;
+
+  OTP_verify({Key? key,this.mobile}) : super(key: key);
 
   @override
   State<OTP_verify> createState() => _OTP_verifyState();
@@ -50,6 +52,8 @@ class _OTP_verifyState extends State<OTP_verify> {
                         fontWeight: FontWeight.w500
                             ,color: h1Color
                         ),),
+
+                       // Text("mobile ${widget.mobile}"),
                         SizedBox(
                           height: 8,
                         ),
@@ -132,7 +136,7 @@ class _OTP_verifyState extends State<OTP_verify> {
 
                   Navigator.pushReplacement(context, CupertinoPageRoute(
                       builder: (context)=>
-                          Name_Screen()
+                          Name_Screen(mobile: widget.mobile,)
                   ));
 
                 }
