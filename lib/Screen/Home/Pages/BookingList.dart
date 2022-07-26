@@ -1,14 +1,17 @@
+
+
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Services/Accept_Booking_Api.dart';
+
 import 'package:panditapp/Services/remote_bookinglist.dart';
 import 'package:provider/provider.dart';
 
 
-import '../../../model/BookingModel.dart';
+
 
 class BookingListTitl extends StatelessWidget {
+
 
 
 

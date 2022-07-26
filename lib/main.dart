@@ -7,11 +7,13 @@ import 'package:panditapp/Phone_Auth/auth_state.dart';
 import 'package:panditapp/Screen/login_flow/Name_Screen.dart';
 import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
 import 'package:panditapp/Services/CityListApi.dart';
+import 'package:panditapp/Services/Complete_Bookings.dart';
 import 'package:provider/provider.dart';
 
 import 'Screen/Splash_onboarding/splash_screen.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import 'Services/Accept_Booking_Api.dart';
 import 'Services/remote_bookinglist.dart';
 
 void main() async{
@@ -22,6 +24,8 @@ void main() async{
       providers: [
         ChangeNotifierProvider(create: (_) => RemoteBookinglist(),),
         ChangeNotifierProvider(create: (_) => City_List_Api(),),
+        ChangeNotifierProvider(create: (_) => Accept_Booking_Api(),),
+        ChangeNotifierProvider(create: (_) => Completed_Booking_Api(),),
       ],
       child: const MyApp(),
     ),

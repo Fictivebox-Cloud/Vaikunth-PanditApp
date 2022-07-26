@@ -39,154 +39,154 @@ class _City_ScreenState extends State<City_Screen> {
 
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Consumer<City_List_Api>(builder: (_, data ,__){
-        return SafeArea(
-          child: Column(
-            children: [
-              SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        backgroundColor: Colors.white,
+        body: Consumer<City_List_Api>(builder: (_, data ,__){
+          return SafeArea(
+            child: Column(
+              children: [
+                SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                          children: [
-                            Container(
+                            children: [
+                              Container(
 
-                                width: 48,
-                                height: 2,
-                                color: kPrimaryColor
-                            ),
-                            Container(
+                                  width: 48,
+                                  height: 2,
+                                  color: kPrimaryColor
+                              ),
+                              Container(
 
-                                width: 48,
-                                height: 2,
-                                color: kPrimaryColor
-                            ),
-                            Container(
+                                  width: 48,
+                                  height: 2,
+                                  color: kPrimaryColor
+                              ),
+                              Container(
 
-                                width: 48,
-                                height: 2,
-                                color: kPrimaryColor
-                            ),
-                            Container(
+                                  width: 48,
+                                  height: 2,
+                                  color: kPrimaryColor
+                              ),
+                              Container(
 
-                                width: 48,
-                                height: 2,
-                                color: kPrimaryColor
-                            ),
-                            Container(
+                                  width: 48,
+                                  height: 2,
+                                  color: kPrimaryColor
+                              ),
+                              Container(
 
-                                width: 48,
-                                height: 2,
-                                color: kSecondaryColor
-                            ),
-                            Container(
+                                  width: 48,
+                                  height: 2,
+                                  color: kSecondaryColor
+                              ),
+                              Container(
 
-                                width: 48,
-                                height: 2,
-                                color: kSecondaryColor
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 24,
-                        ),
-
-
-                        Text("Select your city",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
-
-                        //Text("Photo url${widget.photo3}"),
-                        //Text("name${widget.name3}"),
-
-                        SizedBox(
-                          height: 32,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              border: Border.all(
-                                  width: 1,
-                                  color: Colors.black
-                              )
+                                  width: 48,
+                                  height: 2,
+                                  color: kSecondaryColor
+                              ),
+                            ],
                           ),
-                          child: TextFormField(
-                            onChanged: (text){
-                              text =text.toLowerCase();
-                              setState((){
-                                City_List_Api().fachingApiCityList();
-                              });
-                            },
+                          SizedBox(
+                            height: 24,
+                          ),
 
 
-                            decoration: InputDecoration(
+                          Text("Select your city",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
 
-                                border: InputBorder.none,
+                          //Text("Photo url${widget.photo3}"),
+                          //Text("name${widget.name3}"),
 
-                                hintText: "Search for your city",
-                                hintStyle: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: kSecondaryColor),
-
-                                prefixIcon: const Icon(Icons.search,color: Color(0xff6E798C),
-
+                          SizedBox(
+                            height: 32,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                border: Border.all(
+                                    width: 1,
+                                    color: Colors.black
                                 )
+                            ),
+                            child: TextFormField(
+                              onChanged: (text){
+                                text =text.toLowerCase();
+                                setState((){
+                                  City_List_Api().fachingApiCityList();
+                                });
+                              },
 
+
+                              decoration: InputDecoration(
+
+                                  border: InputBorder.none,
+
+                                  hintText: "Search for your city",
+                                  hintStyle: GoogleFonts.lato(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14,
+                                      color: kSecondaryColor),
+
+                                  prefixIcon: const Icon(Icons.search,color: Color(0xff6E798C),
+
+                                  )
+
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
+                          SizedBox(
+                            height: 30,
+                          ),
 
-                        Container(
-                          width: double.infinity,
-                          height: 100,
-                          child: ListView.builder(
+                          Container(
+                              width: double.infinity,
+                              height: 100,
+                              child: ListView.builder(
 
-                              itemBuilder: ((context,  index){
-                            return Text(data.cityMidel.response!.citylist![index].name.toString());
-                          }))
-                        )
-
+                                  itemBuilder: ((context,  index){
+                                    return Text(data.cityMidel.response!.citylist![index].name.toString());
+                                  }))
+                          )
 
 
 
 
-                      ],
+
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
-                child: Container(
-                  width: double.infinity,
-                  height: 48,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
+                  child: Container(
+                    width: double.infinity,
+                    height: 48,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
 
-                      color: kPrimaryColor
+                        color: kPrimaryColor
+                    ),
+                    child: TextButton(
+
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen(name4: widget.name3,photo4: widget.photo3,mobile: widget.mobile)));
+                        }, child: Text('Next',style: GoogleFonts.lato(
+                        color: Color(0xffFFFFFF),fontSize: 24,
+                        fontWeight: FontWeight.w600),)),
                   ),
-                  child: TextButton(
-
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen(name4: widget.name3,photo4: widget.photo3,mobile: widget.mobile)));
-                      }, child: Text('Next',style: GoogleFonts.lato(
-                      color: Color(0xffFFFFFF),fontSize: 24,
-                      fontWeight: FontWeight.w600),)),
-                ),
-              )
-            ],
-          ),
-        );
-      })
+                )
+              ],
+            ),
+          );
+        })
     );
   }
 }

@@ -14,7 +14,7 @@ class Accept_Booking_Api extends ChangeNotifier{
       String password = 'RklUTkVTU0AjMTIz';
       String basicAuth =
           'Basic ' + base64.encode(utf8.encode('$username:$password'));
-      var url = Uri.parse("https://vaikunth.fictivebox.com/api/getcitylist");
+      var url = Uri.parse("https://vaikunth.fictivebox.com/api/acceptbooking");
 
       var apiResponse = await http.post(url, body: {
         "pandit_id": "8",
