@@ -1,7 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/Services/Accept_Booking_Api.dart';
 import 'package:panditapp/Services/remote_bookinglist.dart';
 import 'package:provider/provider.dart';
 
@@ -32,15 +32,14 @@ BookingListTitl({required this.index});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<RemoteBookinglist>(builder: (_, data, __) {
+    return Consumer<RemoteBookinglist>(builder: (_ , data, __) {
       return SingleChildScrollView(
         child:
         Column(
           children: [
-
             Padding(
               padding: const EdgeInsets.only(
-                  left: 16, right: 16, top: 10),
+                  left: 16, right: 16, top: 50),
               child:
               Column(
                 children: [

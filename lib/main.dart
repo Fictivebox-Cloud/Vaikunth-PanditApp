@@ -6,6 +6,7 @@ import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
 import 'package:panditapp/Screen/login_flow/Name_Screen.dart';
 import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
+import 'package:panditapp/Services/CityListApi.dart';
 import 'package:provider/provider.dart';
 
 import 'Screen/Splash_onboarding/splash_screen.dart';
@@ -20,7 +21,7 @@ void main() async{
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => RemoteBookinglist(),),
-        //ChangeNotifierProvider(create: (_) => RemoteBookinglist(),),
+        ChangeNotifierProvider(create: (_) => City_List_Api(),),
       ],
       child: const MyApp(),
     ),

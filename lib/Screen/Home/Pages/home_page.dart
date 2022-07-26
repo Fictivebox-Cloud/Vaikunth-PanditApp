@@ -10,7 +10,7 @@ import 'package:panditapp/Screen/Profile/Profile.dart';
 import 'package:panditapp/Services/remote_bookinglist.dart';
 import 'package:provider/provider.dart';
 
-import '../../../model/bookingModel.dart';
+
 
 
 class Home_page_Screen extends StatefulWidget {
@@ -32,6 +32,8 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
   Color h1Color = const Color(0xff343D48);
   Color buttonColor = const Color(0xff109D03);
 
+
+  bool _isLoading =true;
 
   @override
   void initState() {
@@ -55,7 +57,9 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
       body: Consumer<RemoteBookinglist>(builder: (_, data, __) {
 
 
+
         return SafeArea(
+
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -139,15 +143,16 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
               ),
 
               Expanded(
-                child: ListView.builder(itemBuilder: (context, int index) {
+                child:  ListView.builder(itemBuilder: (context, int index) {
 
-                  return BookingListTitl(index: index,);
+                    return BookingListTitl(index: index,);
 
-                },
-                  itemCount: data.bookingModel.response!.bookinglist!.length,
+                  },
+                    itemCount: data.bookingModel.response!.bookinglist!.length,
 
+                  ),
                 ),
-              ),
+
 
 
             ],
@@ -160,4 +165,6 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
 
 
 }
+
+
 
