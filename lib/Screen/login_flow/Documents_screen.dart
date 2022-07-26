@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Screen/login_flow/Account_details.dart';
+import 'package:panditapp/model/getterSetter.dart';
 class Documents_Screen extends StatefulWidget {
   const Documents_Screen({Key? key}) : super(key: key);
 
@@ -19,6 +21,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   Color h1Color =Color(0xff343D48);
   TextEditingController _addharno = TextEditingController();
   TextEditingController _panno = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -129,6 +132,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         ),
                         child: Center(
                           child: TextFormField(
+                            controller: _addharno,
                             keyboardType: TextInputType.number,
 
 
@@ -182,20 +186,22 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         ),
                         child: Center(
                           child: TextFormField(
-                              keyboardType: TextInputType.number,
-
-
+                            controller: _panno,
+                              //keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-
                                 border: InputBorder.none,
-
                                 hintText: "Enter Your PAN No",
                                 hintStyle: GoogleFonts.lato(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 14,
                                     color: kSecondaryColor),
+                              ),
 
-                              )
+                              inputFormatters: [
+                              LengthLimitingTextInputFormatter(19),
+                                FilteringTextInputFormatter.allow(RegExp("[a-zA-Z0-9]")),
+                              ],
+
 
                           ),
                         ),
@@ -220,9 +226,14 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       color: kPrimaryColor
                   ),
                   child: TextButton(
-
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Account_details()));
+                        GetterloginSetter s = GetterloginSetter();
+                        s.pancard = _addharno.text;
+                        s.aadhar = _panno.text;
+
+                        print("Bhawani addhar ${s.pancard}");
+                        print("Bhawani pan ${s.aadhar}");
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Account_details(aadhar: _addharno.text,pancard: _panno.text,)));
                       }, child: Text('Next',style: GoogleFonts.lato(
                       color: white,fontSize: 24,
                       fontWeight: FontWeight.w600),)),

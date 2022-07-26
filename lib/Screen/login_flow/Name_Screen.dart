@@ -38,139 +38,139 @@ class _Name_ScreenState extends State<Name_Screen> {
     ht = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              flex: 2,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: Column(
+            children: [
+              Expanded(
+                flex: 2,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                        children: [
-                           Container(
+                          children: [
+                            Container(
 
-                             width: 48,
-                             height: 2,
-                             color:kPrimaryColor,
-                           ),
-                          Container(
-
-                            width: 48,
-                            height: 2,
-                            color: kSecondaryColor,
-                          ),
-                          Container(
-
-                            width: 48,
-                            height: 2,
-                            color: kSecondaryColor,
-                          ),
-                          Container(
-
-                            width: 48,
-                            height: 2,
-                            color: kSecondaryColor,
-                          ),
-                          Container(
-
-                            width: 48,
-                            height: 2,
-                            color: kSecondaryColor,
-                          ),
-                          Container(
-
-                            width: 48,
-                            height: 2,
-                            color: kSecondaryColor,
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 24,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16),
-                      child: Text("Name",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
-                    ),
-                SizedBox(
-                  height: 15,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16,right: 16),
-                  child: Center(
-                    child: SizedBox(
-                      height: ht * 0.4,
-                      //width: wt * 0.8,
-                      child: TextField(
-                          cursorColor: Color(0xFFFF7D33),
-                        controller: _namecontroller,
-                        //keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                            fillColor: Colors.grey.shade100,
-                            hintText:'Enter Your Name',
-                            hintStyle: TextStyle(fontSize: 15),
-
-                            focusedBorder:OutlineInputBorder(
-                              borderSide: const BorderSide(color: Color(0xFFFF7D33), width: 2.0),
-                             // borderRadius: BorderRadius.circular(25.0),
+                              width: 48,
+                              height: 2,
+                              color:kPrimaryColor,
                             ),
+                            Container(
+
+                              width: 48,
+                              height: 2,
+                              color: kSecondaryColor,
+                            ),
+                            Container(
+
+                              width: 48,
+                              height: 2,
+                              color: kSecondaryColor,
+                            ),
+                            Container(
+
+                              width: 48,
+                              height: 2,
+                              color: kSecondaryColor,
+                            ),
+                            Container(
+
+                              width: 48,
+                              height: 2,
+                              color: kSecondaryColor,
+                            ),
+                            Container(
+
+                              width: 48,
+                              height: 2,
+                              color: kSecondaryColor,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16),
+                        child: Text("Name",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16,right: 16),
+                        child: Center(
+                          child: SizedBox(
+                              height: ht * 0.4,
+                              //width: wt * 0.8,
+                              child: TextField(
+                                  cursorColor: Color(0xFFFF7D33),
+                                  controller: _namecontroller,
+                                  //keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                      fillColor: Colors.grey.shade100,
+                                      hintText:'Enter Your Name',
+                                      hintStyle: TextStyle(fontSize: 15),
+
+                                      focusedBorder:OutlineInputBorder(
+                                        borderSide: const BorderSide(color: Color(0xFFFF7D33), width: 2.0),
+                                        // borderRadius: BorderRadius.circular(25.0),
+                                      ),
 
 
-                            border: OutlineInputBorder(
+                                      border: OutlineInputBorder(
 
-                              //borderRadius: BorderRadius.circular(24)
-                            )
-                        )
-                      )
-                    ),
+                                        //borderRadius: BorderRadius.circular(24)
+                                      )
+                                  )
+                              )
+                          ),
+                        ),
+                      ),
+
+
+
+
+                    ],
+
                   ),
                 ),
-
-
-
-
-                  ],
-
-                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
-              child: Container(
-
+              Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
                 child: Container(
-                  width: double.infinity,
-                  height: 48,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
 
-                      color: kPrimaryColor
+                  child: Container(
+                    width: double.infinity,
+                    height: 48,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+
+                        color: kPrimaryColor
+                    ),
+                    child: TextButton(
+
+                        onPressed: (){
+                          GetterloginSetter s = GetterloginSetter();
+                          s.name = _namecontroller.text;
+                          print("Bhawani ${s.name}");
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload()));
+                        }, child: Text('Next',style: GoogleFonts.lato(
+                        color: white,fontSize: 24,
+                        fontWeight: FontWeight.w600),)),
                   ),
-                  child: TextButton(
 
-                      onPressed: (){
-                    GetterloginSetter s = GetterloginSetter();
-                    s.name = _namecontroller.text;
-                    print("Bhawani ${s.name}");
-                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload()));
-                      }, child: Text('Next',style: GoogleFonts.lato(
-                      color: white,fontSize: 24,
-                      fontWeight: FontWeight.w600),)),
                 ),
-
-              ),
-            )
-          ],
-        ),
-      )
+              )
+            ],
+          ),
+        )
 
     );
   }

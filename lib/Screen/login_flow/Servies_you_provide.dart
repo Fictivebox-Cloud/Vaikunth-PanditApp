@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/model/getterSetter.dart';
 import 'city_screen.dart';
 class Servies_you_screen extends StatefulWidget {
   const Servies_you_screen({Key? key}) : super(key: key);
@@ -90,6 +92,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                     ),
                     GestureDetector(
                       onTap: (){
+
                         print("Container clicked first ");
                       },
                       child: Container(
@@ -173,6 +176,11 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                 child: TextButton(
 
                  onPressed: (){
+
+                   // GetterloginSetter s = GetterloginSetter();
+                   // s.services =_servicecontroller.text;
+                   // print("Bhawani ${s.services}");
+
                    Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen()));
                  }, child: Text('Next',style: GoogleFonts.lato(
                  color: Color(0xffFFFFFF),fontSize: 24,

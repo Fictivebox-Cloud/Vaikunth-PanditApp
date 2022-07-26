@@ -23,7 +23,7 @@ class Photo_Upload extends StatefulWidget {
 class _MyAppState extends State<Photo_Upload> {
   File? pickedImage;
   var ht,wt;
- // var _photocontroller = TextEditingController();
+  // var _photocontroller = TextEditingController();
 
   Color kPrimaryColor = Color(0xffFF7D33);
   Color kSecondaryColor = Color(0xffCACACA);
@@ -190,7 +190,7 @@ class _MyAppState extends State<Photo_Upload> {
                   SizedBox(
                     height: 12,
                   ),
-                 // imageProfile(),
+                  // imageProfile(),
 
 
 
@@ -216,7 +216,7 @@ class _MyAppState extends State<Photo_Upload> {
                       ),
                     ),
                     child: ClipOval(
-                     // controller: _phonecontroller,
+                      // controller: _phonecontroller,
                       child:
                       //pickedImage != null ? Image.file(pickedImage!):
                       pickedImage != null
@@ -237,11 +237,11 @@ class _MyAppState extends State<Photo_Upload> {
                     bottom: 9,
                     right: 15,
                     child:
-                      InkWell(
-                          onTap:
-                            imagePickerOption,
+                    InkWell(
+                        onTap:
+                        imagePickerOption,
 
-                          child: Image.asset("assets/images/settings.png")),
+                        child: Image.asset("assets/images/settings.png")),
 
                   )
                 ],
@@ -265,7 +265,7 @@ class _MyAppState extends State<Photo_Upload> {
                       color: kPrimaryColor
                   ),
                   child: TextButton(
-                     // File? pickedImage;
+                    // File? pickedImage;
                       onPressed: (){
 
                         GetterloginSetter s = GetterloginSetter();

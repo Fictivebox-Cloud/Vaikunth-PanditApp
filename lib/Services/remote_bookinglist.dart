@@ -44,12 +44,12 @@ class RemoteBookinglist with ChangeNotifier {
           _dataStatus = true;
           notifyListeners();
         } else {
-          CircularProgressIndicator(color: Color(0xFFFF7D33),);
           _dataStatus = false;
           _eventListStatus = false;
           notifyListeners();
         }
       } else {
+
         _dataStatus = false;
         _eventListStatus = false;
         notifyListeners();
