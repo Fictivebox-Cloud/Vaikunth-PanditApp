@@ -21,7 +21,7 @@ class Completed_Booking_Api with ChangeNotifier {
   bool get dataStatus => _dataStatus;
 
   CompledBookingModel _compledBookingModel = CompledBookingModel();
-  CompledBookingModel get compledBookingModel => CompledBookingModel();
+  CompledBookingModel get compledBookingModel => _compledBookingModel;
   int _index = 0;
   int get index => _index;
 
