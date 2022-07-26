@@ -8,7 +8,7 @@ import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
 import 'package:panditapp/Screen/login_flow/Photo_Upload.dart';
 import 'package:panditapp/model/getterSetter.dart';
 
-import '../../API/ApiCallLogin.dart';
+import '../../Services/ApiCallLogin.dart';
 
 
 class Name_Screen extends StatefulWidget {

@@ -2,6 +2,11 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Screen/Booking/pages/Booking_Details.dart';
+import 'package:panditapp/Services/Accept_Booking_Api.dart';
+import 'package:panditapp/Services/Complete_Bookings.dart';
+import 'package:provider/provider.dart';
+
+import '../../model/Completd_Booking_Model.dart';
 
 class Bookings_Screen extends StatefulWidget {
   const Bookings_Screen({Key? key}) : super(key: key);
@@ -25,8 +30,11 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
   bool Small = false;
   @override
   void initState() {
-    super.initState();
+    Completed_Booking_Api ss =  Provider.of<Completed_Booking_Api>(context, listen: false);
+    ss.completedBookingData();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,49 +42,57 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: white,
-        body: DefaultTabController(
-          length: 3,
-          child: Scaffold(
-              body: Padding(
-            padding: const EdgeInsets.only(top: 50),
-            child: Column(
-              children: [
-                TabBar(
-                  labelStyle: TextStyle(fontSize: Small ? 13.0 : 18.0),
-                  labelColor: h1Color,
-                  unselectedLabelColor: Color(0Xff999EA3),
-                  tabs: const [
+        body: Consumer<CompledBookingModel>(builder: (_, data, __) {
 
-                    Tab(
-                      text: 'Upcoming',
-                    ),
-                    Tab(
-                      text: 'Completed',
-                    ),
-                    Tab(
-                      text: 'Cancelled',
 
-                    ),
-                  ],
-                ),
-                 Expanded(
-                    child: TabBarView(
-                  children: [
-                    Center(
-                      child: Upcoming(),
-                    ),
-                    Center(
-                      child: Completed(),
-                    ),
-                    Center(
-                      child: Cancelled()
-                    ),
-                  ],
-                ))
-              ],
-            ),
-          )),
-        ));
+
+          return DefaultTabController(
+            length: 3,
+            child: Scaffold(
+                body: Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: Column(
+                    children: [
+                      TabBar(
+                        labelStyle: TextStyle(fontSize: Small ? 13.0 : 18.0),
+                        labelColor: h1Color,
+                        unselectedLabelColor: Color(0Xff999EA3),
+                        tabs: const [
+
+                          Tab(
+                            text: 'Upcoming',
+                          ),
+                          Tab(
+                            text: 'Completed',
+                          ),
+                          Tab(
+                            text: 'Cancelled',
+
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                          child: TabBarView(
+                            children: [
+                              Center(
+                                child: Upcoming(),
+                              ),
+                              Center(
+                                child: Completed(),
+                              ),
+                              Center(
+                                  child: Cancelled()
+                              ),
+                            ],
+                          ))
+                    ],
+                  ),
+                )),
+          );
+        },),
+
+
+    );
   }
 
   Widget Upcoming() {

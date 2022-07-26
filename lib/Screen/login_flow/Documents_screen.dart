@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Screen/login_flow/Account_details.dart';
 import 'package:panditapp/model/getterSetter.dart';
 class Documents_Screen extends StatefulWidget {
-  const Documents_Screen({Key? key}) : super(key: key);
+  const Documents_Screen({Key? key, String? photo, String? name}) : super(key: key);
 
   @override
   State<Documents_Screen> createState() => _Documents_ScreenState();

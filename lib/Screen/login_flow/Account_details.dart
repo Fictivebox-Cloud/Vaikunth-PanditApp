@@ -6,7 +6,7 @@ import 'package:panditapp/Screen/Home/Home_Screen.dart';
 import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
 
-import '../../API/ApiCallLogin.dart';
+import '../../Services/ApiCallLogin.dart';
 
 class Account_details extends StatefulWidget {
   final String? aadhar,pancard;
