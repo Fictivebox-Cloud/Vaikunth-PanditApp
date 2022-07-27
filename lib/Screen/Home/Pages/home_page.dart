@@ -1,12 +1,13 @@
-import 'package:dotted_line/dotted_line.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 import 'package:panditapp/Screen/Home/Pages/BookingList.dart';
 import 'package:panditapp/Screen/Home/Pages/Notifications_screen.dart';
 import 'package:panditapp/Screen/Profile/Profile.dart';
+import 'package:panditapp/Services/Accept_Booking_Api.dart';
 import 'package:panditapp/Services/remote_bookinglist.dart';
 import 'package:provider/provider.dart';
 
@@ -39,6 +40,9 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
   void initState() {
     RemoteBookinglist ss =  Provider.of<RemoteBookinglist>(context, listen: false);
     ss.getEventListData();
+
+    Accept_Booking_Api vv = Provider.of<Accept_Booking_Api>(context,listen:  false);
+    vv.fachingApiAcceptBooking();
   }
 
   @override

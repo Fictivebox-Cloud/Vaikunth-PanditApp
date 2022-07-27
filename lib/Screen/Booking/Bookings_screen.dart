@@ -69,7 +69,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                       child: Upcoming(),
                     ),
                     Center(
-                      child: CompletedPage(),
+                      child: Completed_Screen_Page(),
                     ),
                     Center(
                       child: Cancelled()
@@ -197,7 +197,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
   Widget CompletedPage (){
     int index;
 
-    return  Consumer<Completed_Booking_Api>(builder: (_, data,__){
+    return  Consumer<Completed_Booking_Api?>(builder: (_, data,__){
       return ListView.builder(itemBuilder: (context,int index){
         return Container(
           child: Column(
@@ -307,7 +307,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
           ),
         );
       },
-        itemCount: data.compledBookingModel.response!.compbookinglist!.length,
+      itemCount: data!.compledBookingModel.response!.compbookinglist!.length,
       );
     },);
   }

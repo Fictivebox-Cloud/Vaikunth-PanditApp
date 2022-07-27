@@ -1,11 +1,17 @@
 
 
+
+
+import 'package:provider/provider.dart';
+
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:panditapp/Services/remote_bookinglist.dart';
-import 'package:provider/provider.dart';
+
+
+import '../../../Services/Accept_Booking_Api.dart';
 
 
 
@@ -17,6 +23,8 @@ class BookingListTitl extends StatelessWidget {
 
 int index;
 BookingListTitl({required this.index});
+
+
 
 
   Color kPrimaryColor = const Color(0xffFF7D33);
@@ -198,6 +206,9 @@ BookingListTitl({required this.index});
                                         child: TextButton(
                                             onPressed: () {
 
+
+                                            Accept_Booking_Api ss = Accept_Booking_Api();
+                                            ss.fachingApiAcceptBooking();
                                             },
                                             child: Text(
                                               "Accept Booking",
