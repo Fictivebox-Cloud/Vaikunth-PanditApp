@@ -1,13 +1,9 @@
 import 'dart:convert';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:panditapp/model/City_Model.dart';
 import 'package:panditapp/model/Completd_Booking_Model.dart';
 
-import '../model/BookingModel.dart';
 
 
 
@@ -26,12 +22,6 @@ class Completed_Booking_Api with ChangeNotifier {
   int get index => _index;
 
 
-
-
-
-
-
-
   Future completedBookingData() async {
     try {
 
@@ -46,7 +36,7 @@ class Completed_Booking_Api with ChangeNotifier {
       var url = Uri.parse("https://vaikunth.fictivebox.com/api/getcompbookinglist");
 
       var apiResponse = await http.post(url, body: {
-        "pandit_id": "8",
+        "pandit_id": "81",
       }, headers: <String, String>{'authorization': basicAuth},
       );
 

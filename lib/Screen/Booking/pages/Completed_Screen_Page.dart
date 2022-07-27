@@ -33,9 +33,10 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<Completed_Booking_Api?>(
+      body: Consumer<Completed_Booking_Api>(
         builder: (_, data, __) {
           return ListView.builder(
+              shrinkWrap: true,
             itemBuilder: (context, int index) {
               return Column(
                 children: [
@@ -73,7 +74,8 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                                           width: 11,
                                         ),
                                         Text(
-                                          "datra",
+
+                                          data.compledBookingModel.response!.compbookinglist![index].bookingPujaDate??'',
                                           style: GoogleFonts.lato(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600,
@@ -97,7 +99,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                               ),
                               Center(
                                   child: Text(
-                                "Vikrant Bhawani saini",
+                                data.compledBookingModel.response!.compbookinglist![index].hostname.toString(),
                                 style: GoogleFonts.lato(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 12,
@@ -122,7 +124,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 16),
                                 child: Text(
-                                  "1 x Puranmashi katha(Offline)",
+                                  data.compledBookingModel.response!.compbookinglist![index].poojaTitle??"",
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
@@ -135,7 +137,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 16),
                                 child: Text(
-                                  "1 x Astrology",
+                                 data.compledBookingModel.response!.compbookinglist![index].address.toString(),
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
@@ -152,7 +154,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                               ),
                               Center(
                                   child: Text(
-                                "Total Earnings: ₹568",
+                                data.compledBookingModel.response!.compbookinglist![index].totalEarning.toString(),
                                 style: GoogleFonts.lato(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
@@ -188,8 +190,8 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                 ],
               );
             },
-            itemCount:
-                data!.compledBookingModel.response!.compbookinglist!.length,
+
+            itemCount: data.compledBookingModel.response!.compbookinglist!.length,
           );
         },
       ),

@@ -3,8 +3,21 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:panditapp/model/Acept_Booking_Model.dart';
 
 class Accept_Booking_Api extends ChangeNotifier{
+
+
+  bool _eventListStatus = false;
+  bool get eventListStatus => _eventListStatus;
+
+  bool _dataStatus = false;
+  bool get dataStatus => _dataStatus;
+
+  AcceptBookingModel _acceptBookingModel = AcceptBookingModel();
+  AcceptBookingModel get acceptBookingModel => _acceptBookingModel;
+  int _index = 0;
+  int get index => _index;
 
   Future fachingApiAcceptBooking() async{
 
@@ -18,19 +31,41 @@ class Accept_Booking_Api extends ChangeNotifier{
 
       var apiResponse = await http.post(url, body: {
         "pandit_id": "8",
+        "booking_id": "604"
       }, headers: <String, String>{'authorization': basicAuth},
       );
-     if(apiResponse.statusCode==200){
-       print("Vikrant$apiResponse");
-     }
 
+      if (apiResponse.statusCode == 200) {
+        print("Vikrant");
 
+        if (jsonDecode(apiResponse.body)['success']) {
 
+          _acceptBookingModel = AcceptBookingModel.fromJson(jsonDecode(apiResponse.body));
+          _eventListStatus = false;
+          _dataStatus = true;
+
+          notifyListeners();
+        } else {
+
+          _dataStatus = false;
+          _eventListStatus = false;
+          notifyListeners();
+        }
+      } else {
+        _dataStatus = false;
+        _eventListStatus = false;
+        notifyListeners();
+      }
     } on Exception catch (e) {
 
 
       notifyListeners();
       // TODO
+
+      _dataStatus = false;
+
+      _eventListStatus = false;
+      notifyListeners();
     }
   }
 
