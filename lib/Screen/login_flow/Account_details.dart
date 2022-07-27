@@ -33,6 +33,7 @@ class _Account_detailsState extends State<Account_details> {
   void initState() {
     s = GetterloginSetter();
   }
+  ApiCallLogin api = ApiCallLogin();
 
   @override
   Widget build(BuildContext context) {
@@ -252,12 +253,13 @@ class _Account_detailsState extends State<Account_details> {
                           print("Bhawani ifsc: ${s}");
 
 
-                          ApiCallLogin api = ApiCallLogin();
+
                           api.fechingloginApi(
 
                             // GetterloginSetter s = GetterloginSetter();
                             // name = _namecontroller.text;
                             // print("Bhawani ${s.name}");
+
 
                               mobile: widget.mobile,
                               name: widget.name5,
@@ -277,12 +279,12 @@ class _Account_detailsState extends State<Account_details> {
                              // photo:"https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg",
 
                           );
-                          Navigator.push(context, MaterialPageRoute(
-
-
-                              //register(email.text, contact.text, password.text, conpassword.text);
-
-                              builder: (context) => Home_Screen()));
+                          // Navigator.push(context, MaterialPageRoute(
+                          //
+                          //
+                          //     //register(email.text, contact.text, password.text, conpassword.text);
+                          //
+                          //     builder: (context) => Home_Screen()));
                         }, child: Text('Finish', style: GoogleFonts.lato(
                         color: Color(0xffFFFFFF), fontSize: 24,
                         fontWeight: FontWeight.w600),)),

@@ -1,12 +1,22 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
+
 import 'package:http/http.dart' as http;
+import 'package:panditapp/model/Login_Model.dart';
 
 class ApiCallLogin extends ChangeNotifier{
+  bool _eventListStatus = false;
+  bool get eventListStatus => _eventListStatus;
+
+  bool _dataStatus = false;
+  bool get dataStatus => _dataStatus;
 
   static  var  client = http.Client();
+  LoginModel _loginModel = LoginModel();
+  LoginModel get loginModel => _loginModel;
+
+
 
 
 
@@ -30,11 +40,9 @@ Future  fechingloginApi(
 
 
   try {
-    var jsonResponse ;
     String username = 'am9uZUAyOTc4';
     String password = 'RklUTkVTU0AjMTIz';
-    String basicAuth =
-        'Basic ' + base64.encode(utf8.encode('$username:$password'));
+    String basicAuth = 'Basic ' + base64Encode('$username:$password'.codeUnits);
     print(basicAuth);
     
      Map data ={
@@ -53,23 +61,42 @@ Future  fechingloginApi(
        'pandit_pan_file':aadharpanfile,
     
      };
-    // print(data);
+    print(data);
     String body = json.encode(data);
     var url= "https://vaikunth.fictivebox.com/api/register";
-    var response = await http.post(Uri.parse(url),body: body,
+    var response = await http.post(Uri.parse(url),body: data,
         headers: <String, String>{'authorization': basicAuth}
     );
-    print(response.body);
-    print(response.statusCode);
-    if(response.statusCode ==200){
-    
-    
-    }
-    else{
-      Get.snackbar("Error", "Eroor while communicating with API");
+
+    if (response.statusCode == 200) {
+      print("Vikrant${jsonDecode(response.body)}");
+
+      if (jsonDecode(response.body)['success']) {
+
+        _loginModel = LoginModel.fromJson(jsonDecode(response.body));
+        _eventListStatus = false;
+        _dataStatus = true;
+
+        notifyListeners();
+      } else {
+
+        _dataStatus = false;
+        _eventListStatus = false;
+        notifyListeners();
+      }
+    } else {
+
+      _dataStatus = false;
+      _eventListStatus = false;
+      notifyListeners();
+
     }
   } on Exception catch (e) {
     // TODO
+    _dataStatus = false;
+
+    _eventListStatus = false;
+    notifyListeners();
   }
   }
   
