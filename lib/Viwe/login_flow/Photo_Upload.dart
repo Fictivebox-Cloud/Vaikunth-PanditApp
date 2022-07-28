@@ -45,56 +45,90 @@ class _MyAppState extends State<Photo_Upload> {
             height: 250,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+               child:Column(
                 children: [
-                  const Text(
-                    "Pic Image From",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      pickImage(ImageSource.camera);
-                    },
-                    icon: const Icon(Icons.camera),
-                    label: const Text("CAMERA"),
-                  ),
-                  ElevatedButton.icon(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: wt * 0.30,
+                        height: ht * 0.20,
 
-                    onPressed: () {
-                      pickImage(ImageSource.gallery);
-                    },
-                    icon: const Icon(Icons.image),
-                    label: const Text("GALLERY"),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    icon: const Icon(Icons.close),
-                    label: const Text("CANCEL"),
-                  ),
+                        decoration: BoxDecoration(
+                            color: Color(0xffECF1F6),
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color(0xffECF1F6)
+                                  ,
+                                  blurRadius: 10,
+                                  spreadRadius: 1
+                                  ,offset: Offset(4,4)
+                              )
+                            ]
+                        ),
+                        child:  InkWell(
+                          onTap: (){
+                            pickImage(ImageSource.camera);
+                          },
+                          child: Icon(Icons.camera,color: Color(0xffF06414),),
 
+                        ),
+                      ),
+                      Container(
+                        width: wt * 0.30,
+                        height: ht * 0.20,
+                        decoration: BoxDecoration(
+                            color: Color(0xffECF1F6),
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color(0xffECF1F6)
+                                  ,
+                                  blurRadius: 10,
+                                  spreadRadius: 1
+                                  ,offset: Offset(4,4)
+                              )
+                            ]
+                        ),
+                        child: InkWell(
+                            onTap: (){
+                              pickImage(ImageSource.gallery);
+                            },
+                            child: Icon(Icons.folder_open,color: Color(0xffF06414),)),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text("Open Camera",style: GoogleFonts.lato(fontSize: 12,
+                          fontWeight: FontWeight.w500
+                      ),),
+                      Text("Open Files",style: GoogleFonts.lato(fontSize: 12,
+                          fontWeight: FontWeight.w500
+                      ),)
+                    ],
 
+                  )
                 ],
               ),
+
             ),
           ),
         ),
       ),
     );
   }
-
+//final result = await ImagePicker.platform.pickImage(source: ImageSource.gallery);
+//                   if (result == null) return;
+//                   final file = result.path;
+//                   setState(() {
+//                     _fileUpload = file;
+//                   });//
   pickImage(ImageSource imageType) async {
     try {
-      final photo = await ImagePicker().pickImage(source: imageType);
+      final photo = await ImagePicker().pickImage(source: imageType,imageQuality: 5);
       if (photo == null) return;
       final tempImage = File(photo.path);
       setState(() {
@@ -215,7 +249,8 @@ class _MyAppState extends State<Photo_Upload> {
                         Radius.circular(100),
                       ),
                     ),
-                    child: ClipOval(
+                    child:
+                    ClipOval(
                       // controller: _phonecontroller,
                       child:
                       //pickedImage != null ? Image.file(pickedImage!):
@@ -241,7 +276,8 @@ class _MyAppState extends State<Photo_Upload> {
                         onTap:
                         imagePickerOption,
 
-                        child: Image.asset("assets/images/settings.png")),
+                        child:
+                        Image.asset("assets/images/Camera.png",height: 33,width: 33,color: Color(0XFFFF7D33),)),
 
                   )
                 ],
