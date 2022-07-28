@@ -9,9 +9,9 @@ import 'package:provider/provider.dart';
 import '../../Services/ApiCallLogin.dart';
 
 class Account_details extends StatefulWidget {
-  final String? aadhar,pancard,name5,photo5,mobile;
+  final String? aadhar,pancard,name5,photo5,mobile,photoaadharfront,photoaadharback,pan;
 
-   Account_details({Key? key,this.aadhar,this.pancard,this.name5,this.photo5,this.mobile}) : super(key: key);
+   Account_details({Key? key,this.aadhar,this.pancard,this.name5,this.photo5,this.mobile,this.photoaadharback,this.photoaadharfront,this.pan}) : super(key: key);
 
   @override
   State<Account_details> createState() => _Account_detailsState();
@@ -260,31 +260,48 @@ class _Account_detailsState extends State<Account_details> {
                             // name = _namecontroller.text;
                             // print("Bhawani ${s.name}");
 
+                              //
+                              // mobile: widget.mobile,
+                              // name: widget.name5,
+                              // services: "puja",
+                              // city: "noida",
+                              // //Text("${widget.aadhar}"),
+                              // aadharnumber: widget.aadhar,
+                              // pannumber:widget.pancard,
+                              // account_number:s.Account,
+                              // bank: s.choosebank,
+                              // ifsc:s.ifsc,
+                              // photo:widget.photo5,
+                              // aadharbackphoto: widget.photoaadharback,
+                              // aadharfrontphoto: widget.photoaadharfront,
+                              // panfile: widget.pan,
 
-                              mobile: widget.mobile,
-                              name: widget.name5,
-                              services: "puja",
-                              city: "noida",
-                              //Text("${widget.aadhar}"),
-                              aadharnumber: widget.aadhar,
-                              pannumber:widget.pancard,
-                              account_number:s.Account,
-                              bank: s.choosebank,
-                              ifsc:s.ifsc,
-                              photo:widget.photo5,
-                              aadharbackphoto: widget.photo5,
-                              aadharfrontphoto: widget.photo5,
-                              aadharpanfile: widget.photo5,
+
+                            mobile:"9988776655",
+                            name: "ggoovviinndd",
+                            services: "pujaaaa",
+                            city: "noidaaa",
+                            //Text("${widget.aadhar}"),
+                            aadharnumber: "777766665555",
+                            pannumber:"HRFT5467HG",
+                            account_number:"11240001006757",
+                            bank: "PUNB",
+                            ifsc:"PNB657",
+                            photo:"https://fluttercore.com/wp-content/uploads/2020/02/flutter_image_picker.png",
+                            aadharbackphoto: "https://fluttercore.com/wp-content/uploads/2020/02/flutter_image_picker.png",
+                            aadharfrontphoto: "https://fluttercore.com/wp-content/uploads/2020/02/flutter_image_picker.png",
+                            panfile: "https://fluttercore.com/wp-content/uploads/2020/02/flutter_image_picker.png",
+
 
                              // photo:"https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg",
 
                           );
-                          // Navigator.push(context, MaterialPageRoute(
-                          //
-                          //
-                          //     //register(email.text, contact.text, password.text, conpassword.text);
-                          //
-                          //     builder: (context) => Home_Screen()));
+                          Navigator.push(context, MaterialPageRoute(
+
+
+                              //register(email.text, contact.text, password.text, conpassword.text);
+
+                              builder: (context) => Home_Screen()));
                         }, child: Text('Finish', style: GoogleFonts.lato(
                         color: Color(0xffFFFFFF), fontSize: 24,
                         fontWeight: FontWeight.w600),)),
