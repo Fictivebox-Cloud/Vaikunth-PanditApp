@@ -19,12 +19,9 @@ import '../../../Services/Accept_Booking_Api.dart';
 class BookingListTitl extends StatelessWidget {
 
 
+  int index;
 
-
-int index;
-BookingListTitl({required this.index});
-
-
+  BookingListTitl({required this.index});
 
 
   Color kPrimaryColor = const Color(0xffFF7D33);
@@ -36,14 +33,13 @@ BookingListTitl({required this.index});
   Color buttonColor = const Color(0xff109D03);
 
 
-
   //late final BookingModel bookingModel;
-
 
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<RemoteBookinglist>(builder: (_ , data, __) {
+    return Consumer<RemoteBookinglist>(builder: (_, data, __) {
+
       return SingleChildScrollView(
         child:
         Column(
@@ -99,7 +95,9 @@ BookingListTitl({required this.index});
                                     Icon(Icons.calendar_month,
                                       color: kPrimaryColor,),
                                     // SizedBox(width: 11,),
-                                    Text(data.bookingModel.response!.bookinglist![index].bookingPujaDate ?? '',
+                                    Text(data.bookingModel.response!
+                                        .bookinglist![index].bookingPujaDate ??
+                                        '',
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight
@@ -134,7 +132,8 @@ BookingListTitl({required this.index});
                               ),
                               SizedBox(height: 3,),
                               Center(child: Text(
-                                data.bookingModel.response!.bookinglist![index].hostname ?? '',
+                                data.bookingModel.response!.bookinglist![index]
+                                    .hostname ?? '',
                                 style: GoogleFonts.lato(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 12,
@@ -154,7 +153,9 @@ BookingListTitl({required this.index});
                                 padding: const EdgeInsets.only(
                                     left: 16),
                                 child: Text(
-                                   data.bookingModel.response!.bookinglist![index].poojaTitle.toString(),
+                                  data.bookingModel.response!
+                                      .bookinglist![index].poojaTitle
+                                      .toString(),
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
@@ -164,7 +165,8 @@ BookingListTitl({required this.index});
                               Padding(
                                 padding: const EdgeInsets.only(
                                     left: 16),
-                                child: Text(data.bookingModel.response!.bookinglist![index].address.toString(),
+                                child: Text(data.bookingModel.response!
+                                    .bookinglist![index].address.toString(),
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
@@ -181,7 +183,8 @@ BookingListTitl({required this.index});
                               SizedBox(height: 4,),
                               Center(child: Text(
 
-                                data.bookingModel.response!.bookinglist![index].totalEarning.toString(),
+                                "Total Earnings:  ${data.bookingModel.response!.bookinglist![index]
+                                    .totalEarning.toString()}",
 
                                 style: GoogleFonts.lato(
                                     fontSize: 14,
@@ -206,9 +209,11 @@ BookingListTitl({required this.index});
                                         child: TextButton(
                                             onPressed: () {
 
+                                              Accept_Booking_Api ss = Accept_Booking_Api();
+                                              ss.fachingApiAcceptBooking(
+                                                // samplelist.removeAt(index)
 
-                                            Accept_Booking_Api ss = Accept_Booking_Api();
-                                            ss.fachingApiAcceptBooking();
+                                              );
                                             },
                                             child: Text(
                                               "Accept Booking",
@@ -229,7 +234,8 @@ BookingListTitl({required this.index});
                         child: Padding(
                           padding: const EdgeInsets.only(top: 10),
                           child: Text(
-                            "Accept booking in 04:59:59",
+                            "Accept booking in ${data.bookingModel.response!
+                                .bookinglist![index].time}",
                             style: GoogleFonts.lato(fontSize: 16
                                 ,
                                 fontWeight: FontWeight.w600,
@@ -249,5 +255,5 @@ BookingListTitl({required this.index});
       );
     });
   }
-}
 
+}

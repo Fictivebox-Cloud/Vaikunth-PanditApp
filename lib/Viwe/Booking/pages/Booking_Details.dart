@@ -2,7 +2,8 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Screen/Booking/pages/Booking_Progress_Screen.dart';
+import 'package:panditapp/Viwe/Booking/pages/Booking_Progress_Screen.dart';
+
 
 class Booking_Details_Screen extends StatefulWidget {
   const Booking_Details_Screen({Key? key}) : super(key: key);

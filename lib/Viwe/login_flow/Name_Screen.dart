@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
-import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
-import 'package:panditapp/Screen/login_flow/Photo_Upload.dart';
+import 'package:panditapp/Viwe/login_flow/Photo_Upload.dart';
+
 import 'package:panditapp/model/getterSetter.dart';
 
 import '../../Services/ApiCallLogin.dart';

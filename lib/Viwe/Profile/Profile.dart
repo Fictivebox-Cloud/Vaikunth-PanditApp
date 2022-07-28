@@ -5,13 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
-import 'package:panditapp/Screen/Booking/Bookings_screen.dart';
-import 'package:panditapp/Screen/Booking/pages/Booking_Details.dart';
-import 'package:panditapp/Screen/Earning/Earnings.dart';
-import 'package:panditapp/Screen/Profile/components/Edit_Details_Screen.dart';
-import 'package:panditapp/Screen/Profile/components/Settinng_Screen.dart';
-import 'package:panditapp/Screen/Profile/components/id_card.dart';
-import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
+import 'package:panditapp/Viwe/Booking/Bookings_screen.dart';
+import 'package:panditapp/Viwe/Earning/Earnings.dart';
+import 'package:panditapp/Viwe/Profile/components/Edit_Details_Screen.dart';
+import 'package:panditapp/Viwe/Profile/components/Settinng_Screen.dart';
+import 'package:panditapp/Viwe/Profile/components/id_card.dart';
+import 'package:panditapp/Viwe/login_flow/Phone_Number.dart';
+
 
 import 'components/Bank Account Details.dart';
 

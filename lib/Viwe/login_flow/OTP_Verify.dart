@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
-import 'package:panditapp/Screen/login_flow/Name_Screen.dart';
+import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
+
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 

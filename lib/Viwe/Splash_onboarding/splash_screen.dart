@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Screen/Splash_onboarding/Onboarding.dart';
+import 'package:panditapp/Viwe/Splash_onboarding/Onboarding.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

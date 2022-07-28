@@ -2,9 +2,10 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Screen/Earning/components/Life_Time_Puja%E2%80%99s.dart';
-import 'package:panditapp/Screen/Earning/components/Money_transferred_succesfully.dart';
+
 import 'package:charts_flutter/flutter.dart'as charts;
+import 'package:panditapp/Viwe/Earning/components/Life_Time_Puja%E2%80%99s.dart';
+import 'package:panditapp/Viwe/Earning/components/Money_transferred_succesfully.dart';
 
 import 'package:table_calendar/table_calendar.dart';
 
