@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:panditapp/Screen/Booking/Bookings_screen.dart';
-import 'package:panditapp/Screen/Earning/Earnings.dart';
-import 'package:panditapp/Screen/Home/Pages/home_page.dart';
-import 'package:panditapp/Screen/Profile/Profile.dart';
+import 'package:panditapp/Viwe/Booking/Bookings_screen.dart';
+import 'package:panditapp/Viwe/Earning/Earnings.dart';
+import 'package:panditapp/Viwe/Home/Pages/home_page.dart';
+import 'package:panditapp/Viwe/Profile/Profile.dart';
+
 
 import '../Booking/pages/Booking_Details.dart';
 

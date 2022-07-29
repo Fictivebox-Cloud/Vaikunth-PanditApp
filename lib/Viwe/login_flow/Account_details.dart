@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Screen/Home/Home_Screen.dart';
-import 'package:panditapp/model/Login_Model.dart';
+
+import 'package:panditapp/Viwe/Home/Home_Screen.dart';
+
 import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
 

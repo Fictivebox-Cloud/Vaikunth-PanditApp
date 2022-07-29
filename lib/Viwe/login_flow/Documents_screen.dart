@@ -5,8 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:panditapp/Viwe/login_flow/Account_details.dart';
+
+
 import 'package:image_picker/image_picker.dart';
-import 'package:panditapp/Screen/login_flow/Account_details.dart';
+
 import 'package:panditapp/model/getterSetter.dart';
 class Documents_Screen extends StatefulWidget {
 

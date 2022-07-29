@@ -6,8 +6,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
+import 'package:panditapp/Viwe/login_flow/OTP_Verify.dart';
 
-import 'package:panditapp/Screen/login_flow/OTP_Verify.dart';
+
 import 'package:panditapp/model/getterSetter.dart';
 class PhoneNumber_Screen extends StatefulWidget {
   const PhoneNumber_Screen({Key? key}) : super(key: key);

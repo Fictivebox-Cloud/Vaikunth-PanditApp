@@ -1,10 +1,11 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Screen/Booking/pages/Booking_Details.dart';
-import 'package:panditapp/Screen/Booking/pages/Completed_Screen_Page.dart';
+
 import 'package:panditapp/Services/Accept_Booking_Api.dart';
 import 'package:panditapp/Services/Complete_Bookings.dart';
+import 'package:panditapp/Viwe/Booking/pages/Booking_Details.dart';
+import 'package:panditapp/Viwe/Booking/pages/Completed_Screen_Page.dart';
 import 'package:panditapp/model/Completd_Booking_Model.dart';
 import 'package:provider/provider.dart';
 

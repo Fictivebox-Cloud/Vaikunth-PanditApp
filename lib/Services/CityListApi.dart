@@ -20,47 +20,48 @@ class City_List_Api extends ChangeNotifier {
 
   bool _dataStatus = false;
 
+
   bool get dataStatus => _dataStatus;
 
 
-  Future<CityModel?> fachingApiCityList() async {
+  static Future fachingApiCityList() async {
+
+    
     try {
       String username = 'am9uZUAyOTc4';
       String password = 'RklUTkVTU0AjMTIz';
       String basicAuth =
           'Basic ' + base64.encode(utf8.encode('$username:$password'));
       var url = Uri.parse("https://vaikunth.fictivebox.com/api/getcitylist");
-
+      
       var apiResponse = await http.post(url, body: {
         "pandit_id": "8",
       }, headers: <String, String>{'authorization': basicAuth},
       );
-
-
+      
+      
       if (apiResponse.statusCode == 200) {
-        if (jsonDecode(apiResponse.body)['success']) {
-          _cityModel = CityModel.fromJson(jsonDecode(apiResponse.body));
-          _cityListStatus = false;
-          _dataStatus = true;
 
-          notifyListeners();
-        } else {
-          _dataStatus = false;
-          _cityListStatus = false;
-          notifyListeners();
-        }
+        final data  = jsonEncode(apiResponse.body);
+
+
       } else {
-        _dataStatus = false;
-        _cityListStatus = false;
-        notifyListeners();
+        throw Exception("Error");
       }
     } on Exception catch (e) {
-      _dataStatus = false;
+      throw Exception(e.toString());
 
-      _cityListStatus = false;
-      notifyListeners();
       // TODO
     }
   }
+  static List<CityModel> parseUsers(String responseBody) {
 
-}
+    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+    return parsed.map<CityModel>((json) => CityModel.fromJson(json)).toList();
+  }
+
+
+  }
+
+
+
