@@ -53,6 +53,11 @@ class ApiCallLogin extends ChangeNotifier {
     map['pandit_bank'] = bank;
     map['pandit_ifsc'] = ifsc;
 
+    map['pandit_image'] = photo;
+    map['pandit_aadhar_front'] = aadharfrontphoto.path;
+    map['pandit_aadhar_back'] = aadharbackphoto.path;
+    map['pandit_pan_file'] = panfile.path;
+
 
     print(map);
     String body = json.encode(map);
@@ -60,40 +65,40 @@ class ApiCallLogin extends ChangeNotifier {
      var response = await http.post(url,body: map,
          headers: <String, String>{'authorization': basicAuth}
      );
+//photo code start
+    var res = await http.post(url, body: map, headers: <String, String>{'authorization': basicAuth});
 
-    // var res = await http.post(url, body: map, headers: <String, String>{'authorization': basicAuth});
+    print(res.statusCode);
+    print(res.body);
 
-    // print(res.statusCode);
-    // print(res.body);
-
-    // var request = http.MultipartRequest('POST', url);
-    // request.fields.addAll(map);
-    // request.headers.addAll(<String, String>{'authorization': basicAuth});
-    // request.files.add(
-    //   await http.MultipartFile.fromPath(
-    //       'pandit_image', "https://search.brave.com/images?q=pic&source=web&img=0"),
-    // );
-    // request.files.add(
-    //   await http.MultipartFile.fromPath(
-    //       'pandit_aadhar_front', "https://search.brave.com/images?q=pic&source=web&img=0"),
-    // );
-    // request.files.add(
-    //   await http.MultipartFile.fromPath(
-    //       'pandit_aadhar_back', "https://search.brave.com/images?q=pic&source=web&img=0"),
-    // );
-    // request.files.add(
-    //   await http.MultipartFile.fromPath(
-    //       'pandit_pan_file', "https://search.brave.com/images?q=pic&source=web&img=0"),
-    // );
-    // var response = await request.send();
-    // print("res${response}");
-    // response.stream.transform(utf8.decoder).listen((value) {
-    //   print("API Call ");
-    //   print(value);
-    //   Map qw = jsonDecode(value);
-    //   print("Abhishek$qw");
-    // });
-
+    var request = http.MultipartRequest('POST', url);
+    request.fields.addAll(map);
+    request.headers.addAll(<String, String>{'authorization': basicAuth});
+    request.files.add(
+      await http.MultipartFile.fromPath(
+          'pandit_image',photo),
+    );
+    request.files.add(
+      await http.MultipartFile.fromPath(
+          'pandit_aadhar_front', aadharfrontphoto),
+    );
+    request.files.add(
+      await http.MultipartFile.fromPath(
+          'pandit_aadhar_back', aadharbackphoto),
+    );
+    request.files.add(
+      await http.MultipartFile.fromPath(
+          'pandit_pan_file', panfile),
+    );
+    var result = await request.send();
+    print("res${response}");
+    result.stream.transform(utf8.decoder).listen((value) {
+      print("API Call ");
+      print(value);
+      Map qw = jsonDecode(value);
+      print("Abhishek$qw");
+    });
+//end
 
   if (response.statusCode == 200) {
     print("API status => ${response.statusCode}");
