@@ -14,7 +14,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:panditapp/model/getterSetter.dart';
 class Documents_Screen extends StatefulWidget {
 
-  final String? name4,photo4,mobile;
+  final String? name4,mobile;
+  final File? photo4;
 
   const Documents_Screen({Key? key,this.name4,this.photo4,this.mobile}) : super(key: key);
 
@@ -378,10 +379,11 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         GetterloginSetter s = GetterloginSetter();
                         s.pancard = _addharno.text;
                         s.aadhar = _panno.text;
+                        s.Photo = pickedImage0;
 
                         print("Bhawani addhar ${s.pancard}");
                         print("Bhawani pan ${s.aadhar}");
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Account_details(aadhar: _addharno.text,pancard: _panno.text,name5: widget.name4,photo5: widget.photo4,mobile: widget.mobile,photoaadharback: pickedImage0.toString(),photoaadharfront: pickedImage1.toString(),pan: pickedImage2.toString(),)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Account_details(aadhar: _addharno.text,pancard: _panno.text,name5: widget.name4,photo5: widget.photo4,mobile: widget.mobile,photoaadharback: pickedImage0,photoaadharfront: pickedImage1,pan: pickedImage2,)));
                       }, child: Text('Next',style: GoogleFonts.lato(
                       color: white,fontSize: 24,
                       fontWeight: FontWeight.w600),)),

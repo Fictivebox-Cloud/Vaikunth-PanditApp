@@ -28,10 +28,10 @@ class ApiCallLogin extends ChangeNotifier {
       var account_number,
       var bank,
       var ifsc,
-      var photo,
-      var aadharfrontphoto,
-      var aadharbackphoto,
-      var panfile,
+      File? photo,
+      File? aadharfrontphoto,
+      File? aadharbackphoto,
+      File? panfile,
 }
       ) async {
 
@@ -61,38 +61,42 @@ class ApiCallLogin extends ChangeNotifier {
          headers: <String, String>{'authorization': basicAuth}
      );
 
-    // var res = await http.post(url, body: map, headers: <String, String>{'authorization': basicAuth});
+    var res = await http.post(url, body: map, headers: <String, String>{'authorization': basicAuth});
 
-    // print(res.statusCode);
-    // print(res.body);
+    print(res.statusCode);
+    print(res.body);
 
-    // var request = http.MultipartRequest('POST', url);
-    // request.fields.addAll(map);
-    // request.headers.addAll(<String, String>{'authorization': basicAuth});
-    // request.files.add(
-    //   await http.MultipartFile.fromPath(
-    //       'pandit_image', "https://search.brave.com/images?q=pic&source=web&img=0"),
-    // );
-    // request.files.add(
-    //   await http.MultipartFile.fromPath(
-    //       'pandit_aadhar_front', "https://search.brave.com/images?q=pic&source=web&img=0"),
-    // );
-    // request.files.add(
-    //   await http.MultipartFile.fromPath(
-    //       'pandit_aadhar_back', "https://search.brave.com/images?q=pic&source=web&img=0"),
-    // );
-    // request.files.add(
-    //   await http.MultipartFile.fromPath(
-    //       'pandit_pan_file', "https://search.brave.com/images?q=pic&source=web&img=0"),
-    // );
-    // var response = await request.send();
-    // print("res${response}");
-    // response.stream.transform(utf8.decoder).listen((value) {
-    //   print("API Call ");
-    //   print(value);
-    //   Map qw = jsonDecode(value);
-    //   print("Abhishek$qw");
-    // });
+    var request = http.MultipartRequest('POST', url);
+    request.fields.addAll(map);
+    request.headers.addAll(<String, String>{'authorization': basicAuth});
+    debugPrint('#### Image: ${photo?.path}');
+    debugPrint('#### AadharFont: ${aadharfrontphoto?.path}');
+    debugPrint('#### AadharBack: ${aadharbackphoto?.path}');
+    debugPrint('#### Pan: ${panfile?.path}');
+    request.files.add(
+      await http.MultipartFile.fromPath(
+          'pandit_image', photo!.path),
+    );
+    request.files.add(
+      await http.MultipartFile.fromPath(
+          'pandit_aadhar_front', aadharfrontphoto!.path),
+    );
+    request.files.add(
+      await http.MultipartFile.fromPath(
+          'pandit_aadhar_back', aadharbackphoto!.path),
+    );
+    request.files.add(
+      await http.MultipartFile.fromPath(
+          'pandit_pan_file', panfile!.path),
+    );
+    var result = await request.send();
+    print("res${result}");
+    result.stream.transform(utf8.decoder).listen((value) {
+      print("API Call ");
+      print(value);
+      Map qw = jsonDecode(value);
+      print("Abhishek$qw");
+    });
 
 
   if (response.statusCode == 200) {

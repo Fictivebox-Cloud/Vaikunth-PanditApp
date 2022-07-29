@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -11,7 +13,8 @@ import 'package:provider/provider.dart';
 import '../../Services/ApiCallLogin.dart';
 
 class Account_details extends StatefulWidget {
-  final String? aadhar,pancard,name5,photo5,mobile,photoaadharfront,photoaadharback,pan;
+  final String? aadhar,pancard,name5,mobile;
+  final File? photo5,photoaadharfront,photoaadharback,pan;
 
 
    Account_details({Key? key,this.aadhar,this.pancard,this.name5,this.photo5,this.mobile,this.photoaadharback,this.photoaadharfront,this.pan}) : super(key: key);

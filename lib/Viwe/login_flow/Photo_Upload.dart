@@ -308,7 +308,7 @@ class _MyAppState extends State<Photo_Upload> {
                         GetterloginSetter s = GetterloginSetter();
                         s.Photo = pickedImage;
                         print("abhi ${s.Photo}");
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen(name: widget.name,photo:pickedImage.toString(),mobile: widget.mobile)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen(name: widget.name,photo:pickedImage,mobile: widget.mobile)));
                       }, child: Text('Next',style: GoogleFonts.lato(
                       color: white,fontSize: 24,
                       fontWeight: FontWeight.w600),)),

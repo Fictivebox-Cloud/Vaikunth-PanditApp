@@ -75,7 +75,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                                         ),
                                         Text(
 
-                                          data.compledBookingModel.response!.compbookinglist![index].bookingPujaDate??'',
+                                          data.compledBookingModel.response?.compbookinglist![index].bookingPujaDate??'',
                                           style: GoogleFonts.lato(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600,
@@ -191,7 +191,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
               );
             },
 
-            itemCount: data.compledBookingModel.response!.compbookinglist!.length,
+            itemCount: data.compledBookingModel.response?.compbookinglist!.length,
           );
         },
       ),

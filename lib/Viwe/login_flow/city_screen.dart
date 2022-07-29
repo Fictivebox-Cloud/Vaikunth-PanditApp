@@ -1,6 +1,7 @@
 
 
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,7 +12,8 @@ import 'package:panditapp/model/City_Model.dart';
 
 import 'package:provider/provider.dart';
 class City_Screen extends StatefulWidget {
-  final String? name3,photo3;
+  final String? name3;
+  final File? photo3;
 
 
 
