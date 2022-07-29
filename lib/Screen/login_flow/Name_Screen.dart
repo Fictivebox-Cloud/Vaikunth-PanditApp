@@ -32,6 +32,14 @@ class _Name_ScreenState extends State<Name_Screen> {
   var isLoading =true.obs;
   var _namecontroller = TextEditingController();
 
+  //final TextEditingController _namecontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    _namecontroller.dispose();
+    //super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +120,9 @@ class _Name_ScreenState extends State<Name_Screen> {
                           child: SizedBox(
                               height: ht * 0.4,
                               //width: wt * 0.8,
+
+
+
                               child: TextField(
                                   cursorColor: Color(0xFFFF7D33),
                                   controller: _namecontroller,

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
+import 'package:panditapp/Screen/Home/Home_Screen.dart';
 import 'package:panditapp/Screen/login_flow/Name_Screen.dart';
 import 'package:panditapp/Screen/login_flow/Phone_Number.dart';
 import 'package:panditapp/Services/CityListApi.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
             builder: (context,state)
             {
               if(state is AuthLoggedInState){
+                //return Home_Screen();
                 return Name_Screen();
               }
               else if(state is AuthLoggedOutState){

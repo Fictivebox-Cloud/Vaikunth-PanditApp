@@ -157,83 +157,88 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       const SizedBox(
                         height: 8,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          //aadhar front
-                          SizedBox(
-                            height:111,
-                            child: InkWell(
-                              onTap: (){
-                                showModalBottomSheet(
-                                  context: context,
-                                  builder: (builder)=> bottomSheet(),
-                                );
-                              },
-                              child: Container(
+                      SizedBox(
+                        width: wt*1,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            //aadhar front
+                            SizedBox(
+                              width: wt*0.45,
+                              height:111,
+                              child: InkWell(
+                                onTap: (){
+                                  showModalBottomSheet(
+                                    context: context,
+                                    builder: (builder)=> bottomSheet(),
+                                  );
+                                },
+                                child: Container(
 
-                                decoration: BoxDecoration(
-                                  //border: Border.all(color: Color(0XFFFF7D33), width: 5),
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(100),
+                                  decoration: BoxDecoration(
+                                    //border: Border.all(color: Color(0XFFFF7D33), width: 5),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(100),
+                                    ),
                                   ),
-                                ),
-                                child:
-                                pickedImage1 != null
-                                    ? Image.file(
-                                  pickedImage1!,
-                                  width: 170,
-                                  height: 170,
-                                  fit: BoxFit.cover,
-                                )
-                                    :
-                                    Image.asset("assets/images/Aadhar Front.png",
-                                //Image.network('https://i1.wp.com/allinonedirectory.in/wp-content/uploads/2020/04/Dummy-Aadhaar-Screenshot.png?resize=401%2C238&ssl=1',
-                                  width: 170,
-                                  height: 170,
-                                  fit: BoxFit.cover,
+                                  child:
+                                  pickedImage1 != null
+                                      ? Image.file(
+                                    pickedImage1!,
+                                    //width: 170,
+                                    //height: 170,
+                                    fit: BoxFit.cover,
+                                  )
+                                      :
+                                      Image.asset("assets/images/Aadhar Front.png",
+                                  //Image.network('https://i1.wp.com/allinonedirectory.in/wp-content/uploads/2020/04/Dummy-Aadhaar-Screenshot.png?resize=401%2C238&ssl=1',
+                                  //  width:170,
+                                    //height: 170,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
 
 
-                          SizedBox(
-                            height: 111,
-                            child: InkWell(
-                              onTap: (){
-                                showModalBottomSheet(
-                                  context: context,
-                                  builder: (builder)=> bottomSheetback(),
-                                );
-                              },
-                              child: Container(
+                            SizedBox(
+                             width: wt*0.45,
+                              height: 111,
+                              child: InkWell(
+                                onTap: (){
+                                  showModalBottomSheet(
+                                    context: context,
+                                    builder: (builder)=> bottomSheetback(),
+                                  );
+                                },
+                                child: Container(
 
-                                decoration: BoxDecoration(
-                                  //border: Border.all(color: Color(0XFFFF7D33), width: 5),
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(100),
+                                  decoration: BoxDecoration(
+                                    //border: Border.all(color: Color(0XFFFF7D33), width: 5),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(100),
+                                    ),
                                   ),
-                                ),
-                                child:
-                                pickedImage0 != null
-                                    ? Image.file(
-                                  pickedImage0!,
-                                  width: 170,
-                                  height: 170,
-                                  fit: BoxFit.cover,
-                                )
-                                    :Image.asset("assets/images/Aadhar Back.png",
-                                //Image.network('https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
-                                  width: 170,
-                                  height: 170,
-                                  fit: BoxFit.cover,
+                                  child:
+                                  pickedImage0 != null
+                                      ? Image.file(
+                                    pickedImage0!,
+                                    //width: 170,
+                                    //height: 170,
+                                    fit: BoxFit.cover,
+                                  )
+                                      :Image.asset("assets/images/Aadhar Back.png",
+                                  //Image.network('https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
+                                    //width: 170,
+                                    //height: 170,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
 
-                        ],
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 16,
@@ -276,6 +281,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       ),
 
                       SizedBox(
+                        width: wt*0.45,
                         height:111,
                         child: InkWell(
                           onTap: (){
@@ -296,15 +302,15 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                             pickedImage2 != null
                                 ? Image.file(
                               pickedImage2!,
-                              width: 170,
-                              height: 170,
+                              //width: 170,
+                              //height: 170,
                               fit: BoxFit.cover,
                             )
                                 :
                             Image.asset("assets/images/PAN.png",
                               //Image.network('https://i1.wp.com/allinonedirectory.in/wp-content/uploads/2020/04/Dummy-Aadhaar-Screenshot.png?resize=401%2C238&ssl=1',
-                              width: 170,
-                              height: 170,
+                              //width: 170,
+                              //height: 170,
                               fit: BoxFit.cover,
                             ),
                           ),
