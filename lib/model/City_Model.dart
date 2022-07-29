@@ -67,4 +67,6 @@ class Citylist {
     "id": id == null ? null : id,
     "name": name == null ? null : name,
   };
+
+
 }

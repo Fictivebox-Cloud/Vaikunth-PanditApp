@@ -48,7 +48,8 @@ class RemoteBookinglist with ChangeNotifier {
 
 
 
-  Future getEventListData() async {
+  Future<BookModel?> getEventListData() async {
+
     try {
 
 

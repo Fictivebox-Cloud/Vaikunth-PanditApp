@@ -1,3 +1,0 @@
-class Userregister {
-  String name=" ";
-}

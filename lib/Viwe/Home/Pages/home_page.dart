@@ -39,11 +39,15 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
 
   @override
   void initState() {
-    RemoteBookinglist ss =  Provider.of<RemoteBookinglist>(context, listen: false);
-    ss.getEventListData();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      RemoteBookinglist ss =  Provider.of<RemoteBookinglist>(context, listen: false);
+      ss.getEventListData();
 
-    RemoteBookinglist vv = Provider.of<RemoteBookinglist>(context,listen:  false);
-    vv.fachingApiAcceptBooking();
+      RemoteBookinglist vv = Provider.of<RemoteBookinglist>(context,listen:  false);
+      vv.fachingApiAcceptBooking();
+    });
+    super.initState();
+
   }
 
   @override
@@ -59,11 +63,9 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
 
     return Scaffold(
       backgroundColor: white,
-      body: Consumer<RemoteBookinglist?>(builder: (_, data, __)
+      body: Consumer<RemoteBookinglist>(builder: (_, data, __)
 
        {
-
-
 
         return SafeArea(
 
@@ -156,7 +158,7 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                     return BookingListTitl(index: index,);
 
                   },
-                    itemCount: data!.bookingModel.response!.bookinglist!.length,
+                    itemCount: data.bookingModel.response!.bookinglist!.length,
 
                   ),
 
