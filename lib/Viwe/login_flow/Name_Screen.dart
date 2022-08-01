@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
+import 'package:panditapp/Services/verification_number_api.dart';
 import 'package:panditapp/Viwe/login_flow/Photo_Upload.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
@@ -171,6 +172,12 @@ class _Name_ScreenState extends State<Name_Screen> {
                     child: TextButton(
 
                         onPressed: (){
+
+                          Verification_Number_Api vv=Verification_Number_Api();
+                          vv.fachingApiVerificationnumber();
+
+
+
                           GetterloginSetter s = GetterloginSetter();
                           s.name = _namecontroller.text;
                           print("Bhawani ${s.name}");
