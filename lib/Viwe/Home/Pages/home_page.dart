@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 
-import 'package:panditapp/Services/Accept_Booking_Api.dart';
+
 import 'package:panditapp/Services/remote_bookinglist.dart';
 import 'package:panditapp/Viwe/Home/Pages/BookingList.dart';
 import 'package:panditapp/Viwe/Home/Pages/Notifications_screen.dart';
@@ -158,7 +158,7 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                     return BookingListTitl(index: index,);
 
                   },
-                    itemCount: data.bookingModel.response!.bookinglist!.length,
+                    itemCount: data.bookingModel.response?.bookinglist!.length,
 
                   ),
 

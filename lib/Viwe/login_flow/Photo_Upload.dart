@@ -54,7 +54,7 @@ class _MyAppState extends State<Photo_Upload> {
                         width: wt * 0.30,
                         height: ht * 0.20,
 
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Color(0xffECF1F6),
                             shape: BoxShape.circle,
                             boxShadow: [
@@ -261,7 +261,7 @@ class _MyAppState extends State<Photo_Upload> {
                         height: 170,
                         fit: BoxFit.cover,
                       )
-                          : Image.network('https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
+                          : Image.network('https://i.pinimg.com/564x/36/4b/c4/364bc4cb56b6a7856d9ced80373d5be8.jpg',
                         width: 170,
                         height: 170,
                         fit: BoxFit.cover,
@@ -308,7 +308,7 @@ class _MyAppState extends State<Photo_Upload> {
                         GetterloginSetter s = GetterloginSetter();
                         s.Photo = pickedImage;
                         print("abhi ${s.Photo}");
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen(name: widget.name,photo:pickedImage.toString(),mobile: widget.mobile)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen(name: widget.name,photo:pickedImage,mobile: widget.mobile)));
                       }, child: Text('Next',style: GoogleFonts.lato(
                       color: white,fontSize: 24,
                       fontWeight: FontWeight.w600),)),

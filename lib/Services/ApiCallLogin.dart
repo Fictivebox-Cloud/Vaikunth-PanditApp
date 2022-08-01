@@ -28,10 +28,10 @@ class ApiCallLogin extends ChangeNotifier {
       var account_number,
       var bank,
       var ifsc,
-      var photo,
-      var aadharfrontphoto,
-      var aadharbackphoto,
-      var panfile,
+      File? photo,
+      File? aadharfrontphoto,
+      File? aadharbackphoto,
+      File? panfile,
 }
       ) async {
 
@@ -53,11 +53,6 @@ class ApiCallLogin extends ChangeNotifier {
     map['pandit_bank'] = bank;
     map['pandit_ifsc'] = ifsc;
 
-    map['pandit_image'] = photo;
-    map['pandit_aadhar_front'] = aadharfrontphoto.path;
-    map['pandit_aadhar_back'] = aadharbackphoto.path;
-    map['pandit_pan_file'] = panfile.path;
-
 
     print(map);
     String body = json.encode(map);
@@ -65,7 +60,7 @@ class ApiCallLogin extends ChangeNotifier {
      var response = await http.post(url,body: map,
          headers: <String, String>{'authorization': basicAuth}
      );
-//photo code start
+
     var res = await http.post(url, body: map, headers: <String, String>{'authorization': basicAuth});
 
     print(res.statusCode);
@@ -74,31 +69,35 @@ class ApiCallLogin extends ChangeNotifier {
     var request = http.MultipartRequest('POST', url);
     request.fields.addAll(map);
     request.headers.addAll(<String, String>{'authorization': basicAuth});
+    debugPrint('#### Image: ${photo?.path}');
+    debugPrint('#### AadharFont: ${aadharfrontphoto?.path}');
+    debugPrint('#### AadharBack: ${aadharbackphoto?.path}');
+    debugPrint('#### Pan: ${panfile?.path}');
     request.files.add(
       await http.MultipartFile.fromPath(
-          'pandit_image',photo),
+          'pandit_image', photo!.path),
     );
     request.files.add(
       await http.MultipartFile.fromPath(
-          'pandit_aadhar_front', aadharfrontphoto),
+          'pandit_aadhar_front', aadharfrontphoto!.path),
     );
     request.files.add(
       await http.MultipartFile.fromPath(
-          'pandit_aadhar_back', aadharbackphoto),
+          'pandit_aadhar_back', aadharbackphoto!.path),
     );
     request.files.add(
       await http.MultipartFile.fromPath(
-          'pandit_pan_file', panfile),
+          'pandit_pan_file', panfile!.path),
     );
     var result = await request.send();
-    print("res${response}");
+    print("res${result}");
     result.stream.transform(utf8.decoder).listen((value) {
       print("API Call ");
       print(value);
       Map qw = jsonDecode(value);
       print("Abhishek$qw");
     });
-//end
+
 
   if (response.statusCode == 200) {
     print("API status => ${response.statusCode}");

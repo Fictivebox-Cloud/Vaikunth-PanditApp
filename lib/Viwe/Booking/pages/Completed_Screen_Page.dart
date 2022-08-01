@@ -75,7 +75,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                                         ),
                                         Text(
 
-                                          data.compledBookingModel.response!.compbookinglist![index].bookingPujaDate??'',
+                                          "${data.compledBookingModel.response?.compbookinglist![index].bookingPujaDate ?? ''}",
                                           style: GoogleFonts.lato(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600,
@@ -99,7 +99,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                               ),
                               Center(
                                   child: Text(
-                                data.compledBookingModel.response!.compbookinglist![index].hostname.toString(),
+                                "${data.compledBookingModel.response?.compbookinglist![index].hostname.toString()}",
                                 style: GoogleFonts.lato(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 12,
@@ -124,7 +124,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 16),
                                 child: Text(
-                                  data.compledBookingModel.response!.compbookinglist![index].poojaTitle??"",
+                                  "${data.compledBookingModel.response?.compbookinglist![index].poojaTitle??""}",
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
@@ -137,7 +137,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 16),
                                 child: Text(
-                                 data.compledBookingModel.response!.compbookinglist![index].address.toString(),
+                                "${ data.compledBookingModel.response?.compbookinglist![index].address.toString()}",
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
@@ -154,7 +154,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                               ),
                               Center(
                                   child: Text(
-                                data.compledBookingModel.response!.compbookinglist![index].totalEarning.toString(),
+                                "${data.compledBookingModel.response?.compbookinglist![index].totalEarning.toString()}",
                                 style: GoogleFonts.lato(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
@@ -191,7 +191,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
               );
             },
 
-            itemCount: data.compledBookingModel.response!.compbookinglist!.length,
+            itemCount: data.compledBookingModel.response?.compbookinglist!.length,
           );
         },
       ),

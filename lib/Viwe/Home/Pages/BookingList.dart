@@ -96,8 +96,8 @@ class BookingListTitl extends StatelessWidget {
                                     Icon(Icons.calendar_month,
                                       color: kPrimaryColor,),
                                     // SizedBox(width: 11,),
-                                    Text(data.bookingModel.response!
-                                        .bookinglist![index].bookingPujaDate ??
+                                    Text(data.bookingModel.response
+                                        ?.bookinglist![index].bookingPujaDate ??
                                         '',
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
@@ -133,7 +133,7 @@ class BookingListTitl extends StatelessWidget {
                               ),
                               SizedBox(height: 3,),
                               Center(child: Text(
-                                data.bookingModel.response!.bookinglist![index]
+                                data.bookingModel.response?.bookinglist![index]
                                     .hostname ?? '',
                                 style: GoogleFonts.lato(
                                     fontWeight: FontWeight.w700,
@@ -154,9 +154,8 @@ class BookingListTitl extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                     left: 16),
                                 child: Text(
-                                  data.bookingModel.response!
-                                      .bookinglist![index].poojaTitle
-                                      .toString(),
+                                  '${data.bookingModel.response
+                                      ?.bookinglist![index].poojaTitle}',
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
@@ -166,8 +165,7 @@ class BookingListTitl extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(
                                     left: 16),
-                                child: Text(data.bookingModel.response!
-                                    .bookinglist![index].address.toString(),
+                                child: Text('${data.bookingModel.response?.bookinglist![index].address}',
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
@@ -184,8 +182,8 @@ class BookingListTitl extends StatelessWidget {
                               SizedBox(height: 4,),
                               Center(child: Text(
 
-                                "Total Earnings:  ${data.bookingModel.response!.bookinglist![index]
-                                    .totalEarning.toString()}",
+                                "Total Earnings:  ${data.bookingModel.response?.bookinglist![index]
+                                    .totalEarning}",
 
                                 style: GoogleFonts.lato(
                                     fontSize: 14,
@@ -235,8 +233,8 @@ class BookingListTitl extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(top: 10),
                           child: Text(
-                            "Accept booking in ${data.bookingModel.response!
-                                .bookinglist![index].time}",
+                            "Accept booking in ${data.bookingModel.response
+                                ?.bookinglist![index].time}",
                             style: GoogleFonts.lato(fontSize: 16
                                 ,
                                 fontWeight: FontWeight.w600,

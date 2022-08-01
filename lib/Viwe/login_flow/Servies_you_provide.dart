@@ -1,10 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/model/getterSetter.dart';
 import 'city_screen.dart';
 class Servies_you_screen extends StatefulWidget {
-  final String? name,photo,mobile;
+  final String? name,mobile;
+  final File? photo;
 
 
 
