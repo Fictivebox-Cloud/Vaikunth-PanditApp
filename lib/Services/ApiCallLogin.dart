@@ -58,7 +58,7 @@ class ApiCallLogin extends ChangeNotifier {
     String body = json.encode(map);
     var url = Uri.parse("https://vaikunth.fictivebox.com/api/register");
      var response = await http.post(url,body: map,
-         headers: <String, String>{'authorization': basicAuth}
+    headers: <String, String>{'authorization': basicAuth}
      );
 
     var res = await http.post(url, body: map, headers: <String, String>{'authorization': basicAuth});
@@ -69,7 +69,7 @@ class ApiCallLogin extends ChangeNotifier {
     var request = http.MultipartRequest('POST', url);
     request.fields.addAll(map);
     request.headers.addAll(<String, String>{'authorization': basicAuth});
-    debugPrint('#### Image: ${photo?.path}');
+    debugPrint('#### Image: ${photo!.path}');
     debugPrint('#### AadharFont: ${aadharfrontphoto?.path}');
     debugPrint('#### AadharBack: ${aadharbackphoto?.path}');
     debugPrint('#### Pan: ${panfile?.path}');
@@ -91,12 +91,12 @@ class ApiCallLogin extends ChangeNotifier {
     );
     var result = await request.send();
     print("res${result}");
-    result.stream.transform(utf8.decoder).listen((value) {
+/*    result.stream.transform(utf8.decoder).listen((value) {
       print("API Call ");
       print(value);
       Map qw = jsonDecode(value);
       print("Abhishek$qw");
-    });
+    });*/
 
 
   if (response.statusCode == 200) {

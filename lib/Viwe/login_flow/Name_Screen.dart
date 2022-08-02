@@ -144,7 +144,8 @@ class _Name_ScreenState extends State<Name_Screen> {
                                         //borderRadius: BorderRadius.circular(24)
                                       )
                                   )
-                              )
+                              ),
+
                           ),
                         ),
                       ),

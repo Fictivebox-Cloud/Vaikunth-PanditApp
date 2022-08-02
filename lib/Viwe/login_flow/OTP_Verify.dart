@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
+import 'package:panditapp/Services/verification_number_api.dart';
+import 'package:panditapp/Viwe/Home/Home_Screen.dart';
 
 import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
 
@@ -179,8 +181,6 @@ class _OTP_verifyState extends State<OTP_verify> {
                     ),
                     child: TextButton(
                         onPressed: () {
-
-
 
                           BlocProvider.of<AuthCubit>(context).verifyOTP(otpController.text);
                           // Navigator.push(context, MaterialPageRoute(

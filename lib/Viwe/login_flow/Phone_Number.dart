@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
+import 'package:panditapp/Services/verification_number_api.dart';
 import 'package:panditapp/Viwe/login_flow/OTP_Verify.dart';
 
 
@@ -20,7 +21,7 @@ class PhoneNumber_Screen extends StatefulWidget {
 class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
 
 
-  TextEditingController phoneController = TextEditingController();
+ var phoneController = TextEditingController();
 
 
   var ht,wt;
@@ -122,6 +123,9 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                          ElevatedButton(
 
                              onPressed: () {
+
+                               Verification_Number_Api vv=Verification_Number_Api();
+                               vv.fachingApiVerificationnumber();
 
                                GetterloginSetter s = GetterloginSetter();
                                s.mobile = phoneController.text;

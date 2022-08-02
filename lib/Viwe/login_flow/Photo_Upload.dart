@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -146,180 +147,184 @@ class _MyAppState extends State<Photo_Upload> {
   Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
+    return
+      WillPopScope(
+        onWillPop:() async =>true,
+        child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
 
-      home:Scaffold(
-        backgroundColor: Colors.white,
-        body:
-
-
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-
-            SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16,top: 34),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-
-                      children: [
-                        Container(
-
-                          width: 48,
-                          height: 2,
-                          color: kPrimaryColor,
-                        ),
-                        Container(
-
-                          width: 48,
-                          height: 2,
-                          color: kPrimaryColor,
-                        ),
-                        Container(
-
-                          width: 48,
-                          height: 2,
-                          color: kSecondaryColor,
-                        ),
-                        Container(
-
-                          width: 48,
-                          height: 2,
-                          color: kSecondaryColor,
-                        ),
-                        Container(
-
-                          width: 48,
-                          height: 2,
-                          color: kSecondaryColor,
-                        ),
-                        Container(
-
-                          width: 48,
-                          height: 2,
-                          color: kSecondaryColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 24,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Text("Photo",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
-                  ),
-                  SizedBox(
-                    height: 32,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16),
-                    child: Text("Upload your photo",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: Color(0xff343D48)),),
-                  ),
-                  SizedBox(
-                    height: 12,
-                  ),
-                  // imageProfile(),
+        home:Scaffold(
+          backgroundColor: Colors.white,
+          body:
 
 
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
 
-                ],
-              ),
-            ),
+              SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16,top: 34),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
 
+                        children: [
+                          Container(
 
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor,
+                          ),
+                          Container(
 
-            const SizedBox(
-              height: 15,
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Stack(
-                children: [
-                  Container(
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor,
+                          ),
+                          Container(
 
-                    decoration: BoxDecoration(
-                      //border: Border.all(color: Color(0XFFFF7D33), width: 5),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(100),
+                            width: 48,
+                            height: 2,
+                            color: kSecondaryColor,
+                          ),
+                          Container(
+
+                            width: 48,
+                            height: 2,
+                            color: kSecondaryColor,
+                          ),
+                          Container(
+
+                            width: 48,
+                            height: 2,
+                            color: kSecondaryColor,
+                          ),
+                          Container(
+
+                            width: 48,
+                            height: 2,
+                            color: kSecondaryColor,
+                          ),
+                        ],
                       ),
                     ),
-                    child:
-                    ClipOval(
-                      // controller: _phonecontroller,
-                      child:
-                      //pickedImage != null ? Image.file(pickedImage!):
-                      pickedImage != null
-                          ? Image.file(
-                        pickedImage!,
-                        width: 170,
-                        height: 170,
-                        fit: BoxFit.cover,
-                      )
-                          : Image.network('https://i.pinimg.com/564x/36/4b/c4/364bc4cb56b6a7856d9ced80373d5be8.jpg',
-                        width: 170,
-                        height: 170,
-                        fit: BoxFit.cover,
-                      ),
+                    SizedBox(
+                      height: 24,
                     ),
-                  ),
-                  Positioned(
-                    bottom: 9,
-                    right: 15,
-                    child:
-                    InkWell(
-                        onTap:
-                        imagePickerOption,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: Text("Photo",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
+                    ),
+                    SizedBox(
+                      height: 32,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: Text("Upload your photo",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: Color(0xff343D48)),),
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    // imageProfile(),
 
-                        child:
-                        Image.asset("assets/images/Camera.png",height: 33,width: 33,color: Color(0XFFFF7D33),)),
 
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
 
-            //Text("NAme: ${widget.name}"),
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
-              child: Container(
-
-                child: Container(
-                  width: double.infinity,
-                  height: 48,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-
-                      color: kPrimaryColor
-                  ),
-                  child: TextButton(
-                    // File? pickedImage;
-                      onPressed: (){
-
-                        GetterloginSetter s = GetterloginSetter();
-                        s.Photo = pickedImage;
-                        print("abhi ${s.Photo}");
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen(name: widget.name,photo:pickedImage,mobile: widget.mobile)));
-                      }, child: Text('Next',style: GoogleFonts.lato(
-                      color: white,fontSize: 24,
-                      fontWeight: FontWeight.w600),)),
+                  ],
                 ),
-
               ),
-            )
-          ],
-        ),
-      ),
 
-    );
+
+
+              const SizedBox(
+                height: 15,
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Stack(
+                  children: [
+                    Container(
+
+                      decoration: BoxDecoration(
+                        //border: Border.all(color: Color(0XFFFF7D33), width: 5),
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(100),
+                        ),
+                      ),
+                      child:
+                      ClipOval(
+                        // controller: _phonecontroller,
+                        child:
+                        //pickedImage != null ? Image.file(pickedImage!):
+                        pickedImage != null
+                            ? Image.file(
+                          pickedImage!,
+                          width: 170,
+                          height: 170,
+                          fit: BoxFit.cover,
+                        )
+                            : Image.network('https://i.pinimg.com/564x/36/4b/c4/364bc4cb56b6a7856d9ced80373d5be8.jpg',
+                          width: 170,
+                          height: 170,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 9,
+                      right: 15,
+                      child:
+                      InkWell(
+                          onTap:
+                          imagePickerOption,
+
+                          child:
+                          Image.asset("assets/images/Camera.png",height: 33,width: 33,color: Color(0XFFFF7D33),)),
+
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+
+              //Text("NAme: ${widget.name}"),
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
+                child: Container(
+
+                  child: Container(
+                    width: double.infinity,
+                    height: 48,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+
+                        color: kPrimaryColor
+                    ),
+                    child: TextButton(
+                      // File? pickedImage;
+                        onPressed: (){
+
+                          GetterloginSetter s = GetterloginSetter();
+                          s.Photo = pickedImage;
+                          print("abhi ${s.Photo}");
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen(name: widget.name,photo:pickedImage,mobile: widget.mobile)));
+                        }, child: Text('Next',style: GoogleFonts.lato(
+                        color: white,fontSize: 24,
+                        fontWeight: FontWeight.w600),)),
+                  ),
+
+                ),
+              )
+            ],
+          ),
+        ),
+
+    ),
+      );
   }
 }

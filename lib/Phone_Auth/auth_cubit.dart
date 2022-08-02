@@ -10,6 +10,10 @@ class AuthCubit extends Cubit<AuthState>{
       //Logged In
       emit( AuthLoggedInState(currentUser) );
     }
+    else if(currentUser != null){
+      //user tregisterd
+      emit( AuthLoggedInState(currentUser) );
+    }
     else{
       //Logged Out
       emit(AuthLoggedOutState());

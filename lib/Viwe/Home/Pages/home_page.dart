@@ -107,6 +107,8 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                         textSize: 16,
                         onChanged: (bool position) {
                           print("The Vikrant $position");
+                          RemoteBookinglist vv=RemoteBookinglist();
+                          vv.fachingApiOnlineAndOffline();
                         },
                       ),
 
