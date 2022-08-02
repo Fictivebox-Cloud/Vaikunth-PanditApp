@@ -104,6 +104,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
 
                     GestureDetector(
                       onTap: (){
+                        Colors.blue;
 
                         print("Container clicked first ");
                       },
@@ -111,9 +112,12 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
 
                          width: wt*0.9,
                         height: ht* 0.07,
+
+
                         decoration: BoxDecoration(
+
                             borderRadius: BorderRadius.circular(4),
-                            border: Border.all(color: kSecondaryColor)
+                            border: Border.all(color: kPrimaryColor )
 
                         ),
                         child: Center(child:

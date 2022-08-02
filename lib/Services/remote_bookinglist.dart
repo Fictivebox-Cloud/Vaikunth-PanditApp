@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:panditapp/model/City_Model.dart';
+import 'package:panditapp/model/OnlineandOfline.dart';
 
 import '../model/Acept_Booking_Model.dart';
 import '../model/BookingModel.dart';
@@ -30,6 +31,8 @@ class RemoteBookinglist with ChangeNotifier {
   bool _apiCall = true;
   bool get apiCall => _apiCall;
 
+  bool _isLoading =false;
+
  //Accept Booking Api Methode
 
   bool _acceptListStatus = false;
@@ -40,6 +43,12 @@ class RemoteBookinglist with ChangeNotifier {
 
   AcceptBookingModel _acceptBookingModel = AcceptBookingModel();
   AcceptBookingModel get acceptBookingModel => _acceptBookingModel;
+
+
+
+
+  OnlineAndOfflineModel _onlineAndOfflineModel = OnlineAndOfflineModel();
+  OnlineAndOfflineModel get onlineAndOfflineModel => _onlineAndOfflineModel;
 
 
 
@@ -76,7 +85,7 @@ class RemoteBookinglist with ChangeNotifier {
           _bookingModel = BookModel.fromJson(jsonDecode(apiResponse.body));
           _eventListStatus = false;
           _dataStatus = true;
-
+          _isLoading=true;
           notifyListeners();
         } else {
 
@@ -159,6 +168,61 @@ class RemoteBookinglist with ChangeNotifier {
     _apiCall = data;
     notifyListeners();
   }
+
+
+
+
+
+  Future  fachingApiOnlineAndOffline()   async {
+
+    try {
+      String username = 'am9uZUAyOTc4';
+      String password = 'RklUTkVTU0AjMTIz';
+      String basicAuth =
+          'Basic ' + base64.encode(utf8.encode('$username:$password'));
+      var url = Uri.parse("https://vaikunth.fictivebox.com/api/onlinestatus");
+
+      var apiResponse = await http.post(url, body: {
+        "pandit_id": "8",
+
+        "status": "1"
+      }, headers: <String, String>{'authorization': basicAuth},
+      );
+      if (apiResponse.statusCode == 200) {
+        print("Vikrant bhawani $apiResponse");
+
+
+        if (jsonDecode(apiResponse.body)['success']) {
+
+          _onlineAndOfflineModel = OnlineAndOfflineModel.fromJson(jsonDecode(apiResponse.body));
+
+          _eventListStatus = false;
+          _dataStatus = true;
+
+          notifyListeners();
+        } else {
+
+          _dataStatus = false;
+          _eventListStatus = false;
+          notifyListeners();
+        }
+      } else {
+        _dataStatus = false;
+        _eventListStatus = false;
+        notifyListeners();
+      }
+    } on Exception catch (e) {
+      // TODO
+
+      _dataStatus = false;
+      _eventListStatus = false;
+      notifyListeners();
+
+    }
+
+
+  }
+
 
 
 

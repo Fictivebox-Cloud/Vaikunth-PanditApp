@@ -184,7 +184,7 @@ class _City_ScreenState extends State<City_Screen> {
 
                         Container(
                             width: double.infinity,
-                            height: 200,
+
                             child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount: _list.length,
