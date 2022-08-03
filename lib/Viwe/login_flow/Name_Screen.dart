@@ -144,7 +144,8 @@ class _Name_ScreenState extends State<Name_Screen> {
                                         //borderRadius: BorderRadius.circular(24)
                                       )
                                   )
-                              )
+                              ),
+
                           ),
                         ),
                       ),
@@ -173,8 +174,8 @@ class _Name_ScreenState extends State<Name_Screen> {
 
                         onPressed: (){
 
-                          Verification_Number_Api vv=Verification_Number_Api();
-                          vv.fachingApiVerificationnumber();
+                          // Verification_Number_Api vv=Verification_Number_Api();
+                          // vv.fachingApiVerificationnumber();
 
                           GetterloginSetter s = GetterloginSetter();
                           s.name = _namecontroller.text;

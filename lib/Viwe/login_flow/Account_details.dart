@@ -253,14 +253,14 @@ class _Account_detailsState extends State<Account_details> {
                           s.ifsc = _ifsccode.text;
 
 
-                          print("Bhawani Account: ${s.Account}");
-                          print("Bhawani choosebank: ${s.choosebank}");
-                          print("Bhawani ifsc: ${s.name}");
-                          print("Bhawani ifsc: ${s}");
-
+                          print("Bhawaniii Account: ${s.Account}");
+                          print("Bhawaniii choosebank: ${s.choosebank}");
+                          print("Bhawaniii ifsc: ${s.name}");
+                          print("Bhawaniii ifsc: ${s}");
                           api.fechingloginApi(
 
-                              mobile: widget.mobile,
+                            /*  mobile: "0000number",
+                             // mobile: widget.mobile,
                               name: widget.name5,
                               services: "puja",
                               city: "noida",
@@ -273,39 +273,28 @@ class _Account_detailsState extends State<Account_details> {
                               photo:widget.photo5,
                               aadharbackphoto: widget.photoaadharback,
                               aadharfrontphoto: widget.photoaadharfront,
-                              panfile: widget.pan,
+                              panfile: widget.pan,*/
 
-
-
-                            //
-                            // mobile:"9988776655",
-                            // name: "ggoovviinndd",
-                            // services: "pujaaaa",
-                            // city: "noidaaa",
-                            // //Text("${widget.aadhar}"),
-                            // aadharnumber: "777766665555",
-                            // pannumber:"HRFT5467HG",
-                            // account_number:"11240001006757",
-                            // bank: "PUNB",
-                            // ifsc:"PNB657",
-                            // photo:"https://fluttercore.com/wp-content/uploads/2020/02/flutter_image_picker.png",
-                            // aadharbackphoto: "https://fluttercore.com/wp-content/uploads/2020/02/flutter_image_picker.png",
-                            // aadharfrontphoto: "https://fluttercore.com/wp-content/uploads/2020/02/flutter_image_picker.png",
-                            // panfile: "https://fluttercore.com/wp-content/uploads/2020/02/flutter_image_picker.png",
-
-
-                             // photo:"https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg",
+                            //mobile: "0000number",
+                            mobile: widget.mobile,
+                            name: "",
+                            services: "puja",
+                            city: "noida",
+                            //Text("${widget.aadhar}"),
+                            aadharnumber: widget.aadhar,
+                            pannumber:widget.pancard,
+                            account_number:s.Account,
+                            bank: s.choosebank,
+                            ifsc:s.ifsc,
+                            photo:widget.photo5,
+                            aadharbackphoto: widget.photoaadharback,
+                            aadharfrontphoto: widget.photoaadharfront,
+                            panfile: widget.pan,
 
                           );
-                          // if(loginModel != null){
-                          //
-                          //
-                          // }
+
 
                           Navigator.push(context, MaterialPageRoute(
-
-
-                              //register(email.text, contact.text, password.text, conpassword.text);
 
                               builder: (context) => Home_Screen()));
                         }, child: Text('Finish', style: GoogleFonts.lato(

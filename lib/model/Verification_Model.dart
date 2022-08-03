@@ -35,11 +35,14 @@ class VerificationNumberModel {
 class Response {
   Response({
     this.panditDetails,
+    this.notregister,
   });
 
   PanditDetails? panditDetails;
+  bool ? notregister = false;
 
   factory Response.fromJson(Map<String, dynamic> json) => Response(
+    notregister: json["not_register"] == null ? false : json["not_register"],
     panditDetails: json["panditDetails"] == null ? null : PanditDetails.fromJson(json["panditDetails"]),
   );
 

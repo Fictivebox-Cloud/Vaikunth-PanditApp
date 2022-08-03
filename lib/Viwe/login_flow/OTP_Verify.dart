@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
+import 'package:panditapp/Services/verification_number_api.dart';
+import 'package:panditapp/Viwe/Home/Home_Screen.dart';
 
 import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
 
@@ -133,12 +135,21 @@ class _OTP_verifyState extends State<OTP_verify> {
 
             BlocConsumer<AuthCubit, AuthState>(
               listener: (context,state){
-                if(state is AuthLoggedInState){
+                if(state is AuthLoggedNameState){
                   Navigator.popUntil(context,(route) => route.isFirst);
 
                   Navigator.pushReplacement(context, CupertinoPageRoute(
                       builder: (context)=>
                           Name_Screen(mobile: widget.mobile,)
+                  ));
+
+                }
+                if(state is AuthLoggedHomeState){
+                  Navigator.popUntil(context,(route) => route.isFirst);
+
+                  Navigator.pushReplacement(context, CupertinoPageRoute(
+                      builder: (context)=>
+                          Home_Screen()
                   ));
 
                 }
@@ -180,9 +191,8 @@ class _OTP_verifyState extends State<OTP_verify> {
                     child: TextButton(
                         onPressed: () {
 
-
-
                           BlocProvider.of<AuthCubit>(context).verifyOTP(otpController.text);
+                          BlocProvider.of<AuthCubit>(context).checkUserId(widget.mobile.toString());
                           // Navigator.push(context, MaterialPageRoute(
                           //     builder: (context) => Name_Screen()));
                         }, child: Text('Verify', style:

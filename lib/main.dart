@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
+import 'package:panditapp/Services/verification_number_api.dart';
 
 
 import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
@@ -15,7 +16,6 @@ import 'package:provider/provider.dart';
 
 import 'Viwe/Splash_onboarding/splash_screen.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-
 import 'Services/Accept_Booking_Api.dart';
 import 'Services/remote_bookinglist.dart';
 
@@ -30,6 +30,7 @@ void main() async{
         ChangeNotifierProvider(create: (_) => Accept_Booking_Api(),),
         ChangeNotifierProvider(create: (_) => Completed_Booking_Api(),),
         ChangeNotifierProvider(create: (_) => City_List_Api(),),
+        ChangeNotifierProvider(create: (_) => Verification_Number_Api(),),
       ],
       child: const MyApp(),
     ),

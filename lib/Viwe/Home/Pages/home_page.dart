@@ -6,12 +6,10 @@ import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 
 
-
 import 'package:panditapp/Services/remote_bookinglist.dart';
 import 'package:panditapp/Viwe/Home/Pages/BookingList.dart';
 import 'package:panditapp/Viwe/Home/Pages/Notifications_screen.dart';
 import 'package:panditapp/Viwe/Profile/Profile.dart';
-import 'package:panditapp/model/OnlineandOfline.dart';
 import 'package:provider/provider.dart';
 
 
@@ -47,10 +45,6 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
 
       RemoteBookinglist vv = Provider.of<RemoteBookinglist>(context,listen:  false);
       vv.fachingApiAcceptBooking();
-
-      RemoteBookinglist bb = Provider.of<RemoteBookinglist>(context,listen: false);
-      bb.fachingApiOnlineAndOffline();
-
     });
     super.initState();
 
@@ -88,35 +82,33 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                     InkWell(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => Profile_Screen()));
+                            builder: (context) => const Profile_Screen()));
                       },
-                      child: Container(
-                        child: const CircleAvatar(
-                          radius: 20,
-                          backgroundImage:
-                          NetworkImage(
-                              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80'),
-                          backgroundColor: Colors.transparent,
-                        ),
+                      child: const CircleAvatar(
+                        radius: 20,
+                        backgroundImage:
+                        NetworkImage(
+                            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80'),
+                        backgroundColor: Colors.transparent,
                       ),
                     ),
                     SizedBox(
                       height: 31,
                       width: 120,
                       child: LiteRollingSwitch(
+                        textOn: "Online",
                         value: true,
-                        textOn:  "Online",
-                        textOff: "Offline",
+                        textOff: "Ofline",
                         colorOn: const Color(0xff109D03),
                         colorOff: const Color(0xff6E798C),
 
-
                         textSize: 16,
                         onChanged: (bool position) {
-                         setState(() {
+                          print("The Vikrant $position");
+                          RemoteBookinglist vv=RemoteBookinglist();
+                          vv.fachingApiOnlineAndOffline();
 
 
-                         });
 
                         },
                       ),
@@ -125,7 +117,7 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                     InkWell(
                       onTap: () {
                         Navigator.push(context, MaterialPageRoute(
-                            builder: (context) => const Notifications_screen()));
+                            builder: (context) => Notifications_screen()));
                       },
                       child: const Icon(
 
