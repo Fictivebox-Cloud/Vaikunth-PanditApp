@@ -89,117 +89,113 @@ class _City_ScreenState extends State<City_Screen> {
         body: SafeArea(
           child: Column(
             children: [
-              SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        Container(
 
-                          children: [
-                            Container(
-
-                                width: 48,
-                                height: 2,
-                                color: kPrimaryColor
-                            ),
-                            Container(
-
-                                width: 48,
-                                height: 2,
-                                color: kPrimaryColor
-                            ),
-                            Container(
-
-                                width: 48,
-                                height: 2,
-                                color: kPrimaryColor
-                            ),
-                            Container(
-
-                                width: 48,
-                                height: 2,
-                                color: kPrimaryColor
-                            ),
-                            Container(
-
-                                width: 48,
-                                height: 2,
-                                color: kSecondaryColor
-                            ),
-                            Container(
-
-                                width: 48,
-                                height: 2,
-                                color: kSecondaryColor
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 24,
-                        ),
-
-
-                        Text("Select your city",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
-
-
-                        SizedBox(
-                          height: 32,
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor
                         ),
                         Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              border: Border.all(
-                                  width: 1,
-                                  color: Colors.black
-                              )
-                          ),
-                          child: TextFormField(
 
-                            onChanged: onSearch,
-                            controller: editingController,
-                            decoration: InputDecoration(
-
-                                border: InputBorder.none,
-
-                                hintText: "Search for your city",
-                                hintStyle: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: kSecondaryColor),
-
-                                prefixIcon: const Icon(Icons.search,color: Color(0xff6E798C),
-
-                                )
-
-                            ),
-                          ),
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor
                         ),
-                        SizedBox(
-                          height: 30,
-                        ),
-
                         Container(
-                            width: double.infinity,
-                            height: 200,
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: _list.length,
-                                itemBuilder: ((context,  index){
-                                  final a = _list[index];
-                                  return Card(
-                                    child: Text(a.name.toString()),
-                                  );
 
-                                }))
-                        )
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor
+                        ),
+                        Container(
 
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor
+                        ),
+                        Container(
+
+                            width: 48,
+                            height: 2,
+                            color: kSecondaryColor
+                        ),
+                        Container(
+
+                            width: 48,
+                            height: 2,
+                            color: kSecondaryColor
+                        ),
                       ],
                     ),
-                  ),
+                    SizedBox(
+                      height: 24,
+                    ),
+
+
+                    Text("Select your city",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
+
+
+                    SizedBox(
+                      height: 32,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          border: Border.all(
+                              width: 1,
+                              color: Colors.black
+                          )
+                      ),
+                      child: TextFormField(
+                        cursorColor: Color(0xFFFF7D33),
+                        onChanged: onSearch,
+                        controller: editingController,
+                        decoration: InputDecoration(
+
+                            border: InputBorder.none,
+
+                            hintText: "Search for your city",
+                            hintStyle: GoogleFonts.lato(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: kSecondaryColor),
+
+                            prefixIcon: const Icon(Icons.search,color: Color(0xff6E798C),
+
+                            )
+
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+
+                    Container(
+                        width: double.infinity,
+                        height: 200,
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: _list.length,
+                            itemBuilder: ((context,  index){
+                              final a = _list[index];
+                              return Card(
+                                child: Text(a.name.toString()),
+                              );
+
+                            }))
+                    )
+
+                  ],
                 ),
               ),
               Spacer(),

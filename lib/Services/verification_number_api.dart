@@ -59,7 +59,7 @@ class Verification_Number_Api extends ChangeNotifier{
           _verifyModel= VerificationNumberModel.fromJson(jsonDecode(apiResponse.body));
           _eventListStatus = false;
           _dataStatus = true;
-
+          Home_Screen;
 
           notifyListeners();
         } else {

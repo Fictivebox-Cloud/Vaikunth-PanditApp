@@ -45,7 +45,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
 
   pickImage0(ImageSource imageType) async {
     try {
-      final photo = await ImagePicker().pickImage (source: imageType,imageQuality: 5);
+      final photo = await ImagePicker().pickImage (source: imageType,imageQuality: 50);
       if (photo == null) return;
       final tempImage = File(photo.path);
       setState(() {
@@ -59,7 +59,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   }
   pickImage1(ImageSource imageType) async {
     try {
-      final photo1 = await ImagePicker().pickImage(source: imageType,imageQuality: 5);
+      final photo1 = await ImagePicker().pickImage(source: imageType,imageQuality: 50);
       if (photo1 == null) return;
       final tempImages = File(photo1.path);
       setState(() {
@@ -73,7 +73,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   }
   pickImage2(ImageSource imageType) async {
     try {
-      final photo2 = await ImagePicker().pickImage(source: imageType,imageQuality: 5);
+      final photo2 = await ImagePicker().pickImage(source: imageType,imageQuality: 50);
       if (photo2 == null) return;
       final tempImages = File(photo2.path);
       setState(() {
@@ -258,6 +258,8 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         ),
                         child: Center(
                           child: TextFormField(
+
+                              cursorColor: Color(0xFFFF7D33),
                             controller: _addharno,
                             keyboardType: TextInputType.number,
 
@@ -270,7 +272,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                                 hintStyle: GoogleFonts.lato(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 14,
-                                    color: kSecondaryColor),
+                                    color: kSecondaryColor,),
 
                                 )
 
@@ -335,6 +337,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         ),
                         child: Center(
                           child: TextFormField(
+                            cursorColor: Color(0xFFFF7D33),
                             controller: _panno,
                               //keyboardType: TextInputType.number,
                               decoration: InputDecoration(

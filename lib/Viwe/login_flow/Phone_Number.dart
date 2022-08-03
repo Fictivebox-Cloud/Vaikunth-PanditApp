@@ -196,17 +196,19 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: TextFormField(
+                  cursorColor: Color(0xFFFF7D33),
                   controller: phoneController,
                   inputFormatters: [
+
                     LengthLimitingTextInputFormatter(10),
-                    FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+                    FilteringTextInputFormatter.allow(RegExp("[0-9]")
+                    ),
                   ],
 
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: "Enter You Phone Number",
                     border: InputBorder.none,
-
 
                   ),
                 ),

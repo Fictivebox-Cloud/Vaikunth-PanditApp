@@ -135,6 +135,7 @@ class _Account_detailsState extends State<Account_details> {
                               )
                           ),
                           child: TextFormField(
+                            cursorColor: Color(0xFFFF7D33),
                             controller: _accountno,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
@@ -170,6 +171,7 @@ class _Account_detailsState extends State<Account_details> {
                               )
                           ),
                           child: TextFormField(
+                            cursorColor: Color(0xFFFF7D33),
                             controller: _choosebank,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -207,6 +209,7 @@ class _Account_detailsState extends State<Account_details> {
                               )
                           ),
                           child: TextFormField(
+                            cursorColor: Color(0xFFFF7D33),
                             controller: _ifsccode,
                             decoration: InputDecoration(
                               border: InputBorder.none,
