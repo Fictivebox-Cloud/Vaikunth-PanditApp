@@ -43,13 +43,11 @@ class Verification_Number_Api extends ChangeNotifier{
         body: {
 
             "pandit_mobile":phoneNumber
-
-
         },
 
         headers: <String, String>{'authorization': basicAuth},
       );
-          print("Verified Number:$mobile");
+          print("Verified Number:$phoneNumber");
 
         if (apiResponse.statusCode == 200) {
 

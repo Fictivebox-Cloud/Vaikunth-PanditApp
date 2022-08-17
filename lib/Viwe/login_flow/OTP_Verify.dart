@@ -138,13 +138,13 @@ class _OTP_verifyState extends State<OTP_verify> {
                 if(state is AuthLoggedNameState){
                   Navigator.popUntil(context,(route) => route.isFirst);
 
-                  Navigator.pushReplacement(context, CupertinoPageRoute(
+                  Navigator.pushReplacement(context, CupertinoPageRoute (
                       builder: (context)=>
+                          //Home_Screen()
                           Name_Screen(mobile: widget.mobile,)
                   ));
 
-                }
-                if(state is AuthLoggedHomeState){
+                }else if(state is AuthLoggedHomeState){
                   Navigator.popUntil(context,(route) => route.isFirst);
 
                   Navigator.pushReplacement(context, CupertinoPageRoute(

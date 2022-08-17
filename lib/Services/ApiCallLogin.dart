@@ -52,7 +52,7 @@ class ApiCallLogin extends ChangeNotifier {
     map['pandit_ifsc'] = ifsc;
 
     print(map);
-    String body = json.encode(map);
+      String body = json.encode(map);
     var url = Uri.parse("https://vaikunth.fictivebox.com/api/register");
     var response = await http.post(url,
         body: map, headers: <String, String>{'authorization': basicAuth});

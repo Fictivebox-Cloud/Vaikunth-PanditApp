@@ -35,12 +35,14 @@ class AuthCubit extends Cubit<AuthState>{
      },
      verificationCompleted: (phoneAuthCredential) {
        signInWithPhone(phoneAuthCredential);
+       print("qqqqqqqqqqqqqqqqqq $phoneAuthCredential");
      },
      verificationFailed: (error) {
         emit( AuthErrorState(error.message.toString()) );
      },
 
      codeAutoRetrievalTimeout: (verificationId){
+        print("qqqqqqqqqqqqqqqqqq $_verificationId");
         _verificationId = verificationId;
      },
     );
@@ -48,7 +50,7 @@ class AuthCubit extends Cubit<AuthState>{
   }
 
   void verifyOTP(String otp) async {
-
+    print("OTOTOT $otp");
     emit( AuthLoadingState() );
     PhoneAuthCredential credential = PhoneAuthProvider.credential
       (verificationId: _verificationId!, smsCode: otp);
@@ -59,14 +61,13 @@ class AuthCubit extends Cubit<AuthState>{
 
     Verification_Number_Api dd = Verification_Number_Api();
     _verifyModel = await dd.fachingApiVerificationnumber(phone);
-    if(_verifyModel!.response!.notregister.toString()=="true"){
-      emit(AuthLoggedHomeState ());
-
-
+    print("Firebase Resss ${_verifyModel .response!.notregister.toString()}");
+    if(_verifyModel .response!.notregister.toString()=="true"){
+      emit(AuthLoggedNameState());
+      print("True h ye");
 
     }else{
-
-      emit(AuthLoggedNameState());
+      emit(AuthLoggedHomeState ());
     }
 
 

@@ -5,6 +5,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
 import 'package:panditapp/Services/verification_number_api.dart';
+import 'package:panditapp/Viwe/Home/Home_Screen.dart';
 
 
 import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
