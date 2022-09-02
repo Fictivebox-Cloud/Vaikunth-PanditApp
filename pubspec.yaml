@@ -48,8 +48,7 @@ dependencies:
   flutter_week_view: ^1.2.2
   charts_flutter: ^0.12.0
   dotted_border: ^2.0.0+2
-  firebase_auth: ^3.4.2
-  firebase_core: ^1.19.2
+
   flutter_bloc: ^8.0.1
   pin_code_fields: ^7.4.0
   flutter_typeahead: ^3.0.0-nullsafety.0
@@ -62,6 +61,10 @@ dependencies:
   shared_preferences: ^2.0.15
 
   provider: ^6.0.3
+  firebase_auth: ^3.7.0
+  sms_autofill: ^2.2.0
+  firebase_core: ^1.21.1
+
 
 dev_dependencies:
   flutter_test:

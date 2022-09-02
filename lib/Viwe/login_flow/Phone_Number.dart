@@ -4,9 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Phone_Auth/auth_cubit.dart';
-import 'package:panditapp/Phone_Auth/auth_state.dart';
-import 'package:panditapp/Services/verification_number_api.dart';
 import 'package:panditapp/Viwe/login_flow/OTP_Verify.dart';
 
 
@@ -79,33 +76,9 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                ),
                ),
 
-               BlocConsumer<AuthCubit, AuthState>(
-                 listener: (context,state){
-                   if(state is AuthCodeSentState){
-                     Navigator.push(context, CupertinoPageRoute(
-                         builder: (context)=>
-                             OTP_verify(mobile:phoneController.text,)
-                     ));
-                   }
 
-                 },
-                 builder: (context,state) {
-                   if(state is AuthLoadingState){
-                     return
-                       Container(
-                         padding: EdgeInsets.only(bottom: 150),
 
-                         child:Column(
-                           mainAxisAlignment: MainAxisAlignment.end,
-                           crossAxisAlignment: CrossAxisAlignment.end,
-                           children:
-                           [
-                           CircularProgressIndicator(color: Color(0xFFFF7D33),),
-                         ],)
-                       );
-                   }
 
-                   return
                    Padding(
                      padding: const EdgeInsets.only(
                          left: 16, right: 16, bottom: 24),
@@ -124,18 +97,15 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
 
                              onPressed: () {
 
-                               // Verification_Number_Api vv=Verification_Number_Api();
-                               // vv.fachingApiVerificationnumber();
-
-                               GetterloginSetter s = GetterloginSetter();
-                               s.mobile = phoneController.text;
-                               print("Govind ${s.mobile}");
 
 
-                               String phoneNumber = "+91" + phoneController.text;
-                               BlocProvider.of<AuthCubit>(context).sendOTP(phoneNumber);
-                               // Navigator.push(context, MaterialPageRoute(
-                               //     builder: (context) => OTP_verify()));
+
+
+
+
+
+                               Navigator.push(context, MaterialPageRoute(
+                                   builder: (context) => OTP_verify(mobile: phoneController.text,)));
                              },
                              child: Text('Send OTP', style: GoogleFonts.lato(
                                  color: white, fontSize: 24,
@@ -152,8 +122,8 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                        ),
 
                      ),
-                   );
-                 }
+
+
                ),
 
              ],

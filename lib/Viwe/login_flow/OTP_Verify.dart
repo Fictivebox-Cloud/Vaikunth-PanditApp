@@ -1,16 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Phone_Auth/auth_cubit.dart';
-import 'package:panditapp/Phone_Auth/auth_state.dart';
-import 'package:panditapp/Services/verification_number_api.dart';
 import 'package:panditapp/Viwe/Home/Home_Screen.dart';
 
 import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
 
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 
 class OTP_verify extends StatefulWidget {
@@ -25,6 +24,73 @@ class OTP_verify extends StatefulWidget {
 class _OTP_verifyState extends State<OTP_verify> {
 
   TextEditingController otpController = TextEditingController();
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  SmsAutoFill smsAutoFill = SmsAutoFill();
+  String? strVerificationId;
+
+  @override
+  void initState() {
+    phoneNumberVerification();
+  }
+
+  Future<void> phoneNumberVerification() async {
+
+    PhoneVerificationCompleted phoneVerificationCompleted =
+        (PhoneAuthCredential phoneAuthCredential) async {
+      await firebaseAuth.signInWithCredential(phoneAuthCredential);
+      print(
+          "Phone number is automatically verified and user signed in: ${firebaseAuth.currentUser!.uid}");
+    };
+
+    PhoneVerificationFailed phoneVerificationFailed =
+        (FirebaseAuthException authException) {
+      print('Phone number verification is failed. Code: ${authException.code}. Message: ${authException.message}');
+    };
+
+    void Function(String verificationId, int? forceResendingToken) phoneCodeSent =
+        (String verificationId, [int? forceResendingToken]) async {
+      setState(() {
+        strVerificationId = verificationId;
+      });
+    };
+
+    PhoneCodeAutoRetrievalTimeout phoneCodeAutoRetrievalTimeout =
+        (String verificationId) {
+      setState(() {
+        strVerificationId = verificationId;
+      });
+    };
+
+    try {
+      await firebaseAuth.verifyPhoneNumber(
+          phoneNumber: "+91${widget.mobile}",
+          timeout: const Duration(seconds: 5),
+          verificationCompleted: phoneVerificationCompleted,
+          verificationFailed: phoneVerificationFailed,
+          codeSent: phoneCodeSent,
+          codeAutoRetrievalTimeout: phoneCodeAutoRetrievalTimeout);
+    } catch (e) {
+      print("Failed to Verify Phone Number: ${e}");
+    }
+  }
+
+
+  void signInWithPhoneNumber() async {
+    try {
+      final AuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: strVerificationId!,
+        smsCode: otpController.text,
+      );
+
+      final User? user = (await firebaseAuth.signInWithCredential(credential)).user;
+      print("Vikranbshd $user");
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Name_Screen(mobile:widget.mobile)));
+    } catch (e) {
+      print("Failed to sign in: " + e.toString());
+    }
+  }
+
+
 
   var ht,wt;
 
@@ -70,18 +136,6 @@ class _OTP_verifyState extends State<OTP_verify> {
                     Padding(padding: EdgeInsets.only(top: 30),
                       child: Column(
                         children: [
-                          // TextField(
-                          //   controller: otpController,
-                          //   maxLines: 6,
-                          //   decoration: InputDecoration(
-                          //     border: OutlineInputBorder(
-                          //     ),
-                          //     hintText: "6-digit OTP"
-                          //
-                          //   ),
-                          // ),
-
-
                           PinCodeTextField(
                             keyboardType: TextInputType.number,
                             controller: otpController,
@@ -93,122 +147,30 @@ class _OTP_verifyState extends State<OTP_verify> {
                               appContext: context,
                               length: 6,
                               onChanged: (value){
-                                print(value);
+                                if(value.length == 6) {
+                                  print("object");
+                                  signInWithPhoneNumber();
+                                };
                               },
                             pinTheme: PinTheme(
-
                               shape: PinCodeFieldShape.box,
-
                               borderRadius: BorderRadius.circular(5),
                               fieldHeight: 48,
                               fieldWidth: 48,
-
                               inactiveColor: Color(0XFFCACACA),
                               activeColor: Color(0XFFFF7D33),
                               selectedColor: Color(0XFFFF7D33),
-
                             ),
                           ),
-
-
-
-
                         ],
-
                       ),
                     )
-
-
-
-
-
                   ],
                 ),
               ),
             ),
-
-
-
-
             Column(
               children: [
-
-            BlocConsumer<AuthCubit, AuthState>(
-              listener: (context,state){
-                if(state is AuthLoggedNameState){
-                  Navigator.popUntil(context,(route) => route.isFirst);
-
-                  Navigator.pushReplacement(context, CupertinoPageRoute (
-                      builder: (context)=>
-                          //Home_Screen()
-                          Name_Screen(mobile: widget.mobile,)
-                  ));
-
-                }else if(state is AuthLoggedHomeState){
-                  Navigator.popUntil(context,(route) => route.isFirst);
-
-                  Navigator.pushReplacement(context, CupertinoPageRoute(
-                      builder: (context)=>
-                          Home_Screen()
-                  ));
-
-                }
-                else if(state is AuthErrorState){
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: Colors.red,
-                        content: Text(state.error),
-                      duration: Duration(milliseconds: 600),
-                    )
-                    // context: Text(state.error),
-                  );
-                }
-
-
-            },
-              builder: (context, state) {
-                if(state is AuthLoadingState){
-                  return
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 100),
-                      child: Center(
-                      child: CircularProgressIndicator(color: Color(0xFFFF7D33),),
-                  ),
-                    );
-                }
-
-                return Padding(
-                  padding: const EdgeInsets.only(
-                      left: 16, right: 16, bottom: 24),
-                  child: Container(
-                    width: double.infinity,
-                    height: 48,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-
-                        color: kPrimaryColor
-                    ),
-                    child: TextButton(
-                        onPressed: () {
-
-                          BlocProvider.of<AuthCubit>(context).verifyOTP(otpController.text);
-                          BlocProvider.of<AuthCubit>(context).checkUserId(widget.mobile.toString());
-                          // Navigator.push(context, MaterialPageRoute(
-                          //     builder: (context) => Name_Screen()));
-                        }, child: Text('Verify', style:
-                    GoogleFonts.lato(
-                        color: white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600
-
-                    ),
-                    )),
-                  ),
-                );
-              }
-            ),
-
-
         Padding(
           padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
           child: TextButton(
@@ -221,8 +183,6 @@ class _OTP_verifyState extends State<OTP_verify> {
             child: const Text('Resend OTP'),
           ),
         ),
-
-
               ],
             )
           ],
