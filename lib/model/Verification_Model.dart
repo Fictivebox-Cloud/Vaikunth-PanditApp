@@ -28,18 +28,21 @@ class VerificationNumberModel {
   Map<String, dynamic> toJson() => {
     "success": success == null ? null : success,
     "message": message == null ? null : message,
-    "response": response == null ? null : response!.toJson(),
+    "response": response == null ? null : response?.toJson(),
   };
 }
 
 class Response {
   Response({
     this.panditDetails,
+    this.notregister,
   });
 
   PanditDetails? panditDetails;
+  bool ? notregister = false;
 
   factory Response.fromJson(Map<String, dynamic> json) => Response(
+    notregister: json["not_register"] == null ? false : json["not_register"],
     panditDetails: json["panditDetails"] == null ? null : PanditDetails.fromJson(json["panditDetails"]),
   );
 

@@ -36,7 +36,7 @@ class Accept_Booking_Api extends ChangeNotifier{
       );
 
       if (apiResponse.statusCode == 200) {
-        print("Vikrant");
+        print(apiResponse.body);
 
         if (jsonDecode(apiResponse.body)['success']) {
 

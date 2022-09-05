@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "e203b05b-bfae-47dc-ac5a-0d7f10fec0c4",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://www.thunderclient.com/welcome",
+    "url": "https://www.thunderclient.com/welcome",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-08-01T09:27:22.648Z",
+    "modified": "2022-08-01T09:27:22.821Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "bb14b513-9dd7-4253-a6be-68b02fe16d81",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://vaikunth.fictivebox.com/api/acceptbooking",
+    "url": "https://vaikunth.fictivebox.com/api/onlinestatus",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2022-08-01T09:27:52.977Z",
+    "modified": "2022-08-01T12:09:57.333Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n\n\"pandit_id\": 8,\n\n\"status\": \"0\"\n\n}",
+      "form": []
+    },
+    "auth": {
+      "type": "basic",
+      "basic": {
+        "username": "am9uZUAyOTc4",
+        "password": "RklUTkVTU0AjMTIz"
+      }
+    },
+    "tests": []
+  }
+]

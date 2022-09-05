@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:panditapp/Helper/appState.dart';
 import 'package:panditapp/model/City_Model.dart';
 import 'package:panditapp/model/online_offline.dart';
 
@@ -47,6 +48,7 @@ class RemoteBookinglist with ChangeNotifier {
   OnlineAndOfflineModel get onlineAndOfflineModel => _onlineAndOfflineModel;
 
 
+AppState bb = AppState();
 
 
 
@@ -64,14 +66,20 @@ class RemoteBookinglist with ChangeNotifier {
       String basicAuth =
           'Basic ' + base64.encode(utf8.encode('$username:$password'));
       var url = Uri.parse("https://vaikunth.fictivebox.com/api/getbookinglist");
+       String pandit_id = await bb.getRegistionId();
 
+       print("GRpandit id"+pandit_id.toString());
       var apiResponse = await http.post(url, body: {
-        "pandit_id": "8",
+
+        "pandit_id": pandit_id,
+
       }, headers: <String, String>{'authorization': basicAuth},
       );
 
 
       if (apiResponse.statusCode == 200) {
+
+        print("GR Pandit"+pandit_id.toString());
 
         if (jsonDecode(apiResponse.body)['success']) {
 

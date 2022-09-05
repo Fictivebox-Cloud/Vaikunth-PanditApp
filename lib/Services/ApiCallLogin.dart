@@ -4,6 +4,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:panditapp/Helper/appState.dart';
+
+import '../model/registration_model.dart';
 
 class ApiCallLogin extends ChangeNotifier {
   bool _eventListStatus = false;
@@ -16,26 +19,21 @@ class ApiCallLogin extends ChangeNotifier {
 
   static var client = http.Client();
 
-
-  Future fechingloginApi(
-  {
-      var mobile,
-      var name,
-      var services,
-      var city,
-      var aadharnumber,
-      var pannumber,
-      var account_number,
-      var bank,
-      var ifsc,
-      File? photo,
-      File? aadharfrontphoto,
-      File? aadharbackphoto,
-      File? panfile,
-}
-      ) async {
-
-
+  Future fechingloginApi({
+    var mobile,
+    var name,
+    var services,
+    var city,
+    var aadharnumber,
+    var pannumber,
+    var account_number,
+    var bank,
+    var ifsc,
+    File? photo,
+    File? aadharfrontphoto,
+    File? aadharbackphoto,
+    File? panfile,
+  }) async {
     String username = 'am9uZUAyOTc4';
     String password = 'RklUTkVTU0AjMTIz';
     String basicAuth = 'Basic ' + base64Encode('$username:$password'.codeUnits);
@@ -53,29 +51,31 @@ class ApiCallLogin extends ChangeNotifier {
     map['pandit_bank'] = bank;
     map['pandit_ifsc'] = ifsc;
 
-
     print(map);
     String body = json.encode(map);
     var url = Uri.parse("https://vaikunth.fictivebox.com/api/register");
-     var response = await http.post(url,body: map,
-    headers: <String, String>{'authorization': basicAuth}
-     );
+    var response = await http.post(url,
+        body: map, headers: <String, String>{'authorization': basicAuth});
 
-    var res = await http.post(url, body: map, headers: <String, String>{'authorization': basicAuth});
+    http.Response res = await http.post(url,
+        body: map, headers: <String, String>{'authorization': basicAuth});
 
     print(res.statusCode);
     print(res.body);
 
+    RegistrationResponseModel vv = RegistrationResponseModel.fromJson(jsonDecode(res.body));
+    AppState nn = AppState();
+    print("RG RegistinApi"+ vv.response!.panditRegisterId.toString());
+   await nn.setRegistionId((vv.response!.panditRegisterId.toString()));
     var request = http.MultipartRequest('POST', url);
     request.fields.addAll(map);
     request.headers.addAll(<String, String>{'authorization': basicAuth});
-    debugPrint('#### Image: ${photo!.path}');
+    debugPrint('#### Image: ${photo?.path}');
     debugPrint('#### AadharFont: ${aadharfrontphoto?.path}');
     debugPrint('#### AadharBack: ${aadharbackphoto?.path}');
     debugPrint('#### Pan: ${panfile?.path}');
     request.files.add(
-      await http.MultipartFile.fromPath(
-          'pandit_image', photo!.path),
+      await http.MultipartFile.fromPath('pandit_image', photo!.path),
     );
     request.files.add(
       await http.MultipartFile.fromPath(
@@ -86,8 +86,7 @@ class ApiCallLogin extends ChangeNotifier {
           'pandit_aadhar_back', aadharbackphoto!.path),
     );
     request.files.add(
-      await http.MultipartFile.fromPath(
-          'pandit_pan_file', panfile!.path),
+      await http.MultipartFile.fromPath('pandit_pan_file', panfile!.path),
     );
     var result = await request.send();
     print("res${result}");
@@ -98,31 +97,24 @@ class ApiCallLogin extends ChangeNotifier {
       print("Abhishek$qw");
     });*/
 
+    if (response.statusCode == 200) {
+      print("API status => ${response.statusCode}");
+      print("API data => ${jsonDecode(response.body)}");
 
-  if (response.statusCode == 200) {
-    print("API status => ${response.statusCode}");
-    print("API data => ${jsonDecode(response.body)}");
+      if (jsonDecode(response.body)['success']) {
+        _eventListStatus = false;
+        _dataStatus = true;
 
-    if (jsonDecode(response.body)['success']) {
-      _eventListStatus = false;
-      _dataStatus = true;
-
-      notifyListeners();
+        notifyListeners();
+      } else {
+        _dataStatus = false;
+        _eventListStatus = false;
+        notifyListeners();
+      }
     } else {
-
       _dataStatus = false;
       _eventListStatus = false;
       notifyListeners();
     }
-  } else {
-
-    _dataStatus = false;
-    _eventListStatus = false;
-    notifyListeners();
-
   }
 }
-
-}
-
-

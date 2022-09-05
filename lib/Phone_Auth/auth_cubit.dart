@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
 
+import '../Services/verification_number_api.dart';
+import '../model/Verification_Model.dart';
+
 class AuthCubit extends Cubit<AuthState>{
   final FirebaseAuth _auth = FirebaseAuth.instance;
   AuthCubit() : super( AuthInitialState() ){
@@ -45,10 +48,28 @@ class AuthCubit extends Cubit<AuthState>{
   }
 
   void verifyOTP(String otp) async {
+
     emit( AuthLoadingState() );
     PhoneAuthCredential credential = PhoneAuthProvider.credential
       (verificationId: _verificationId!, smsCode: otp);
     signInWithPhone(credential);
+  }
+  checkUserId(String phone) async {
+    VerificationNumberModel _verifyModel = VerificationNumberModel();
+
+    Verification_Number_Api dd = Verification_Number_Api();
+    _verifyModel = await dd.fachingApiVerificationnumber(phone);
+    if(_verifyModel!.response!.notregister.toString()=="true"){
+      emit(AuthLoggedHomeState ());
+
+
+
+    }else{
+
+      emit(AuthLoggedNameState());
+    }
+
+
   }
 
   void signInWithPhone(PhoneAuthCredential credential) async {

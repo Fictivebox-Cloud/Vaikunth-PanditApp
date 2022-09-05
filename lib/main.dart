@@ -5,17 +5,17 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:panditapp/Phone_Auth/auth_cubit.dart';
 import 'package:panditapp/Phone_Auth/auth_state.dart';
 import 'package:panditapp/Services/verification_number_api.dart';
-import 'package:panditapp/Viwe/Home/Home_Screen.dart';
+import 'package:panditapp/View/Home/Home_Screen.dart';
 
 
-import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
-import 'package:panditapp/Viwe/login_flow/Phone_Number.dart';
+import 'package:panditapp/View/login_flow/Name_Screen.dart';
+import 'package:panditapp/View/login_flow/Phone_Number.dart';
 
 import 'package:panditapp/Services/CityListApi.dart';
 import 'package:panditapp/Services/Complete_Bookings.dart';
 import 'package:provider/provider.dart';
 
-import 'Viwe/Splash_onboarding/splash_screen.dart';
+import 'View/Splash_onboarding/splash_screen.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'Services/Accept_Booking_Api.dart';
 import 'Services/remote_bookinglist.dart';
@@ -70,10 +70,14 @@ class MyApp extends StatelessWidget {
             builder: (context,state)
             {
               if(state is AuthLoggedInState){
-                return Home_Screen();
-               //return Name_Screen();
+                //return Home_Screen();
+               return Name_Screen();
 
               }
+              else if(state is AuthLoggedHomeState){
+                return Home_Screen();
+              }
+              //class AuthLoggedHomeState extends AuthState {}
               else if(state is AuthLoggedOutState){
                 return PhoneNumber_Screen();
               }
