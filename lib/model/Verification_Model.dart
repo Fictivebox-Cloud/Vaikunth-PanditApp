@@ -28,7 +28,7 @@ class VerificationNumberModel {
   Map<String, dynamic> toJson() => {
     "success": success == null ? null : success,
     "message": message == null ? null : message,
-    "response": response == null ? null : response?.toJson(),
+    "response": response == null ? null : response!.toJson(),
   };
 }
 

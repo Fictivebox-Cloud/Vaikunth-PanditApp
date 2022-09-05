@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:http/http.dart' as http;
-import 'package:panditapp/View/Home/Home_Screen.dart';
-import 'package:panditapp/View/login_flow/Name_Screen.dart';
+import 'package:panditapp/Viwe/Home/Home_Screen.dart';
+import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
 import 'package:panditapp/model/Verification_Model.dart';
 
 
@@ -43,13 +43,11 @@ class Verification_Number_Api extends ChangeNotifier{
         body: {
 
             "pandit_mobile":phoneNumber
-
-
         },
 
         headers: <String, String>{'authorization': basicAuth},
       );
-          print("Verified Number:$mobile");
+          print("Verified Number:$phoneNumber");
 
         if (apiResponse.statusCode == 200) {
 
