@@ -1,14 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
-
-
-
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../Consts/colors.dart';
 import '../login_flow/Phone_Number.dart';
 import 'Onbording_Model.dart';
@@ -23,10 +14,6 @@ class Onboarding_Screen extends StatefulWidget {
 class _Onboarding_ScreenState extends State<Onboarding_Screen> {
 
   var ht,wt;
-
-
-
-
   int currentIndex = 0;
   late PageController _controller;
 
@@ -134,6 +121,7 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                           color: h1Color),),
+                      //text,
                       SizedBox(
                         height: ht*0.012,
                       ),

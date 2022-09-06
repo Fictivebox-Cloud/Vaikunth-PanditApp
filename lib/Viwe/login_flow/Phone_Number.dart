@@ -22,10 +22,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
 
  var phoneController = TextEditingController();
 
-
-  var ht,wt;
-
-
+ var ht,wt;
 
   @override
   void initState() {
@@ -92,14 +89,6 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                          ElevatedButton(
 
                              onPressed: () {
-
-
-
-
-
-
-
-
                                Navigator.push(context, MaterialPageRoute(
                                    builder: (context) => OTP_verify(mobile: phoneController.text,)));
                              },
