@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Viwe/Booking/pages/Booking_Progress_Screen.dart';
 
+import '../../../Consts/colors.dart';
+
 
 class Booking_Details_Screen extends StatefulWidget {
   const Booking_Details_Screen({Key? key}) : super(key: key);
@@ -17,15 +19,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
 
   var ht,wt;
 
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color =  const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color =const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
-  Color bgColor = const Color.fromRGBO
-    (255, 125, 51, 0.15);
+
   @override
   Widget build(BuildContext context) {
 
@@ -48,7 +42,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                    padding: const EdgeInsets.only(top: 10),
                    child: Text("Booking Number",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14,color: h1Color),),
                  )),
-                 Text("3652",style: GoogleFonts.lato(fontSize: 18,color: Colors.black,fontWeight: FontWeight.w500),)
+                 Text("3652",style: GoogleFonts.lato(fontSize: 18,color:h1Color,fontWeight: FontWeight.w500),)
 
                  ,Container(
                    width: double.infinity,
@@ -289,8 +283,8 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                         LengthLimitingTextInputFormatter(1),
                       ],
                       keyboardType: TextInputType.number,
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(fillColor: Color(0xffCACACA)),
+                      style: TextStyle(color:h1Color),
+                      decoration: InputDecoration(fillColor: kSecondaryColor),
                     ),),
                 ),
                 Container(
@@ -314,8 +308,8 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                         LengthLimitingTextInputFormatter(1),
                       ],
                       keyboardType: TextInputType.number,
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(fillColor: Color(0xffCACACA)),
+                      style: TextStyle(color:h1Color),
+                      decoration: InputDecoration(fillColor: kSecondaryColor),
                     ),),
                 ),
                 Container(
@@ -340,8 +334,8 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                         LengthLimitingTextInputFormatter(1),
                       ],
                       keyboardType: TextInputType.number,
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(fillColor: Color(0xffCACACA)),
+                      style: TextStyle(color: h1Color),
+                      decoration: InputDecoration(fillColor: kScaffoldBackground),
                     ),),
                 ),
                 Container(
@@ -365,8 +359,8 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                         LengthLimitingTextInputFormatter(1),
                       ],
                       keyboardType: TextInputType.number,
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(fillColor: Color(0xffCACACA)),
+                      style: TextStyle(color:h1Color),
+                      decoration: InputDecoration(fillColor:kScaffoldBackground),
                     ),),
                 )
               ],

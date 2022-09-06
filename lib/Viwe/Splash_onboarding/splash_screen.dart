@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Viwe/Splash_onboarding/Onboarding.dart';
 
+import '../../Consts/colors.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,10 +13,6 @@ class SplashScreen extends StatefulWidget {
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
-
-Color kPrimaryColor = Color(0xffFF7D33);
-Color kSecondaryColor = Color(0xffCACACA);
-Color kScaffoldBackground = Color(0xffFFF3E9);
 
 
 

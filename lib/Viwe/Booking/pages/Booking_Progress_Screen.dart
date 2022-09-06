@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:status_change/status_change.dart';
 
+import '../../../Consts/colors.dart';
+
 class Booking_Progress extends StatefulWidget {
   const Booking_Progress({Key? key}) : super(key: key);
 
@@ -12,15 +14,7 @@ class Booking_Progress extends StatefulWidget {
 class _Booking_ProgressState extends State<Booking_Progress> {
   var ht,wt;
 
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color =  const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color =const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
-  Color bgColor = const Color.fromRGBO
-    (255, 125, 51, 0.15);
+
   @override
   Widget build(BuildContext context) {
 

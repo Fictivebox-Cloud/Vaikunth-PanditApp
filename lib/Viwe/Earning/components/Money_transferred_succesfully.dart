@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Viwe/Home/Home_Screen.dart';
 
+import '../../../Consts/colors.dart';
+
 class Money_transferred_succesfully extends StatefulWidget {
   const Money_transferred_succesfully({Key? key}) : super(key: key);
 
@@ -10,17 +12,7 @@ class Money_transferred_succesfully extends StatefulWidget {
 }
 
 class _Money_transferred_succesfullyState extends State<Money_transferred_succesfully> {
-
   var ht,wt;
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
-
-
-
   @override
   Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
@@ -63,7 +55,7 @@ class _Money_transferred_succesfullyState extends State<Money_transferred_succes
                 height: 48,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4),
-                    color: Color(0xff6363BE)
+                    color: b1Color
                 ),
                 child: Center(child: TextButton(
                     onPressed: (){

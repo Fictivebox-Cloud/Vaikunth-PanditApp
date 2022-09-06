@@ -6,12 +6,15 @@ import 'package:get/get_utils/get_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:panditapp/Viwe/Home/Home_Screen.dart';
+import 'package:panditapp/Viwe/Splash_onboarding/splash_screen.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
 
 
 import '../../model_viwe/ApiCallLogin.dart';
+import '../../Consts/colors.dart';
+
 
 class Account_details extends StatefulWidget {
   final String? aadhar,pancard,name5,mobile;
@@ -75,37 +78,37 @@ class _Account_detailsState extends State<Account_details> {
 
                               width: 48,
                               height: 2,
-                              color: Color(0xffFF7D33),
+                              color: kPrimaryColor,
                             ),
                             Container(
 
                               width: 48,
                               height: 2,
-                              color: Color(0xffFF7D33),
+                              color: kPrimaryColor,
                             ),
                             Container(
 
                               width: 48,
                               height: 2,
-                              color: Color(0xffFF7D33),
+                              color: kPrimaryColor,
                             ),
                             Container(
 
                               width: 48,
                               height: 2,
-                              color: Color(0xffFF7D33),
+                              color: kPrimaryColor,
                             ),
                             Container(
 
                               width: 48,
                               height: 2,
-                              color: Color(0xffFF7D33),
+                              color: kPrimaryColor,
                             ),
                             Container(
 
                               width: 48,
                               height: 2,
-                              color: Color(0xffFF7D33),
+                              color:kPrimaryColor,
                             ),
                           ],
                         ),
@@ -242,7 +245,7 @@ class _Account_detailsState extends State<Account_details> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
 
-                        color: Color(0xffFF7D33)
+                        color: kPrimaryColor
                     ),
                     child: TextButton(
 
@@ -299,7 +302,8 @@ class _Account_detailsState extends State<Account_details> {
 
                               builder: (context) => Home_Screen()));
                         }, child: Text('Finish', style: GoogleFonts.lato(
-                        color: Color(0xffFFFFFF), fontSize: 24,
+                        color: Color(0xffFFFFFF),
+                        fontSize: 24,
                         fontWeight: FontWeight.w600),)),
                   ),
                 ),

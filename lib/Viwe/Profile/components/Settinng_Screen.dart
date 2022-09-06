@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../Consts/colors.dart';
 import 'Help&Support.dart';
 class Setting_Screen extends StatefulWidget {
   const Setting_Screen({Key? key}) : super(key: key);
@@ -11,14 +12,7 @@ class Setting_Screen extends StatefulWidget {
 
 class _Setting_ScreenState extends State<Setting_Screen> {
   var ht, wt;
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color = const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color = const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
-  Color b1Color =const Color(0xff6363BE);
+
 
 
   @override

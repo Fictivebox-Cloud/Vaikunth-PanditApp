@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../../Consts/colors.dart';
+
 class Edit_Details_Screen extends StatefulWidget {
   const Edit_Details_Screen({Key? key}) : super(key: key);
 
@@ -13,14 +15,7 @@ class Edit_Details_Screen extends StatefulWidget {
 
 class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
 
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color = const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color = const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
-  Color b1Color =const Color(0xff6363BE);
+
   var ht,wt;
 
   @override

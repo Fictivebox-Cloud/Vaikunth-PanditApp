@@ -11,6 +11,8 @@ import 'package:panditapp/Viwe/login_flow/Servies_you_provide.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 
+import '../../Consts/colors.dart';
+
 
 class Photo_Upload extends StatefulWidget {
   final String? name,mobile;
@@ -26,12 +28,7 @@ class _MyAppState extends State<Photo_Upload> {
   var ht,wt;
   // var _photocontroller = TextEditingController();
 
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
+
 
   void imagePickerOption() {
     Get.bottomSheet(
@@ -72,7 +69,7 @@ class _MyAppState extends State<Photo_Upload> {
                           onTap: (){
                             pickImage(ImageSource.camera);
                           },
-                          child: Icon(Icons.camera,color: Color(0xffF06414),),
+                          child: Icon(Icons.camera,color: kPrimaryColor,),
 
                         ),
                       ),
@@ -96,7 +93,7 @@ class _MyAppState extends State<Photo_Upload> {
                             onTap: (){
                               pickImage(ImageSource.gallery);
                             },
-                            child: Icon(Icons.folder_open,color: Color(0xffF06414),)),
+                            child: Icon(Icons.folder_open,color: kPrimaryColor,)),
                       ),
                     ],
                   ),

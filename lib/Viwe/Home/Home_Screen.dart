@@ -5,6 +5,7 @@ import 'package:panditapp/Viwe/Home/Pages/home_page.dart';
 import 'package:panditapp/Viwe/Profile/Profile.dart';
 
 
+import '../../Consts/colors.dart';
 import '../Booking/pages/Booking_Details.dart';
 
 class Home_Screen extends StatefulWidget {
@@ -16,12 +17,7 @@ class Home_Screen extends StatefulWidget {
 
 class _Home_ScreenState extends State<Home_Screen> {
 
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
+
   int currentIndex =0;
 
   final screen =[

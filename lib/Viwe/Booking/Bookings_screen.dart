@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
+
 import 'package:panditapp/Viwe/Booking/pages/Booking_Details.dart';
 import 'package:panditapp/Viwe/Booking/pages/Completed_Screen_Page.dart';
 import 'package:panditapp/model/Booking%20Model/Completd_Booking_Model.dart';
 import 'package:provider/provider.dart';
+import '../../Consts/colors.dart';
 
 class Bookings_Screen extends StatefulWidget {
   const Bookings_Screen({Key? key}) : super(key: key);
@@ -18,18 +20,7 @@ class Bookings_Screen extends StatefulWidget {
 class _Bookings_ScreenState extends State<Bookings_Screen> {
   late TabController _controller;
   var ht, wt;
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color = const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color = const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
-  Color b1Color =const Color(0xff6363BE);
-
   bool Small = false;
-
-
 
   @override
   Widget build(BuildContext context) {

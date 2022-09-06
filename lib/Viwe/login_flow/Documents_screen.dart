@@ -12,6 +12,8 @@ import 'package:panditapp/Viwe/login_flow/Account_details.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
+
+import '../../Consts/colors.dart';
 class Documents_Screen extends StatefulWidget {
 
   final String? name4,mobile;
@@ -31,12 +33,6 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   File? pickedImage2;
 
 
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
   TextEditingController _addharno = TextEditingController();
   TextEditingController _panno = TextEditingController();
 
@@ -132,7 +128,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
 
                             width: 48,
                             height: 2,
-                            color: Color(0xffFF7D33),
+                            color: kPrimaryColor,
                           ),
                           Container(
 
@@ -428,7 +424,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                 child:  InkWell(
                   onTap: (){
                     pickImage1(ImageSource.camera);                  },
-                  child: Icon(Icons.camera,color: Color(0xffF06414),),
+                  child: Icon(Icons.camera,color:kPrimaryColor,),
 
 
 
@@ -454,7 +450,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                     onTap: (){
                       pickImage1(ImageSource.gallery);
                     },
-                    child: Icon(Icons.folder_open,color: Color(0xffF06414),)),
+                    child: Icon(Icons.folder_open,color:kPrimaryColor,)),
               ),
             ],
           ),
@@ -509,7 +505,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                 child:  InkWell(
                   onTap: (){
                     pickImage0(ImageSource.camera);                  },
-                  child: Icon(Icons.camera,color: Color(0xffF06414),),
+                  child: Icon(Icons.camera,color: kPrimaryColor,),
 
 
 
@@ -535,7 +531,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                     onTap: (){
                       pickImage0(ImageSource.gallery);
                     },
-                    child: Icon(Icons.folder_open,color: Color(0xffF06414),)),
+                    child: Icon(Icons.folder_open,color:kPrimaryColor,)),
               ),
             ],
           ),
@@ -664,8 +660,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                                color: Color(0xffECF1F6)
-                                ,
+                                color: Color(0xffECF1F6),
                                 blurRadius: 10,
                                 spreadRadius: 1
                                 ,offset: Offset(4,4)
@@ -676,7 +671,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         onTap: (){
                           pickImage2(ImageSource.camera);
                         },
-                        child: Icon(Icons.camera,color: Color(0xffF06414),),
+                        child: Icon(Icons.camera,color:kPrimaryColor,),
 
                       ),
                     ),
@@ -700,7 +695,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                           onTap: (){
                             pickImage2(ImageSource.gallery);
                           },
-                          child: Icon(Icons.folder_open,color: Color(0xffF06414),)),
+                          child: Icon(Icons.folder_open,color: kPrimaryColor,)),
                     ),
                   ],
                 ),

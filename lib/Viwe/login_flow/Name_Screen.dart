@@ -9,6 +9,8 @@ import 'package:panditapp/Viwe/login_flow/Photo_Upload.dart';
 import 'package:panditapp/model/getterSetter.dart';
 
 
+import '../../Consts/colors.dart';
+
 
 
 class Name_Screen extends StatefulWidget {
@@ -22,12 +24,7 @@ class Name_Screen extends StatefulWidget {
 class _Name_ScreenState extends State<Name_Screen> {
   var ht,wt;
 
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
+
 
   var isLoading =true.obs;
   var _namecontroller = TextEditingController();

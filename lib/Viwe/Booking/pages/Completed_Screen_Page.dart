@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../model/Booking Model/Completd_Booking_Model.dart';
+import '../../../Consts/colors.dart';
+
 
 class Completed_Screen_Page extends StatefulWidget {
   const Completed_Screen_Page({Key? key}) : super(key: key);
@@ -15,14 +17,7 @@ class Completed_Screen_Page extends StatefulWidget {
 class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
 
 
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color = const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color = const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
-  Color b1Color = const Color(0xff6363BE);
+
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +66,7 @@ class _Completed_Screen_PageState extends State<Completed_Screen_Page> {
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
-                                          color: Color(0xff232323)),
+                                          color: blackColor),
                                     ),
                                     // SizedBox(width: 105,),
                                   ],

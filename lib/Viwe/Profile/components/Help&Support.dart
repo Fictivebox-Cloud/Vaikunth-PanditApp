@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../Consts/colors.dart';
+
 class Help_Support_Screen extends StatefulWidget {
   const Help_Support_Screen({Key? key}) : super(key: key);
 
@@ -11,14 +13,7 @@ class Help_Support_Screen extends StatefulWidget {
 class _Help_Support_ScreenState extends State<Help_Support_Screen> {
 
   var ht, wt;
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color = const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color = const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
-  Color b1Color =const Color(0xff6363BE);
+
 
 
   @override

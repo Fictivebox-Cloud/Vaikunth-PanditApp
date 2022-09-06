@@ -12,6 +12,8 @@ import 'package:panditapp/Viwe/Home/Pages/Notifications_screen.dart';
 import 'package:panditapp/Viwe/Profile/Profile.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Consts/colors.dart';
+
 
 
 
@@ -26,14 +28,6 @@ class Home_page_Screen extends StatefulWidget {
 
 class _Home_page_ScreenState extends State<Home_page_Screen> {
   var ht, wt;
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color = const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color = const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
-
 
   bool _isLoading =true;
 
@@ -84,8 +78,8 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
                       textOn: "Online",
                       value: true,
                       textOff: "Ofline",
-                      colorOn: const Color(0xff109D03),
-                      colorOff: const Color(0xff6E798C),
+                      colorOn: colorbtn,
+                      colorOff:p1Color,
 
                       textSize: 16,
                       onChanged: (bool position) {
@@ -153,6 +147,7 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
 
           ],
         ),
+
       ),
 
     );
@@ -160,43 +155,6 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
 
 
 }
-
-
-
-//
-// import 'package:http/http.dart' as http;
-// import 'dart:convert';
-// class Home {
-//   multipartProdecudre() async {
-//
-//
-//     //for multipartrequest
-//     var request = http.MultipartRequest('POST', Uri.parse('YOUR URL'));
-//
-//     //for token
-//     request.headers.addAll({"Authorization": "Bearer token"});
-//
-//     //for image and videos and files
-//
-//     request.files.add(await http.MultipartFile.fromPath("key_value_from_api", "image_path/video/path"));
-//
-//     //for completeing the request
-//     var response =await request.send();
-//
-//     //for getting and decoding the response into json format
-//     var responsed = await http.Response.fromStream(response);
-//     final responseData = json.decode(responsed.body);
-//
-//
-//      if (response.statusCode==200) {
-//         print("SUCCESS");
-//         print(responseData);
-//       }
-//      else {
-//       print("ERROR");
-//     }
-//   }}//
-
 
 
 

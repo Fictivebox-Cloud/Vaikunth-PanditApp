@@ -12,6 +12,7 @@ import 'package:panditapp/Viwe/Profile/components/id_card.dart';
 import 'package:panditapp/Viwe/login_flow/Phone_Number.dart';
 
 
+import '../../Consts/colors.dart';
 import 'components/Bank Account Details.dart';
 
 class Profile_Screen extends StatefulWidget {
@@ -24,14 +25,6 @@ class Profile_Screen extends StatefulWidget {
 class _Profile_ScreenState extends State<Profile_Screen> {
 
   var ht, wt;
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color = const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color = const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
-  Color b1Color =const Color(0xff6363BE);
 
 
   @override

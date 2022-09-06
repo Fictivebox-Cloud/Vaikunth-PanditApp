@@ -12,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 
+import '../../../Consts/colors.dart';
 
 
 
@@ -23,15 +24,6 @@ class BookingListTitl extends StatelessWidget {
   bool _isLoading =false;
 
   BookingListTitl({required this.index});
-
-
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color = const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color = const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
 
 
   //late final BookingModel bookingModel;
@@ -99,8 +91,7 @@ class BookingListTitl extends StatelessWidget {
                                         fontSize: 14,
                                         fontWeight: FontWeight
                                             .w600,
-                                        color: Color(
-                                            0xff232323)),),
+                                        color: blackColor),),
                                   // SizedBox(width: 105,),
                                   GestureDetector(
                                       onTap: () {
@@ -237,9 +228,11 @@ class BookingListTitl extends StatelessWidget {
           ),
 
         ],
-        //Text("data")
       ),
-    );
+        //Text("data")
+      );
+
+
   }
 
 }

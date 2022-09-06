@@ -8,6 +8,8 @@ import 'package:panditapp/Viwe/login_flow/OTP_Verify.dart';
 
 
 import 'package:panditapp/model/getterSetter.dart';
+
+import '../../Consts/colors.dart';
 class PhoneNumber_Screen extends StatefulWidget {
   const PhoneNumber_Screen({Key? key}) : super(key: key);
 
@@ -20,16 +22,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
 
  var phoneController = TextEditingController();
 
-
-  var ht,wt;
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
-  Color textFiledColor = Color(0xffCACACA);
-
+ var ht,wt;
 
   @override
   void initState() {
@@ -96,14 +89,6 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                          ElevatedButton(
 
                              onPressed: () {
-
-
-
-
-
-
-
-
                                Navigator.push(context, MaterialPageRoute(
                                    builder: (context) => OTP_verify(mobile: phoneController.text,)));
                              },

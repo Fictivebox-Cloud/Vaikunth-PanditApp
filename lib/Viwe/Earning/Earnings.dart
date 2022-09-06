@@ -9,6 +9,8 @@ import 'package:panditapp/Viwe/Earning/components/Money_transferred_succesfully.
 
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../Consts/colors.dart';
+
 class Earnings_Screen extends StatefulWidget {
   const Earnings_Screen({Key? key}) : super(key: key);
 
@@ -19,21 +21,11 @@ class Earnings_Screen extends StatefulWidget {
 class _Earnings_ScreenState extends State<Earnings_Screen> {
 
   var ht,wt;
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color =  const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color =const Color(0xff343D48);
-
-
-
 
   @override
   Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
-
 
 
     return Scaffold(
@@ -94,7 +86,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
 
 
                             decoration: BoxDecoration(
-                              color: Color(0xff6363BE),
+                              color:b1Color,
                               borderRadius: BorderRadius.circular(4)
                             ),
                             child: Center(child: Text("Withdraw",style:
@@ -132,7 +124,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                           width: 156,
                           height: 68,
                           decoration: BoxDecoration(
-                            color: Color(0xff6363BE),
+                            color: b1Color,
                             borderRadius: BorderRadius.circular(4)
                           ),
                           child: Padding(
@@ -155,7 +147,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                             width: 156,
                             height: 68,
                             decoration: BoxDecoration(
-                                color: Color(0xff32326F),
+                                color:blueColor,
                                 borderRadius: BorderRadius.circular(4)
                             ),
                             child: Padding(
@@ -297,7 +289,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
             height: 48,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: Color(0xff6363BE)
+              color: b1Color
             ),
             child: Center(child: TextButton(
               onPressed: (){

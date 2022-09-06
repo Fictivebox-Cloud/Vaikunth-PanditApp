@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../Consts/colors.dart';
+
 class Notifications_screen extends StatefulWidget {
   const Notifications_screen({Key? key}) : super(key: key);
 
@@ -11,13 +13,7 @@ class Notifications_screen extends StatefulWidget {
 class _Notifications_screenState extends State<Notifications_screen> {
 
   var ht,wt;
-  Color kPrimaryColor = const Color(0xffFF7D33);
-  Color kSecondaryColor = const Color(0xffCACACA);
-  Color kScaffoldBackground = const Color(0xffFFF3E9);
-  Color p1Color =  const Color(0xff6E798C);
-  Color white = const Color(0xffFFFFFF);
-  Color h1Color =const Color(0xff343D48);
-  Color buttonColor = const Color(0xff109D03);
+
 
 
   @override

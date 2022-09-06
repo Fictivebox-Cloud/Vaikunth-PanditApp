@@ -7,12 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
-import 'package:panditapp/Viwe/login_flow/Documents_screen.dart';
-import 'package:panditapp/model/City_Model.dart';
+
 
 import 'package:provider/provider.dart';
 
+import '../../Consts/colors.dart';
+
 import '../../model_viwe/CityListApi.dart';
+import 'Documents_screen.dart';
 class City_Screen extends StatefulWidget {
   final String? name3;
   final File? photo3;
@@ -37,12 +39,7 @@ class _City_ScreenState extends State<City_Screen> {
 
 
 
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
+
   late List _city;
 
   TextEditingController editingController = TextEditingController();
@@ -50,36 +47,6 @@ class _City_ScreenState extends State<City_Screen> {
   late Timer timeHandle;
   // var items = List<String>();
 
-
-
- List <Citylist> _list = [];
- List <Citylist> _Search = [];
-
-
-
-  @override
-  void initState() {
-    super.initState();
-    City_List_Api.fachingApiCityList();
-  }
-
-
-  onSearch(String text) async{
-    _Search.clear();
-    if(text.isEmpty){
-      setState(() {});
-      return;
-    }
-    _list.forEach((f) {
-      if(f.name!.contains(text)|| f.id.toString().contains(text))
-        _Search.add(f);
-
-    });
- setState(() {
-
- });
-
-  }
 
 
   @override
@@ -161,7 +128,7 @@ class _City_ScreenState extends State<City_Screen> {
                           ),
                           child: TextFormField(
 
-                            onChanged: onSearch,
+
                             controller: editingController,
                             decoration: InputDecoration(
 
@@ -189,11 +156,11 @@ class _City_ScreenState extends State<City_Screen> {
 
                             child: ListView.builder(
                                 shrinkWrap: true,
-                                itemCount: _list.length,
+                                itemCount: 3,
                                 itemBuilder: ((context,  index){
-                                  final a = _list[index];
+                                  final a = [index];
                                   return Card(
-                                    child: Text(a.name.toString()),
+                                    child: Text("ghgsh",)
                                   );
 
                                 }))

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../Consts/colors.dart';
+
 class Id_card_Screen extends StatefulWidget {
   const Id_card_Screen({Key? key}) : super(key: key);
 
@@ -10,13 +12,7 @@ class Id_card_Screen extends StatefulWidget {
 
 class _Id_card_ScreenState extends State<Id_card_Screen> {
   var ht,wt;
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
-  Color textFiledColor = Color(0xffCACACA);
+
 
 
   @override

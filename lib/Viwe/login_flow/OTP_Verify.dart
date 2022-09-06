@@ -2,15 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Viwe/Home/Home_Screen.dart';
-
 import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
-
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sms_autofill/sms_autofill.dart';
-
+import '../../Consts/colors.dart';
 
 class OTP_verify extends StatefulWidget {
   String? mobile;
@@ -91,16 +87,8 @@ class _OTP_verifyState extends State<OTP_verify> {
   }
 
 
-
   var ht,wt;
 
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
-  Color textFiledColor = Color(0xffCACACA);
 
   @override
   Widget build(BuildContext context) {
