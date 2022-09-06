@@ -4,7 +4,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:http/http.dart' as http;
 import 'package:panditapp/Viwe/Home/Home_Screen.dart';
 import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
-import 'package:panditapp/model/Verification_Model.dart';
+import 'package:panditapp/model/Booking%20Model/Verification_Model.dart';
 
 
 class Verification_Number_Api extends ChangeNotifier{

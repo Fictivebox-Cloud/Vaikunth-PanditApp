@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:panditapp/Services/verification_number_api.dart';
+
 import 'package:panditapp/Viwe/login_flow/Photo_Upload.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 
-import '../../Services/ApiCallLogin.dart';
+
 
 
 class Name_Screen extends StatefulWidget {

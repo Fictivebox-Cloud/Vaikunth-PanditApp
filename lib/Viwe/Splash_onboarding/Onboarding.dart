@@ -11,7 +11,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../login_flow/Phone_Number.dart';
 import 'Onbording_Model.dart';
-import 'SizeConfig.dart';
+import '../../consts/SizeConfig.dart';
 class Onboarding_Screen extends StatefulWidget {
   const Onboarding_Screen({Key? key}) : super(key: key);
 

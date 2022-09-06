@@ -5,19 +5,32 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:panditapp/Helper/appState.dart';
+import 'package:panditapp/Util/api_status.dart';
+import 'package:panditapp/repo/api_remote_services.dart';
 
-import '../model/registration_model.dart';
+import '../Util/util.dart';
+import '../model/Login Model/Login_Model.dart';
+import '../model/Login Model/registration_model.dart';
 
 class ApiCallLogin extends ChangeNotifier {
   bool _eventListStatus = false;
+  bool _loading = false;
 
   bool get eventListStatus => _eventListStatus;
+ List<RegistrationResponseModel?>  _registrationResponseModel= [];
 
   bool _dataStatus = false;
-
+  bool get loading => _loading;
+List<RegistrationResponseModel?> get loginListModel => _registrationResponseModel;
   bool get dataStatus => _dataStatus;
 
-  static var client = http.Client();
+
+  setLoading(bool loading) {
+    _loading = loading;
+    notifyListeners();
+  }
+
+
 
   Future fechingloginApi({
     var mobile,
@@ -32,12 +45,9 @@ class ApiCallLogin extends ChangeNotifier {
     File? photo,
     File? aadharfrontphoto,
     File? aadharbackphoto,
-    File? panfile,
+    File? panfile,String? apiUrl
   }) async {
-    String username = 'am9uZUAyOTc4';
-    String password = 'RklUTkVTU0AjMTIz';
-    String basicAuth = 'Basic ' + base64Encode('$username:$password'.codeUnits);
-    print(basicAuth);
+    setLoading(true);
 
     Map<String, String> map = Map<String, String>();
 
@@ -53,23 +63,13 @@ class ApiCallLogin extends ChangeNotifier {
 
     print(map);
       String body = json.encode(map);
-    var url = Uri.parse("https://vaikunth.fictivebox.com/api/register");
-    var response = await http.post(url,
-        body: map, headers: <String, String>{'authorization': basicAuth});
+    var url = Uri.parse(apiUrl!);
+    var response = await ApiRemoteServices.fechingGetLoginApi(apiUrl: getLoginApi).timeout(Duration(seconds: 5));
 
-    http.Response res = await http.post(url,
-        body: map, headers: <String, String>{'authorization': basicAuth});
 
-    print(res.statusCode);
-    print(res.body);
-
-    RegistrationResponseModel vv = RegistrationResponseModel.fromJson(jsonDecode(res.body));
-    AppState nn = AppState();
-    print("RG RegistinApi"+ vv.response!.panditRegisterId.toString());
-   await nn.setRegistionId((vv.response!.panditRegisterId.toString()));
     var request = http.MultipartRequest('POST', url);
     request.fields.addAll(map);
-    request.headers.addAll(<String, String>{'authorization': basicAuth});
+
     debugPrint('#### Image: ${photo?.path}');
     debugPrint('#### AadharFont: ${aadharfrontphoto?.path}');
     debugPrint('#### AadharBack: ${aadharbackphoto?.path}');
@@ -90,31 +90,10 @@ class ApiCallLogin extends ChangeNotifier {
     );
     var result = await request.send();
     print("res${result}");
-/*    result.stream.transform(utf8.decoder).listen((value) {
-      print("API Call ");
-      print(value);
-      Map qw = jsonDecode(value);
-      print("Abhishek$qw");
-    });*/
 
-    if (response.statusCode == 200) {
-      print("API status => ${response.statusCode}");
-      print("API data => ${jsonDecode(response.body)}");
 
-      if (jsonDecode(response.body)['success']) {
-        _eventListStatus = false;
-        _dataStatus = true;
+   if(response is Success){
 
-        notifyListeners();
-      } else {
-        _dataStatus = false;
-        _eventListStatus = false;
-        notifyListeners();
-      }
-    } else {
-      _dataStatus = false;
-      _eventListStatus = false;
-      notifyListeners();
-    }
+   }
   }
 }

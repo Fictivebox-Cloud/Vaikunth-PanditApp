@@ -10,7 +10,8 @@ import 'package:panditapp/Viwe/Home/Home_Screen.dart';
 import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
 
-import '../../Services/ApiCallLogin.dart';
+
+import '../../model_viwe/ApiCallLogin.dart';
 
 class Account_details extends StatefulWidget {
   final String? aadhar,pancard,name5,mobile;

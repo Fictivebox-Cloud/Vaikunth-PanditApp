@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:panditapp/model/Completd_Booking_Model.dart';
+import 'package:panditapp/model/Booking%20Model/Completd_Booking_Model.dart';
 
 
 
