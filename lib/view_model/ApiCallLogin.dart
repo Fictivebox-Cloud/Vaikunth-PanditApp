@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:panditapp/Helper/appState.dart';
 import 'package:panditapp/Util/api_status.dart';
+import 'package:panditapp/consts/user_Error.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
 
 import '../Util/util.dart';
@@ -17,36 +17,48 @@ class ApiCallLogin extends ChangeNotifier {
   bool _loading = false;
 
   bool get eventListStatus => _eventListStatus;
- List<RegistrationResponseModel?>  _registrationResponseModel= [];
+  RegistrationResponseModel? _registrationResponseModel;
+  UserError? _userError;
 
   bool _dataStatus = false;
+
   bool get loading => _loading;
-List<RegistrationResponseModel?> get loginListModel => _registrationResponseModel;
+
+  RegistrationResponseModel? get loginListModel => _registrationResponseModel;
+
   bool get dataStatus => _dataStatus;
 
+  UserError? get userError => _userError;
 
   setLoading(bool loading) {
     _loading = loading;
     notifyListeners();
   }
 
+  setUserListModel(RegistrationResponseModel registrationResponseModele) {
+    _registrationResponseModel = registrationResponseModele;
+    notifyListeners();
+  }
 
+  setUserError(UserError userError) {
+    _userError = userError;
+  }
 
-  Future fechingloginApi({
-    var mobile,
-    var name,
-    var services,
-    var city,
-    var aadharnumber,
-    var pannumber,
-    var account_number,
-    var bank,
-    var ifsc,
-    File? photo,
-    File? aadharfrontphoto,
-    File? aadharbackphoto,
-    File? panfile,String? apiUrl
-  }) async {
+  Future fechingloginApi(
+      {var mobile,
+      var name,
+      var services,
+      var city,
+      var aadharnumber,
+      var pannumber,
+      var account_number,
+      var bank,
+      var ifsc,
+      File? photo,
+      File? aadharfrontphoto,
+      File? aadharbackphoto,
+      File? panfile,
+      String? apiUrl}) async {
     setLoading(true);
 
     Map<String, String> map = Map<String, String>();
@@ -62,10 +74,11 @@ List<RegistrationResponseModel?> get loginListModel => _registrationResponseMode
     map['pandit_ifsc'] = ifsc;
 
     print(map);
-      String body = json.encode(map);
+    String body = json.encode(map);
     var url = Uri.parse(apiUrl!);
-    var response = await ApiRemoteServices.fechingGetLoginApi(apiUrl: getLoginApi).timeout(Duration(seconds: 5));
-
+    var response =
+        await ApiRemoteServices.fechingGetApi(apiUrl: GET_LOGIN_API)
+            .timeout(Duration(seconds: 15));
 
     var request = http.MultipartRequest('POST', url);
     request.fields.addAll(map);
@@ -91,9 +104,14 @@ List<RegistrationResponseModel?> get loginListModel => _registrationResponseMode
     var result = await request.send();
     print("res${result}");
 
-
-   if(response is Success){
-
-   }
+    if (response is Success) {
+      Object data = loginModelFromJson(response.response as String);
+      setUserListModel(data as RegistrationResponseModel);
+    } else if (response is Failure) {
+      UserError userError =
+          UserError(code: response.code, message: response.errorResponse);
+      setUserError(userError);
+    }
+    setLoading(false);
   }
 }

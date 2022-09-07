@@ -1,6 +1,6 @@
-const  String baseUrl = "https://vaikunth.fictivebox.com/api/";
-const  String getEventListData = "https://vaikunth.fictivebox.com/api/getbookinglist";
-const  String getLoginApi = "https://vaikunth.fictivebox.com/api/register";
+const  String BASEURL = "https://vaikunth.fictivebox.com/api/";
+const  String GET_BOOKING_LIST = "${BASEURL}getbookinglist";
+const  String GET_LOGIN_API = "${BASEURL}register";
 
 
 

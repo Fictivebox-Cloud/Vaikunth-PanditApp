@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:panditapp/Viwe/Home/Home_Screen.dart';
+import 'package:panditapp/model/Booking%20Model/BookingModel.dart';
 
-
-
-import 'package:panditapp/repo/api_remote_services.dart';
+import 'package:panditapp/view_model/ApiCallLogin.dart';
+import 'package:panditapp/view_model/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
-
 import 'Viwe/Splash_onboarding/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -19,7 +19,8 @@ Future<void>  main() async{
     MultiProvider(
       providers: [
 
-
+       ChangeNotifierProvider(create: (_)=>ApiCallLogin()),
+       ChangeNotifierProvider(create: (_)=>Booking_Request_View_Model())
       ],
       child: const MyApp(),
     ),
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        home: SplashScreen(),
+        home: Home_Screen(),
       );
   }
 

@@ -12,8 +12,9 @@ import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
 
 
-import '../../model_viwe/ApiCallLogin.dart';
+
 import '../../Consts/colors.dart';
+import '../../view_model/ApiCallLogin.dart';
 
 
 class Account_details extends StatefulWidget {
@@ -32,7 +33,7 @@ class Account_details extends StatefulWidget {
 class _Account_detailsState extends State<Account_details> {
   var ht,wt;
 
- //late LoginModel loginModel ;
+
 
 
   TextEditingController _accountno = TextEditingController();
@@ -46,7 +47,7 @@ class _Account_detailsState extends State<Account_details> {
   void initState() {
     s = GetterloginSetter();
   }
-  ApiCallLogin api = ApiCallLogin();
+  //ApiCallLogin api = ApiCallLogin();
 
   @override
   Widget build(BuildContext context) {
@@ -148,18 +149,12 @@ class _Account_detailsState extends State<Account_details> {
                                   fontSize: 14,
                                   color: Color(0xffCACACA,)),
                             ),
-                            //
-                            //     inputFormatters: [
-                            //     LengthLimitingTextInputFormatter(18),
-                            // //FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-                            // ],
-
-
                           ),
                         ),
                         SizedBox(
                           height: 36,
                         ),
+                        Text("{$s.mobile}"),
                         Text("Choose Bank", style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500, fontSize: 18),),
                         SizedBox(
@@ -177,14 +172,11 @@ class _Account_detailsState extends State<Account_details> {
                             controller: _choosebank,
                             decoration: InputDecoration(
                               border: InputBorder.none,
-
-
                               hintStyle: GoogleFonts.lato(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14,
                                   color: Color(0xffCACACA,)),
                             ),
-
                             inputFormatters: [
                               LengthLimitingTextInputFormatter(19),
                               FilteringTextInputFormatter.allow(
@@ -193,7 +185,6 @@ class _Account_detailsState extends State<Account_details> {
                             ],
                           ),
                         ),
-
                         SizedBox(
                           height: 36,
                         ),
@@ -220,7 +211,6 @@ class _Account_detailsState extends State<Account_details> {
                                   fontSize: 14,
                                   color: Color(0xffCACACA,)),
                             ),
-
                             inputFormatters: [
                               LengthLimitingTextInputFormatter(19),
                               FilteringTextInputFormatter.allow(
@@ -236,7 +226,6 @@ class _Account_detailsState extends State<Account_details> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
-
                 // padding: EdgeInsets.only(top:MediaQuery.of(context).size.height * 0.22),
                 child: Center(
                   child: Container(
@@ -256,46 +245,27 @@ class _Account_detailsState extends State<Account_details> {
                           // s.name = _namecontroller.text;
                           s.ifsc = _ifsccode.text;
 
-
+                          print("Bhaw Account: ${s.mobile}");
                           print("Bhawaniii Account: ${s.Account}");
                           print("Bhawaniii choosebank: ${s.choosebank}");
                           print("Bhawaniii ifsc: ${s.name}");
                           print("Bhawaniii ifsc: ${s}");
-                          api.fechingloginApi(
-
-                            /*  mobile: "0000number",
-                             // mobile: widget.mobile,
-                              name: widget.name5,
-                              services: "puja",
-                              city: "noida",
-                              //Text("${widget.aadhar}"),
-                              aadharnumber: widget.aadhar,
-                              pannumber:widget.pancard,
-                              account_number:s.Account,
-                              bank: s.choosebank,
-                              ifsc:s.ifsc,
-                              photo:widget.photo5,
-                              aadharbackphoto: widget.photoaadharback,
-                              aadharfrontphoto: widget.photoaadharfront,
-                              panfile: widget.pan,*/
-
-                            //mobile: "0000number",
-                            mobile: widget.mobile,
-                            name: "",
-                            services: "puja",
-                            city: "noida",
-                            //Text("${widget.aadhar}"),
-                            aadharnumber: widget.aadhar,
-                            pannumber:widget.pancard,
-                            account_number:s.Account,
-                            bank: s.choosebank,
-                            ifsc:s.ifsc,
-                            photo:widget.photo5,
-                            aadharbackphoto: widget.photoaadharback,
-                            aadharfrontphoto: widget.photoaadharfront,
-                            panfile: widget.pan,
-
-                          );
+                          // api.fechingloginApi(
+                          //   mobile: widget.mobile,
+                          //   name: "",
+                          //   services: "puja",
+                          //   city: "noida",
+                          //   aadharnumber: widget.aadhar,
+                          //   pannumber:widget.pancard,
+                          //   account_number:s.Account,
+                          //   bank: s.choosebank,
+                          //   ifsc:s.ifsc,
+                          //   photo:widget.photo5,
+                          //   aadharbackphoto: widget.photoaadharback,
+                          //   aadharfrontphoto: widget.photoaadharfront,
+                          //   panfile: widget.pan,
+                          //
+                          // );
 
 
                           Navigator.push(context, MaterialPageRoute(

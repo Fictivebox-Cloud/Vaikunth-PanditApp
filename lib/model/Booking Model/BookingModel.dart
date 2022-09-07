@@ -1,21 +1,25 @@
+// To parse this JSON data, do
+//
+//     final getBookingListModel = getBookingListModelFromJson(jsonString);
+
 import 'dart:convert';
 
-BookModel bookModelFromJson(String str) => BookModel.fromJson(json.decode(str));
+GetBookingListModel getBookingListModelFromJson(String str) => GetBookingListModel.fromJson(json.decode(str));
 
-String bookModelToJson(BookModel data) => json.encode(data.toJson());
+String getBookingListModelToJson(GetBookingListModel data) => json.encode(data.toJson());
 
-class BookModel {
-  BookModel({
+class GetBookingListModel {
+  GetBookingListModel({
     this.success,
     this.message,
-     this.response,
+    this.response,
   });
 
   bool? success;
   String? message;
   Response? response;
 
-  factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
+  factory GetBookingListModel.fromJson(Map<String, dynamic> json) => GetBookingListModel(
     success: json["success"] == null ? null : json["success"],
     message: json["message"] == null ? null : json["message"],
     response: json["response"] == null ? null : Response.fromJson(json["response"]),
@@ -24,7 +28,7 @@ class BookModel {
   Map<String, dynamic> toJson() => {
     "success": success == null ? null : success,
     "message": message == null ? null : message,
-    "response": response == null ? null : response?.toJson(),
+    "response": response == null ? null : response!.toJson(),
   };
 }
 
@@ -65,7 +69,7 @@ class Bookinglist {
   int? id;
   int? bookingId;
   String? poojaTitle;
-  String? poojaDate;
+  dynamic? poojaDate;
   String? address;
   Country? country;
   String? cityname;
@@ -81,7 +85,7 @@ class Bookinglist {
     id: json["id"] == null ? null : json["id"],
     bookingId: json["booking_id"] == null ? null : json["booking_id"],
     poojaTitle: json["pooja_title"] == null ? null : json["pooja_title"],
-    poojaDate: json["pooja_date"] == null ? null : json["pooja_date"],
+    poojaDate: json["pooja_date"],
     address: json["address"] == null ? null : json["address"],
     country: json["country"] == null ? null : countryValues.map![json["country"]],
     cityname: json["cityname"] == null ? null : json["cityname"],
@@ -98,7 +102,7 @@ class Bookinglist {
     "id": id == null ? null : id,
     "booking_id": bookingId == null ? null : bookingId,
     "pooja_title": poojaTitle == null ? null : poojaTitle,
-    "pooja_date": poojaDate == null ? null : poojaDate,
+    "pooja_date": poojaDate,
     "address": address == null ? null : address,
     "country": country == null ? null : countryValues.reverse[country],
     "cityname": cityname == null ? null : cityname,
@@ -116,6 +120,12 @@ enum Country { INDIA }
 
 final countryValues = EnumValues({
   "India": Country.INDIA
+});
+
+enum PoojaDateEnum { THE_00000000 }
+
+final poojaDateEnumValues = EnumValues({
+  "0000-00-00": PoojaDateEnum.THE_00000000
 });
 
 class EnumValues<T> {
