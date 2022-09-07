@@ -1,82 +1,59 @@
-import 'dart:convert';
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:panditapp/consts/user_Error.dart';
 import 'package:panditapp/model/Booking%20Model/Completd_Booking_Model.dart';
 
+import '../Util/Api_collection.dart';
+import '../Util/api_status.dart';
+import '../repo/api_remote_services.dart';
 
 
 
+class CompleteBookingViewModel with ChangeNotifier{
+  bool _loading = false;
+  Completebokingmodel? _completebokingmodel;
+  UserError? _userError;
 
-class Completed_Booking_Api with ChangeNotifier {
+  bool get loading => _loading;
+  Completebokingmodel? get completebokingmodel => _completebokingmodel;
+  UserError? get userError => _userError;
 
-  bool _compledListStatus = false;
-  bool get compledListStatus => _compledListStatus;
+  CompleteBookingViewModel(){
+    completebookingAPIcall();
+  }
 
-  bool _dataStatus = false;
-  bool get dataStatus => _dataStatus;
+  setLoading(bool loading) {
+    _loading = loading;
+    notifyListeners();
+  }
+  setCompletebokingmodel(Completebokingmodel completebokingmodel){
+    _completebokingmodel =completebokingmodel;
+    notifyListeners();
+  }
+  setUserError(UserError userError){
+    _userError = userError;
+    notifyListeners();
+  }
 
-  CompledBookingModel _compledBookingModel = CompledBookingModel();
-  CompledBookingModel get compledBookingModel => _compledBookingModel;
-  int _index = 0;
-  int get index => _index;
+  completebookingAPIcall() async {
+    setLoading(true);
+    Map<String, dynamic> data ={
+        "pandit_id": "81"
+    };
 
+    var respones = await ApiRemoteServices.fechingGetApi(apiUrl: GET_COMPLETEBOOKING_API,apiData: data);
+    if(respones is Success){
 
-
-  Future completedBookingData() async {
-    try {
-
-      _compledListStatus = true;
-      notifyListeners();
-
-
-      String username = 'am9uZUAyOTc4';
-      String password = 'RklUTkVTU0AjMTIz';
-      String basicAuth =
-          'Basic ' + base64.encode(utf8.encode('$username:$password'));
-      var url = Uri.parse("https://vaikunth.fictivebox.com/api/getcompbookinglist");
-
-      var apiResponse = await http.post(url, body: {
-        "pandit_id": "81",
-      }, headers: <String, String>{'authorization': basicAuth},
-      );
-
-
-      if (apiResponse.statusCode == 200) {
-
-        if (jsonDecode(apiResponse.body)['success']) {
-
-          _compledBookingModel = CompledBookingModel.fromJson(jsonDecode(apiResponse.body));
-          _compledListStatus = false;
-          _dataStatus = true;
-
-          notifyListeners();
-        } else {
-
-          _dataStatus = false;
-          _compledListStatus = false;
-          notifyListeners();
-        }
-      } else {
-
-        _dataStatus = false;
-        _compledListStatus = false;
-        notifyListeners();
-
-      }
-    } on Exception catch (e) {
-      _dataStatus = false;
-
-      _compledListStatus = false;
-      notifyListeners();
+      Object data = completebokingmodelFromJson(respones.response as String);
+      print("Govind kumar${respones.response as String}");
+      setCompletebokingmodel(data as Completebokingmodel);
     }
-
+    else if(respones is Failure) {
+      UserError userError = UserError(
+          code: respones.code, message: respones.errorResponse);
+      setUserError(userError);
+    }
+    setLoading(false);
   }
 
 
-
-
-
-
 }
-

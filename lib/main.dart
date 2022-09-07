@@ -5,6 +5,7 @@ import 'package:panditapp/model/Booking%20Model/BookingModel.dart';
 
 
 import 'package:panditapp/view_model/ApiCallLogin.dart';
+import 'package:panditapp/view_model/Complete_Bookings.dart';
 import 'package:panditapp/view_model/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
 import 'Viwe/Splash_onboarding/splash_screen.dart';
@@ -21,7 +22,8 @@ Future<void>  main() async{
       providers: [
 
        ChangeNotifierProvider(create: (_)=>ApiCallLogin()),
-       ChangeNotifierProvider(create: (_)=>Booking_Request_View_Model())
+       ChangeNotifierProvider(create: (_)=>Booking_Request_View_Model()),
+       ChangeNotifierProvider(create: (_)=>CompleteBookingViewModel())
 
       ],
       child: const MyApp(),
@@ -47,7 +49,8 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        home: SplashScreen(),
+        home: Home_Screen(),
+       // home: SplashScreen(),
       );
   }
 

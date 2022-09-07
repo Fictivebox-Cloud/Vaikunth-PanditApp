@@ -10,26 +10,25 @@ import '../consts/text_consts.dart';
 
 class ApiRemoteServices {
     static Future<Object?> fechingGetApi ({String? apiUrl, apiData}) async{
-        print("URL $apiUrl");
 
         try{
             Map? body = apiData;
             var url = Uri.parse(apiUrl!);
             // Map<String,String> header = await getHeader();
-            String username = 'am9uZUAyOTc4';
-            String password = 'RklUTkVTU0AjMTIz';
 
-            String basicAuth = 'Basic' + base64Encode('$username:$password'.codeUnits);
-            Map<String, String> headers;
-            headers = {"Authorization": basicAuth};
-            var response = await http.post(url,body: {"pandit_id": "8"}, headers: headers
+            var headers = {
+                'Authorization': 'Basic YW05dVpVQXlPVGM0OlJrbFVUa1ZUVTBBak1USXo=',
+                //'Content-Type': 'application/json'
+            };
+            var response = await http.post(url,body: {"pandit_id": "81"}, headers: headers
             ).timeout(const Duration(seconds: 15));
-            print(response.statusCode);
-            print(response.body);
+
 
             if(response.statusCode ==200){
-                print(response.body);
+
+                print("Govind Bookin Api  success${response.body}");
                 return Success(response: response.body);
+
             }
         }on HttpException{
             return Failure(code:  httpException, errorResponse: httpExceptionMsg);

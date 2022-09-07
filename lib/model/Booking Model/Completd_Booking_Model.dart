@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final compledBookingModel = compledBookingModelFromJson(jsonString);
+//     final completebokingmodel = completebokingmodelFromJson(jsonString);
 
 import 'dart:convert';
 
-CompledBookingModel compledBookingModelFromJson(String str) => CompledBookingModel.fromJson(json.decode(str));
+Completebokingmodel completebokingmodelFromJson(String str) => Completebokingmodel.fromJson(json.decode(str));
 
-String compledBookingModelToJson(CompledBookingModel data) => json.encode(data.toJson());
+String completebokingmodelToJson(Completebokingmodel data) => json.encode(data.toJson());
 
-class CompledBookingModel {
-  CompledBookingModel({
+class Completebokingmodel {
+  Completebokingmodel({
     this.success,
     this.message,
     this.response,
@@ -19,7 +19,7 @@ class CompledBookingModel {
   String? message;
   Response? response;
 
-  factory CompledBookingModel.fromJson(Map<String, dynamic> json) => CompledBookingModel(
+  factory Completebokingmodel.fromJson(Map<String, dynamic> json) => Completebokingmodel(
     success: json["success"] == null ? null : json["success"],
     message: json["message"] == null ? null : json["message"],
     response: json["response"] == null ? null : Response.fromJson(json["response"]),
@@ -107,8 +107,8 @@ class Compbookinglist {
     "statename": statename == null ? null : statename,
     "pin_code": pinCode == null ? null : pinCode,
     "booking_puja_date": bookingPujaDate == null ? null : bookingPujaDate,
-    "updated_at": updatedAt == null ? null : updatedAt!.toIso8601String(),
-    "completed_at": completedAt == null ? null : completedAt!.toIso8601String(),
+    "updated_at": updatedAt == null ? null : updatedAt?.toIso8601String(),
+    "completed_at": completedAt == null ? null : completedAt?.toIso8601String(),
     "bookingid": bookingid == null ? null : bookingid,
     "booking_status": bookingStatus == null ? null : bookingStatus,
     "total_earning": totalEarning == null ? null : totalEarning,
