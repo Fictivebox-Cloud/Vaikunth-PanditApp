@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../Consts/colors.dart';
 import '../login_flow/Phone_Number.dart';
 import 'Onbording_Model.dart';
-import 'SizeConfig.dart';
+import '../../consts/SizeConfig.dart';
 class Onboarding_Screen extends StatefulWidget {
   const Onboarding_Screen({Key? key}) : super(key: key);
 

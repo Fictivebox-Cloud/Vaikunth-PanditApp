@@ -10,6 +10,7 @@ import 'package:panditapp/Viwe/Profile/components/Edit_Details_Screen.dart';
 import 'package:panditapp/Viwe/Profile/components/Settinng_Screen.dart';
 import 'package:panditapp/Viwe/Profile/components/id_card.dart';
 import 'package:panditapp/Viwe/login_flow/Phone_Number.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../../Consts/colors.dart';
@@ -465,8 +466,13 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                 child:
                 CupertinoButton(
                     child: Text("LogOut"),
-                    onPressed: () {
-
+                    onPressed: () async {
+                       {
+                        SharedPreferences prefs = await SharedPreferences.getInstance();
+                        prefs.remove('name5');
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (BuildContext ctx) => PhoneNumber_Screen()));
+                      }
                     }
                 )
             )

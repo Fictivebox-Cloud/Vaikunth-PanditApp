@@ -10,9 +10,12 @@ import 'package:panditapp/Viwe/Splash_onboarding/splash_screen.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+
+import '../../model_viwe/ApiCallLogin.dart';
 import '../../Consts/colors.dart';
-import '../../Services/ApiCallLogin.dart';
+
 
 class Account_details extends StatefulWidget {
   final String? aadhar,pancard,name5,mobile;
@@ -137,6 +140,7 @@ class _Account_detailsState extends State<Account_details> {
                               )
                           ),
                           child: TextFormField(
+                            cursorColor:colorPrimary,
                             controller: _accountno,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
@@ -172,6 +176,7 @@ class _Account_detailsState extends State<Account_details> {
                               )
                           ),
                           child: TextFormField(
+                            cursorColor:colorPrimary,
                             controller: _choosebank,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -191,7 +196,7 @@ class _Account_detailsState extends State<Account_details> {
                             ],
                           ),
                         ),
-
+                        //Text("${widget.mobile}"),
                         SizedBox(
                           height: 36,
                         ),
@@ -209,6 +214,7 @@ class _Account_detailsState extends State<Account_details> {
                               )
                           ),
                           child: TextFormField(
+                            cursorColor:colorPrimary,
                             controller: _ifsccode,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -247,7 +253,7 @@ class _Account_detailsState extends State<Account_details> {
                     ),
                     child: TextButton(
 
-                        onPressed: () {
+                        onPressed: () async {
                          // GetterloginSetter s = GetterloginSetter();
                           s.Account = _accountno.text;
                           s.choosebank = _choosebank.text;
@@ -279,7 +285,7 @@ class _Account_detailsState extends State<Account_details> {
 
                             //mobile: "0000number",
                             mobile: widget.mobile,
-                            name: "",
+                            name: widget.name5,
                             services: "puja",
                             city: "noida",
                             //Text("${widget.aadhar}"),
@@ -295,10 +301,11 @@ class _Account_detailsState extends State<Account_details> {
 
                           );
 
+                          SharedPreferences prefs = await SharedPreferences.getInstance();
+                          prefs.setString("name", widget.name5.toString());
 
-                          Navigator.push(context, MaterialPageRoute(
-
-                              builder: (context) => Home_Screen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Home_Screen()));
+                          //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home_Screen()), (Route<dynamic> route) => false);
                         }, child: Text('Finish', style: GoogleFonts.lato(
                         color: Color(0xffFFFFFF),
                         fontSize: 24,

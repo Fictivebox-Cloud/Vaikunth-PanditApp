@@ -59,7 +59,7 @@ class _Money_transferred_succesfullyState extends State<Money_transferred_succes
                 ),
                 child: Center(child: TextButton(
                     onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Home_Screen()));
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>Home_Screen()), (Route<dynamic> route) => false);
                     },
                     child: Text("Done",style: GoogleFonts.lato(fontSize: 20,color: white,fontWeight: FontWeight.w500),))),
               ),
