@@ -9,21 +9,22 @@ import '../repo/api_remote_services.dart';
 class Booking_Request_View_Model with ChangeNotifier{
 
   bool _loading = false;
-  List<GetBookingListModel?> _getBookingListModel= [];
+  GetBookingListModel? _getBookingListModel;
   UserError? _userError;
+
   Booking_Request_View_Model (){
     getbookingApiCall();
   }
   bool get loading => _loading;
-  List<GetBookingListModel?> get getbookinglistModel=> _getBookingListModel;
+  GetBookingListModel? get getbookinglistModel=> _getBookingListModel;
   UserError? get userError => _userError;
 
   setLoading(bool loading) {
     _loading = loading;
     notifyListeners();
   }
-  setGetBookingModle(GetBookingListModel getBookingListModel){
-  _getBookingListModel =getbookinglistModel;
+  setGetBookingModle(GetBookingListModel getBookingListModel2){
+  _getBookingListModel = getBookingListModel2;
   notifyListeners();
   }
   setUserError(UserError userError) {

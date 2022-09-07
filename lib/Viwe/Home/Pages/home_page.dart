@@ -26,8 +26,10 @@ class Home_page_Screen extends StatelessWidget {
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: _ui(booking_request_view_model),
+    return SafeArea(
+      child: Scaffold(
+        body: _ui(booking_request_view_model),
+      ),
     );
   }
 
@@ -84,8 +86,7 @@ class Home_page_Screen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(
-                  //     builder: (context) => Notifications_screen()));
+
                 },
                 child: const Icon(Icons.notifications),
               )
@@ -124,18 +125,18 @@ class Home_page_Screen extends StatelessWidget {
                 fontWeight: FontWeight.w600, fontSize: 18, color: h1Color),
           ),
         ),
-        Expanded(
-          child: ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (context, int index) {
-              return BookingListTitl(
-                index: index,
-              );
-            },
-            itemCount: booking_request_view_model.getbookinglistModel.length,
-          ),
-        ),
+        Expanded(child: SingleChildScrollView(child: BookingListTitl()))
+        // Expanded(
+        //   child: ListView.builder(
+        //
+        //     itemBuilder: (context, int index) {
+        //       return BookingListTitl(
+        //         index: index,
+        //       );
+        //     },
+        //     itemCount: booking_request_view_model.getbookinglistModel.length,
+        //   ),
+        // ),
       ],
     );
   }

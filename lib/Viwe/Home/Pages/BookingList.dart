@@ -1,3 +1,4 @@
+import 'package:panditapp/model/Booking%20Model/Acept_Booking_Model.dart';
 import 'package:panditapp/view_model/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -7,26 +8,54 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../Consts/colors.dart';
+import '../../../view_model/Accept_Booking_Api.dart';
 
-class BookingListTitl extends StatelessWidget {
-  int index;
-  bool _isLoading =false;
+class BookingListTitl extends StatefulWidget {
 
-  BookingListTitl({required this.index});
+  @override
+  State<BookingListTitl> createState() => _BookingListTitlState();
+}
 
-
-  //late final BookingModel bookingModel;
+class _BookingListTitlState extends State<BookingListTitl> {
+  bool _isLoading = false;
 
 
   @override
+  void initState() {
+    setState(() {
+      Accept_Booking_Api accept_booking_api =
+          context.watch()<AcceptBookingModel>();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+
+    // Booking_Request_View_Model booking_request_view_modell =
+    //     Provider.of<Booking_Request_View_Model>(context, listen: false);
+
+    Booking_Request_View_Model booking_request_view_modell =
+    context.watch<Booking_Request_View_Model>();
+
+    booking_request_view_modell.getbookingApiCall;
     return Consumer<Booking_Request_View_Model>(
       builder: (_, data, __) {
         if (data.loading) {
-          return Container();
-        } else if (data.userError == null) {
-          return Container();
+          return CircularProgressIndicator();
+        } else if (data.userError != null) {
+          return Center(
+              child: Text(data.userError!.message.toString() ?? " Error"));
         }
+        return _ui(booking_request_view_modell, context);
+      },
+    );
+  }
+
+  _ui(Booking_Request_View_Model booking_request_view_model,   BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemBuilder: (context, int index) {
         return SingleChildScrollView(
           child: Column(
             children: [
@@ -43,8 +72,8 @@ class BookingListTitl extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: h1Color,
                               borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(width: 1, color: kSecondaryColor)),
+                              border: Border.all(
+                                  width: 1, color: kSecondaryColor)),
                           child: Container(
                             alignment: Alignment.bottomCenter,
                             width: double.infinity,
@@ -75,9 +104,10 @@ class BookingListTitl extends StatelessWidget {
                                         color: kPrimaryColor,
                                       ),
                                       // SizedBox(width: 11,),
-                                      Text(
-                                        data.getbookinglistModel[index]!.response!.bookinglist![index].bookingPujaDate.toString(),
-                                        style: GoogleFonts.lato(
+                                      Text(booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].poojaDate ?? ""
+                                        //booking_request_view_model.getbookinglistModel[index]!.response!.bookinglist![index].poojaDate.toString()
+                                        // data.getbookinglistModel[index]!.response!.bookinglist![index].bookingPujaDate.toString(),
+                                        ,style: GoogleFonts.lato(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
                                             color: blackColor),
@@ -104,7 +134,7 @@ class BookingListTitl extends StatelessWidget {
                                 ),
                                 Center(
                                     child: Text(
-                                  "Vikrant",
+                                      booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].hostname ?? "",
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 12,
@@ -128,7 +158,7 @@ class BookingListTitl extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 16),
                                   child: Text(
-                                    'Puja',
+                                    booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].poojaTitle ?? "",
                                     style: GoogleFonts.lato(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14,
@@ -141,7 +171,7 @@ class BookingListTitl extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 16),
                                   child: Text(
-                                    'Noida',
+                                    booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].cityname ?? "",
                                     style: GoogleFonts.lato(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14,
@@ -158,7 +188,7 @@ class BookingListTitl extends StatelessWidget {
                                 ),
                                 Center(
                                     child: Text(
-                                  "Total Earnings:  226",
+                                  "Total Earnings:  ${booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].totalEarning ?? ""}",
                                   style: GoogleFonts.lato(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
@@ -178,7 +208,10 @@ class BookingListTitl extends StatelessWidget {
                                           color: buttonColor),
                                       child: Center(
                                           child: TextButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Accept_Booking_Api ss = Accept_Booking_Api();
+                                                ss.getAccept_booking_Api();
+                                              },
                                               child: Text(
                                                 "Accept Booking",
                                                 style: GoogleFonts.lato(
@@ -198,7 +231,7 @@ class BookingListTitl extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: Text(
-                              "Accept booking in 4:55 AM",
+                              "Accept booking in ${booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].time ?? ""}",
                               style: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -213,9 +246,10 @@ class BookingListTitl extends StatelessWidget {
               ),
             ],
           ),
-          //Text("data")
         );
       },
+      // itemCount: booking_request_view_model.getbookinglistModel.length,
+      itemCount: booking_request_view_model.getbookinglistModel!.response!.bookinglist!.length,
     );
   }
 }
