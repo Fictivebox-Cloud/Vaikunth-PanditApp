@@ -147,25 +147,6 @@ class _City_ScreenState extends State<City_Screen> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 30,
-                        ),
-
-                        Container(
-                            width: double.infinity,
-
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: 3,
-                                itemBuilder: ((context,  index){
-                                  final a = [index];
-                                  return Card(
-                                    child: Text("ghgsh",)
-                                  );
-
-                                }))
-                        )
-
                       ],
                     ),
                   ),
