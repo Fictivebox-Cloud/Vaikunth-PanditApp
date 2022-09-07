@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Viwe/login_flow/OTP_Verify.dart';
-
-
-import 'package:panditapp/model/getterSetter.dart';
-
 import '../../Consts/colors.dart';
+
 class PhoneNumber_Screen extends StatefulWidget {
   const PhoneNumber_Screen({Key? key}) : super(key: key);
 

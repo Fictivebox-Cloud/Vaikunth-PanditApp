@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:panditapp/Viwe/Home/Home_Screen.dart';
 import 'package:panditapp/model/Booking%20Model/BookingModel.dart';
 
+
 import 'package:panditapp/view_model/ApiCallLogin.dart';
 import 'package:panditapp/view_model/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,7 @@ Future<void>  main() async{
 
        ChangeNotifierProvider(create: (_)=>ApiCallLogin()),
        ChangeNotifierProvider(create: (_)=>Booking_Request_View_Model())
+
       ],
       child: const MyApp(),
     ),
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        home: Home_Screen(),
+        home: SplashScreen(),
       );
   }
 

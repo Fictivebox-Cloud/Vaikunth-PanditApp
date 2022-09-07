@@ -10,10 +10,12 @@ import '../../../Consts/colors.dart';
 
 class BookingListTitl extends StatelessWidget {
   int index;
-
+  bool _isLoading =false;
 
   BookingListTitl({required this.index});
 
+
+  //late final BookingModel bookingModel;
 
 
   @override

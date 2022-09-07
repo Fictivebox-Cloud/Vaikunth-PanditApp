@@ -41,7 +41,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
 
   pickImage0(ImageSource imageType) async {
     try {
-      final photo = await ImagePicker().pickImage (source: imageType,imageQuality: 5);
+      final photo = await ImagePicker().pickImage (source: imageType,imageQuality: 20);
       if (photo == null) return;
       final tempImage = File(photo.path);
       setState(() {
@@ -55,7 +55,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   }
   pickImage1(ImageSource imageType) async {
     try {
-      final photo1 = await ImagePicker().pickImage(source: imageType,imageQuality: 5);
+      final photo1 = await ImagePicker().pickImage(source: imageType,imageQuality: 20);
       if (photo1 == null) return;
       final tempImages = File(photo1.path);
       setState(() {
@@ -69,7 +69,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   }
   pickImage2(ImageSource imageType) async {
     try {
-      final photo2 = await ImagePicker().pickImage(source: imageType,imageQuality: 5);
+      final photo2 = await ImagePicker().pickImage(source: imageType,imageQuality: 20);
       if (photo2 == null) return;
       final tempImages = File(photo2.path);
       setState(() {
@@ -256,7 +256,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                           child: TextFormField(
                             controller: _addharno,
                             keyboardType: TextInputType.number,
-
+                            cursorColor:colorPrimary,
 
                             decoration: InputDecoration(
 
@@ -331,6 +331,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         ),
                         child: Center(
                           child: TextFormField(
+                            cursorColor:colorPrimary,
                             controller: _panno,
                               //keyboardType: TextInputType.number,
                               decoration: InputDecoration(
@@ -555,86 +556,6 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   }
   //pan card
   Widget bottomSheetpan(){
-
-    //   Container(
-    //
-    //   width: MediaQuery.of(context).size.width,
-    //   height: 200,
-    //   margin:  EdgeInsets.symmetric(
-    //       horizontal: 20,
-    //       vertical: 20
-    //   ),
-    //   child: Column(
-    //     children: [
-    //       Row(
-    //         mainAxisAlignment: MainAxisAlignment.spaceAround,
-    //         children: [
-    //           Container(
-    //             width: wt * 0.30,
-    //             height: ht * 0.20,
-    //
-    //             decoration: BoxDecoration(
-    //                 color: Color(0xffECF1F6),
-    //                 shape: BoxShape.circle,
-    //                 // boxShadow: [
-    //                 //   BoxShadow(
-    //                 //       color: Color(0xffECF1F6),
-    //                 //       blurRadius: 10,
-    //                 //       spreadRadius: 1
-    //                 //       ,offset: Offset(4,4)
-    //                 //   )
-    //                 // ]
-    //             ),
-    //             child:  InkWell(
-    //               onTap: (){
-    //                 pickImage2(ImageSource.camera);                  },
-    //               child: Icon(Icons.camera,color: Color(0xffF06414),),
-    //
-    //
-    //
-    //
-    //             ),
-    //           ),
-    //           Container(
-    //             width: wt * 0.30,
-    //             height: ht * 0.20,
-    //             decoration: BoxDecoration(
-    //                 color: Color(0xffECF1F6),
-    //                 shape: BoxShape.circle,
-    //                 boxShadow: [
-    //                   BoxShadow(
-    //                       color: Color(0xffECF1F6),
-    //                       blurRadius: 10,
-    //                       spreadRadius: 1
-    //                       ,offset: Offset(4,4)
-    //                   )
-    //                 ]
-    //             ),
-    //             child: InkWell(
-    //                 onTap: (){
-    //                   pickImage2(ImageSource.gallery);
-    //                 },
-    //                 child: Icon(Icons.folder_open,color: Color(0xffF06414),)),
-    //           ),
-    //         ],
-    //       ),
-    //       Row(
-    //         mainAxisAlignment: MainAxisAlignment.spaceAround,
-    //         children: [
-    //           Text("Open Camera",style: GoogleFonts.lato(fontSize: 12,
-    //               fontWeight: FontWeight.w500
-    //           ),),
-    //           Text("Open Files",style: GoogleFonts.lato(fontSize: 12,
-    //               fontWeight: FontWeight.w500
-    //           ),)
-    //         ],
-    //
-    //       )
-    //     ],
-    //   ),
-    //
-    //
-    // );
     return SingleChildScrollView(
       child: ClipRRect(
         borderRadius: const BorderRadius.only(

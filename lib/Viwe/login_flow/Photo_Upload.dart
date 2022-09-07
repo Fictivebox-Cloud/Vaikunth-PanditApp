@@ -126,7 +126,7 @@ class _MyAppState extends State<Photo_Upload> {
 //                   });//
   pickImage(ImageSource imageType) async {
     try {
-      final photo = await ImagePicker().pickImage(source: imageType,imageQuality: 5);
+      final photo = await ImagePicker().pickImage(source: imageType,imageQuality: 20);
       if (photo == null) return;
       final tempImage = File(photo.path);
       setState(() {

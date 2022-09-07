@@ -111,7 +111,7 @@ class _OTP_verifyState extends State<OTP_verify> {
                             ,color: h1Color
                         ),),
 
-                       // Text("mobile ${widget.mobile}"),
+                        Text("mobile ${widget.mobile}"),
                         SizedBox(
                           height: 8,
                         ),

@@ -15,13 +15,14 @@ import '../../Consts/colors.dart';
 
 
 import 'Documents_screen.dart';
+
 class City_Screen extends StatefulWidget {
-  final String? name3;
+  final String? name3,mobile;
   final File? photo3;
 
 
 
-  const City_Screen({Key? key,this.name3,this.photo3, String? mobile}) : super(key: key);
+  const City_Screen({Key? key,this.name3,this.photo3, this.mobile}) : super(key: key);
 
   @override
   State<City_Screen> createState() => _City_ScreenState();
@@ -128,12 +129,11 @@ class _City_ScreenState extends State<City_Screen> {
                           ),
                           child: TextFormField(
 
-
+                           cursorColor: colorPrimary,
                             controller: editingController,
                             decoration: InputDecoration(
 
                                 border: InputBorder.none,
-
                                 hintText: "Search for your city",
                                 hintStyle: GoogleFonts.lato(
                                     fontWeight: FontWeight.w400,
@@ -185,7 +185,7 @@ class _City_ScreenState extends State<City_Screen> {
                   child: TextButton(
 
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen(name4: widget.name3,photo4: widget.photo3,)));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen(name4: widget.name3,photo4: widget.photo3,mobile: widget.mobile,)));
                       }, child: Text('Next',style: GoogleFonts.lato(
                       color: Color(0xffFFFFFF),fontSize: 24,
                       fontWeight: FontWeight.w600),)),
