@@ -53,40 +53,33 @@ class _City_ScreenState extends State<City_Screen> {
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
-
                           children: [
                             Container(
-
                                 width: 48,
                                 height: 2,
                                 color: kPrimaryColor
                             ),
                             Container(
-
                                 width: 48,
                                 height: 2,
                                 color: kPrimaryColor
                             ),
                             Container(
-
                                 width: 48,
                                 height: 2,
                                 color: kPrimaryColor
                             ),
                             Container(
-
                                 width: 48,
                                 height: 2,
                                 color: kPrimaryColor
                             ),
                             Container(
-
                                 width: 48,
                                 height: 2,
                                 color: kSecondaryColor
                             ),
                             Container(
-
                                 width: 48,
                                 height: 2,
                                 color: kSecondaryColor
@@ -96,11 +89,7 @@ class _City_ScreenState extends State<City_Screen> {
                         SizedBox(
                           height: 24,
                         ),
-
-
                         Text("Select your city",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
-
-
                         SizedBox(
                           height: 32,
                         ),
@@ -113,44 +102,35 @@ class _City_ScreenState extends State<City_Screen> {
                               )
                           ),
                           child: TextFormField(
-
                            cursorColor: colorPrimary,
                             controller: editingController,
                             decoration: InputDecoration(
-
                                 border: InputBorder.none,
                                 hintText: "Search for your city",
                                 hintStyle: GoogleFonts.lato(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 14,
                                     color: kSecondaryColor),
-
                                 prefixIcon: const Icon(Icons.search,color: Color(0xff6E798C),
-
                                 )
-
                             ),
                           ),
                         ),
                         SizedBox(
                           height: 30,
                         ),
-
-                        Container(
+                        SizedBox(
                             width: double.infinity,
-
                             child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount: 6,
                                 itemBuilder: ((context,  index){
                                   final a = [index];
                                   return Card(
-                                    child: Text("dfgf")
+                                    child: Text("dfssfs")
                                   );
-
                                 }))
                         )
-
                       ],
                     ),
                   ),
@@ -164,11 +144,9 @@ class _City_ScreenState extends State<City_Screen> {
                   height: 48,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
-
                       color: kPrimaryColor
                   ),
                   child: TextButton(
-
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen(name4: widget.name3,photo4: widget.photo3,mobile: widget.mobile,)));
                       }, child: Text('Next',style: GoogleFonts.lato(
@@ -181,8 +159,6 @@ class _City_ScreenState extends State<City_Screen> {
         )
     );
   }
-
-
 }
 
 

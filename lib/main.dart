@@ -29,7 +29,7 @@ Future<void>  main() async{
        ChangeNotifierProvider(create: (_)=>Booking_Request_View_Model()),
        ChangeNotifierProvider(create: (_)=>CompleteBookingViewModel()),
        ChangeNotifierProvider(create: (_)=>Accept_Booking_Api()),
-       ChangeNotifierProvider(create: (_)=>City_List_Api())
+       ChangeNotifierProvider(create: (_)=>City_List_Api()),
        ChangeNotifierProvider(create: (_)=>NumberVerifyViewModel())
 
       ],
@@ -56,8 +56,8 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        home: Home_Screen(),
-       // home: SplashScreen(),
+        // home: City_Screen(),
+      home: SplashScreen(),
       );
   }
 

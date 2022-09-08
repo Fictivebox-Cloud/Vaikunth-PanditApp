@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/model/getterSetter.dart';
+
 import '../../Consts/colors.dart';
 import 'city_screen.dart';
 class Servies_you_screen extends StatefulWidget {
@@ -166,7 +166,11 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                               fontSize: 16),
                         )),
                       ),
-                    )
+                    ),
+
+
+
+
 
                     // Expanded(
                     //   child: ListView.separated(

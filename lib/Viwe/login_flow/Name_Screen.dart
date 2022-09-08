@@ -61,37 +61,31 @@ class _Name_ScreenState extends State<Name_Screen> {
 
                           children: [
                             Container(
-
                               width: 48,
                               height: 2,
                               color:kPrimaryColor,
                             ),
                             Container(
-
                               width: 48,
                               height: 2,
                               color: kSecondaryColor,
                             ),
                             Container(
-
                               width: 48,
                               height: 2,
                               color: kSecondaryColor,
                             ),
                             Container(
-
                               width: 48,
                               height: 2,
                               color: kSecondaryColor,
                             ),
                             Container(
-
                               width: 48,
                               height: 2,
                               color: kSecondaryColor,
                             ),
                             Container(
-
                               width: 48,
                               height: 2,
                               color: kSecondaryColor,
@@ -116,10 +110,6 @@ class _Name_ScreenState extends State<Name_Screen> {
                         child: Center(
                           child: SizedBox(
                               height: ht * 0.4,
-                              //width: wt * 0.8,
-
-
-
                               child: TextField(
                                   cursorColor: Color(0xFFFF7D33),
                                   controller: _namecontroller,
