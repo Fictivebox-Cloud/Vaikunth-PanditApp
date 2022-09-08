@@ -125,7 +125,7 @@ class Home_page_Screen extends StatelessWidget {
                 fontWeight: FontWeight.w600, fontSize: 18, color: h1Color),
           ),
         ),
-        Expanded(child: SingleChildScrollView(child: BookingListTitl()))
+        Expanded(child: SingleChildScrollView(child: BookingListTitl(booking_request_view_model)))
         // Expanded(
         //   child: ListView.builder(
         //
