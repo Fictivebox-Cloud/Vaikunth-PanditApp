@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:panditapp/Viwe/Home/Pages/BookingList.dart';
+import 'package:panditapp/Viwe/Home/Pages/Notifications_screen.dart';
+import 'package:panditapp/Viwe/Profile/Profile.dart';
+import 'package:panditapp/model/Booking%20Model/BookingModel.dart';
 import 'package:panditapp/view_model/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../Consts/colors.dart';
 
@@ -19,7 +23,6 @@ class Home_page_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     Booking_Request_View_Model booking_request_view_model =
         context.watch<Booking_Request_View_Model>();
-
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
@@ -122,8 +125,18 @@ class Home_page_Screen extends StatelessWidget {
                 fontWeight: FontWeight.w600, fontSize: 18, color: h1Color),
           ),
         ),
-        Expanded(child: SingleChildScrollView(child: BookingListTitl(booking_request_view_model: booking_request_view_model)))
-
+        Expanded(child: SingleChildScrollView(child: BookingListTitl()))
+        // Expanded(
+        //   child: ListView.builder(
+        //
+        //     itemBuilder: (context, int index) {
+        //       return BookingListTitl(
+        //         index: index,
+        //       );
+        //     },
+        //     itemCount: booking_request_view_model.getbookinglistModel.length,
+        //   ),
+        // ),
       ],
     );
   }

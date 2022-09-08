@@ -11,8 +11,6 @@ import '../../../Consts/colors.dart';
 import '../../../view_model/Accept_Booking_Api.dart';
 
 class BookingListTitl extends StatefulWidget {
-  Booking_Request_View_Model? booking_request_view_model;
-  BookingListTitl({this.booking_request_view_model});
 
   @override
   State<BookingListTitl> createState() => _BookingListTitlState();
@@ -21,20 +19,25 @@ class BookingListTitl extends StatefulWidget {
 class _BookingListTitlState extends State<BookingListTitl> {
   bool _isLoading = false;
 
-  //
-  // @override
-  // void initState() {
-  //   setState(() {
-  //     Accept_Booking_Api accept_booking_api =
-  //         context.watch()<AcceptBookingModel>();
-  //   });
-  // }
+
+  @override
+  void initState() {
+    setState(() {
+      Accept_Booking_Api accept_booking_api =
+          context.watch()<AcceptBookingModel>();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
 
     // Booking_Request_View_Model booking_request_view_modell =
     //     Provider.of<Booking_Request_View_Model>(context, listen: false);
+
+    Booking_Request_View_Model booking_request_view_modell =
+    context.watch<Booking_Request_View_Model>();
+
+    booking_request_view_modell.getbookingApiCall;
     return Consumer<Booking_Request_View_Model>(
       builder: (_, data, __) {
         if (data.loading) {
@@ -43,12 +46,12 @@ class _BookingListTitlState extends State<BookingListTitl> {
           return Center(
               child: Text(data.userError!.message.toString() ?? " Error"));
         }
-        return _ui(widget.booking_request_view_model, context);
+        return _ui(booking_request_view_modell, context);
       },
     );
   }
 
-  _ui(Booking_Request_View_Model? booking_request_view_model,   BuildContext context) {
+  _ui(Booking_Request_View_Model booking_request_view_model,   BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
@@ -101,7 +104,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                         color: kPrimaryColor,
                                       ),
                                       // SizedBox(width: 11,),
-                                      Text(booking_request_view_model!.getbookinglistModel!.response!.bookinglist![index].poojaDate ?? ""
+                                      Text(booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].poojaDate ?? ""
                                         //booking_request_view_model.getbookinglistModel[index]!.response!.bookinglist![index].poojaDate.toString()
                                         // data.getbookinglistModel[index]!.response!.bookinglist![index].bookingPujaDate.toString(),
                                         ,style: GoogleFonts.lato(
@@ -246,7 +249,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
         );
       },
       // itemCount: booking_request_view_model.getbookinglistModel.length,
-      itemCount: booking_request_view_model!.getbookinglistModel!.response!.bookinglist!.length,
+      itemCount: booking_request_view_model.getbookinglistModel!.response!.bookinglist!.length,
     );
   }
 }
