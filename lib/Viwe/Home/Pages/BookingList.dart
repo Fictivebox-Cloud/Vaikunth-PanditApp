@@ -11,6 +11,8 @@ import '../../../Consts/colors.dart';
 import '../../../view_model/Accept_Booking_Api.dart';
 
 class BookingListTitl extends StatefulWidget {
+  Booking_Request_View_Model? booking_request_view_model;
+  BookingListTitl({this.booking_request_view_model});
 
   @override
   State<BookingListTitl> createState() => _BookingListTitlState();
@@ -19,39 +21,34 @@ class BookingListTitl extends StatefulWidget {
 class _BookingListTitlState extends State<BookingListTitl> {
   bool _isLoading = false;
 
-
-  @override
-  void initState() {
-    setState(() {
-      Accept_Booking_Api accept_booking_api =
-          context.watch()<AcceptBookingModel>();
-    });
-  }
+  //
+  // @override
+  // void initState() {
+  //   setState(() {
+  //     Accept_Booking_Api accept_booking_api =
+  //         context.watch()<AcceptBookingModel>();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
 
     // Booking_Request_View_Model booking_request_view_modell =
     //     Provider.of<Booking_Request_View_Model>(context, listen: false);
-
-    Booking_Request_View_Model booking_request_view_modell =
-    context.watch<Booking_Request_View_Model>();
-
-    booking_request_view_modell.getbookingApiCall;
     return Consumer<Booking_Request_View_Model>(
       builder: (_, data, __) {
         if (data.loading) {
           return CircularProgressIndicator();
         } else if (data.userError != null) {
           return Center(
-              child: Text(data.userError!.message.toString() ?? " Error"));
+              child: Text(data.userError!.message.toString()));
         }
-        return _ui(booking_request_view_modell, context);
+        return _ui(widget.booking_request_view_model, context);
       },
     );
   }
 
-  _ui(Booking_Request_View_Model booking_request_view_model,   BuildContext context) {
+  _ui(Booking_Request_View_Model? booking_request_view_model,   BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
@@ -104,7 +101,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                         color: kPrimaryColor,
                                       ),
                                       // SizedBox(width: 11,),
-                                      Text(booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].poojaDate ?? ""
+                                      Text(booking_request_view_model!.getbookinglistModel!.response!.bookinglist![index].poojaDate.toString()
                                         //booking_request_view_model.getbookinglistModel[index]!.response!.bookinglist![index].poojaDate.toString()
                                         // data.getbookinglistModel[index]!.response!.bookinglist![index].bookingPujaDate.toString(),
                                         ,style: GoogleFonts.lato(
@@ -134,7 +131,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                 ),
                                 Center(
                                     child: Text(
-                                      booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].hostname ?? "",
+                                      booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].hostname.toString(),
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 12,
@@ -158,7 +155,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 16),
                                   child: Text(
-                                    booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].poojaTitle ?? "",
+                                    booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].poojaTitle.toString(),
                                     style: GoogleFonts.lato(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14,
@@ -171,7 +168,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 16),
                                   child: Text(
-                                    booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].cityname ?? "",
+                                    booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].cityname.toString(),
                                     style: GoogleFonts.lato(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14,
@@ -188,7 +185,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                 ),
                                 Center(
                                     child: Text(
-                                  "Total Earnings:  ${booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].totalEarning ?? ""}",
+                                  "Total Earnings:  ${booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].totalEarning.toString()}",
                                   style: GoogleFonts.lato(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
@@ -231,7 +228,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: Text(
-                              "Accept booking in ${booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].time ?? ""}",
+                              "Accept booking in ${booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].time.toString()}",
                               style: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
@@ -249,7 +246,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
         );
       },
       // itemCount: booking_request_view_model.getbookinglistModel.length,
-      itemCount: booking_request_view_model.getbookinglistModel!.response!.bookinglist!.length,
+      itemCount: booking_request_view_model!.getbookinglistModel!.response!.bookinglist!.length,
     );
   }
 }

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:panditapp/Viwe/Home/Home_Screen.dart';
 import 'package:panditapp/model/Booking%20Model/BookingModel.dart';
+import 'package:panditapp/view_model/Accept_Booking_Api.dart';
 
 
 import 'package:panditapp/view_model/ApiCallLogin.dart';
@@ -23,7 +24,8 @@ Future<void>  main() async{
 
        ChangeNotifierProvider(create: (_)=>ApiCallLogin()),
        ChangeNotifierProvider(create: (_)=>Booking_Request_View_Model()),
-       ChangeNotifierProvider(create: (_)=>CompleteBookingViewModel())
+       ChangeNotifierProvider(create: (_)=>CompleteBookingViewModel()),
+       ChangeNotifierProvider(create: (_)=>Accept_Booking_Api())
 
       ],
       child: const MyApp(),
