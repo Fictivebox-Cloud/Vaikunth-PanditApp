@@ -1,90 +1,50 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:http/http.dart' as http;
-import 'package:panditapp/Viwe/Home/Home_Screen.dart';
-import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
-import 'package:panditapp/model/Booking%20Model/Verification_Model.dart';
+import 'package:panditapp/Util/api_status.dart';
+import 'package:panditapp/consts/user_Error.dart';
+import 'package:panditapp/repo/api_remote_services.dart';
 
+import '../Util/Api_collection.dart';
+import '../model/Login Model/Number_Verify_Model.dart';
 
-class Verification_Number_Api extends ChangeNotifier{
-  String? mobile;
+class NumberVerifyViewModel with ChangeNotifier
+{
+  bool _loading = false;
+  NumberVerifyModel? _numberVerifyModel;
+  UserError? _userError;
 
+  bool get loading => _loading;
+  NumberVerifyModel? get numberverifyModel => _numberVerifyModel;
+  UserError? get userError => _userError;
 
-  Verification_Number_Api({Key? key,this.mobile});
-
-  bool _eventListStatus = false;
-  bool get eventListStatus => _eventListStatus;
-
-  bool _dataStatus = false;
-  bool get dataStatus => _dataStatus;
-
-  VerificationNumberModel _verifyModel = VerificationNumberModel();
-  VerificationNumberModel get verificationNumberModel=>_verifyModel;
-  //AcceptBookingModel _acceptBookingModel = AcceptBookingModel();
-  //AcceptBookingModel get acceptBookingModel => _acceptBookingModel;
-  //int _index = 0;
-  //int get index => _index;
-
-  Future fachingApiVerificationnumber(String phoneNumber) async{
-
-
-
-    try {
-
-      String username = 'am9uZUAyOTc4';
-      String password = 'RklUTkVTU0AjMTIz';
-
-      String basicAuth =
-          'Basic ' + base64.encode(utf8.encode('$username:$password'));
-      var url = Uri.parse("https://vaikunth.fictivebox.com/api/verifynumberexist");
-
-      var apiResponse = await http.post(url,
-        body: {
-
-            "pandit_mobile":phoneNumber
-        },
-
-        headers: <String, String>{'authorization': basicAuth},
-      );
-          print("Verified Number:$phoneNumber");
-
-        if (apiResponse.statusCode == 200) {
-
-        print("Govind: ${apiResponse.body}");
-
-        if (jsonDecode(apiResponse.body)['success']) {
-
-          //_acceptBookingModel = AcceptBookingModel.fromJson(jsonDecode(apiResponse.body));
-          _verifyModel= VerificationNumberModel.fromJson(jsonDecode(apiResponse.body));
-          _eventListStatus = false;
-          _dataStatus = true;
-         return _verifyModel;
-
-          notifyListeners();
-        } else {
-
-          _dataStatus = false;
-          _eventListStatus = false;
-          notifyListeners();
-        }
-      } else {
-        _dataStatus = false;
-        _eventListStatus = false;
-        notifyListeners();
-      }
-    } on Exception catch (e) {
-
-
-      notifyListeners();
-      // TODO
-
-      _dataStatus = false;
-
-      _eventListStatus = false;
-      notifyListeners();
-    }
+  setLoading(bool loading ){
+    _loading = loading;
+    notifyListeners();
+  }
+  setNumberVerifyModel(NumberVerifyModel numberVerifyModel){
+    _numberVerifyModel = numberverifyModel;
+    notifyListeners();
+  }
+  setUserError(UserError userError){
+    _userError = _userError;
+    notifyListeners();
   }
 
+  NumberVerifyAPIcall()async{
+    setLoading(true);
+    Map<String,dynamic> data ={
+      "pandit_mobile": "7500620349"
+    };
+    var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_NUMBER_VERIFY_API,apiData: data);
+    if(response is Success){
+      Object data = numberVerifyModelFromJson(response.response as String);
+      print("Govind kumar${response.response as String}");
+      setNumberVerifyModel(data as NumberVerifyModel);
+    }
+    else if(response is Failure){
+      UserError userError = UserError(
+        code: response.code,message: response.errorResponse);
+      setLoading(false);
+    }
+  }
 
 }
