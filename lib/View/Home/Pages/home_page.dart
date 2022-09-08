@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
-import 'package:panditapp/Viwe/Home/Pages/BookingList.dart';
-import 'package:panditapp/Viwe/Home/Pages/Notifications_screen.dart';
-import 'package:panditapp/Viwe/Profile/Profile.dart';
+import 'package:panditapp/View/Home/Pages/BookingList.dart';
+import 'package:panditapp/View/Home/Pages/Notifications_screen.dart';
+import 'package:panditapp/View/Profile/Profile.dart';
 import 'package:panditapp/model/Booking%20Model/BookingModel.dart';
-import 'package:panditapp/view_model/booking_request_view_model.dart';
+import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 

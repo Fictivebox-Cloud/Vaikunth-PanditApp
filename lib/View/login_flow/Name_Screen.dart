@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
-import 'package:panditapp/Viwe/login_flow/Photo_Upload.dart';
+import 'package:panditapp/View/login_flow/Photo_Upload.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 

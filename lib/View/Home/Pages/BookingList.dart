@@ -1,5 +1,5 @@
 import 'package:panditapp/model/Booking%20Model/Acept_Booking_Model.dart';
-import 'package:panditapp/view_model/booking_request_view_model.dart';
+import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
 
 import 'package:dotted_line/dotted_line.dart';
@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../Consts/colors.dart';
-import '../../../view_model/Accept_Booking_Api.dart';
+import '../../../view_model/home_tab/Accept_Booking_Api.dart';
 
 class BookingListTitl extends StatefulWidget {
   Booking_Request_View_Model? booking_request_view_model;
@@ -47,7 +47,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
           return CircularProgressIndicator();
         } else if (data.userError != null) {
           return Center(
-              child: Text(data.userError!.message.toString() ?? " Error"));
+              child: Text(data.userError!.message.toString()));
         }
         return _ui(widget.booking_request_view_model, context);
       },

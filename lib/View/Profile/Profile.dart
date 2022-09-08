@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:panditapp/Viwe/Booking/Bookings_screen.dart';
-import 'package:panditapp/Viwe/Earning/Earnings.dart';
-import 'package:panditapp/Viwe/Profile/components/Edit_Details_Screen.dart';
-import 'package:panditapp/Viwe/Profile/components/Settinng_Screen.dart';
-import 'package:panditapp/Viwe/Profile/components/id_card.dart';
-import 'package:panditapp/Viwe/login_flow/Phone_Number.dart';
+import 'package:panditapp/View/Booking/Bookings_screen.dart';
+import 'package:panditapp/View/Earning/Earnings.dart';
+import 'package:panditapp/View/Profile/components/Edit_Details_Screen.dart';
+import 'package:panditapp/View/Profile/components/Settinng_Screen.dart';
+import 'package:panditapp/View/Profile/components/id_card.dart';
+import 'package:panditapp/View/login_flow/Phone_Number.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 

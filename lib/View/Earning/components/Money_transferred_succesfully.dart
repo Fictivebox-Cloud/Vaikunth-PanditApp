@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Viwe/Home/Home_Screen.dart';
+import 'package:panditapp/View/Home/Home_Screen.dart';
 
 import '../../../Consts/colors.dart';
 

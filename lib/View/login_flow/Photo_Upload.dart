@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:panditapp/Viwe/login_flow/Servies_you_provide.dart';
+import 'package:panditapp/View/login_flow/Servies_you_provide.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 

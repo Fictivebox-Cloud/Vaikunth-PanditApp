@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Viwe/Home/Home_Screen.dart';
-import 'package:panditapp/Viwe/Splash_onboarding/Onboarding.dart';
+import 'package:panditapp/View/Home/Home_Screen.dart';
+import 'package:panditapp/View/Splash_onboarding/Onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Consts/colors.dart';

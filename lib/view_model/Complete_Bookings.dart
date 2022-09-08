@@ -6,18 +6,18 @@ import '../Util/Api_collection.dart';
 import '../Util/api_status.dart';
 import '../repo/api_remote_services.dart';
 
-
-
-class CompleteBookingViewModel with ChangeNotifier{
+class CompleteBookingViewModel with ChangeNotifier {
   bool _loading = false;
   Completebokingmodel? _completebokingmodel;
   UserError? _userError;
 
   bool get loading => _loading;
+
   Completebokingmodel? get completebokingmodel => _completebokingmodel;
+
   UserError? get userError => _userError;
 
-  CompleteBookingViewModel(){
+  CompleteBookingViewModel() {
     completebookingAPIcall();
   }
 
@@ -25,35 +25,32 @@ class CompleteBookingViewModel with ChangeNotifier{
     _loading = loading;
     notifyListeners();
   }
-  setCompletebokingmodel(Completebokingmodel completebokingmodel){
-    _completebokingmodel =completebokingmodel;
+
+  setCompletebokingmodel(Completebokingmodel completebokingmodel) {
+    _completebokingmodel = completebokingmodel;
     notifyListeners();
   }
-  setUserError(UserError userError){
+
+  setUserError(UserError userError) {
     _userError = userError;
     notifyListeners();
   }
 
   completebookingAPIcall() async {
     setLoading(true);
-    Map<String, dynamic> data ={
-        "pandit_id": "81"
-    };
+    Map<String, dynamic> data = {"pandit_id": "81"};
 
-    var respones = await ApiRemoteServices.fechingGetApi(apiUrl: GET_COMPLETEBOOKING_API,apiData: data);
-    if(respones is Success){
-
+    var respones = await ApiRemoteServices.fechingGetApi(
+        apiUrl: GET_COMPLETEBOOKING_API, apiData: data);
+    if (respones is Success) {
       Object data = completebokingmodelFromJson(respones.response as String);
       print("Govind kumar${respones.response as String}");
       setCompletebokingmodel(data as Completebokingmodel);
-    }
-    else if(respones is Failure) {
-      UserError userError = UserError(
-          code: respones.code, message: respones.errorResponse);
+    } else if (respones is Failure) {
+      UserError userError =
+          UserError(code: respones.code, message: respones.errorResponse);
       setUserError(userError);
     }
     setLoading(false);
   }
-
-
 }

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Viwe/login_flow/OTP_Verify.dart';
+import 'package:panditapp/View/login_flow/OTP_Verify.dart';
 import '../../Consts/colors.dart';
 
 class PhoneNumber_Screen extends StatefulWidget {
@@ -18,11 +18,6 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
  var phoneController = TextEditingController();
 
  var ht,wt;
-
-  @override
-  void initState() {
-
-  }
 
   @override
   Widget build(BuildContext context) {

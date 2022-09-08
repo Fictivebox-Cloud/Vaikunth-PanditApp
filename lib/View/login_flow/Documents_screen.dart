@@ -6,42 +6,38 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:panditapp/Viwe/login_flow/Account_details.dart';
-
+import 'package:panditapp/View/login_flow/Account_details.dart';
 
 import 'package:image_picker/image_picker.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 
 import '../../Consts/colors.dart';
-class Documents_Screen extends StatefulWidget {
 
-  final String? name4,mobile;
+class Documents_Screen extends StatefulWidget {
+  final String? name4, mobile;
   final File? photo4;
 
-  const Documents_Screen({Key? key,this.name4,this.photo4,this.mobile}) : super(key: key);
-
+  const Documents_Screen({Key? key, this.name4, this.photo4, this.mobile})
+      : super(key: key);
 
   @override
   State<Documents_Screen> createState() => _Documents_ScreenState();
 }
 
 class _Documents_ScreenState extends State<Documents_Screen> {
-  var ht,wt;
+  var ht, wt;
   File? pickedImage0;
   File? pickedImage1;
   File? pickedImage2;
 
-
   TextEditingController _addharno = TextEditingController();
   TextEditingController _panno = TextEditingController();
 
-
-
-
   pickImage0(ImageSource imageType) async {
     try {
-      final photo = await ImagePicker().pickImage (source: imageType,imageQuality: 20);
+      final photo =
+          await ImagePicker().pickImage(source: imageType, imageQuality: 20);
       if (photo == null) return;
       final tempImage = File(photo.path);
       setState(() {
@@ -50,12 +46,14 @@ class _Documents_ScreenState extends State<Documents_Screen> {
 
       Get.back();
     } catch (error) {
-      debugPrint(error.toString());
+      //debugPrint(error.toString());
     }
   }
+
   pickImage1(ImageSource imageType) async {
     try {
-      final photo1 = await ImagePicker().pickImage(source: imageType,imageQuality: 20);
+      final photo1 =
+          await ImagePicker().pickImage(source: imageType, imageQuality: 20);
       if (photo1 == null) return;
       final tempImages = File(photo1.path);
       setState(() {
@@ -64,12 +62,14 @@ class _Documents_ScreenState extends State<Documents_Screen> {
 
       Get.back();
     } catch (error) {
-      debugPrint(error.toString());
+      // debugPrint(error.toString());
     }
   }
+
   pickImage2(ImageSource imageType) async {
     try {
-      final photo2 = await ImagePicker().pickImage(source: imageType,imageQuality: 20);
+      final photo2 =
+          await ImagePicker().pickImage(source: imageType, imageQuality: 20);
       if (photo2 == null) return;
       final tempImages = File(photo2.path);
       setState(() {
@@ -78,12 +78,9 @@ class _Documents_ScreenState extends State<Documents_Screen> {
 
       Get.back();
     } catch (error) {
-      debugPrint(error.toString());
+      //debugPrint(error.toString());
     }
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -98,146 +95,120 @@ class _Documents_ScreenState extends State<Documents_Screen> {
               flex: 2,
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-
                         children: [
+                          Container(width: 48, height: 2, color: kPrimaryColor),
+                          Container(width: 48, height: 2, color: kPrimaryColor),
+                          Container(width: 48, height: 2, color: kPrimaryColor),
                           Container(
-
-                            width: 48,
-                            height: 2,
-                            color: kPrimaryColor
-                          ),
-                          Container(
-
-                            width: 48,
-                            height: 2,
-                              color: kPrimaryColor
-                          ),
-                          Container(
-
-                            width: 48,
-                            height: 2,
-                              color: kPrimaryColor
-                          ),
-                          Container(
-
                             width: 48,
                             height: 2,
                             color: kPrimaryColor,
                           ),
+                          Container(width: 48, height: 2, color: kPrimaryColor),
                           Container(
-
-                            width: 48,
-                            height: 2,
-                              color: kPrimaryColor
-                          ),
-                          Container(
-
-                            width: 48,
-                            height: 2,
-                              color: kSecondaryColor
-                          ),
+                              width: 48, height: 2, color: kSecondaryColor),
                         ],
                       ),
                       const SizedBox(
                         height: 24,
                       ),
-
-
-                      Text("Documents",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
-
+                      Text(
+                        "Documents",
+                        style: GoogleFonts.lato(
+                            fontWeight: FontWeight.w500, fontSize: 24),
+                      ),
                       const SizedBox(
                         height: 17,
                       ),
-                      Text("Aadhar",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18),),
+                      Text(
+                        "Aadhar",
+                        style: GoogleFonts.lato(
+                            fontWeight: FontWeight.w500, fontSize: 18),
+                      ),
                       const SizedBox(
                         height: 8,
                       ),
                       SizedBox(
-                        width: wt*1,
+                        width: wt * 1,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             //aadhar front
                             SizedBox(
-                              width: wt*0.45,
-                              height:111,
-                              child: InkWell(
-                                onTap: (){
-                                  showModalBottomSheet(
-                                    context: context,
-                                    builder: (builder)=> bottomSheet(),
-                                  );
-                                },
-                                child: Container(
-
-                                  decoration: BoxDecoration(
-                                    //border: Border.all(color: Color(0XFFFF7D33), width: 5),
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(100),
-                                    ),
-                                  ),
-                                  child:
-                                  pickedImage1 != null
-                                      ? Image.file(
-                                    pickedImage1!,
-                                    //width: 170,
-                                    //height: 170,
-                                    fit: BoxFit.cover,
-                                  )
-                                      :
-                                      Image.asset("assets/images/Aadhar Front.png",
-                                  //Image.network('https://i1.wp.com/allinonedirectory.in/wp-content/uploads/2020/04/Dummy-Aadhaar-Screenshot.png?resize=401%2C238&ssl=1',
-                                  //  width:170,
-                                    //height: 170,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            ),
-
-
-                            SizedBox(
-                             width: wt*0.45,
+                              width: wt * 0.45,
                               height: 111,
                               child: InkWell(
-                                onTap: (){
+                                onTap: () {
                                   showModalBottomSheet(
                                     context: context,
-                                    builder: (builder)=> bottomSheetback(),
+                                    builder: (builder) => bottomSheet(),
                                   );
                                 },
                                 child: Container(
-
                                   decoration: BoxDecoration(
                                     //border: Border.all(color: Color(0XFFFF7D33), width: 5),
                                     borderRadius: const BorderRadius.all(
                                       Radius.circular(100),
                                     ),
                                   ),
-                                  child:
-                                  pickedImage0 != null
+                                  child: pickedImage1 != null
                                       ? Image.file(
-                                    pickedImage0!,
-                                    //width: 170,
-                                    //height: 170,
-                                    fit: BoxFit.cover,
-                                  )
-                                      :Image.asset("assets/images/Aadhar Back.png",
-                                  //Image.network('https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
-                                    //width: 170,
-                                    //height: 170,
-                                    fit: BoxFit.cover,
-                                  ),
+                                          pickedImage1!,
+                                          //width: 170,
+                                          //height: 170,
+                                          fit: BoxFit.cover,
+                                        )
+                                      : Image.asset(
+                                          "assets/images/Aadhar Front.png",
+                                          //Image.network('https://i1.wp.com/allinonedirectory.in/wp-content/uploads/2020/04/Dummy-Aadhaar-Screenshot.png?resize=401%2C238&ssl=1',
+                                          //  width:170,
+                                          //height: 170,
+                                          fit: BoxFit.cover,
+                                        ),
                                 ),
                               ),
                             ),
 
+                            SizedBox(
+                              width: wt * 0.45,
+                              height: 111,
+                              child: InkWell(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    builder: (builder) => bottomSheetback(),
+                                  );
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    //border: Border.all(color: Color(0XFFFF7D33), width: 5),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(100),
+                                    ),
+                                  ),
+                                  child: pickedImage0 != null
+                                      ? Image.file(
+                                          pickedImage0!,
+                                          //width: 170,
+                                          //height: 170,
+                                          fit: BoxFit.cover,
+                                        )
+                                      : Image.asset(
+                                          "assets/images/Aadhar Back.png",
+                                          //Image.network('https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
+                                          //width: 170,
+                                          //height: 170,
+                                          fit: BoxFit.cover,
+                                        ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -247,132 +218,112 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            border: Border.all(
-                                width: 1,
-                                color: Colors.black
-                            )
-                        ),
+                            border: Border.all(width: 1, color: Colors.black)),
                         child: Center(
                           child: TextFormField(
-                            controller: _addharno,
-                            keyboardType: TextInputType.number,
-                            cursorColor:colorPrimary,
-
-                            decoration: InputDecoration(
-
+                              controller: _addharno,
+                              keyboardType: TextInputType.number,
+                              cursorColor: colorPrimary,
+                              decoration: InputDecoration(
                                 border: InputBorder.none,
-
                                 hintText: "Enter Your Aadhar No",
                                 hintStyle: GoogleFonts.lato(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 14,
                                     color: kSecondaryColor),
-
-                                )
-
-                            ),
+                              )),
                         ),
-                        ),
+                      ),
                       const SizedBox(
                         height: 16,
                       ),
-                      Text("PAN",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18),),
+                      Text(
+                        "PAN",
+                        style: GoogleFonts.lato(
+                            fontWeight: FontWeight.w500, fontSize: 18),
+                      ),
                       SizedBox(
                         height: 16,
                       ),
-
                       SizedBox(
-                        width: wt*0.45,
-                        height:111,
+                        width: wt * 0.45,
+                        height: 111,
                         child: InkWell(
-                          onTap: (){
+                          onTap: () {
                             showModalBottomSheet(
                               context: context,
-                              builder: (builder)=> bottomSheetpan(),
+                              builder: (builder) => bottomSheetpan(),
                             );
                           },
                           child: Container(
-
                             decoration: BoxDecoration(
                               //border: Border.all(color: Color(0XFFFF7D33), width: 5),
                               borderRadius: const BorderRadius.all(
                                 Radius.circular(100),
                               ),
                             ),
-                            child:
-                            pickedImage2 != null
+                            child: pickedImage2 != null
                                 ? Image.file(
-                              pickedImage2!,
-                              //width: 170,
-                              //height: 170,
-                              fit: BoxFit.cover,
-                            )
-                                :
-                            Image.asset("assets/images/PAN.png",
-                              //Image.network('https://i1.wp.com/allinonedirectory.in/wp-content/uploads/2020/04/Dummy-Aadhaar-Screenshot.png?resize=401%2C238&ssl=1',
-                              //width: 170,
-                              //height: 170,
-                              fit: BoxFit.cover,
-                            ),
+                                    pickedImage2!,
+                                    //width: 170,
+                                    //height: 170,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.asset(
+                                    "assets/images/PAN.png",
+                                    //Image.network('https://i1.wp.com/allinonedirectory.in/wp-content/uploads/2020/04/Dummy-Aadhaar-Screenshot.png?resize=401%2C238&ssl=1',
+                                    //width: 170,
+                                    //height: 170,
+                                    fit: BoxFit.cover,
+                                  ),
                           ),
                         ),
                       ),
-
                       const SizedBox(
                         height: 16,
                       ),
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            border: Border.all(
-                                width: 1,
-                                color: Colors.black
-                            )
-                        ),
+                            border: Border.all(width: 1, color: Colors.black)),
                         child: Center(
                           child: TextFormField(
-                            cursorColor:colorPrimary,
+                            cursorColor: colorPrimary,
                             controller: _panno,
-                              //keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Enter Your PAN No",
-                                hintStyle: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: kSecondaryColor),
-                              ),
+                            //keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Enter Your PAN No",
+                              hintStyle: GoogleFonts.lato(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: kSecondaryColor),
+                            ),
 
-                              inputFormatters: [
+                            inputFormatters: [
                               LengthLimitingTextInputFormatter(19),
-                                FilteringTextInputFormatter.allow(RegExp("[a-zA-Z0-9]")),
-                              ],
-
-
+                              FilteringTextInputFormatter.allow(
+                                  RegExp("[a-zA-Z0-9]")),
+                            ],
                           ),
                         ),
                       ),
-
-
-
                     ],
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left:16,right:16,bottom: 24),
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
               child: Center(
                 child: Container(
                   width: double.infinity,
                   height: 48,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
-
-                      color: kPrimaryColor
-                  ),
+                      color: kPrimaryColor),
                   child: TextButton(
-                      onPressed: (){
+                      onPressed: () {
                         GetterloginSetter s = GetterloginSetter();
                         s.pancard = _addharno.text;
                         s.aadhar = _panno.text;
@@ -380,10 +331,27 @@ class _Documents_ScreenState extends State<Documents_Screen> {
 
                         print("Bhawani addhar ${s.pancard}");
                         print("Bhawani pan ${s.aadhar}");
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Account_details(aadhar: _addharno.text,pancard: _panno.text,name5: widget.name4,photo5: widget.photo4,mobile: widget.mobile,photoaadharback: pickedImage0,photoaadharfront: pickedImage1,pan: pickedImage2,)));
-                      }, child: Text('Next',style: GoogleFonts.lato(
-                      color: white,fontSize: 24,
-                      fontWeight: FontWeight.w600),)),
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Account_details(
+                                      aadhar: _addharno.text,
+                                      pancard: _panno.text,
+                                      name5: widget.name4,
+                                      photo5: widget.photo4,
+                                      mobile: widget.mobile,
+                                      photoaadharback: pickedImage0,
+                                      photoaadharfront: pickedImage1,
+                                      pan: pickedImage2,
+                                    )));
+                      },
+                      child: Text(
+                        'Next',
+                        style: GoogleFonts.lato(
+                            color: white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600),
+                      )),
                 ),
               ),
             )
@@ -392,15 +360,13 @@ class _Documents_ScreenState extends State<Documents_Screen> {
       ),
     );
   }
+
   //aadhar front
-  Widget bottomSheet(){
+  Widget bottomSheet() {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 200,
-      margin:  EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 20
-      ),
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         children: [
           Row(
@@ -409,7 +375,6 @@ class _Documents_ScreenState extends State<Documents_Screen> {
               Container(
                 width: wt * 0.30,
                 height: ht * 0.20,
-
                 decoration: BoxDecoration(
                     color: Color(0xffECF1F6),
                     shape: BoxShape.circle,
@@ -417,19 +382,17 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       BoxShadow(
                           color: Color(0xffECF1F6),
                           blurRadius: 10,
-                          spreadRadius: 1
-                          ,offset: Offset(4,4)
-                      )
-                    ]
-                ),
-                child:  InkWell(
-                  onTap: (){
-                    pickImage1(ImageSource.camera);                  },
-                  child: Icon(Icons.camera,color:kPrimaryColor,),
-
-
-
-
+                          spreadRadius: 1,
+                          offset: Offset(4, 4))
+                    ]),
+                child: InkWell(
+                  onTap: () {
+                    pickImage1(ImageSource.camera);
+                  },
+                  child: Icon(
+                    Icons.camera,
+                    color: kPrimaryColor,
+                  ),
                 ),
               ),
               Container(
@@ -442,46 +405,46 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       BoxShadow(
                           color: Color(0xffECF1F6),
                           blurRadius: 10,
-                          spreadRadius: 1
-                          ,offset: Offset(4,4)
-                      )
-                    ]
-                ),
+                          spreadRadius: 1,
+                          offset: Offset(4, 4))
+                    ]),
                 child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       pickImage1(ImageSource.gallery);
                     },
-                    child: Icon(Icons.folder_open,color:kPrimaryColor,)),
+                    child: Icon(
+                      Icons.folder_open,
+                      color: kPrimaryColor,
+                    )),
               ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text("Open Camera",style: GoogleFonts.lato(fontSize: 12,
-                  fontWeight: FontWeight.w500
-              ),),
-              Text("Open Files",style: GoogleFonts.lato(fontSize: 12,
-                  fontWeight: FontWeight.w500
-              ),)
+              Text(
+                "Open Camera",
+                style:
+                    GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                "Open Files",
+                style:
+                    GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
+              )
             ],
-
           )
         ],
       ),
-
-
     );
   }
+
   //aadhar back
-  Widget bottomSheetback(){
+  Widget bottomSheetback() {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 200,
-      margin:  EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 20
-      ),
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         children: [
           Row(
@@ -490,7 +453,6 @@ class _Documents_ScreenState extends State<Documents_Screen> {
               Container(
                 width: wt * 0.30,
                 height: ht * 0.20,
-
                 decoration: BoxDecoration(
                     color: Color(0xffECF1F6),
                     shape: BoxShape.circle,
@@ -498,19 +460,17 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       BoxShadow(
                           color: Color(0xffECF1F6),
                           blurRadius: 10,
-                          spreadRadius: 1
-                          ,offset: Offset(4,4)
-                      )
-                    ]
-                ),
-                child:  InkWell(
-                  onTap: (){
-                    pickImage0(ImageSource.camera);                  },
-                  child: Icon(Icons.camera,color: kPrimaryColor,),
-
-
-
-
+                          spreadRadius: 1,
+                          offset: Offset(4, 4))
+                    ]),
+                child: InkWell(
+                  onTap: () {
+                    pickImage0(ImageSource.camera);
+                  },
+                  child: Icon(
+                    Icons.camera,
+                    color: kPrimaryColor,
+                  ),
                 ),
               ),
               Container(
@@ -523,39 +483,42 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       BoxShadow(
                           color: Color(0xffECF1F6),
                           blurRadius: 10,
-                          spreadRadius: 1
-                          ,offset: Offset(4,4)
-                      )
-                    ]
-                ),
+                          spreadRadius: 1,
+                          offset: Offset(4, 4))
+                    ]),
                 child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       pickImage0(ImageSource.gallery);
                     },
-                    child: Icon(Icons.folder_open,color:kPrimaryColor,)),
+                    child: Icon(
+                      Icons.folder_open,
+                      color: kPrimaryColor,
+                    )),
               ),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text("Open Camera",style: GoogleFonts.lato(fontSize: 12,
-                  fontWeight: FontWeight.w500
-              ),),
-              Text("Open Files",style: GoogleFonts.lato(fontSize: 12,
-                  fontWeight: FontWeight.w500
-              ),)
+              Text(
+                "Open Camera",
+                style:
+                    GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
+              ),
+              Text(
+                "Open Files",
+                style:
+                    GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
+              )
             ],
-
           )
         ],
       ),
-
-
     );
   }
+
   //pan card
-  Widget bottomSheetpan(){
+  Widget bottomSheetpan() {
     return SingleChildScrollView(
       child: ClipRRect(
         borderRadius: const BorderRadius.only(
@@ -567,7 +530,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
           height: 250,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child:Column(
+            child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -575,7 +538,6 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                     Container(
                       width: wt * 0.30,
                       height: ht * 0.20,
-
                       decoration: BoxDecoration(
                           color: Color(0xffECF1F6),
                           shape: BoxShape.circle,
@@ -583,17 +545,17 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                             BoxShadow(
                                 color: Color(0xffECF1F6),
                                 blurRadius: 10,
-                                spreadRadius: 1
-                                ,offset: Offset(4,4)
-                            )
-                          ]
-                      ),
-                      child:  InkWell(
-                        onTap: (){
+                                spreadRadius: 1,
+                                offset: Offset(4, 4))
+                          ]),
+                      child: InkWell(
+                        onTap: () {
                           pickImage2(ImageSource.camera);
                         },
-                        child: Icon(Icons.camera,color:kPrimaryColor,),
-
+                        child: Icon(
+                          Icons.camera,
+                          color: kPrimaryColor,
+                        ),
                       ),
                     ),
                     Container(
@@ -604,37 +566,39 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                                color: Color(0xffECF1F6)
-                                ,
+                                color: Color(0xffECF1F6),
                                 blurRadius: 10,
-                                spreadRadius: 1
-                                ,offset: Offset(4,4)
-                            )
-                          ]
-                      ),
+                                spreadRadius: 1,
+                                offset: Offset(4, 4))
+                          ]),
                       child: InkWell(
-                          onTap: (){
+                          onTap: () {
                             pickImage2(ImageSource.gallery);
                           },
-                          child: Icon(Icons.folder_open,color: kPrimaryColor,)),
+                          child: Icon(
+                            Icons.folder_open,
+                            color: kPrimaryColor,
+                          )),
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text("Open Camera",style: GoogleFonts.lato(fontSize: 12,
-                        fontWeight: FontWeight.w500
-                    ),),
-                    Text("Open Files",style: GoogleFonts.lato(fontSize: 12,
-                        fontWeight: FontWeight.w500
-                    ),)
+                    Text(
+                      "Open Camera",
+                      style: GoogleFonts.lato(
+                          fontSize: 12, fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      "Open Files",
+                      style: GoogleFonts.lato(
+                          fontSize: 12, fontWeight: FontWeight.w500),
+                    )
                   ],
-
                 )
               ],
             ),
-
           ),
         ),
       ),

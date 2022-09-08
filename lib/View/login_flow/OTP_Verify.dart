@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
+import 'package:panditapp/View/login_flow/Name_Screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../Consts/colors.dart';
@@ -79,7 +79,7 @@ class _OTP_verifyState extends State<OTP_verify> {
       );
 
       final User? user = (await firebaseAuth.signInWithCredential(credential)).user;
-      print("Vikranbshd $user");
+      print("OTP Verify User ${user}");
       Navigator.of(context).push(MaterialPageRoute(builder: (context) => Name_Screen(mobile:widget.mobile)));
     } catch (e) {
       print("Failed to sign in: " + e.toString());
