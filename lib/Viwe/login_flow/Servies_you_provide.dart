@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/model/getterSetter.dart';
+import '../../Consts/colors.dart';
 import 'city_screen.dart';
 class Servies_you_screen extends StatefulWidget {
   final String? name,mobile;
@@ -21,13 +22,8 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
   var ht,wt;
 
   var _servicecontroller;
+  List<bool> isSelected = [true, false, false];
 
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
 
   @override
   Widget build(BuildContext context) {
@@ -172,9 +168,37 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                       ),
                     )
 
-
-
-
+                    // Expanded(
+                    //   child: ListView.separated(
+                    //       itemCount: 3,
+                    //       itemBuilder: (context, index){
+                    //     return   Column(
+                    //       children: [
+                    //         GestureDetector(
+                    //               onTap: (){
+                    //                 Colors.blue;
+                    //                 print("Container clicked first ");
+                    //               },
+                    //               child: Container(
+                    //                  width: wt*0.9,
+                    //                 height: ht* 0.07,
+                    //                 decoration: BoxDecoration(
+                    //                     borderRadius: BorderRadius.circular(4),
+                    //                     border: Border.all(color: kPrimaryColor )
+                    //                 ),
+                    //                 child: Center(child:
+                    //                 Text(
+                    //                     "Puja",
+                    //                   style: GoogleFonts.lato(fontWeight: FontWeight.w500,
+                    //                   fontSize: 16),
+                    //                 )),
+                    //               ),
+                    //             ),
+                    //       ],
+                    //     );
+                    //
+                    //   }, separatorBuilder: (BuildContext context, int index) {},),
+                    // )
                   ],
                 ),
               ),
@@ -193,9 +217,6 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
 
                  onPressed: (){
 
-                   // GetterloginSetter s = GetterloginSetter();
-                   // s.services =_servicecontroller.text;
-                   // print("Bhawani ${s.services}");
 
                    Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen(name3: widget.name,photo3: widget.photo,mobile: widget.mobile)));
                  }, child: Text('Next',style: GoogleFonts.lato(

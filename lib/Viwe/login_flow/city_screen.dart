@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/view_model/CityListApi.dart';
 
 
 
@@ -27,34 +28,20 @@ class City_Screen extends StatefulWidget {
   @override
   State<City_Screen> createState() => _City_ScreenState();
 }
-
-
-
-
-
-
-
 class _City_ScreenState extends State<City_Screen> {
   var ht,wt;
-
-
-
-
-
   late List _city;
-
   TextEditingController editingController = TextEditingController();
   late String textValue;
   late Timer timeHandle;
   // var items = List<String>();
-
-
-
+ late  City_List_Api? city_list_api;
   @override
   Widget build(BuildContext context) {
-
-
-    return Scaffold(
+    city_list_api = context.watch<City_List_Api>();
+    return Consumer<City_List_Api>(
+  builder: (_, data, __) {
+  return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
           child: Column(
@@ -156,11 +143,11 @@ class _City_ScreenState extends State<City_Screen> {
 
                             child: ListView.builder(
                                 shrinkWrap: true,
-                                itemCount: 3,
+                                itemCount: data.getCityModel!.response!.citylist!.length,
                                 itemBuilder: ((context,  index){
                                   final a = [index];
                                   return Card(
-                                    child: Text("ghgsh",)
+                                    child: Text("dfgf")
                                   );
 
                                 }))
@@ -195,6 +182,8 @@ class _City_ScreenState extends State<City_Screen> {
           ),
         )
     );
+  },
+);
   }
 
 

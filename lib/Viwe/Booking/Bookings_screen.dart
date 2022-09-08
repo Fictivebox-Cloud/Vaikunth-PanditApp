@@ -117,8 +117,8 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                              Icon(Icons.calendar_month,color: kPrimaryColor,),
                                              SizedBox(width: 11,),
                                              Text(
-                                               //"Mon 05/Oct/2021"
-                                               completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].poojaDate.toString(),
+                                               "Mon 05/Oct/2021",
+                                               //completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].poojaDate.toString(),
                                              style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w600,color: Color(0xff232323)),),
                                              // SizedBox(width: 105,),
 
@@ -206,7 +206,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
         //itemCount: 20,
         //Text(completeBookingViewModel.completebokingmodel!.response!.compbookinglist![0].poojaTitle ?? "",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: h1Color),),
 
-        itemCount:completeBookingViewModel.completebokingmodel!.response!.compbookinglist!.length,
+        itemCount:completeBookingViewModel.completebokingmodel?.response!.compbookinglist!.length,
       )
     );
   }

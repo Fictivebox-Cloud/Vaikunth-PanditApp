@@ -257,7 +257,7 @@ class _Account_detailsState extends State<Account_details> {
                           print("Bhawaniii choosebank: ${s.choosebank}");
                           print("Bhawaniii ifsc: ${s.name}");
                           print("Bhawaniii ifsc: ${s}");
-                          // api.fechingloginApi(
+                          // ApiCallLogin(
                           //   mobile: widget.mobile,
                           //   name: "",
                           //   services: "puja",

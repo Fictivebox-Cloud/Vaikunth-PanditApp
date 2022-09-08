@@ -3,6 +3,7 @@ const  String GET_BOOKING_LIST = "${BASEURL}getbookinglist";
 const  String GET_LOGIN_API = "${BASEURL}register";
 const  String GET_ACCEPTBOOKING_API = "${BASEURL}acceptbooking";
 const  String GET_COMPLETEBOOKING_API = "${BASEURL}getcompbookinglist";
+const  String GET_CITYLIST_API = "${BASEURL}getcitylist";
 
 
 

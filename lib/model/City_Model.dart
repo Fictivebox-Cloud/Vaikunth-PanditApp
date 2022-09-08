@@ -19,7 +19,6 @@ class CityModel {
   String? message;
   Response? response;
 
-
   factory CityModel.fromJson(Map<String, dynamic> json) => CityModel(
     success: json["success"] == null ? null : json["success"],
     message: json["message"] == null ? null : json["message"],
@@ -29,13 +28,13 @@ class CityModel {
   Map<String, dynamic> toJson() => {
     "success": success == null ? null : success,
     "message": message == null ? null : message,
-    "response": response == null ? null : response?.toJson(),
+    "response": response == null ? null : response!.toJson(),
   };
 }
 
 class Response {
   Response({
-   this.citylist,
+    this.citylist,
   });
 
   List<Citylist>? citylist;
@@ -67,6 +66,4 @@ class Citylist {
     "id": id == null ? null : id,
     "name": name == null ? null : name,
   };
-
-
 }

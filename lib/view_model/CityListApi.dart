@@ -1,6 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:panditapp/Util/Api_collection.dart';
+import 'package:panditapp/Util/api_status.dart';
+import 'package:panditapp/consts/user_Error.dart';
+import 'package:panditapp/repo/api_remote_services.dart';
 
 import '../model/City_Model.dart';
 
@@ -8,58 +12,43 @@ import 'package:http/http.dart' as http;
 
 class City_List_Api extends ChangeNotifier {
 
-  CityModel _cityModel = CityModel();
-
-  CityModel get cityMidel => _cityModel;
-
-
-  bool _cityListStatus = false;
-
-  bool get cityListStatus => _cityListStatus;
+ bool _loading = false;
+ CityModel? _cityModel;
+ UserError? _userError;
 
 
-  bool _dataStatus = false;
+ bool get loading => _loading;
+ CityModel? get getCityModel => _cityModel;
+ UserError? get userError => _userError;
 
 
-  bool get dataStatus => _dataStatus;
+ setLoading(bool loading){
+  _loading = loading;
+  notifyListeners();
+ }
 
+ setGetCityModel(CityModel cityModel){
+  _cityModel = cityModel;
+  notifyListeners();
+ }
+ setUserError(UserError userError){
+  _userError =userError;
+  notifyListeners();
+ }
 
-  static Future fachingApiCityList() async {
-
-    
-    try {
-      String username = 'am9uZUAyOTc4';
-      String password = 'RklUTkVTU0AjMTIz';
-      String basicAuth =
-          'Basic ' + base64.encode(utf8.encode('$username:$password'));
-      var url = Uri.parse("https://vaikunth.fictivebox.com/api/getcitylist");
-      
-      var apiResponse = await http.post(url, body: {
-        "pandit_id": "8",
-      }, headers: <String, String>{'authorization': basicAuth},
-      );
-      
-      
-      if (apiResponse.statusCode == 200) {
-
-        final data  = jsonEncode(apiResponse.body);
-
-
-      } else {
-        throw Exception("Error");
-      }
-    } on Exception catch (e) {
-      throw Exception(e.toString());
-
-      // TODO
-    }
+ getCityListApiCall() async{
+  setLoading(true);
+  var  response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_CITYLIST_API,);
+  if(response is Success){
+   Object data = cityModelFromJson(response.response as String);
+   setGetCityModel(data as CityModel);
   }
-  static List<CityModel> parseUsers(String responseBody) {
-
-    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-    return parsed.map<CityModel>((json) => CityModel.fromJson(json)).toList();
+  else if(response is Failure){
+   UserError userError = UserError(code: response.code,message: response.errorResponse);
+   setUserError(userError);
   }
-
+  setLoading(false);
+ }
 
   }
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Viwe/Home/Home_Screen.dart';
 import 'package:panditapp/Viwe/Splash_onboarding/Onboarding.dart';
+import 'package:panditapp/Viwe/login_flow/Name_Screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Consts/colors.dart';
@@ -33,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ) :  Navigator.pushReplacement(context,
                 MaterialPageRoute(builder:
                     (context) =>
-                    Home_Screen()
+                    Name_Screen()
                 )
             )
     );
