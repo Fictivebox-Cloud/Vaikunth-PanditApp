@@ -39,9 +39,7 @@ class _City_ScreenState extends State<City_Screen> {
   @override
   Widget build(BuildContext context) {
     city_list_api = context.watch<City_List_Api>();
-    return Consumer<City_List_Api>(
-  builder: (_, data, __) {
-  return Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         body: SafeArea(
           child: Column(
@@ -143,7 +141,7 @@ class _City_ScreenState extends State<City_Screen> {
 
                             child: ListView.builder(
                                 shrinkWrap: true,
-                                itemCount: data.getCityModel!.response!.citylist!.length,
+                                itemCount: 6,
                                 itemBuilder: ((context,  index){
                                   final a = [index];
                                   return Card(
@@ -182,8 +180,6 @@ class _City_ScreenState extends State<City_Screen> {
           ),
         )
     );
-  },
-);
   }
 
 

@@ -27,7 +27,7 @@ class ApiRemoteServices {
                 //'Content-Type': 'application/json'
             };
             print("URL $url");
-            var response = await http.post(url,body: {"pandit_id": 8.toString()}, headers: headers
+            var response = await http.post(url,body: body, headers: headers
             ).timeout(const Duration(seconds: 15));
             print("vikrat bhai => ${response.statusCode}");
             print(response.body);
