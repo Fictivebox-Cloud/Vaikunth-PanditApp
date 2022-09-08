@@ -33,8 +33,10 @@ class ApiRemoteServices {
             print(response.body);
 
             if(response.statusCode ==200){
-                print(response.body);
+
+                print("Govind Bookin Api  success${response.body}");
                 return Success(response: response.body);
+
             }
         }on HttpException{
             return Failure(code:  httpException, errorResponse: httpExceptionMsg);
