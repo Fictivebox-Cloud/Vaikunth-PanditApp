@@ -260,15 +260,15 @@ class _Account_detailsState extends State<Account_details> {
                           panfile: widget.pan,
                         );
 
-                        // SharedPreferences prefs =
-                        //     await SharedPreferences.getInstance();
-                        // prefs.setString("name", widget.name5.toString());
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        prefs.setString("name", widget.name5.toString());
 
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => Home_Screen()));
-                        // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home_Screen()), (Route<dynamic> route) => false);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Home_Screen()));
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home_Screen()), (Route<dynamic> route) => false);
                       },
                       child: Text(
                         'Finish',

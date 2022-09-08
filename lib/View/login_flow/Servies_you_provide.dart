@@ -20,7 +20,7 @@ class Servies_you_screen extends StatefulWidget {
 class _Servies_you_screenState extends State<Servies_you_screen> {
   var ht,wt;
 
-  var _servicecontroller;
+  var servicecontroller;
 
   List<String> _list = ["Puja", "Astrology","Funeral Services"];
 
@@ -35,6 +35,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController editingController = TextEditingController();
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -118,7 +119,6 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                           width: wt*0.9,
                           height: ht* 0.07,
 
-
                           decoration: BoxDecoration(
 
                               borderRadius: BorderRadius.circular(4),
@@ -128,7 +128,9 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                           child: Center(child:
 
                           Text(
+
                             _list[index],
+
                             style: GoogleFonts.lato(fontWeight: FontWeight.w500,
                                 fontSize: 16),
                           )),
