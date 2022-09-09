@@ -5,6 +5,8 @@ import 'package:panditapp/View/Home/Pages/home_page.dart';
 import 'package:panditapp/View/Profile/Profile.dart';
 
 
+import '../../Consts/color1.dart';
+import '../../consts/image_const.dart';
 import '../Booking/pages/Booking_Details.dart';
 
 class Home_Screen extends StatefulWidget {
@@ -16,12 +18,7 @@ class Home_Screen extends StatefulWidget {
 
 class _Home_ScreenState extends State<Home_Screen> {
 
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
+
   int currentIndex =0;
 
   final screen =[
@@ -54,22 +51,22 @@ class _Home_ScreenState extends State<Home_Screen> {
                 items: [
 
                   BottomNavigationBarItem(
-                      icon: Image.asset('assets/images/home.png')
+                      icon: Image.asset(ImageConst().HOME)
                       ,label: "Home"
 
                   ),
                   BottomNavigationBarItem(
-                      icon: Image.asset('assets/images/earning.png')
+                      icon: Image.asset(ImageConst().EARNING)
                       ,label: "Earnings"
 
                   ),
                   BottomNavigationBarItem(
-                      icon: Image.asset('assets/images/booking.png')
+                      icon: Image.asset(ImageConst().BOOKING)
                       ,label: "Bookings"
 
                   ),
                   BottomNavigationBarItem(
-                      icon: Image.asset('assets/images/profile.png')
+                      icon: Image.asset(ImageConst().PROFILE)
                       ,label: "Profile"
 
 

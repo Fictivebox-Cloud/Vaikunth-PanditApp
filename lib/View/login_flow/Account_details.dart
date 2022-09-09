@@ -6,10 +6,10 @@ import 'package:get/get_utils/get_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:panditapp/View/Home/Home_Screen.dart';
-import 'package:panditapp/View/Splash_onboarding/splash_screen.dart';
+
 
 import 'package:panditapp/model/getterSetter.dart';
-import 'package:provider/provider.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Consts/colors.dart';

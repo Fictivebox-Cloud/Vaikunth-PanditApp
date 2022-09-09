@@ -10,7 +10,8 @@ import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../Consts/colors.dart';
+import '../../../Consts/color1.dart';
+import '../../../consts/image_const.dart';
 
 class Home_page_Screen extends StatelessWidget {
   Home_page_Screen({Key? key}) : super(key: key);
@@ -100,7 +101,7 @@ class Home_page_Screen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/images/vector.png",
+              ImageConst().VECTOR,
             ),
             const SizedBox(
               width: 10,

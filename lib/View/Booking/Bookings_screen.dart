@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Widgets/circular_loader.dart';
 import 'package:panditapp/view_model/verification_number_api.dart';
 import 'package:provider/provider.dart';
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
 import '../../view_model/Complete_Bookings.dart';
 
 class Bookings_Screen extends StatefulWidget {

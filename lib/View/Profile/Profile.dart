@@ -1,9 +1,6 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:panditapp/View/Booking/Bookings_screen.dart';
 import 'package:panditapp/View/Earning/Earnings.dart';
 import 'package:panditapp/View/Profile/components/Edit_Details_Screen.dart';
@@ -11,8 +8,8 @@ import 'package:panditapp/View/Profile/components/Settinng_Screen.dart';
 import 'package:panditapp/View/Profile/components/id_card.dart';
 import 'package:panditapp/View/login_flow/Phone_Number.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
+import '../../consts/image_const.dart';
 import 'components/Bank Account Details.dart';
 
 class Profile_Screen extends StatefulWidget {
@@ -130,7 +127,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                               children: [
                                 Row(
                                   children: [
-                                    Image.asset("assets/images/idcard.png"),
+                                    Image.asset(ImageConst().IDCARD),
                                     SizedBox(
                                       width: 20,
                                     ),
@@ -158,7 +155,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                     ),
                                   ],
                                 ),
-                                Image.asset("assets/images/arow.png"),
+                                Image.asset(ImageConst().ARROW),
                               ],
                             ),
                           ),
@@ -199,7 +196,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 Row(
                                   //
                                   children: [
-                                    Image.asset("assets/images/bank.png"),
+                                    Image.asset(ImageConst().BANK),
                                     SizedBox(
                                       width: 33,
                                     ),
@@ -229,7 +226,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                     ),
                                   ],
                                 ),
-                                Image.asset("assets/images/arow.png"),
+                                Image.asset(ImageConst().ARROW),
                               ],
                             ),
                           ),
@@ -269,7 +266,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                               children: [
                                 Row(
                                   children: [
-                                    Image.asset("assets/images/order.png"),
+                                    Image.asset(ImageConst().ORDER),
                                     SizedBox(
                                       width: 30,
                                     ),
@@ -297,7 +294,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                     ),
                                   ],
                                 ),
-                                Image.asset("assets/images/arow.png"),
+                                Image.asset(ImageConst().ARROW),
                               ],
                             ),
                           ),
@@ -337,7 +334,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                               children: [
                                 Row(
                                   children: [
-                                    Image.asset("assets/images/rupss.png"),
+                                    Image.asset(ImageConst().RUPSS),
                                     SizedBox(
                                       width: 33,
                                     ),
@@ -365,7 +362,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                     ),
                                   ],
                                 ),
-                                Image.asset("assets/images/arow.png"),
+                                Image.asset(ImageConst().ARROW),
                               ],
                             ),
                           ),
@@ -405,7 +402,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                               children: [
                                 Row(
                                   children: [
-                                    Image.asset("assets/images/settings.png"),
+                                    Image.asset(ImageConst().SETTING),
                                     SizedBox(
                                       width: 21,
                                     ),
@@ -433,7 +430,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                     ),
                                   ],
                                 ),
-                                Image.asset("assets/images/arow.png"),
+                                Image.asset(ImageConst().ARROW),
                                 // Icon(Icons.arrow_forward)
                               ],
                             ),
