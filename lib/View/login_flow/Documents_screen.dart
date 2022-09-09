@@ -14,7 +14,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:panditapp/model/getterSetter.dart';
 
 import '../../Consts/color1.dart';
-import '../../consts/text_const.dart';
+
 
 class Documents_Screen extends StatefulWidget {
   final String? name4, mobile;

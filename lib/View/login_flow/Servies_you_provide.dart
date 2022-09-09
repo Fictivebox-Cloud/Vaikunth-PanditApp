@@ -5,9 +5,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/model/getterSetter.dart';
 import '../../Consts/color1.dart';
+
 import '../../Consts/text_const.dart';
-import '../../consts/text_const.dart';
 import 'city_screen.dart';
+
 class Servies_you_screen extends StatefulWidget {
   final String? name,mobile;
   final File? photo;

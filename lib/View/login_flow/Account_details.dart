@@ -14,8 +14,6 @@ import 'package:panditapp/model/getterSetter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Consts/color1.dart';
-
-import '../../consts/text_const.dart';
 import '../../view_model/ApiCallLogin.dart';
 
 class Account_details extends StatefulWidget {
