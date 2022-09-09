@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../Consts/colors.dart';
+import '../../../Consts/color1.dart';
 
 class Bank_Account_Screen extends StatefulWidget {
   const Bank_Account_Screen({Key? key}) : super(key: key);

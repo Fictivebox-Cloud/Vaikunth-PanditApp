@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../../Consts/colors.dart';
+import '../../../Consts/color1.dart';
 
 class Edit_Details_Screen extends StatefulWidget {
   const Edit_Details_Screen({Key? key}) : super(key: key);

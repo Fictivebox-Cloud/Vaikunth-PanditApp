@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../Consts/colors.dart';
+import '../../../Consts/color1.dart';
 import '../../../view_model/home_tab/Accept_Booking_Api.dart';
 
 class BookingListTitl extends StatefulWidget {

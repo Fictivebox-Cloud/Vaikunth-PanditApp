@@ -31,47 +31,52 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: white,
-        body: completeBookingViewModel.loading
-            ? Center(child: CircularLoader())
-            : DefaultTabController(
-                length: 3,
-                child: Scaffold(
-                    body: Padding(
-                  padding: const EdgeInsets.only(top: 50),
-                  child: Column(
-                    children: [
-                      TabBar(
-                        labelStyle: TextStyle(fontSize: Small ? 13.0 : 18.0),
-                        labelColor: h1Color,
-                        unselectedLabelColor: Color(0Xff999EA3),
-                        tabs: const [
-                          Tab(
-                            text: 'Upcoming',
-                          ),
-                          Tab(
-                            text: 'Completed',
-                          ),
-                          Tab(
-                            text: 'Cancelled',
-                          ),
-                        ],
-                      ),
-                      Expanded(
-                          child: TabBarView(
-                        children: [
-                          Center(
-                            child: Upcoming(),
-                          ),
-                          Center(
-                            child: CompletedPage(),
-                          ),
-                          Center(child: Cancelled()),
-                        ],
-                      ))
-                    ],
-                  ),
-                )),
-              ));
+        body:  _ui(completeBookingViewModel),
+    );
+  }
+
+  _ui(CompleteBookingViewModel completeBookingViewModel){
+    if(completeBookingViewModel.loading){
+      return Center(child: CircularProgressIndicator(color: kPrimaryColor,),);
+    }else if (completeBookingViewModel.userError !=null){
+      return Center(child:  Text(completeBookingViewModel.userError!.message.toString()??"Error"),);
+    }
+    return _listDesign(completeBookingViewModel);
+
+  }
+  _listDesign(CompleteBookingViewModel completeBookingViewModel){
+    return Column(
+      children: [
+        TabBar(
+          labelStyle: TextStyle(fontSize: Small ? 13.0 : 18.0),
+          labelColor: h1Color,
+          unselectedLabelColor: Color(0Xff999EA3),
+          tabs: const [
+            Tab(
+              text: 'Upcoming',
+            ),
+            Tab(
+              text: 'Completed',
+            ),
+            Tab(
+              text: 'Cancelled',
+            ),
+          ],
+        ),
+        Expanded(
+            child: TabBarView(
+              children: [
+                Center(
+                  child: Upcoming(),
+                ),
+                Center(
+                  child: CompletedPage(),
+                ),
+                Center(child: Cancelled()),
+              ],
+            ))
+      ],
+    );
   }
 
   Widget Upcoming() {

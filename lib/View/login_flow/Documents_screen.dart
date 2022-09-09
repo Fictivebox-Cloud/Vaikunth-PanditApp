@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/Consts/text_const.dart';
 
 import 'package:panditapp/View/login_flow/Account_details.dart';
 
@@ -12,7 +13,8 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
+import '../../consts/text_const.dart';
 
 class Documents_Screen extends StatefulWidget {
   final String? name4, mobile;
@@ -119,7 +121,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         height: 24,
                       ),
                       Text(
-                        "Documents",
+                        DOCUMENT,
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500, fontSize: 24),
                       ),
@@ -127,7 +129,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         height: 17,
                       ),
                       Text(
-                        "Aadhar",
+                        AADHAR,
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500, fontSize: 18),
                       ),
@@ -226,7 +228,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                               cursorColor: colorPrimary,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Enter Your Aadhar No",
+                                hintText:ENTER_YOUR_AADHAR_NO,
                                 hintStyle: GoogleFonts.lato(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 14,
@@ -238,7 +240,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         height: 16,
                       ),
                       Text(
-                        "PAN",
+                        PAN,
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500, fontSize: 18),
                       ),
@@ -293,7 +295,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                             //keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: "Enter Your PAN No",
+                              hintText:ENTER_YOUR_PAN_NO,
                               hintStyle: GoogleFonts.lato(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14,
@@ -346,7 +348,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                                     )));
                       },
                       child: Text(
-                        'Next',
+                        NEXT,
                         style: GoogleFonts.lato(
                             color: white,
                             fontSize: 24,
@@ -423,12 +425,12 @@ class _Documents_ScreenState extends State<Documents_Screen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                "Open Camera",
+                OPENCAMERA,
                 style:
                     GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               Text(
-                "Open Files",
+                OPENFILE,
                 style:
                     GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
               )
@@ -501,12 +503,12 @@ class _Documents_ScreenState extends State<Documents_Screen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                "Open Camera",
+                OPENCAMERA,
                 style:
                     GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               Text(
-                "Open Files",
+                OPENFILE,
                 style:
                     GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
               )
@@ -586,12 +588,12 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      "Open Camera",
+                      OPENCAMERA,
                       style: GoogleFonts.lato(
                           fontSize: 12, fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      "Open Files",
+                      OPENFILE,
                       style: GoogleFonts.lato(
                           fontSize: 12, fontWeight: FontWeight.w500),
                     )

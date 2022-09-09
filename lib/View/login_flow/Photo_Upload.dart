@@ -7,11 +7,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:panditapp/Consts/text_const.dart';
 import 'package:panditapp/View/login_flow/Servies_you_provide.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
+import '../../consts/text_const.dart';
 
 
 class Photo_Upload extends StatefulWidget {
@@ -100,10 +102,10 @@ class _MyAppState extends State<Photo_Upload> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text("Open Camera",style: GoogleFonts.lato(fontSize: 12,
+                      Text(OPENCAMERA,style: GoogleFonts.lato(fontSize: 12,
                           fontWeight: FontWeight.w500
                       ),),
-                      Text("Open Files",style: GoogleFonts.lato(fontSize: 12,
+                      Text(OPENFILE,style: GoogleFonts.lato(fontSize: 12,
                           fontWeight: FontWeight.w500
                       ),)
                     ],
@@ -213,14 +215,14 @@ class _MyAppState extends State<Photo_Upload> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16),
-                      child: Text("Photo",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
+                      child: Text(PHOTO,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
                     ),
                     SizedBox(
                       height: 32,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 16),
-                      child: Text("Upload your photo",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: Color(0xff343D48)),),
+                      child: Text(UPLOADYOURPHOTO,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: Color(0xff343D48)),),
                     ),
                     SizedBox(
                       height: 12,
@@ -310,7 +312,7 @@ class _MyAppState extends State<Photo_Upload> {
                           s.Photo = pickedImage;
                           print("abhi ${s.Photo}");
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Servies_you_screen(name: widget.name,photo:pickedImage,mobile: widget.mobile)));
-                        }, child: Text('Next',style: GoogleFonts.lato(
+                        }, child: Text(NEXT,style: GoogleFonts.lato(
                         color: white,fontSize: 24,
                         fontWeight: FontWeight.w600),)),
                   ),

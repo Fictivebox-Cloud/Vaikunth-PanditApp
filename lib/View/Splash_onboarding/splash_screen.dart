@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
 import '../login_flow/Name_Screen.dart';
 import 'Onboarding.dart';
 

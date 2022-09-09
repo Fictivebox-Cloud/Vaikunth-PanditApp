@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/model/getterSetter.dart';
+import '../../Consts/color1.dart';
+import '../../Consts/text_const.dart';
+import '../../consts/text_const.dart';
 import 'city_screen.dart';
 class Servies_you_screen extends StatefulWidget {
   final String? name,mobile;
@@ -22,16 +25,9 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
 
   var servicecontroller;
 
-  List<String> _list = ["Puja", "Astrology","Funeral Services"];
+  List<String> _list = [PUJA, ASTROLOGY,FUNERALSERVICES];
 
   int _selectedIndex = 0;
-
-  Color kPrimaryColor = Color(0xffFF7D33);
-  Color kSecondaryColor = Color(0xffCACACA);
-  Color kScaffoldBackground = Color(0xffFFF3E9);
-  Color p1Color =  Color(0xff6E798C);
-  Color white = Color(0xffFFFFFF);
-  Color h1Color =Color(0xff343D48);
 
   @override
   Widget build(BuildContext context) {
@@ -94,9 +90,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                   SizedBox(
                     height: 24,
                   ),
-
-
-                     Text("Services you offer",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
+                     Text(SERVICESYOUOFFER,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
 
                   SizedBox(
                     height: 32,
@@ -140,53 +134,6 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                       ), itemCount: _list.length)),
 
 
-
-                  // SizedBox(
-                  //   height: 12,
-                  // ),
-                  // GestureDetector(
-                  //   onTap: (){
-                  //     print("Container clicked second");
-                  //   },
-                  //   child: Container(
-                  //     width: wt*0.9,
-                  //     height: ht* 0.07,
-                  //     decoration: BoxDecoration(
-                  //         borderRadius: BorderRadius.circular(4),
-                  //         border: Border.all(color: kSecondaryColor)
-                  //
-                  //     ),
-                  //     child: Center(child: Text("Astrology"
-                  //       , style: GoogleFonts.lato(fontWeight: FontWeight.w500,
-                  //           fontSize: 16),
-                  //     )),
-                  //   ),
-                  // ),
-                  // SizedBox(
-                  //   height: 12,
-                  // ),
-                  // GestureDetector(
-                  //   onTap: (){
-                  //     print("Container clicked third");
-                  //   },
-                  //   child: Container(
-                  //     width: wt*0.9,
-                  //     height: ht* 0.07,
-                  //     decoration: BoxDecoration(
-                  //         borderRadius: BorderRadius.circular(4),
-                  //         border: Border.all(color: kSecondaryColor)
-                  //
-                  //     ),
-                  //     child: Center(child: Text("Funeral Services"
-                  //       , style: GoogleFonts.lato(fontWeight: FontWeight.w500,
-                  //           fontSize: 16),
-                  //     )),
-                  //   ),
-                  // )
-
-
-
-
                 ],
               ),
             ),
@@ -209,8 +156,8 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                    // print("Bhawani ${s.services}");
 
                    Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen(name3: widget.name,photo3: widget.photo,mobile: widget.mobile)));
-                 }, child: Text('Next',style: GoogleFonts.lato(
-                 color: Color(0xffFFFFFF),fontSize: 24,
+                 }, child: Text(NEXT,style: GoogleFonts.lato(
+                 color: white,fontSize: 24,
                  fontWeight: FontWeight.w600),)),
               ),
             )

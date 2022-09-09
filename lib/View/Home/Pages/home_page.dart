@@ -10,8 +10,11 @@ import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../Consts/color1.dart';
+
+
+import '../../../consts/color1.dart';
 import '../../../consts/image_const.dart';
+
 
 class Home_page_Screen extends StatelessWidget {
   Home_page_Screen({Key? key}) : super(key: key);
@@ -77,7 +80,7 @@ class Home_page_Screen extends StatelessWidget {
                   textOn: "Online",
                   value: true,
                   textOff: "Ofline",
-                  colorOn: colorbtn,
+                  colorOn: btn,
                   colorOff: p1Color,
                   textSize: 16,
                   onChanged: (bool position) {

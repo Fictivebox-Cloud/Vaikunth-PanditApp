@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
 import '../login_flow/Phone_Number.dart';
 import 'Onbording_Model.dart';
 import '../../consts/SizeConfig.dart';

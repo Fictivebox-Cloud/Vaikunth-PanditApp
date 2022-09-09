@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../Consts/colors.dart';
+import '../../../Consts/color1.dart';
 
 class Id_card_Screen extends StatefulWidget {
   const Id_card_Screen({Key? key}) : super(key: key);

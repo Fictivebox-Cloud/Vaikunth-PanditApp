@@ -12,9 +12,11 @@ import 'package:panditapp/view_model/CityListApi.dart';
 
 import 'package:provider/provider.dart';
 
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
 
 
+import '../../Consts/text_const.dart';
+import '../../consts/text_const.dart';
 import 'Documents_screen.dart';
 
 class City_Screen extends StatefulWidget {
@@ -40,7 +42,7 @@ class _City_ScreenState extends State<City_Screen> {
   Widget build(BuildContext context) {
     city_list_api = context.watch<City_List_Api>();
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor:white,
         body: SafeArea(
           child: Column(
             children: [
@@ -89,7 +91,7 @@ class _City_ScreenState extends State<City_Screen> {
                         SizedBox(
                           height: 24,
                         ),
-                        Text("Select your city",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
+                        Text(SELECTYOURCITY,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
                         SizedBox(
                           height: 32,
                         ),
@@ -101,7 +103,7 @@ class _City_ScreenState extends State<City_Screen> {
 
                               border: Border.all(
                                   width: 1,
-                                  color: Colors.black
+                                  color:h1Color
                               )
                           ),
                           child: TextFormField(
@@ -110,12 +112,12 @@ class _City_ScreenState extends State<City_Screen> {
                             controller: editingController,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Search for your city",
+                                hintText: SEARCH_YOUR_CITY,
                                 hintStyle: GoogleFonts.lato(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 14,
                                     color: kSecondaryColor),
-                                prefixIcon: const Icon(Icons.search,color: Color(0xff6E798C),
+                                prefixIcon: const Icon(Icons.search,color: p1Color,
                                 )
                             ),
                           ),
@@ -142,8 +144,8 @@ class _City_ScreenState extends State<City_Screen> {
                   child: TextButton(
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Documents_Screen(name4: widget.name3,photo4: widget.photo3,mobile: widget.mobile,)));
-                      }, child: Text('Next',style: GoogleFonts.lato(
-                      color: Color(0xffFFFFFF),fontSize: 24,
+                      }, child: Text(NEXT,style: GoogleFonts.lato(
+                      color:white,fontSize: 24,
                       fontWeight: FontWeight.w600),)),
                 ),
               )

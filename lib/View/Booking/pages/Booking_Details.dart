@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/Booking/pages/Booking_Progress_Screen.dart';
 
-import '../../../Consts/colors.dart';
+import '../../../Consts/color1.dart';
 
 
 class Booking_Details_Screen extends StatefulWidget {
