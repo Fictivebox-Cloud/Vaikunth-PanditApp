@@ -132,7 +132,7 @@ class _Account_detailsState extends State<Account_details> {
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            border: Border.all(width: 1, color: Colors.black)),
+                            border: Border.all(width: 1, color: h1Color)),
                         child: TextFormField(
                           cursorColor: colorPrimary,
                           controller: _accountno,

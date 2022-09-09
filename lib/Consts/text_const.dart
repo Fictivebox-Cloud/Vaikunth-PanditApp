@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const String ENTER_OTP = "Enter OTP";
+
 // Api Error
 
 const invalidResponse = 100;

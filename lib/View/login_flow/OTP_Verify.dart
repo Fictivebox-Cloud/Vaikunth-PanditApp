@@ -3,8 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/View/Home/Home_Screen.dart';
 import 'package:panditapp/View/login_flow/Name_Screen.dart';
+import 'package:panditapp/view_model/verification_number_api.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../Consts/colors.dart';
 
@@ -80,12 +83,34 @@ class _OTP_verifyState extends State<OTP_verify> {
 
       final User? user = (await firebaseAuth.signInWithCredential(credential)).user;
       print("OTP Verify User ${user}");
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Name_Screen(mobile:widget.mobile)));
+      userRegistrationStatus();
     } catch (e) {
       print("Failed to sign in: " + e.toString());
     }
   }
 
+
+  userRegistrationStatus() {
+    NumberVerifyViewModel numberVerifyViewModel = NumberVerifyViewModel();
+    numberVerifyViewModel.NumberVerifyAPIcall(widget.mobile).then((value) {
+      if(value) {
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home_Screen()), (route) => false);
+      } else {
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Name_Screen(mobile: widget.mobile,)), (route) => false);
+      }
+    });
+    // Consumer
+    //    <NumberVerifyViewModel>(builder: (_, data, __) {
+    //   if(data.loading == false && data.userError == null) {
+    //     print("Data Data");
+    //     data.numberverifyModel!.response?.panditDetails != null ?
+    //        :
+    //
+    //     ;
+    //   }
+    //   return Container();
+    // });
+  }
 
   var ht,wt;
 
