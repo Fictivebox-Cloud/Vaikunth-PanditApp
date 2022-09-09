@@ -9,7 +9,7 @@ import 'package:panditapp/View/Earning/components/Money_transferred_succesfully.
 
 import 'package:table_calendar/table_calendar.dart';
 
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
 
 class Earnings_Screen extends StatefulWidget {
   const Earnings_Screen({Key? key}) : super(key: key);

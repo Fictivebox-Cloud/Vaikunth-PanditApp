@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../Consts/colors.dart';
+import '../../../Consts/color1.dart';
 
 class Help_Support_Screen extends StatefulWidget {
   const Help_Support_Screen({Key? key}) : super(key: key);

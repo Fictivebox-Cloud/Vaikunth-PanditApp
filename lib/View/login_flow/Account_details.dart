@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/Consts/text_const.dart';
 
 import 'package:panditapp/View/Home/Home_Screen.dart';
 import 'package:panditapp/View/Splash_onboarding/splash_screen.dart';
@@ -12,7 +13,7 @@ import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
 
 import '../../view_model/ApiCallLogin.dart';
 
@@ -58,7 +59,7 @@ class _Account_detailsState extends State<Account_details> {
     ht = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor:white,
       body: SafeArea(
         child: Column(
           children: [
@@ -110,7 +111,7 @@ class _Account_detailsState extends State<Account_details> {
                       ),
 
                       Text(
-                        "Account details",
+                        ACCOUNT_DETAILS,
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500, fontSize: 24),
                       ),
@@ -122,7 +123,7 @@ class _Account_detailsState extends State<Account_details> {
                       //Text("${widget.aadhar}"),
 
                       Text(
-                        "Account No",
+                       ACCOUNT_NO,
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500, fontSize: 18),
                       ),
@@ -142,9 +143,8 @@ class _Account_detailsState extends State<Account_details> {
                             hintStyle: GoogleFonts.lato(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 14,
-                                color: Color(
-                                  0xffCACACA,
-                                )),
+                                color:kSecondaryColor
+                            ),
                           ),
                         ),
                       ),
@@ -152,7 +152,7 @@ class _Account_detailsState extends State<Account_details> {
                         height: 36,
                       ),
                       Text(
-                        "Choose Bank",
+                       CHOOSE_BANK,
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500, fontSize: 18),
                       ),
@@ -162,7 +162,7 @@ class _Account_detailsState extends State<Account_details> {
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            border: Border.all(width: 1, color: Colors.black)),
+                            border: Border.all(width: 1, color: h1Color)),
                         child: TextFormField(
                           cursorColor: colorPrimary,
                           controller: _choosebank,
@@ -171,9 +171,8 @@ class _Account_detailsState extends State<Account_details> {
                             hintStyle: GoogleFonts.lato(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 14,
-                                color: Color(
-                                  0xffCACACA,
-                                )),
+                                color: kSecondaryColor
+                            ),
                           ),
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(19),
@@ -188,7 +187,7 @@ class _Account_detailsState extends State<Account_details> {
                         height: 36,
                       ),
                       Text(
-                        "IFSC Code",
+                        IFSC_CODE,
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500, fontSize: 18),
                       ),
@@ -198,7 +197,7 @@ class _Account_detailsState extends State<Account_details> {
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
-                            border: Border.all(width: 1, color: Colors.black)),
+                            border: Border.all(width: 1, color: h1Color)),
                         child: TextFormField(
                           cursorColor: colorPrimary,
                           controller: _ifsccode,
@@ -207,9 +206,8 @@ class _Account_detailsState extends State<Account_details> {
                             hintStyle: GoogleFonts.lato(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 14,
-                                color: Color(
-                                  0xffCACACA,
-                                )),
+                                color: kSecondaryColor
+                            ),
                           ),
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(19),
@@ -271,9 +269,9 @@ class _Account_detailsState extends State<Account_details> {
                         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home_Screen()), (Route<dynamic> route) => false);
                       },
                       child: Text(
-                        'Finish',
+                        FINISH,
                         style: GoogleFonts.lato(
-                            color: Color(0xffFFFFFF),
+                            color:white,
                             fontSize: 24,
                             fontWeight: FontWeight.w600),
                       )),

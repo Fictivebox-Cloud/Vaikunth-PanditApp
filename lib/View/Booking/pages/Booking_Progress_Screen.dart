@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:status_change/status_change.dart';
 
-import '../../../Consts/colors.dart';
+import '../../../Consts/color1.dart';
 
 class Booking_Progress extends StatefulWidget {
   const Booking_Progress({Key? key}) : super(key: key);

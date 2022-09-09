@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../Consts/colors.dart';
+import '../../../Consts/color1.dart';
 import 'Help&Support.dart';
 class Setting_Screen extends StatefulWidget {
   const Setting_Screen({Key? key}) : super(key: key);

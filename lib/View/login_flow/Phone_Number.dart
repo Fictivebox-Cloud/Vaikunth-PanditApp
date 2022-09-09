@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/login_flow/OTP_Verify.dart';
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
 
 class PhoneNumber_Screen extends StatefulWidget {
   const PhoneNumber_Screen({Key? key}) : super(key: key);
@@ -25,10 +25,10 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
     ht = MediaQuery.of(context).size.height;
 
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor:Color(0XFFFF7D33),
+      statusBarColor:colorPrimary,
     ));
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor:white,
       body: SafeArea(
          child: Container(
            child: Column(
@@ -47,7 +47,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                           child: Text("Enter Your Phone Number",
                             style: GoogleFonts.lato(
 
-                              fontWeight: FontWeight.w500,color: Colors.black,fontSize: 24),),
+                              fontWeight: FontWeight.w500,color: h1Color,fontSize: 24),),
                         ),
                        Padding(
                          padding: const EdgeInsets.all(16.0),
@@ -87,7 +87,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                                  fontWeight: FontWeight.w600,),),
 
                              style: ElevatedButton.styleFrom(
-                             primary: Color(0XFFFF7D33),
+                             primary: colorPrimary,
                              //padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                              textStyle: TextStyle(
                                  fontSize: 30,
@@ -114,7 +114,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
         borderRadius: BorderRadius.circular(4),
         border: Border.all(
           width: 1,
-          color: Colors.black
+          color:h1Color
         )
       ),
       child: Row(

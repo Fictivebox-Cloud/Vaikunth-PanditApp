@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../../model/Booking Model/Completd_Booking_Model.dart';
-import '../../../Consts/colors.dart';
+import '../../../Consts/color1.dart';
 
 
 class Completed_Screen_Page extends StatefulWidget {

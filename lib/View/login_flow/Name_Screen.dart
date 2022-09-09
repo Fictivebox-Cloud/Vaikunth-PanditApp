@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/Consts/text_const.dart';
 
 
 import 'package:panditapp/View/login_flow/Photo_Upload.dart';
@@ -9,7 +10,7 @@ import 'package:panditapp/View/login_flow/Photo_Upload.dart';
 import 'package:panditapp/model/getterSetter.dart';
 
 
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
 
 
 
@@ -44,7 +45,7 @@ class _Name_ScreenState extends State<Name_Screen> {
     ht = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor:white,
         body: SafeArea(
           child: Column(
             children: [
@@ -100,7 +101,7 @@ class _Name_ScreenState extends State<Name_Screen> {
                      // Text("Mobile${widget.mobile}"),
                       Padding(
                         padding: const EdgeInsets.only(left: 16),
-                        child: Text("Name",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
+                        child: Text(NAME,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 24),),
                       ),
                       SizedBox(
                         height: 15,
@@ -111,16 +112,16 @@ class _Name_ScreenState extends State<Name_Screen> {
                           child: SizedBox(
                               height: ht * 0.4,
                               child: TextField(
-                                  cursorColor: Color(0xFFFF7D33),
+                                  cursorColor: colorPrimary,
                                   controller: _namecontroller,
                                   //keyboardType: TextInputType.number,
                                   decoration: InputDecoration(
-                                      fillColor: Colors.grey.shade100,
-                                      hintText:'Enter Your Name',
+                                      fillColor:grey,
+                                      hintText:ENTERYOURNAME,
                                       hintStyle: TextStyle(fontSize: 15),
 
                                       focusedBorder:OutlineInputBorder(
-                                        borderSide: const BorderSide(color: Color(0xFFFF7D33), width: 2.0),
+                                        borderSide: const BorderSide(color: colorPrimary, width: 2.0),
                                         // borderRadius: BorderRadius.circular(25.0),
                                       ),
 
@@ -167,7 +168,7 @@ class _Name_ScreenState extends State<Name_Screen> {
                           s.name = _namecontroller.text;
                           print("Bhawani ${s.name}");
                           Navigator.push(context, MaterialPageRoute(builder: (context)=>Photo_Upload(name:_namecontroller.text,mobile: widget.mobile,)));
-                        }, child: Text('Next',style: GoogleFonts.lato(
+                        }, child: Text(NEXT,style: GoogleFonts.lato(
                         color: white,fontSize: 24,
                         fontWeight: FontWeight.w600),)),
                   ),

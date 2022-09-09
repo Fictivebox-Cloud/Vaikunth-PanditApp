@@ -9,7 +9,7 @@ import 'package:panditapp/view_model/verification_number_api.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
 
 class OTP_verify extends StatefulWidget {
   String? mobile;

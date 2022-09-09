@@ -12,7 +12,7 @@ import 'package:panditapp/View/Profile/components/id_card.dart';
 import 'package:panditapp/View/login_flow/Phone_Number.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Consts/colors.dart';
+import '../../Consts/color1.dart';
 import 'components/Bank Account Details.dart';
 
 class Profile_Screen extends StatefulWidget {

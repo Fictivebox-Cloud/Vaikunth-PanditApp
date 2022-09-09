@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:panditapp/View/login_flow/Name_Screen.dart';
 
 import 'package:panditapp/model/Booking%20Model/BookingModel.dart';
 
@@ -60,7 +61,8 @@ class MyApp extends StatelessWidget {
 
         ),
         // home: City_Screen(),
-      home: Home_Screen(),
+      //home: Home_Screen(),
+      home: Name_Screen(),
       );
   }
 

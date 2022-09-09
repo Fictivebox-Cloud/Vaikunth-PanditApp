@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:panditapp/Consts/color1.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'space.dart';
@@ -12,8 +13,8 @@ class ShimmerLoader extends StatelessWidget {
       width: double.infinity,
       height: MediaQuery.of(context).size.height,
       child: Shimmer.fromColors(
-        baseColor: Colors.grey.shade300,
-        highlightColor: Colors.grey.shade100,
+        baseColor: grey300,
+        highlightColor:grey,
         child: ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (_, __) => Padding(
@@ -24,7 +25,7 @@ class ShimmerLoader extends StatelessWidget {
                 Container(
                   width: 100.0,
                   height: 100.0,
-                  color: Colors.white,
+                  color: white,
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
@@ -37,7 +38,7 @@ class ShimmerLoader extends StatelessWidget {
                       Container(
                         width: double.infinity,
                         height: 15.0,
-                        color: Colors.white,
+                        color: white,
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: 2.0),
@@ -45,7 +46,7 @@ class ShimmerLoader extends StatelessWidget {
                       Container(
                         width: double.infinity,
                         height: 15.0,
-                        color: Colors.white,
+                        color:white,
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: 5.0),
@@ -53,7 +54,7 @@ class ShimmerLoader extends StatelessWidget {
                       Container(
                         width: 150.0,
                         height: 15.0,
-                        color: Colors.white,
+                        color:white,
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -64,12 +65,12 @@ class ShimmerLoader extends StatelessWidget {
                           Container(
                             width: 70.0,
                             height: 15.0,
-                            color: Colors.white,
+                            color:white,
                           ),
                           Container(
                             width: 100.0,
                             height: 15.0,
-                            color: Colors.white,
+                            color: white,
                           ),
                         ],
                       ),
