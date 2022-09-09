@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 
@@ -60,7 +61,9 @@ class ApiCallLogin extends ChangeNotifier {
       File? panfile,
       String? apiUrl}) async {
     setLoading(true);
-
+    var headers = {
+      'Authorization': 'Basic YW05dVpVQXlPVGM0OlJrbFVUa1ZUVTBBak1USXo=',
+    };
     Map<String, String> map = Map<String, String>();
 
     map['pandit_mobile'] = mobile.toString();
@@ -73,20 +76,24 @@ class ApiCallLogin extends ChangeNotifier {
     map['pandit_bank'] = bank;
     map['pandit_ifsc'] = ifsc;
 
-    print(map);
+    log("qqqqqqqqqqqqqqqqq $map");
+    log("qqqqqqqqqqqqqqqqq ${photo!.path}");
+    log("qqqqqqqqqqqqqqqqq ${aadharfrontphoto!.path}");
+    log("qqqqqqqqqqqqqqqqq ${aadharbackphoto!.path}");
+    log("qqqqqqqqqqqqqqqqq ${panfile!.path}");
     String body = json.encode(map);
-    var url = Uri.parse(apiUrl!);
-    var response =
-        await ApiRemoteServices.fechingGetApi(apiUrl: GET_LOGIN_API)
-            .timeout(Duration(seconds: 15));
+    var url = Uri.parse("https://vaikunth.fictivebox.com/api/register");
+    // var response =
+    //     await ApiRemoteServices.fechingGetApi(apiUrl: GET_LOGIN_API,apiData: body,)
+    //         .timeout(Duration(seconds: 15));
 
     var request = http.MultipartRequest('POST', url);
     request.fields.addAll(map);
 
-    debugPrint('#### Image: ${photo?.path}');
-    debugPrint('#### AadharFont: ${aadharfrontphoto?.path}');
-    debugPrint('#### AadharBack: ${aadharbackphoto?.path}');
-    debugPrint('#### Pan: ${panfile?.path}');
+    // debugPrint('#### Image: ${photo?.path}');
+    // debugPrint('#### AadharFont: ${aadharfrontphoto?.path}');
+    // debugPrint('#### AadharBack: ${aadharbackphoto?.path}');
+    // debugPrint('#### Pan: ${panfile?.path}');
     request.files.add(
       await http.MultipartFile.fromPath('pandit_image', photo!.path),
     );
@@ -101,17 +108,24 @@ class ApiCallLogin extends ChangeNotifier {
     request.files.add(
       await http.MultipartFile.fromPath('pandit_pan_file', panfile!.path),
     );
-    var result = await request.send();
-    print("res${result}");
+    request.headers.addAll(headers);
+    request.send().then((value) {
+      if(value.statusCode == 200) {
+        print("Registration Complete ${value.stream}");
+        print("Registration Complete ${value.request}");
+      }
+      print("Registration Failed ${value.statusCode}");
+    });
 
-    if (response is Success) {
-      Object data = loginModelFromJson(response.response as String);
-      setUserListModel(data as RegistrationResponseModel);
-    } else if (response is Failure) {
-      UserError userError =
-          UserError(code: response.code, message: response.errorResponse);
-      setUserError(userError);
-    }
-    setLoading(false);
+
+    // if (response is Success) {
+    //   Object data = loginModelFromJson(response.response as String);
+    //   setUserListModel(data as RegistrationResponseModel);
+    // } else if (response is Failure) {
+    //   UserError userError =
+    //       UserError(code: response.code, message: response.errorResponse);
+    //   setUserError(userError);
+    // }
+    // setLoading(false);
   }
 }
