@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/View/Home/Home_Screen.dart';
-import 'package:panditapp/View/Splash_onboarding/Onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Consts/colors.dart';
+import '../login_flow/Name_Screen.dart';
+import 'Onboarding.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ) :  Navigator.pushReplacement(context,
                 MaterialPageRoute(builder:
                     (context) =>
-                    Home_Screen()
+                    Name_Screen()
                 )
             )
     );
