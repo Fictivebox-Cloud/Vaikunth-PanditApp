@@ -238,11 +238,11 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                         completebokingmodel
                                             .completebookingAPIcall();
 
-                                        NumberVerifyViewModel numberVerify =
-                                            Provider.of<NumberVerifyViewModel>(
-                                                context,
-                                                listen: false);
-                                        numberVerify.NumberVerifyAPIcall();
+                                        // NumberVerifyViewModel numberVerify =
+                                        //     Provider.of<NumberVerifyViewModel>(
+                                        //         context,
+                                        //         listen: false);
+                                        // numberVerify.NumberVerifyAPIcall();
                                         //Navigator.push(context, MaterialPageRoute(builder: (context)=>Booking_Details_Screen()));
                                       },
                                       child: Text(

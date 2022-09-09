@@ -29,22 +29,24 @@ class NumberVerifyViewModel with ChangeNotifier
     notifyListeners();
   }
 
-  NumberVerifyAPIcall()async{
+  Future NumberVerifyAPIcall(String? mobile) async{
     setLoading(true);
     Map<String,dynamic> data ={
-      "pandit_mobile": "7500620349"
+      "pandit_mobile": mobile
     };
     var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_NUMBER_VERIFY_API,apiData: data);
     if(response is Success){
       Object data = numberVerifyModelFromJson(response.response as String);
       print("Govind kumar${response.response as String}");
       setNumberVerifyModel(data as NumberVerifyModel);
+      _numberVerifyModel = data as NumberVerifyModel;
+      notifyListeners();
+      return _numberVerifyModel!.response!.panditDetails != null;
     }
     else if(response is Failure){
-      UserError userError = UserError(
-        code: response.code,message: response.errorResponse);
-      setLoading(false);
+      return false;
     }
+    setLoading(false);
   }
 
 }
