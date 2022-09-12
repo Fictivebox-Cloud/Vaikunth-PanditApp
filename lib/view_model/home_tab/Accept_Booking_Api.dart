@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/consts/user_Error.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../../Util/Api_collection.dart';
@@ -41,11 +42,15 @@ class Accept_Booking_Api extends ChangeNotifier{
     notifyListeners();
   }
   getAccept_booking_Api()async{
-    setLoading(true);
-    Map<String , dynamic> data ={
-      "pandit_id": "8",
-      "booking_id": "64"
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? userId = prefs.getString("pandit_id");
+    String? userbooking = prefs.getString("pandit_id");
+    Map<String, dynamic> data = {
+      "pandit_id": userId,
+      "booking_id": userbooking
     };
+    setLoading(true);
+
     var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_ACCEPTBOOKING_API,apiData: data);
     if(response is Success){
       Object data = acceptBookingModelFromJson(response.response as String);

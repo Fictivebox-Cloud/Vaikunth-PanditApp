@@ -11,7 +11,7 @@ import 'package:panditapp/model/getterSetter.dart';
 
 
 import '../../consts/color1.dart';
-import '../../consts/text_const.dart';
+
 
 
 

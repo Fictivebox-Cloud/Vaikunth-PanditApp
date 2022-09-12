@@ -83,17 +83,11 @@ class ApiCallLogin extends ChangeNotifier {
     log("qqqqqqqqqqqqqqqqq ${panfile!.path}");
     String body = json.encode(map);
     var url = Uri.parse("https://vaikunth.fictivebox.com/api/register");
-    // var response =
-    //     await ApiRemoteServices.fechingGetApi(apiUrl: GET_LOGIN_API,apiData: body,)
-    //         .timeout(Duration(seconds: 15));
+
 
     var request = http.MultipartRequest('POST', url);
     request.fields.addAll(map);
 
-    // debugPrint('#### Image: ${photo?.path}');
-    // debugPrint('#### AadharFont: ${aadharfrontphoto?.path}');
-    // debugPrint('#### AadharBack: ${aadharbackphoto?.path}');
-    // debugPrint('#### Pan: ${panfile?.path}');
     request.files.add(
       await http.MultipartFile.fromPath('pandit_image', photo!.path),
     );
@@ -116,16 +110,5 @@ class ApiCallLogin extends ChangeNotifier {
       }
       print("Registration Failed ${value.statusCode}");
     });
-
-
-    // if (response is Success) {
-    //   Object data = loginModelFromJson(response.response as String);
-    //   setUserListModel(data as RegistrationResponseModel);
-    // } else if (response is Failure) {
-    //   UserError userError =
-    //       UserError(code: response.code, message: response.errorResponse);
-    //   setUserError(userError);
-    // }
-    // setLoading(false);
   }
 }

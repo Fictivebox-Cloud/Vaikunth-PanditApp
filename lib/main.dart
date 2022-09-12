@@ -1,11 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:panditapp/View/login_flow/Name_Screen.dart';
-
-import 'package:panditapp/model/Booking%20Model/BookingModel.dart';
-
-
-
 import 'package:panditapp/view_model/ApiCallLogin.dart';
 import 'package:panditapp/view_model/CityListApi.dart';
 import 'package:panditapp/view_model/Complete_Bookings.dart';
@@ -14,7 +8,6 @@ import 'package:panditapp/view_model/home_tab/Accept_Booking_Api.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:panditapp/view_model/verification_number_api.dart';
 import 'package:provider/provider.dart';
-import 'View/Home/Home_Screen.dart';
 import 'View/Splash_onboarding/splash_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -60,9 +53,7 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        // home: City_Screen(),
-      //home: Home_Screen(),
-      home: Name_Screen(),
+        home: SplashScreen(),
       );
   }
 

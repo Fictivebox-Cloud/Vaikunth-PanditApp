@@ -8,20 +8,20 @@ import 'package:panditapp/View/login_flow/Name_Screen.dart';
 import 'package:panditapp/view_model/verification_number_api.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../Consts/color1.dart';
 
 class OTP_verify extends StatefulWidget {
   String? mobile;
 
-  OTP_verify({Key? key,this.mobile}) : super(key: key);
+  OTP_verify({Key? key, this.mobile}) : super(key: key);
 
   @override
   State<OTP_verify> createState() => _OTP_verifyState();
 }
 
 class _OTP_verifyState extends State<OTP_verify> {
-
   TextEditingController otpController = TextEditingController();
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   SmsAutoFill smsAutoFill = SmsAutoFill();
@@ -33,7 +33,6 @@ class _OTP_verifyState extends State<OTP_verify> {
   }
 
   Future<void> phoneNumberVerification() async {
-
     PhoneVerificationCompleted phoneVerificationCompleted =
         (PhoneAuthCredential phoneAuthCredential) async {
       await firebaseAuth.signInWithCredential(phoneAuthCredential);
@@ -43,10 +42,12 @@ class _OTP_verifyState extends State<OTP_verify> {
 
     PhoneVerificationFailed phoneVerificationFailed =
         (FirebaseAuthException authException) {
-      print('Phone number verification is failed. Code: ${authException.code}. Message: ${authException.message}');
+      print(
+          'Phone number verification is failed. Code: ${authException.code}. Message: ${authException.message}');
     };
 
-    void Function(String verificationId, int? forceResendingToken) phoneCodeSent =
+    void Function(String verificationId, int? forceResendingToken)
+        phoneCodeSent =
         (String verificationId, [int? forceResendingToken]) async {
       setState(() {
         strVerificationId = verificationId;
@@ -73,7 +74,6 @@ class _OTP_verifyState extends State<OTP_verify> {
     }
   }
 
-
   void signInWithPhoneNumber() async {
     try {
       final AuthCredential credential = PhoneAuthProvider.credential(
@@ -81,7 +81,8 @@ class _OTP_verifyState extends State<OTP_verify> {
         smsCode: otpController.text,
       );
 
-      final User? user = (await firebaseAuth.signInWithCredential(credential)).user;
+      final User? user =
+          (await firebaseAuth.signInWithCredential(credential)).user;
       print("OTP Verify User ${user}");
       userRegistrationStatus();
     } catch (e) {
@@ -89,14 +90,26 @@ class _OTP_verifyState extends State<OTP_verify> {
     }
   }
 
-
-  userRegistrationStatus() {
+  userRegistrationStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     NumberVerifyViewModel numberVerifyViewModel = NumberVerifyViewModel();
     numberVerifyViewModel.NumberVerifyAPIcall(widget.mobile).then((value) {
-      if(value) {
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home_Screen()), (route) => false);
+      if (value) {
+        prefs.setString("name",
+            "${numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.panditFirstName.toString()} ${numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.panditLastName.toString()} ");
+        prefs.setString("pandit_id", numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.id.toString());
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => Home_Screen()),
+            (route) => false);
       } else {
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Name_Screen(mobile: widget.mobile,)), (route) => false);
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Name_Screen(
+                      mobile: widget.mobile,
+                    )),
+            (route) => false);
       }
     });
     // Consumer
@@ -112,8 +125,7 @@ class _OTP_verifyState extends State<OTP_verify> {
     // });
   }
 
-  var ht,wt;
-
+  var ht, wt;
 
   @override
   Widget build(BuildContext context) {
@@ -127,45 +139,50 @@ class _OTP_verifyState extends State<OTP_verify> {
             Expanded(
               flex: 3,
               child: Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16,top: 10),
+                padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                        Text('Enter OTP',style: GoogleFonts.lato(fontSize: 24,
-                        fontWeight: FontWeight.w500
-                            ,color: h1Color
-                        ),),
-
-                        Text("mobile ${widget.mobile}"),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Text('Enter the 6 digit code received on your mobile.',style:
-                          GoogleFonts.lato(fontWeight: FontWeight.w400,
+                    Text(
+                      'Enter OTP',
+                      style: GoogleFonts.lato(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                          color: h1Color),
+                    ),
+                    Text("mobile ${widget.mobile}"),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      'Enter the 6 digit code received on your mobile.',
+                      style: GoogleFonts.lato(
+                          fontWeight: FontWeight.w400,
                           color: p1Color,
-                            fontSize: 14
-                          ),),
-
-                    Padding(padding: EdgeInsets.only(top: 30),
+                          fontSize: 14),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 30),
                       child: Column(
                         children: [
                           PinCodeTextField(
                             keyboardType: TextInputType.number,
                             controller: otpController,
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(6),
-                            FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-                          ],
-                           // keyboardType: TextInputType.(),
-                              appContext: context,
-                              length: 6,
-                              onChanged: (value){
-                                if(value.length == 6) {
-                                  print("object");
-                                  signInWithPhoneNumber();
-                                };
-
-                              },
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(6),
+                              FilteringTextInputFormatter.allow(
+                                  RegExp("[0-9]")),
+                            ],
+                            // keyboardType: TextInputType.(),
+                            appContext: context,
+                            length: 6,
+                            onChanged: (value) {
+                              if (value.length == 6) {
+                                print("object");
+                                signInWithPhoneNumber();
+                              }
+                              ;
+                            },
                             pinTheme: PinTheme(
                               shape: PinCodeFieldShape.box,
                               borderRadius: BorderRadius.circular(5),
@@ -185,18 +202,20 @@ class _OTP_verifyState extends State<OTP_verify> {
             ),
             Column(
               children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
-          child: TextButton(
-            style: TextButton.styleFrom(
-              // padding: const EdgeInsets.all(16.0),
-              primary: p1Color,
-              textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.w500),
-            ),
-            onPressed: () {},
-            child: const Text('Resend OTP'),
-          ),
-        ),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 16, right: 16, bottom: 24),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      // padding: const EdgeInsets.all(16.0),
+                      primary: p1Color,
+                      textStyle: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
+                    onPressed: () {},
+                    child: const Text('Resend OTP'),
+                  ),
+                ),
               ],
             )
           ],
@@ -204,5 +223,4 @@ class _OTP_verifyState extends State<OTP_verify> {
       ),
     );
   }
-  
 }

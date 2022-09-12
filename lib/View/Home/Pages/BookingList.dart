@@ -23,24 +23,9 @@ class _BookingListTitlState extends State<BookingListTitl> {
   bool _isLoading = false;
 
 
-  //@override
-  // void initState() {
-  //   setState(() {
-  //     Accept_Booking_Api accept_booking_api =
-  //         context.watch()<AcceptBookingModel>();
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
-
-    // Booking_Request_View_Model booking_request_view_modell =
-    //     Provider.of<Booking_Request_View_Model>(context, listen: false);
-
-    // Booking_Request_View_Model booking_request_view_modell =
-    // context.watch<Booking_Request_View_Model>();
-
-    // booking_request_view_modell.getbookingApiCall;
     return Consumer<Booking_Request_View_Model>(
       builder: (_, data, __) {
         if (data.loading) {
@@ -108,8 +93,6 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                       ),
                                       // SizedBox(width: 11,),
                                       Text(booking_request_view_model!.getbookinglistModel!.response!.bookinglist![index].poojaDate ?? ""
-                                        //booking_request_view_model.getbookinglistModel[index]!.response!.bookinglist![index].poojaDate.toString()
-                                        // data.getbookinglistModel[index]!.response!.bookinglist![index].bookingPujaDate.toString(),
                                         ,style: GoogleFonts.lato(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
@@ -201,7 +184,14 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                   padding: const EdgeInsets.only(
                                       left: 16, right: 16, top: 10),
                                   child: InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      setState(() {
+                                        booking_request_view_model.getbookinglistModel!.response!.bookinglist!.removeAt(index);
+                                        //removeAt(index);
+                                      });
+                                      Accept_Booking_Api ss = Accept_Booking_Api();
+                                      ss.getAccept_booking_Api();
+                                    },
                                     child: Container(
                                       width: double.infinity,
                                       height: 48,
@@ -212,8 +202,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                       child: Center(
                                           child: TextButton(
                                               onPressed: () {
-                                                Accept_Booking_Api ss = Accept_Booking_Api();
-                                                ss.getAccept_booking_Api();
+
                                               },
                                               child: Text(
                                                 "Accept Booking",
@@ -251,7 +240,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
           ),
         );
       },
-      // itemCount: booking_request_view_model.getbookinglistModel.length,
+
       itemCount: booking_request_view_model!.getbookinglistModel!.response!.bookinglist!.length,
     );
   }

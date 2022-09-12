@@ -13,7 +13,7 @@ import 'package:panditapp/View/login_flow/Servies_you_provide.dart';
 import 'package:panditapp/model/getterSetter.dart';
 
 import '../../Consts/color1.dart';
-import '../../consts/text_const.dart';
+
 
 
 class Photo_Upload extends StatefulWidget {

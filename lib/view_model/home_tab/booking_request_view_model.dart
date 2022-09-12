@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/api_status.dart';
 import '../../Util/Api_collection.dart';
@@ -11,6 +12,8 @@ class Booking_Request_View_Model with ChangeNotifier{
   bool _loading = false;
   GetBookingListModel? _getBookingListModel;
   UserError? _userError;
+  
+  
 
   Booking_Request_View_Model (){
     getbookingApiCall();
@@ -35,9 +38,13 @@ class Booking_Request_View_Model with ChangeNotifier{
 
 
 getbookingApiCall() async{
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   setLoading(true);
+  String? userId = prefs.getString("pandit_id");
+  print("User Id $userId");
   Map<String, dynamic> data = {
-    "pandit_id": "8"
+    "pandit_id": userId
+    // "pandit_id": "8"
   };
   var response  = await ApiRemoteServices.fechingGetApi(apiUrl: GET_BOOKING_LIST,apiData: data);
   if(response is Success){

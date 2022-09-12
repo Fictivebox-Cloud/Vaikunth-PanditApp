@@ -58,10 +58,6 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                    ),
                ),
                ),
-
-
-
-
                    Padding(
                      padding: const EdgeInsets.only(
                          left: 16, right: 16, bottom: 24),
@@ -71,15 +67,15 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                          width: double.infinity,
                          height: 48,
                          decoration: BoxDecoration(
-                             borderRadius: BorderRadius.circular(4),
-
-                             //color: Colors.red
+                           borderRadius: BorderRadius.circular(4), //color: Colors.red
                          ),
                          child:
                          ElevatedButton(
-
                              onPressed: () {
+
                                Navigator.push(context, MaterialPageRoute(
+
+
                                    builder: (context) => OTP_verify(mobile: phoneController.text,)));
                              },
                              child: Text('Send OTP', style: GoogleFonts.lato(

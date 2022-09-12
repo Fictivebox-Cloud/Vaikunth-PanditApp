@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../Consts/color1.dart';
 
 class CircularLoader extends StatelessWidget {
