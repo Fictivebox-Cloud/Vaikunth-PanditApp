@@ -1,6 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/Booking/pages/Booking_Progress_Screen.dart';
 
@@ -54,19 +55,24 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Vikrant bhawani saini",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w600,color: kPrimaryColor),),
-                        Container(
-                          width: 140,
-                          height: 32,
-                          decoration: BoxDecoration(
-                            color: white,
-                            borderRadius: BorderRadius.circular(40)
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Icon(Icons.call,color: kPrimaryColor,),
-                              Text("Call Now",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14,color: kPrimaryColor),)
-                            ],
+                        InkWell(
+                          onTap: (){
+                            FlutterPhoneDirectCaller.callNumber("7500620349");
+                          },
+                          child: Container(
+                            width: 140,
+                            height: 32,
+                            decoration: BoxDecoration(
+                              color: white,
+                              borderRadius: BorderRadius.circular(40)
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Icon(Icons.call,color: kPrimaryColor,),
+                                Text("Call Now",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14,color: kPrimaryColor),)
+                              ],
+                            ),
                           ),
                         )
                       ],
@@ -74,7 +80,6 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                    ),
                  ),
                  SizedBox(height: 19,),
-
                  Padding(
                    padding: const EdgeInsets.only(left: 16,right: 16),
                    child: Column(

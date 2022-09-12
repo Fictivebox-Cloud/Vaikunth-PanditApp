@@ -17,10 +17,10 @@ import '../../Consts/color1.dart';
 
 
 class Documents_Screen extends StatefulWidget {
-  final String? name4, mobile;
+  final String? name4, mobile,servicesname;
   final File? photo4;
 
-  const Documents_Screen({Key? key, this.name4, this.photo4, this.mobile})
+  const Documents_Screen({Key? key, this.name4, this.photo4, this.mobile,this.servicesname})
       : super(key: key);
 
   @override
@@ -217,7 +217,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       SizedBox(
                         height: 16,
                       ),
-                      Container(
+                     /* Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
                             border: Border.all(width: 1, color: Colors.black)),
@@ -234,6 +234,38 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                                     fontSize: 14,
                                     color: kSecondaryColor),
                               )),
+                        ),
+                      ),*/
+                      Container(
+                        height: 48,
+                        child: TextField(
+                            cursorColor: colorPrimary,
+                            controller: _addharno,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                                //prefixIcon: const Icon(Icons.search,color: p1Color,),
+                                fillColor:grey,
+                                hintText:ENTER_YOUR_AADHAR_NO,
+                                hintStyle: GoogleFonts.lato(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                    color: kSecondaryColor),
+
+                                focusedBorder:OutlineInputBorder(
+                                  borderSide: const BorderSide(color: colorPrimary, width: 2.0),
+                                  // borderRadius: BorderRadius.circular(25.0),
+                                ),
+
+                                border: OutlineInputBorder(
+
+                                  //borderRadius: BorderRadius.circular(24)
+                                )
+                            ),
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(12),
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[0-9]")),
+                          ],
                         ),
                       ),
                       const SizedBox(
@@ -285,29 +317,35 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         height: 16,
                       ),
                       Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(width: 1, color: Colors.black)),
-                        child: Center(
-                          child: TextFormField(
+                        height: 48,
+                        child: TextField(
                             cursorColor: colorPrimary,
                             controller: _panno,
-                            //keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText:ENTER_YOUR_PAN_NO,
-                              hintStyle: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                  color: kSecondaryColor),
-                            ),
+                              //prefixIcon: const Icon(Icons.search,color: p1Color,),
+                                fillColor:grey,
+                                hintText:ENTER_YOUR_PAN_NO,
+                                hintStyle: GoogleFonts.lato(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                    color: kSecondaryColor),
 
+                                focusedBorder:OutlineInputBorder(
+                                  borderSide: const BorderSide(color: colorPrimary, width: 2.0),
+                                  // borderRadius: BorderRadius.circular(25.0),
+                                ),
+
+                                border: OutlineInputBorder(
+
+                                  //borderRadius: BorderRadius.circular(24)
+                                )
+                            ),
                             inputFormatters: [
-                              LengthLimitingTextInputFormatter(19),
-                              FilteringTextInputFormatter.allow(
-                                  RegExp("[a-zA-Z0-9]")),
-                            ],
-                          ),
+                            LengthLimitingTextInputFormatter(10),
+                        FilteringTextInputFormatter.allow(
+                            RegExp("[a-zA-Z0-9]")),
+                        ],
                         ),
                       ),
                     ],
@@ -345,6 +383,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                                       photoaadharback: pickedImage0,
                                       photoaadharfront: pickedImage1,
                                       pan: pickedImage2,
+                                    servicesname:widget.servicesname
                                     )));
                       },
                       child: Text(

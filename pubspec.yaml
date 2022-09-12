@@ -65,6 +65,8 @@ dependencies:
   sms_autofill: ^2.2.0
   firebase_core: ^1.21.1
   shimmer: ^2.0.0
+  flutter_phone_direct_caller: ^2.1.1
+  url_launcher: ^6.1.5
 
 
 dev_dependencies:

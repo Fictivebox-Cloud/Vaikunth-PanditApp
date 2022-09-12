@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../Consts/color1.dart';
+
 import '../../Consts/text_const.dart';
 import 'city_screen.dart';
 
@@ -153,7 +154,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                    // s.services =_servicecontroller.text;
                    // print("Bhawani ${s.services}");
 
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen(name3: widget.name,photo3: widget.photo,mobile: widget.mobile)));
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen(name3: widget.name,photo3: widget.photo,mobile: widget.mobile,servicesname: _list[_selectedIndex],)));
                  }, child: Text(NEXT,style: GoogleFonts.lato(
                  color: white,fontSize: 24,
                  fontWeight: FontWeight.w600),)),

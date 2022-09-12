@@ -38,17 +38,17 @@ class CompleteBookingViewModel with ChangeNotifier {
 
   completebookingAPIcall() async {
     setLoading(true);
-
+    var data = {"pandit_id": "81"};
 
     var respones = await ApiRemoteServices.fechingGetApi(
-        apiUrl: GET_COMPLETEBOOKING_API, );
+        apiUrl: GET_COMPLETEBOOKING_API, apiData: data);
     if (respones is Success) {
       Object data = completebokingmodelFromJson(respones.response as String);
       print("Govind kumar${respones.response as String}");
       setCompletebokingmodel(data as Completebokingmodel);
     } else if (respones is Failure) {
       UserError userError =
-          UserError(code: respones.code, message: respones.errorResponse);
+      UserError(code: respones.code, message: respones.errorResponse);
       setUserError(userError);
     }
     setLoading(false);
