@@ -17,7 +17,7 @@ import '../../Consts/color1.dart';
 import '../../view_model/ApiCallLogin.dart';
 
 class Account_details extends StatefulWidget {
-  final String? aadhar, pancard, name5, mobile;
+  final String? aadhar, pancard, name5, mobile,servicesname;
   final File? photo5, photoaadharfront, photoaadharback, pan;
 
   Account_details(
@@ -29,7 +29,9 @@ class Account_details extends StatefulWidget {
       this.mobile,
       this.photoaadharback,
       this.photoaadharfront,
-      this.pan})
+      this.pan,
+      this.servicesname,
+      })
       : super(key: key);
 
   @override
@@ -129,7 +131,7 @@ class _Account_detailsState extends State<Account_details> {
                       SizedBox(
                         height: 8,
                       ),
-                      Container(
+                   /*   Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4),
                             border: Border.all(width: 1, color: h1Color)),
@@ -146,6 +148,38 @@ class _Account_detailsState extends State<Account_details> {
                             ),
                           ),
                         ),
+                      ),*/
+
+                      Container(
+                        height: 48,
+                        child: TextField(
+                          cursorColor: colorPrimary,
+                          controller: _accountno,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            //prefixIcon: const Icon(Icons.search,color: p1Color,),
+                              fillColor:grey,
+                              hintStyle: GoogleFonts.lato(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: kSecondaryColor),
+
+                              focusedBorder:OutlineInputBorder(
+                                borderSide: const BorderSide(color: colorPrimary, width: 2.0),
+                                // borderRadius: BorderRadius.circular(25.0),
+                              ),
+
+                              border: OutlineInputBorder(
+
+                                //borderRadius: BorderRadius.circular(24)
+                              )
+                          ),
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(10),
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[0-9]")),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 36,
@@ -158,30 +192,38 @@ class _Account_detailsState extends State<Account_details> {
                       SizedBox(
                         height: 8,
                       ),
+
                       Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(width: 1, color: h1Color)),
-                        child: TextFormField(
+                        height: 48,
+                        child: TextField(
                           cursorColor: colorPrimary,
                           controller: _choosebank,
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintStyle: GoogleFonts.lato(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                                color: kSecondaryColor
-                            ),
+                            //prefixIcon: const Icon(Icons.search,color: p1Color,),
+                              fillColor:grey,
+                              hintStyle: GoogleFonts.lato(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: kSecondaryColor),
+
+                              focusedBorder:OutlineInputBorder(
+                                borderSide: const BorderSide(color: colorPrimary, width: 2.0),
+                                // borderRadius: BorderRadius.circular(25.0),
+                              ),
+
+                              border: OutlineInputBorder(
+
+                                //borderRadius: BorderRadius.circular(24)
+                              )
                           ),
                           inputFormatters: [
-                            LengthLimitingTextInputFormatter(19),
+                            LengthLimitingTextInputFormatter(10),
                             FilteringTextInputFormatter.allow(
-                                RegExp("[aA-zZ]")),
-                            // FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+                                RegExp("[0-9]")),
                           ],
                         ),
                       ),
-
                       SizedBox(
                         height: 36,
                       ),
@@ -193,25 +235,35 @@ class _Account_detailsState extends State<Account_details> {
                       SizedBox(
                         height: 8,
                       ),
+
                       Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(width: 1, color: h1Color)),
-                        child: TextFormField(
+                        height: 48,
+                        child: TextField(
                           cursorColor: colorPrimary,
                           controller: _ifsccode,
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintStyle: GoogleFonts.lato(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                                color: kSecondaryColor
-                            ),
+                            //prefixIcon: const Icon(Icons.search,color: p1Color,),
+                              fillColor:grey,
+                              hintStyle: GoogleFonts.lato(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: kSecondaryColor),
+
+                              focusedBorder:OutlineInputBorder(
+                                borderSide: const BorderSide(color: colorPrimary, width: 2.0),
+                                // borderRadius: BorderRadius.circular(25.0),
+                              ),
+
+                              border: OutlineInputBorder(
+
+                                //borderRadius: BorderRadius.circular(24)
+                              )
                           ),
                           inputFormatters: [
-                            LengthLimitingTextInputFormatter(19),
+                            LengthLimitingTextInputFormatter(10),
                             FilteringTextInputFormatter.allow(
-                                RegExp("[a-zA-Z0-9]")),
+                                RegExp("[0-9]")),
                           ],
                         ),
                       ),
@@ -244,7 +296,7 @@ class _Account_detailsState extends State<Account_details> {
                         api.fechingloginApi(
                           mobile: widget.mobile,
                           name: widget.name5,
-                          services: "puja",
+                          services:widget.servicesname,
                           city: "noida",
                           aadharnumber: widget.aadhar,
                           pannumber: widget.pancard,

@@ -1,6 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/View/Booking/pages/Booking_Details.dart';
 import 'package:panditapp/Widgets/circular_loader.dart';
 import 'package:panditapp/view_model/verification_number_api.dart';
 import 'package:provider/provider.dart';
@@ -31,53 +32,51 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: white,
-        body:  _ui(completeBookingViewModel),
+        body:  completeBookingViewModel.loading
+            ? Center(child: CircularLoader())
+            : DefaultTabController(
+          length: 3,
+          child: Scaffold(
+              body: Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: Column(
+                  children: [
+                    TabBar(
+                      labelStyle: TextStyle(fontSize: Small ? 13.0 : 18.0),
+                      labelColor: h1Color,
+                      unselectedLabelColor: Color(0Xff999EA3),
+                      tabs: const [
+                        Tab(
+                          text: 'Upcoming',
+                        ),
+                        Tab(
+                          text: 'Completed',
+                        ),
+                        Tab(
+                          text: 'Cancelled',
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                        child: TabBarView(
+                          children: [
+                            Center(
+                              child: Upcoming(),
+                            ),
+                            Center(
+                              child: CompletedPage(),
+                            ),
+                            Center(child: Cancelled()),
+                          ],
+                        ))
+                  ],
+                ),
+              )),
+        )
     );
   }
 
-  _ui(CompleteBookingViewModel completeBookingViewModel){
-    if(completeBookingViewModel.loading){
-      return Center(child: CircularProgressIndicator(color: kPrimaryColor,),);
-    }else if (completeBookingViewModel.userError !=null){
-      return Center(child:  Text(completeBookingViewModel.userError!.message.toString()??"Error"),);
-    }
-    return _listDesign(completeBookingViewModel);
 
-  }
-  _listDesign(CompleteBookingViewModel completeBookingViewModel){
-    return Column(
-      children: [
-        TabBar(
-          labelStyle: TextStyle(fontSize: Small ? 13.0 : 18.0),
-          labelColor: h1Color,
-          unselectedLabelColor: Color(0Xff999EA3),
-          tabs: const [
-            Tab(
-              text: 'Upcoming',
-            ),
-            Tab(
-              text: 'Completed',
-            ),
-            Tab(
-              text: 'Cancelled',
-            ),
-          ],
-        ),
-        Expanded(
-            child: TabBarView(
-              children: [
-                Center(
-                  child: Upcoming(),
-                ),
-                Center(
-                  child: CompletedPage(),
-                ),
-                Center(child: Cancelled()),
-              ],
-            ))
-      ],
-    );
-  }
 
   Widget Upcoming() {
     return Container(
@@ -118,12 +117,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                     ),
                                     Text(
                                       //"Mon 05/Oct/2021"
-                                      completeBookingViewModel
-                                          .completebokingmodel!
-                                          .response!
-                                          .compbookinglist![index]
-                                          .poojaDate
-                                          .toString(),
+                                      completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].poojaDate.toString(),
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
@@ -156,7 +150,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                               child: Text(
                             //"Vikrant Bhawani saini"
                             completeBookingViewModel.completebokingmodel!
-                                .response!.compbookinglist![index].hostname
+                                .response!.upcomingbookinglist![index].name
                                 .toString(),
                             style: GoogleFonts.lato(
                                 fontWeight: FontWeight.w700,
@@ -183,7 +177,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                               completeBookingViewModel
                                       .completebokingmodel!
                                       .response!
-                                      .compbookinglist![index]
+                                      .upcomingbookinglist![index]
                                       .poojaTitle ??
                                   "",
                               style: GoogleFonts.lato(
@@ -216,7 +210,8 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                           ),
                           Center(
                               child: Text(
-                            "Total Earnings: ${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].totalEarning.toString()}",
+                            "Total Earnings: ${completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].bookingPaidAmount.toString()}",
+                            //                            "Total Earnings: ${completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].bookingPaidAmount.toString()}",
                             style: GoogleFonts.lato(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
@@ -248,7 +243,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                         //         context,
                                         //         listen: false);
                                         // numberVerify.NumberVerifyAPIcall();
-                                        //Navigator.push(context, MaterialPageRoute(builder: (context)=>Booking_Details_Screen()));
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Booking_Details_Screen()));
                                       },
                                       child: Text(
                                         "View Details",
@@ -270,7 +265,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
         );
       },
       itemCount: completeBookingViewModel
-          .completebokingmodel!.response!.compbookinglist!.length,
+          .completebokingmodel!.response!.upcomingbookinglist!.length,
     ));
   }
 
@@ -483,7 +478,8 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                       width: 11,
                                     ),
                                     Text(
-                                      "Mon 05/Oct/2021",
+                                      completeBookingViewModel.completebokingmodel!.response!.cancelbookinglist![index].bookingPujaDate.toString(),
+                                      //"Mon 05/Oct/2021",
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
@@ -509,7 +505,8 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                           ),
                           Center(
                               child: Text(
-                            "Vikrant Bhawani saini",
+                           // "Vikrant Bhawani saini",
+                                completeBookingViewModel.completebokingmodel!.response!.cancelbookinglist![index].name.toString(),
                             style: GoogleFonts.lato(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 12,
@@ -532,7 +529,8 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                           Padding(
                             padding: const EdgeInsets.only(left: 16),
                             child: Text(
-                              "1 x Puranmashi katha(Offline)",
+                              completeBookingViewModel.completebokingmodel!.response!.cancelbookinglist![index].poojaTitle.toString(),
+                              //"1 x Puranmashi katha(Offline)",
                               style: GoogleFonts.lato(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14,
@@ -560,7 +558,8 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
           ),
         );
       },
-      itemCount: 20,
+      //itemCount: 20,
+      itemCount:completeBookingViewModel.completebokingmodel!.response!.cancelbookinglist!.length,
     ));
   }
 }

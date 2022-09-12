@@ -108,8 +108,9 @@ class _Name_ScreenState extends State<Name_Screen> {
                         padding: const EdgeInsets.only(left: 16,right: 16),
                         child: Center(
                           child: SizedBox(
-                              height: ht * 0.4,
-                              child: TextField(
+                              height:48,
+                              child:
+                              TextField(
                                   cursorColor: colorPrimary,
                                   controller: _namecontroller,
                                   //keyboardType: TextInputType.number,
