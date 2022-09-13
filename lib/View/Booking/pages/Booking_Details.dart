@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/Booking/pages/Booking_Progress_Screen.dart';
+import 'package:provider/provider.dart';
 import '../../../Consts/color1.dart';
+import '../../../view_model/ViewDetails_VM.dart';
 
 
 class Booking_Details_Screen extends StatefulWidget {
@@ -16,12 +18,13 @@ class Booking_Details_Screen extends StatefulWidget {
 
 class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
 
-
+  //late ViewDetailVM viewdetailVM;
   var ht,wt;
 
 
   @override
   Widget build(BuildContext context) {
+    ViewDetailVM viewdetailVM = context.watch<ViewDetailVM>();
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
@@ -42,7 +45,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                    padding: const EdgeInsets.only(top: 10),
                    child: Text("Booking Number",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14,color: h1Color),),
                  )),
-                 Text("3652",style: GoogleFonts.lato(fontSize: 18,color:h1Color,fontWeight: FontWeight.w500),)
+                 Text(viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].orderId.toString(),style: GoogleFonts.lato(fontSize: 18,color:h1Color,fontWeight: FontWeight.w500),)
 
                  ,Container(
                    width: double.infinity,
@@ -53,11 +56,13 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                      child: Row(
                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Vikrant bhawani saini",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w600,color: kPrimaryColor),),
+                        Text(viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].name.toString(),style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w600,color: kPrimaryColor),),
                         InkWell(
                           onTap: (){
-                            FlutterPhoneDirectCaller.callNumber("7500620349");
-                          },
+                            FlutterPhoneDirectCaller.callNumber("${viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].phone}");
+                           // Text("Call Now${viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].phone}"
+
+                                },
                           child: Container(
                             width: 140,
                             height: 32,
@@ -69,7 +74,8 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(Icons.call,color: kPrimaryColor,),
-                                Text("Call Now",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14,color: kPrimaryColor),)
+                                Text("Call Now"
+                                  ,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14,color: kPrimaryColor),)
                               ],
                             ),
                           ),
@@ -87,7 +93,8 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                          children: [
                            Icon(Icons.calendar_month,color: kPrimaryColor,),
                            SizedBox(width: 11,),
-                           Text("Mon 05/Oct/2021")
+                           //Text("Mon 05/Oct/2021"),
+                           Text(viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].bookingPujaDate.toString().split(" ")[0]),
                          ],
                        ),
                        SizedBox(height: 19,),
@@ -95,7 +102,8 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                          children: [
                            Icon(Icons.access_time,color: kPrimaryColor,),
                            SizedBox(width: 11,),
-                           Text("6 PM")
+                           //Text("6 PM    "),
+                           Text(viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].bookingPujaDate.toString().replaceRange(0, 11, "")),
                          ],
                        ),
                        SizedBox(height: 19,),
@@ -103,7 +111,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                          children: [
                            Icon(Icons.location_on,color: kPrimaryColor,),
                            SizedBox(width: 11,),
-                           Text("Rally Infra Business Park, Sector 63, Noida, UP")
+                           Text(viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].cityname.toString())
                          ],
                        )
                      ],
@@ -125,10 +133,8 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                    child: Column(
                      children: [
                        Row(
-                         children: const [
-                           Text("1 x",),
-                           SizedBox(width: 16,),
-                           Text("Puranmashi katha(Offline)")
+                         children: [
+                           Text("1 x ${viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].poojaTitle.toString()}",),
                          ],
                        ),
                        const SizedBox(
@@ -136,9 +142,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                        ),
                        Row(
                          children: const [
-                           Text("2 x"),
-                           SizedBox(width: 16,),
-                           Text("Astrology Session")
+                           Text("2 x Astrology Session"),
                          ],
                        )
                      ],
@@ -161,10 +165,10 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                      children: [
                        Row(
                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                         children: const [
+                         children:  [
                            Text("Puja Earnings"),
+                           Text("₹${viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].bookingPaidAmount.toString()}"),
 
-                           Text("₹600")
                          ],
                        ),
                        const SizedBox(height: 10,),
@@ -179,9 +183,10 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                        const DottedLine(),
                        SizedBox(height: 10,),
                        Row(
-                         children: const [
-                           Text("Visiting Charge"),
-                           Text("₹200")
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                         children:[
+                           Text("Total",style:TextStyle(fontSize: 14,fontWeight: FontWeight.w400)),
+                           Text("₹${viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].bookingPaidAmount.toString()}"),
                          ],
                        )
                      ],
