@@ -5,6 +5,7 @@ const  String GET_COMPLETEBOOKING_API = "${BASEURL}getcompbookinglist";
 const  String GET_NUMBER_VERIFY_API = "${BASEURL}verifynumberexist";
 const  String GET_CITYLIST_API = "${BASEURL}getcitylist";
 const  String GET_ACCEPTBOOKING_API = "${BASEURL}acceptbooking";
+const  String GET_SENDPUJAOTP_API = "${BASEURL}sendpujaconfirmotp";
 
 
 

@@ -29,7 +29,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
     return Consumer<Booking_Request_View_Model>(
       builder: (_, data, __) {
         if (data.loading) {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         } else if (data.userError != null) {
           return Center(
               child: Text(data.userError!.message.toString()));
@@ -187,7 +187,6 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                     onTap: () {
                                       setState(() {
                                         booking_request_view_model.getbookinglistModel!.response!.bookinglist!.removeAt(index);
-                                        //removeAt(index);
                                       });
                                       Accept_Booking_Api ss = Accept_Booking_Api();
                                       ss.getAccept_booking_Api();
@@ -200,18 +199,14 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                               BorderRadius.circular(7),
                                           color: buttonColor),
                                       child: Center(
-                                          child: TextButton(
-                                              onPressed: () {
-
-                                              },
-                                              child: Text(
-                                                "Accept Booking",
-                                                style: GoogleFonts.lato(
-                                                    fontSize: 16,
-                                                    color: white,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              ))),
+                                          child: Text(
+                                            "Accept Booking",
+                                            style: GoogleFonts.lato(
+                                                fontSize: 16,
+                                                color: white,
+                                                fontWeight:
+                                                    FontWeight.w500),
+                                          )),
                                     ),
                                   ),
                                 )

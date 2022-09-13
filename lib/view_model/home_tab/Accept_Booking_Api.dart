@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/consts/user_Error.dart';
@@ -11,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
 import '../../model/Booking Model/Acept_Booking_Model.dart';
+import 'booking_request_view_model.dart';
 
 
 class Accept_Booking_Api extends ChangeNotifier{
@@ -44,23 +42,27 @@ class Accept_Booking_Api extends ChangeNotifier{
   getAccept_booking_Api()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString("pandit_id");
-    String? userbooking = prefs.getString("pandit_id");
+    String? userbooking = prefs.getString("booking_id");
     Map<String, dynamic> data = {
       "pandit_id": userId,
+      // "booking_id": userbooking
+      // "pandit_id": "8",
       "booking_id": userbooking
     };
     setLoading(true);
 
     var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_ACCEPTBOOKING_API,apiData: data);
     if(response is Success){
+      print("Vikrant Kumar ${response.response}");
       Object data = acceptBookingModelFromJson(response.response as String);
       setAcceptBookingModel(data as AcceptBookingModel);
+      //
+
     }else if(response is Failure){
       UserError userError = UserError(code: response.code,message: response.errorResponse);
       setUserError(userError);
     }
     setLoading(false);
-
   }
 
 }

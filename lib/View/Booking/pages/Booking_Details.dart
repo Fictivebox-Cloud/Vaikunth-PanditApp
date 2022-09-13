@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/Booking/pages/Booking_Progress_Screen.dart';
+import 'package:panditapp/view_model/BookingViewDetails/getBookingOTP.dart';
 import '../../../Consts/color1.dart';
 
 
@@ -18,6 +19,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
 
 
   var ht,wt;
+  Puja_Confirm_OTP api = Puja_Confirm_OTP();
 
 
   @override
@@ -222,6 +224,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                          context: context,
                          builder: (builder)=> bottomSheet(),
                        );
+                       api.getPujaCofirmOtp();
                      },
                      child: Container(
                        width: double.infinity,

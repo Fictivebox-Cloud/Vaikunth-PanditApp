@@ -108,7 +108,7 @@ class ApiCallLogin extends ChangeNotifier {
         print("Registration Complete ${value.stream}");
         print("Registration Complete ${value.request}");
       }
-      print("Registration Failed ${value.statusCode}");
+      // print("Registration Failed ${value.statusCode}");
     });
   }
 }

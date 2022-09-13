@@ -24,7 +24,7 @@ class _Home_ScreenState extends State<Home_Screen> {
   final screen =[
     Home_page_Screen(),
     Earnings_Screen(),
-    const Bookings_Screen(),
+    Bookings_Screen(),
     Profile_Screen(),
 
 
