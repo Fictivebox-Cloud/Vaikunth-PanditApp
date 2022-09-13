@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:panditapp/View/Home/Home_Screen.dart';
 import 'package:panditapp/view_model/ApiCallLogin.dart';
 import 'package:panditapp/view_model/CityListApi.dart';
 import 'package:panditapp/view_model/Complete_Bookings.dart';
@@ -53,7 +54,8 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        home: SplashScreen(),
+        home: Home_Screen(),
+        //home: SplashScreen(),
       );
   }
 
