@@ -40,7 +40,7 @@ Future<void>  main() async{
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     Color kPrimaryColor = Color(0xffFF7D33);
