@@ -165,7 +165,7 @@ class _Account_detailsState extends State<Account_details> {
                         child: TextField(
                           cursorColor: colorPrimary,
                           controller: _choosebank,
-                          keyboardType: TextInputType.number,
+                          //keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             //prefixIcon: const Icon(Icons.search,color: p1Color,),
                               fillColor:grey,
@@ -187,7 +187,7 @@ class _Account_detailsState extends State<Account_details> {
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10),
                             FilteringTextInputFormatter.allow(
-                                RegExp("[0-9]")),
+                                RegExp("[a-z A-Z 0-9]")),
                           ],
                         ),
                       ),
@@ -208,7 +208,6 @@ class _Account_detailsState extends State<Account_details> {
                         child: TextField(
                           cursorColor: colorPrimary,
                           controller: _ifsccode,
-                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             //prefixIcon: const Icon(Icons.search,color: p1Color,),
                               fillColor:grey,
@@ -230,7 +229,7 @@ class _Account_detailsState extends State<Account_details> {
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10),
                             FilteringTextInputFormatter.allow(
-                                RegExp("[0-9]")),
+                                RegExp("[a-z A-Z 0-9]")),
                           ],
                         ),
                       ),

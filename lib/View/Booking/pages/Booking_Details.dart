@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/Booking/pages/Booking_Progress_Screen.dart';
-
 import '../../../Consts/color1.dart';
 
 
