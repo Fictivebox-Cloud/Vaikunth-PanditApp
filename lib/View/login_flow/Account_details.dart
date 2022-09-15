@@ -10,8 +10,11 @@ import 'package:panditapp/View/Home/Home_Screen.dart';
 
 
 import 'package:panditapp/model/getterSetter.dart';
+import 'package:panditapp/view_model/Bank_List_VM.dart';
+import 'package:provider/provider.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:snippet_coder_utils/FormHelper.dart';
 
 import '../../Consts/color1.dart';
 import '../../view_model/ApiCallLogin.dart';
@@ -34,6 +37,7 @@ class Account_details extends StatefulWidget {
       })
       : super(key: key);
 
+
   @override
   State<Account_details> createState() => _Account_detailsState();
 }
@@ -47,15 +51,38 @@ class _Account_detailsState extends State<Account_details> {
 
   late GetterloginSetter s;
 
+
+  List<dynamic> countries=[];
+  String? couuntryId;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this.countries.add({"id":1, "label": "India"});
+    this.countries.add({"id":2, "label": "USA"});
+    this.countries.add({"id":3, "label": "UAE"});
+    this.countries.add({"id":4, "label": "HLLL"});
+    this.countries.add({"id":5, "label": "USASSSS"});
+    this.countries.add({"id":6, "label": "GDHDHN D"});
+    this.countries.add({"id":7, "label": "MKJK"});
+
+    s = GetterloginSetter();
+  }
+
+/*
   @override
   void initState() {
     s = GetterloginSetter();
-  }
+  }*/
 
   ApiCallLogin api = ApiCallLogin();
 
   @override
   Widget build(BuildContext context) {
+    //ServiceVM serviceVM = context.watch<ServiceVM>();
+   BankList_VM bankList_VM = context.watch<BankList_VM>();
+
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
 
@@ -160,37 +187,36 @@ class _Account_detailsState extends State<Account_details> {
                       SizedBox(
                         height: 8,
                       ),
-                      Container(
+
+                      SizedBox(
+                        width: double.infinity,
                         height: 48,
-                        child: TextField(
-                          cursorColor: colorPrimary,
-                          controller: _choosebank,
-                          //keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            //prefixIcon: const Icon(Icons.search,color: p1Color,),
-                              fillColor:grey,
-                              hintStyle: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                  color: kSecondaryColor),
+                        child: FormHelper.dropDownWidget(context,
 
-                              focusedBorder:OutlineInputBorder(
-                                borderSide: const BorderSide(color: colorPrimary, width: 2.0),
-                                // borderRadius: BorderRadius.circular(25.0),
-                              ),
+                          "Select Country",
+                          this.couuntryId,
+                          this.countries,
+                              (onChangedVal){
+                            this.couuntryId=onChangedVal;
+                            print("Selected Country: $onChangedVal");
+                          },
+                              (onValidateVal){
+                            if(onValidateVal == null){
+                              return "please select country";
+                            }
+                            return null;
+                          },
+                          borderColor: kSecondaryColor,
+                          borderFocusColor: colorPrimary,
+                          borderRadius:10,
+                          optionValue:"id",
+                         // optionValue:bankList_VM.bankListModel!.response!.banklist![0].id.toString(),
+                          //optionLabel:bankList_VM.bankListModel!.response!.banklist![0].bankName.toString(),
+                          optionLabel:"label",
 
-                              border: OutlineInputBorder(
-
-                                //borderRadius: BorderRadius.circular(24)
-                              )
-                          ),
-                          inputFormatters: [
-                            LengthLimitingTextInputFormatter(10),
-                            FilteringTextInputFormatter.allow(
-                                RegExp("[a-z A-Z 0-9]")),
-                          ],
                         ),
                       ),
+
 
                       SizedBox(
                         height: 36,

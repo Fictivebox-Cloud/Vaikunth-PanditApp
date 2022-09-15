@@ -11,8 +11,12 @@ import 'package:panditapp/Consts/text_const.dart';
 import 'package:panditapp/View/login_flow/Servies_you_provide.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
+import 'package:provider/provider.dart';
 
 import '../../Consts/color1.dart';
+import '../../view_model/Bank_List_VM.dart';
+import '../../view_model/Pandit_Bank_List_VM.dart';
+import '../../view_model/Service_VM.dart';
 
 
 
@@ -307,6 +311,15 @@ class _MyAppState extends State<Photo_Upload> {
                     child: TextButton(
                       // File? pickedImage;
                         onPressed: (){
+                          ServiceVM serviceVM = Provider.of<ServiceVM>(context,listen: false);
+                          serviceVM.serviceAPIcall();
+
+                          BankList_VM banklist= Provider.of<BankList_VM>(context,listen: false);
+                          banklist.bankListAPIcall();
+
+                          Pandit_Bank_List_VM panditbanklist= Provider.of<Pandit_Bank_List_VM>(context,listen: false);
+                          panditbanklist.panditbankListAPIcall();
+
 
                           GetterloginSetter s = GetterloginSetter();
                           s.Photo = pickedImage;

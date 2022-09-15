@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/Booking/pages/Booking_Details.dart';
 import 'package:panditapp/Widgets/circular_loader.dart';
+import 'package:panditapp/view_model/Service_VM.dart';
 import 'package:panditapp/view_model/verification_number_api.dart';
 import 'package:provider/provider.dart';
 import '../../Consts/color1.dart';
@@ -231,14 +232,11 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                               child: Center(
                                   child: TextButton(
                                       onPressed: () {
-                                        CompleteBookingViewModel
-                                            completebokingmodel = Provider.of<
-                                                    CompleteBookingViewModel>(
-                                                context,
-                                                listen: false);
+                                        CompleteBookingViewModel completebokingmodel = Provider.of<CompleteBookingViewModel>(context,listen: false);
                                         //context.watch<CompleteBookingViewModel>();
-                                        completebokingmodel
-                                            .completebookingAPIcall();
+                                        completebokingmodel.completebookingAPIcall();
+
+
 
                                         // NumberVerifyViewModel numberVerify =
                                         //     Provider.of<NumberVerifyViewModel>(

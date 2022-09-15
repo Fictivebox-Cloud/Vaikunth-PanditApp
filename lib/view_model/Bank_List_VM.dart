@@ -3,16 +3,16 @@ import 'package:panditapp/Consts/user_Error.dart';
 import 'package:panditapp/Util/Api_collection.dart';
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
+import '../model/Bank_List_Model.dart';
+import '../model/Service_Model.dart';
 
-import '../model/Booking Model/ViewDetailsModel.dart';
-
-class ViewDetailVM with ChangeNotifier{
+class BankList_VM with ChangeNotifier{
   bool _loading = false;
-  ViewDetailModel? _viewDetailModel;
+  BankListModel? _bankListModel;
   UserError? _userError;
 
   bool get loading => _loading;
-  ViewDetailModel? get viewdetailmodel => _viewDetailModel;
+  BankListModel? get bankListModel => _bankListModel;
   UserError? get userError => _userError;
 
   setLoading(loading){
@@ -20,8 +20,8 @@ class ViewDetailVM with ChangeNotifier{
     notifyListeners();
   }
 
-  setViewViewDetailModel(ViewDetailModel viewDetailModel){
-    _viewDetailModel=viewDetailModel;
+  setBankListModel(BankListModel bankListModel){
+    _bankListModel = bankListModel;
     notifyListeners();
   }
   setUserError(UserError userError){
@@ -29,30 +29,29 @@ class ViewDetailVM with ChangeNotifier{
     notifyListeners();
   }
 
-  ViewDetailVM(){
-    viewdetailAPIcall();
+  BankList_VM(){
+    bankListAPIcall();
   }
 
-viewdetailAPIcall() async{
+  bankListAPIcall() async{
     setLoading(true);
     var data={
-      "pandit_id": "7",
-      "booking_id": "698"
-             };
+      // "pandit_id": "7",
+    };
 
     var response = await ApiRemoteServices.fechingGetApi(
-      apiUrl:GET_VIEWDETAIL_API,apiData: data);
+        apiUrl:GET_GETBANK_API,apiData: data);
     if(response is Success){
-      Object data = viewDetailModelFromJson(response.response as String);
-      print("Govind kumar${response.response as String}");
-      setViewViewDetailModel(data as ViewDetailModel);
+      Object data = bankListModelFromJson(response.response as String);
+      print("Govind  Bank list${response.response as String}");
+      setBankListModel(data as BankListModel);
     }
     else if (response is Failure){
       UserError userError  =
-          UserError(code: response.code,message: response.errorResponse);
+      UserError(code: response.code,message: response.errorResponse);
       setUserError(userError);
     }
-    setLoading(false);
-}
+    setLoading(loading);
+  }
 
 }

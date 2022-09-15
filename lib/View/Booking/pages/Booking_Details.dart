@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/Booking/pages/Booking_Progress_Screen.dart';
+import 'package:panditapp/view_model/Service_VM.dart';
 import 'package:provider/provider.dart';
 import '../../../Consts/color1.dart';
+import '../../../Widgets/circular_loader.dart';
 import '../../../view_model/ViewDetails_VM.dart';
 
 
@@ -20,11 +22,13 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
 
   //late ViewDetailVM viewdetailVM;
   var ht,wt;
+  late ServiceVM serviceVM;
 
 
   @override
   Widget build(BuildContext context) {
     ViewDetailVM viewdetailVM = context.watch<ViewDetailVM>();
+    serviceVM = context.watch<ServiceVM>();
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
@@ -36,7 +40,11 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
       appBar: AppBar(
         title:  Text("Booking Details"),
       ),
-       body: SafeArea(
+       body:
+       viewdetailVM.loading
+           ? Center(child: CircularLoader())
+           :
+       SafeArea(
          child: SingleChildScrollView(
            child:  Expanded(
              child: Column(
@@ -177,6 +185,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                          children: const [
                            Text("Visiting Charge"),
                            Text("₹200")
+
                          ],
                        ),
                        const SizedBox(height: 10,),

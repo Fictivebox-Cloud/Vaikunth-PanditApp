@@ -7,6 +7,9 @@ const  String GET_CITYLIST_API = "${BASEURL}getcitylist";
 const  String GET_ACCEPTBOOKING_API = "${BASEURL}acceptbooking";
 const  String GET_VIEWDETAIL_API = "${BASEURL}viewdetail";
 const  String GET_NOTIFICATION_API = "${BASEURL}noticationslist";
+const  String GET_SERVICE_API = "${BASEURL}getservices";
+const  String GET_GETBANK_API = "${BASEURL}getbank";
+const  String GET_GETPANDITBANKLIST_API = "${BASEURL}getpanditbanklist";
 
 
 

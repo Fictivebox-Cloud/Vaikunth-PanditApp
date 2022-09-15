@@ -1,18 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:panditapp/View/Home/Home_Screen.dart';
+import 'package:panditapp/View/login_flow/Name_Screen.dart';
 import 'package:panditapp/view_model/ApiCallLogin.dart';
+import 'package:panditapp/view_model/Bank_List_VM.dart';
 import 'package:panditapp/view_model/CityListApi.dart';
 import 'package:panditapp/view_model/Complete_Bookings.dart';
 import 'package:panditapp/view_model/Notification_VM.dart';
+import 'package:panditapp/view_model/Pandit_Bank_List_VM.dart';
+import 'package:panditapp/view_model/Service_VM.dart';
 import 'package:panditapp/view_model/ViewDetails_VM.dart';
-
 import 'package:panditapp/view_model/home_tab/Accept_Booking_Api.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:panditapp/view_model/verification_number_api.dart';
 import 'package:provider/provider.dart';
-import 'View/Splash_onboarding/splash_screen.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 
 
@@ -32,7 +32,10 @@ Future<void>  main() async{
        ChangeNotifierProvider(create: (_)=>City_List_Api()),
        ChangeNotifierProvider(create: (_)=>NumberVerifyViewModel()),
        ChangeNotifierProvider(create: (_)=>ViewDetailVM()),
-       ChangeNotifierProvider(create: (_)=>NotificationVM())
+       ChangeNotifierProvider(create: (_)=>NotificationVM()),
+       ChangeNotifierProvider(create: (_)=>ServiceVM()),
+       ChangeNotifierProvider(create: (_)=>BankList_VM()),
+       ChangeNotifierProvider(create: (_)=>Pandit_Bank_List_VM()),
 
 
       ],
@@ -59,8 +62,8 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        // home: Home_Screen(),
-         home: SplashScreen(),
+          home: Name_Screen(),
+         //home: SplashScreen(),
       );
   }
 

@@ -2,9 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../../Consts/color1.dart';
 
 import '../../Consts/text_const.dart';
+import '../../Widgets/circular_loader.dart';
+import '../../view_model/Service_VM.dart';
 import 'city_screen.dart';
 
 class Servies_you_screen extends StatefulWidget {
@@ -24,18 +27,28 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
 
   var servicecontroller;
 
-  List<String> _list = [PUJA, ASTROLOGY,FUNERALSERVICES];
+  //List<String> _list = [PUJA, ASTROLOGY,FUNERALSERVICES];
+//  Text(serviceVM.serviceModel!.response!.serviceslist![0].name.toString()),
 
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    ServiceVM serviceVM = context.watch<ServiceVM>();
+
     TextEditingController editingController = TextEditingController();
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
+      body:
+
+      serviceVM.loading
+          ? Center(child: CircularLoader())
+          :
+
+
+      SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -113,29 +126,28 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                           height: ht* 0.07,
 
                           decoration: BoxDecoration(
-
                               borderRadius: BorderRadius.circular(4),
-                              border: Border.all(color: _selectedIndex == index ? kPrimaryColor : h1Color)
+                              border: Border.all(color: _selectedIndex == index ? kPrimaryColor : kSecondaryColor)
 
                           ),
                           child: Center(child:
 
                           Text(
-
-                            _list[index],
-
+                             serviceVM.serviceModel!.response!.serviceslist![index].name.toString(),
                             style: GoogleFonts.lato(fontWeight: FontWeight.w500,
                                 fontSize: 16),
                           )),
                         ),
                       ), separatorBuilder: (context, index) => SizedBox(
                         height: 12,
-                      ), itemCount: _list.length)),
+                      ), itemCount: serviceVM.serviceModel!.response!.serviceslist!.length)),
 
 
                 ],
               ),
             ),
+            Spacer(),
+
             Padding(
               padding: const EdgeInsets.only(left: 16,right: 16,bottom: 24),
               child: Container(
@@ -150,11 +162,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
 
                  onPressed: (){
 
-                   // GetterloginSetter s = GetterloginSetter();
-                   // s.services =_servicecontroller.text;
-                   // print("Bhawani ${s.services}");
-
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen(name3: widget.name,photo3: widget.photo,mobile: widget.mobile,servicesname: _list[_selectedIndex],)));
+                   Navigator.push(context, MaterialPageRoute(builder: (context)=>City_Screen(name3: widget.name,photo3: widget.photo,mobile: widget.mobile, servicesname: serviceVM.serviceModel!.response!.serviceslist![_selectedIndex].name,)));
                  }, child: Text(NEXT,style: GoogleFonts.lato(
                  color: white,fontSize: 24,
                  fontWeight: FontWeight.w600),)),

@@ -3,16 +3,15 @@ import 'package:panditapp/Consts/user_Error.dart';
 import 'package:panditapp/Util/Api_collection.dart';
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
+import '../model/Service_Model.dart';
 
-import '../model/Booking Model/ViewDetailsModel.dart';
-
-class ViewDetailVM with ChangeNotifier{
+class ServiceVM with ChangeNotifier{
   bool _loading = false;
-  ViewDetailModel? _viewDetailModel;
+  ServiceModel? _serviceModel;
   UserError? _userError;
 
   bool get loading => _loading;
-  ViewDetailModel? get viewdetailmodel => _viewDetailModel;
+  ServiceModel? get serviceModel => _serviceModel;
   UserError? get userError => _userError;
 
   setLoading(loading){
@@ -20,8 +19,8 @@ class ViewDetailVM with ChangeNotifier{
     notifyListeners();
   }
 
-  setViewViewDetailModel(ViewDetailModel viewDetailModel){
-    _viewDetailModel=viewDetailModel;
+  setServiceModel(ServiceModel serviceModel){
+    _serviceModel = serviceModel;
     notifyListeners();
   }
   setUserError(UserError userError){
@@ -29,30 +28,29 @@ class ViewDetailVM with ChangeNotifier{
     notifyListeners();
   }
 
-  ViewDetailVM(){
-    viewdetailAPIcall();
+  ServiceVm(){
+    serviceAPIcall();
   }
 
-viewdetailAPIcall() async{
+  serviceAPIcall() async{
     setLoading(true);
     var data={
-      "pandit_id": "7",
-      "booking_id": "698"
-             };
+      // "pandit_id": "7",
+    };
 
     var response = await ApiRemoteServices.fechingGetApi(
-      apiUrl:GET_VIEWDETAIL_API,apiData: data);
+        apiUrl:GET_SERVICE_API,apiData: data);
     if(response is Success){
-      Object data = viewDetailModelFromJson(response.response as String);
-      print("Govind kumar${response.response as String}");
-      setViewViewDetailModel(data as ViewDetailModel);
+      Object data = serviceModelFromJson(response.response as String);
+      print("Govind service booking list${response.response as String}");
+      setServiceModel(data as ServiceModel);
     }
     else if (response is Failure){
       UserError userError  =
-          UserError(code: response.code,message: response.errorResponse);
+      UserError(code: response.code,message: response.errorResponse);
       setUserError(userError);
     }
     setLoading(false);
-}
+  }
 
 }

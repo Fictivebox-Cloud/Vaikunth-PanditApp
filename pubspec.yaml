@@ -67,6 +67,7 @@ dependencies:
   shimmer: ^2.0.0
   flutter_phone_direct_caller: ^2.1.1
   url_launcher: ^6.1.5
+  snippet_coder_utils: ^1.0.12
 
 
 dev_dependencies:

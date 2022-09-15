@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:status_change/status_change.dart';
 
 import '../../../Consts/color1.dart';
+import '../../../view_model/ViewDetails_VM.dart';
 
 class Booking_Progress extends StatefulWidget {
   const Booking_Progress({Key? key}) : super(key: key);
@@ -17,6 +19,7 @@ class _Booking_ProgressState extends State<Booking_Progress> {
 
   @override
   Widget build(BuildContext context) {
+    ViewDetailVM viewdetailVM = context.watch<ViewDetailVM>();
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
@@ -63,7 +66,11 @@ class _Booking_ProgressState extends State<Booking_Progress> {
 
                       ),
                       SizedBox(height: 16,),
-                      Text("Vikrant Bhawani", style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: white),)
+                      Text(
+                        //"Vikrant Bhawani"
+                        viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].name.toString()
+                        //viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].name.toString()
+                        , style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: white),)
                     ],
                   ),
                 ),
@@ -77,8 +84,10 @@ class _Booking_ProgressState extends State<Booking_Progress> {
                         children: [
                           Icon(Icons.calendar_month,color: kPrimaryColor,),
                           SizedBox(width: 7,),
-                          Text
-                            ("Mon 05/Oct/2021",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14),)
+                          Text(
+                            //"Mon 05/Oct/2021"
+                          viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].bookingPujaDate.toString().split(" ").first
+                          ,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14),)
                         ],
                       ),
                       SizedBox(height: 10,),
@@ -86,7 +95,10 @@ class _Booking_ProgressState extends State<Booking_Progress> {
                         children: [
                           Icon(Icons.access_time,color: kPrimaryColor,),
                           SizedBox(width: 7,),
-                          Text("6 PM",style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500),)
+                          Text(
+                            //"6 PM"
+                          viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].bookingPujaDate.toString().replaceRange(0 , 11, "")
+                          ,style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500),)
                         ],
 
                       ),
@@ -95,7 +107,10 @@ class _Booking_ProgressState extends State<Booking_Progress> {
                         children: [
                           Icon(Icons.location_on,color: kPrimaryColor,),
                           SizedBox(width: 7,),
-                          Text("Rally Infra Business Park, Sector 63, Noida, UP",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14),)
+                          Text(
+                            //"Rally Infra Business Park, Sector 63, Noida, UP"
+                          viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].cityname.toString()
+                          ,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14),)
                         ],
                       )
 
