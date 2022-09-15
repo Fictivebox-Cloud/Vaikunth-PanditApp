@@ -21,12 +21,15 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
   bool Small = false;
 
   late CompleteBookingViewModel completeBookingViewModel;
-  late NumberVerifyViewModel numberVerifyViewModel;
+
+  // late ViewDetailVM viewdetailVM;
+  // viewdetailVM = context.watch<ViewDetailVM>();
 
   @override
   Widget build(BuildContext context) {
-    completeBookingViewModel = context.watch<CompleteBookingViewModel>();
-    numberVerifyViewModel = context.watch<NumberVerifyViewModel>();
+    completeBookingViewModel = Provider.of<CompleteBookingViewModel>(context, listen: false);
+    completeBookingViewModel.completebookingAPIcall();
+  //  viewdetailVM = context.watch<ViewDetailVM>();
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;

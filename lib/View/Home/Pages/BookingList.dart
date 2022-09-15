@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../Consts/color1.dart';
+import '../../../view_model/Complete_Bookings.dart';
 import '../../../view_model/home_tab/Accept_Booking_Api.dart';
 
 class BookingListTitl extends StatefulWidget {
@@ -22,7 +23,7 @@ class BookingListTitl extends StatefulWidget {
 class _BookingListTitlState extends State<BookingListTitl> {
   bool _isLoading = false;
 
-
+  Accept_Booking_Api? ss;
 
   @override
   Widget build(BuildContext context) {
@@ -185,11 +186,16 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                       left: 16, right: 16, top: 10),
                                   child: InkWell(
                                     onTap: () {
-                                      setState(() {
+                                      setState(()  {
+                                        ss = Provider.of<Accept_Booking_Api>(context, listen: false);
+                                         ss?.getAccept_booking_Api(userbooking: booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].bookingId.toString() ?? "");
+
+                                        CompleteBookingViewModel completeBookingViewModel = Provider.of<CompleteBookingViewModel>(context, listen: false);
+                                         completeBookingViewModel.completebookingAPIcall();
+
                                         booking_request_view_model.getbookinglistModel!.response!.bookinglist!.removeAt(index);
                                       });
-                                      Accept_Booking_Api ss = Accept_Booking_Api();
-                                      ss.getAccept_booking_Api();
+
                                     },
                                     child: Container(
                                       width: double.infinity,

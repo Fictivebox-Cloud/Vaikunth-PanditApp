@@ -4,6 +4,8 @@ import 'package:panditapp/View/Home/Home_Screen.dart';
 import 'package:panditapp/view_model/ApiCallLogin.dart';
 import 'package:panditapp/view_model/CityListApi.dart';
 import 'package:panditapp/view_model/Complete_Bookings.dart';
+import 'package:panditapp/view_model/Notification_VM.dart';
+import 'package:panditapp/view_model/ViewDetails_VM.dart';
 
 import 'package:panditapp/view_model/home_tab/Accept_Booking_Api.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
@@ -28,7 +30,10 @@ Future<void>  main() async{
        ChangeNotifierProvider(create: (_)=>CompleteBookingViewModel()),
        ChangeNotifierProvider(create: (_)=>Accept_Booking_Api()),
        ChangeNotifierProvider(create: (_)=>City_List_Api()),
-       ChangeNotifierProvider(create: (_)=>NumberVerifyViewModel())
+       ChangeNotifierProvider(create: (_)=>NumberVerifyViewModel()),
+       ChangeNotifierProvider(create: (_)=>ViewDetailVM()),
+       ChangeNotifierProvider(create: (_)=>NotificationVM())
+
 
       ],
       child: const MyApp(),
@@ -54,8 +59,8 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        home: Home_Screen(),
-        //home: SplashScreen(),
+         // home: Home_Screen(),
+        home: SplashScreen(),
       );
   }
 

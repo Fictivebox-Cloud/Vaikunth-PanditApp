@@ -17,11 +17,6 @@ class Accept_Booking_Api extends ChangeNotifier{
   AcceptBookingModel? _acceptBookingModel;
   UserError? _userError;
 
-
-  Accept_Booking_Api(){
-    getAccept_booking_Api();
-  }
-
   bool get loading => _loading;
   AcceptBookingModel? get acceptbookingApi => _acceptBookingModel;
   UserError? get userError => _userError;
@@ -39,10 +34,10 @@ class Accept_Booking_Api extends ChangeNotifier{
     _userError = userError;
     notifyListeners();
   }
-  getAccept_booking_Api()async{
+  getAccept_booking_Api({required String userbooking})async{
+    print("User booking $userbooking");
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString("pandit_id");
-    String? userbooking = prefs.getString("booking_id");
     Map<String, dynamic> data = {
       "pandit_id": userId,
       // "booking_id": userbooking

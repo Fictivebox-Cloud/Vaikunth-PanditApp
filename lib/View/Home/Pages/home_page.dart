@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
@@ -32,12 +33,12 @@ class Home_page_Screen extends StatelessWidget {
     ht = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        body: _ui(booking_request_view_model),
+        body: _ui(booking_request_view_model,context),
       ),
     );
   }
 
-  _ui(Booking_Request_View_Model booking_request_view_model) {
+  _ui(Booking_Request_View_Model booking_request_view_model,BuildContext context) {
     if (booking_request_view_model.loading) {
       return Center(child: CircularProgressIndicator(color: kPrimaryColor,));
     } else if (booking_request_view_model.userError != null) {
@@ -47,10 +48,10 @@ class Home_page_Screen extends StatelessWidget {
       );
     }
     //return Text("GGG");
-     return _listDesign(booking_request_view_model);
+     return _listDesign(booking_request_view_model,context);
   }
 
-  _listDesign(Booking_Request_View_Model booking_request_view_model) {
+  _listDesign(Booking_Request_View_Model booking_request_view_model, BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -90,7 +91,14 @@ class Home_page_Screen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-
+                 // Navigator.push(context, MaterialPageRoute(builder: (context) =>Notifications_screen()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          Notifications_screen(),
+                    ),
+                  );
                 },
                 child: const Icon(Icons.notifications),
               )
