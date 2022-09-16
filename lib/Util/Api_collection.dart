@@ -8,6 +8,9 @@ const  String GET_ACCEPTBOOKING_API = "${BASEURL}acceptbooking";
 const  String GET_VIEWDETAIL_API = "${BASEURL}viewdetail";
 const  String GET_NOTIFICATION_API = "${BASEURL}noticationslist";
 const  String GET_SENDPUJAOTP_API = "${BASEURL}sendpujaconfirmotp";
+const  String GET_ONLINE_OFLINE_API = "${BASEURL}}onlinestatus";
+const  String GET_CHECK_BOOKING_OTP = "${BASEURL}}checkbookingconfirmotp";
+const  String GET_ID_CARD = "${BASEURL}}idcard";
 
 
 

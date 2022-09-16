@@ -21,7 +21,7 @@ class BookingListTitl extends StatefulWidget {
 }
 
 class _BookingListTitlState extends State<BookingListTitl> {
-  bool _isLoading = false;
+
 
   Accept_Booking_Api? ss;
 
@@ -121,7 +121,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                 ),
                                 Center(
                                     child: Text(
-                                      booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].hostname ?? "",
+                                      booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].poojaTitle ?? "",
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 12,

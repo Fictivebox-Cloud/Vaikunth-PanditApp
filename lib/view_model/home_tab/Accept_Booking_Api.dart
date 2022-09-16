@@ -38,10 +38,10 @@ class Accept_Booking_Api extends ChangeNotifier{
     print("User booking $userbooking");
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString("pandit_id");
+    print("Pandit App = ${userId}");
+    setLoading(true);
     Map<String, dynamic> data = {
       "pandit_id": userId,
-      // "booking_id": userbooking
-      // "pandit_id": "8",
       "booking_id": userbooking
     };
     setLoading(true);

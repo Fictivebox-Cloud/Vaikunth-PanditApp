@@ -7,27 +7,31 @@ import 'package:panditapp/View/Home/Pages/BookingList.dart';
 import 'package:panditapp/View/Home/Pages/Notifications_screen.dart';
 import 'package:panditapp/View/Profile/Profile.dart';
 import 'package:panditapp/model/Booking%20Model/BookingModel.dart';
+import 'package:panditapp/view_model/home_tab/Online_Ofline_view_model.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 
 
+import '../../../Widgets/OnlineAndSwitch.dart';
 import '../../../consts/color1.dart';
 import '../../../consts/image_const.dart';
 
 
 class Home_page_Screen extends StatelessWidget {
-  Home_page_Screen({Key? key}) : super(key: key);
+
 
   var ht, wt;
 
   bool _isLoading = true;
+  late Online_Ofline_View_Model ss;
 
   @override
   Widget build(BuildContext context) {
     Booking_Request_View_Model booking_request_view_model =
         context.watch<Booking_Request_View_Model>();
+
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
@@ -62,8 +66,8 @@ class Home_page_Screen extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(
-                  //     builder: (context) => const Profile_Screen()));
+                  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => const Profile_Screen()));
                 },
                 child: const CircleAvatar(
                   radius: 20,
@@ -76,6 +80,7 @@ class Home_page_Screen extends StatelessWidget {
               SizedBox(
                 height: 31,
                 width: 120,
+                // child: SwitchOf(),
 
                 child: LiteRollingSwitch(
                   textOn: "Online",
@@ -84,14 +89,15 @@ class Home_page_Screen extends StatelessWidget {
                   colorOn: btn,
                   colorOff: p1Color,
                   textSize: 16,
-                  onChanged: (bool position) {
-                    print("The Vikrant $position");
+                  onChanged: (val) {
+                      ss = Provider.of<Online_Ofline_View_Model>(context, listen: false);
+                      ss.getonlineofline(userStatus: val ? "1" : "0");
                   },
                 ),
               ),
               InkWell(
                 onTap: () {
-                 // Navigator.push(context, MaterialPageRoute(builder: (context) =>Notifications_screen()));
+                 Navigator.push(context, MaterialPageRoute(builder: (context) =>Notifications_screen()));
                   Navigator.push(
                     context,
                     MaterialPageRoute(

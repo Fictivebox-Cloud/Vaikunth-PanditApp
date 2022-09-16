@@ -3,6 +3,7 @@ import 'package:panditapp/Consts/user_Error.dart';
 import 'package:panditapp/Util/Api_collection.dart';
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/Booking Model/ViewDetailsModel.dart';
 
@@ -29,15 +30,18 @@ class ViewDetailVM with ChangeNotifier{
     notifyListeners();
   }
 
-  ViewDetailVM(){
-    viewdetailAPIcall();
-  }
+  // ViewDetailVM(){
+  //   viewdetailAPIcall({required String userbooking}, userbooking: '');
+  // }
 
-viewdetailAPIcall() async{
+viewdetailAPIcall( {required dynamic userbooking}) async{
     setLoading(true);
-    var data={
-      "pandit_id": "7",
-      "booking_id": "698"
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? userId = prefs.getString("pandit_id");
+    print("Pandit App = ${userId}");
+    Map<String , dynamic> data={
+      "pandit_id": userId,
+      "booking_id": userbooking.toString()
              };
 
     var response = await ApiRemoteServices.fechingGetApi(
@@ -52,7 +56,7 @@ viewdetailAPIcall() async{
           UserError(code: response.code,message: response.errorResponse);
       setUserError(userError);
     }
-    setLoading(loading);
+    setLoading(false);
 }
 
 }

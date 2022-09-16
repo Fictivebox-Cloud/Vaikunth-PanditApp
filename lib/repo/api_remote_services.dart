@@ -8,7 +8,7 @@ import '../Util/api_status.dart';
 import 'package:http/http.dart' as http;
 
 class ApiRemoteServices {
-  static Future<Object?> fechingGetApi({String? apiUrl, apiData}) async {
+  static Future<Object?> fechingGetApi({String? apiUrl, dynamic? apiData}) async {
     try {
       Map? body = apiData;
       var url = Uri.parse(apiUrl!);

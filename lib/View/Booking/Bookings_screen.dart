@@ -36,7 +36,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
     return Scaffold(
         backgroundColor: white,
         body:  completeBookingViewModel.loading
-            ? Center(child: CircularLoader())
+            ? const Center(child: CircularLoader())
             : DefaultTabController(
           length: 3,
           child: Scaffold(
@@ -47,7 +47,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                     TabBar(
                       labelStyle: TextStyle(fontSize: Small ? 13.0 : 18.0),
                       labelColor: h1Color,
-                      unselectedLabelColor: Color(0Xff999EA3),
+                      unselectedLabelColor: const Color(0Xff999EA3),
                       tabs: const [
                         Tab(
                           text: 'Upcoming',
@@ -111,11 +111,11 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.calendar_month,
                                       color: kPrimaryColor,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 11,
                                     ),
                                     Text(
@@ -124,7 +124,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
-                                          color: Color(0xff232323)),
+                                          color: const Color(0xff232323)),
                                     ),
                                     // SizedBox(width: 105,),
                                   ],
@@ -133,11 +133,11 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.location_on,
                                       color: h1Color,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 19.32,
                                     ),
                                     Image.asset("assets/images/manu.png")
@@ -146,7 +146,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 3,
                           ),
                           Center(
@@ -160,7 +160,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                 fontSize: 12,
                                 color: kPrimaryColor),
                           )),
-                          SizedBox(
+                          const SizedBox(
                             height: 3,
                           ),
                           Padding(
@@ -171,7 +171,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4,
                           ),
                           Padding(
@@ -190,7 +190,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                             ),
                             //Text("1 x Puranmashi katha(Offline)",style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 14,color: h1Color),),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4,
                           ),
                           Padding(
@@ -203,12 +203,12 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                   color: h1Color),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                                 left: 16, right: 16, top: 10),
                             child: DottedLine(),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4,
                           ),
                           Center(
@@ -232,21 +232,10 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                               child: Center(
                                   child: TextButton(
                                       onPressed: () {
-                                        CompleteBookingViewModel
-                                            completebokingmodel = Provider.of<
-                                                    CompleteBookingViewModel>(
-                                                context,
-                                                listen: false);
-                                        //context.watch<CompleteBookingViewModel>();
-                                        completebokingmodel
-                                            .completebookingAPIcall();
 
-                                        // NumberVerifyViewModel numberVerify =
-                                        //     Provider.of<NumberVerifyViewModel>(
-                                        //         context,
-                                        //         listen: false);
-                                        // numberVerify.NumberVerifyAPIcall();
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Booking_Details_Screen()));
+
+
+                                            Navigator.push(context, MaterialPageRoute(builder: (context)=> Booking_Details_Screen(bookingId: completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].id)));
                                       },
                                       child: Text(
                                         "View Details",
@@ -303,11 +292,11 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.calendar_month,
                                       color: kPrimaryColor,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 11,
                                     ),
                                     Text(
@@ -321,7 +310,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
-                                          color: Color(0xff232323)),
+                                          color: const Color(0xff232323)),
                                     ),
                                     // SizedBox(width: 105,),
                                   ],
@@ -330,13 +319,13 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Icon(Icons.location_on, color: h1Color),
+                                    const Icon(Icons.location_on, color: h1Color),
                                   ],
                                 )
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 3,
                           ),
                           Center(
@@ -350,7 +339,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                 fontSize: 12,
                                 color: kPrimaryColor),
                           )),
-                          SizedBox(
+                          const SizedBox(
                             height: 3,
                           ),
                           Padding(
@@ -361,7 +350,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4,
                           ),
                           Padding(
@@ -377,7 +366,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                   color: h1Color),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4,
                           ),
                           Padding(
@@ -390,12 +379,12 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                   color: h1Color),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
+                          const Padding(
+                            padding: EdgeInsets.only(
                                 left: 16, right: 16, top: 10),
                             child: DottedLine(),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 4,
                           ),
                           Center(
@@ -473,11 +462,11 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.calendar_month,
                                       color: kPrimaryColor,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 11,
                                     ),
                                     Text(
@@ -486,7 +475,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
-                                          color: Color(0xff232323)),
+                                          color: const Color(0xff232323)),
                                     ),
                                     // SizedBox(width: 105,),
                                   ],
@@ -503,7 +492,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                             ),
                           ),
 
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
                           Center(
@@ -515,7 +504,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                 fontSize: 12,
                                 color: kPrimaryColor),
                           )),
-                          SizedBox(
+                          const SizedBox(
                             height: 3,
                           ),
                           Padding(
@@ -526,7 +515,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                   fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 6,
                           ),
                           Padding(

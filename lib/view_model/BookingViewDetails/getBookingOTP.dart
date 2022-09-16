@@ -3,6 +3,7 @@ import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/consts/user_Error.dart';
 import 'package:panditapp/model/Booking_View_Details/Booking_View_Details.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
 
@@ -11,9 +12,6 @@ class Puja_Confirm_OTP  with ChangeNotifier{
   PujaConfirmOtpModel? _puja_confirm_otp;
   UserError? _userError;
 
-  Booking_View_Model(){
-    getPujaCofirmOtp();
-  }
 
   bool get loading => _loading;
   PujaConfirmOtpModel? get getPujaConfirmModel => _puja_confirm_otp;
@@ -32,12 +30,17 @@ class Puja_Confirm_OTP  with ChangeNotifier{
     _userError = userError;
     notifyListeners();
   }
-  getPujaCofirmOtp() async{
+  getPujaCofirmOtp( {required dynamic userBooking_id}) async{
+    setLoading(true);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? userId = prefs.getString("pandit_id");
+    print("Pandit App user Id = ${userId}");
     setLoading(true);
     Map<String , dynamic> data = {
+      "pandit_id": userId,
+      "booking_id": userBooking_id.toString()
+      // "pandit_id": "7",
 
-      "pandit_id": "7",
-      "booking_id": "727"
 
     };
     var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_SENDPUJAOTP_API,apiData: data);

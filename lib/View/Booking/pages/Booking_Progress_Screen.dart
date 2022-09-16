@@ -5,7 +5,8 @@ import 'package:status_change/status_change.dart';
 import '../../../Consts/color1.dart';
 
 class Booking_Progress extends StatefulWidget {
-  const Booking_Progress({Key? key}) : super(key: key);
+  var bookingId;
+   Booking_Progress({Key? key, this.bookingId}) : super(key: key);
 
   @override
   State<Booking_Progress> createState() => _Booking_ProgressState();
@@ -21,13 +22,11 @@ class _Booking_ProgressState extends State<Booking_Progress> {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
-
       backgroundColor:white ,
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
-
               flex: 1,
 
               child: Column(
@@ -49,11 +48,9 @@ class _Booking_ProgressState extends State<Booking_Progress> {
 
                               children: [
                                 Icon(
-
                                   Icons.arrow_back,color: white,),
                                 SizedBox(width: 64,),
                                 Center(child: Text("Booking in Progress",style: GoogleFonts.lato(color: white , fontWeight: FontWeight.w600,fontSize: 18),)),
-
                               ],
                             ),
 
