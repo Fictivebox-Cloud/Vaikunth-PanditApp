@@ -1,12 +1,8 @@
-import 'package:panditapp/model/Booking%20Model/Acept_Booking_Model.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
-
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shimmer/shimmer.dart';
-
 import '../../../Consts/color1.dart';
 import '../../../view_model/home_tab/Accept_Booking_Api.dart';
 
@@ -92,7 +88,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                         color: kPrimaryColor,
                                       ),
                                       // SizedBox(width: 11,),
-                                      Text(booking_request_view_model!.getbookinglistModel!.response!.bookinglist![index].poojaDate ?? ""
+                                      Text(booking_request_view_model!.getbookinglistModel!.response!.bookinglist![index].bookingPujaDate.toString()
                                         ,style: GoogleFonts.lato(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,

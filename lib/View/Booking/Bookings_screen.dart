@@ -120,7 +120,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                     ),
                                     Text(
                                       //"Mon 05/Oct/2021"
-                                      completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].poojaDate.toString(),
+                                      completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].bookingPujaDate.toString(),
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,

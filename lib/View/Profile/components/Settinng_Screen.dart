@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Consts/color1.dart';
+import '../../../view_model/Help_Support_Details_VM.dart';
 import 'Help&Support.dart';
 class Setting_Screen extends StatefulWidget {
   const Setting_Screen({Key? key}) : super(key: key);
@@ -120,6 +122,11 @@ class _Setting_ScreenState extends State<Setting_Screen> {
                 ),
                 GestureDetector(
                   onTap: (){
+
+
+                    HelpSupportDetails_VM panditbanklist= Provider.of<HelpSupportDetails_VM>(context,listen: false);
+                    panditbanklist.HelpSupportDetailsAPIcall();
+
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>Help_Support_Screen()));
                   },
                   child: Container(

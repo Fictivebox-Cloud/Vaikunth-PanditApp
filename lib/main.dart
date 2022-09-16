@@ -5,6 +5,7 @@ import 'package:panditapp/view_model/ApiCallLogin.dart';
 import 'package:panditapp/view_model/Bank_List_VM.dart';
 import 'package:panditapp/view_model/CityListApi.dart';
 import 'package:panditapp/view_model/Complete_Bookings.dart';
+import 'package:panditapp/view_model/Help_Support_Details_VM.dart';
 import 'package:panditapp/view_model/Notification_VM.dart';
 import 'package:panditapp/view_model/Pandit_Bank_List_VM.dart';
 import 'package:panditapp/view_model/Service_VM.dart';
@@ -38,6 +39,7 @@ Future<void>  main() async{
        ChangeNotifierProvider(create: (_)=>ServiceVM()),
        ChangeNotifierProvider(create: (_)=>BankList_VM()),
        ChangeNotifierProvider(create: (_)=>Pandit_Bank_List_VM()),
+       ChangeNotifierProvider(create: (_)=>HelpSupportDetails_VM()),
 
 
       ],
@@ -64,8 +66,8 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-          //home: Name_Screen(),
-         home: SplashScreen(),
+          home: Name_Screen(),
+        // home: SplashScreen(),
       );
   }
 

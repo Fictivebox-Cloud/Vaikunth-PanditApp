@@ -3,8 +3,8 @@ import 'package:panditapp/Consts/user_Error.dart';
 import 'package:panditapp/Util/Api_collection.dart';
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
-import '../model/Bank_List_Model.dart';
-import '../model/Pandit_Bank_List_Model.dart';
+import '../model/Profile_Screen/Bank_Account Details/Bank_List_Model.dart';
+import '../model/Profile_Screen/Bank_Account Details/Pandit_Bank_List_Model.dart';
 import '../model/Service_Model.dart';
 
 class Pandit_Bank_List_VM with ChangeNotifier{
