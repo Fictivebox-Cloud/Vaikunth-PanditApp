@@ -341,13 +341,14 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
             alignment: Alignment.center,
             child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(color: kPrimaryColor,),
         )) : InkWell(
           onTap: (){
-            provider.getCheckBookingConfirm(userBooking_id: widget.bookingId,otpcode: "1234");
-             provider.getcheckBookingConfirmOtpModel?.success ?? false ?
-             Navigator.push(context, MaterialPageRoute(builder: (context)=>   Booking_Progress()))
-            : toast();
+            provider.getCheckBookingConfirm(userBooking_id: widget.bookingId,otpcode: "1234").then((value) {
+              print("Value $value");
+              provider.getcheckBookingConfirmOtpModel!.success! ?  Navigator.push(context, MaterialPageRoute(builder: (context)=>   Booking_Progress())) : toast();
+            });
+
 
             },
           child: Container(

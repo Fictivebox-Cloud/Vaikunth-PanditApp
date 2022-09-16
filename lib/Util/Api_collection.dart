@@ -11,6 +11,10 @@ const  String GET_SENDPUJAOTP_API = "${BASEURL}sendpujaconfirmotp";
 const  String GET_ONLINE_OFLINE_API = "${BASEURL}}onlinestatus";
 const  String GET_CHECK_BOOKING_OTP = "${BASEURL}}checkbookingconfirmotp";
 const  String GET_ID_CARD = "${BASEURL}}idcard";
+const  String GET_SERVICE_API = "${BASEURL}getservices";
+const  String GET_GETBANK_API = "${BASEURL}getbank";
+const  String GET_GETPANDITBANKLIST_API = "${BASEURL}getpanditbanklist";
+const  String GET_GETHELP_API = "${BASEURL}gethelp";
 
 
 

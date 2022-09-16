@@ -32,7 +32,7 @@ class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier{
     notifyListeners();
   }
 
-  getCheckBookingConfirm({
+  Future getCheckBookingConfirm({
     required dynamic userBooking_id,otpcode
 }) async{
     setLoading(true);
@@ -53,10 +53,11 @@ if(response is Success){
   Object data = checkBookingConfirmOtpModelFromJson(response.response as String);
   setGetCheckBookingConfirmOtpModel(data as CheckBookingConfirmOtpModel);
 
-
+  return true;
 }else if(response is Failure){
   UserError userError = UserError(code:  response.code,message: response.errorResponse);
   setUserError(userError);
+  return false;
 }
 setLoading(false);
 

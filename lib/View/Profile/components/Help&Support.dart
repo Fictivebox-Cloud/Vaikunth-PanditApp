@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../Consts/color1.dart';
+import '../../../Widgets/circular_loader.dart';
+import '../../../view_model/Help_Support_Details_VM.dart';
 
 class Help_Support_Screen extends StatefulWidget {
   const Help_Support_Screen({Key? key}) : super(key: key);
@@ -18,12 +23,19 @@ class _Help_Support_ScreenState extends State<Help_Support_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    HelpSupportDetails_VM helpSupportDetails_VM = context.watch<HelpSupportDetails_VM>();
+
+
     return Scaffold(
       backgroundColor: white,
       appBar: AppBar(
         title: Text("Help & Support"),
       ),
-      body: SafeArea(
+      body:
+      helpSupportDetails_VM.loading
+          ? Center(child: CircularLoader())
+          :
+      SafeArea(
         child: Padding(
 
           padding: const EdgeInsets.only(left: 16,right: 16,bottom: 16),
@@ -47,51 +59,59 @@ class _Help_Support_ScreenState extends State<Help_Support_Screen> {
                                height: 68,
                              ),
                              Icon(Icons.phone,color: kPrimaryColor,),
-                             Text("+91 7704087638"),
+                             Text(helpSupportDetails_VM.helpSupportDetailsModel!.response!.helplist![0].helpMobile.toString()),
+                             //Text("+91 7704087638"),
                         SizedBox(
                           height: 72.33,
                         ),
                             Icon(Icons.mail,color: kPrimaryColor,),
-                            Text("Support@vaikunth.com")
+                           // Text("Support@vaikunth.com")
+                            Text(helpSupportDetails_VM.helpSupportDetailsModel!.response!.helplist![0].helpEmail.toString())
                       ],
                     ),
                   ),
                 ),
               ),
-              Container(
-                width: double.infinity,
-                height: 52,
-                decoration: BoxDecoration(
-                  color: white,
+              InkWell(
+                onTap: (){
+                  launch('mailto:govindrajpoot760@gmail.com?subject=This is subject Tittle & body = This is Body of mail');
 
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(
-                      width: 1,
-                      color: kSecondaryColor
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 52,
+                  decoration: BoxDecoration(
+                    color: white,
 
-                  ),
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                        width: 1,
+                        color: kSecondaryColor
 
-
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-
-                  children: [
-                    Center(
-                      child: Row(
-
-                        children: [
-                          Icon(Icons.mail,color: kPrimaryColor,),
-                          SizedBox(width: 10,),
-                          Text("Send Email",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-
-
-                        ],
-
-                      ),
                     ),
 
-                  ],
+
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+
+                    children: [
+                      Center(
+                        child: Row(
+
+                          children: [
+                            Icon(Icons.mail,color: kPrimaryColor,),
+                            SizedBox(width: 10,),
+                            Text("Send Email",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
+
+
+                          ],
+
+                        ),
+                      ),
+
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -122,11 +142,14 @@ class _Help_Support_ScreenState extends State<Help_Support_Screen> {
                         children: [
                           Icon(Icons.call,color: white,),
                           SizedBox(width: 10,),
-                          Text("Call Now",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: white),),
+                          InkWell(
+                              onTap: (){
+                                FlutterPhoneDirectCaller.callNumber("${helpSupportDetails_VM.helpSupportDetailsModel!.response!.helplist![0].helpMobile.toString()}");
+                              },
+                              child: Text("Call Now",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: white),)),
 
 
                         ],
-
                       ),
 
                     ],

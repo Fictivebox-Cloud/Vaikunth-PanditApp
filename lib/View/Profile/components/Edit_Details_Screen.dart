@@ -1,10 +1,11 @@
 import 'package:dotted_border/dotted_border.dart';
-import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Consts/color1.dart';
+import '../../../Consts/text_const.dart';
+import '../../../view_model/Service_VM.dart';
 
 class Edit_Details_Screen extends StatefulWidget {
   const Edit_Details_Screen({Key? key}) : super(key: key);
@@ -15,11 +16,13 @@ class Edit_Details_Screen extends StatefulWidget {
 
 class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
 
-
+  late ServiceVM serviceVM;
   var ht,wt;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+     serviceVM = Provider.of<ServiceVM>(context, listen: false);
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -29,34 +32,45 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
         title: Text("Edit Details"),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-              SingleChildScrollView(
-
-                child: Padding(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+                Padding(
                   padding: const EdgeInsets.only(left: 16,right: 16,top: 32),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Name",style: GoogleFonts.lato(
+                      Text(NAME,style: GoogleFonts.lato(
                           fontSize: 18,fontWeight: FontWeight.w500,color: h1Color),),
                       SizedBox(height: 12,),
-                      Container(
-                        width: double.infinity,
-                        height: 48,
-                         decoration: BoxDecoration(
+                      Center(
+                        child: SizedBox(
+                          width: double.infinity,
+                          height:48,
+                          child:
+                          TextField(
+                              cursorColor: colorPrimary,
+                              // controller: _namecontroller,
+                              //keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                  fillColor:grey,
+                                  hintText:"Name",
+                                  hintStyle: TextStyle(fontSize: 15),
 
-                           borderRadius: BorderRadius.circular(4),
-                           border: Border.all(
-                               width: 1,
-                               color: kSecondaryColor
+                                  focusedBorder:OutlineInputBorder(
+                                    borderSide: const BorderSide(color: colorPrimary, width: 2.0),
+                                    // borderRadius: BorderRadius.circular(25.0),
+                                  ),
 
-                           ),
-                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text("Vikrant bhawani",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 16,color: kSecondaryColor),),
+
+                                  border: OutlineInputBorder(
+
+                                    //borderRadius: BorderRadius.circular(24)
+                                  )
+                              )
+                          ),
+
                         ),
                       ),
                       SizedBox(height: 32,),
@@ -107,35 +121,47 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          // Text(serviceVM.serviceModel!.response!.serviceslist![0].name.toString()),
                           Text("City",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,),),
                           Text("EDIT",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w500,color: kPrimaryColor),)
                         ],
                       ),
                       SizedBox(height: 10,),
-                      Container(
-                        width: double.infinity,
-                        height: 48,
-                        decoration: BoxDecoration(
+                      Center(
+                        child: SizedBox(
+                          width: double.infinity,
+                          height:48,
+                          child:
+                          TextField(
+                              cursorColor: colorPrimary,
+                             // controller: _namecontroller,
+                              //keyboardType: TextInputType.number,
+                              decoration: InputDecoration(
+                                  fillColor:grey,
+                                  hintText:LOCATION,
+                                  hintStyle: TextStyle(fontSize: 15),
 
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(
-                              width: 1,
-                              color: kSecondaryColor
+                                  focusedBorder:OutlineInputBorder(
+                                    borderSide: const BorderSide(color: colorPrimary, width: 2.0),
+                                    // borderRadius: BorderRadius.circular(25.0),
+                                  ),
 
+
+                                  border: OutlineInputBorder(
+
+                                    //borderRadius: BorderRadius.circular(24)
+                                  )
+                              )
                           ),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text("Noida",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 16,color: kSecondaryColor),),
+
                         ),
                       ),
 
                     ],
                   ),
-                ),
-
-              )
-          ],
+                )
+            ],
+          ),
         ),
       )
     );
@@ -160,72 +186,45 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
       ,SizedBox(
       height: 12,
     ),
-          GestureDetector(
-            onTap: (){
-              print("Container clicked");
-            },
-            child: Container(
-              width: wt*0.9,
-              height: ht* 0.07,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(color: kSecondaryColor)
 
-              ),
-              child: Center(child: Text("Puja"
-                , style: GoogleFonts.lato(fontWeight: FontWeight.w500,
-                    fontSize: 16),
-              )),
-            ),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          GestureDetector(
-            onTap: (){
-              print("Container clicked");
-            },
-            child: Container(
-              width: wt*0.9,
-              height: ht* 0.07,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(color: kSecondaryColor)
+        Expanded(
+          child: Container(
+              width: double.infinity,
+              height: 400,
+              child: ListView.separated(itemBuilder: (context, index) => GestureDetector(
+                onTap: (){
 
-              ),
-              child: Center(child: Text("Astrology"
-                , style: GoogleFonts.lato(fontWeight: FontWeight.w500,
-                    fontSize: 16),
-              )),
-            ),
-          ),
-          SizedBox(
-            height: 12,
-          ),
+                    _selectedIndex = index;
+                    setState(() {});
+                },
+                child: Container(
+
+                  width: wt*0.9,
+                  height: ht* 0.07,
+
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      border: Border.all(color: _selectedIndex == index ? kPrimaryColor : kSecondaryColor)
+
+                  ),
+                  child: Center(child:
+
+                  Text(
+                    serviceVM.serviceModel!.response!.serviceslist![index].name.toString(),
+                    style: GoogleFonts.lato(fontWeight: FontWeight.w500,
+                        fontSize: 16),
+                  )),
+                ),
+              ), separatorBuilder: (context, index) => SizedBox(
+                height: 12,
+              ), itemCount: serviceVM.serviceModel!.response!.serviceslist!.length)),
+        ),
+          //Spacer(),
+
           GestureDetector(
             onTap: (){
               print("Container clickedd");
-            },
-            child: Container(
-              width: wt*0.9,
-              height: ht* 0.07,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(color: kSecondaryColor)
-
-              ),
-              child: Center(child: Text("Funeral Services"
-                , style: GoogleFonts.lato(fontWeight: FontWeight.w500,
-                    fontSize: 16),
-              )),
-            ),
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          GestureDetector(
-            onTap: (){
-              print("Container clickedd");
+             // servicesname: serviceVM.serviceModel!.response!.serviceslist![_selectedIndex].name;
             },
             child: Container(
               width: wt*0.9,

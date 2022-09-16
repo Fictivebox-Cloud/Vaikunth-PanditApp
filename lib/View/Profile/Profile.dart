@@ -7,12 +7,16 @@ import 'package:panditapp/View/Profile/components/Edit_Details_Screen.dart';
 import 'package:panditapp/View/Profile/components/Settinng_Screen.dart';
 import 'package:panditapp/View/Profile/components/id_card.dart';
 import 'package:panditapp/View/login_flow/Phone_Number.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Consts/color1.dart';
 import '../../consts/image_const.dart';
 
 import '../../Consts/color1.dart';
-import 'components/Bank Account Details.dart';
+import '../../view_model/Pandit_Bank_List_VM.dart';
+import '../../view_model/Service_VM.dart';
+import 'components/Bank/Bank Account Details.dart';
+import 'components/Bank/Personal_Bank_Details.dart';
 
 class Profile_Screen extends StatefulWidget {
   const Profile_Screen({Key? key}) : super(key: key);
@@ -65,6 +69,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                       padding: const EdgeInsets.only(top: 10),
                       child: GestureDetector(
                         onTap: () {
+                          ServiceVM serviceVM = Provider.of<ServiceVM>(context,listen: false);
+                          serviceVM.serviceAPIcall();
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -169,10 +176,13 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           const EdgeInsets.only(left: 16, right: 16, top: 10),
                       child: GestureDetector(
                         onTap: () {
+                          /*Pandit_Bank_List_VM panditbanklist= Provider.of<Pandit_Bank_List_VM>(context,listen: false);
+                          panditbanklist.panditbankListAPIcall();*/
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Bank_Account_Screen()));
+                                  builder: (context) => Persional_Bank_Details()));
                         },
                         child: Container(
                           width: double.infinity,

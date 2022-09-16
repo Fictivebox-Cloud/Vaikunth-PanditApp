@@ -29,7 +29,8 @@ class _Life_Time_PujaState extends State<Life_Time_Puja> {
       padding: EdgeInsets.only(top: 23),
       child: ListView.builder(itemBuilder: (context , int index){
 
-        return Padding(
+        return
+          Padding(
           padding: const EdgeInsets.only(left: 16,right: 16,top: 12),
           child: Container(
             padding: EdgeInsets.all(8),

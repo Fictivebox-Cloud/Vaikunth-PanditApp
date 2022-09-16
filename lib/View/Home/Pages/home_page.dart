@@ -17,6 +17,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../Widgets/OnlineAndSwitch.dart';
 import '../../../consts/color1.dart';
 import '../../../consts/image_const.dart';
+import '../../../view_model/Service_VM.dart';
 
 
 class Home_page_Screen extends StatelessWidget {
@@ -31,8 +32,7 @@ class Home_page_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     Booking_Request_View_Model booking_request_view_model =
         context.watch<Booking_Request_View_Model>();
-
-
+    ServiceVM  serviceVM = Provider.of<ServiceVM>(context, listen: false);
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -80,7 +80,6 @@ class Home_page_Screen extends StatelessWidget {
               SizedBox(
                 height: 31,
                 width: 120,
-                // child: SwitchOf(),
 
                 child: LiteRollingSwitch(
                   textOn: "Online",

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/Booking/pages/Booking_Details.dart';
 import 'package:panditapp/Widgets/circular_loader.dart';
+import 'package:panditapp/view_model/Service_VM.dart';
 import 'package:panditapp/view_model/verification_number_api.dart';
 import 'package:provider/provider.dart';
 import '../../Consts/color1.dart';
@@ -27,9 +28,9 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    completeBookingViewModel = Provider.of<CompleteBookingViewModel>(context, listen: false);
-    completeBookingViewModel.completebookingAPIcall();
-  //  viewdetailVM = context.watch<ViewDetailVM>();
+    //completeBookingViewModel = Provider.of<CompleteBookingViewModel>(context, listen: false);
+    //completeBookingViewModel.completebookingAPIcall();
+    completeBookingViewModel = context.watch<CompleteBookingViewModel>();
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
@@ -120,7 +121,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                     ),
                                     Text(
                                       //"Mon 05/Oct/2021"
-                                      completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].poojaDate.toString(),
+                                      completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].bookingPujaDate.toString(),
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,

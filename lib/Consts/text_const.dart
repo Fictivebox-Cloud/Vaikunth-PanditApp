@@ -8,6 +8,7 @@ const String PHOTO = "Photo";
 const String UPLOADYOURPHOTO = "Upload your photo";
 const String OPENCAMERA = "Open Camera";
 const String OPENFILE = "Open Files";
+const String LOCATION = "Location";
 
 const String SERVICESYOUOFFER = "Services we offer";
 const String PUJA = "Puja";

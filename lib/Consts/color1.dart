@@ -17,5 +17,7 @@ const Color textFiledColor = Color(0xffCACACA);
 const Color grey = Color(0xffF5F5F5FF);
 const Color grey300 = Color(0xffE0E0E0FF);
 const Color divider = Color(0xffECF1F6);
+const Color black = Color(0xff262626);
+const Color red = Color(0xffFF1313);
 
 
