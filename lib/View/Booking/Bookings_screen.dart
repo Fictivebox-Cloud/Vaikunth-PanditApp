@@ -178,12 +178,13 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                           Padding(
                             padding: const EdgeInsets.only(left: 16),
                             child: Text(
+                              "1 x ${
                               completeBookingViewModel
                                       .completebokingmodel!
                                       .response!
                                       .upcomingbookinglist![index]
                                       .poojaTitle ??
-                                  "",
+                                  ""}",
                               style: GoogleFonts.lato(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14,
