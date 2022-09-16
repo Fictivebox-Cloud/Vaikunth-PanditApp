@@ -18,6 +18,7 @@ import 'package:snippet_coder_utils/FormHelper.dart';
 
 import '../../Consts/color1.dart';
 import '../../view_model/ApiCallLogin.dart';
+import '../../view_model/Complete_Bookings.dart';
 
 class Account_details extends StatefulWidget {
   final String? aadhar, pancard, name5, mobile,servicesname;
@@ -292,6 +293,10 @@ class _Account_detailsState extends State<Account_details> {
                       color: kPrimaryColor),
                   child: TextButton(
                       onPressed: () async {
+                        CompleteBookingViewModel completeBookingViewModel = Provider.of<CompleteBookingViewModel>(context, listen: false);
+                        completeBookingViewModel.completebookingAPIcall();
+
+
                         // GetterloginSetter s = GetterloginSetter();
                         s.Account = _accountno.text;
                         s.choosebank = _choosebank.text;

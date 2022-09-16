@@ -41,6 +41,35 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
     BankList_VM bankList_VM = context.watch<BankList_VM>();
 
     return Scaffold(
+      //Bottom button
+        bottomNavigationBar:
+        Padding(
+          padding: const EdgeInsets.only(left: 16,right: 16,bottom: 22,top: 16),
+          child: GestureDetector(
+            onTap: (){
+              // Navigator.push(context, MaterialPageRoute(
+              //     builder: (context) => Bank_Account_Screen()));
+            },
+            child: Container(
+              //padding: EdgeInsets.only(left: 16,right: 16),
+              width: double.infinity,
+              height: 48,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                    width: 1,
+                    color: colorPrimary
+                ),
+              ),
+              child:
+              Padding(
+                padding: const EdgeInsets.only(top:13.0),
+                child:  Text("Update bank details",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 16,color: colorPrimary),textAlign: TextAlign.center,),
+              ),
+            ),
+          ),
+        ),
+
       appBar: AppBar(
         title: Center(child: Hero(
             tag: "_text",
@@ -59,14 +88,51 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Account No",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,
+             SizedBox(height: 24,),
+              Text("Account Holder Name",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,
                   color: h1Color),),
-
               SizedBox(
                 height: 8,
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 0,right: 0),
+                child: Center(
+                  child: SizedBox(
+                    height:48,
+                    child:
+                    TextField(
+                        cursorColor: colorPrimary,
+                        //controller: _namecontroller,
+                        //keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                            fillColor:grey,
+                            hintText:"Account Holder Name",
+                            hintStyle: TextStyle(fontSize: 15),
+
+                            focusedBorder:OutlineInputBorder(
+                              borderSide: const BorderSide(color: colorPrimary, width: 2.0),
+                              // borderRadius: BorderRadius.circular(25.0),
+                            ),
 
 
+                            border: OutlineInputBorder(
+
+                              //borderRadius: BorderRadius.circular(24)
+                            )
+                        )
+                    ),
+
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Text("Account No",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,
+                  color: h1Color),),
+              SizedBox(
+                height: 8,
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 0,right: 0),
                 child: Center(
@@ -100,7 +166,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
               ),
 
               SizedBox(
-                height: 36,
+                height: 16,
               ),
               Text("Choose Bank",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w500,color: h1Color),),
               SizedBox(
@@ -139,7 +205,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
 
 
               SizedBox(
-                height: 36,
+                height: 16,
               ),
               Text("IFSC Code",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,
                   color: h1Color),),

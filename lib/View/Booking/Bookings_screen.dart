@@ -258,7 +258,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
         );
       },
       itemCount: completeBookingViewModel
-          .completebokingmodel!.response!.upcomingbookinglist!.length,
+          .completebokingmodel?.response!.upcomingbookinglist!.length,
     ));
   }
 

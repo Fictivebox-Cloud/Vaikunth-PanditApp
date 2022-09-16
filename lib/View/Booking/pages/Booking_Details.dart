@@ -66,7 +66,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
           title:  const Text("Booking Details"),
         ),
          body: Consumer<ViewDetailVM>(
-           builder: (_, data, __ ) => data.loading ? const Center(child: CircularProgressIndicator(),) : SingleChildScrollView(
+           builder: (_, data, __ ) => data.loading ? const Center(child: CircularProgressIndicator(color: colorPrimary,),) : SingleChildScrollView(
              child:  Expanded(
                child: Column(
                  children: [
