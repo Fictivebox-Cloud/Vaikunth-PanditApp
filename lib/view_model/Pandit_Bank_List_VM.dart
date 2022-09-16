@@ -52,7 +52,7 @@ class Pandit_Bank_List_VM with ChangeNotifier{
       UserError(code: response.code,message: response.errorResponse);
       setUserError(userError);
     }
-    setLoading(loading);
+    setLoading(false);
   }
 
 }

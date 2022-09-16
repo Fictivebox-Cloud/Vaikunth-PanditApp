@@ -13,6 +13,7 @@ import '../../Consts/color1.dart';
 import '../../consts/image_const.dart';
 
 import '../../Consts/color1.dart';
+import '../../view_model/Pandit_Bank_List_VM.dart';
 import '../../view_model/Service_VM.dart';
 import 'components/Bank/Bank Account Details.dart';
 import 'components/Bank/Personal_Bank_Details.dart';
@@ -175,6 +176,9 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           const EdgeInsets.only(left: 16, right: 16, top: 10),
                       child: GestureDetector(
                         onTap: () {
+                          /*Pandit_Bank_List_VM panditbanklist= Provider.of<Pandit_Bank_List_VM>(context,listen: false);
+                          panditbanklist.panditbankListAPIcall();*/
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(

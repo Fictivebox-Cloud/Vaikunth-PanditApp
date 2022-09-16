@@ -23,13 +23,14 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    this.countries.add({"id":1, "label": "India"});
-    this.countries.add({"id":2, "label": "USA"});
-    this.countries.add({"id":3, "label": "UAE"});
-    this.countries.add({"id":4, "label": "HLLL"});
-    this.countries.add({"id":5, "label": "USASSSS"});
-    this.countries.add({"id":6, "label": "GDHDHN D"});
-    this.countries.add({"id":7, "label": "MKJK"});
+    this.countries.add({"id":1, "label": "Bank of India"});
+    this.countries.add({"id":2, "label": "Bank of Baroda"});
+    this.countries.add({"id":3, "label": "Punjab National Bank"});
+    this.countries.add({"id":4, "label": "Kotak Mahindra Bank"});
+    this.countries.add({"id":5, "label": "Axis Bank"});
+    this.countries.add({"id":6, "label": "ICICI Bank"});
+    this.countries.add({"id":7, "label": "State Bank of India"});
+
   }
 
 
@@ -103,23 +104,23 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                   height: 48,
                   child: FormHelper.dropDownWidget(context,
 
-                    "Select Country",
+                    "Select Bank",
                     this.couuntryId,
                     this.countries,
                         (onChangedVal){
                       this.couuntryId=onChangedVal;
-                      print("Selected Country: $onChangedVal");
+                      print("Selected Bank: $onChangedVal");
                     },
                         (onValidateVal){
                       if(onValidateVal == null){
-                        return "please select country";
+                        return "please select Bank";
                       }
                       return null;
                     },
 
                     borderColor: kSecondaryColor,
                     borderFocusColor: colorPrimary,
-                    borderRadius:10,
+                    borderRadius:4,
                     optionValue:"id",
                     optionLabel:"label",
 

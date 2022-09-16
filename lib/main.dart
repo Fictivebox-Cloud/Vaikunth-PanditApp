@@ -15,6 +15,8 @@ import 'package:panditapp/view_model/verification_number_api.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'View/Splash_onboarding/splash_screen.dart';
+
 
 Future<void>  main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,8 +64,8 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-          home: Name_Screen(),
-         //home: SplashScreen(),
+          //home: Name_Screen(),
+         home: SplashScreen(),
       );
   }
 

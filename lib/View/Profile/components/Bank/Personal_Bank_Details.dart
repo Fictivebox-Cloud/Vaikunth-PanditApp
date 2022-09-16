@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/view_model/Pandit_Bank_List_VM.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../Consts/color1.dart';
+import '../../../../Widgets/circular_loader.dart';
 import 'Bank Account Details.dart';
 class Persional_Bank_Details extends StatefulWidget {
   const Persional_Bank_Details({Key? key}) : super(key: key);
@@ -17,10 +17,10 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
 
   @override
   Widget build(BuildContext context) {
-      Pandit_Bank_List_VM panditbanklist= Provider.of<Pandit_Bank_List_VM>(context,listen: false);
-                          panditbanklist.panditbankListAPIcall();
-   // ViewDetailVM viewdetailVM = context.watch<ViewDetailVM>();
-    return Scaffold(
+     // Pandit_Bank_List_VM panditbanklist= Provider.of<Pandit_Bank_List_VM>(context,listen: false);
+                          //panditbanklist.panditbankListAPIcall();
+    Pandit_Bank_List_VM panditbanklist = context.watch<Pandit_Bank_List_VM>();
+    return  Scaffold(
       bottomNavigationBar:
       Padding(
         padding: const EdgeInsets.only(left: 16,right: 16,bottom: 22,top: 16),
@@ -55,10 +55,13 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
               tag: "_text",
               child: Text("Bank Account Details"))),
         ),
-        body: SafeArea(
+        body: panditbanklist.loading
+            ? Center(child: CircularLoader())
+            :
+        SafeArea(
           child: ListView.separated(itemBuilder: (context , int index){
-
-            return Container(
+            return
+              Container(
               padding: EdgeInsets.only(left: 16,right: 16,top: 16),
               child:Container(
                 width: double.infinity,
