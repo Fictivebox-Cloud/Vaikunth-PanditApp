@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 
 import '../../../Consts/color1.dart';
 import '../../../view_model/Profile/Personal_Detail_View_Model.dart';
+import 'Bank/Pancard.dart';
+import 'Bank/View_Decuments.dart';
 
 class Id_card_Screen extends StatefulWidget {
   const Id_card_Screen({Key? key}) : super(key: key);
@@ -179,7 +181,10 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                         ),
                         InkWell(
                           onTap: (){
+                            Navigator.push(context, MaterialPageRoute(
 
+
+                                builder: (context) =>View_Decuments()));
                           },
                           child: Container(
                             width: 116,
@@ -227,13 +232,21 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                               fontWeight: FontWeight.w500,
                               color: kSecondaryColor),
                         ),
-                        Container(
-                          width: 116,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              color: kPrimaryColor),
-                          child: Center(child: Text("View")),
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(
+
+
+                                builder: (context) =>PanCardScreen()));
+                          },
+                          child: Container(
+                            width: 116,
+                            height: 40,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                color: kPrimaryColor),
+                            child: Center(child: Text("View")),
+                          ),
                         )
                       ],
                     ),
