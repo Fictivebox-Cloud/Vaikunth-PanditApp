@@ -74,7 +74,7 @@ class _Help_Support_ScreenState extends State<Help_Support_Screen> {
               ),
               InkWell(
                 onTap: (){
-                  launch('mailto:govindrajpoot760@gmail.com?subject=This is subject Tittle & body = This is Body of mail');
+                  launch('mailto:${helpSupportDetails_VM.helpSupportDetailsModel!.response!.helplist![0].helpEmail.toString()}');
 
                 },
                 child: Container(

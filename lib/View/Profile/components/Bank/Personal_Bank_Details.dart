@@ -39,13 +39,13 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(
                   width: 1,
-                  color: red
+                  color: colorPrimary
               ),
             ),
             child:
               Padding(
                 padding: const EdgeInsets.all(14.0),
-                child:  Text("Add other bank",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 16,color: black),textAlign: TextAlign.center,),
+                child:  Text("Add other bank",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 16,color: colorPrimary),textAlign: TextAlign.center,),
               ),
           ),
         ),
