@@ -9,6 +9,7 @@ import 'package:panditapp/view_model/CityListApi.dart';
 import 'package:panditapp/view_model/Complete_Bookings.dart';
 import 'package:panditapp/view_model/Help_Support_Details_VM.dart';
 import 'package:panditapp/view_model/Notification_VM.dart';
+import 'package:panditapp/view_model/Profile/Personal_Detail_View_Model.dart';
 import 'package:panditapp/view_model/Profile/id_card_view_model.dart';
 import 'package:panditapp/view_model/Pandit_Bank_List_VM.dart';
 import 'package:panditapp/view_model/Service_VM.dart';
@@ -48,7 +49,8 @@ Future<void>  main() async{
        ChangeNotifierProvider(create: (_)=>Online_Ofline_View_Model()),
        ChangeNotifierProvider(create: (_)=>Puja_Confirm_OTP()),
        ChangeNotifierProvider(create: (_)=>Check_Booking_Confirm_OTP_View_Model()),
-       ChangeNotifierProvider(create: (_)=>Id_card_view_model_View())
+       ChangeNotifierProvider(create: (_)=>Id_card_view_model_View()),
+       ChangeNotifierProvider(create: (_)=>Personal_Detail_View_Model())
 
 
       ],
@@ -75,8 +77,8 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        // home: Home_Screen(),
-         home: Name_Screen(),
+        home: SplashScreen(),
+        //  home: Name_Screen(),
       );
   }
 

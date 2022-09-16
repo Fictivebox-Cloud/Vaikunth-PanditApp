@@ -15,6 +15,7 @@ const  String GET_SERVICE_API = "${BASEURL}getservices";
 const  String GET_GETBANK_API = "${BASEURL}getbank";
 const  String GET_GETPANDITBANKLIST_API = "${BASEURL}getpanditbanklist";
 const  String GET_GETHELP_API = "${BASEURL}gethelp";
+const  String GET_PERSONALDETAIL_API = "${BASEURL}personaldetail";
 
 
 
