@@ -35,16 +35,24 @@ class PersonalDetailModel {
 class Response {
   Response({
     this.panditDetails,
+    this.panditIDcard,
+    this.panditbanklist,
   });
 
-  PanditDetails ?panditDetails;
+  PanditDetails? panditDetails;
+  List<PanditIDcard>? panditIDcard;
+  List<Panditbanklist>? panditbanklist;
 
   factory Response.fromJson(Map<String, dynamic> json) => Response(
     panditDetails: json["panditDetails"] == null ? null : PanditDetails.fromJson(json["panditDetails"]),
+    panditIDcard: json["panditIDcard"] == null ? null : List<PanditIDcard>.from(json["panditIDcard"].map((x) => PanditIDcard.fromJson(x))),
+    panditbanklist: json["panditbanklist"] == null ? null : List<Panditbanklist>.from(json["panditbanklist"].map((x) => Panditbanklist.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "panditDetails": panditDetails == null ? null : panditDetails!.toJson(),
+    "panditIDcard": panditIDcard == null ? null : List<dynamic>.from(panditIDcard!.map((x) => x.toJson())),
+    "panditbanklist": panditbanklist == null ? null : List<dynamic>.from(panditbanklist!.map((x) => x.toJson())),
   };
 }
 
@@ -101,5 +109,109 @@ class PanditDetails {
     "pandit_image": panditImage == null ? null : panditImage,
     "pandit_city": panditCity,
     "pandit_verified": panditVerified == null ? null : panditVerified,
+  };
+}
+
+class PanditIDcard {
+  PanditIDcard({
+    this.id,
+    this.panditId,
+    this.aadharFront,
+    this.aadharBack,
+    this.panCard,
+    this.passbook,
+    this.otherDocs,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  int? id;
+  int? panditId;
+  String? aadharFront;
+  String? aadharBack;
+  String? panCard;
+  String? passbook;
+  String? otherDocs;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+
+  factory PanditIDcard.fromJson(Map<String, dynamic> json) => PanditIDcard(
+    id: json["id"] == null ? null : json["id"],
+    panditId: json["pandit_id"] == null ? null : json["pandit_id"],
+    aadharFront: json["aadhar_front"] == null ? null : json["aadhar_front"],
+    aadharBack: json["aadhar_back"] == null ? null : json["aadhar_back"],
+    panCard: json["pan_card"] == null ? null : json["pan_card"],
+    passbook: json["passbook"] == null ? null : json["passbook"],
+    otherDocs: json["other_docs"] == null ? null : json["other_docs"],
+    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id == null ? null : id,
+    "pandit_id": panditId == null ? null : panditId,
+    "aadhar_front": aadharFront == null ? null : aadharFront,
+    "aadhar_back": aadharBack == null ? null : aadharBack,
+    "pan_card": panCard == null ? null : panCard,
+    "passbook": passbook == null ? null : passbook,
+    "other_docs": otherDocs == null ? null : otherDocs,
+    "created_at": createdAt == null ? null : createdAt!.toIso8601String(),
+    "updated_at": updatedAt == null ? null : updatedAt!.toIso8601String(),
+  };
+}
+
+class Panditbanklist {
+  Panditbanklist({
+    this.id,
+    this.panditId,
+    this.bankName,
+    this.accountHolderName,
+    this.ifscCode,
+    this.bankAddress,
+    this.bankAccountNo,
+    this.panNo,
+    this.aadharNo,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  int? id;
+  int? panditId;
+  String? bankName;
+  String? accountHolderName;
+  String? ifscCode;
+  String? bankAddress;
+  String? bankAccountNo;
+  String? panNo;
+  String? aadharNo;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+
+  factory Panditbanklist.fromJson(Map<String, dynamic> json) => Panditbanklist(
+    id: json["id"] == null ? null : json["id"],
+    panditId: json["pandit_id"] == null ? null : json["pandit_id"],
+    bankName: json["bank_name"] == null ? null : json["bank_name"],
+    accountHolderName: json["account_holder_name"] == null ? null : json["account_holder_name"],
+    ifscCode: json["ifsc_code"] == null ? null : json["ifsc_code"],
+    bankAddress: json["bank_address"] == null ? null : json["bank_address"],
+    bankAccountNo: json["bank_account_no"] == null ? null : json["bank_account_no"],
+    panNo: json["pan_no"] == null ? null : json["pan_no"],
+    aadharNo: json["aadhar_no"] == null ? null : json["aadhar_no"],
+    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id == null ? null : id,
+    "pandit_id": panditId == null ? null : panditId,
+    "bank_name": bankName == null ? null : bankName,
+    "account_holder_name": accountHolderName == null ? null : accountHolderName,
+    "ifsc_code": ifscCode == null ? null : ifscCode,
+    "bank_address": bankAddress == null ? null : bankAddress,
+    "bank_account_no": bankAccountNo == null ? null : bankAccountNo,
+    "pan_no": panNo == null ? null : panNo,
+    "aadhar_no": aadharNo == null ? null : aadharNo,
+    "created_at": createdAt == null ? null : createdAt!.toIso8601String(),
+    "updated_at": updatedAt == null ? null : updatedAt!.toIso8601String(),
   };
 }

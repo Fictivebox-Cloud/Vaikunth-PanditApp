@@ -18,17 +18,15 @@ class Id_card_Screen extends StatefulWidget {
 
 class _Id_card_ScreenState extends State<Id_card_Screen> {
   var ht, wt;
-  late Id_card_view_model_View id_card_view_model_view;
+
   late Personal_Detail_View_Model personal_detail_view_model;
 
-  // puja_Confirm_OTP = Provider.of<Puja_Confirm_OTP>(context,listen: false);
-  // puja_Confirm_OTP.getPujaCofirmOtp(userBooking_id: widget.bookingId);
+
 
   @override
   Widget build(BuildContext context) {
-    // id_card_view_model_view = context.watch<Id_card_view_model_View>();
-    id_card_view_model_view= Provider.of(context,listen: false);
-    id_card_view_model_view.getPanditDetailsId();
+
+
     personal_detail_view_model = Provider.of(context, listen: false);
     personal_detail_view_model.getpersonalDetailApiCall();
 
@@ -61,7 +59,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
       BuildContext context) {
     return Consumer<Personal_Detail_View_Model>(
       builder: (context, provider, child) {
-        return SingleChildScrollView(
+        return  SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
             child: Column(
@@ -171,9 +169,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          provider.presonalDetailModel!.response!.panditDetails!
-                              .panditAadhar
-                              .toString(),
+                    provider.presonalDetailModel!.response!.panditbanklist![0].aadharNo.toString(),
                           style: GoogleFonts.lato(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
@@ -226,7 +222,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Arvindadhar.pdf",
+                          provider.presonalDetailModel!.response!.panditbanklist![0].panNo.toString(),
                           style: GoogleFonts.lato(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
