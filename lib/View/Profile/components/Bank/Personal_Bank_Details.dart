@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/view_model/Pandit_Bank_List_VM.dart';
+import 'package:panditapp/view_model/Update_Bank_VM.dart';
 import 'package:provider/provider.dart';
 import '../../../../Consts/color1.dart';
+import '../../../../Consts/text_const.dart';
 import '../../../../Widgets/circular_loader.dart';
+import 'Add_Bank_Account.dart';
 import 'Bank Account Details.dart';
 class Persional_Bank_Details extends StatefulWidget {
   const Persional_Bank_Details({Key? key}) : super(key: key);
@@ -14,6 +17,7 @@ class Persional_Bank_Details extends StatefulWidget {
 
 class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
 
+  TextEditingController bname = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
             Navigator.push(context, MaterialPageRoute(
 
 
-                builder: (context) => Bank_Account_Screen()));
+                builder: (context) => Add_Bank_Account()));
           },
           child: Container(
             //padding: EdgeInsets.only(left: 16,right: 16),
@@ -45,15 +49,15 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
             child:
               Padding(
                 padding: const EdgeInsets.all(14.0),
-                child:  Text("Add other bank",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 16,color: colorPrimary),textAlign: TextAlign.center,),
+                child:  Text(ADD_OTHER_BANK,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 16,color: colorPrimary),textAlign: TextAlign.center,),
               ),
           ),
         ),
       ),
         appBar: AppBar(
-          title: Center(child: Hero(
+          title: Hero(
               tag: "_text",
-              child: Text("Bank Account Details"))),
+              child: Text(BANK_ACCOUNT_DETAILS)),
         ),
         body: panditbanklist.loading
             ? Center(child: CircularLoader())
@@ -79,7 +83,8 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
                     padding: const EdgeInsets.all(10.0),
                     child: Column(children: [
                       Row(children: [
-                        Text("Name : ",style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: h1Color),),
+                        Text(NAME,style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: h1Color),),
+                        Text(": "),
                         Text(
                           //"Govind kumar"
                           panditbanklist.panditBankListModel!.response!.panditbanklist![index].accountHolderName.toString()
@@ -87,27 +92,40 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
                         Spacer(),
                         Row(children: [
                           InkWell(
-                              onTap: (){},
-                              child: Text("Edit",style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w500,color: black),)),
+                              onTap: (){
+
+                                Navigator.push(context, MaterialPageRoute(
+                                    builder: (context) => Bank_Account_Screen(
+                                      id: panditbanklist.panditBankListModel!.response!.panditbanklist![index].id.toString(),
+                                      name: panditbanklist.panditBankListModel!.response!.panditbanklist![index].accountHolderName.toString(),
+                                      accountNumber:panditbanklist.panditBankListModel!.response!.panditbanklist![index].bankAccountNo.toString(),
+                                      bankName: panditbanklist.panditBankListModel!.response!.panditbanklist![index].bankName.toString(),
+                                      ifscCode: panditbanklist.panditBankListModel!.response!.panditbanklist![index].ifscCode.toString(),
+                                    )));
+                              },
+                              child: Text(EDIT,style: GoogleFonts.poppins(fontSize: 12,fontWeight: FontWeight.w500,color: black),)),
                           SizedBox(width: 13,),
                           InkWell(
                               onTap: (){},
-                              child: Text("Delete",style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500,color: red),)),
+                              child: Text(DELETE,style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w500,color: red),)),
                         ],)
                       ],),
                       SizedBox(height: 10,),
                       Row(children: [
-                        Text("Account No : ",style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: h1Color),),
+                        Text(ACCOUNT_NO,style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: h1Color),),
+                        Text(".: "),
                         Text(panditbanklist.panditBankListModel!.response!.panditbanklist![index].bankAccountNo.toString(),style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: p1Color),),
                       ],),
                       SizedBox(height: 14,),
                       Row(children: [
-                        Text("Bank Name : ",style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: h1Color),),
+                        Text(BANK_NAME,style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: h1Color),),
+                        Text(": "),
                         Text(panditbanklist.panditBankListModel!.response!.panditbanklist![index].bankName.toString(),style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: p1Color),),
                       ],),
                       SizedBox(height: 14,),
                       Row(children: [
-                        Text("IFSC Code : ",style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: h1Color),),
+                        Text(IFSC_CODE,style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: h1Color),),
+                        Text(": "),
                         Text(panditbanklist.panditBankListModel!.response!.panditbanklist![index].ifscCode.toString(),style: GoogleFonts.lato(fontSize: 14,fontWeight: FontWeight.w500,color: p1Color),),
                       ],),
                       SizedBox(height: 8,),
