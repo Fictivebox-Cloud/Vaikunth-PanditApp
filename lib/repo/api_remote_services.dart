@@ -20,7 +20,7 @@ class ApiRemoteServices {
           .post(url, body: body, headers: headers)
           .timeout(const Duration(seconds: 15));
       if (response.statusCode == 200) {
-          print("Data: ${response.body}");
+          log("Data: ${response.body}");
         return Success(response: response.body);
       }
     } on HttpException {

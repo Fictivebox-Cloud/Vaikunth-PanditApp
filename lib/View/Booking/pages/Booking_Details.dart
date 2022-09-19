@@ -346,7 +346,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
           onTap: (){
             provider.getCheckBookingConfirm(userBooking_id: widget.bookingId,otpcode: "1234").then((value) {
               print("Value $value");
-              provider.getcheckBookingConfirmOtpModel!.success! ?  Navigator.push(context, MaterialPageRoute(builder: (context)=>   Booking_Progress())) : toast();
+              value ?  Navigator.push(context, MaterialPageRoute(builder: (context)=>   Booking_Progress())) : toast();
             });
 
 
