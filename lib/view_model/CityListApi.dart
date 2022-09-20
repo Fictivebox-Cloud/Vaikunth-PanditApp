@@ -35,6 +35,10 @@ class City_List_Api extends ChangeNotifier {
   _userError =userError;
   notifyListeners();
  }
+ String _searchKeyword = "";
+ set searchKeyword(String value) {
+  _searchKeyword = value;
+ }
 
  getCityListApiCall() async{
   setLoading(true);
