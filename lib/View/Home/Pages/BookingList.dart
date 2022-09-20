@@ -1,3 +1,5 @@
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:panditapp/consts/image_const.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:dotted_line/dotted_line.dart';
@@ -21,6 +23,8 @@ class _BookingListTitlState extends State<BookingListTitl> {
 
   Accept_Booking_Api? ss;
 
+
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Booking_Request_View_Model>(
@@ -37,7 +41,20 @@ class _BookingListTitlState extends State<BookingListTitl> {
   }
 
   _ui(Booking_Request_View_Model? booking_request_view_model,   BuildContext context) {
-    return ListView.builder(
+    return booking_request_view_model!.getbookinglistModel!.response!.bookinglist!.length == 0 ? Container(
+      height: 500,
+      width: double.infinity,
+
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+           Image.asset(ImageConst().EMPTYS),
+           SizedBox(height: 20,),
+          Text("No booking requests",style: GoogleFonts.lato(color: kSecondaryColor,fontSize: 13),)
+        ],
+      ),
+    ) : ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, int index) {
@@ -180,7 +197,9 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 16, right: 16, top: 10),
-                                  child: InkWell(
+                                  child:booking_request_view_model.loading ? Container(
+                                    child: Center(child: CircularProgressIndicator(color: kPrimaryColor,)),
+                                  ) :  InkWell(
                                     onTap: () {
                                       setState(()  {
                                         ss = Provider.of<Accept_Booking_Api>(context, listen: false);
@@ -190,7 +209,8 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                          completeBookingViewModel.completebookingAPIcall();
 
                                         booking_request_view_model.getbookinglistModel!.response!.bookinglist!.removeAt(index);
-                                      });
+
+                                      }) ;
 
                                     },
                                     child: Container(
@@ -209,7 +229,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                                 fontWeight:
                                                     FontWeight.w500),
                                           )),
-                                    ),
+                                    )
                                   ),
                                 )
                               ],
@@ -234,11 +254,15 @@ class _BookingListTitlState extends State<BookingListTitl> {
                 ),
               ),
             ],
-          ),
+          )
         );
       },
 
       itemCount: booking_request_view_model!.getbookinglistModel!.response!.bookinglist!.length,
     );
+  }
+  void _removeItem(int i){
+
+
   }
 }

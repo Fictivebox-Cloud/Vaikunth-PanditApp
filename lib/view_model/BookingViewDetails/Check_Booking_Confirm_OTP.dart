@@ -11,6 +11,7 @@ class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
   bool _loading = false;
   CheckBookingConfirmOtpModel? _bookingConfirmOtpModel;
   UserError? _userError;
+  bool? _valueReturn;
 
   bool get loading => _loading;
 
@@ -38,7 +39,7 @@ class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
   Future<bool> getCheckBookingConfirm(
       {required dynamic userBooking_id, otpcode}) async {
     setLoading(true);
-    bool valueReturn = true;
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString("pandit_id");
     print("Pandit App user Id = ${userId}");
@@ -56,17 +57,17 @@ class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
       Object data =
           checkBookingConfirmOtpModelFromJson(response.response as String);
       setGetCheckBookingConfirmOtpModel(data as CheckBookingConfirmOtpModel);
-      valueReturn =  true;
+      _valueReturn =  true;
       notifyListeners();
     } else if (response is Failure) {
       UserError userError =
           UserError(code: response.code, message: response.errorResponse);
       setUserError(userError);
-      valueReturn =  false;
+      _valueReturn =  false;
       notifyListeners();
     }
     setLoading(false);
-    return valueReturn;
+    return _valueReturn!;
   }
 
 }

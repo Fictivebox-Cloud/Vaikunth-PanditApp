@@ -24,5 +24,6 @@ class ImageConst {
   final String NOTAPPROVED = "assets/images/notApproved.png";
   final String CHOPADA_PUJAN_BOOK = "assets/images/chopada_pujan_book.png";
   final String CEMETERYE = "assets/images/cemetery.png";
+  final String EMPTYS = "assets/images/empty.png";
 
 }
