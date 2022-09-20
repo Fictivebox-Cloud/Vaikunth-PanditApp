@@ -70,6 +70,7 @@ dependencies:
   url_launcher: ^6.1.5
   snippet_coder_utils: ^1.0.12
   autocomplete_textfield: ^2.0.1
+  fluttertoast: ^8.0.9
 
 
 

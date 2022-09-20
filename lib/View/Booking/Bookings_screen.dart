@@ -486,7 +486,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                   decoration: BoxDecoration(
                                       color: Colors.red,
                                       borderRadius: BorderRadius.circular(20)),
-                                  child: const Center(child: Text("Cancelled")),
+                                  child: const Center(child: Text("Cancelled",style: TextStyle(color: Colors.white))),
                                 )
                               ],
                             ),
