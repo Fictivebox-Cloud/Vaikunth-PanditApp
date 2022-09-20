@@ -30,6 +30,13 @@ const String CHOOSE_BANK = "Choose Bank";
 const String IFSC_CODE = "IFSC Code";
 const String FINISH  = "Finish";
 
+const String SAVE  = "Save";
+const String ADD_OTHER_BANK  = "Add other bank";
+const String BANK_ACCOUNT_DETAILS  = "Bank Account Details";
+const String EDIT  = "Edit";
+const String DELETE  = "Delete";
+const String BANK_NAME  = "Bank Name";
+
 
 // Api Error
 

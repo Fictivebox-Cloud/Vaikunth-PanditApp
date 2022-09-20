@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/view_model/Store_bank_VM.dart';
 import 'package:provider/provider.dart';
-import 'package:snippet_coder_utils/FormHelper.dart';
-
 import '../../../../Consts/color1.dart';
+import '../../../../Consts/text_const.dart';
 import '../../../../Widgets/circular_loader.dart';
 import '../../../../view_model/Bank_List_VM.dart';
-import '../../../../view_model/Pandit_Bank_List_VM.dart';
 import '../../../../view_model/Update_Bank_VM.dart';
+import 'Bank Account Details.dart';
 import 'Personal_Bank_Details.dart';
 
-class Bank_Account_Screen extends StatefulWidget {
+class Add_Bank_Account extends StatefulWidget {
   String? id;
   String? name;
   String? accountNumber;
   String? bankName;
   String? ifscCode;
 
-  Bank_Account_Screen({
+  Add_Bank_Account({
     Key? key,
     this.id,
     this.name,
@@ -28,10 +27,10 @@ class Bank_Account_Screen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<Bank_Account_Screen> createState() => _Bank_Account_ScreenState();
+  State<Add_Bank_Account> createState() => _Add_Bank_AccountState();
 }
 
-class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
+class _Add_Bank_AccountState extends State<Add_Bank_Account> {
   List<dynamic> countries = [];
   String? couuntryId;
 
@@ -54,20 +53,13 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
     this.countries.add({"id": 6, "label": "ICICI Bank", "status": "0"});
     this.countries.add(
         {"id": 7, "label": "State Bank of India", "status": "0"});
-
-
-    _namecontroller.text = widget.name.toString();
-    _accountnocontroller.text = widget.accountNumber.toString();
-    couuntryId = widget.bankName.toString();
-    _ifsccodecontroller.text = widget.ifscCode.toString();
-    _banknamecontroller.text = widget.bankName.toString();
   }
 
   @override
   Widget build(BuildContext context) {
-    BankList_VM bankList_VM = context.watch<BankList_VM>();
+    Store_Bank_VM store_bank_vm = context.watch<Store_Bank_VM>();
 
-    return Consumer<BankList_VM>(
+    return Consumer<Store_Bank_VM>(
       builder: (context, provider, child) {
         return Scaffold(
           //Bottom button
@@ -76,26 +68,24 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
               const EdgeInsets.only(left: 16, right: 16, bottom: 22, top: 16),
               child: GestureDetector(
                 onTap: () {
-                  Update_Bank_VM updatebanklist = Provider.of<Update_Bank_VM>(
+                  Store_Bank_VM storebank = Provider.of<Store_Bank_VM>(
                       context, listen: false);
-                  updatebanklist.Update_Bank_APIcall(
-                    id: widget.id,
-                    name: _namecontroller.text,
+                  storebank.Store_Bank_APIcall(
+
+                    name: _namecontroller.text.toString(),
                     accountno: _accountnocontroller.text,
                     bankname: _banknamecontroller.text,
                     ifsccode: _ifsccodecontroller.text,
                   );
 
                   Navigator.pop(context, MaterialPageRoute(
-                      builder: (context) => Persional_Bank_Details(bank_id: "",)));
+                      builder: (context) =>
+                          Persional_Bank_Details(bank_id: '',)));
                 },
-                child:
-                provider.loading? Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
+                child: provider.loading? Container(
+
                   child: CircularProgressIndicator(color: kPrimaryColor,),
-                ) :
-                Container(
+                ) :Container(
                   //padding: EdgeInsets.only(left: 16,right: 16),
                   width: double.infinity,
                   height: 48,
@@ -106,7 +96,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 13.0),
                     child: Text(
-                      "Update bank details",
+                      SAVE,
                       style: GoogleFonts.lato(
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
@@ -118,9 +108,9 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
               ),
             ),
             appBar: AppBar(
-              title: Hero(tag: "_text", child: Text("Bank Account Details")),
+              title: Hero(tag: "_text", child: Text("Add bank account")),
             ),
-            body: bankList_VM.loading
+            body: store_bank_vm.loading
                 ? Center(child: CircularLoader())
                 : SingleChildScrollView(
               child: SafeArea(
@@ -231,7 +221,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                                 //keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     fillColor: grey,
-                                    hintText: "IFSC CODE",
+                                    hintText: "Choose bank",
                                     hintStyle: TextStyle(fontSize: 15),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
