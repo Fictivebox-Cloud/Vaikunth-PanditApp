@@ -7,12 +7,20 @@ import '../model/Service_Model.dart';
 
 class ServiceVM with ChangeNotifier{
   bool _loading = false;
+  int? _index;
   ServiceModel? _serviceModel;
   UserError? _userError;
 
   bool get loading => _loading;
   ServiceModel? get serviceModel => _serviceModel;
   UserError? get userError => _userError;
+  int? get index => _index;
+
+  setIndex(index){
+    _index = index;
+    notifyListeners();
+  }
+
 
   setLoading(loading){
     _loading = loading;
@@ -34,21 +42,20 @@ class ServiceVM with ChangeNotifier{
 
   serviceAPIcall() async{
     setLoading(true);
-    var data={
-      // "pandit_id": "7",
-    };
 
     var response = await ApiRemoteServices.fechingGetApi(
-        apiUrl:GET_SERVICE_API,apiData: data);
+        apiUrl:GET_SERVICE_API,);
     if(response is Success){
       Object data = serviceModelFromJson(response.response as String);
       print("Govind service booking list${response.response as String}");
       setServiceModel(data as ServiceModel);
+
     }
     else if (response is Failure){
       UserError userError  =
       UserError(code: response.code,message: response.errorResponse);
       setUserError(userError);
+      notifyListeners();
     }
     setLoading(false);
   }
