@@ -18,3 +18,7 @@ const  String GET_GETHELP_API = "${BASEURL}gethelp";
 const  String GET_PERSONALDETAIL_API = "${BASEURL}personaldetail";
 const  String GET_UPDATEBANK_API = "${BASEURL}updatebank";
 const  String GET_STOREBANK_API = "${BASEURL}storebank";
+const  String GET_UPDATEPROFILE_API = "${BASEURL}updateprofile";
+
+
+

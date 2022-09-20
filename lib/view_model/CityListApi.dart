@@ -39,12 +39,16 @@ class City_List_Api extends ChangeNotifier {
  getCityListApiCall() async{
   setLoading(true);
   var  response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_CITYLIST_API,);
+
+
   if(response is Success){
    Object data = cityModelFromJson(response.response as String);
    setGetCityModel(data as CityModel);
+
   }
   else if(response is Failure){
    UserError userError = UserError(code: response.code,message: response.errorResponse);
+
    setUserError(userError);
   }
   setLoading(false);

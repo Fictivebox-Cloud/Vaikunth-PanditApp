@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Widgets/circular_loader.dart';
+import 'package:panditapp/consts/image_const.dart';
 import 'package:panditapp/view_model/Profile/id_card_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +29,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
   Widget build(BuildContext context) {
 
 
-    personal_detail_view_model = Provider.of(context, listen: false);
+    personal_detail_view_model = Provider.of<Personal_Detail_View_Model>(context, listen: false);
     personal_detail_view_model.getpersonalDetailApiCall();
 
     return Scaffold(
@@ -84,10 +86,19 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            CircleAvatar(
-                              radius: 40.0,
-                              child: Image.network(
-                                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwihVNuLOzSu0timFcUZ0z1t23FrAEJ2EPghv3aKtvitpJlZ1wBmUPwXmb2GEDgSdnqeA&usqp=CAU"),
+                            Container(
+                              width: 80,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    fit: BoxFit.fill,
+                                    image:
+                                NetworkImage(provider.presonalDetailModel?.response!
+                                    .panditDetails!.panditImage ?? ""
+                                ))
+                              ),
+
                             ),
                             Text(
                               "Vaikunth",
@@ -106,25 +117,32 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  provider.presonalDetailModel!.response!
+                                  provider.presonalDetailModel?.response!
                                       .panditDetails!.panditFirstName
-                                      .toString(),
+                                      ??"",
                                   style: GoogleFonts.lato(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
                                       color: p1Color),
                                 ),
                                 Text(
-                                    "+91 ${provider.presonalDetailModel!.response!.panditDetails!.panditMobile.toString()}",
+                                    "+91 ${provider.presonalDetailModel?.response!.panditDetails!.panditMobile ?? ""}",
                                     style: GoogleFonts.lato(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w600,
                                         color: h1Color))
                               ],
                             ),
-                            Column(
+                            provider.presonalDetailModel?.response!.panditDetails!.panditVerified == 0 ? Container(
+                              child:  Column(
+                                children: [
+                                  Image.asset(ImageConst().NOTAPPROVED,width: 40,height: 40,),
+                                  Text("Not Approved")
+                                ],
+                              ),
+                            ) : Column(
                               children: [
-                                Image.asset("assets/images/right.png"),
+                                Image.asset(ImageConst().RIGHT),
                                 Text("Approved")
                               ],
                             )
@@ -169,7 +187,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                    provider.presonalDetailModel!.response!.panditbanklist![0].aadharNo.toString(),
+                    provider.presonalDetailModel?.response!.panditbanklist![0].aadharNo ?? "",
                           style: GoogleFonts.lato(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
@@ -222,7 +240,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          provider.presonalDetailModel!.response!.panditbanklist![0].panNo.toString(),
+                          provider.presonalDetailModel?.response!.panditbanklist![0].panNo ?? "",
                           style: GoogleFonts.lato(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,

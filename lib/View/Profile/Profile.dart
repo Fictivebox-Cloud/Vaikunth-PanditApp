@@ -15,7 +15,7 @@ import '../../consts/image_const.dart';
 import '../../Consts/color1.dart';
 import '../../view_model/Pandit_Bank_List_VM.dart';
 import '../../view_model/Service_VM.dart';
-import 'components/Bank/Bank Account Details.dart';
+
 import 'components/Bank/Personal_Bank_Details.dart';
 
 class Profile_Screen extends StatefulWidget {
@@ -182,7 +182,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Persional_Bank_Details()));
+                                  builder: (context) => Persional_Bank_Details(bank_id: '',)));
                         },
                         child: Container(
                           width: double.infinity,

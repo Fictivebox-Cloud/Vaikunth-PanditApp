@@ -30,9 +30,7 @@ class ViewDetailVM with ChangeNotifier{
     notifyListeners();
   }
 
-  // ViewDetailVM(){
-  //   viewdetailAPIcall({required String userbooking}, userbooking: '');
-  // }
+ 
 
 viewdetailAPIcall( {required dynamic userbooking}) async{
     setLoading(true);

@@ -121,7 +121,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                     ),
                                     Text(
                                       //"Mon 05/Oct/2021"
-                                      completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].bookingPujaDate.toString(),
+                                      completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist![index].bookingPujaDate ??"",
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
@@ -153,9 +153,8 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                           Center(
                               child: Text(
                             //"Vikrant Bhawani saini"
-                            completeBookingViewModel.completebokingmodel!
-                                .response!.upcomingbookinglist![index].name
-                                .toString(),
+                            completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist![index].name
+                                ??"",
                             style: GoogleFonts.lato(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 12,
@@ -180,8 +179,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                             child: Text(
                               "1 x ${
                               completeBookingViewModel
-                                      .completebokingmodel!
-                                      .response!
+                                      .completebokingmodel?.response!
                                       .upcomingbookinglist![index]
                                       .poojaTitle ??
                                   ""}",
@@ -215,7 +213,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                           ),
                           Center(
                               child: Text(
-                            "Total Earnings: ${completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].bookingPaidAmount.toString()}",
+                            "Total Earnings: ${completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist![index].bookingPaidAmount ??""}",
                             //                            "Total Earnings: ${completeBookingViewModel.completebokingmodel!.response!.upcomingbookinglist![index].bookingPaidAmount.toString()}",
                             style: GoogleFonts.lato(
                                 fontSize: 14,
@@ -308,7 +306,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                           .response!
                                           .compbookinglist![index]
                                           .poojaDate
-                                          .toString(),
+                                          ??"",
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
@@ -335,7 +333,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                             //"Vikrant Bhawani saini",
                             completeBookingViewModel.completebokingmodel!
                                 .response!.compbookinglist![index].hostname
-                                .toString(),
+                                ??"",
                             style: GoogleFonts.lato(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 12,
@@ -361,7 +359,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                               //"1 x Puranmashi katha(Offline)",
                               completeBookingViewModel.completebokingmodel!
                                   .response!.compbookinglist![index].poojaTitle
-                                  .toString(),
+                                  ??"",
                               style: GoogleFonts.lato(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14,
@@ -391,7 +389,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                           ),
                           Center(
                               child: Text(
-                            "Total Earnings: ${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].totalEarning.toString()}",
+                            "Total Earnings: ${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].totalEarning?? ""}",
                             style: GoogleFonts.lato(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
@@ -430,7 +428,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
       },
       //itemCount: 5,
       itemCount: completeBookingViewModel
-          .completebokingmodel!.response!.compbookinglist!.length,
+          .completebokingmodel?.response!.compbookinglist!.length,
     );
   }
 
@@ -472,7 +470,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                       width: 11,
                                     ),
                                     Text(
-                                      completeBookingViewModel.completebokingmodel!.response!.cancelbookinglist![index].bookingPujaDate.toString(),
+                                      completeBookingViewModel.completebokingmodel?.response!.cancelbookinglist![index].bookingPujaDate ??"",
                                       //"Mon 05/Oct/2021",
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
@@ -500,7 +498,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                           Center(
                               child: Text(
                            // "Vikrant Bhawani saini",
-                                completeBookingViewModel.completebokingmodel!.response!.cancelbookinglist![index].name.toString(),
+                                completeBookingViewModel.completebokingmodel?.response!.cancelbookinglist![index].name ??"",
                             style: GoogleFonts.lato(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 12,
@@ -523,7 +521,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                           Padding(
                             padding: const EdgeInsets.only(left: 16),
                             child: Text(
-                              completeBookingViewModel.completebokingmodel!.response!.cancelbookinglist![index].poojaTitle.toString(),
+                              completeBookingViewModel.completebokingmodel?.response!.cancelbookinglist![index].poojaTitle ??"",
                               //"1 x Puranmashi katha(Offline)",
                               style: GoogleFonts.lato(
                                   fontWeight: FontWeight.w400,
@@ -553,7 +551,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
         );
       },
       //itemCount: 20,
-      itemCount:completeBookingViewModel.completebokingmodel!.response!.cancelbookinglist!.length,
+      itemCount:completeBookingViewModel.completebokingmodel?.response!.cancelbookinglist!.length,
     ));
   }
 }

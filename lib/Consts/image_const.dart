@@ -14,12 +14,15 @@ class ImageConst {
   final VECTOR = "assets/images/vector.png";
   final TERMSANDCONDITIONS = "assets/image/terms-and-conditions.png";
   final RUPSS = "assets/images/rupss.png";
-  final RIGHT = "assets/image/right.png";
-  final PAN = "assets/image/PAN.png";
+  final RIGHT = "assets/images/right.png";
+  final PAN = "assets/images/PAN.png";
   final ORDER = "assets/images/order.png";
   final REJECT = "assets/images/reject.png";
   final String HOME = "assets/images/home.png";
   final String PROFILE = "assets/images/profile.png";
   final String IDCARD = "assets/images/idcard.png";
+  final String NOTAPPROVED = "assets/images/notApproved.png";
+  final String CHOPADA_PUJAN_BOOK = "assets/images/chopada_pujan_book.png";
+  final String CEMETERYE = "assets/images/cemetery.png";
 
 }

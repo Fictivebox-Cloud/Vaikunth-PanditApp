@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/view_model/Pandit_Bank_List_VM.dart';
-import 'package:panditapp/view_model/Update_Bank_VM.dart';
 import 'package:provider/provider.dart';
 import '../../../../Consts/color1.dart';
 import '../../../../Consts/text_const.dart';
@@ -9,7 +8,8 @@ import '../../../../Widgets/circular_loader.dart';
 import 'Add_Bank_Account.dart';
 import 'Bank Account Details.dart';
 class Persional_Bank_Details extends StatefulWidget {
-  const Persional_Bank_Details({Key? key}) : super(key: key);
+  String bank_id;
+  Persional_Bank_Details({Key? key, required this.bank_id}) : super(key: key);
 
   @override
   State<Persional_Bank_Details> createState() => _Persional_Bank_DetailsState();

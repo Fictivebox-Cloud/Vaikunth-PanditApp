@@ -3,6 +3,7 @@ import 'package:panditapp/Consts/user_Error.dart';
 import 'package:panditapp/Util/Api_collection.dart';
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../model/Profile_Screen/Bank_Account Details/Bank_List_Model.dart';
 import '../model/Profile_Screen/Bank_Account Details/Pandit_Bank_List_Model.dart';
 import '../model/Service_Model.dart';
@@ -35,9 +36,11 @@ class Pandit_Bank_List_VM with ChangeNotifier{
   }
 
   panditbankListAPIcall() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     setLoading(true);
+    String? userId = prefs.getString("pandit_id");
     var data={
-       "pandit_id": "7",
+       "pandit_id": userId,
     };
 
     var response = await ApiRemoteServices.fechingGetApi(
