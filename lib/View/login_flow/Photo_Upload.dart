@@ -15,6 +15,7 @@ import 'package:provider/provider.dart';
 
 import '../../Consts/color1.dart';
 import '../../view_model/Bank_List_VM.dart';
+import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 import '../../view_model/Pandit_Bank_List_VM.dart';
 import '../../view_model/Service_VM.dart';
 
@@ -320,6 +321,8 @@ class _MyAppState extends State<Photo_Upload> {
                           Pandit_Bank_List_VM panditbanklist= Provider.of<Pandit_Bank_List_VM>(context,listen: false);
                           panditbanklist.panditbankListAPIcall();
 
+                          // Earnings_Home_VM earninghome= Provider.of<Earnings_Home_VM>(context,listen: false);
+                          // earninghome.earningshomeAPIcall();
 
                           GetterloginSetter s = GetterloginSetter();
                           s.Photo = pickedImage;

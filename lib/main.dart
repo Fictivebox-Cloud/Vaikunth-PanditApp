@@ -7,6 +7,7 @@ import 'package:panditapp/view_model/BookingViewDetails/getBookingOTP.dart';
 import 'package:panditapp/view_model/Bank_List_VM.dart';
 import 'package:panditapp/view_model/CityListApi.dart';
 import 'package:panditapp/view_model/Complete_Bookings.dart';
+import 'package:panditapp/view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 import 'package:panditapp/view_model/Help_Support_Details_VM.dart';
 import 'package:panditapp/view_model/Notification_VM.dart';
 import 'package:panditapp/view_model/Profile/Personal_Detail_View_Model.dart';
@@ -57,7 +58,8 @@ Future<void>  main() async{
        ChangeNotifierProvider(create: (_)=>Update_Bank_VM()),
        ChangeNotifierProvider(create: (_)=>Store_Bank_VM()),
        ChangeNotifierProvider(create: (_)=>Personal_Detail_View_Model()),
-       ChangeNotifierProvider(create: (_)=>Edit_profile_View_model())
+       ChangeNotifierProvider(create: (_)=>Edit_profile_View_model()),
+       ChangeNotifierProvider(create: (_)=>Earnings_Home_VM()),
 
 
       ],
@@ -84,8 +86,8 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        home: SplashScreen(),
-       //home: Name_Screen(),
+        //home: SplashScreen(),
+       home: Name_Screen(),
       );
   }
 

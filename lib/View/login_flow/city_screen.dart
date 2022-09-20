@@ -116,7 +116,7 @@ class _City_ScreenState extends State<City_Screen> {
                           ),
                         ),
 
-                        Text("${widget.servicesname}"),
+                        //Text("${widget.servicesname}"),
                         SizedBox(
                           height: 30,
                         ),

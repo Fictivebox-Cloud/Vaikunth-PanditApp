@@ -19,6 +19,7 @@ import 'package:snippet_coder_utils/FormHelper.dart';
 import '../../Consts/color1.dart';
 import '../../view_model/ApiCallLogin.dart';
 import '../../view_model/Complete_Bookings.dart';
+import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 
 class Account_details extends StatefulWidget {
   final String? aadhar, pancard, name5, mobile,servicesname;
@@ -296,7 +297,8 @@ class _Account_detailsState extends State<Account_details> {
                         CompleteBookingViewModel completeBookingViewModel = Provider.of<CompleteBookingViewModel>(context, listen: false);
                         completeBookingViewModel.completebookingAPIcall();
 
-
+                        Earnings_Home_VM earninghome= Provider.of<Earnings_Home_VM>(context,listen: false);
+                        earninghome.earningshomeAPIcall();
                         // GetterloginSetter s = GetterloginSetter();
                         s.Account = _accountno.text;
                         s.choosebank = _choosebank.text;

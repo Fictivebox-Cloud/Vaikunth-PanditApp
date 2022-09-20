@@ -6,10 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:charts_flutter/flutter.dart'as charts;
 import 'package:panditapp/View/Earning/components/Life_Time_Puja%E2%80%99s.dart';
 import 'package:panditapp/View/Earning/components/Money_transferred_succesfully.dart';
+import 'package:panditapp/view_model/Earnings_View_Model/Earnings_Home_VM.dart';
+import 'package:provider/provider.dart';
 
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../Consts/color1.dart';
+import '../../Widgets/circular_loader.dart';
 
 class Earnings_Screen extends StatefulWidget {
   const Earnings_Screen({Key? key}) : super(key: key);
@@ -19,18 +22,26 @@ class Earnings_Screen extends StatefulWidget {
 }
 
 class _Earnings_ScreenState extends State<Earnings_Screen> {
-
+ late Earnings_Home_VM earnings_home_vm;
   var ht,wt;
 
   @override
   Widget build(BuildContext context) {
+     earnings_home_vm = context.watch<Earnings_Home_VM>();
+
+
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
 
 
+
     return Scaffold(
       backgroundColor: white,
-      body: SafeArea(child: Column(
+      body:
+      earnings_home_vm.loading
+          ? Center(child: CircularLoader())
+          :
+      SafeArea(child: Column(
 
         children: [
           Container(
@@ -67,11 +78,20 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Text("Wallet",style: GoogleFonts.lato(fontSize: 14, fontWeight: FontWeight.w400,color: kSecondaryColor),),
-                            Text("₹2518.00",style: GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600,color: h1Color),)
+                            Text(
+                              //"₹2518.00"
+                              "₹ ${earnings_home_vm.earningsHomeModel?.response!.walletvalue??""}"
+                              ,style: GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.w600,color: h1Color),)
                           ],
                         ),
                         GestureDetector(
                           onTap: (){
+
+                            Earnings_Home_VM earninghome= Provider.of<Earnings_Home_VM>(context,listen: false);
+                            earninghome.earningshomeAPIcall();
+
+
+
                             showModalBottomSheet(
                               context: context,
                               builder: (builder)=> bottomSheet(),
@@ -82,8 +102,8 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                           },
                           child: Container(
                             width: wt * 0.3,
-                            height: ht * 0.07,
-
+                            //height: ht * 0.07,
+                            height: 44,
 
                             decoration: BoxDecoration(
                               color:b1Color,
@@ -134,7 +154,10 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text("Life-Time earnings",style: GoogleFonts.lato(color: Color(0xffECF1F6),fontSize: 14,fontWeight: FontWeight.w400),),
-                                Text("₹23652.25",style: GoogleFonts.lato(color: white,fontWeight: FontWeight.w600,fontSize: 18),)
+                                Text(
+                                  //"₹23652.25"
+                                  "₹ ${earnings_home_vm.earningsHomeModel?.response!.lifetimeearnings??""}"
+                                  ,style: GoogleFonts.lato(color: white,fontWeight: FontWeight.w600,fontSize: 18),)
                               ],
                             ),
                           ),
@@ -160,7 +183,10 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
-                                      Text("152",style: GoogleFonts.lato(color: white,fontSize: 18,fontWeight: FontWeight.w600),),
+                                      Text(
+                                        //"152"
+                                        "₹ ${earnings_home_vm.earningsHomeModel?.response!.lifetimepuja??""}"
+                                        ,style: GoogleFonts.lato(color: white,fontSize: 18,fontWeight: FontWeight.w600),),
                                       Icon(Icons.arrow_right,color: white,)
                                     ],
                                   )
@@ -252,7 +278,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
   Widget bottomSheet(){
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 200,
+      height: 205,
       margin:  EdgeInsets.symmetric(
           horizontal: 20,
           vertical: 20
@@ -263,7 +289,10 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
           Text("Withdraw money to Bank Account",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w600,color: p1Color),),
           SizedBox(height: 16,),
 
-          Center(child: Text("₹2518.00",style: GoogleFonts.lato(fontWeight: FontWeight.w600,fontSize: 24,color: h1Color),)),
+          Center(child: Text(
+            //"₹2518.00"
+            "₹ ${earnings_home_vm.earningsHomeModel?.response!.walletvalue??""}"
+            ,style: GoogleFonts.lato(fontWeight: FontWeight.w600,fontSize: 24,color: h1Color),)),
           SizedBox(
             height: 16,
           ),
