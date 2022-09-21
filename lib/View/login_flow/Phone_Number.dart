@@ -79,7 +79,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                                   )));
                     },
                     child: Text(
-                      'Send OTP',
+                      SENDOTP,
                       style: GoogleFonts.lato(
                         color: white,
                         fontSize: 24,
@@ -137,7 +137,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                   ],
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    hintText: "Enter You Phone Number",
+                    hintText: ENTER_YOU_PHONE_NUMBER,
                     border: InputBorder.none,
                   ),
                 ),

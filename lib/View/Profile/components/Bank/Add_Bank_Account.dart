@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/consts/text_const.dart';
 import 'package:panditapp/view_model/Store_bank_VM.dart';
 import 'package:provider/provider.dart';
 import '../../../../Consts/color1.dart';
-import '../../../../Consts/text_const.dart';
+
 import '../../../../Widgets/circular_loader.dart';
 import '../../../../view_model/Bank_List_VM.dart';
 import '../../../../view_model/Update_Bank_VM.dart';
@@ -116,7 +117,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
               ),
             ),
             appBar: AppBar(
-              title: Hero(tag: "_text", child: Text("Add bank account")),
+              title: Hero(tag: "_text", child: Text(ADDBANKACCOUNT)),
             ),
             body: store_bank_vm.loading
                 ? Center(child: CircularLoader())
@@ -133,7 +134,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                               height: 24,
                             ),
                             Text(
-                              "Account Holder Name",
+                              ACCOUNT_HOLDER_NAME,
                               style: GoogleFonts.lato(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18,
@@ -153,7 +154,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                       keyboardType: TextInputType.name,
                                       decoration: InputDecoration(
                                           fillColor: grey,
-                                          hintText: "Account Holder Name",
+                                          hintText:ACCOUNT_HOLDER_NAME,
                                           hintStyle: TextStyle(fontSize: 15),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: const BorderSide(
@@ -172,7 +173,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                               height: 16,
                             ),
                             Text(
-                              "Account No",
+                              ACCOUNT_NO,
                               style: GoogleFonts.lato(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18,
@@ -192,7 +193,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                       //keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                           fillColor: grey,
-                                          hintText: "Account No.",
+                                          hintText: ACCOUNT_NO,
                                           hintStyle: TextStyle(fontSize: 15),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: const BorderSide(
@@ -211,7 +212,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                               height: 16,
                             ),
                             Text(
-                              "Choose Bank",
+                              CHOOSE_BANK,
                               style: GoogleFonts.lato(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
@@ -231,7 +232,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                       //keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                           fillColor: grey,
-                                          hintText: "Choose bank",
+                                          hintText: CHOOSE_BANK,
                                           hintStyle: TextStyle(fontSize: 15),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: const BorderSide(
@@ -247,7 +248,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                               height: 16,
                             ),
                             Text(
-                              "IFSC Code",
+                              IFSC_CODE,
                               style: GoogleFonts.lato(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18,
@@ -267,7 +268,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                       //keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
                                           fillColor: grey,
-                                          hintText: "IFSC CODE",
+                                          hintText: IFSC_CODE,
                                           hintStyle: TextStyle(fontSize: 15),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: const BorderSide(

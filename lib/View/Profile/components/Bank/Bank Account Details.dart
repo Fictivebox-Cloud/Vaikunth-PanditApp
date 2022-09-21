@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:snippet_coder_utils/FormHelper.dart';
-
 import '../../../../Consts/color1.dart';
 import '../../../../Widgets/circular_loader.dart';
+import '../../../../consts/text_const.dart';
 import '../../../../view_model/Bank_List_VM.dart';
-import '../../../../view_model/Pandit_Bank_List_VM.dart';
 import '../../../../view_model/Update_Bank_VM.dart';
 import 'Personal_Bank_Details.dart';
 
@@ -106,7 +104,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 13.0),
                     child: Text(
-                      "Update bank details",
+                      UPDATE_BANK_DETAILS,
                       style: GoogleFonts.lato(
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
@@ -118,7 +116,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
               ),
             ),
             appBar: AppBar(
-              title: Hero(tag: "_text", child: Text("Bank Account Details")),
+              title: Hero(tag: "_text", child: Text(UPDATE_BANK_DETAILS)),
             ),
             body: bankList_VM.loading
                 ? Center(child: CircularLoader())
@@ -135,7 +133,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                         height: 24,
                       ),
                       Text(
-                        "Account Holder Name",
+                        ACCOUNT_HOLDER_NAME,
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500,
                             fontSize: 18,
@@ -155,7 +153,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                                 keyboardType: TextInputType.name,
                                 decoration: InputDecoration(
                                     fillColor: grey,
-                                    hintText: "Account Holder Name",
+                                    hintText: ACCOUNT_HOLDER_NAME,
                                     hintStyle: TextStyle(fontSize: 15),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
@@ -173,7 +171,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                         height: 16,
                       ),
                       Text(
-                        "Account No",
+                        ACCOUNT_NO,
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500,
                             fontSize: 18,
@@ -193,7 +191,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                                 //keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     fillColor: grey,
-                                    hintText: "Account No.",
+                                    hintText: ACCOUNT_NO,
                                     hintStyle: TextStyle(fontSize: 15),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
@@ -211,7 +209,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                         height: 16,
                       ),
                       Text(
-                        "Choose Bank",
+                        CHOOSE_BANK,
                         style: GoogleFonts.lato(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
@@ -231,7 +229,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                                 //keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     fillColor: grey,
-                                    hintText: "IFSC CODE",
+                                    hintText: IFSC_CODE,
                                     hintStyle: TextStyle(fontSize: 15),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
@@ -251,7 +249,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                         height: 16,
                       ),
                       Text(
-                        "IFSC Code",
+                        IFSC_CODE,
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500,
                             fontSize: 18,
@@ -271,7 +269,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                                 //keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                     fillColor: grey,
-                                    hintText: "IFSC CODE",
+                                    hintText: IFSC_CODE,
                                     hintStyle: TextStyle(fontSize: 15),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(

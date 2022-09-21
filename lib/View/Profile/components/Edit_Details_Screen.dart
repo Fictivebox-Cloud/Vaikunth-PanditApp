@@ -228,14 +228,14 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "City",
+                                CITY,
                                 style: GoogleFonts.lato(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18,
                                 ),
                               ),
                               Text(
-                                "EDIT",
+                                EDIT,
                                 style: GoogleFonts.lato(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
@@ -257,7 +257,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                                 //keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   fillColor: grey,
-                                  hintText: "LOCATION",
+                                  hintText: LOCATION,
                                   hintStyle: TextStyle(fontSize: 15),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
@@ -294,7 +294,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                                         color: kPrimaryColor),
                                     child: Center(
                                         child: Text(
-                                      "Save",
+                                          SAVE,
                                       style: GoogleFonts.lato(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 16,
@@ -326,7 +326,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Services offered",
+                  SERVICES_OFFERED,
                   style: GoogleFonts.lato(
                       fontWeight: FontWeight.w500,
                       fontSize: 16,
@@ -336,7 +336,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                   height: 12,
                 ),
                 Text(
-                  "Add/Remove services you offered.",
+                  ADREMOVESERVICE,
                   style: GoogleFonts.lato(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -402,7 +402,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                         color: kPrimaryColor),
                     child: Center(
                         child: Text(
-                      "Save",
+                      SAVE,
                       style: GoogleFonts.lato(
                           fontWeight: FontWeight.w500,
                           fontSize: 16,

@@ -11,6 +11,9 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../Consts/color1.dart';
+import '../../consts/text_const.dart';
+
+
 
 class OTP_verify extends StatefulWidget {
   String? mobile;
@@ -144,7 +147,7 @@ class _OTP_verifyState extends State<OTP_verify> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Enter OTP',
+                      ENTER_OTP,
                       style: GoogleFonts.lato(
                           fontSize: 24,
                           fontWeight: FontWeight.w500,
@@ -155,7 +158,7 @@ class _OTP_verifyState extends State<OTP_verify> {
                       height: 8,
                     ),
                     Text(
-                      'Enter the 6 digit code received on your mobile.',
+                      ENTER_THE_6_DIGIT_CODE_RECEIVED_ON_YOUR_MOBILE,
                       style: GoogleFonts.lato(
                           fontWeight: FontWeight.w400,
                           color: p1Color,
@@ -213,7 +216,7 @@ class _OTP_verifyState extends State<OTP_verify> {
                           fontSize: 16, fontWeight: FontWeight.w500),
                     ),
                     onPressed: () {},
-                    child: const Text('Resend OTP'),
+                    child: const Text(RESEND_OTP),
                   ),
                 ),
               ],

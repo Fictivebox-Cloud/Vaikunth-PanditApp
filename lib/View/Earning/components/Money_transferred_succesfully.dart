@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/Home/Home_Screen.dart';
 import '../../../Consts/color1.dart';
-import '../../../Consts/text_const.dart';
+
 import '../../../consts/text_const.dart';
 
 class Money_transferred_succesfully extends StatefulWidget {
