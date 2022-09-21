@@ -41,13 +41,13 @@ getbookingApiCall() async{
   SharedPreferences prefs = await SharedPreferences.getInstance();
   setLoading(true);
   String? userId = prefs.getString("pandit_id");
-  print("User Id=> $userId");
+
   Map<String, dynamic> data = {
     "pandit_id": userId,
   };
   var response  = await ApiRemoteServices.fechingGetApi(apiUrl: GET_BOOKING_LIST,apiData: data);
   if(response is Success){
-    print("Vikramnt nnn${response.response}");
+
     Object data = getBookingListModelFromJson(response.response as String);
     setGetBookingModle(data as GetBookingListModel);
   }else if(response is Failure) {

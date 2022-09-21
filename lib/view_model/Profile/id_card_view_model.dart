@@ -46,7 +46,7 @@ setUserError(UserError userError){
     };
     var response = await ApiRemoteServices.fechingGetApi(apiUrl:GET_ID_CARD,apiData: data );
     if(response is Success){
-      print("Pandit ID ${response.response}");
+
       Object data = panditDetailsIdcradModelFromJson(response.response as String);
       setPanditDetailsIdcradModel(data as PanditDetailsIdcradModel);
     }else if(response is Failure){

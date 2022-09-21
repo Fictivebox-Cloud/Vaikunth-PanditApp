@@ -48,12 +48,9 @@ class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
       "booking_id": userBooking_id.toString(),
       "code": otpcode
     };
-    print("OTP AAGYA H ${otpcode}");
-    print("BOOKING ID H Y ${userBooking_id}");
     var response = await ApiRemoteServices.fechingGetApi(
         apiUrl: GET_CHECK_BOOKING_OTP, apiData: data);
     if (response is Success) {
-      print("Booking OTP ${response.response}");
       Object data =
           checkBookingConfirmOtpModelFromJson(response.response as String);
       setGetCheckBookingConfirmOtpModel(data as CheckBookingConfirmOtpModel);

@@ -27,7 +27,7 @@ class _Notifications_screenState extends State<Notifications_screen> {
         title: Text(NOTIFICATIONS),
       ),
       backgroundColor: white,
-      body: ListView.builder(
+      body: notificationVM.loading ? Center(child: CircularProgressIndicator(color: kPrimaryColor,)) :ListView.builder(
           itemBuilder: (context, int index) {
             return Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 1),

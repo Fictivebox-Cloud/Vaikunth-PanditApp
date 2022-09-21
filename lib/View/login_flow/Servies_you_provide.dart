@@ -1,8 +1,10 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../Consts/color1.dart';
+
 import '../../Consts/text_const.dart';
 import '../../Widgets/circular_loader.dart';
 import '../../view_model/Login/Service_VM.dart';
@@ -23,8 +25,6 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
   var ht, wt;
   var servicecontroller;
 
-  //List<String> _list = [PUJA, ASTROLOGY,FUNERALSERVICES];
-//  Text(serviceVM.serviceModel!.response!.serviceslist![0].name.toString()),
   int _selectedIndex = 0;
 
   @override

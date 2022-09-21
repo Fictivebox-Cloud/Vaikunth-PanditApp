@@ -18,6 +18,126 @@ class Setting_Screen extends StatefulWidget {
 class _Setting_ScreenState extends State<Setting_Screen> {
   var ht, wt;
 
+
+  Widget privacyPolicyDesign(){
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        width: double.infinity,
+        height: 52,
+        decoration: BoxDecoration(
+          color: white,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(width: 1, color: kSecondaryColor),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Image.asset(ImageConst().PROFILE_PRIVACY_IMAGES),
+                  Text(
+                    PRIVACYPOLICY,
+                    style: GoogleFonts.lato(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: h1Color),
+                  ),
+                ],
+              ),
+              Icon(Icons.arrow_forward)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget termsConditionsDesign(){
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        width: double.infinity,
+        height: 52,
+        decoration: BoxDecoration(
+          color: white,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(width: 1, color: kSecondaryColor),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Image.asset(
+                      ImageConst().TERMS_AND_CONDITIONS_IMAGES),
+                  Text(
+                    TERMS_CONDITIONS,
+                    style: GoogleFonts.lato(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: h1Color),
+                  ),
+                ],
+              ),
+              Icon(Icons.arrow_forward)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget helpSupportDesign(){
+    return GestureDetector(
+      onTap: () {
+        HelpSupportDetails_VM panditbanklist =
+        Provider.of<HelpSupportDetails_VM>(context,
+            listen: false);
+        panditbanklist.HelpSupportDetailsAPIcall();
+
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Help_Support_Screen()));
+      },
+      child: Container(
+        width: double.infinity,
+        height: 52,
+        decoration: BoxDecoration(
+          color: white,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(width: 1, color: kSecondaryColor),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Image.asset(ImageConst().HELP_IMAGES),
+                  Text(
+                    HELPSUPPORT,
+                    style: GoogleFonts.lato(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: h1Color),
+                  ),
+                ],
+              ),
+              Icon(Icons.arrow_forward)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
@@ -33,122 +153,15 @@ class _Setting_ScreenState extends State<Setting_Screen> {
             padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
             child: Column(
               children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: double.infinity,
-                    height: 52,
-                    decoration: BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: kSecondaryColor),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Image.asset(ImageConst().PROFILE_PRIVACY_IMAGES),
-                              Text(
-                                PRIVACYPOLICY,
-                                style: GoogleFonts.lato(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: h1Color),
-                              ),
-                            ],
-                          ),
-                          Icon(Icons.arrow_forward)
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                privacyPolicyDesign(),
                 SizedBox(
                   height: 16,
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: double.infinity,
-                    height: 52,
-                    decoration: BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: kSecondaryColor),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Image.asset(
-                                  ImageConst().TERMS_AND_CONDITIONS_IMAGES),
-                              Text(
-                                TERMS_CONDITIONS,
-                                style: GoogleFonts.lato(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: h1Color),
-                              ),
-                            ],
-                          ),
-                          Icon(Icons.arrow_forward)
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                termsConditionsDesign(),
                 SizedBox(
                   height: 16,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    HelpSupportDetails_VM panditbanklist =
-                        Provider.of<HelpSupportDetails_VM>(context,
-                            listen: false);
-                    panditbanklist.HelpSupportDetailsAPIcall();
-
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Help_Support_Screen()));
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 52,
-                    decoration: BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: kSecondaryColor),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 10, right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Image.asset(ImageConst().HELP_IMAGES),
-                              Text(
-                                HELPSUPPORT,
-                                style: GoogleFonts.lato(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: h1Color),
-                              ),
-                            ],
-                          ),
-                          Icon(Icons.arrow_forward)
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                helpSupportDesign()
               ],
             ),
           ),

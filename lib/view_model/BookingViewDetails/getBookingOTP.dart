@@ -34,7 +34,7 @@ class Puja_Confirm_OTP  with ChangeNotifier{
     setLoading(true);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString("pandit_id");
-    print("Pandit App user Id = ${userId}");
+
     setLoading(true);
     Map<String , dynamic> data = {
       "pandit_id": userId,
@@ -45,7 +45,7 @@ class Puja_Confirm_OTP  with ChangeNotifier{
     };
     var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_SENDPUJAOTP_API,apiData: data);
     if(response is Success){
-      print("Vikrant Puja OTP${response.response}");
+
       Object data = pujaConfirmOtpModelFromJson(response.response as String);
       setGetPujaCofirmOTP(data as PujaConfirmOtpModel);
 

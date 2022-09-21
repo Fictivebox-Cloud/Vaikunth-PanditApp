@@ -36,7 +36,7 @@ viewdetailAPIcall( {required dynamic userbooking}) async{
     setLoading(true);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString("pandit_id");
-    print("Pandit App = ${userId}");
+
     Map<String , dynamic> data={
       "pandit_id": userId,
       "booking_id": userbooking.toString()
@@ -46,7 +46,8 @@ viewdetailAPIcall( {required dynamic userbooking}) async{
       apiUrl:GET_VIEWDETAIL_API,apiData: data);
     if(response is Success){
       Object data = viewDetailModelFromJson(response.response as String);
-      print("Govind kumar${response.response as String}");
+
+
       setViewViewDetailModel(data as ViewDetailModel);
     }
     else if (response is Failure){

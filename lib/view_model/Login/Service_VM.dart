@@ -47,7 +47,7 @@ class ServiceVM with ChangeNotifier{
         apiUrl:GET_SERVICE_API,);
     if(response is Success){
       Object data = serviceModelFromJson(response.response as String);
-      print("Govind service booking list${response.response as String}");
+
       setServiceModel(data as ServiceModel);
 
     }

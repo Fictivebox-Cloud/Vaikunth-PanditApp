@@ -35,7 +35,7 @@ class Accept_Booking_Api extends ChangeNotifier{
     notifyListeners();
   }
   getAccept_booking_Api({required String userbooking})async{
-    print("User booking $userbooking");
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString("pandit_id");
     print("Pandit App = ${userId}");
@@ -48,7 +48,7 @@ class Accept_Booking_Api extends ChangeNotifier{
 
     var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_ACCEPTBOOKING_API,apiData: data);
     if(response is Success){
-      print("Vikrant Kumar ${response.response}");
+
       Object data = acceptBookingModelFromJson(response.response as String);
       setAcceptBookingModel(data as AcceptBookingModel);
       //
