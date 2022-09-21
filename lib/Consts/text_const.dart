@@ -17,7 +17,13 @@ const String UPLOADYOURPHOTO = "Upload your photo";
 const String OPENCAMERA = "Open Camera";
 const String OPENFILE = "Open Files";
 const String LOCATION = "Location";
+
 const String ENTERYOURPHONENUMBER = "Enter Your Phone Number";
+
+const String TOTAL = "Total";
+const String NAVIGATE = "Navigate";
+const String ENTEROTP = "Enter the 6 digit OTP";
+const String RECIVESOTPINPHONE = "Ask for 6 digit code received by the user on their mobile number";
 
 const String SERVICESYOUOFFER = "Services we offer";
 const String PUJA = "Puja";
@@ -69,6 +75,54 @@ const String FAHPCOBD  = "For any help, please contact on below details";
 const String SEND_EMAIL  = "Send Email";
 const String CALL_NOW  = "Call Now";
 const String SERVICES_OFFERED  = "Services offered";
+
+
+const String BOOKINGDETAILS  = "Booking Details";
+const String BOOKINGNO  = "Booking Number";
+const String CALLNOW  = "Call Now";
+const String ITEMS  = "Items";
+const String EARNINGS  = "Earnings";
+const String PUJAEARNING  = "Puja Earnings";
+const String VISITING_CHARGE  = "Visiting Charge";
+const String BOOKING_INPROGRESS  = "Booking in Progress";
+const String BOOKING_STATUS  = "Booking Status";
+
+const String TOTAL_EARNING  = "Total Earnings:";
+const String VIEW_DETAILS  = "View Details";
+const String BOOKING_LIST  = "Booking List";
+const String VIEWEARNINGS  = "ViewEarnings";
+const String CANCELLED  = "Cancelled";
+
+const String LIFE_TIME_PUJA  = "Life Time Puja’s";
+const String MONEY_TRANSFER_SUCCESFULLY  = "Money transferred succesfully";
+const String WALLET  = "Wallet";
+const String WITHDRAW  = "Withdraw";
+const String LIFE_TIME_EARNINGS  = "Life-Time earnings";
+const String WEEKLY  = "Weekly";
+const String MONTHLY  = "Monthly";
+const String WITHDRAW_MONEY_TO_BANK_ACCOUNT  = "Withdraw money to Bank Account";
+const String SEND_MONEY_TO_BANK_ACCOUNT  = "Send money to account";
+
+const String NO_BOOKING_REQUESTS  = "No booking requests";
+const String ACCEPT_BOOKING  = "Accept Booking";
+const String ACCEPT_BOOKING_IN = "Accept booking in ";
+
+const String WELCOME_TO_VAIKUNTH = "Welcome to Vaikunth";
+const String BOOKINGS_REQUEST = "Bookings Request";
+
+const String NOTIFICATIONS = "Notifications";
+const String JUST_NOW = "Just Now";
+
+const String HOME = "Home";
+const String EARNING = "Earnings";
+const String BOOKINGS = "Bookings";
+const String PROFILE = "Profile";
+
+const String VAIKUNTH = "Vaikunth";
+const String DO_YOU_WANT_TO_EXIT = "Do you want to Exit ?";
+const String NO = "No";
+const String YES = "Yes";
+
 
 
 // Api Error

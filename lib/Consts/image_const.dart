@@ -3,8 +3,8 @@ class ImageConst {
   final String MAP_PIN = "assets/images/map-pin.png";
   final String ARROW = "assets/images/arow.png";
   final String profile = "assets/images/profilea.svg";
-  final String AADHARBACK = "assets/images/aadharback.png";
-  final String AADHARFRONT = "assets/images/aadharfront.png";
+  final String AADHARBACK = "assets/image/Aadhar Back.png";
+  final String AADHARFRONT = "assets/image/Aadhar Front.png";
   final String BANK = "assets/images/bank.png";
   final String BOOKING = "assets/images/booking.png";
   final String CAMERA = "assets/image/Camera.png";
