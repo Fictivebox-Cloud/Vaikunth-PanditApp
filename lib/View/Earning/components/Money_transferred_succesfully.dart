@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/Consts/image_const.dart';
 import 'package:panditapp/View/Home/Home_Screen.dart';
 import '../../../Consts/color1.dart';
 import '../../../Consts/text_const.dart';
-import '../../../consts/text_const.dart';
 
 class Money_transferred_succesfully extends StatefulWidget {
   const Money_transferred_succesfully({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _Money_transferred_succesfullyState
                       width: 130,
                       height: 130,
                       image: AssetImage(
-                        'assets/images/success.gif',
+                        ImageConst().SUCCESS_GIF
                       ),
                     ),
                   ),

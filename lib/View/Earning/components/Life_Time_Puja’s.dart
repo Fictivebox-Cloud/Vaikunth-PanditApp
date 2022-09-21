@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../Consts/color1.dart';
 import '../../../Consts/text_const.dart';
-import '../../../consts/text_const.dart';
+
 
 class Life_Time_Puja extends StatefulWidget {
   const Life_Time_Puja({Key? key}) : super(key: key);

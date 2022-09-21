@@ -31,5 +31,7 @@ class ImageConst {
   final String PROFILE_PRIVACY_IMAGES = "assets/images/profile-privacy.png";
   final String HELP_IMAGES = "assets/images/help.png";
   final String TERMS_AND_CONDITIONS_IMAGES = "assets/images/terms-and-conditions.png";
+  final String MANU = "assets/images/manu.png";
+  final String SUCCESS_GIF = "assets/images/success.gif";
 
 }

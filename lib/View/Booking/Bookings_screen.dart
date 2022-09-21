@@ -1,6 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/Consts/image_const.dart';
 import 'package:panditapp/View/Booking/pages/Booking_Details.dart';
 import 'package:panditapp/Widgets/circular_loader.dart';
 import 'package:provider/provider.dart';
@@ -137,7 +138,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                     const SizedBox(
                                       width: 19.32,
                                     ),
-                                    Image.asset("assets/images/manu.png")
+                                    Image.asset(ImageConst().MANU),
                                   ],
                                 )
                               ],
