@@ -18,7 +18,6 @@ class _SwitchOfState extends State<SwitchOf> {
   @override
   Widget build(BuildContext context) {
     return CupertinoSwitch(
-
         value: value,
         onChanged: (value)=> setState(() {
           Online_Ofline_View_Model online_ofline_view_model= Provider.of<Online_Ofline_View_Model>(context,listen: false);

@@ -12,39 +12,38 @@ import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
-
-
+import '../../../Consts/text_const.dart';
 import '../../../Widgets/OnlineAndSwitch.dart';
 import '../../../consts/color1.dart';
 import '../../../consts/image_const.dart';
 import '../../../view_model/Service_VM.dart';
 
-
 class Home_page_Screen extends StatelessWidget {
-
-
   var ht, wt;
-
   bool _isLoading = true;
-  late Online_Ofline_View_Model ss;
+  late Online_Ofline_View_Model _online_ofline_view_model;
 
   @override
   Widget build(BuildContext context) {
     Booking_Request_View_Model booking_request_view_model =
         context.watch<Booking_Request_View_Model>();
-    ServiceVM  serviceVM = Provider.of<ServiceVM>(context, listen: false);
+    ServiceVM serviceVM = Provider.of<ServiceVM>(context, listen: false);
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        body: _ui(booking_request_view_model,context),
+        body: _ui(booking_request_view_model, context),
       ),
     );
   }
 
-  _ui(Booking_Request_View_Model booking_request_view_model,BuildContext context) {
+  _ui(Booking_Request_View_Model booking_request_view_model,
+      BuildContext context) {
     if (booking_request_view_model.loading) {
-      return Center(child: CircularProgressIndicator(color: kPrimaryColor,));
+      return Center(
+          child: CircularProgressIndicator(
+        color: kPrimaryColor,
+      ));
     } else if (booking_request_view_model.userError != null) {
       return Center(
         child: Text(booking_request_view_model.userError!.message!.toString() ??
@@ -52,10 +51,11 @@ class Home_page_Screen extends StatelessWidget {
       );
     }
     //return Text("GGG");
-     return _listDesign(booking_request_view_model,context);
+    return _listDesign(booking_request_view_model, context);
   }
 
-  _listDesign(Booking_Request_View_Model booking_request_view_model, BuildContext context) {
+  _listDesign(Booking_Request_View_Model booking_request_view_model,
+      BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -66,8 +66,10 @@ class Home_page_Screen extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => const Profile_Screen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Profile_Screen()));
                 },
                 child: const CircleAvatar(
                   radius: 20,
@@ -76,11 +78,9 @@ class Home_page_Screen extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                 ),
               ),
-
               SizedBox(
                 height: 31,
                 width: 120,
-
                 child: LiteRollingSwitch(
                   textOn: "Online",
                   value: true,
@@ -89,19 +89,24 @@ class Home_page_Screen extends StatelessWidget {
                   colorOff: p1Color,
                   textSize: 16,
                   onChanged: (val) {
-                      ss = Provider.of<Online_Ofline_View_Model>(context, listen: false);
-                      ss.getonlineofline(userStatus: val ? "1" : "0");
+                    _online_ofline_view_model =
+                        Provider.of<Online_Ofline_View_Model>(context,
+                            listen: false);
+                    _online_ofline_view_model.getonlineofline(
+                        userStatus: val ? "1" : "0");
                   },
                 ),
               ),
               InkWell(
                 onTap: () {
-                 Navigator.push(context, MaterialPageRoute(builder: (context) =>Notifications_screen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Notifications_screen()));
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          Notifications_screen(),
+                      builder: (context) => Notifications_screen(),
                     ),
                   );
                 },
@@ -123,7 +128,7 @@ class Home_page_Screen extends StatelessWidget {
               width: 10,
             ),
             Text(
-              "Welcome to Vaikunth",
+              WELCOME_TO_VAIKUNTH,
               style: GoogleFonts.lato(
                   fontSize: 18,
                   fontWeight: FontWeight.w800,
@@ -137,23 +142,14 @@ class Home_page_Screen extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
           child: Text(
-            'Bookings Request',
+            BOOKINGS_REQUEST,
             style: GoogleFonts.lato(
                 fontWeight: FontWeight.w600, fontSize: 18, color: h1Color),
           ),
         ),
-        Expanded(child: SingleChildScrollView(child: BookingListTitl(booking_request_view_model)))
-        // Expanded(
-        //   child: ListView.builder(
-        //
-        //     itemBuilder: (context, int index) {
-        //       return BookingListTitl(
-        //         index: index,
-        //       );
-        //     },
-        //     itemCount: booking_request_view_model.getbookinglistModel.length,
-        //   ),
-        // ),
+        Expanded(
+            child: SingleChildScrollView(
+                child: BookingListTitl(booking_request_view_model)))
       ],
     );
   }

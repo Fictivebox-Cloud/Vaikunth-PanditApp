@@ -11,20 +11,10 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:panditapp/view_model/BookingViewDetails/getBookingOTP.dart';
 import 'package:sms_autofill/sms_autofill.dart';
-
-
 import '../../../Consts/color1.dart';
-import '../../../model/Booking_View_Details/Check_booking_OTP_Model.dart';
-import '../../../model/Booking_View_Details/Check_booking_OTP_Model.dart';
-import '../../../model/Booking_View_Details/Check_booking_OTP_Model.dart';
-import '../../../model/Booking_View_Details/Check_booking_OTP_Model.dart';
-import '../../../model/Booking_View_Details/Check_booking_OTP_Model.dart';
-import '../../../view_model/BookingViewDetails/Check_Booking_Confirm_OTP.dart';
-import '../../../view_model/BookingViewDetails/Check_Booking_Confirm_OTP.dart';
+import '../../../Consts/text_const.dart';
 import '../../../view_model/BookingViewDetails/Check_Booking_Confirm_OTP.dart';
 import '../../../view_model/ViewDetails_VM.dart';
-
-
 
 class Booking_Details_Screen extends StatefulWidget {
   var bookingId;
@@ -37,7 +27,6 @@ class Booking_Details_Screen extends StatefulWidget {
 
 class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
 
-
   var ht,wt;
  late Puja_Confirm_OTP  puja_Confirm_OTP;
 
@@ -45,8 +34,6 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
   TextEditingController otpController = TextEditingController();
   SmsAutoFill smsAutoFill = SmsAutoFill();
   String? strVerificationId;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +50,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
       child: Scaffold(
         backgroundColor: white,
         appBar: AppBar(
-          title:  const Text("Booking Details"),
+          title:  const Text(BOOKINGDETAILS),
         ),
          body: Consumer<ViewDetailVM>(
            builder: (_, data, __ ) => data.loading ? const Center(child: CircularProgressIndicator(color: colorPrimary,),) : SingleChildScrollView(
@@ -72,7 +59,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                  children: [
                    Center(child: Padding(
                      padding: const EdgeInsets.only(top: 10),
-                     child: Text("Booking Number",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14,color: h1Color),),
+                     child: Text(BOOKINGNO,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14,color: h1Color),),
                    )),
                    Text(viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].orderId.toString(),style: GoogleFonts.lato(fontSize: 18,color:h1Color,fontWeight: FontWeight.w500),)
                    ,Container(
@@ -100,7 +87,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                  children: [
                                    const Icon(Icons.call,color: kPrimaryColor,),
-                                   Text("Call Now"
+                                   Text(CALLNOW
                                      ,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 14,color: kPrimaryColor),)
                                  ],
                                ),
@@ -150,7 +137,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                      color: bgColor,
                      child: Padding(
                        padding: const EdgeInsets.only(left: 16,top: 8),
-                       child: Text("Items",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: kPrimaryColor),),
+                       child: Text(ITEMS,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: kPrimaryColor),),
                      ),
                    ),
                    const SizedBox(height: 16,),
@@ -181,7 +168,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                      color: bgColor,
                      child: Padding(
                        padding: const EdgeInsets.only(left: 16,top: 8),
-                       child: Text("Earnings",style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: kPrimaryColor),),
+                       child: Text(EARNINGS,style: GoogleFonts.lato(fontWeight: FontWeight.w500,fontSize: 18,color: kPrimaryColor),),
                      ),
                    ),
                    const SizedBox(height: 24,),
@@ -192,7 +179,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                          Row(
                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                            children:  [
-                             const Text("Puja Earnings"),
+                             const Text(PUJAEARNING),
                              Text("₹${viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].bookingPaidAmount.toString()}"),
                            ],
                          ),
@@ -200,7 +187,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                          Row(
                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                            children: const [
-                             Text("Visiting Charge"),
+                             Text(VISITING_CHARGE),
                              Text("₹200")
                            ],
                          ),
@@ -210,7 +197,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                          Row(
                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                            children:[
-                             const Text("Total",style:TextStyle(fontSize: 14,fontWeight: FontWeight.w400)),
+                             const Text(TOTAL,style:TextStyle(fontSize: 14,fontWeight: FontWeight.w400)),
                              Text("₹${viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0].bookingPaidAmount.toString()}"),
                            ],
                          )
@@ -236,7 +223,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                            mainAxisAlignment: MainAxisAlignment.center,
                            children: [
                              const Icon(Icons.navigation,color: buttonColor,),
-                             Text("Navigate",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w600,color: buttonColor),)
+                             Text(NAVIGATE,style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w600,color: buttonColor),)
                            ],
                          ),
                        ),
@@ -260,7 +247,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                              color: buttonColor,
                              borderRadius: BorderRadius.circular(4)
                          ),
-                         child: Center(child: Text("Next ",style: GoogleFonts.lato(color: white,fontWeight: FontWeight.w600,fontSize: 20),)),
+                         child: Center(child: Text(NEXT,style: GoogleFonts.lato(color: white,fontWeight: FontWeight.w600,fontSize: 20),)),
                        ),
                      ),
                    )
@@ -301,9 +288,9 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Enter the 4 digit OTP",style: GoogleFonts.lato(color: kSecondaryColor,fontSize: 16,fontWeight: FontWeight.w500),)
+        Text(ENTEROTP,style: GoogleFonts.lato(color: kSecondaryColor,fontSize: 16,fontWeight: FontWeight.w500),)
         ,const SizedBox(height: 12,),
-        Text("Ask for 4 digit code received by the user on their mobile number",style:
+        Text(RECIVESOTPINPHONE,style:
           GoogleFonts.lato(color: h1Color,fontSize: 14,fontWeight: FontWeight.w600),),
         const SizedBox(height: 12,),
         PinCodeTextField(
@@ -359,7 +346,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                 borderRadius: BorderRadius.circular(4)
 
             ),
-            child: Center(child: Text("Next ",style: GoogleFonts.lato(color: white,fontWeight: FontWeight.w600,fontSize: 20),)),
+            child: Center(child: Text(NEXT,style: GoogleFonts.lato(color: white,fontWeight: FontWeight.w600,fontSize: 20),)),
           ),
         ),
       ],
