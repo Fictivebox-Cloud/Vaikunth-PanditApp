@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/consts/text_const.dart';
 import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Store_bank_VM.dart';
@@ -25,6 +26,17 @@ class Add_Bank_Account extends StatefulWidget {
 
   @override
   State<Add_Bank_Account> createState() => _Add_Bank_AccountState();
+}
+
+class UpperCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    return TextEditingValue(
+      text: newValue.text.toUpperCase(),
+      selection: newValue.selection,
+    );
+  }
 }
 
 class _Add_Bank_AccountState extends State<Add_Bank_Account> {
@@ -145,23 +157,28 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                 child: SizedBox(
                                   height: 48,
                                   child: TextField(
-                                      cursorColor: colorPrimary,
-                                      controller: _namecontroller,
-                                      keyboardType: TextInputType.name,
-                                      decoration: InputDecoration(
-                                          fillColor: grey,
-                                          hintText:ACCOUNT_HOLDER_NAME,
-                                          hintStyle: TextStyle(fontSize: 15),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: colorPrimary,
-                                                width: 2.0),
-                                            // borderRadius: BorderRadius.circular(25.0),
-                                          ),
-                                          border: OutlineInputBorder(
+                                    cursorColor: colorPrimary,
+                                    controller: _namecontroller,
+                                    keyboardType: TextInputType.name,
+                                    decoration: InputDecoration(
+                                        fillColor: grey,
+                                        hintText: ACCOUNT_HOLDER_NAME,
+                                        hintStyle: TextStyle(fontSize: 15),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                              color: colorPrimary, width: 2.0),
+                                          // borderRadius: BorderRadius.circular(25.0),
+                                        ),
+                                        border: OutlineInputBorder(
 
-                                              //borderRadius: BorderRadius.circular(24)
-                                              ))),
+                                            //borderRadius: BorderRadius.circular(24)
+                                            )),
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(10),
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp("[a-z A-Z]")),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -184,23 +201,28 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                 child: SizedBox(
                                   height: 48,
                                   child: TextField(
-                                      cursorColor: colorPrimary,
-                                      controller: _accountnocontroller,
-                                      //keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
-                                          fillColor: grey,
-                                          hintText: ACCOUNT_NO,
-                                          hintStyle: TextStyle(fontSize: 15),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: colorPrimary,
-                                                width: 2.0),
-                                            // borderRadius: BorderRadius.circular(25.0),
-                                          ),
-                                          border: OutlineInputBorder(
+                                    cursorColor: colorPrimary,
+                                    controller: _accountnocontroller,
+                                    //keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        fillColor: grey,
+                                        hintText: ACCOUNT_NO,
+                                        hintStyle: TextStyle(fontSize: 15),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                              color: colorPrimary, width: 2.0),
+                                          // borderRadius: BorderRadius.circular(25.0),
+                                        ),
+                                        border: OutlineInputBorder(
 
-                                              //borderRadius: BorderRadius.circular(24)
-                                              ))),
+                                            //borderRadius: BorderRadius.circular(24)
+                                            )),
+                                    inputFormatters: [
+                                      // LengthLimitingTextInputFormatter(10),
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp("[0-9]")),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -223,20 +245,25 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                 child: SizedBox(
                                   height: 48,
                                   child: TextField(
-                                      cursorColor: colorPrimary,
-                                      controller: _banknamecontroller,
-                                      //keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
-                                          fillColor: grey,
-                                          hintText: CHOOSE_BANK,
-                                          hintStyle: TextStyle(fontSize: 15),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: colorPrimary,
-                                                width: 2.0),
-                                            // borderRadius: BorderRadius.circular(25.0),
-                                          ),
-                                          border: OutlineInputBorder())),
+                                    cursorColor: colorPrimary,
+                                    controller: _banknamecontroller,
+                                    //keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        fillColor: grey,
+                                        hintText: CHOOSE_BANK,
+                                        hintStyle: TextStyle(fontSize: 15),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                              color: colorPrimary, width: 2.0),
+                                          // borderRadius: BorderRadius.circular(25.0),
+                                        ),
+                                        border: OutlineInputBorder()),
+                                    inputFormatters: [
+                                      //LengthLimitingTextInputFormatter(10),
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp("[a-z A-Z]")),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -259,20 +286,28 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                 child: SizedBox(
                                   height: 48,
                                   child: TextField(
-                                      cursorColor: colorPrimary,
-                                      controller: _ifsccodecontroller,
-                                      //keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
-                                          fillColor: grey,
-                                          hintText: IFSC_CODE,
-                                          hintStyle: TextStyle(fontSize: 15),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: colorPrimary,
-                                                width: 2.0),
-                                            // borderRadius: BorderRadius.circular(25.0),
-                                          ),
-                                          border: OutlineInputBorder())),
+                                    cursorColor: colorPrimary,
+                                    controller: _ifsccodecontroller,
+                                    //keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                        fillColor: grey,
+                                        hintText: IFSC_CODE,
+                                        hintStyle: TextStyle(fontSize: 15),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                              color: colorPrimary, width: 2.0),
+                                          // borderRadius: BorderRadius.circular(25.0),
+                                        ),
+                                        border: OutlineInputBorder()),
+                                    inputFormatters: [
+                                      UpperCaseTextFormatter(),
+                                      LengthLimitingTextInputFormatter(11),
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp("[A-Z a-z 0-9]")),
+                                    ],
+                                    textCapitalization:TextCapitalization.characters,
+                                    //inputFormatters: [UpperCaseTextFormatter()],
+                                  ),
                                 ),
                               ),
                             ),

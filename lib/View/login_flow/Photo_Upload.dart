@@ -1,19 +1,15 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:panditapp/Consts/text_const.dart';
 import 'package:panditapp/View/login_flow/Servies_you_provide.dart';
 import 'package:panditapp/consts/image_const.dart';
-
 import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
-
 import '../../Consts/color1.dart';
 import '../../view_model/Profile/Bank Account Details/Bank_List_VM.dart';
 import '../../view_model/Profile/Bank Account Details/Pandit_Bank_List_VM.dart';

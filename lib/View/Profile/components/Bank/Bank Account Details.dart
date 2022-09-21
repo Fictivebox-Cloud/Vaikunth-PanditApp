@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +29,17 @@ class Bank_Account_Screen extends StatefulWidget {
 
   @override
   State<Bank_Account_Screen> createState() => _Bank_Account_ScreenState();
+}
+
+class UpperCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    return TextEditingValue(
+      text: newValue.text.toUpperCase(),
+      selection: newValue.selection,
+    );
+  }
 }
 
 class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
@@ -164,7 +176,12 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                                     border: OutlineInputBorder(
 
                                       //borderRadius: BorderRadius.circular(24)
-                                    ))),
+                                    )),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[a-z A-Z]")),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -202,7 +219,13 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                                     border: OutlineInputBorder(
 
                                       //borderRadius: BorderRadius.circular(24)
-                                    ))),
+                                    )),
+                              inputFormatters: [
+                                //LengthLimitingTextInputFormatter(10),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[0-9]")),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -240,7 +263,13 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                                     border: OutlineInputBorder(
 
                                       //borderRadius: BorderRadius.circular(24)
-                                    ))),
+                                    )),
+                              inputFormatters: [
+                                //LengthLimitingTextInputFormatter(10),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[a-z A-Z]")),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -280,7 +309,16 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                                     border: OutlineInputBorder(
 
                                       //borderRadius: BorderRadius.circular(24)
-                                    ))),
+                                    )),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(11),
+                                UpperCaseTextFormatter(),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp("[a-z A-Z 0-9]")),
+                              ],
+                              textCapitalization:TextCapitalization.characters,
+
+                            ),
                           ),
                         ),
                       ),
