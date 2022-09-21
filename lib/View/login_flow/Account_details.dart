@@ -10,15 +10,15 @@ import 'package:panditapp/View/Home/Home_Screen.dart';
 
 
 import 'package:panditapp/model/getterSetter.dart';
-import 'package:panditapp/view_model/Bank_List_VM.dart';
+import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Bank_List_VM.dart';
 import 'package:provider/provider.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 
 import '../../Consts/color1.dart';
-import '../../view_model/ApiCallLogin.dart';
-import '../../view_model/Complete_Bookings.dart';
+import '../../view_model/Login/ApiCallLogin.dart';
+import '../../view_model/BookingViewDetails/Complete_Bookings.dart';
 import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 
 class Account_details extends StatefulWidget {

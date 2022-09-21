@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/view_model/CityListApi.dart';
+import 'package:panditapp/view_model/Login/CityListApi.dart';
 import 'package:provider/provider.dart';
 import '../../Consts/color1.dart';
 import '../../Consts/text_const.dart';

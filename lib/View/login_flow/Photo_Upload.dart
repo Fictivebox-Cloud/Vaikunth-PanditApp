@@ -15,9 +15,9 @@ import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
 
 import '../../Consts/color1.dart';
-import '../../view_model/Bank_List_VM.dart';
-import '../../view_model/Pandit_Bank_List_VM.dart';
-import '../../view_model/Service_VM.dart';
+import '../../view_model/Profile/Bank Account Details/Bank_List_VM.dart';
+import '../../view_model/Profile/Bank Account Details/Pandit_Bank_List_VM.dart';
+import '../../view_model/Login/Service_VM.dart';
 
 class Photo_Upload extends StatefulWidget {
   final String? name, mobile;

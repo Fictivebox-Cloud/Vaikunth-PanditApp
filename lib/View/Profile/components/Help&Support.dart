@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../Consts/color1.dart';
 import '../../../Widgets/circular_loader.dart';
 import '../../../consts/text_const.dart';
-import '../../../view_model/Help_Support_Details_VM.dart';
+import '../../../view_model/Profile/Help_Support_Details_VM.dart';
 
 class Help_Support_Screen extends StatefulWidget {
   const Help_Support_Screen({Key? key}) : super(key: key);

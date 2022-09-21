@@ -14,7 +14,7 @@ import 'package:sms_autofill/sms_autofill.dart';
 import '../../../Consts/color1.dart';
 import '../../../Consts/text_const.dart';
 import '../../../view_model/BookingViewDetails/Check_Booking_Confirm_OTP.dart';
-import '../../../view_model/ViewDetails_VM.dart';
+import '../../../view_model/BookingViewDetails/ViewDetails_VM.dart';
 
 class Booking_Details_Screen extends StatefulWidget {
   var bookingId;

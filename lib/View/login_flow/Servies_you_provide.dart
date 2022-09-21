@@ -7,7 +7,7 @@ import '../../Consts/color1.dart';
 
 import '../../Consts/text_const.dart';
 import '../../Widgets/circular_loader.dart';
-import '../../view_model/Service_VM.dart';
+import '../../view_model/Login/Service_VM.dart';
 import 'city_screen.dart';
 
 class Servies_you_screen extends StatefulWidget {

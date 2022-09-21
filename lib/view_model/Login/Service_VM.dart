@@ -3,7 +3,7 @@ import 'package:panditapp/Consts/user_Error.dart';
 import 'package:panditapp/Util/Api_collection.dart';
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
-import '../model/Service_Model.dart';
+import '../../model/Login Model/Service_Model.dart';
 
 class ServiceVM with ChangeNotifier{
   bool _loading = false;

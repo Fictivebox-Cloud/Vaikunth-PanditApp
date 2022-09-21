@@ -4,17 +4,18 @@ import 'package:panditapp/Util/Api_collection.dart';
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../model/Profile_Screen/Bank_Account Details/Bank_List_Model.dart';
-import '../model/Profile_Screen/Bank_Account Details/Pandit_Bank_List_Model.dart';
-import '../model/Service_Model.dart';
+import '../../model/Profile_Screen/Bank_Account Details/Bank_List_Model.dart';
+import '../../model/Profile_Screen/Bank_Account Details/Pandit_Bank_List_Model.dart';
+import '../../model/Profile_Screen/Settings/Help_Support_Details_Model.dart';
+import '../../model/Login Model/Service_Model.dart';
 
-class Pandit_Bank_List_VM with ChangeNotifier{
+class HelpSupportDetails_VM with ChangeNotifier{
   bool _loading = false;
-  PanditBankListModel? _panditBankListModel;
+  HelpSupportDetailsModel? _helpSupportDetailsModel;
   UserError? _userError;
 
   bool get loading => _loading;
-  PanditBankListModel? get panditBankListModel => _panditBankListModel;
+  HelpSupportDetailsModel? get helpSupportDetailsModel => _helpSupportDetailsModel;
   UserError? get userError => _userError;
 
   setLoading(loading){
@@ -22,8 +23,8 @@ class Pandit_Bank_List_VM with ChangeNotifier{
     notifyListeners();
   }
 
-  setPanditBankListModel(PanditBankListModel panditBankListModel){
-    _panditBankListModel = panditBankListModel;
+  setHelpSupportDetailsModel(HelpSupportDetailsModel helpSupportDetailsModel){
+    _helpSupportDetailsModel = helpSupportDetailsModel;
     notifyListeners();
   }
   setUserError(UserError userError){
@@ -31,24 +32,24 @@ class Pandit_Bank_List_VM with ChangeNotifier{
     notifyListeners();
   }
 
-  Pandit_Bank_List_VM(){
-    panditbankListAPIcall();
+  HelpSupportDetails_VM(){
+    HelpSupportDetailsAPIcall();
   }
 
-  panditbankListAPIcall() async{
+  HelpSupportDetailsAPIcall() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setLoading(true);
     String? userId = prefs.getString("pandit_id");
     var data={
-       "pandit_id": userId,
+      "pandit_id": userId,
     };
 
     var response = await ApiRemoteServices.fechingGetApi(
-        apiUrl:GET_GETPANDITBANKLIST_API,apiData: data);
+        apiUrl:GET_GETHELP_API,apiData: data);
     if(response is Success){
-      Object data = panditBankListModelFromJson(response.response as String);
-      print("Govind pandit Bank list${response.response as String}");
-      setPanditBankListModel(data as PanditBankListModel);
+      Object data = helpSupportDetailsModelFromJson(response.response as String);
+      print("Govind Help Support${response.response as String}");
+      setHelpSupportDetailsModel(data as HelpSupportDetailsModel);
     }
     else if (response is Failure){
       UserError userError  =

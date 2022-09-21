@@ -4,16 +4,16 @@ import 'package:panditapp/Util/Api_collection.dart';
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../model/Profile_Screen/Bank_Account Details/Bank_List_Model.dart';
+import '../../../model/Login Model/Service_Model.dart';
 
-import '../model/Booking Model/ViewDetailsModel.dart';
-
-class ViewDetailVM with ChangeNotifier{
+class BankList_VM with ChangeNotifier{
   bool _loading = false;
-  ViewDetailModel? _viewDetailModel;
+  BankListModel? _bankListModel;
   UserError? _userError;
 
   bool get loading => _loading;
-  ViewDetailModel? get viewdetailmodel => _viewDetailModel;
+  BankListModel? get bankListModel => _bankListModel;
   UserError? get userError => _userError;
 
   setLoading(loading){
@@ -21,40 +21,40 @@ class ViewDetailVM with ChangeNotifier{
     notifyListeners();
   }
 
-  setViewViewDetailModel(ViewDetailModel viewDetailModel){
-    _viewDetailModel=viewDetailModel;
+  BankList_VM(){
+    bankListAPIcall();
+  }
+
+  setBankListModel(BankListModel bankListModel){
+    _bankListModel = bankListModel;
     notifyListeners();
   }
   setUserError(UserError userError){
-    _userError = _userError;
+    _userError = userError;
     notifyListeners();
   }
 
- 
-
-viewdetailAPIcall( {required dynamic userbooking}) async{
-    setLoading(true);
+  bankListAPIcall() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    setLoading(true);
     String? userId = prefs.getString("pandit_id");
-    print("Pandit App = ${userId}");
-    Map<String , dynamic> data={
+    var data={
       "pandit_id": userId,
-      "booking_id": userbooking.toString()
-             };
+    };
 
     var response = await ApiRemoteServices.fechingGetApi(
-      apiUrl:GET_VIEWDETAIL_API,apiData: data);
+        apiUrl:GET_GETBANK_API,apiData: data);
     if(response is Success){
-      Object data = viewDetailModelFromJson(response.response as String);
-      print("Govind kumar${response.response as String}");
-      setViewViewDetailModel(data as ViewDetailModel);
+      Object data = bankListModelFromJson(response.response as String);
+      print("Govind  Bank list${response.response as String}");
+      setBankListModel(data as BankListModel);
     }
     else if (response is Failure){
       UserError userError  =
-          UserError(code: response.code,message: response.errorResponse);
+      UserError(code: response.code,message: response.errorResponse);
       setUserError(userError);
     }
     setLoading(false);
-}
+  }
 
 }

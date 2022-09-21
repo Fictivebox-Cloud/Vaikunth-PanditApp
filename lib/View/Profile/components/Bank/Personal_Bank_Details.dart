@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/view_model/Pandit_Bank_List_VM.dart';
+import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Pandit_Bank_List_VM.dart';
 import 'package:provider/provider.dart';
 import '../../../../Consts/color1.dart';
 import '../../../../Consts/text_const.dart';

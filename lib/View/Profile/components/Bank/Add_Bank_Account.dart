@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/view_model/Store_bank_VM.dart';
+import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Store_bank_VM.dart';
 import 'package:provider/provider.dart';
 import '../../../../Consts/color1.dart';
 import '../../../../Consts/text_const.dart';
 import '../../../../Widgets/circular_loader.dart';
-import '../../../../view_model/Bank_List_VM.dart';
-import '../../../../view_model/Update_Bank_VM.dart';
+import '../../../../view_model/Profile/Bank Account Details/Bank_List_VM.dart';
+import '../../../../view_model/Profile/Bank Account Details/Update_Bank_VM.dart';
 import 'Bank Account Details.dart';
 import 'Personal_Bank_Details.dart';
 

@@ -6,9 +6,9 @@ import 'package:snippet_coder_utils/FormHelper.dart';
 
 import '../../../../Consts/color1.dart';
 import '../../../../Widgets/circular_loader.dart';
-import '../../../../view_model/Bank_List_VM.dart';
-import '../../../../view_model/Pandit_Bank_List_VM.dart';
-import '../../../../view_model/Update_Bank_VM.dart';
+import '../../../../view_model/Profile/Bank Account Details/Bank_List_VM.dart';
+import '../../../../view_model/Profile/Bank Account Details/Pandit_Bank_List_VM.dart';
+import '../../../../view_model/Profile/Bank Account Details/Update_Bank_VM.dart';
 import 'Personal_Bank_Details.dart';
 
 class Bank_Account_Screen extends StatefulWidget {

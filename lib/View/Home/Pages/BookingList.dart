@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../Consts/color1.dart';
 import '../../../Consts/text_const.dart';
-import '../../../view_model/Complete_Bookings.dart';
+import '../../../view_model/BookingViewDetails/Complete_Bookings.dart';
 import '../../../view_model/home_tab/Accept_Booking_Api.dart';
 
 class BookingListTitl extends StatefulWidget {

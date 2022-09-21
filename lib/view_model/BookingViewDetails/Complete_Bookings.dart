@@ -3,9 +3,9 @@ import 'package:panditapp/consts/user_Error.dart';
 import 'package:panditapp/model/Booking%20Model/Completd_Booking_Model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Util/Api_collection.dart';
-import '../Util/api_status.dart';
-import '../repo/api_remote_services.dart';
+import '../../Util/Api_collection.dart';
+import '../../Util/api_status.dart';
+import '../../repo/api_remote_services.dart';
 
 class CompleteBookingViewModel with ChangeNotifier {
   bool _loading = false;

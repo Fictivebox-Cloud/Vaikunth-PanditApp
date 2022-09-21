@@ -6,10 +6,10 @@ import '../../../Consts/color1.dart';
 
 import '../../../consts/image_const.dart';
 import '../../../consts/text_const.dart';
-import '../../../view_model/CityListApi.dart';
+import '../../../view_model/Login/CityListApi.dart';
 import '../../../view_model/Profile/Personal_Detail_View_Model.dart';
 import '../../../view_model/Profile/edit_profile_view_model.dart';
-import '../../../view_model/Service_VM.dart';
+import '../../../view_model/Login/Service_VM.dart';
 
 
 class Edit_Details_Screen extends StatefulWidget {

@@ -12,7 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Consts/color1.dart';
 import '../../consts/image_const.dart';
 import '../../consts/text_const.dart';
-import '../../view_model/Service_VM.dart';
+import '../../view_model/Login/Service_VM.dart';
 
 import 'components/Bank/Personal_Bank_Details.dart';
 

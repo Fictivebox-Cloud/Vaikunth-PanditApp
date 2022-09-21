@@ -7,7 +7,7 @@ import 'package:panditapp/Widgets/circular_loader.dart';
 import 'package:provider/provider.dart';
 import '../../Consts/color1.dart';
 import '../../Consts/text_const.dart';
-import '../../view_model/Complete_Bookings.dart';
+import '../../view_model/BookingViewDetails/Complete_Bookings.dart';
 
 class Bookings_Screen extends StatefulWidget {
   const Bookings_Screen({Key? key}) : super(key: key);
