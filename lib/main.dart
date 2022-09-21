@@ -50,8 +50,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => NotificationVM()),
         ChangeNotifierProvider(create: (_) => Online_Ofline_View_Model()),
         ChangeNotifierProvider(create: (_) => Puja_Confirm_OTP()),
-        ChangeNotifierProvider(
-            create: (_) => Check_Booking_Confirm_OTP_View_Model()),
+        ChangeNotifierProvider(create: (_) => Check_Booking_Confirm_OTP_View_Model()),
         ChangeNotifierProvider(create: (_) => Id_card_view_model_View()),
         ChangeNotifierProvider(create: (_) => Personal_Detail_View_Model()),
         ChangeNotifierProvider(create: (_) => Update_Bank_VM()),

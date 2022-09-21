@@ -8,7 +8,6 @@ import 'package:panditapp/Consts/text_const.dart';
 
 import 'package:panditapp/View/Home/Home_Screen.dart';
 
-
 import 'package:panditapp/model/getterSetter.dart';
 import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Bank_List_VM.dart';
 import 'package:provider/provider.dart';
@@ -22,23 +21,21 @@ import '../../view_model/BookingViewDetails/Complete_Bookings.dart';
 import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 
 class Account_details extends StatefulWidget {
-  final String? aadhar, pancard, name5, mobile,servicesname;
+  final String? aadhar, pancard, name5, mobile, servicesname;
   final File? photo5, photoaadharfront, photoaadharback, pan;
 
-  Account_details(
-      {Key? key,
-      this.aadhar,
-      this.pancard,
-      this.name5,
-      this.photo5,
-      this.mobile,
-      this.photoaadharback,
-      this.photoaadharfront,
-      this.pan,
-      this.servicesname,
-      })
-      : super(key: key);
-
+  Account_details({
+    Key? key,
+    this.aadhar,
+    this.pancard,
+    this.name5,
+    this.photo5,
+    this.mobile,
+    this.photoaadharback,
+    this.photoaadharfront,
+    this.pan,
+    this.servicesname,
+  }) : super(key: key);
 
   @override
   State<Account_details> createState() => _Account_detailsState();
@@ -53,8 +50,7 @@ class _Account_detailsState extends State<Account_details> {
 
   late GetterloginSetter s;
 
-
-  List<dynamic> countries=[];
+  List<dynamic> countries = [];
   String? countryId;
   late BankList_VM bankList_VM;
 
@@ -71,14 +67,13 @@ class _Account_detailsState extends State<Account_details> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    this.countries.add({"id":1, "label": "Bank of India"});
-    this.countries.add({"id":2, "label": "Bank of Baroda"});
-    this.countries.add({"id":3, "label": "Punjab National Bank"});
-    this.countries.add({"id":4, "label": "Kotak Mahindra Bank"});
-    this.countries.add({"id":5, "label": "Axis Bank"});
-    this.countries.add({"id":6, "label": "ICICI Bank"});
-    this.countries.add({"id":7, "label": "State Bank of India"});
-
+    this.countries.add({"id": 1, "label": "Bank of India"});
+    this.countries.add({"id": 2, "label": "Bank of Baroda"});
+    this.countries.add({"id": 3, "label": "Punjab National Bank"});
+    this.countries.add({"id": 4, "label": "Kotak Mahindra Bank"});
+    this.countries.add({"id": 5, "label": "Axis Bank"});
+    this.countries.add({"id": 6, "label": "ICICI Bank"});
+    this.countries.add({"id": 7, "label": "State Bank of India"});
 
     s = GetterloginSetter();
   }
@@ -100,7 +95,7 @@ class _Account_detailsState extends State<Account_details> {
     ht = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor:white,
+      backgroundColor: white,
       body: SafeArea(
         child: Column(
           children: [
@@ -109,11 +104,10 @@ class _Account_detailsState extends State<Account_details> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
                 child:
-                //single childscroll view
-                Column(
+                    //single childscroll view
+                    Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:
-                  [
+                  children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -166,7 +160,7 @@ class _Account_detailsState extends State<Account_details> {
                     //Text("${widget.aadhar}"),
 
                     Text(
-                     ACCOUNT_NO,
+                      ACCOUNT_NO,
                       style: GoogleFonts.lato(
                           fontWeight: FontWeight.w500, fontSize: 18),
                     ),
@@ -186,8 +180,7 @@ class _Account_detailsState extends State<Account_details> {
                           hintStyle: GoogleFonts.lato(
                               fontWeight: FontWeight.w400,
                               fontSize: 14,
-                              color:kSecondaryColor
-                          ),
+                              color: kSecondaryColor),
                         ),
                       ),
                     ),
@@ -195,7 +188,7 @@ class _Account_detailsState extends State<Account_details> {
                       height: 36,
                     ),
                     Text(
-                     CHOOSE_BANK,
+                      CHOOSE_BANK,
                       style: GoogleFonts.lato(
                           fontWeight: FontWeight.w500, fontSize: 18),
                     ),
@@ -206,32 +199,31 @@ class _Account_detailsState extends State<Account_details> {
                     SizedBox(
                       width: double.infinity,
                       height: 48,
-                      child: FormHelper.dropDownWidget(context,
+                      child: FormHelper.dropDownWidget(
+                        context,
 
                         "Select Bank",
                         this.countryId,
-                       this.countries,
-                            (onChangedVal){
-                          this.countryId=onChangedVal;
+                        this.countries,
+                        (onChangedVal) {
+                          this.countryId = onChangedVal;
                           print("Selected Country: $onChangedVal");
                         },
-                            (onValidateVal){
-                          if(onValidateVal == null){
+                        (onValidateVal) {
+                          if (onValidateVal == null) {
                             return "please select Bank";
                           }
                           return null;
                         },
                         borderColor: kSecondaryColor,
                         borderFocusColor: colorPrimary,
-                        borderRadius:4,
-                        optionValue:"id",
-                       // optionValue:bankList_VM.bankListModel!.response!.banklist![0].id.toString(),
+                        borderRadius: 4,
+                        optionValue: "id",
+                        // optionValue:bankList_VM.bankListModel!.response!.banklist![0].id.toString(),
                         //optionLabel:bankList_VM.bankListModel!.response!.banklist![0].bankName.toString(),
-                        optionLabel:"label",
-
+                        optionLabel: "label",
                       ),
                     ),
-
 
                     SizedBox(
                       height: 36,
@@ -250,23 +242,21 @@ class _Account_detailsState extends State<Account_details> {
                         cursorColor: colorPrimary,
                         controller: _ifsccode,
                         decoration: InputDecoration(
-                          //prefixIcon: const Icon(Icons.search,color: p1Color,),
-                            fillColor:grey,
+                            //prefixIcon: const Icon(Icons.search,color: p1Color,),
+                            fillColor: grey,
                             hintStyle: GoogleFonts.lato(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 14,
                                 color: kSecondaryColor),
-
-                            focusedBorder:OutlineInputBorder(
-                              borderSide: const BorderSide(color: colorPrimary, width: 2.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: colorPrimary, width: 2.0),
                               // borderRadius: BorderRadius.circular(25.0),
                             ),
-
                             border: OutlineInputBorder(
 
-                              //borderRadius: BorderRadius.circular(24)
-                            )
-                        ),
+                                //borderRadius: BorderRadius.circular(24)
+                                )),
                         inputFormatters: [
                           LengthLimitingTextInputFormatter(10),
                           FilteringTextInputFormatter.allow(
@@ -274,13 +264,10 @@ class _Account_detailsState extends State<Account_details> {
                         ],
                       ),
                     ),
-
-
                   ],
                 ),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
 
@@ -294,10 +281,14 @@ class _Account_detailsState extends State<Account_details> {
                       color: kPrimaryColor),
                   child: TextButton(
                       onPressed: () async {
-                        CompleteBookingViewModel completeBookingViewModel = Provider.of<CompleteBookingViewModel>(context, listen: false);
+                        CompleteBookingViewModel completeBookingViewModel =
+                            Provider.of<CompleteBookingViewModel>(context,
+                                listen: false);
                         completeBookingViewModel.completebookingAPIcall();
 
-                        Earnings_Home_VM earninghome= Provider.of<Earnings_Home_VM>(context,listen: false);
+                        Earnings_Home_VM earninghome =
+                            Provider.of<Earnings_Home_VM>(context,
+                                listen: false);
                         earninghome.earningshomeAPIcall();
                         // GetterloginSetter s = GetterloginSetter();
                         s.Account = _accountno.text;
@@ -310,7 +301,7 @@ class _Account_detailsState extends State<Account_details> {
                         api.fechingloginApi(
                           mobile: widget.mobile,
                           name: widget.name5,
-                          services:widget.servicesname,
+                          services: widget.servicesname,
                           city: "noida",
                           aadharnumber: widget.aadhar,
                           pannumber: widget.pancard,
@@ -331,12 +322,16 @@ class _Account_detailsState extends State<Account_details> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Home_Screen()));
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home_Screen()), (Route<dynamic> route) => false);
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Home_Screen()),
+                            (Route<dynamic> route) => false);
                       },
                       child: Text(
                         FINISH,
                         style: GoogleFonts.lato(
-                            color:white,
+                            color: white,
                             fontSize: 24,
                             fontWeight: FontWeight.w600),
                       )),
@@ -349,6 +344,3 @@ class _Account_detailsState extends State<Account_details> {
     );
   }
 }
-
-
-
