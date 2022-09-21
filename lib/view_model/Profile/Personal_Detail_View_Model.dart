@@ -5,7 +5,7 @@ import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
-import 'Personal_Detail_Model.dart';
+import '../../model/Profile_Screen/Personal_Detail_Model.dart';
 
 class Personal_Detail_View_Model with ChangeNotifier{
   bool _loading = false;

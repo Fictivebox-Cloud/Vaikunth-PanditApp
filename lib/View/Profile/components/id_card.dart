@@ -24,6 +24,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
 
   late Personal_Detail_View_Model personal_detail_view_model;
 
+
   @override
   Widget build(BuildContext context) {
     personal_detail_view_model =

@@ -27,8 +27,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'View/Splash_onboarding/splash_screen.dart';
 
-
-Future<void>  main() async{
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
@@ -36,60 +35,50 @@ Future<void>  main() async{
   runApp(
     MultiProvider(
       providers: [
-
-       ChangeNotifierProvider(create: (_)=>ApiCallLogin()),
-       ChangeNotifierProvider(create: (_)=>Booking_Request_View_Model()),
-       ChangeNotifierProvider(create: (_)=>CompleteBookingViewModel()),
-       ChangeNotifierProvider(create: (_)=>Accept_Booking_Api()),
-       ChangeNotifierProvider(create: (_)=>City_List_Api()),
-       ChangeNotifierProvider(create: (_)=>NumberVerifyViewModel()),
-       ChangeNotifierProvider(create: (_)=>ViewDetailVM()),
-       ChangeNotifierProvider(create: (_)=>NotificationVM()),
-       ChangeNotifierProvider(create: (_)=>ServiceVM()),
-       ChangeNotifierProvider(create: (_)=>BankList_VM()),
-       ChangeNotifierProvider(create: (_)=>Pandit_Bank_List_VM()),
-       ChangeNotifierProvider(create: (_)=>HelpSupportDetails_VM()),
-       ChangeNotifierProvider(create: (_)=>NotificationVM()),
-       ChangeNotifierProvider(create: (_)=>Online_Ofline_View_Model()),
-       ChangeNotifierProvider(create: (_)=>Puja_Confirm_OTP()),
-       ChangeNotifierProvider(create: (_)=>Check_Booking_Confirm_OTP_View_Model()),
-       ChangeNotifierProvider(create: (_)=>Id_card_view_model_View()),
-       ChangeNotifierProvider(create: (_)=>Personal_Detail_View_Model()),
-       ChangeNotifierProvider(create: (_)=>Update_Bank_VM()),
-       ChangeNotifierProvider(create: (_)=>Store_Bank_VM()),
-       ChangeNotifierProvider(create: (_)=>Personal_Detail_View_Model()),
-       ChangeNotifierProvider(create: (_)=>Edit_profile_View_model()),
-       ChangeNotifierProvider(create: (_)=>Earnings_Home_VM()),
-
-
+        ChangeNotifierProvider(create: (_) => ApiCallLogin()),
+        ChangeNotifierProvider(create: (_) => Booking_Request_View_Model()),
+        ChangeNotifierProvider(create: (_) => CompleteBookingViewModel()),
+        ChangeNotifierProvider(create: (_) => Accept_Booking_Api()),
+        ChangeNotifierProvider(create: (_) => City_List_Api()),
+        ChangeNotifierProvider(create: (_) => NumberVerifyViewModel()),
+        ChangeNotifierProvider(create: (_) => ViewDetailVM()),
+        ChangeNotifierProvider(create: (_) => NotificationVM()),
+        ChangeNotifierProvider(create: (_) => ServiceVM()),
+        ChangeNotifierProvider(create: (_) => BankList_VM()),
+        ChangeNotifierProvider(create: (_) => Pandit_Bank_List_VM()),
+        ChangeNotifierProvider(create: (_) => HelpSupportDetails_VM()),
+        ChangeNotifierProvider(create: (_) => NotificationVM()),
+        ChangeNotifierProvider(create: (_) => Online_Ofline_View_Model()),
+        ChangeNotifierProvider(create: (_) => Puja_Confirm_OTP()),
+        ChangeNotifierProvider(
+            create: (_) => Check_Booking_Confirm_OTP_View_Model()),
+        ChangeNotifierProvider(create: (_) => Id_card_view_model_View()),
+        ChangeNotifierProvider(create: (_) => Personal_Detail_View_Model()),
+        ChangeNotifierProvider(create: (_) => Update_Bank_VM()),
+        ChangeNotifierProvider(create: (_) => Store_Bank_VM()),
+        ChangeNotifierProvider(create: (_) => Personal_Detail_View_Model()),
+        ChangeNotifierProvider(create: (_) => Edit_profile_View_model()),
+        ChangeNotifierProvider(create: (_) => Earnings_Home_VM()),
       ],
       child: const MyApp(),
     ),
   );
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
     Color kPrimaryColor = Color(0xffFF7D33);
 
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            primaryColor:  kPrimaryColor,
-            appBarTheme: AppBarTheme(
-                color: kPrimaryColor
-            )
-
-        ),
-         home: SplashScreen(),
-       // home: Name_Screen(),
-      );
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primaryColor: kPrimaryColor,
+          appBarTheme: AppBarTheme(color: kPrimaryColor)),
+      home: SplashScreen(),
+      // home: Name_Screen(),
+    );
   }
-
 }
-

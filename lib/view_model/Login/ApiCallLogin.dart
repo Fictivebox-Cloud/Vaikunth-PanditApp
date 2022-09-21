@@ -76,11 +76,7 @@ class ApiCallLogin extends ChangeNotifier {
     map['pandit_bank'] = bank;
     map['pandit_ifsc'] = ifsc;
 
-    log("qqqqqqqqqqqqqqqqq $map");
-    log("qqqqqqqqqqqqqqqqq ${photo!.path}");
-    log("qqqqqqqqqqqqqqqqq ${aadharfrontphoto!.path}");
-    log("qqqqqqqqqqqqqqqqq ${aadharbackphoto!.path}");
-    log("qqqqqqqqqqqqqqqqq ${panfile!.path}");
+
     String body = json.encode(map);
     var url = Uri.parse("https://vaikunth.fictivebox.com/api/register");
 

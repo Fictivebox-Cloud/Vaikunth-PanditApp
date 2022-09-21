@@ -37,7 +37,7 @@ class NumberVerifyViewModel with ChangeNotifier
     var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_NUMBER_VERIFY_API,apiData: data);
     if(response is Success){
       Object data = numberVerifyModelFromJson(response.response as String);
-      print("Govind kumar${response.response as String}");
+
       setNumberVerifyModel(data as NumberVerifyModel);
       _numberVerifyModel = data as NumberVerifyModel;
       notifyListeners();

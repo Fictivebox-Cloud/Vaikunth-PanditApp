@@ -45,7 +45,7 @@ class Edit_profile_View_model with ChangeNotifier{
       'pandit_city': pandit_city
     };
 
-    log("Vikrant Data pring${data}");
+
 
     var response = await ApiRemoteServices.fechingGetApi(
       apiUrl:GET_UPDATEPROFILE_API,apiData: data,
@@ -54,7 +54,7 @@ class Edit_profile_View_model with ChangeNotifier{
 
     if(response is Success){
       Object data = editDetailsModelFromJson(response.response as String);
-      print("Vikrant Update Profile => ${response.response as String}");
+
       setEditDetailsModel(data as EditDetailsModel);
     }
     else if(response is Failure){

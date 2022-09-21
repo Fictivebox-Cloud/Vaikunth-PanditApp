@@ -23,7 +23,6 @@ class _Help_Support_ScreenState extends State<Help_Support_Screen> {
   Widget build(BuildContext context) {
     HelpSupportDetails_VM helpSupportDetails_VM =
         context.watch<HelpSupportDetails_VM>();
-
     return Scaffold(
       backgroundColor: white,
       appBar: AppBar(

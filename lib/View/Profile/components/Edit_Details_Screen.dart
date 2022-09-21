@@ -71,6 +71,136 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
     setState(() {
       _foundUsers = results;
     });
+
+  }
+
+  Widget fastTextFiledDesgin(){
+    return Center(
+      child: SizedBox(
+        width: double.infinity,
+        height: 48,
+        child: TextField(
+            cursorColor: colorPrimary,
+            controller: _namecontroller,
+            //keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+                fillColor: grey,
+                hintText: personal_detail_view_model
+                    ?.presonalDetailModel
+                    ?.response
+                    ?.panditDetails
+                    ?.panditFirstName ??
+                    "",
+                hintStyle: TextStyle(fontSize: 15),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                      color: colorPrimary, width: 2.0),
+                  // borderRadius: BorderRadius.circular(25.0),
+                ),
+                border: OutlineInputBorder(
+
+                  //borderRadius: BorderRadius.circular(24)
+                ))),
+      ),
+    );
+  }
+  Widget servicesOfferedDesgin(){
+    return Column(
+      children: [
+        Row(
+          children: [
+            Image.asset(ImageConst().CHOPADA_PUJAN_BOOK),
+            SizedBox(
+              width: 23,
+            ),
+            Text(
+              personal_detail_view_model
+                  ?.presonalDetailModel
+                  ?.response
+                  ?.panditDetails
+                  ?.panditServices ??
+                  "",
+              style: GoogleFonts.lato(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: kPrimaryColor),
+            )
+          ],
+        ),
+        SizedBox(
+          height: 14,
+        ),
+        Row(
+          children: [
+            Image.asset(ImageConst().CEMETERYE),
+            SizedBox(
+              width: 23,
+            ),
+            Text(
+              FUNERALSERVICES,
+              style: GoogleFonts.lato(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: kPrimaryColor),
+            )
+          ],
+        ),
+        SizedBox(
+          height: 12,
+        ),
+        DottedBorder(
+            borderType: BorderType.RRect,
+            strokeWidth: 2,
+            dashPattern: [6, 3, 2, 3],
+            color: kPrimaryColor,
+            radius: Radius.circular(4),
+            child: ClipRRect(
+              child: InkWell(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (builder) => bottomSheet(),
+                  );
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 46,
+                  child: Center(
+                      child: Text(
+                        ADDREMOVESERVICES,
+                        style: GoogleFonts.lato(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: kPrimaryColor),
+                      )),
+                ),
+              ),
+            )),
+      ],
+    );
+  }
+
+  Widget cityTextFiledDesgin(){
+    return Center(
+      child: TextField(
+          scrollPadding: EdgeInsets.zero,
+          onChanged: (value) {
+            _runFilter(value);
+          },
+          cursorColor: colorPrimary,
+          controller: _citycontroller,
+          //keyboardType: TextInputType.number,
+          decoration: InputDecoration(
+            fillColor: grey,
+            hintText: LOCATION,
+            hintStyle: TextStyle(fontSize: 15),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                  color: colorPrimary, width: 2.0),
+              // borderRadius: BorderRadius.circular(25.0),
+            ),
+          )),
+    );
   }
 
   @override
@@ -113,34 +243,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                           SizedBox(
                             height: 12,
                           ),
-                          Center(
-                            child: SizedBox(
-                              width: double.infinity,
-                              height: 48,
-                              child: TextField(
-                                  cursorColor: colorPrimary,
-                                  controller: _namecontroller,
-                                  //keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(
-                                      fillColor: grey,
-                                      hintText: personal_detail_view_model
-                                              ?.presonalDetailModel
-                                              ?.response
-                                              ?.panditDetails
-                                              ?.panditFirstName ??
-                                          "",
-                                      hintStyle: TextStyle(fontSize: 15),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                            color: colorPrimary, width: 2.0),
-                                        // borderRadius: BorderRadius.circular(25.0),
-                                      ),
-                                      border: OutlineInputBorder(
-
-                                          //borderRadius: BorderRadius.circular(24)
-                                          ))),
-                            ),
-                          ),
+                          fastTextFiledDesgin(),
                           SizedBox(
                             height: 32,
                           ),
@@ -152,75 +255,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                           SizedBox(
                             height: 9.0,
                           ),
-                          Row(
-                            children: [
-                              Image.asset(ImageConst().CHOPADA_PUJAN_BOOK),
-                              SizedBox(
-                                width: 23,
-                              ),
-                              Text(
-                                personal_detail_view_model
-                                        ?.presonalDetailModel
-                                        ?.response
-                                        ?.panditDetails
-                                        ?.panditServices ??
-                                    "",
-                                style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: kPrimaryColor),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 14,
-                          ),
-                          Row(
-                            children: [
-                              Image.asset(ImageConst().CEMETERYE),
-                              SizedBox(
-                                width: 23,
-                              ),
-                              Text(
-                                FUNERALSERVICES,
-                                style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: kPrimaryColor),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 12,
-                          ),
-                          DottedBorder(
-                              borderType: BorderType.RRect,
-                              strokeWidth: 2,
-                              dashPattern: [6, 3, 2, 3],
-                              color: kPrimaryColor,
-                              radius: Radius.circular(4),
-                              child: ClipRRect(
-                                child: InkWell(
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      builder: (builder) => bottomSheet(),
-                                    );
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 46,
-                                    child: Center(
-                                        child: Text(
-                                          ADDREMOVESERVICES,
-                                      style: GoogleFonts.lato(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500,
-                                          color: kPrimaryColor),
-                                    )),
-                                  ),
-                                ),
-                              )),
+                          servicesOfferedDesgin(),
                           SizedBox(
                             height: 44,
                           ),
@@ -246,26 +281,8 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                           SizedBox(
                             height: 10,
                           ),
-                          Center(
-                            child: TextField(
-                                scrollPadding: EdgeInsets.zero,
-                                onChanged: (value) {
-                                  _runFilter(value);
-                                },
-                                cursorColor: colorPrimary,
-                                controller: _citycontroller,
-                                //keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                  fillColor: grey,
-                                  hintText: LOCATION,
-                                  hintStyle: TextStyle(fontSize: 15),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: colorPrimary, width: 2.0),
-                                    // borderRadius: BorderRadius.circular(25.0),
-                                  ),
-                                )),
-                          ),
+
+                          cityTextFiledDesgin(),
                           SizedBox(
                             height: 100,
                           ),

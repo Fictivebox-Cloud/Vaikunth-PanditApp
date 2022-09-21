@@ -27,10 +27,10 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
 
   var servicecontroller;
 
-  //List<String> _list = [PUJA, ASTROLOGY,FUNERALSERVICES];
-//  Text(serviceVM.serviceModel!.response!.serviceslist![0].name.toString()),
+
 
   int _selectedIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {

@@ -48,7 +48,7 @@ class HelpSupportDetails_VM with ChangeNotifier{
         apiUrl:GET_GETHELP_API,apiData: data);
     if(response is Success){
       Object data = helpSupportDetailsModelFromJson(response.response as String);
-      print("Govind Help Support${response.response as String}");
+
       setHelpSupportDetailsModel(data as HelpSupportDetailsModel);
     }
     else if (response is Failure){

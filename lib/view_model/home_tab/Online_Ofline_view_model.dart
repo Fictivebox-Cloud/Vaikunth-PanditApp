@@ -39,18 +39,18 @@ class Online_Ofline_View_Model extends ChangeNotifier{
 
 
   getonlineofline({ required String userStatus}) async{
-    print("User booking $userStatus");
+
     setLoading(true);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString("pandit_id");
-    print("Pandit App = ${userId}");
+
     Map<String , dynamic> data ={
       "pandit_id": userId,
       "status": userStatus
     };
     var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_ONLINE_OFLINE_API,apiData: data);
     if(response is Success){
-      print("Api Data Online :- ${response.response}");
+
       Object data = onlineOflineModelFromJson(response.response as String);
       setOnlineOfline(data as OnlineOflineModel );
     }else if (response is Failure){

@@ -36,7 +36,7 @@ class Earnings_Home_VM with ChangeNotifier{
     setLoading(true);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString("pandit_id");
-    print("Pandit App = ${userId}");
+
     Map<String , dynamic> data={
       "pandit_id": userId,
       // "pandit_id": "7",
@@ -46,7 +46,7 @@ class Earnings_Home_VM with ChangeNotifier{
         apiUrl:GET_EARNINGSHOME_API,apiData: data);
     if(response is Success){
       Object data = earningsHomeModelFromJson(response.response as String);
-      print("Govind Earning home${response.response as String}");
+
       setEarningsHomeModel(data as EarningsHomeModel);
       notifyListeners();
     }

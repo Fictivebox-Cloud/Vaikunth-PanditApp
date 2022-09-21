@@ -50,7 +50,6 @@ class CompleteBookingViewModel with ChangeNotifier {
         apiUrl: GET_COMPLETEBOOKING_API, apiData: data);
     if (respones is Success) {
       Object data = completebokingmodelFromJson(respones.response as String);
-      print("Govind kumar${respones.response as String}");
       setCompletebokingmodel(data as Completebokingmodel);
     } else if (respones is Failure) {
       UserError userError =

@@ -47,8 +47,9 @@ class NotificationVM with ChangeNotifier{
         apiUrl:GET_NOTIFICATION_API,apiData: data);
     if(response is Success){
       Object data = notificationModelFromJson(response.response as String);
-      print("Govind kumar${response.response as String}");
+
       setNotificationModel(data as NotificationModel);
+      notifyListeners();
     }
     else if (response is Failure){
       UserError userError  =
