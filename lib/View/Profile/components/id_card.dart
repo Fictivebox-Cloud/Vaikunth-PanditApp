@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:google_fonts/google_fonts.dart';
-import 'package:panditapp/Widgets/circular_loader.dart';
+
 import 'package:panditapp/consts/image_const.dart';
-import 'package:panditapp/view_model/Profile/id_card_view_model.dart';
+
 import 'package:provider/provider.dart';
 
 import '../../../Consts/color1.dart';
+import '../../../consts/text_const.dart';
 import '../../../view_model/Profile/Personal_Detail_View_Model.dart';
 import 'Bank/Pancard.dart';
 import 'Bank/View_Decuments.dart';
@@ -23,19 +24,16 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
 
   late Personal_Detail_View_Model personal_detail_view_model;
 
-
-
   @override
   Widget build(BuildContext context) {
-
-
-    personal_detail_view_model = Provider.of<Personal_Detail_View_Model>(context, listen: false);
+    personal_detail_view_model =
+        Provider.of<Personal_Detail_View_Model>(context, listen: false);
     personal_detail_view_model.getpersonalDetailApiCall();
 
     return Scaffold(
         backgroundColor: white,
         appBar: AppBar(
-          title: Text("ID Card"),
+          title: Text(IDCARD),
         ),
         body: _ui(personal_detail_view_model, context));
   }
@@ -61,7 +59,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
       BuildContext context) {
     return Consumer<Personal_Detail_View_Model>(
       builder: (context, provider, child) {
-        return  SingleChildScrollView(
+        return SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
             child: Column(
@@ -90,18 +88,18 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                               width: 80,
                               height: 80,
                               decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image:
-                                NetworkImage(provider.presonalDetailModel?.response!
-                                    .panditDetails!.panditImage ?? ""
-                                ))
-                              ),
-
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(provider
+                                              .presonalDetailModel
+                                              ?.response!
+                                              .panditDetails!
+                                              .panditImage ??
+                                          ""))),
                             ),
                             Text(
-                              "Vaikunth",
+                              APPNAME,
                               style: GoogleFonts.lato(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 32,
@@ -118,8 +116,8 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                               children: [
                                 Text(
                                   provider.presonalDetailModel?.response!
-                                      .panditDetails!.panditFirstName
-                                      ??"",
+                                          .panditDetails!.panditFirstName ??
+                                      "",
                                   style: GoogleFonts.lato(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -133,19 +131,27 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                                         color: h1Color))
                               ],
                             ),
-                            provider.presonalDetailModel?.response!.panditDetails!.panditVerified == 0 ? Container(
-                              child:  Column(
-                                children: [
-                                  Image.asset(ImageConst().NOTAPPROVED,width: 40,height: 40,),
-                                  Text("Not Approved")
-                                ],
-                              ),
-                            ) : Column(
-                              children: [
-                                Image.asset(ImageConst().RIGHT),
-                                Text("Approved")
-                              ],
-                            )
+                            provider.presonalDetailModel?.response!
+                                        .panditDetails!.panditVerified ==
+                                    0
+                                ? Container(
+                                    child: Column(
+                                      children: [
+                                        Image.asset(
+                                          ImageConst().NOTAPPROVED,
+                                          width: 40,
+                                          height: 40,
+                                        ),
+                                        Text(NOTAPPROVED)
+                                      ],
+                                    ),
+                                  )
+                                : Column(
+                                    children: [
+                                      Image.asset(ImageConst().RIGHT),
+                                      Text(APPROVED)
+                                    ],
+                                  )
                           ],
                         )
                       ],
@@ -156,7 +162,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                   height: 18,
                 ),
                 Text(
-                  "Other Documents",
+                  OTHERDOCUMENTS,
                   style: GoogleFonts.lato(
                       fontWeight: FontWeight.w600, fontSize: 20),
                 ),
@@ -164,7 +170,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                   height: 12,
                 ),
                 Text(
-                  "Adhar",
+                  ADHAR,
                   style: GoogleFonts.lato(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -187,18 +193,20 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                    provider.presonalDetailModel?.response!.panditbanklist![0].aadharNo ?? "",
+                          provider.presonalDetailModel?.response!
+                                  .panditbanklist![0].aadharNo ??
+                              "",
                           style: GoogleFonts.lato(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                               color: kSecondaryColor),
                         ),
                         InkWell(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(
-
-
-                                builder: (context) =>View_Decuments()));
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => View_Decuments()));
                           },
                           child: Container(
                             width: 116,
@@ -206,7 +214,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4),
                                 color: kPrimaryColor),
-                            child: Center(child: Text("View")),
+                            child: Center(child: Text(VIEW)),
                           ),
                         )
                       ],
@@ -217,7 +225,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                   height: 8,
                 ),
                 Text(
-                  "PAN",
+                  PANN,
                   style: GoogleFonts.lato(
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
@@ -240,18 +248,20 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          provider.presonalDetailModel?.response!.panditbanklist![0].panNo ?? "",
+                          provider.presonalDetailModel?.response!
+                                  .panditbanklist![0].panNo ??
+                              "",
                           style: GoogleFonts.lato(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                               color: kSecondaryColor),
                         ),
                         InkWell(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(
-
-
-                                builder: (context) =>PanCardScreen()));
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PanCardScreen()));
                           },
                           child: Container(
                             width: 116,
@@ -259,7 +269,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(4),
                                 color: kPrimaryColor),
-                            child: Center(child: Text("View")),
+                            child: Center(child: Text(VIEW)),
                           ),
                         )
                       ],

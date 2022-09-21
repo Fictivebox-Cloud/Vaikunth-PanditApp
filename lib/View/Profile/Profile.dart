@@ -11,9 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Consts/color1.dart';
 import '../../consts/image_const.dart';
-
-import '../../Consts/color1.dart';
-import '../../view_model/Pandit_Bank_List_VM.dart';
+import '../../consts/text_const.dart';
 import '../../view_model/Service_VM.dart';
 
 import 'components/Bank/Personal_Bank_Details.dart';
@@ -43,7 +41,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
               color: kPrimaryColor,
               child: Center(
                   child: Text(
-                "My Profile",
+                MYPROFILE,
                 style: GoogleFonts.lato(
                     fontWeight: FontWeight.w600, fontSize: 20, color: white),
               )),
@@ -69,7 +67,8 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                       padding: const EdgeInsets.only(top: 10),
                       child: GestureDetector(
                         onTap: () {
-                          ServiceVM serviceVM = Provider.of<ServiceVM>(context,listen: false);
+                          ServiceVM serviceVM =
+                              Provider.of<ServiceVM>(context, listen: false);
                           serviceVM.serviceAPIcall();
 
                           Navigator.push(
@@ -89,7 +88,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Edit Details",
+                                  EDITDETAILS,
                                   style: GoogleFonts.lato(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
@@ -147,14 +146,14 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Vaikunth ID Card",
+                                          VAIKUNTHIDCARD,
                                           style: GoogleFonts.lato(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                               color: h1Color),
                                         ),
                                         Text(
-                                          "View your Vaikunth ID card",
+                                          VIEWYOURVAIKUNTHIDCARD,
                                           style: GoogleFonts.lato(
                                               fontWeight: FontWeight.w400,
                                               fontSize: 14,
@@ -176,13 +175,12 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           const EdgeInsets.only(left: 16, right: 16, top: 10),
                       child: GestureDetector(
                         onTap: () {
-                          /*Pandit_Bank_List_VM panditbanklist= Provider.of<Pandit_Bank_List_VM>(context,listen: false);
-                          panditbanklist.panditbankListAPIcall();*/
-
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Persional_Bank_Details(bank_id: '',)));
+                                  builder: (context) => Persional_Bank_Details(
+                                        bank_id: '',
+                                      )));
                         },
                         child: Container(
                           width: double.infinity,
@@ -221,14 +219,14 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                         Hero(
                                             tag: "_text",
                                             child: Text(
-                                              "Bank Account Details",
+                                              BANK_ACCOUNT_DETAILS,
                                               style: GoogleFonts.lato(
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.w500,
                                                   color: h1Color),
                                             )),
                                         Text(
-                                          "Manage your bank account details",
+                                          MANAGEBANK_ACCOUNT_DETAILS,
                                           style: GoogleFonts.lato(
                                               fontWeight: FontWeight.w400,
                                               fontSize: 14,
@@ -289,14 +287,14 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "My Bookings",
+                                          MYBOOKING,
                                           style: GoogleFonts.lato(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                               color: h1Color),
                                         ),
                                         Text(
-                                          "Track all your orders here",
+                                          TRACK_ALL_YOUR_ORDERS_HERE,
                                           style: GoogleFonts.lato(
                                               fontWeight: FontWeight.w400,
                                               fontSize: 14,
@@ -357,14 +355,14 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "My earnings",
+                                          MY_EARNINGS,
                                           style: GoogleFonts.lato(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                               color: h1Color),
                                         ),
                                         Text(
-                                          "Track all your orders here",
+                                          TRACK_ALL_YOUR_ORDERS_HERE,
                                           style: GoogleFonts.lato(
                                               fontWeight: FontWeight.w400,
                                               fontSize: 14,
@@ -425,14 +423,14 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Settings",
+                                          SETTING,
                                           style: GoogleFonts.lato(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w500,
                                               color: h1Color),
                                         ),
                                         Text(
-                                          "Access app settings here",
+                                          ACCESS_APP_SETTING_HERE,
                                           style: GoogleFonts.lato(
                                               fontWeight: FontWeight.w400,
                                               fontSize: 14,
@@ -474,7 +472,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                             ),
                             child: Center(
                                 child: Text(
-                              "Logout",
+                              LOGOUT,
                               style: GoogleFonts.lato(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
@@ -500,12 +498,12 @@ class _Profile_ScreenState extends State<Profile_Screen> {
         context: context,
         builder: (context) => AlertDialog(
               title: Image.asset(
-                "assets/images/logout.png",
+                ImageConst().LOGOUT_IMAGES,
                 width: 62,
                 height: 58,
               ),
               content: Text(
-                "Logout from the app",
+                LOGOUTFROMTHEAPP,
                 style: GoogleFonts.lato(
                     fontWeight: FontWeight.w600, fontSize: 18, color: h1Color),
               ),
@@ -523,7 +521,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                         child: ElevatedButton(
                             onPressed: () {},
                             child: Text(
-                              "Cancel",
+                              CANCEL,
                               style: GoogleFonts.lato(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600,
@@ -536,7 +534,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                             borderRadius: BorderRadius.circular(4),
                             color: kPrimaryColor),
                         child: CupertinoButton(
-                            child: Text("LogOut"),
+                            child: Text(LOGOUT),
                             onPressed: () async {
                               {
                                 SharedPreferences prefs =

@@ -84,8 +84,8 @@ class MyApp extends StatelessWidget {
             )
 
         ),
-        home: SplashScreen(),
-       //home: Name_Screen(),
+         home: SplashScreen(),
+       // home: Name_Screen(),
       );
   }
 

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/consts/image_const.dart';
+import 'package:panditapp/consts/text_const.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Consts/color1.dart';
 import '../../../view_model/Help_Support_Details_VM.dart';
 import 'Help&Support.dart';
+
 class Setting_Screen extends StatefulWidget {
   const Setting_Screen({Key? key}) : super(key: key);
 
@@ -15,58 +18,47 @@ class Setting_Screen extends StatefulWidget {
 class _Setting_ScreenState extends State<Setting_Screen> {
   var ht, wt;
 
-
-
   @override
   Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: white,
       appBar: AppBar(
-        title: Text("Setting"),
+        title: Text(SETTING),
       ),
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 16,right: 16,top: 32),
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
             child: Column(
               children: [
-
                 GestureDetector(
-                  onTap: (){
-
-                  },
+                  onTap: () {},
                   child: Container(
                     width: double.infinity,
                     height: 52,
                     decoration: BoxDecoration(
                       color: white,
-
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                          width: 1,
-                          color: kSecondaryColor
-
-                      ),
-
-
+                      border: Border.all(width: 1, color: kSecondaryColor),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 10,right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
-
                             children: [
-                              Image.asset("assets/images/profile-privacy.png"),
-                               Text("Privacy Policy",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-
-
+                              Image.asset(ImageConst().PROFILE_PRIVACY_IMAGES),
+                              Text(
+                                PRIVACYPOLICY,
+                                style: GoogleFonts.lato(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: h1Color),
+                              ),
                             ],
-
                           ),
                           Icon(Icons.arrow_forward)
                         ],
@@ -78,38 +70,32 @@ class _Setting_ScreenState extends State<Setting_Screen> {
                   height: 16,
                 ),
                 GestureDetector(
-                  onTap: (){
-
-                  },
+                  onTap: () {},
                   child: Container(
                     width: double.infinity,
                     height: 52,
                     decoration: BoxDecoration(
                       color: white,
-
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                          width: 1,
-                          color: kSecondaryColor
-
-                      ),
-
-
+                      border: Border.all(width: 1, color: kSecondaryColor),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 10,right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
-
                             children: [
-                              Image.asset("assets/images/terms-and-conditions.png"),
-                              Text("Terms & Conditions",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-
-
+                              Image.asset(
+                                  ImageConst().TERMS_AND_CONDITIONS_IMAGES),
+                              Text(
+                                TERMS_CONDITIONS,
+                                style: GoogleFonts.lato(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: h1Color),
+                              ),
                             ],
-
                           ),
                           Icon(Icons.arrow_forward)
                         ],
@@ -121,43 +107,41 @@ class _Setting_ScreenState extends State<Setting_Screen> {
                   height: 16,
                 ),
                 GestureDetector(
-                  onTap: (){
-
-
-                    HelpSupportDetails_VM panditbanklist= Provider.of<HelpSupportDetails_VM>(context,listen: false);
+                  onTap: () {
+                    HelpSupportDetails_VM panditbanklist =
+                        Provider.of<HelpSupportDetails_VM>(context,
+                            listen: false);
                     panditbanklist.HelpSupportDetailsAPIcall();
 
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Help_Support_Screen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Help_Support_Screen()));
                   },
                   child: Container(
                     width: double.infinity,
                     height: 52,
                     decoration: BoxDecoration(
                       color: white,
-
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                          width: 1,
-                          color: kSecondaryColor
-
-                      ),
-
-
+                      border: Border.all(width: 1, color: kSecondaryColor),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 10,right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
-
                             children: [
-                              Image.asset("assets/images/help.png"),
-                              Text("Help & Support",style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: h1Color),),
-
-
+                              Image.asset(ImageConst().HELP_IMAGES),
+                              Text(
+                                HELPSUPPORT,
+                                style: GoogleFonts.lato(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: h1Color),
+                              ),
                             ],
-
                           ),
                           Icon(Icons.arrow_forward)
                         ],
@@ -165,7 +149,6 @@ class _Setting_ScreenState extends State<Setting_Screen> {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),

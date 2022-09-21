@@ -10,6 +10,7 @@ import 'package:panditapp/Consts/text_const.dart';
 import 'package:panditapp/View/login_flow/Account_details.dart';
 
 import 'package:image_picker/image_picker.dart';
+import 'package:panditapp/consts/image_const.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 
@@ -17,10 +18,11 @@ import '../../Consts/color1.dart';
 
 
 class Documents_Screen extends StatefulWidget {
-  final String? name4, mobile,servicesname;
+  final String? name4, mobile, servicesname;
   final File? photo4;
 
-  const Documents_Screen({Key? key, this.name4, this.photo4, this.mobile,this.servicesname})
+  const Documents_Screen(
+      {Key? key, this.name4, this.photo4, this.mobile, this.servicesname})
       : super(key: key);
 
   @override
@@ -39,7 +41,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   pickImage0(ImageSource imageType) async {
     try {
       final photo =
-          await ImagePicker().pickImage(source: imageType, imageQuality: 20);
+      await ImagePicker().pickImage(source: imageType, imageQuality: 20);
       if (photo == null) return;
       final tempImage = File(photo.path);
       setState(() {
@@ -55,7 +57,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   pickImage1(ImageSource imageType) async {
     try {
       final photo1 =
-          await ImagePicker().pickImage(source: imageType, imageQuality: 20);
+      await ImagePicker().pickImage(source: imageType, imageQuality: 20);
       if (photo1 == null) return;
       final tempImages = File(photo1.path);
       setState(() {
@@ -71,7 +73,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   pickImage2(ImageSource imageType) async {
     try {
       final photo2 =
-          await ImagePicker().pickImage(source: imageType, imageQuality: 20);
+      await ImagePicker().pickImage(source: imageType, imageQuality: 20);
       if (photo2 == null) return;
       final tempImages = File(photo2.path);
       setState(() {
@@ -86,8 +88,14 @@ class _Documents_ScreenState extends State<Documents_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    wt = MediaQuery.of(context).size.width;
-    ht = MediaQuery.of(context).size.height;
+    wt = MediaQuery
+        .of(context)
+        .size
+        .width;
+    ht = MediaQuery
+        .of(context)
+        .size
+        .height;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -141,7 +149,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            //aadhar front
+
                             SizedBox(
                               width: wt * 0.45,
                               height: 111,
@@ -154,25 +162,22 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    //border: Border.all(color: Color(0XFFFF7D33), width: 5),
+
                                     borderRadius: const BorderRadius.all(
                                       Radius.circular(100),
                                     ),
                                   ),
                                   child: pickedImage1 != null
                                       ? Image.file(
-                                          pickedImage1!,
-                                          //width: 170,
-                                          //height: 170,
-                                          fit: BoxFit.cover,
-                                        )
+                                    pickedImage1!,
+
+                                    fit: BoxFit.cover,
+                                  )
                                       : Image.asset(
-                                          "assets/images/Aadhar Front.png",
-                                          //Image.network('https://i1.wp.com/allinonedirectory.in/wp-content/uploads/2020/04/Dummy-Aadhaar-Screenshot.png?resize=401%2C238&ssl=1',
-                                          //  width:170,
-                                          //height: 170,
-                                          fit: BoxFit.cover,
-                                        ),
+                                    ImageConst().AADHARFRONT,
+
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
@@ -189,25 +194,22 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    //border: Border.all(color: Color(0XFFFF7D33), width: 5),
+
                                     borderRadius: const BorderRadius.all(
                                       Radius.circular(100),
                                     ),
                                   ),
                                   child: pickedImage0 != null
                                       ? Image.file(
-                                          pickedImage0!,
-                                          //width: 170,
-                                          //height: 170,
-                                          fit: BoxFit.cover,
-                                        )
+                                    pickedImage0!,
+
+                                    fit: BoxFit.cover,
+                                  )
                                       : Image.asset(
-                                          "assets/images/Aadhar Back.png",
-                                          //Image.network('https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
-                                          //width: 170,
-                                          //height: 170,
-                                          fit: BoxFit.cover,
-                                        ),
+                                    ImageConst().AADHARBACK,
+
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
@@ -217,50 +219,29 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       SizedBox(
                         height: 16,
                       ),
-                     /* Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(width: 1, color: Colors.black)),
-                        child: Center(
-                          child: TextFormField(
-                              controller: _addharno,
-                              keyboardType: TextInputType.number,
-                              cursorColor: colorPrimary,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText:ENTER_YOUR_AADHAR_NO,
-                                hintStyle: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: kSecondaryColor),
-                              )),
-                        ),
-                      ),*/
+
                       Container(
                         height: 48,
                         child: TextField(
-                            cursorColor: colorPrimary,
-                            controller: _addharno,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                //prefixIcon: const Icon(Icons.search,color: p1Color,),
-                                fillColor:grey,
-                                hintText:ENTER_YOUR_AADHAR_NO,
-                                hintStyle: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: kSecondaryColor),
-
-                                focusedBorder:OutlineInputBorder(
-                                  borderSide: const BorderSide(color: colorPrimary, width: 2.0),
-                                  // borderRadius: BorderRadius.circular(25.0),
-                                ),
-
-                                border: OutlineInputBorder(
-
-                                  //borderRadius: BorderRadius.circular(24)
-                                )
-                            ),
+                          cursorColor: colorPrimary,
+                          controller: _addharno,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            //prefixIcon: const Icon(Icons.search,color: p1Color,),
+                              fillColor: grey,
+                              hintText: ENTER_YOUR_AADHAR_NO,
+                              hintStyle: GoogleFonts.lato(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: kSecondaryColor),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: colorPrimary, width: 2.0),
+                                // borderRadius: BorderRadius.circular(25.0),
+                              ),
+                              border: OutlineInputBorder(
+                              )
+                          ),
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(12),
                             FilteringTextInputFormatter.allow(
@@ -291,25 +272,22 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              //border: Border.all(color: Color(0XFFFF7D33), width: 5),
+
                               borderRadius: const BorderRadius.all(
                                 Radius.circular(100),
                               ),
                             ),
                             child: pickedImage2 != null
                                 ? Image.file(
-                                    pickedImage2!,
-                                    //width: 170,
-                                    //height: 170,
-                                    fit: BoxFit.cover,
-                                  )
+                              pickedImage2!,
+                              //width: 170,
+                              //height: 170,
+                              fit: BoxFit.cover,
+                            )
                                 : Image.asset(
-                                    "assets/images/PAN.png",
-                                    //Image.network('https://i1.wp.com/allinonedirectory.in/wp-content/uploads/2020/04/Dummy-Aadhaar-Screenshot.png?resize=401%2C238&ssl=1',
-                                    //width: 170,
-                                    //height: 170,
-                                    fit: BoxFit.cover,
-                                  ),
+                              ImageConst().PAN,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -319,33 +297,34 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                       Container(
                         height: 48,
                         child: TextField(
-                            cursorColor: colorPrimary,
-                            controller: _panno,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              //prefixIcon: const Icon(Icons.search,color: p1Color,),
-                                fillColor:grey,
-                                hintText:ENTER_YOUR_PAN_NO,
-                                hintStyle: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: kSecondaryColor),
+                          cursorColor: colorPrimary,
+                          controller: _panno,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            //prefixIcon: const Icon(Icons.search,color: p1Color,),
+                              fillColor: grey,
+                              hintText: ENTER_YOUR_PAN_NO,
+                              hintStyle: GoogleFonts.lato(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: kSecondaryColor),
 
-                                focusedBorder:OutlineInputBorder(
-                                  borderSide: const BorderSide(color: colorPrimary, width: 2.0),
-                                  // borderRadius: BorderRadius.circular(25.0),
-                                ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: colorPrimary, width: 2.0),
+                                // borderRadius: BorderRadius.circular(25.0),
+                              ),
 
-                                border: OutlineInputBorder(
+                              border: OutlineInputBorder(
 
-                                  //borderRadius: BorderRadius.circular(24)
-                                )
-                            ),
-                            inputFormatters: [
+                                //borderRadius: BorderRadius.circular(24)
+                              )
+                          ),
+                          inputFormatters: [
                             LengthLimitingTextInputFormatter(10),
-                        FilteringTextInputFormatter.allow(
-                            RegExp("[a-zA-Z0-9]")),
-                        ],
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[a-zA-Z0-9]")),
+                          ],
                         ),
                       ),
                     ],
@@ -374,16 +353,17 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Account_details(
-                                      aadhar: _addharno.text,
-                                      pancard: _panno.text,
-                                      name5: widget.name4,
-                                      photo5: widget.photo4,
-                                      mobile: widget.mobile,
-                                      photoaadharback: pickedImage0,
-                                      photoaadharfront: pickedImage1,
-                                      pan: pickedImage2,
-                                    servicesname:widget.servicesname
+                                builder: (context) =>
+                                    Account_details(
+                                        aadhar: _addharno.text,
+                                        pancard: _panno.text,
+                                        name5: widget.name4,
+                                        photo5: widget.photo4,
+                                        mobile: widget.mobile,
+                                        photoaadharback: pickedImage0,
+                                        photoaadharfront: pickedImage1,
+                                        pan: pickedImage2,
+                                        servicesname: widget.servicesname
                                     )));
                       },
                       child: Text(
@@ -405,7 +385,10 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   //aadhar front
   Widget bottomSheet() {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
       height: 200,
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
@@ -466,12 +449,12 @@ class _Documents_ScreenState extends State<Documents_Screen> {
               Text(
                 OPENCAMERA,
                 style:
-                    GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
+                GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               Text(
                 OPENFILE,
                 style:
-                    GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
+                GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
               )
             ],
           )
@@ -483,7 +466,10 @@ class _Documents_ScreenState extends State<Documents_Screen> {
   //aadhar back
   Widget bottomSheetback() {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
       height: 200,
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
@@ -544,12 +530,12 @@ class _Documents_ScreenState extends State<Documents_Screen> {
               Text(
                 OPENCAMERA,
                 style:
-                    GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
+                GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
               ),
               Text(
                 OPENFILE,
                 style:
-                    GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
+                GoogleFonts.lato(fontSize: 12, fontWeight: FontWeight.w500),
               )
             ],
           )

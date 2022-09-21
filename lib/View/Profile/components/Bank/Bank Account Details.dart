@@ -246,37 +246,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                         ),
                       ),
 
-                      /*SizedBox(
-                          width: double.infinity,
-                          height: 48,
-                          child: FormHelper.dropDownWidget(
-                            context,
 
-                            "Select Bank",
-                            this.couuntryId,
-                            this.countries,
-                           // controller: _banknamecontroller,
-
-                            //bankList_VM.bankListModel!.response!.banklist!,
-                            (onChangedVal) {
-                              this.couuntryId = onChangedVal;
-                              print("Selected Bank: $onChangedVal");
-                            },
-                            (onValidateVal) {
-                              if (onValidateVal == null) {
-                                return "please select Bank";
-                              }
-                              return null;
-                            },
-
-                            borderColor: kSecondaryColor,
-                            borderFocusColor: colorPrimary,
-                            borderRadius: 4,
-                            optionValue: "id",
-                            optionLabel: "label",
-                            //optionLabel:bankList_VM.bankListModel!.response!.banklist![0].bankName.toString(),
-                          ),
-                        ),*/
                       SizedBox(
                         height: 16,
                       ),
