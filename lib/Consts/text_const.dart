@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 const String APPNAME = "Vaikhunt";
 const String ENTER_OTP = "Enter OTP";
+const String ENTER_THE_6_DIGIT_CODE_RECEIVED_ON_YOUR_MOBILE = "Enter the 6 digit code received on your mobile.";
+const String RESEND_OTP = "Resend OTP'";
 const String NAME = "Name";
 const String NEXT = "Next";
 const String CONTINUE = "Continue";
@@ -33,6 +35,7 @@ const String ADDREMOVESERVICES = "Add/Remove services";
 
 const String SELECTYOURCITY = "Select your city";
 const String SEARCH_YOUR_CITY = "Search for your city";
+const String CITY = " city";
 
 const String DOCUMENT = "Documents";
 const String AADHAR = "Aadhar";
@@ -41,10 +44,15 @@ const String PAN = "PAN";
 const String ENTER_YOUR_PAN_NO = "Enter Your PAN No";
 
 const String ACCOUNT_DETAILS = "Account details";
-const String ACCOUNT_NO = "Account No";
+const String ACCOUNT_NO = "Account No.";
 const String CHOOSE_BANK = "Choose Bank";
 const String IFSC_CODE = "IFSC Code";
 const String FINISH  = "Finish";
+const String ACCOUNT_HOLDER_NAME  = "Account Holder Name";
+const String UPDATE_BANK_DETAILS  = "Update bank details";
+const String ADDBANKACCOUNT  = "Add bank account";
+const String SENDOTP  = "Send OTP";
+const String ENTER_YOU_PHONE_NUMBER = "Enter You Phone Number";
 
 const String SAVE  = "Save";
 const String ADD_OTHER_BANK  = "Add other bank";
@@ -75,6 +83,7 @@ const String FAHPCOBD  = "For any help, please contact on below details";
 const String SEND_EMAIL  = "Send Email";
 const String CALL_NOW  = "Call Now";
 const String SERVICES_OFFERED  = "Services offered";
+const String ADREMOVESERVICE  = "Add/Remove services you offered.";
 
 
 const String BOOKINGDETAILS  = "Booking Details";
