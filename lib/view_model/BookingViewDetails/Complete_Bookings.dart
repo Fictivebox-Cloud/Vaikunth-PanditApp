@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
 import '../../Util/api_status.dart';
+import '../../Util/login_in_User.dart';
 import '../../repo/api_remote_services.dart';
 
 class CompleteBookingViewModel with ChangeNotifier {
@@ -38,9 +39,9 @@ class CompleteBookingViewModel with ChangeNotifier {
   }
 
   completebookingAPIcall() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userId = await LoggedInUserBloc.instance().getUserId();
     setLoading(true);
-    String? userId = prefs.getString("pandit_id");
+    // String? userId = prefs.getString("pandit_id");
     var data = {
       "pandit_id": userId
       // "pandit_id": "8"

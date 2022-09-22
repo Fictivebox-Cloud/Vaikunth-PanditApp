@@ -5,6 +5,7 @@ import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
+import '../../Util/login_in_User.dart';
 import '../../model/Profile_Screen/Personal_Detail_Model.dart';
 
 class Personal_Detail_View_Model with ChangeNotifier{
@@ -32,8 +33,7 @@ class Personal_Detail_View_Model with ChangeNotifier{
 
   getpersonalDetailApiCall()async{
     setLoading(true);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? userId = prefs.getString("pandit_id");
+    String userId = await LoggedInUserBloc.instance().getUserId();
     Map<String, dynamic>data={
       "pandit_id": userId,
     };

@@ -5,6 +5,7 @@ import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
+import '../../Util/login_in_User.dart';
 import '../../model/profile/id_card_model.dart';
 
 class Id_card_view_model_View with ChangeNotifier {
@@ -39,8 +40,7 @@ setUserError(UserError userError){
 }
  getPanditDetailsId() async{
     setLoading(true);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? userId = prefs.getString("pandit_id");
+    String userId = await LoggedInUserBloc.instance().getUserId();
     Map<String, dynamic> data = {
       "pandit_id": userId,
     };

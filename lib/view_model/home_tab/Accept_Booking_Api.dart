@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 import '../../Util/Api_collection.dart';
+import '../../Util/login_in_User.dart';
 import '../../model/Booking Model/Acept_Booking_Model.dart';
 import 'booking_request_view_model.dart';
 
@@ -36,8 +37,7 @@ class Accept_Booking_Api extends ChangeNotifier{
   }
   getAccept_booking_Api({required String userbooking})async{
 
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? userId = prefs.getString("pandit_id");
+    String userId = await LoggedInUserBloc.instance().getUserId();
     print("Pandit App = ${userId}");
     setLoading(true);
     Map<String, dynamic> data = {

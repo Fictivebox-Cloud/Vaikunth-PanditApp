@@ -16,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 
 import '../../Consts/color1.dart';
+import '../../Util/login_in_User.dart';
 import '../../view_model/Login/ApiCallLogin.dart';
 import '../../view_model/BookingViewDetails/Complete_Bookings.dart';
 import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
@@ -314,9 +315,7 @@ class _Account_detailsState extends State<Account_details> {
                           panfile: widget.pan,
                         );
 
-                        SharedPreferences prefs =
-                            await SharedPreferences.getInstance();
-                        prefs.setString("name", widget.name5.toString());
+                        LoggedInUserBloc.instance().getUserId();
 
                         Navigator.push(
                             context,

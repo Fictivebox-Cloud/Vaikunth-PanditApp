@@ -7,6 +7,7 @@ import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
+import '../../Util/login_in_User.dart';
 import '../../model/Profile_Screen/Edit_Profile/edit_profile.dart';
 
 class Edit_profile_View_model with ChangeNotifier{
@@ -35,9 +36,9 @@ class Edit_profile_View_model with ChangeNotifier{
   }
   fachingEditDetailsModel(
       {var pandit_name, var pandit_services, var pandit_city})async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userId = await LoggedInUserBloc.instance().getUserId();
     setLoading(true);
-    String? userId = prefs.getString("pandit_id");
+    // String? userId = prefs.getString("pandit_id");
     var data={
       "pandit_id": userId,
       'pandit_name': pandit_name,

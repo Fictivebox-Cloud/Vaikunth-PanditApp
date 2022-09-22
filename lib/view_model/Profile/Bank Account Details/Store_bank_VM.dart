@@ -5,6 +5,7 @@ import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../Util/login_in_User.dart';
 import '../../../model/Profile_Screen/Bank_Account Details/Store_Bank_Model.dart';
 
 class Store_Bank_VM with ChangeNotifier{
@@ -32,8 +33,8 @@ class Store_Bank_VM with ChangeNotifier{
 
   Store_Bank_APIcall({ String? name,String? bankname,String? ifsccode,String? accountno}) async{
     setLoading(true);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? userId = prefs.getString("pandit_id");
+    String userId = await LoggedInUserBloc.instance().getUserId();
+    // String? userId = prefs.getString("pandit_id");
     var data={
 
       "pandit_id": userId,
