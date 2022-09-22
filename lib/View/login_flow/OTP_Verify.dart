@@ -14,8 +14,6 @@ import '../../Consts/color1.dart';
 import '../../Consts/text_const.dart';
 import '../../Util/login_in_User.dart';
 
-
-
 class OTP_verify extends StatefulWidget {
   String? mobile;
 
@@ -99,10 +97,15 @@ class _OTP_verifyState extends State<OTP_verify> {
     NumberVerifyViewModel numberVerifyViewModel = NumberVerifyViewModel();
     numberVerifyViewModel.NumberVerifyAPIcall(widget.mobile).then((value) {
       if (value) {
-        LoggedInUserBloc.instance().setUserId(numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.id.toString());
+        LoggedInUserBloc.instance().setUserId(numberVerifyViewModel
+            .numberverifyModel!.response!.panditDetails!.id
+            .toString());
         prefs.setString("name",
             "${numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.panditFirstName.toString()} ${numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.panditLastName.toString()} ");
-        prefs.setString("pandit_id", numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.id.toString());
+        prefs.setString(
+            "pandit_id",
+            numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.id
+                .toString());
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => Home_Screen()),

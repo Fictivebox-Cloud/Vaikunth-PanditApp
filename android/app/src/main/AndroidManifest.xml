@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.panditapp">
+    package="com.vaikunth.vaikunth">
 
     <queries>
         <intent>

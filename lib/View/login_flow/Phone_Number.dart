@@ -129,6 +129,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: TextFormField(
+                  cursorColor: kPrimaryColor,
                   controller: phoneController,
                   inputFormatters: [
                     LengthLimitingTextInputFormatter(10),
