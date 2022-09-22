@@ -457,7 +457,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                           style: GoogleFonts.lato(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
-                              color: Colors.red),
+                              color: logoutclr),
                         ))),
               ),
             ),
