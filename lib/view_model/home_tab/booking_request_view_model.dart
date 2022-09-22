@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/api_status.dart';
 import '../../Util/Api_collection.dart';
+import '../../Util/login_in_User.dart';
 import '../../consts/user_Error.dart';
 import '../../model/Booking Model/BookingModel.dart';
 import '../../repo/api_remote_services.dart';
@@ -38,9 +39,9 @@ class Booking_Request_View_Model with ChangeNotifier{
 
 
 getbookingApiCall() async{
-  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String userId = await LoggedInUserBloc.instance().getUserId();
   setLoading(true);
-  String? userId = prefs.getString("pandit_id");
+
 
   Map<String, dynamic> data = {
     "pandit_id": userId,

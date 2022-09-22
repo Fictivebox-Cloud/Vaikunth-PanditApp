@@ -9,6 +9,7 @@ import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
+import '../../Util/login_in_User.dart';
 
 class Online_Ofline_View_Model extends ChangeNotifier{
 
@@ -41,8 +42,7 @@ class Online_Ofline_View_Model extends ChangeNotifier{
   getonlineofline({ required String userStatus}) async{
 
     setLoading(true);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? userId = prefs.getString("pandit_id");
+    String userId = await LoggedInUserBloc.instance().getUserId();
 
     Map<String , dynamic> data ={
       "pandit_id": userId,
