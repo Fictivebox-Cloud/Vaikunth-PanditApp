@@ -50,7 +50,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
     } else if (personal_detail_view_model.userError != null) {
       return Center(
           child: Text(
-        personal_detail_view_model.userError!.message.toString() ?? "Error",
+        personal_detail_view_model.userError?.message.toString() ?? "Error",
       ));
     }
     return _listDesign(personal_detail_view_model, context);

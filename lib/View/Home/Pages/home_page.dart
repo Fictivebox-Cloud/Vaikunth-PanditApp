@@ -46,7 +46,7 @@ class Home_page_Screen extends StatelessWidget {
       ));
     } else if (booking_request_view_model.userError != null) {
       return Center(
-        child: Text(booking_request_view_model.userError!.message!.toString() ??
+        child: Text(booking_request_view_model.userError?.message?.toString() ??
             "Error"),
       );
     }
