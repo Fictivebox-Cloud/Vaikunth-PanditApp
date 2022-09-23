@@ -14,9 +14,8 @@ import 'package:provider/provider.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
-
-import '../../Consts/color1.dart';
 import '../../Util/login_in_User.dart';
+import '../../consts/themescolor.dart';
 import '../../view_model/Login/ApiCallLogin.dart';
 import '../../view_model/BookingViewDetails/Complete_Bookings.dart';
 import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
@@ -49,7 +48,7 @@ class _Account_detailsState extends State<Account_details> {
   TextEditingController _choosebank = TextEditingController();
   TextEditingController _ifsccode = TextEditingController();
 
-  late GetterloginSetter s;
+  late GetterloginSetter _getterloginSetter;
 
   List<dynamic> countries = [];
   String? countryId;
@@ -76,7 +75,7 @@ class _Account_detailsState extends State<Account_details> {
     this.countries.add({"id": 6, "label": "ICICI Bank"});
     this.countries.add({"id": 7, "label": "State Bank of India"});
 
-    s = GetterloginSetter();
+    _getterloginSetter = GetterloginSetter();
   }
 
 /*
@@ -102,170 +101,172 @@ class _Account_detailsState extends State<Account_details> {
           children: [
             Expanded(
               flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
-                child:
-                    //single childscroll view
-                    Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          width: 48,
-                          height: 2,
-                          color: kPrimaryColor,
-                        ),
-                        Container(
-                          width: 48,
-                          height: 2,
-                          color: kPrimaryColor,
-                        ),
-                        Container(
-                          width: 48,
-                          height: 2,
-                          color: kPrimaryColor,
-                        ),
-                        Container(
-                          width: 48,
-                          height: 2,
-                          color: kPrimaryColor,
-                        ),
-                        Container(
-                          width: 48,
-                          height: 2,
-                          color: kPrimaryColor,
-                        ),
-                        Container(
-                          width: 48,
-                          height: 2,
-                          color: kPrimaryColor,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 24,
-                    ),
-
-                    Text(
-                      ACCOUNT_DETAILS,
-                      style: GoogleFonts.lato(
-                          fontWeight: FontWeight.w500, fontSize: 24),
-                    ),
-
-                    SizedBox(
-                      height: 32,
-                    ),
-
-                    //Text("${widget.aadhar}"),
-
-                    Text(
-                      ACCOUNT_NO,
-                      style: GoogleFonts.lato(
-                          fontWeight: FontWeight.w500, fontSize: 18),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(width: 1, color: h1Color)),
-                      child: TextFormField(
-                        cursorColor: colorPrimary,
-                        controller: _accountno,
-                        keyboardType: TextInputType.phone,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintStyle: GoogleFonts.lato(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              color: kSecondaryColor),
-                        ),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
+                  child:
+                      //single childscroll view
+                      Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Container(
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor,
+                          ),
+                          Container(
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor,
+                          ),
+                          Container(
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor,
+                          ),
+                          Container(
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor,
+                          ),
+                          Container(
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor,
+                          ),
+                          Container(
+                            width: 48,
+                            height: 2,
+                            color: kPrimaryColor,
+                          ),
+                        ],
                       ),
-                    ),
-                    SizedBox(
-                      height: 36,
-                    ),
-                    Text(
-                      CHOOSE_BANK,
-                      style: GoogleFonts.lato(
-                          fontWeight: FontWeight.w500, fontSize: 18),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-
-                    SizedBox(
-                      width: double.infinity,
-                      height: 48,
-                      child: FormHelper.dropDownWidget(
-                        context,
-
-                        "Select Bank",
-                        this.countryId,
-                        this.countries,
-                        (onChangedVal) {
-                          this.countryId = onChangedVal;
-                          print("Selected Country: $onChangedVal");
-                        },
-                        (onValidateVal) {
-                          if (onValidateVal == null) {
-                            return "please select Bank";
-                          }
-                          return null;
-                        },
-                        borderColor: kSecondaryColor,
-                        borderFocusColor: colorPrimary,
-                        borderRadius: 4,
-                        optionValue: "id",
-                        // optionValue:bankList_VM.bankListModel!.response!.banklist![0].id.toString(),
-                        //optionLabel:bankList_VM.bankListModel!.response!.banklist![0].bankName.toString(),
-                        optionLabel: "label",
+                      SizedBox(
+                        height: 24,
                       ),
-                    ),
 
-                    SizedBox(
-                      height: 36,
-                    ),
-                    Text(
-                      IFSC_CODE,
-                      style: GoogleFonts.lato(
-                          fontWeight: FontWeight.w500, fontSize: 18),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Container(
-                      height: 48,
-                      child: TextField(
-                        cursorColor: colorPrimary,
-                        controller: _ifsccode,
-                        decoration: InputDecoration(
-                            //prefixIcon: const Icon(Icons.search,color: p1Color,),
-                            fillColor: grey,
+                      Text(
+                        ACCOUNT_DETAILS,
+                        style: GoogleFonts.lato(
+                            fontWeight: FontWeight.w500, fontSize: 24),
+                      ),
+
+                      SizedBox(
+                        height: 32,
+                      ),
+
+                      //Text("${widget.aadhar}"),
+
+                      Text(
+                        ACCOUNT_NO,
+                        style: GoogleFonts.lato(
+                            fontWeight: FontWeight.w500, fontSize: 18),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            border: Border.all(width: 1, color: h1Color)),
+                        child: TextFormField(
+                          cursorColor: colorPrimary,
+                          controller: _accountno,
+                          keyboardType: TextInputType.phone,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
                             hintStyle: GoogleFonts.lato(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 14,
                                 color: kSecondaryColor),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: colorPrimary, width: 2.0),
-                              // borderRadius: BorderRadius.circular(25.0),
-                            ),
-                            border: OutlineInputBorder(
-
-                                //borderRadius: BorderRadius.circular(24)
-                                )),
-                        inputFormatters: [
-                          LengthLimitingTextInputFormatter(10),
-                          FilteringTextInputFormatter.allow(
-                              RegExp("[a-z A-Z 0-9]")),
-                        ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        height: 36,
+                      ),
+                      Text(
+                        CHOOSE_BANK,
+                        style: GoogleFonts.lato(
+                            fontWeight: FontWeight.w500, fontSize: 18),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+
+                      SizedBox(
+                        width: double.infinity,
+                        height: 48,
+                        child: FormHelper.dropDownWidget(
+                          context,
+
+                          "Select Bank",
+                          this.countryId,
+                          this.countries,
+                          (onChangedVal) {
+                            this.countryId = onChangedVal;
+                            print("Selected Country: $onChangedVal");
+                          },
+                          (onValidateVal) {
+                            if (onValidateVal == null) {
+                              return "please select Bank";
+                            }
+                            return null;
+                          },
+                          borderColor: kSecondaryColor,
+                          borderFocusColor: colorPrimary,
+                          borderRadius: 4,
+                          optionValue: "id",
+                          // optionValue:bankList_VM.bankListModel!.response!.banklist![0].id.toString(),
+                          //optionLabel:bankList_VM.bankListModel!.response!.banklist![0].bankName.toString(),
+                          optionLabel: "label",
+                        ),
+                      ),
+
+                      SizedBox(
+                        height: 36,
+                      ),
+                      Text(
+                        IFSC_CODE,
+                        style: GoogleFonts.lato(
+                            fontWeight: FontWeight.w500, fontSize: 18),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        height: 48,
+                        child: TextField(
+                          cursorColor: colorPrimary,
+                          controller: _ifsccode,
+                          decoration: InputDecoration(
+                              //prefixIcon: const Icon(Icons.search,color: p1Color,),
+                              fillColor: grey,
+                              hintStyle: GoogleFonts.lato(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: kSecondaryColor),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: colorPrimary, width: 2.0),
+                                // borderRadius: BorderRadius.circular(25.0),
+                              ),
+                              border: OutlineInputBorder(
+
+                                  //borderRadius: BorderRadius.circular(24)
+                                  )),
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(10),
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[a-z A-Z 0-9]")),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -292,12 +293,12 @@ class _Account_detailsState extends State<Account_details> {
                                 listen: false);
                         earninghome.earningshomeAPIcall();
                         // GetterloginSetter s = GetterloginSetter();
-                        s.Account = _accountno.text;
-                        s.choosebank = _choosebank.text;
+                        _getterloginSetter.Account = _accountno.text;
+                        _getterloginSetter.choosebank = _choosebank.text;
                         // s.name = _namecontroller.text;
-                        s.ifsc = _ifsccode.text;
+                        _getterloginSetter.ifsc = _ifsccode.text;
 
-                        print("Bhaw Account: ${s.mobile}");
+
 
                         api.fechingloginApi(
                           mobile: widget.mobile,
@@ -306,9 +307,9 @@ class _Account_detailsState extends State<Account_details> {
                           city: "noida",
                           aadharnumber: widget.aadhar,
                           pannumber: widget.pancard,
-                          account_number: s.Account,
+                          account_number: _getterloginSetter.Account,
                           bank: this.countries,
-                          ifsc: s.ifsc,
+                          ifsc: _getterloginSetter.ifsc,
                           photo: widget.photo5,
                           aadharbackphoto: widget.photoaadharback,
                           aadharfrontphoto: widget.photoaadharfront,

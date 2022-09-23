@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../Consts/color1.dart';
+
+import '../consts/themescolor.dart';
+
 
 class CircularLoader extends StatelessWidget {
   const CircularLoader({Key? key}) : super(key: key);

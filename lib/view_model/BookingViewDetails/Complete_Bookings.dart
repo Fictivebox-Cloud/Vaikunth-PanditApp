@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:panditapp/consts/user_Error.dart';
-import 'package:panditapp/model/Booking%20Model/Completd_Booking_Model.dart';
+import 'package:panditapp/model/Booking%20Model/completd_booking_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
@@ -41,10 +41,8 @@ class CompleteBookingViewModel with ChangeNotifier {
   completebookingAPIcall() async {
     String userId = await LoggedInUserBloc.instance().getUserId();
     setLoading(true);
-    // String? userId = prefs.getString("pandit_id");
     var data = {
       "pandit_id": userId
-      // "pandit_id": "8"
     };
 
     var respones = await ApiRemoteServices.fechingGetApi(

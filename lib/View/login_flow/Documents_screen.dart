@@ -14,7 +14,7 @@ import 'package:panditapp/consts/image_const.dart';
 
 import 'package:panditapp/model/getterSetter.dart';
 
-import '../../Consts/color1.dart';
+import '../../consts/themescolor.dart';
 
 class Documents_Screen extends StatefulWidget {
   final String? name4, mobile, servicesname;

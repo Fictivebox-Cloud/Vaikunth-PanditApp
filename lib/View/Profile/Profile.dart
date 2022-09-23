@@ -9,9 +9,10 @@ import 'package:panditapp/View/Profile/components/id_card.dart';
 import 'package:panditapp/View/login_flow/Phone_Number.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../Consts/color1.dart';
+import '../../Util/login_in_User.dart';
 import '../../consts/image_const.dart';
 import '../../consts/text_const.dart';
+import '../../consts/themescolor.dart';
 import '../../view_model/Login/Service_VM.dart';
 
 import 'components/Bank/Personal_Bank_Details.dart';
@@ -542,9 +543,10 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                             child: Text(LOGOUT),
                             onPressed: () async {
                               {
-                                SharedPreferences prefs =
-                                    await SharedPreferences.getInstance();
-                                prefs.remove('name');
+                                // SharedPreferences prefs =
+                                //     await SharedPreferences.getInstance();
+                                // prefs.remove('name');
+                                LoggedInUserBloc.instance().logout(context);
                                 Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(

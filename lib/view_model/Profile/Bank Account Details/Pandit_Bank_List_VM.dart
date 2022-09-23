@@ -5,9 +5,9 @@ import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../Util/login_in_User.dart';
-import '../../../model/Profile_Screen/Bank_Account Details/Bank_List_Model.dart';
-import '../../../model/Profile_Screen/Bank_Account Details/Pandit_Bank_List_Model.dart';
-import '../../../model/Login Model/Service_Model.dart';
+import '../../../model/Profile_Screen/Bank_Account Details/bank_list_model.dart';
+import '../../../model/Profile_Screen/Bank_Account Details/pandit_bank_list_model.dart';
+import '../../../model/Login Model/service_model.dart';
 
 class Pandit_Bank_List_VM with ChangeNotifier{
   bool _loading = false;

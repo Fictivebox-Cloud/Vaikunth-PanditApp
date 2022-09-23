@@ -22,9 +22,6 @@ class LoggedInUserBloc {
     return _instance!;
   }
 
-
-
-
   Future<String> getUserId() async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
     String userId = _pref.getString(_USERID_KEY) ?? "0";
@@ -40,7 +37,6 @@ class LoggedInUserBloc {
   Future logout(BuildContext context) async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
     _pref.setString(_USER_PREF_KEY, '');
-    _pref.setString(_USER_DETAILS, '');
     _pref.setBool('isPanditApp', false);
     return;
   }

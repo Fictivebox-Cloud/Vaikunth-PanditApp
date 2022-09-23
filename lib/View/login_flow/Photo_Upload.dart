@@ -10,7 +10,7 @@ import 'package:panditapp/View/login_flow/Servies_you_provide.dart';
 import 'package:panditapp/consts/image_const.dart';
 import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
-import '../../Consts/color1.dart';
+import '../../consts/themescolor.dart';
 import '../../view_model/Profile/Bank Account Details/Bank_List_VM.dart';
 import '../../view_model/Profile/Bank Account Details/Pandit_Bank_List_VM.dart';
 import '../../view_model/Login/Service_VM.dart';

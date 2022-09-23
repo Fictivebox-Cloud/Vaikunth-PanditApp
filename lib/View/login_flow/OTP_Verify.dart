@@ -10,9 +10,10 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sms_autofill/sms_autofill.dart';
-import '../../Consts/color1.dart';
+
 import '../../Consts/text_const.dart';
 import '../../Util/login_in_User.dart';
+import '../../consts/themescolor.dart';
 
 class OTP_verify extends StatefulWidget {
   String? mobile;
@@ -93,22 +94,16 @@ class _OTP_verifyState extends State<OTP_verify> {
   }
 
   userRegistrationStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+
     NumberVerifyViewModel numberVerifyViewModel = NumberVerifyViewModel();
     numberVerifyViewModel.NumberVerifyAPIcall(widget.mobile).then((value) {
       if (value) {
         LoggedInUserBloc.instance().setUserId(numberVerifyViewModel
             .numberverifyModel!.response!.panditDetails!.id
             .toString());
-        prefs.setString("name",
-            "${numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.panditFirstName.toString()} ${numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.panditLastName.toString()} ");
-        prefs.setString(
-            "pandit_id",
-            numberVerifyViewModel.numberverifyModel!.response!.panditDetails!.id
-                .toString());
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => Home_Screen()),
+            MaterialPageRoute(builder: (context) => const Home_Screen()),
             (route) => false);
       } else {
         Navigator.pushAndRemoveUntil(
@@ -120,17 +115,7 @@ class _OTP_verifyState extends State<OTP_verify> {
             (route) => false);
       }
     });
-    // Consumer
-    //    <NumberVerifyViewModel>(builder: (_, data, __) {
-    //   if(data.loading == false && data.userError == null) {
-    //     print("Data Data");
-    //     data.numberverifyModel!.response?.panditDetails != null ?
-    //        :
-    //
-    //     ;
-    //   }
-    //   return Container();
-    // });
+
   }
 
   var ht, wt;
@@ -159,7 +144,7 @@ class _OTP_verifyState extends State<OTP_verify> {
                           color: h1Color),
                     ),
                     Text("mobile ${widget.mobile}"),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Text(
@@ -170,7 +155,7 @@ class _OTP_verifyState extends State<OTP_verify> {
                           fontSize: 14),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 30),
+                      padding: const EdgeInsets.only(top: 30),
                       child: Column(
                         children: [
                           PinCodeTextField(
@@ -196,9 +181,9 @@ class _OTP_verifyState extends State<OTP_verify> {
                               borderRadius: BorderRadius.circular(5),
                               fieldHeight: 48,
                               fieldWidth: 48,
-                              inactiveColor: Color(0XFFCACACA),
-                              activeColor: Color(0XFFFF7D33),
-                              selectedColor: Color(0XFFFF7D33),
+                              inactiveColor: const Color(0XFFCACACA),
+                              activeColor: const Color(0XFFFF7D33),
+                              selectedColor: const Color(0XFFFF7D33),
                             ),
                           ),
                         ],

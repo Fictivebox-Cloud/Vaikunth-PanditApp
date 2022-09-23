@@ -4,8 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/View/login_flow/OTP_Verify.dart';
 import 'package:panditapp/consts/image_const.dart';
-import '../../Consts/color1.dart';
+import 'package:provider/provider.dart';
 import '../../Consts/text_const.dart';
+import '../../consts/themescolor.dart';
+import '../../route_app/page_navigeter_name_route.dart';
+import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
+import '../../view_model/home_tab/booking_request_view_model.dart';
 class PhoneNumber_Screen extends StatefulWidget {
   const PhoneNumber_Screen({Key? key}) : super(key: key);
 
@@ -15,6 +19,7 @@ class PhoneNumber_Screen extends StatefulWidget {
 
 class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
   var phoneController = TextEditingController();
+  Booking_Request_View_Model? booking_request_view_model;
 
   var ht, wt;
 
@@ -76,6 +81,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                               builder: (context) => OTP_verify(
                                     mobile: phoneController.text,
                                   )));
+                      // Navigator.pushNamed(context, RouteName.OTP_verify);
                     },
                     child: Text(
                       SENDOTP,

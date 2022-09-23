@@ -6,7 +6,7 @@ import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Util/login_in_User.dart';
-import '../../../model/Profile_Screen/Bank_Account Details/Store_Bank_Model.dart';
+import '../../../model/Profile_Screen/Bank_Account Details/store_bank_model.dart';
 
 class Store_Bank_VM with ChangeNotifier{
   bool _loading = false;

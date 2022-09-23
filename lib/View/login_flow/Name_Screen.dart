@@ -7,7 +7,7 @@ import 'package:panditapp/Consts/text_const.dart';
 import 'package:panditapp/View/login_flow/Photo_Upload.dart';
 import 'package:panditapp/model/getterSetter.dart';
 
-import '../../Consts/color1.dart';
+import '../../consts/themescolor.dart';
 
 class Name_Screen extends StatefulWidget {
   String? mobile;

@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/view_model/Login/CityListApi.dart';
 import 'package:provider/provider.dart';
-import '../../Consts/color1.dart';
 import '../../Consts/text_const.dart';
+import '../../consts/themescolor.dart';
 import 'Documents_screen.dart';
 
 class City_Screen extends StatefulWidget {

@@ -3,10 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../Consts/color1.dart';
-
 import '../../Consts/text_const.dart';
 import '../../Widgets/circular_loader.dart';
+import '../../consts/themescolor.dart';
 import '../../view_model/Login/Service_VM.dart';
 import 'city_screen.dart';
 

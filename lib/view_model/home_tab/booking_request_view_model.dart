@@ -5,7 +5,7 @@ import '../../Util/api_status.dart';
 import '../../Util/Api_collection.dart';
 import '../../Util/login_in_User.dart';
 import '../../consts/user_Error.dart';
-import '../../model/Booking Model/BookingModel.dart';
+import '../../model/Booking Model/booking_model.dart';
 import '../../repo/api_remote_services.dart';
 
 class Booking_Request_View_Model with ChangeNotifier{
@@ -18,6 +18,7 @@ class Booking_Request_View_Model with ChangeNotifier{
 
   Booking_Request_View_Model (){
     getbookingApiCall();
+    notifyListeners();
   }
 
   bool get loading => _loading;
@@ -46,11 +47,13 @@ getbookingApiCall() async{
   Map<String, dynamic> data = {
     "pandit_id": userId,
   };
+  print("Pandit App = ${userId}");
   var response  = await ApiRemoteServices.fechingGetApi(apiUrl: GET_BOOKING_LIST,apiData: data);
   if(response is Success){
 
     Object data = getBookingListModelFromJson(response.response as String);
     setGetBookingModle(data as GetBookingListModel);
+    notifyListeners();
   }else if(response is Failure) {
     UserError userError = UserError(code: response.code, message: response.errorResponse);
     setUserError(userError);

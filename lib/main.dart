@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:panditapp/View/Home/Home_Screen.dart';
-import 'package:panditapp/View/login_flow/Name_Screen.dart';
+import 'package:panditapp/route_app/page_navigeter_name_route.dart';
+import 'package:panditapp/route_app/route.dart';
 import 'package:panditapp/view_model/Login/ApiCallLogin.dart';
 import 'package:panditapp/view_model/BookingViewDetails/Check_Booking_Confirm_OTP.dart';
 import 'package:panditapp/view_model/BookingViewDetails/getBookingOTP.dart';
@@ -76,8 +76,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primaryColor: kPrimaryColor,
           appBarTheme: AppBarTheme(color: kPrimaryColor)),
-      home: SplashScreen(),
-      // home: Name_Screen(),
+      initialRoute:RouteName.SplashScreen,
+      onGenerateRoute: Routes.generateRoutes,
     );
   }
 }

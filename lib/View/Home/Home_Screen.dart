@@ -3,9 +3,12 @@ import 'package:panditapp/View/Booking/Bookings_screen.dart';
 import 'package:panditapp/View/Earning/Earnings.dart';
 import 'package:panditapp/View/Home/Pages/home_page.dart';
 import 'package:panditapp/View/Profile/Profile.dart';
-import '../../Consts/color1.dart';
+import 'package:provider/provider.dart';
 import '../../Consts/text_const.dart';
 import '../../consts/image_const.dart';
+import '../../consts/themescolor.dart';
+import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
+import '../../view_model/home_tab/booking_request_view_model.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({Key? key}) : super(key: key);
@@ -25,7 +28,16 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    Booking_Request_View_Model booking_request_view_model=
+    Provider.of(context,listen: false);
+    booking_request_view_model.getbookingApiCall();
+
+    Earnings_Home_VM? earninghome =
+    Provider.of<Earnings_Home_VM?>(context,
+        listen: false);
+    earninghome?.earningshomeAPIcall();
+
+    return  WillPopScope(
       onWillPop: () => _onBackButtonPressed(context),
       child: Scaffold(
           backgroundColor: white,

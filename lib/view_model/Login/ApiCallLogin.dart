@@ -10,7 +10,7 @@ import 'package:panditapp/consts/user_Error.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
 
 import '../../Util/Api_collection.dart';
-import '../../model/Login Model/Login_Model.dart';
+import '../../model/Login Model/login_model.dart';
 import '../../model/Login Model/registration_model.dart';
 
 class ApiCallLogin extends ChangeNotifier {

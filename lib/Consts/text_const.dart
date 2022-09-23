@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 const String APPNAME = "Vaikhunt";
 const String ENTER_OTP = "Enter OTP";
@@ -142,6 +141,8 @@ const noInternet = 102;
 const invalidFormat = 103;
 const timeout = 104;
 const unknownError = 105;
+const successResponse = 200;
+const timeoutSession = 15;
 
 const String invalidResponseMsg = "Invalid Response";
 const String httpExceptionMsg = "Http Exception";
