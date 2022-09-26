@@ -39,9 +39,9 @@ class _Notifications_screenState extends State<Notifications_screen> {
                         color: Colors.black,
                       ),
                       title: Text(
-                        notificationVM.notificationModel!.response!
-                            .noticationslist![index].poojaTitle
-                            .toString(),
+                        notificationVM.notificationModel?.response!
+                            .noticationslist![0].poojaTitle
+                            ??"",
                         style: GoogleFonts.lato(
                             color: h1Color,
                             fontSize: 12,
@@ -63,7 +63,7 @@ class _Notifications_screenState extends State<Notifications_screen> {
           },
           // itemCount: 24,
           itemCount: notificationVM
-              .notificationModel!.response!.noticationslist!.length),
+              .notificationModel?.response!.noticationslist!.length),
     );
   }
 }

@@ -12,6 +12,7 @@ import 'package:panditapp/model/getterSetter.dart';
 import 'package:provider/provider.dart';
 import '../../consts/themescolor.dart';
 import '../../view_model/Profile/Bank Account Details/Bank_List_VM.dart';
+import '../../view_model/Profile/Bank Account Details/Delete_Bank_VM.dart';
 import '../../view_model/Profile/Bank Account Details/Pandit_Bank_List_VM.dart';
 import '../../view_model/Login/Service_VM.dart';
 
@@ -283,6 +284,10 @@ class _MyAppState extends State<Photo_Upload> {
                           BankList_VM banklist =
                               Provider.of<BankList_VM>(context, listen: false);
                           banklist.bankListAPIcall();
+
+                          Delete_Bank_VM deletebank =
+                          Provider.of<Delete_Bank_VM>(context, listen: false);
+                          deletebank.Delete_Bank_APIcall();
 
                           Pandit_Bank_List_VM panditbanklist =
                               Provider.of<Pandit_Bank_List_VM>(context,

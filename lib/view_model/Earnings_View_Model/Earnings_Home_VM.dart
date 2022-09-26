@@ -34,7 +34,7 @@ class Earnings_Home_VM with ChangeNotifier {
     notifyListeners();
   }
 
-  earningshomeAPIcall() async {
+  earningshomeAPIcall(bool reload) async {
     setLoading(true);
     String userId = await LoggedInUserBloc.instance().getUserId();
 

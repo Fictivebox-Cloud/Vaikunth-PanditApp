@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:panditapp/route_app/page_navigeter_name_route.dart';
 import 'package:panditapp/route_app/route.dart';
+import 'package:panditapp/view_model/Earnings_View_Model/WithDrawMoney_VM.dart';
 import 'package:panditapp/view_model/Login/ApiCallLogin.dart';
 import 'package:panditapp/view_model/BookingViewDetails/Check_Booking_Confirm_OTP.dart';
 import 'package:panditapp/view_model/BookingViewDetails/getBookingOTP.dart';
@@ -8,6 +9,7 @@ import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Bank_List_
 import 'package:panditapp/view_model/Login/CityListApi.dart';
 import 'package:panditapp/view_model/BookingViewDetails/Complete_Bookings.dart';
 import 'package:panditapp/view_model/Earnings_View_Model/Earnings_Home_VM.dart';
+import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Delete_Bank_VM.dart';
 import 'package:panditapp/view_model/Profile/Help_Support_Details_VM.dart';
 import 'package:panditapp/view_model/Notification_VM.dart';
 import 'package:panditapp/view_model/Profile/Personal_Detail_View_Model.dart';
@@ -58,6 +60,8 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => Personal_Detail_View_Model()),
         ChangeNotifierProvider(create: (_) => Edit_profile_View_model()),
         ChangeNotifierProvider(create: (_) => Earnings_Home_VM()),
+        ChangeNotifierProvider(create: (_) => Delete_Bank_VM()),
+        ChangeNotifierProvider(create: (_) => With_Draw_Money_VM()),
       ],
       child: const MyApp(),
     ),
@@ -77,7 +81,7 @@ class MyApp extends StatelessWidget {
           primaryColor: kPrimaryColor,
           appBarTheme: AppBarTheme(color: kPrimaryColor)),
       initialRoute:RouteName.SplashScreen,
-      //initialRoute:RouteName.Home_Screen,
+     // initialRoute:RouteName.Name_screen,
       onGenerateRoute: Routes.generateRoutes,
     );
   }

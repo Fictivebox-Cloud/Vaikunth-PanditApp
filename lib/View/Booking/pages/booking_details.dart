@@ -277,14 +277,10 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
 
     return Consumer<Check_Booking_Confirm_OTP_View_Model>(
   builder: (context, provider, child) {
-  return Container(
-    width: MediaQuery.of(context).size.width,
-    height: 480,
-    margin:  const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 20
-    ),
+  return Padding(
+    padding: const EdgeInsets.only(left: 16,right: 16,top: 16),
     child: Column(
+
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

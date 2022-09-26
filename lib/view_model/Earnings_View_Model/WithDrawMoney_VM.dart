@@ -4,15 +4,15 @@ import 'package:panditapp/Util/Api_collection.dart';
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
 import '../../../Util/login_in_User.dart';
-import '../../../model/Profile_Screen/Bank_Account Details/DeleteBank_model.dart';
+import '../../model/Earnings/WithDrawMoneyModel.dart';
 
-class Delete_Bank_VM with ChangeNotifier{
+class With_Draw_Money_VM with ChangeNotifier{
   bool _loading = false;
-  DeleteBankModel? _deleteBankModel;
+  WithDrawMoneyModel? _withDrawMoneyModel;
   UserError? _userError;
 
   bool get loading => _loading;
-  DeleteBankModel? get deleteBankModel => _deleteBankModel;
+  WithDrawMoneyModel? get withDrawMoneyModel => _withDrawMoneyModel;
   UserError? get userError => _userError;
 
   setLoading(loading){
@@ -20,8 +20,8 @@ class Delete_Bank_VM with ChangeNotifier{
     notifyListeners();
   }
 
-  setDeleteBankModel(DeleteBankModel deleteBankModel){
-    _deleteBankModel = deleteBankModel;
+  setwithDrawMoneyModel(WithDrawMoneyModel withDrawMoneyModel){
+    _withDrawMoneyModel = withDrawMoneyModel;
     notifyListeners();
   }
   setUserError(UserError userError){
@@ -29,20 +29,28 @@ class Delete_Bank_VM with ChangeNotifier{
     notifyListeners();
   }
 
-  Delete_Bank_APIcall({String? id,}) async{
+  withdrawMoney_APIcall({String? id,}) async{
     setLoading(true);
     String userId = await LoggedInUserBloc.instance().getUserId();
     var data={
-     // "bank_id":userId,
-      "bank_id":"2",
+       //"bank_id":userId,
+       // "bank_id":"404",
+
+        "pandit_id": "7",
+
+        "account_id": "1",
+
+        "amount":"1600"
+
     };
 
     var response = await ApiRemoteServices.fechingGetApi(
-        apiUrl:GET_DELETEBANK_API,apiData: data);
+        apiUrl:GET_WITHDRAWMONEY_API,apiData: data);
     if(response is Success){
-      Object data = deleteBankModelFromJson(response.response as String);
-      print("Govind delete  bank account ${response.response as String}");
-      setDeleteBankModel(data as DeleteBankModel);
+      Object data = withDrawMoneyModelFromJson(response.response as String);
+      print("Govind with draw money ${response.response as String}");
+      print("Govind with draw money ${data}");
+      setwithDrawMoneyModel(data as WithDrawMoneyModel);
     }
     else if (response is Failure){
       UserError userError  =

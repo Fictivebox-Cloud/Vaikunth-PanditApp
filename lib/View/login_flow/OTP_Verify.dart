@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +31,12 @@ class _OTP_verifyState extends State<OTP_verify> {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   SmsAutoFill smsAutoFill = SmsAutoFill();
   String? strVerificationId;
+  int strat =30;
 
   @override
   void initState() {
     phoneNumberVerification();
+    startTimer();
   }
 
   Future<void> phoneNumberVerification() async {
@@ -118,6 +122,21 @@ class _OTP_verifyState extends State<OTP_verify> {
 
   }
 
+  void startTimer(){
+    const onsec = Duration(seconds: 1);
+    Timer timer = Timer.periodic(onsec, (timer) {
+    if(strat ==0 ){
+     setState(() {
+       timer.cancel();
+     });
+    }else{
+      setState(() {
+        strat --;
+      });
+    }
+    });
+  }
+
   var ht, wt;
 
   @override
@@ -185,7 +204,20 @@ class _OTP_verifyState extends State<OTP_verify> {
                               activeColor: const Color(0XFFFF7D33),
                               selectedColor: const Color(0XFFFF7D33),
                             ),
+
                           ),
+                          SizedBox(height: 20,)
+                          ,RichText(text: TextSpan(
+                            children: [
+                              TextSpan(text: RESEND_OTP,style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: p1Color))
+                              ,TextSpan(text: "00:$strat ",
+                              style: GoogleFonts.lato(fontSize: 16,color: Colors.red)
+                              ),
+                        TextSpan(text: "sec",
+                        style: GoogleFonts.lato(fontSize: 16,color: p1Color)
+                    )
+                            ]
+                          ))
                         ],
                       ),
                     )
@@ -193,24 +225,7 @@ class _OTP_verifyState extends State<OTP_verify> {
                 ),
               ),
             ),
-            Column(
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 16, right: 16, bottom: 24),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      // padding: const EdgeInsets.all(16.0),
-                      primary: p1Color,
-                      textStyle: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w500),
-                    ),
-                    onPressed: () {},
-                    child: const Text(RESEND_OTP),
-                  ),
-                ),
-              ],
-            )
+
           ],
         ),
       ),

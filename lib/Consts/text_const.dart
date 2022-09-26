@@ -3,7 +3,7 @@ const String APPNAME = "Vaikhunt";
 const String ENTER_OTP = "Enter OTP";
 const String ENTER_THE_6_DIGIT_CODE_RECEIVED_ON_YOUR_MOBILE =
     "Enter the 6 digit code received on your mobile.";
-const String RESEND_OTP = "Resend OTP";
+const String RESEND_OTP = "Resend OTP  ";
 const String NAME = "Name";
 const String NEXT = "Next";
 const String CONTINUE = "Continue";

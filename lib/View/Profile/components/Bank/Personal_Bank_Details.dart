@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../../../Consts/text_const.dart';
 import '../../../../Widgets/circular_loader.dart';
 import '../../../../consts/themescolor.dart';
+import '../../../../view_model/Profile/Bank Account Details/Delete_Bank_VM.dart';
 import '../../../../view_model/Profile/Bank Account Details/Update_Bank_VM.dart';
 import 'Add_Bank_Account.dart';
 import 'Bank Account Details.dart';
@@ -158,10 +159,9 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
                                         ),
                                         InkWell(
                                             onTap: () {
-                                              Update_Bank_VM updatebanklist = Provider.of<Update_Bank_VM>(
-                                                  context, listen: false);
-                                              updatebanklist.Update_Bank_APIcall(
-                                              );
+                                              Delete_Bank_VM deletebank =
+                                              Provider.of<Delete_Bank_VM>(context, listen: false);
+                                              deletebank.Delete_Bank_APIcall();
                                             },
                                             child: Text(
                                               DELETE,

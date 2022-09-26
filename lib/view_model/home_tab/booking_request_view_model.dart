@@ -13,17 +13,18 @@ class Booking_Request_View_Model with ChangeNotifier{
   bool _loading = false;
   GetBookingListModel? _getBookingListModel;
   UserError? _userError;
-  
+  bool _isRejectBooking = false;
   
 
   Booking_Request_View_Model (){
-    getbookingApiCall();
+    getbookingApiCall(true);
     notifyListeners();
   }
 
   bool get loading => _loading;
   GetBookingListModel? get getbookinglistModel=> _getBookingListModel;
   UserError? get userError => _userError;
+  bool get isRejectBooking => _isRejectBooking;
 
   setLoading(bool loading) {
     _loading = loading;
@@ -38,8 +39,13 @@ class Booking_Request_View_Model with ChangeNotifier{
     notifyListeners();
   }
 
+  setRejectBooking(bool data) {
+    _isRejectBooking = !data;
+    print("_isRejectBooking $_isRejectBooking");
+    notifyListeners();
+  }
 
-getbookingApiCall() async{
+getbookingApiCall( bool reload) async{
   String userId = await LoggedInUserBloc.instance().getUserId();
   setLoading(true);
 

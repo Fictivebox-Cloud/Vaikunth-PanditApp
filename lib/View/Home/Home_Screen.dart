@@ -17,6 +17,7 @@ class Home_Screen extends StatefulWidget {
   State<Home_Screen> createState() => _Home_ScreenState();
 }
 
+
 class _Home_ScreenState extends State<Home_Screen> {
   int currentIndex = 0;
   final screen = [
@@ -28,14 +29,6 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    Booking_Request_View_Model booking_request_view_model=
-    Provider.of(context,listen: false);
-    booking_request_view_model.getbookingApiCall();
-
-    Earnings_Home_VM? earninghome =
-    Provider.of<Earnings_Home_VM?>(context,
-        listen: false);
-    earninghome?.earningshomeAPIcall();
 
     return  WillPopScope(
       onWillPop: () => _onBackButtonPressed(context),
