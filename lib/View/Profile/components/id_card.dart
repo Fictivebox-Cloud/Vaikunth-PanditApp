@@ -22,7 +22,13 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
   var ht, wt;
 
   late Personal_Detail_View_Model personal_detail_view_model;
+  Future<void> _refresh(bool reload, BuildContext context){
+    personal_detail_view_model= Provider.of<Personal_Detail_View_Model>(context,listen: false);
+    personal_detail_view_model.getpersonalDetailApiCall();
+    return Future.delayed(const Duration(seconds: 0));
 
+
+  }
 
   @override
   Widget build(BuildContext context) {

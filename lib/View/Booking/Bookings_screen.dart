@@ -24,8 +24,11 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
   bool Small = false;
 
   late CompleteBookingViewModel completeBookingViewModel;
-  _loadData() async{
-    await completeBookingViewModel.completebookingAPIcall();
+  Future<void> _refresh(bool reload, BuildContext context){
+    completeBookingViewModel= Provider.of<CompleteBookingViewModel>(context,listen: false);
+    completeBookingViewModel.completebookingAPIcall();
+    return Future.delayed(const Duration(seconds: 0));
+
 
   }
 
@@ -33,7 +36,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
   @override
   Widget build(BuildContext context) {
     completeBookingViewModel = Provider.of<CompleteBookingViewModel>(context,listen: false);
-    _loadData();
+    completeBookingViewModel.completebookingAPIcall();
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
@@ -84,508 +87,529 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
   }
 
   Widget Upcoming() {
-    return Container(
-        child: ListView.builder(
+    return RefreshIndicator(
+      onRefresh: () async{
+        await _refresh(true, context);
+      },
+      color: kPrimaryColor,
+      strokeWidth: 5,
+      displacement: 0,
+      child: Container(
+          child: ListView.builder(
 
-          itemBuilder: (context, int index) {
-            return Container(
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          alignment: Alignment.bottomCenter,
-                          width: double.infinity,
-                          height: 226,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(width: 1, color: kSecondaryColor)),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 19, right: 19, top: 10),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            itemBuilder: (context, int index) {
+              return Container(
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            alignment: Alignment.bottomCenter,
+                            width: double.infinity,
+                            height: 226,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(width: 1, color: kSecondaryColor)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 19, right: 19, top: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          const Icon(
+                                            Icons.calendar_month,
+                                            color: kPrimaryColor,
+                                          ),
+                                          const SizedBox(
+                                            width: 11,
+                                          ),
+                                          Text(
+                                            //"Mon 05/Oct/2021"
+                                            completeBookingViewModel
+                                                .completebokingmodel
+                                                ?.response!
+                                                .upcomingbookinglist![0]
+                                                .bookingPujaDate ??
+                                                "",
+                                            style: GoogleFonts.lato(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xff232323)),
+                                          ),
+                                          // SizedBox(width: 105,),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const Icon(
+                                            Icons.location_on,
+                                            color: h1Color,
+                                          ),
+                                          const SizedBox(
+                                            width: 19.32,
+                                          ),
+                                          Image.asset(ImageConst().MANU),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 3,
+                                ),
+                                Center(
+                                    child: Text(
+                                      completeBookingViewModel
+                                          .completebokingmodel
+                                          ?.response!
+                                          .upcomingbookinglist![0]
+                                          .name ??
+                                          "",
+                                      style: GoogleFonts.lato(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 12,
+                                          color: kPrimaryColor),
+                                    )),
+                                const SizedBox(
+                                  height: 3,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16),
+                                  child: Text(
+                                    BOOKING_LIST,
+                                    style: GoogleFonts.lato(
+                                        fontSize: 14, fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16),
+                                  child: Text(
+                                    "1 x ${completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist![0].poojaTitle ?? ""}",
+                                    style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14,
+                                        color: h1Color),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16),
+                                  child: Text(
+                                    "1 x Astrology",
+                                    style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14,
+                                        color: h1Color),
+                                  ),
+                                ),
+                                const Padding(
+                                  padding:
+                                  EdgeInsets.only(left: 16, right: 16, top: 10),
+                                  child: DottedLine(),
+                                ),
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        const Icon(
-                                          Icons.calendar_month,
-                                          color: kPrimaryColor,
-                                        ),
-                                        const SizedBox(
-                                          width: 11,
-                                        ),
-                                        Text(
-                                          //"Mon 05/Oct/2021"
-                                          completeBookingViewModel
-                                              .completebokingmodel
-                                              ?.response!
-                                              .upcomingbookinglist![0]
-                                              .bookingPujaDate ??
-                                              "",
-                                          style: GoogleFonts.lato(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600,
-                                              color: const Color(0xff232323)),
-                                        ),
-                                        // SizedBox(width: 105,),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Icon(
-                                          Icons.location_on,
-                                          color: h1Color,
-                                        ),
-                                        const SizedBox(
-                                          width: 19.32,
-                                        ),
-                                        Image.asset(ImageConst().MANU),
-                                      ],
+                                    Text(TOTAL_EARNING),
+                                    Text(
+                                      "${completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist![0].bookingPaidAmount ?? ""}",
+                                      style: GoogleFonts.lato(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                          color: h1Color),
                                     )
                                   ],
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 3,
-                              ),
-                              Center(
-                                  child: Text(
-                                    completeBookingViewModel
-                                        .completebokingmodel
-                                        ?.response!
-                                        .upcomingbookinglist![0]
-                                        .name ??
-                                        "",
-                                    style: GoogleFonts.lato(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 12,
-                                        color: kPrimaryColor),
-                                  )),
-                              const SizedBox(
-                                height: 3,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16),
-                                child: Text(
-                                  BOOKING_LIST,
-                                  style: GoogleFonts.lato(
-                                      fontSize: 14, fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16),
-                                child: Text(
-                                  "1 x ${completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist![0].poojaTitle ?? ""}",
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: h1Color),
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16),
-                                child: Text(
-                                  "1 x Astrology",
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: h1Color),
-                                ),
-                              ),
-                              const Padding(
-                                padding:
-                                EdgeInsets.only(left: 16, right: 16, top: 10),
-                                child: DottedLine(),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(TOTAL_EARNING),
-                                  Text(
-                                    "${completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist![0].bookingPaidAmount ?? ""}",
-                                    style: GoogleFonts.lato(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        color: h1Color),
-                                  )
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 16, right: 16, top: 10),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 48,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: buttonColor),
-                                  child: Center(
-                                      child: TextButton(
-                                          onPressed: () {
-
-
-
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        Booking_Details_Screen(
-                                                            bookingId: completeBookingViewModel
-                                                                .completebokingmodel!
-                                                                .response!
-                                                                .upcomingbookinglist![
-                                                            0]
-                                                                .id)));
-                                          },
-                                          child: Text(
-                                            VIEW_DETAILS,
-                                            style: GoogleFonts.lato(
-                                                fontSize: 16,
-                                                color: white,
-                                                fontWeight: FontWeight.w500),
-                                          ))),
-                                ),
-                              )
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 16, right: 16, top: 10),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 48,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(4),
+                                        color: buttonColor),
+                                    child: Center(
+                                        child: TextButton(
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          Booking_Details_Screen(
+                                                              bookingId: completeBookingViewModel
+                                                                  .completebokingmodel!
+                                                                  .response!
+                                                                  .upcomingbookinglist![
+                                                              0]
+                                                                  .id)));
+                                            },
+                                            child: Text(
+                                              VIEW_DETAILS,
+                                              style: GoogleFonts.lato(
+                                                  fontSize: 16,
+                                                  color: white,
+                                                  fontWeight: FontWeight.w500),
+                                            ))),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            );
-          },
-          itemCount: completeBookingViewModel
-              .completebokingmodel?.response!.upcomingbookinglist!.length,
-        ));
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            },
+            itemCount: completeBookingViewModel
+                .completebokingmodel?.response!.upcomingbookinglist!.length,
+          )),
+    );
   }
 
   Widget CompletedPage() {
     int index;
 
-    return ListView.builder(
-      itemBuilder: (context, int index) {
-        return Container(
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      alignment: Alignment.bottomCenter,
-                      width: double.infinity,
-                      height: 226,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 1, color: kSecondaryColor)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 19, right: 19, top: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.calendar_month,
-                                      color: kPrimaryColor,
-                                    ),
-                                    const SizedBox(
-                                      width: 11,
-                                    ),
-                                    Text(
-                                      //"Mon 05/Oct/2021",
-                                      completeBookingViewModel
-                                          .completebokingmodel!
-                                          .response!
-                                          .compbookinglist![0]
-                                          .poojaDate ??
-                                          "",
-                                      style: GoogleFonts.lato(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600,
-                                          color: const Color(0xff232323)),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Icon(Icons.location_on,
-                                        color: h1Color),
-                                  ],
-                                )
-                              ],
+    return RefreshIndicator(
+      onRefresh: () async{
+        await _refresh(true, context);
+      },
+      color: kPrimaryColor,
+      strokeWidth: 5,
+      displacement: 0,
+      child: ListView.builder(
+        itemBuilder: (context, int index) {
+          return Container(
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        alignment: Alignment.bottomCenter,
+                        width: double.infinity,
+                        height: 226,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(width: 1, color: kSecondaryColor)),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 19, right: 19, top: 10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.calendar_month,
+                                        color: kPrimaryColor,
+                                      ),
+                                      const SizedBox(
+                                        width: 11,
+                                      ),
+                                      Text(
+                                        //"Mon 05/Oct/2021",
+                                        completeBookingViewModel
+                                            .completebokingmodel!
+                                            .response!
+                                            .compbookinglist![0]
+                                            .poojaDate ??
+                                            "",
+                                        style: GoogleFonts.lato(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600,
+                                            color: const Color(0xff232323)),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Icon(Icons.location_on,
+                                          color: h1Color),
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 3,
-                          ),
-                          Center(
+                            const SizedBox(
+                              height: 3,
+                            ),
+                            Center(
+                                child: Text(
+                                  completeBookingViewModel
+                                      .completebokingmodel!
+                                      .response!
+                                      .compbookinglist![index]
+                                      .hostname ??
+                                      "",
+                                  style: GoogleFonts.lato(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 12,
+                                      color: kPrimaryColor),
+                                )),
+                            const SizedBox(
+                              height: 3,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16, top: 2),
                               child: Text(
-                                completeBookingViewModel
-                                    .completebokingmodel!
-                                    .response!
-                                    .compbookinglist![index]
-                                    .hostname ??
-                                    "",
+                                BOOKING_LIST,
                                 style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 12,
-                                    color: kPrimaryColor),
-                              )),
-                          const SizedBox(
-                            height: 3,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16, top: 2),
-                            child: Text(
-                              BOOKING_LIST,
-                              style: GoogleFonts.lato(
-                                  fontSize: 14, fontWeight: FontWeight.w600),
+                                    fontSize: 14, fontWeight: FontWeight.w600),
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16),
-                            child: Text(
-                              "1 x ${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].poojaTitle ?? ""}",
-                              style: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                  color: h1Color),
+                            const SizedBox(
+                              height: 4,
                             ),
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 16),
-                            child: Text(
-                              "1 x Astrology",
-                              style: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                  color: h1Color),
-                            ),
-                          ),
-                          const Padding(
-                            padding:
-                            EdgeInsets.only(left: 16, right: 16, top: 10),
-                            child: DottedLine(),
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(TOTAL_EARNING),
-                              Text(
-                                "${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].totalEarning ?? ""}",
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16),
+                              child: Text(
+                                "1 x ${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].poojaTitle ?? ""}",
                                 style: GoogleFonts.lato(
+                                    fontWeight: FontWeight.w400,
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w500,
                                     color: h1Color),
                               ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 16, right: 16, top: 10),
-                            child: Container(
-                              width: double.infinity,
-                              height: 48,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  color: b1Color),
-                              child: Center(
-                                  child: TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        VIEWEARNINGS,
-                                        style: GoogleFonts.lato(
-                                            fontSize: 16,
-                                            color: white,
-                                            fontWeight: FontWeight.w500),
-                                      ))),
                             ),
-                          )
-                        ],
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16),
+                              child: Text(
+                                "1 x Astrology",
+                                style: GoogleFonts.lato(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                    color: h1Color),
+                              ),
+                            ),
+                            const Padding(
+                              padding:
+                              EdgeInsets.only(left: 16, right: 16, top: 10),
+                              child: DottedLine(),
+                            ),
+                            const SizedBox(
+                              height: 4,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(TOTAL_EARNING),
+                                Text(
+                                  "${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].totalEarning ?? ""}",
+                                  style: GoogleFonts.lato(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      color: h1Color),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 16, right: 16, top: 10),
+                              child: Container(
+                                width: double.infinity,
+                                height: 48,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(4),
+                                    color: b1Color),
+                                child: Center(
+                                    child: TextButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          VIEWEARNINGS,
+                                          style: GoogleFonts.lato(
+                                              fontSize: 16,
+                                              color: white,
+                                              fontWeight: FontWeight.w500),
+                                        ))),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
-      //itemCount: 5,
-      itemCount: completeBookingViewModel
-          .completebokingmodel?.response!.compbookinglist!.length,
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+        //itemCount: 5,
+        itemCount: completeBookingViewModel
+            .completebokingmodel?.response!.compbookinglist!.length,
+      ),
     );
   }
 
   Widget Cancelled() {
     return Container(
-        child: ListView.builder(
-          itemBuilder: (context, int index) {
-            return Container(
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          alignment: Alignment.bottomCenter,
-                          width: double.infinity,
-                          height: 174,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(width: 1, color: kSecondaryColor)),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 15, right: 8, top: 12),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        const Icon(
-                                          Icons.calendar_month,
-                                          color: kPrimaryColor,
-                                        ),
-                                        const SizedBox(
-                                          width: 11,
-                                        ),
-                                        Text(
-                                          completeBookingViewModel
-                                              .completebokingmodel
-                                              ?.response!
-                                              .cancelbookinglist![0]
-                                              .bookingPujaDate ??
-                                              "",
-                                          //"Mon 05/Oct/2021",
-                                          style: GoogleFonts.lato(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w600,
-                                              color: const Color(0xff232323)),
-                                        ),
-                                        // SizedBox(width: 105,),
-                                      ],
-                                    ),
-                                    Container(
-                                      height: 25,
-                                      width: 108,
-                                      decoration: BoxDecoration(
-                                          color: Colors.red,
-                                          borderRadius: BorderRadius.circular(20)),
-                                      child: const Center(
-                                          child: Text(CANCELLED,
-                                              style:
-                                              TextStyle(color: Colors.white))),
-                                    )
-                                  ],
+        child: RefreshIndicator(
+          onRefresh: () async{
+            await _refresh(true, context);
+          },
+          color: kPrimaryColor,
+          strokeWidth: 5,
+          displacement: 0,
+          child: ListView.builder(
+            itemBuilder: (context, int index) {
+              return Container(
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            alignment: Alignment.bottomCenter,
+                            width: double.infinity,
+                            height: 174,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(width: 1, color: kSecondaryColor)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 15, right: 8, top: 12),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          const Icon(
+                                            Icons.calendar_month,
+                                            color: kPrimaryColor,
+                                          ),
+                                          const SizedBox(
+                                            width: 11,
+                                          ),
+                                          Text(
+                                            completeBookingViewModel
+                                                .completebokingmodel
+                                                ?.response!
+                                                .cancelbookinglist![0]
+                                                .bookingPujaDate ??
+                                                "",
+                                            //"Mon 05/Oct/2021",
+                                            style: GoogleFonts.lato(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xff232323)),
+                                          ),
+                                          // SizedBox(width: 105,),
+                                        ],
+                                      ),
+                                      Container(
+                                        height: 25,
+                                        width: 108,
+                                        decoration: BoxDecoration(
+                                            color: Colors.red,
+                                            borderRadius: BorderRadius.circular(20)),
+                                        child: const Center(
+                                            child: Text(CANCELLED,
+                                                style:
+                                                TextStyle(color: Colors.white))),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
 
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              Center(
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Center(
+                                    child: Text(
+                                      completeBookingViewModel
+                                          .completebokingmodel
+                                          ?.response!
+                                          .cancelbookinglist![index]
+                                          .name ??
+                                          "",
+                                      style: GoogleFonts.lato(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 12,
+                                          color: kPrimaryColor),
+                                    )),
+                                const SizedBox(
+                                  height: 3,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16, top: 16),
                                   child: Text(
-                                    completeBookingViewModel
-                                        .completebokingmodel
-                                        ?.response!
-                                        .cancelbookinglist![index]
-                                        .name ??
-                                        "",
+                                    BOOKING_LIST,
                                     style: GoogleFonts.lato(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 12,
-                                        color: kPrimaryColor),
-                                  )),
-                              const SizedBox(
-                                height: 3,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16, top: 16),
-                                child: Text(
-                                  BOOKING_LIST,
-                                  style: GoogleFonts.lato(
-                                      fontSize: 14, fontWeight: FontWeight.w600),
+                                        fontSize: 14, fontWeight: FontWeight.w600),
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 6,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16),
-                                child: Text(
-                                  "1 x ${completeBookingViewModel.completebokingmodel?.response!.cancelbookinglist![index].poojaTitle ?? ""}",
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: h1Color),
+                                const SizedBox(
+                                  height: 6,
                                 ),
-                              ),
-                              // SizedBox(height: 4,),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 16, top: 4),
-                                child: Text(
-                                  "1 x Astrology",
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: h1Color),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16),
+                                  child: Text(
+                                    "1 x ${completeBookingViewModel.completebokingmodel?.response!.cancelbookinglist![index].poojaTitle ?? ""}",
+                                    style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14,
+                                        color: h1Color),
+                                  ),
                                 ),
-                              ),
-                            ],
+                                // SizedBox(height: 4,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16, top: 4),
+                                  child: Text(
+                                    "1 x Astrology",
+                                    style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14,
+                                        color: h1Color),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            );
-          },
-          //itemCount: 20,
-          itemCount: completeBookingViewModel
-              .completebokingmodel?.response!.cancelbookinglist!.length,
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            },
+            //itemCount: 20,
+            itemCount: completeBookingViewModel
+                .completebokingmodel?.response!.cancelbookinglist!.length,
+          ),
         ));
   }
 }

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../consts/text_const.dart';
 import '../../consts/themescolor.dart';
+import '../../route_app/page_navigeter_name_route.dart';
 import '../login_flow/Phone_Number.dart';
 import 'Onbording_Model.dart';
 import '../../consts/SizeConfig.dart';
@@ -57,11 +58,7 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    PhoneNumber_Screen()));
+                        Navigator.pushNamed(context, RouteName.PhoneNumber_Screen);
                       },
                       child: Text(
                         SKIP,

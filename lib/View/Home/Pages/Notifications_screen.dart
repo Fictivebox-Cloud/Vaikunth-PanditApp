@@ -14,11 +14,11 @@ class Notifications_screen extends StatefulWidget {
 
 class _Notifications_screenState extends State<Notifications_screen> {
   var ht, wt;
-  late NotificationVM notificationVM;
+ // late NotificationVM notificationVM;
 
   @override
   Widget build(BuildContext context) {
-    notificationVM = context.watch<NotificationVM>();
+    NotificationVM notificationVM = context.watch<NotificationVM>();
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
