@@ -1,58 +1,64 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
+
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:panditapp/View/Home/Pages/BookingList.dart';
-import 'package:panditapp/View/Home/Pages/Notifications_screen.dart';
-import 'package:panditapp/View/Profile/Profile.dart';
-import 'package:panditapp/model/Booking%20Model/booking_model.dart';
 import 'package:panditapp/view_model/home_tab/Online_Ofline_view_model.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
-
 import '../../../Consts/text_const.dart';
-import '../../../Widgets/OnlineAndSwitch.dart';
 import '../../../consts/image_const.dart';
 import '../../../consts/themescolor.dart';
-import '../../../view_model/Login/Service_VM.dart';
+import '../../../route_app/page_navigeter_name_route.dart';
 
-class Home_page_Screen extends StatelessWidget {
+
+class Home_page_Screen extends StatefulWidget {
+  @override
+  State<Home_page_Screen> createState() => _Home_page_ScreenState();
+}
+
+class _Home_page_ScreenState extends State<Home_page_Screen> {
   var ht, wt;
-  bool _isLoading = true;
+
   late Online_Ofline_View_Model _online_ofline_view_model;
+
+  late Booking_Request_View_Model booking_request_view_model;
+
+  Future<void> _refresh(bool reload, BuildContext context){
+     booking_request_view_model= Provider.of<Booking_Request_View_Model>(context,listen: false);
+    booking_request_view_model.getbookingApiCall(reload);
+    return Future.delayed(const Duration(seconds: 0));
+
+
+  }
+
+  void initState(){
+    super.initState();
+
+  }
 
   @override
   Widget build(BuildContext context) {
     Booking_Request_View_Model booking_request_view_model =
         context.watch<Booking_Request_View_Model>();
-    ServiceVM serviceVM = Provider.of<ServiceVM>(context, listen: false);
+
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return SafeArea(
-      child: Scaffold(
-        body: _listDesign(booking_request_view_model, context)
+      child:  RefreshIndicator(
+          onRefresh: () async{
+           await _refresh(true, context);
+          },
+          color: kPrimaryColor,
+          strokeWidth: 5,
+          displacement: 0,
+        child: Scaffold(
+          body: _listDesign(booking_request_view_model, context)
+        ),
       ),
     );
   }
-
-  // _ui(Booking_Request_View_Model booking_request_view_model,
-  //     BuildContext context) {
-  //   if (booking_request_view_model.loading) {
-  //     return const Center(
-  //         child: CircularProgressIndicator(
-  //       color: kPrimaryColor,
-  //     ));
-  //   } else if (booking_request_view_model.userError != null) {
-  //     return Center(
-  //       child: Text(booking_request_view_model.userError!.message!.toString() ??
-  //           "Error"),
-  //     );
-  //   }
-  //   //return Text("GGG");
-  //   return _listDesign(booking_request_view_model, context);
-  // }
 
   _listDesign(Booking_Request_View_Model booking_request_view_model,
       BuildContext context) {
@@ -66,10 +72,7 @@ class Home_page_Screen extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Profile_Screen()));
+                  Navigator.pushNamed(context, RouteName.Profile_Screen);
                 },
                 child: const CircleAvatar(
                   radius: 20,
@@ -99,16 +102,7 @@ class Home_page_Screen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Notifications_screen()));
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Notifications_screen(),
-                    ),
-                  );
+                  Navigator.pushNamed(context, RouteName.Notifications_screen);
                 },
                 child: const Icon(Icons.notifications),
               )
@@ -116,7 +110,7 @@ class Home_page_Screen extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 48,
+          height: 32,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -136,11 +130,9 @@ class Home_page_Screen extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(
-          height: 18,
-        ),
+
         Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, top: 10),
+          padding: const EdgeInsets.only(left: 16, right: 16, top: 18),
           child: Text(
             BOOKINGS_REQUEST,
             style: GoogleFonts.lato(

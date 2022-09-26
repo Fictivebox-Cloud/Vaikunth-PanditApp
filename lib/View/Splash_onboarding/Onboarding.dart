@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../consts/text_const.dart';
 import '../../consts/themescolor.dart';
-import '../../route_app/page_navigeter_name_route.dart';
 import '../login_flow/Phone_Number.dart';
 import 'Onbording_Model.dart';
 import '../../consts/SizeConfig.dart';
@@ -89,75 +88,74 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
 
   Widget bottomContainerDesign() {
     return Expanded(
-          flex: 1,
-          child: Container(
-            padding: EdgeInsets.only(left: 16, right: 16),
-            color: Colors.white,
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 32,
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(onboardingContents.length,
-                            (index) => buildContainer(index, context))),
-                SizedBox(
-                  height: ht * 0.046,
-                ),
-                Text(
-                  WELCOMETOBAIKHUBTPANDIT,
-                  style: GoogleFonts.lato(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: h1Color),
-                ),
-                //text,
-                SizedBox(
-                  height: ht * 0.012,
-                ),
-                Text(
-                    'Lorem Ipsum is simply dummy text of the printing and \n                                   typesetting industry.',
-                    style: GoogleFonts.lato(color: p1Color)),
-                SizedBox(
-                  height: ht * 0.032,
-                ),
-                Container(
-                  //padding: EdgeInsets.only(left: 16,right: 16,top),
-                  width: double.infinity,
-                  height: ht * 0.06,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
-                      color: kPrimaryColor),
-                  child: TextButton(
-                      onPressed: () {
-                        if (currentIndex ==
-                            onboardingContents.length - 1) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) =>
-                                      PhoneNumber_Screen()));
-                          // Navigator.pushNamed(context, RouteName.PhoneNumber_Screen);
-                        }
-                        _controller.nextPage(
-                          duration: Duration(microseconds: 100),
-                          curve: Curves.bounceIn,
-                        );
-                      },
-                      child: Text(
-                        currentIndex == onboardingContents.length - 1
-                            ? CONTINUE
-                            : NEXT,
-                        style: GoogleFonts.lato(
-                            color: white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20),
-                      )),
-                )
-              ],
-            ),
-          ));
+        flex: 1,
+        child: Container(
+          padding: EdgeInsets.only(left: 16, right: 16),
+          color: Colors.white,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 32,
+              ),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(onboardingContents.length,
+                          (index) => buildContainer(index, context))),
+              SizedBox(
+                height: ht * 0.046,
+              ),
+              Text(
+                WELCOMETOBAIKHUBTPANDIT,
+                style: GoogleFonts.lato(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: h1Color),
+              ),
+              //text,
+              SizedBox(
+                height: ht * 0.012,
+              ),
+              Text(
+                  'Lorem Ipsum is simply dummy text of the printing and \n                                   typesetting industry.',
+                  style: GoogleFonts.lato(color: p1Color)),
+              SizedBox(
+                height: ht * 0.032,
+              ),
+              Container(
+                //padding: EdgeInsets.only(left: 16,right: 16,top),
+                width: double.infinity,
+                height: ht * 0.06,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: kPrimaryColor),
+                child: TextButton(
+                    onPressed: () {
+                      if (currentIndex ==
+                          onboardingContents.length - 1) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) =>
+                                    PhoneNumber_Screen()));
+                      }
+                      _controller.nextPage(
+                        duration: Duration(microseconds: 100),
+                        curve: Curves.bounceIn,
+                      );
+                    },
+                    child: Text(
+                      currentIndex == onboardingContents.length - 1
+                          ? CONTINUE
+                          : NEXT,
+                      style: GoogleFonts.lato(
+                          color: white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20),
+                    )),
+              )
+            ],
+          ),
+        ));
   }
 
   @override

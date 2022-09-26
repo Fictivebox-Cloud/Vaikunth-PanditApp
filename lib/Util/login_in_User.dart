@@ -6,12 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoggedInUserBloc {
-  static const _USER_PREF_KEY = "__user__";
-  static const _USER_DETAILS = "__user_details__";
-  static const _USER_TYPE = "__user_type__";
+
   static const _USERID_KEY = "__user_id__";
-  static const _Guest_user_KEY = "__guest_user_id__";
-  static User? _user;
+
 
 
   LoggedInUserBloc._private();
@@ -36,8 +33,7 @@ class LoggedInUserBloc {
 
   Future logout(BuildContext context) async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
-    _pref.setString(_USER_PREF_KEY, '');
-    _pref.setBool('isPanditApp', false);
+    _pref.remove(_USERID_KEY,);
     return;
   }
 

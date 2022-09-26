@@ -283,15 +283,6 @@ class _Account_detailsState extends State<Account_details> {
                       color: kPrimaryColor),
                   child: TextButton(
                       onPressed: () async {
-                        CompleteBookingViewModel completeBookingViewModel =
-                            Provider.of<CompleteBookingViewModel>(context,
-                                listen: false);
-                        completeBookingViewModel.completebookingAPIcall();
-
-                        Earnings_Home_VM earninghome =
-                            Provider.of<Earnings_Home_VM>(context,
-                                listen: false);
-                        earninghome.earningshomeAPIcall();
                         // GetterloginSetter s = GetterloginSetter();
                         _getterloginSetter.Account = _accountno.text;
                         _getterloginSetter.choosebank = _choosebank.text;

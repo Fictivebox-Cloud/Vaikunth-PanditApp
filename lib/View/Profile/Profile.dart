@@ -546,7 +546,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                 // SharedPreferences prefs =
                                 //     await SharedPreferences.getInstance();
                                 // prefs.remove('name');
-                                LoggedInUserBloc.instance().logout(context);
+                                await LoggedInUserBloc.instance().logout(context);
                                 Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(

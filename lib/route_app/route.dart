@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:panditapp/route_app/page_navigeter_name_route.dart';
 
+import '../View/Earning/components/Life_Time_Puja’s.dart';
 import '../View/Home/Home_Screen.dart';
+import '../View/Home/Pages/Notifications_screen.dart';
+import '../View/Profile/Profile.dart';
 import '../View/Splash_onboarding/Onboarding.dart';
 import '../View/Splash_onboarding/splash_screen.dart';
 import '../View/login_flow/OTP_Verify.dart';
@@ -24,6 +27,14 @@ class Routes{
 
       case RouteName.OTP_verify:
         return MaterialPageRoute(builder: (BuildContext context)=>OTP_verify() );
+
+      case RouteName.Profile_Screen:
+        return MaterialPageRoute(builder: (BuildContext context)=>Profile_Screen() );
+      case RouteName.Notifications_screen:
+        return MaterialPageRoute(builder: (BuildContext context)=>const Notifications_screen() );
+      case RouteName.Life_Time_Puja:
+        return MaterialPageRoute(builder: (BuildContext context)=>const Life_Time_Puja() );
+
 
         default:
           return MaterialPageRoute(builder: (_){

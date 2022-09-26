@@ -15,6 +15,9 @@ class RouteName{
   static const String servies_screen= 'servies_screen';
   static const String city_search_screen= 'servies_screen';
   static const  String Home_Screen= 'home_screen';
+  static const  String Profile_Screen= 'profile_screen';
+  static const  String Notifications_screen= 'notifications_screen';
+  static const  String Life_Time_Puja= 'life_time_puja';
 
 }
 
