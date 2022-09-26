@@ -5,6 +5,7 @@ import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Util/login_in_User.dart';
 import '../model/Booking Model/notification_model.dart';
 import '../model/Booking Model/view_details_model.dart';
 
@@ -36,9 +37,9 @@ class NotificationVM with ChangeNotifier{
   }
 
   NotificationAPIcall() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userId = await LoggedInUserBloc.instance().getUserId();
     setLoading(true);
-    String? userId = prefs.getString("pandit_id");
+
     var data={
       "pandit_id": userId,
     };
@@ -56,7 +57,7 @@ class NotificationVM with ChangeNotifier{
       UserError(code: response.code,message: response.errorResponse);
       setUserError(userError);
     }
-    setLoading(loading);
+    setLoading(false);
   }
 
 }

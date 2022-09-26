@@ -5,6 +5,7 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../Consts/text_const.dart';
+import '../../../Util/utils.dart';
 import '../../../consts/themescolor.dart';
 import '../../../view_model/BookingViewDetails/Complete_Bookings.dart';
 import '../../../view_model/home_tab/Accept_Booking_Api.dart';
@@ -135,15 +136,25 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                           child: const Icon(
                                             Icons.location_on,
                                             color: kPrimaryColor,
-                                          )),
-                                      // SizedBox(width: 19.32,),
-                                      InkWell(
-                                        onTap: () {
+                                          )
+                                      ),
 
-                                        },
-                                        child:
-                                        Image.asset(ImageConst().MANU),
-                                      )
+
+
+
+                                          PopupMenuButton(itemBuilder: (context) =>[
+                                            PopupMenuItem( child: Row(
+                                              children: [
+                                                Image.asset(ImageConst().REJECT),
+                                                SizedBox(width: 8,),
+                                                Text("Reject Booking")
+                                              ],
+                                            ))
+                                          ]
+
+                                          ),
+
+
 
                                     ],
                                   ),
@@ -243,6 +254,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                       : InkWell(
                                       onTap: () {
                                         setState(() {
+                                          Utils.toastMessage(ACCEPT_BOOKING);
                                           accept_bookingapi = Provider
                                               .of<Accept_Booking_Api>(
                                               context,
@@ -257,7 +269,6 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                                   .bookingId
                                                   .toString() ??
                                                   "");
-
                                           CompleteBookingViewModel
                                           completeBookingViewModel =
                                           Provider.of<

@@ -203,7 +203,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                                       Text(
                                         LIFE_TIME_PUJA,
                                         style: GoogleFonts.lato(
-                                            color: Color(
+                                            color: const Color(
                                               0xffECF1F6,
                                             ),
                                             fontWeight: FontWeight.w400,
