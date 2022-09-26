@@ -6,7 +6,7 @@ import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:panditapp/View/Home/Pages/BookingList.dart';
 import 'package:panditapp/View/Home/Pages/Notifications_screen.dart';
 import 'package:panditapp/View/Profile/Profile.dart';
-import 'package:panditapp/model/Booking%20Model/BookingModel.dart';
+import 'package:panditapp/model/Booking%20Model/booking_model.dart';
 import 'package:panditapp/view_model/home_tab/Online_Ofline_view_model.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
@@ -14,8 +14,8 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../Consts/text_const.dart';
 import '../../../Widgets/OnlineAndSwitch.dart';
-import '../../../consts/color1.dart';
 import '../../../consts/image_const.dart';
+import '../../../consts/themescolor.dart';
 import '../../../view_model/Login/Service_VM.dart';
 
 class Home_page_Screen extends StatelessWidget {
@@ -32,27 +32,27 @@ class Home_page_Screen extends StatelessWidget {
     ht = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        body: _ui(booking_request_view_model, context),
+        body: _listDesign(booking_request_view_model, context)
       ),
     );
   }
 
-  _ui(Booking_Request_View_Model booking_request_view_model,
-      BuildContext context) {
-    if (booking_request_view_model.loading) {
-      return Center(
-          child: CircularProgressIndicator(
-        color: kPrimaryColor,
-      ));
-    } else if (booking_request_view_model.userError != null) {
-      return Center(
-        child: Text(booking_request_view_model.userError?.message?.toString() ??
-            "Error"),
-      );
-    }
-    //return Text("GGG");
-    return _listDesign(booking_request_view_model, context);
-  }
+  // _ui(Booking_Request_View_Model booking_request_view_model,
+  //     BuildContext context) {
+  //   if (booking_request_view_model.loading) {
+  //     return const Center(
+  //         child: CircularProgressIndicator(
+  //       color: kPrimaryColor,
+  //     ));
+  //   } else if (booking_request_view_model.userError != null) {
+  //     return Center(
+  //       child: Text(booking_request_view_model.userError!.message!.toString() ??
+  //           "Error"),
+  //     );
+  //   }
+  //   //return Text("GGG");
+  //   return _listDesign(booking_request_view_model, context);
+  // }
 
   _listDesign(Booking_Request_View_Model booking_request_view_model,
       BuildContext context) {
@@ -102,11 +102,11 @@ class Home_page_Screen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Notifications_screen()));
+                          builder: (context) => const Notifications_screen()));
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Notifications_screen(),
+                      builder: (context) => const Notifications_screen(),
                     ),
                   );
                 },

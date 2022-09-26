@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
 import '../../Util/login_in_User.dart';
-import '../../model/Booking_View_Details/Check_booking_OTP_Model.dart';
+import '../../model/Booking_View_Details/check_booking_otp_model.dart';
 
 class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
   bool _loading = false;
@@ -40,10 +40,7 @@ class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
   Future<bool> getCheckBookingConfirm(
       {required dynamic userBooking_id, otpcode}) async {
     setLoading(true);
-
     String userId = await LoggedInUserBloc.instance().getUserId();
-    // String? userId = prefs.getString("pandit_id");
-    print("Pandit App user Id = ${userId}");
     Map<String, dynamic> data = {
       "pandit_id": userId,
       "booking_id": userBooking_id.toString(),

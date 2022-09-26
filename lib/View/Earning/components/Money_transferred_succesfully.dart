@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Consts/image_const.dart';
 import 'package:panditapp/View/Home/Home_Screen.dart';
-import '../../../Consts/color1.dart';
+
 import '../../../Consts/text_const.dart';
+import '../../../consts/themescolor.dart';
 
 class Money_transferred_succesfully extends StatefulWidget {
   const Money_transferred_succesfully({Key? key}) : super(key: key);

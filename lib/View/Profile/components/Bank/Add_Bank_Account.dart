@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/consts/text_const.dart';
 import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Store_bank_VM.dart';
 import 'package:provider/provider.dart';
-import '../../../../Consts/color1.dart';
 import '../../../../Widgets/circular_loader.dart';
+import '../../../../consts/themescolor.dart';
 import 'Personal_Bank_Details.dart';
 
 class Add_Bank_Account extends StatefulWidget {
@@ -98,7 +98,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                 },
                 child: provider.loading
                     ? Container(
-                        child: CircularProgressIndicator(
+                        child: const CircularProgressIndicator(
                           color: kPrimaryColor,
                         ),
                       )
@@ -125,20 +125,20 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
               ),
             ),
             appBar: AppBar(
-              title: Hero(tag: "_text", child: Text(ADDBANKACCOUNT)),
+              title: const Hero(tag: "_text", child: Text(ADDBANKACCOUNT)),
             ),
             body: store_bank_vm.loading
-                ? Center(child: CircularLoader())
+                ? const Center(child: CircularLoader())
                 : SingleChildScrollView(
                     child: SafeArea(
                       child:
                           //wrap with single child view
                           Container(
-                        padding: EdgeInsets.only(left: 16, right: 16),
+                        padding: const EdgeInsets.only(left: 16, right: 16),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 24,
                             ),
                             Text(
@@ -148,7 +148,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                   fontSize: 18,
                                   color: h1Color),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Padding(
@@ -160,12 +160,12 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                     cursorColor: colorPrimary,
                                     controller: _namecontroller,
                                     keyboardType: TextInputType.name,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         fillColor: grey,
                                         hintText: ACCOUNT_HOLDER_NAME,
                                         hintStyle: TextStyle(fontSize: 15),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                               color: colorPrimary, width: 2.0),
                                           // borderRadius: BorderRadius.circular(25.0),
                                         ),
@@ -182,7 +182,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 16,
                             ),
                             Text(
@@ -192,7 +192,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                   fontSize: 18,
                                   color: h1Color),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Padding(
@@ -204,12 +204,12 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                     cursorColor: colorPrimary,
                                     controller: _accountnocontroller,
                                     //keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         fillColor: grey,
                                         hintText: ACCOUNT_NO,
                                         hintStyle: TextStyle(fontSize: 15),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                               color: colorPrimary, width: 2.0),
                                           // borderRadius: BorderRadius.circular(25.0),
                                         ),
@@ -226,7 +226,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 16,
                             ),
                             Text(
@@ -236,7 +236,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                   fontWeight: FontWeight.w500,
                                   color: h1Color),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Padding(
@@ -248,12 +248,12 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                     cursorColor: colorPrimary,
                                     controller: _banknamecontroller,
                                     //keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         fillColor: grey,
                                         hintText: CHOOSE_BANK,
                                         hintStyle: TextStyle(fontSize: 15),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                               color: colorPrimary, width: 2.0),
                                           // borderRadius: BorderRadius.circular(25.0),
                                         ),
@@ -267,7 +267,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 16,
                             ),
                             Text(
@@ -277,7 +277,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                   fontSize: 18,
                                   color: h1Color),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Padding(
@@ -289,12 +289,12 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                     cursorColor: colorPrimary,
                                     controller: _ifsccodecontroller,
                                     //keyboardType: TextInputType.number,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         fillColor: grey,
                                         hintText: IFSC_CODE,
                                         hintStyle: TextStyle(fontSize: 15),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                               color: colorPrimary, width: 2.0),
                                           // borderRadius: BorderRadius.circular(25.0),
                                         ),

@@ -5,9 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/consts/image_const.dart';
 
 import 'package:provider/provider.dart';
-
-import '../../../Consts/color1.dart';
 import '../../../consts/text_const.dart';
+import '../../../consts/themescolor.dart';
 import '../../../view_model/Profile/Personal_Detail_View_Model.dart';
 import 'Bank/Pancard.dart';
 import 'Bank/View_Decuments.dart';

@@ -2,24 +2,24 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import '../Consts/text_const.dart';
+import 'package:panditapp/consts/text_const.dart';
+
 import '../Util/api_status.dart';
 
 import 'package:http/http.dart' as http;
 
+import '../Util/getHeader.dart';
+
 class ApiRemoteServices {
   static Future<Object?> fechingGetApi({String? apiUrl, dynamic? apiData}) async {
     try {
-      Map? body = apiData;
       var url = Uri.parse(apiUrl!);
-      // Map<String,String> header = await getHeader();
-      var headers = {
-        'Authorization': 'Basic YW05dVpVQXlPVGM0OlJrbFVUa1ZUVTBBak1USXo=',
-      };
+      Map<String,String> header = await getHeader();
+
       var response = await http
-          .post(url, body: body, headers: headers)
-          .timeout(const Duration(seconds: 15));
-      if (response.statusCode == 200) {
+          .post(url, body: apiData, headers: header)
+          .timeout(const Duration(seconds: timeoutSession));
+      if (response.statusCode == successResponse) {
           log("Data: ${response.body}");
         return Success(response: response.body);
       }

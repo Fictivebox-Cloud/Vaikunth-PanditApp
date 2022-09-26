@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../../Consts/color1.dart';
 import '../../../Consts/text_const.dart';
+import '../../../consts/themescolor.dart';
 import '../../../view_model/BookingViewDetails/ViewDetails_VM.dart';
 
 class Booking_Progress extends StatefulWidget {

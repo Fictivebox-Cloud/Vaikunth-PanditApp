@@ -2,11 +2,11 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Consts/image_const.dart';
-import 'package:panditapp/View/Booking/pages/Booking_Details.dart';
+import 'package:panditapp/View/Booking/pages/booking_details.dart';
 import 'package:panditapp/Widgets/circular_loader.dart';
 import 'package:provider/provider.dart';
-import '../../Consts/color1.dart';
 import '../../Consts/text_const.dart';
+import '../../consts/themescolor.dart';
 import '../../view_model/BookingViewDetails/Complete_Bookings.dart';
 
 class Bookings_Screen extends StatefulWidget {

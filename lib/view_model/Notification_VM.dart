@@ -5,8 +5,8 @@ import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../model/Booking Model/Notification_Model.dart';
-import '../model/Booking Model/ViewDetailsModel.dart';
+import '../model/Booking Model/notification_model.dart';
+import '../model/Booking Model/view_details_model.dart';
 
 class NotificationVM with ChangeNotifier{
   bool _loading = false;

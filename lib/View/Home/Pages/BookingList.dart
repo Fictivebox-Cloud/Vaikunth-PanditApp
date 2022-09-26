@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../Consts/color1.dart';
 import '../../../Consts/text_const.dart';
+import '../../../consts/themescolor.dart';
 import '../../../view_model/BookingViewDetails/Complete_Bookings.dart';
 import '../../../view_model/home_tab/Accept_Booking_Api.dart';
 
@@ -21,43 +21,36 @@ class BookingListTitl extends StatefulWidget {
 class _BookingListTitlState extends State<BookingListTitl> {
   Accept_Booking_Api? accept_bookingapi;
 
+
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<Booking_Request_View_Model>(
-      builder: (_, data, __) {
-        if (data.loading) {
-          return const CircularProgressIndicator();
-        } else if (data.userError != null) {
-          return Center(child: Text(data.userError!.message.toString()));
-        }
-        return _ui(widget.booking_request_view_model, context);
-      },
-    );
-  }
+    Booking_Request_View_Model booking_request_view_model=
+    Provider.of(context,listen: false);
 
-  _ui(Booking_Request_View_Model? booking_request_view_model,
-      BuildContext context) {
-    return booking_request_view_model!
-                .getbookinglistModel?.response!.bookinglist!.length ==
-            0
-        ? Container(
-            height: 500,
-            width: double.infinity,
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(ImageConst().EMPTYS),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  NO_BOOKING_REQUESTS,
-                  style: GoogleFonts.lato(color: kSecondaryColor, fontSize: 13),
-                )
-              ],
-            ),
+
+    return   booking_request_view_model
+        .getbookinglistModel?.response!.bookinglist!.length ==
+        0
+        ?  Container(
+      height: 500,
+      width: double.infinity,
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(ImageConst().EMPTYS),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            NO_BOOKING_REQUESTS,
+            style: GoogleFonts.lato(color: kSecondaryColor, fontSize: 13),
           )
+        ],
+      ),
+    )
+
         : ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
@@ -249,70 +242,71 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                                               .toString() ??
                                                           "");
 
-                                              CompleteBookingViewModel
-                                                  completeBookingViewModel =
-                                                  Provider.of<
-                                                          CompleteBookingViewModel>(
-                                                      context,
-                                                      listen: false);
-                                              completeBookingViewModel
-                                                  .completebookingAPIcall();
+                                        CompleteBookingViewModel
+                                        completeBookingViewModel =
+                                        Provider.of<
+                                            CompleteBookingViewModel>(
+                                            context,
+                                            listen: false);
+                                        completeBookingViewModel
+                                            .completebookingAPIcall();
 
-                                              booking_request_view_model
-                                                  .getbookinglistModel!
-                                                  .response!
-                                                  .bookinglist!
-                                                  .removeAt(index);
-                                            });
-                                          },
-                                          child: Container(
-                                            width: double.infinity,
-                                            height: 48,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        7),
-                                                color: buttonColor),
-                                            child: Center(
-                                                child: Text(
-                                              ACCEPT_BOOKING,
-                                              style: GoogleFonts.lato(
-                                                  fontSize: 16,
-                                                  color: white,
-                                                  fontWeight:
-                                                      FontWeight.w500),
-                                            )),
+                                        booking_request_view_model
+                                            .getbookinglistModel!
+                                            .response!
+                                            .bookinglist!
+                                            .removeAt(index);
+                                      });
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 48,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                          BorderRadius.circular(
+                                              7),
+                                          color: buttonColor),
+                                      child: Center(
+                                          child: Text(
+                                            ACCEPT_BOOKING,
+                                            style: GoogleFonts.lato(
+                                                fontSize: 16,
+                                                color: white,
+                                                fontWeight:
+                                                FontWeight.w500),
                                           )),
-                                )
-                              ],
-                            ),
+                                    )),
+                              )
+                            ],
                           ),
                         ),
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              ACCEPT_BOOKING_IN +
-                                  "${booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].time ?? ""}",
-                              style: GoogleFonts.lato(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: white),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-                ],
-              );
-            },
-            itemCount: booking_request_view_model!
-                .getbookinglistModel!.response!.bookinglist!.length,
-          );
-  }
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Text(
 
-  void _removeItem(int i) {}
+
+                            ACCEPT_BOOKING_IN +
+                                "${booking_request_view_model.getbookinglistModel!.response!.bookinglist![index].time ?? ""}",
+                            style: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: white),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
+      itemCount: booking_request_view_model
+          .getbookinglistModel?.response!.bookinglist!.length,
+    );
+
+  }
 }

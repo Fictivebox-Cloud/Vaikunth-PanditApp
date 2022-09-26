@@ -3,32 +3,24 @@ import 'package:panditapp/Consts/user_Error.dart';
 import 'package:panditapp/Util/Api_collection.dart';
 import 'package:panditapp/Util/api_status.dart';
 import 'package:panditapp/repo/api_remote_services.dart';
-import '../../model/Login Model/service_model.dart';
+import '../../../model/Profile_Screen/Bank_Account Details/DeleteBank_model.dart';
 
-class ServiceVM with ChangeNotifier{
+class Delete_Bank_VM with ChangeNotifier{
   bool _loading = false;
-  int? _index;
-  ServiceModel? _serviceModel;
+  DeleteBankModel? _deleteBankModel;
   UserError? _userError;
 
   bool get loading => _loading;
-  ServiceModel? get serviceModel => _serviceModel;
+  DeleteBankModel? get deleteBankModel => _deleteBankModel;
   UserError? get userError => _userError;
-  int? get index => _index;
-
-  setIndex(index){
-    _index = index;
-    notifyListeners();
-  }
-
 
   setLoading(loading){
     _loading = loading;
     notifyListeners();
   }
 
-  setServiceModel(ServiceModel serviceModel){
-    _serviceModel = serviceModel;
+  setDeleteBankModel(DeleteBankModel deleteBankModel){
+    _deleteBankModel = deleteBankModel;
     notifyListeners();
   }
   setUserError(UserError userError){
@@ -36,26 +28,23 @@ class ServiceVM with ChangeNotifier{
     notifyListeners();
   }
 
-  ServiceVm(){
-    serviceAPIcall();
-  }
-
-  serviceAPIcall() async{
+  Delete_Bank_APIcall({String? id,}) async{
     setLoading(true);
+    var data={
+      "bank_id":id,
+    };
 
     var response = await ApiRemoteServices.fechingGetApi(
-        apiUrl:GET_SERVICE_API,);
+        apiUrl:GET_DELETEBANK_API,apiData: data);
     if(response is Success){
-      Object data = serviceModelFromJson(response.response as String);
-
-      setServiceModel(data as ServiceModel);
-
+      Object data = deleteBankModelFromJson(response.response as String);
+      print("Govind delete  bank account ${response.response as String}");
+      setDeleteBankModel(data as DeleteBankModel);
     }
     else if (response is Failure){
       UserError userError  =
       UserError(code: response.code,message: response.errorResponse);
       setUserError(userError);
-      notifyListeners();
     }
     setLoading(false);
   }

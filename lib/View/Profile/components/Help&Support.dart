@@ -4,9 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../Consts/color1.dart';
 import '../../../Widgets/circular_loader.dart';
 import '../../../consts/text_const.dart';
+import '../../../consts/themescolor.dart';
 import '../../../view_model/Profile/Help_Support_Details_VM.dart';
 
 class Help_Support_Screen extends StatefulWidget {

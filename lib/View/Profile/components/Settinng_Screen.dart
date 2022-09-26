@@ -4,7 +4,8 @@ import 'package:panditapp/consts/image_const.dart';
 import 'package:panditapp/consts/text_const.dart';
 import 'package:provider/provider.dart';
 
-import '../../../Consts/color1.dart';
+
+import '../../../consts/themescolor.dart';
 import '../../../view_model/Profile/Help_Support_Details_VM.dart';
 import 'Help&Support.dart';
 
