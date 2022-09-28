@@ -72,6 +72,8 @@ dependencies:
   snippet_coder_utils: ^1.0.12
   autocomplete_textfield: ^2.0.1
   fluttertoast: ^8.0.9
+  charts_flutter_new: ^0.12.0
+
 
 
 

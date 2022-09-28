@@ -327,7 +327,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
           child: CircularProgressIndicator(color: kPrimaryColor,),
         )) : InkWell(
           onTap: (){
-            provider.getCheckBookingConfirm(userBooking_id: widget.bookingId,otpcode: "1234").then((value) {
+            provider.getCheckBookingConfirm(userBooking_id: widget.bookingId,otpcode: "1234".toString()).then((value) {
               print("Value $value");
               value ?  Navigator.push(context, MaterialPageRoute(builder: (context)=>   Booking_Progress())) : toast();
             });

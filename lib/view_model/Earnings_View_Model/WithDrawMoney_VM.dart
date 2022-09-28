@@ -20,7 +20,7 @@ class With_Draw_Money_VM with ChangeNotifier{
     notifyListeners();
   }
 
-  setwithDrawMoneyModel(WithDrawMoneyModel withDrawMoneyModel){
+  setWithDrawMoneyModel(WithDrawMoneyModel withDrawMoneyModel){
     _withDrawMoneyModel = withDrawMoneyModel;
     notifyListeners();
   }
@@ -29,12 +29,12 @@ class With_Draw_Money_VM with ChangeNotifier{
     notifyListeners();
   }
 
-  withdrawMoney_APIcall({String? id,}) async{
+  WithDrawMoney_APIcall({String? id,}) async{
     setLoading(true);
     String userId = await LoggedInUserBloc.instance().getUserId();
     var data={
-       //"bank_id":userId,
-       // "bank_id":"404",
+       "bank_id":userId,
+       // "bank_id":"7",
 
         "pandit_id": "7",
 
@@ -49,8 +49,8 @@ class With_Draw_Money_VM with ChangeNotifier{
     if(response is Success){
       Object data = withDrawMoneyModelFromJson(response.response as String);
       print("Govind with draw money ${response.response as String}");
-      print("Govind with draw money ${data}");
-      setwithDrawMoneyModel(data as WithDrawMoneyModel);
+      //print("Govind with draw money ${data}");
+      setWithDrawMoneyModel(data as WithDrawMoneyModel);
     }
     else if (response is Failure){
       UserError userError  =

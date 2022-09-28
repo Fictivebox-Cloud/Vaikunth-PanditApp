@@ -114,7 +114,7 @@ const String WITHDRAW_MONEY_TO_BANK_ACCOUNT = "Withdraw money to Bank Account";
 const String SEND_MONEY_TO_BANK_ACCOUNT = "Send money to account";
 
 const String NO_BOOKING_REQUESTS = "No booking requests";
-const String ACCEPT_BOOKING = "Accept Booking";
+const String ACCEPT_BOOKING = "Accepted Booking";
 const String ACCEPT_BOOKING_IN = "Accept booking in ";
 
 const String WELCOME_TO_VAIKUNTH = "Welcome to Vaikunth";
@@ -132,6 +132,9 @@ const String VAIKUNTH = "Vaikunth";
 const String DO_YOU_WANT_TO_EXIT = "Do you want to Exit ?";
 const String NO = "No";
 const String YES = "Yes";
+const String TOTAL_BOOKING = "Total Booking";
+const String ONLINE = "online";
+const String OFFLINE = "Offline";
 
 // Api Error
 

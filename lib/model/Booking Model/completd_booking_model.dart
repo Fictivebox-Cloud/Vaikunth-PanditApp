@@ -50,9 +50,9 @@ class Response {
   );
 
   Map<String, dynamic> toJson() => {
-    "compbookinglist": compbookinglist == null ? null : List<dynamic>.from(compbookinglist!.map((x) => x.toJson())),
-    "upcomingbookinglist": upcomingbookinglist == null ? null : List<dynamic>.from(upcomingbookinglist!.map((x) => x.toJson())),
-    "cancelbookinglist": cancelbookinglist == null ? null : List<dynamic>.from(cancelbookinglist!.map((x) => x.toJson())),
+    "compbookinglist": compbookinglist == null ? null : List<Compbookinglist>.from(compbookinglist!.map((x) => x.toJson())),
+    "upcomingbookinglist": upcomingbookinglist == null ? null : List<Upcomingbookinglist>.from(upcomingbookinglist!.map((x) => x.toJson())),
+    "cancelbookinglist": cancelbookinglist == null ? null : List<Cancelbookinglist>.from(cancelbookinglist!.map((x) => x.toJson())),
   };
 }
 

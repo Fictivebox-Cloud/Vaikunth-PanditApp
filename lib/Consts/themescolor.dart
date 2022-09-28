@@ -20,5 +20,6 @@ const Color divider = Color(0xffECF1F6);
 const Color black = Color(0xff262626);
 const Color red = Color(0xffFF1313);
 const Color logoutclr = Color(0xffC70000);
+const Color dividerr = Color(0xffCACACA);
 
 

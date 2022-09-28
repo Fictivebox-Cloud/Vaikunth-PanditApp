@@ -10,6 +10,8 @@ import '../../Widgets/circular_loader.dart';
 import '../../consts/themescolor.dart';
 import '../../route_app/page_navigeter_name_route.dart';
 import '../../view_model/Earnings_View_Model/WithDrawMoney_VM.dart';
+import 'Graph_Srceen/Monthly_Graph_Screen.dart';
+import 'Graph_Srceen/Weekly_Graph_Screen.dart';
 
 class Earnings_Screen extends StatefulWidget {
   const Earnings_Screen({Key? key}) : super(key: key);
@@ -105,9 +107,9 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                With_Draw_Money_VM deletebank =
+                                With_Draw_Money_VM withdrawmoney=
                                 Provider.of<With_Draw_Money_VM>(context, listen: false);
-                                deletebank.withdrawMoney_APIcall();
+                                withdrawmoney.WithDrawMoney_APIcall();
 
                                 showModalBottomSheet(
                                     context: context,
@@ -253,39 +255,20 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                         SizedBox(
                           height: 8,
                         ),
+
+                        //Bar_Chart_Screen(),
+
                         Container(
                           width: double.infinity,
-                          height: wt * 0.9,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              border: Border.all(width: 1, color: p1Color)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 16, right: 16, top: 10),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                                  children: [
-                                    Icon(
-                                      Icons.arrow_back_ios,
-                                    ),
-                                    Column(
-                                      children: const [
-                                        Text("Dec 7-13"),
-                                        Text("₹1200.00"),
-                                      ],
-                                    ),
-                                    const Icon(Icons.arrow_forward_ios)
-                                  ],
-                                ),
-                              ],
-                            ),
+                          height: 263,
+                          child: Column(
+                            children: [
+                              Expanded(child: Weekly_Graph_Screen()),
+                            ],
                           ),
                         ),
+
+
                         const SizedBox(
                           height: 24,
                         ),
@@ -301,10 +284,12 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                         ),
                         Container(
                           width: double.infinity,
-                          height: wt * 0.9,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(4),
-                              border: Border.all(width: 1, color: p1Color)),
+                          height: 263,
+                          child: Column(
+                            children: [
+                              Expanded(child: Monthly_Graph_Screen()),
+                            ],
+                          ),
                         ),
                       ],
                     ),
