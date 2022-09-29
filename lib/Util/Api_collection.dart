@@ -22,3 +22,4 @@ const String GET_UPDATEPROFILE_API = "${BASEURL}updateprofile";
 const String GET_EARNINGSHOME_API = "${BASEURL}earningshome";
 const String GET_DELETEBANK_API = "${BASEURL}deletebank";
 const String GET_WITHDRAWMONEY_API = "${BASEURL}withdrawmoney";
+const String GET_REJECTBOOKING_API = "${BASEURL}rejectooking";

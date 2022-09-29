@@ -119,6 +119,7 @@ const String ACCEPT_BOOKING_IN = "Accept booking in ";
 
 const String WELCOME_TO_VAIKUNTH = "Welcome to Vaikunth";
 const String BOOKINGS_REQUEST = "Bookings Request";
+const String REJECTED_BOOKING = "Rejected Booking";
 
 const String NOTIFICATIONS = "Notifications";
 const String JUST_NOW = "Just Now";

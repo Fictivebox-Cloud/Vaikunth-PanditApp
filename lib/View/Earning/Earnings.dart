@@ -10,6 +10,7 @@ import '../../Widgets/circular_loader.dart';
 import '../../consts/themescolor.dart';
 import '../../route_app/page_navigeter_name_route.dart';
 import '../../view_model/Earnings_View_Model/WithDrawMoney_VM.dart';
+import '../../view_model/home_tab/Reject_Booking_VM.dart';
 import 'Graph_Srceen/Monthly_Graph_Screen.dart';
 import 'Graph_Srceen/Weekly_Graph_Screen.dart';
 
@@ -290,6 +291,9 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                               Expanded(child: Monthly_Graph_Screen()),
                             ],
                           ),
+                        ),
+                        SizedBox(
+                          height: 24,
                         ),
                       ],
                     ),

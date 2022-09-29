@@ -339,7 +339,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                         completeBookingViewModel
                                             .completebokingmodel!
                                             .response!
-                                            .compbookinglist![index]
+                                            .compbookinglist![0]
                                             .poojaDate ??
                                             "",
                                         style: GoogleFonts.lato(
@@ -368,7 +368,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                   completeBookingViewModel
                                       .completebokingmodel!
                                       .response!
-                                      .compbookinglist![index]
+                                      .compbookinglist![0]
                                       .hostname ??
                                       "",
                                   style: GoogleFonts.lato(

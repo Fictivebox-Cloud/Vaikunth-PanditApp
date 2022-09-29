@@ -34,7 +34,8 @@ class Delete_Bank_VM with ChangeNotifier{
     String userId = await LoggedInUserBloc.instance().getUserId();
     var data={
      // "bank_id":userId,
-      "bank_id":"2",
+     // "bank_id":"402",
+      "id": "402"
     };
 
     var response = await ApiRemoteServices.fechingGetApi(

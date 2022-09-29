@@ -22,6 +22,7 @@ import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Update_Ban
 import 'package:panditapp/view_model/BookingViewDetails/ViewDetails_VM.dart';
 import 'package:panditapp/view_model/home_tab/Accept_Booking_Api.dart';
 import 'package:panditapp/view_model/home_tab/Online_Ofline_view_model.dart';
+import 'package:panditapp/view_model/home_tab/Reject_Booking_VM.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:panditapp/view_model/Login/verification_number_api.dart';
 import 'package:provider/provider.dart';
@@ -62,6 +63,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => Earnings_Home_VM()),
         ChangeNotifierProvider(create: (_) => Delete_Bank_VM()),
         ChangeNotifierProvider(create: (_) => With_Draw_Money_VM()),
+        ChangeNotifierProvider(create: (_) => Reject_Booking_VM()),
       ],
       child: const MyApp(),
     ),
@@ -81,7 +83,7 @@ class MyApp extends StatelessWidget {
           primaryColor: kPrimaryColor,
           appBarTheme: AppBarTheme(color: kPrimaryColor)),
           initialRoute:RouteName.SplashScreen,
-      //initialRoute:RouteName.Name_screen,
+          //initialRoute:RouteName.Name_screen,
       onGenerateRoute: Routes.generateRoutes,
     );
   }
