@@ -41,6 +41,18 @@ class Account_details extends StatefulWidget {
   State<Account_details> createState() => _Account_detailsState();
 }
 
+class UpperCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    return TextEditingValue(
+      text: newValue.text.toUpperCase(),
+      selection: newValue.selection,
+    );
+  }
+}
+
+
 class _Account_detailsState extends State<Account_details> {
   var ht, wt;
 
@@ -169,20 +181,39 @@ class _Account_detailsState extends State<Account_details> {
                         height: 8,
                       ),
                       Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            border: Border.all(width: 1, color: h1Color)),
-                        child: TextFormField(
+                        height: 48,
+                        // decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(4),
+                        //     border: Border.all(width: 1, color: h1Color)),
+                        child: TextField(
                           cursorColor: colorPrimary,
                           controller: _accountno,
-                          keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintStyle: GoogleFonts.lato(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                                color: kSecondaryColor),
-                          ),
+                            //prefixIcon: const Icon(Icons.search,color: p1Color,),
+                              fillColor: grey,
+                              hintStyle: GoogleFonts.lato(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: kSecondaryColor),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: colorPrimary, width: 2.0),
+                                // borderRadius: BorderRadius.circular(25.0),
+                              ),
+                              border: OutlineInputBorder(
+
+                                //borderRadius: BorderRadius.circular(24)
+                              )),
+                          inputFormatters: [
+
+                            FilteringTextInputFormatter.deny(
+                                RegExp(r'\s')),
+                            LengthLimitingTextInputFormatter(18),
+                            //UpperCaseTextFormatter(),
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[0-9]")),
+                          ],
+                          textCapitalization:TextCapitalization.characters,
                         ),
                       ),
                       SizedBox(
@@ -239,7 +270,8 @@ class _Account_detailsState extends State<Account_details> {
                       ),
                       Container(
                         height: 48,
-                        child: TextField(
+                        child:
+                        TextField(
                           cursorColor: colorPrimary,
                           controller: _ifsccode,
                           decoration: InputDecoration(
@@ -259,10 +291,15 @@ class _Account_detailsState extends State<Account_details> {
                                   //borderRadius: BorderRadius.circular(24)
                                   )),
                           inputFormatters: [
+
+                              FilteringTextInputFormatter.deny(
+                                  RegExp(r'\s')),
                             LengthLimitingTextInputFormatter(10),
+                            UpperCaseTextFormatter(),
                             FilteringTextInputFormatter.allow(
                                 RegExp("[a-z A-Z 0-9]")),
                           ],
+                          textCapitalization:TextCapitalization.characters,
                         ),
                       ),
                     ],

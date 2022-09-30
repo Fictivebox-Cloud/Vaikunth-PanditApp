@@ -27,7 +27,16 @@ class Documents_Screen extends StatefulWidget {
   @override
   State<Documents_Screen> createState() => _Documents_ScreenState();
 }
-
+class UpperCaseTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    return TextEditingValue(
+      text: newValue.text.toUpperCase(),
+      selection: newValue.selection,
+    );
+  }
+}
 class _Documents_ScreenState extends State<Documents_Screen> {
   var ht, wt;
   File? pickedImage0;
@@ -299,9 +308,11 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                                   )),
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10),
+                            UpperCaseTextFormatter(),
                             FilteringTextInputFormatter.allow(
                                 RegExp("[a-zA-Z0-9]")),
                           ],
+                          textCapitalization:TextCapitalization.characters,
                         ),
                       ),
                     ],

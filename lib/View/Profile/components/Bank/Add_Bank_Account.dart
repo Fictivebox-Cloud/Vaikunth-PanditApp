@@ -302,6 +302,8 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                     inputFormatters: [
                                       UpperCaseTextFormatter(),
                                       LengthLimitingTextInputFormatter(11),
+                                      FilteringTextInputFormatter.deny(
+                                          RegExp(r'\s')),
                                       FilteringTextInputFormatter.allow(
                                           RegExp("[A-Z a-z 0-9]")),
                                     ],

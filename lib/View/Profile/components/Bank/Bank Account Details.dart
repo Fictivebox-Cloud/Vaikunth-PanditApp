@@ -332,6 +332,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                                               //borderRadius: BorderRadius.circular(24)
                                               )),
                                       inputFormatters: [
+                                        FilteringTextInputFormatter.deny(RegExp(r'\s')),
                                         LengthLimitingTextInputFormatter(11),
                                         UpperCaseTextFormatter(),
                                         FilteringTextInputFormatter.allow(

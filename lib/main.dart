@@ -82,8 +82,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primaryColor: kPrimaryColor,
           appBarTheme: AppBarTheme(color: kPrimaryColor)),
-          initialRoute:RouteName.SplashScreen,
-          //initialRoute:RouteName.Name_screen,
+          //initialRoute:RouteName.SplashScreen,
+          initialRoute:RouteName.Name_screen,
       onGenerateRoute: Routes.generateRoutes,
     );
   }
