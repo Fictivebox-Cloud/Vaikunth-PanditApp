@@ -339,7 +339,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                         completeBookingViewModel
                                             .completebokingmodel!
                                             .response!
-                                            .compbookinglist![0]
+                                            .compbookinglist![index]
                                             .poojaDate ??
                                             "",
                                         style: GoogleFonts.lato(
@@ -522,7 +522,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                             completeBookingViewModel
                                                 .completebokingmodel
                                                 ?.response!
-                                                .cancelbookinglist![index]
+                                                .cancelbookinglist![0]
                                                 .bookingPujaDate ??
                                                 "",
                                             //"Mon 05/Oct/2021",

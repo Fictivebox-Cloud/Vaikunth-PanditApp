@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:panditapp/consts/themescolor.dart';
 import 'package:panditapp/route_app/page_navigeter_name_route.dart';
 import 'package:panditapp/route_app/route.dart';
 import 'package:panditapp/view_model/Earnings_View_Model/Life_Time_Pujas_VM.dart';
@@ -28,8 +29,6 @@ import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:panditapp/view_model/Login/verification_number_api.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'View/Splash_onboarding/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -77,16 +76,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color kPrimaryColor = Color(0xffFF7D33);
+    Color PrimaryColor = kPrimaryColor;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: kPrimaryColor,
-          appBarTheme: AppBarTheme(color: kPrimaryColor)),
+          primaryColor: PrimaryColor,
+          appBarTheme: AppBarTheme(color: PrimaryColor)),
           initialRoute:RouteName.SplashScreen,
-          // initialRoute:RouteName.Name_screen,
-      onGenerateRoute: Routes.generateRoutes,
+          onGenerateRoute: Routes.generateRoutes,
     );
   }
 }

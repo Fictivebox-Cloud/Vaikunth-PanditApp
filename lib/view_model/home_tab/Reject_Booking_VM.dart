@@ -40,12 +40,11 @@ class Reject_Booking_VM extends ChangeNotifier {
     print("Pandit App = ${userId}");
     setLoading(true);
     Map<String, dynamic> data = {
-      // "pandit_id": "402",
-      // "booking_id": "749"
       "pandit_id": userId,
       "booking_id": userbooking
     };
     setLoading(true);
+    print("userbooking :> $userbooking");
 
     var response = await ApiRemoteServices.fechingGetApi(
         apiUrl: GET_REJECTBOOKING_API, apiData: data);

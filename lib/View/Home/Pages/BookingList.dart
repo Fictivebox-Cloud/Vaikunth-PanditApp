@@ -123,7 +123,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                             .response!
                                             .bookinglist![index]
                                             .bookingPujaDate
-                                            .toString(),
+                                            ??"",
                                         style: GoogleFonts.lato(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
@@ -323,7 +323,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
               );
             },
             itemCount: booking_request_view_model
-                .getbookinglistModel!.response!.bookinglist!.length,
+                .getbookinglistModel?.response!.bookinglist!.length ?? 0,
           );
   }
 }

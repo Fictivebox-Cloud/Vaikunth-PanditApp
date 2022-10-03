@@ -3,8 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Pandit_Bank_List_VM.dart';
 import 'package:provider/provider.dart';
 import '../../../../Consts/text_const.dart';
+import '../../../../Util/utils.dart';
 import '../../../../Widgets/circular_loader.dart';
 import '../../../../consts/themescolor.dart';
+import '../../../../route_app/page_navigeter_name_route.dart';
 import '../../../../view_model/Profile/Bank Account Details/Delete_Bank_VM.dart';
 import '../../../../view_model/Profile/Bank Account Details/Update_Bank_VM.dart';
 import 'Add_Bank_Account.dart';
@@ -31,8 +33,9 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
               const EdgeInsets.only(left: 16, right: 16, bottom: 22, top: 16),
           child: GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Add_Bank_Account()));
+              setState(() {
+                Navigator.pushNamed(context, RouteName.Add_Bank_Account);
+              });
             },
             child: Container(
               width: double.infinity,
@@ -92,15 +95,15 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
                                       panditbanklist
                                           .panditBankListModel!
                                           .response!
-                                          .panditbanklist![index]
-                                          .accountHolderName
+                                          .panditbanklist![0]
+                                           .accountHolderName
                                           .toString(),
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w500,
                                           color: p1Color),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Row(
                                       children: [
                                         InkWell(
@@ -161,7 +164,9 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
                                             onTap: () {
                                               Delete_Bank_VM deletebank =
                                               Provider.of<Delete_Bank_VM>(context, listen: false);
-                                              deletebank.Delete_Bank_APIcall();
+                                              deletebank.Delete_Bank_APIcall(id: panditbanklist.panditBankListModel!.response!.panditbanklist![index].id.toString()).toString();
+                                              panditbanklist.panditBankListModel!.response!.panditbanklist!.removeAt(index);
+
                                             },
                                             child: Text(
                                               DELETE,
