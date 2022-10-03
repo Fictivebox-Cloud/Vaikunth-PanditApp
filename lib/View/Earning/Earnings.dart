@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:panditapp/View/Earning/components/Life_Time_Puja%E2%80%99s.dart';
+
 import 'package:panditapp/View/Earning/components/Money_transferred_succesfully.dart';
 import 'package:panditapp/view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +9,7 @@ import '../../Consts/text_const.dart';
 import '../../Widgets/circular_loader.dart';
 import '../../consts/themescolor.dart';
 import '../../route_app/page_navigeter_name_route.dart';
+import '../../view_model/Earnings_View_Model/Life_Time_Pujas_VM.dart';
 import '../../view_model/Earnings_View_Model/WithDrawMoney_VM.dart';
 import '../../view_model/home_tab/Reject_Booking_VM.dart';
 import 'Graph_Srceen/Monthly_Graph_Screen.dart';
@@ -23,11 +24,16 @@ class Earnings_Screen extends StatefulWidget {
 
 class _Earnings_ScreenState extends State<Earnings_Screen> {
   late Earnings_Home_VM earnings_home_vm;
+  late Life_Time_Puja_List_VM life_time_puja_list_vm;
   var ht, wt;
 
   Future<void> _refresh(bool reload, BuildContext context){
     earnings_home_vm = Provider.of<Earnings_Home_VM?>(context,listen: false)!;
     earnings_home_vm.earningshomeAPIcall(reload);
+
+    // life_time_puja_list_vm = Provider.of<Life_Time_Puja_List_VM?>(context,listen: false)!;
+    // life_time_puja_list_vm.lifetimepujaAPIcall(reload);
+
     return Future.delayed(const Duration(seconds: 0));
 
 
@@ -192,7 +198,9 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                             ),
                             InkWell(
                               onTap: () {
-                                Navigator.pushNamed(context, RouteName.Life_Time_Puja);
+                                life_time_puja_list_vm = Provider.of<Life_Time_Puja_List_VM?>(context,listen: false)!;
+                                life_time_puja_list_vm.lifetimepujaAPIcall();
+                                Navigator.pushNamed(context, RouteName.Life_time_puja);
                               },
                               child: Container(
                                 width: 156,

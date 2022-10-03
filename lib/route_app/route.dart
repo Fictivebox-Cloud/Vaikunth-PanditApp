@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:panditapp/View/login_flow/Name_Screen.dart';
 import 'package:panditapp/route_app/page_navigeter_name_route.dart';
 
-import '../View/Earning/components/Life_Time_Puja’s.dart';
+import '../View/Earning/components/Life_Time_Puja.dart';
 import '../View/Home/Home_Screen.dart';
 import '../View/Home/Pages/Notifications_screen.dart';
 import '../View/Profile/Profile.dart';
@@ -33,16 +33,16 @@ class Routes{
         return MaterialPageRoute(builder: (BuildContext context)=>Name_Screen() );
 
       case RouteName.Profile_Screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>Profile_Screen() );
+        return MaterialPageRoute(builder: (BuildContext context)=>const Profile_Screen() );
       case RouteName.Notifications_screen:
         return MaterialPageRoute(builder: (BuildContext context)=>const Notifications_screen() );
-      case RouteName.Life_Time_Puja:
-        return MaterialPageRoute(builder: (BuildContext context)=>const Life_Time_Puja() );
+      case RouteName.Life_time_puja:
+        return MaterialPageRoute(builder: (BuildContext context)=>const LifeTimePuja() );
 
 
         default:
           return MaterialPageRoute(builder: (_){
-          return Scaffold(
+          return const Scaffold(
           body: Center(
             child: Text("No route defined "),
           ),

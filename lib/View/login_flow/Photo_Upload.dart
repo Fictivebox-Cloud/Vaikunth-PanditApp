@@ -9,6 +9,7 @@ import 'package:panditapp/Consts/text_const.dart';
 import 'package:panditapp/View/login_flow/Servies_you_provide.dart';
 import 'package:panditapp/consts/image_const.dart';
 import 'package:panditapp/model/getterSetter.dart';
+import 'package:panditapp/view_model/Earnings_View_Model/Life_Time_Pujas_VM.dart';
 import 'package:provider/provider.dart';
 import '../../consts/themescolor.dart';
 import '../../view_model/Earnings_View_Model/WithDrawMoney_VM.dart';
@@ -300,6 +301,10 @@ class _MyAppState extends State<Photo_Upload> {
                                   listen: false);
                           panditbanklist.panditbankListAPIcall();
 
+                          //  Life_Time_Puja_List_VM lifetimepuja =
+                          // Provider.of<Life_Time_Puja_List_VM>(context,
+                          //     listen: false);
+                          // lifetimepuja.lifetimepujaAPIcall(reload);
 
                           GetterloginSetter getterloginsetter =
                               GetterloginSetter();

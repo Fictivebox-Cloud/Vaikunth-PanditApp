@@ -17,7 +17,7 @@ class RouteName{
   static const  String Home_Screen= 'home_screen';
   static const  String Profile_Screen= 'profile_screen';
   static const  String Notifications_screen= 'notifications_screen';
-  static const  String Life_Time_Puja= 'life_time_puja';
+  static const  String Life_time_puja= 'life_time_puja';
 
 }
 

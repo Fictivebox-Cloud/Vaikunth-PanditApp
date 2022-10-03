@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:panditapp/route_app/page_navigeter_name_route.dart';
 import 'package:panditapp/route_app/route.dart';
+import 'package:panditapp/view_model/Earnings_View_Model/Life_Time_Pujas_VM.dart';
 import 'package:panditapp/view_model/Earnings_View_Model/WithDrawMoney_VM.dart';
 import 'package:panditapp/view_model/Login/ApiCallLogin.dart';
 import 'package:panditapp/view_model/BookingViewDetails/Check_Booking_Confirm_OTP.dart';
@@ -64,6 +65,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => Delete_Bank_VM()),
         ChangeNotifierProvider(create: (_) => With_Draw_Money_VM()),
         ChangeNotifierProvider(create: (_) => Reject_Booking_VM()),
+        ChangeNotifierProvider(create: (_) => Life_Time_Puja_List_VM()),
       ],
       child: const MyApp(),
     ),
@@ -82,8 +84,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primaryColor: kPrimaryColor,
           appBarTheme: AppBarTheme(color: kPrimaryColor)),
-          //initialRoute:RouteName.SplashScreen,
-          initialRoute:RouteName.Name_screen,
+          initialRoute:RouteName.SplashScreen,
+          // initialRoute:RouteName.Name_screen,
       onGenerateRoute: Routes.generateRoutes,
     );
   }
