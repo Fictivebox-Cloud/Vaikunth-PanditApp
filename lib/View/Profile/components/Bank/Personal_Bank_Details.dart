@@ -95,15 +95,15 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
                                       panditbanklist
                                           .panditBankListModel!
                                           .response!
-                                          .panditbanklist![index]
-                                          .accountHolderName
+                                          .panditbanklist![0]
+                                           .accountHolderName
                                           .toString(),
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w500,
                                           color: p1Color),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Row(
                                       children: [
                                         InkWell(
@@ -164,7 +164,9 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
                                             onTap: () {
                                               Delete_Bank_VM deletebank =
                                               Provider.of<Delete_Bank_VM>(context, listen: false);
-                                              deletebank.Delete_Bank_APIcall();
+                                              deletebank.Delete_Bank_APIcall(id: panditbanklist.panditBankListModel!.response!.panditbanklist![index].id.toString()).toString();
+                                              panditbanklist.panditBankListModel!.response!.panditbanklist!.removeAt(index);
+
                                             },
                                             child: Text(
                                               DELETE,

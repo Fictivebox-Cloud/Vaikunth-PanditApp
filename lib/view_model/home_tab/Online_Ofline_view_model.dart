@@ -41,6 +41,7 @@ class Online_Ofline_View_Model extends ChangeNotifier {
     Map<String, dynamic> data = {"pandit_id": userId, "status": userStatus};
     var response = await ApiRemoteServices.fechingGetApi(
         apiUrl: GET_ONLINE_OFLINE_API, apiData: data);
+    print(userStatus);
     if (response is Success) {
       Object data = onlineOflineModelFromJson(response.response as String);
       setOnlineOfline(data as OnlineOflineModel);

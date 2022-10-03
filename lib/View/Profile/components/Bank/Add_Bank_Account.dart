@@ -95,7 +95,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => Persional_Bank_Details(
-                                bank_id: '',
+                                bank_id: ""
                               )));
                 },
                 child: provider.loading
@@ -304,6 +304,8 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                                     inputFormatters: [
                                       UpperCaseTextFormatter(),
                                       LengthLimitingTextInputFormatter(11),
+                                      FilteringTextInputFormatter.deny(
+                                          RegExp(r'\s')),
                                       FilteringTextInputFormatter.allow(
                                           RegExp("[A-Z a-z 0-9]")),
                                     ],

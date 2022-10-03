@@ -16,6 +16,7 @@ import '../../view_model/Profile/Bank Account Details/Bank_List_VM.dart';
 import '../../view_model/Profile/Bank Account Details/Delete_Bank_VM.dart';
 import '../../view_model/Profile/Bank Account Details/Pandit_Bank_List_VM.dart';
 import '../../view_model/Login/Service_VM.dart';
+import '../../view_model/home_tab/Reject_Booking_VM.dart';
 
 class Photo_Upload extends StatefulWidget {
   final String? name, mobile;
@@ -298,6 +299,7 @@ class _MyAppState extends State<Photo_Upload> {
                               Provider.of<Pandit_Bank_List_VM>(context,
                                   listen: false);
                           panditbanklist.panditbankListAPIcall();
+
 
                           GetterloginSetter getterloginsetter =
                               GetterloginSetter();

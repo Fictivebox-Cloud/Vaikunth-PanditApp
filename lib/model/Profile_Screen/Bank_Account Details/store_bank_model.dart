@@ -28,7 +28,7 @@ class StoreBankModel {
   Map<String, dynamic> toJson() => {
     "success": success == null ? null : success,
     "message": message == null ? null : message,
-    "response": response == null ? null : response?.toJson(),
+    "response": response == null ? null : response!.toJson(),
   };
 }
 
@@ -37,7 +37,7 @@ class Response {
     this.bankDetails,
   });
 
-  int? bankDetails;
+  int ?bankDetails;
 
   factory Response.fromJson(Map<String, dynamic> json) => Response(
     bankDetails: json["bank_details"] == null ? null : json["bank_details"],

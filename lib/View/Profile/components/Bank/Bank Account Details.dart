@@ -109,7 +109,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => Persional_Bank_Details(
-                              bank_id: "",
+                              bank_id:"" ,
                             )));
               },
               child: provider.loading
@@ -157,196 +157,193 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
               displacement: 0,
                 child: SingleChildScrollView(
 
-                      child: SafeArea(
-                        child:
-                            //wrap with single child view
-                            Container(
+                      child: Container(
                           padding: EdgeInsets.only(left: 16, right: 16),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 24,
-                              ),
-                              Text(
-                                ACCOUNT_HOLDER_NAME,
-                                style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                    color: h1Color),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 0, right: 0),
-                                child: Center(
-                                  child: SizedBox(
-                                    height: 48,
-                                    child: TextField(
-                                      cursorColor: colorPrimary,
-                                      controller: _namecontroller,
-                                      keyboardType: TextInputType.name,
-                                      decoration: InputDecoration(
-                                          fillColor: grey,
-                                          hintText: ACCOUNT_HOLDER_NAME,
-                                          hintStyle: TextStyle(fontSize: 15),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: colorPrimary, width: 2.0),
-                                            // borderRadius: BorderRadius.circular(25.0),
-                                          ),
-                                          border: OutlineInputBorder(
-
-                                              //borderRadius: BorderRadius.circular(24)
-                                              )),
-                                      inputFormatters: [
-                                        FilteringTextInputFormatter.allow(
-                                            RegExp("[a-z A-Z]")),
-                                      ],
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 24,
+                        ),
+                        Text(
+                          ACCOUNT_HOLDER_NAME,
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                              color: h1Color),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0, right: 0),
+                          child: Center(
+                            child: SizedBox(
+                              height: 48,
+                              child: TextField(
+                                cursorColor: colorPrimary,
+                                controller: _namecontroller,
+                                keyboardType: TextInputType.name,
+                                decoration: InputDecoration(
+                                    fillColor: grey,
+                                    hintText: ACCOUNT_HOLDER_NAME,
+                                    hintStyle: TextStyle(fontSize: 15),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                          color: colorPrimary, width: 2.0),
+                                      // borderRadius: BorderRadius.circular(25.0),
                                     ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 16,
-                              ),
-                              Text(
-                                ACCOUNT_NO,
-                                style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                    color: h1Color),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 0, right: 0),
-                                child: Center(
-                                  child: SizedBox(
-                                    height: 48,
-                                    child: TextField(
-                                      cursorColor: colorPrimary,
-                                      controller: _accountnocontroller,
-                                      //keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
-                                          fillColor: grey,
-                                          hintText: ACCOUNT_NO,
-                                          hintStyle: TextStyle(fontSize: 15),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: colorPrimary, width: 2.0),
-                                            // borderRadius: BorderRadius.circular(25.0),
-                                          ),
-                                          border: OutlineInputBorder(
+                                    border: OutlineInputBorder(
 
-                                              //borderRadius: BorderRadius.circular(24)
-                                              )),
-                                      inputFormatters: [
-                                        //LengthLimitingTextInputFormatter(10),
-                                        FilteringTextInputFormatter.allow(
-                                            RegExp("[0-9]")),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                                        //borderRadius: BorderRadius.circular(24)
+                                        )),
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp("[a-z A-Z]")),
+                                ],
                               ),
-                              SizedBox(
-                                height: 16,
-                              ),
-                              Text(
-                                CHOOSE_BANK,
-                                style: GoogleFonts.lato(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w500,
-                                    color: h1Color),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 0, right: 0),
-                                child: Center(
-                                  child: SizedBox(
-                                    height: 48,
-                                    child: TextField(
-                                      cursorColor: colorPrimary,
-                                      controller: _banknamecontroller,
-                                      //keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
-                                          fillColor: grey,
-                                          hintText: IFSC_CODE,
-                                          hintStyle: TextStyle(fontSize: 15),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: colorPrimary, width: 2.0),
-                                            // borderRadius: BorderRadius.circular(25.0),
-                                          ),
-                                          border: OutlineInputBorder(
-
-                                              //borderRadius: BorderRadius.circular(24)
-                                              )),
-                                      inputFormatters: [
-                                        //LengthLimitingTextInputFormatter(10),
-                                        FilteringTextInputFormatter.allow(
-                                            RegExp("[a-z A-Z]")),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 16,
-                              ),
-                              Text(
-                                IFSC_CODE,
-                                style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18,
-                                    color: h1Color),
-                              ),
-                              SizedBox(
-                                height: 8,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 0, right: 0),
-                                child: Center(
-                                  child: SizedBox(
-                                    height: 48,
-                                    child: TextField(
-                                      cursorColor: colorPrimary,
-                                      controller: _ifsccodecontroller,
-                                      //keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
-                                          fillColor: grey,
-                                          hintText: IFSC_CODE,
-                                          hintStyle: TextStyle(fontSize: 15),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
-                                                color: colorPrimary, width: 2.0),
-                                            // borderRadius: BorderRadius.circular(25.0),
-                                          ),
-                                          border: OutlineInputBorder(
-
-                                              //borderRadius: BorderRadius.circular(24)
-                                              )),
-                                      inputFormatters: [
-                                        LengthLimitingTextInputFormatter(11),
-                                        UpperCaseTextFormatter(),
-                                        FilteringTextInputFormatter.allow(
-                                            RegExp("[a-z A-Z 0-9]")),
-                                      ],
-                                      textCapitalization:
-                                          TextCapitalization.characters,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          ACCOUNT_NO,
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                              color: h1Color),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0, right: 0),
+                          child: Center(
+                            child: SizedBox(
+                              height: 48,
+                              child: TextField(
+                                cursorColor: colorPrimary,
+                                controller: _accountnocontroller,
+                                //keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                    fillColor: grey,
+                                    hintText: ACCOUNT_NO,
+                                    hintStyle: TextStyle(fontSize: 15),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                          color: colorPrimary, width: 2.0),
+                                      // borderRadius: BorderRadius.circular(25.0),
+                                    ),
+                                    border: OutlineInputBorder(
+
+                                        //borderRadius: BorderRadius.circular(24)
+                                        )),
+                                inputFormatters: [
+                                  //LengthLimitingTextInputFormatter(10),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp("[0-9]")),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          CHOOSE_BANK,
+                          style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: h1Color),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0, right: 0),
+                          child: Center(
+                            child: SizedBox(
+                              height: 48,
+                              child: TextField(
+                                cursorColor: colorPrimary,
+                                controller: _banknamecontroller,
+                                //keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                    fillColor: grey,
+                                    hintText: IFSC_CODE,
+                                    hintStyle: TextStyle(fontSize: 15),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                          color: colorPrimary, width: 2.0),
+                                      // borderRadius: BorderRadius.circular(25.0),
+                                    ),
+                                    border: OutlineInputBorder(
+
+                                        //borderRadius: BorderRadius.circular(24)
+                                        )),
+                                inputFormatters: [
+                                  //LengthLimitingTextInputFormatter(10),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp("[a-z A-Z]")),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          IFSC_CODE,
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                              color: h1Color),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 0, right: 0),
+                          child: Center(
+                            child: SizedBox(
+                              height: 48,
+                              child: TextField(
+                                cursorColor: colorPrimary,
+                                controller: _ifsccodecontroller,
+                                //keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                    fillColor: grey,
+                                    hintText: IFSC_CODE,
+                                    hintStyle: TextStyle(fontSize: 15),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                          color: colorPrimary, width: 2.0),
+                                      // borderRadius: BorderRadius.circular(25.0),
+                                    ),
+                                    border: OutlineInputBorder(
+
+                                        //borderRadius: BorderRadius.circular(24)
+                                        )),
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                                  LengthLimitingTextInputFormatter(11),
+                                  UpperCaseTextFormatter(),
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp("[a-z A-Z 0-9]")),
+                                ],
+                                textCapitalization:
+                                    TextCapitalization.characters,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                          ),
+                        ),
                     ),
               ),
 

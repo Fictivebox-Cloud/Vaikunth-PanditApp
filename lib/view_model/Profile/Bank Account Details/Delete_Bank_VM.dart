@@ -31,10 +31,9 @@ class Delete_Bank_VM with ChangeNotifier{
 
   Delete_Bank_APIcall({String? id,}) async{
     setLoading(true);
-    String userId = await LoggedInUserBloc.instance().getUserId();
+    // String userId = await LoggedInUserBloc.instance().getUserId();
     var data={
-     // "bank_id":userId,
-      "bank_id":"2",
+      "id": id
     };
 
     var response = await ApiRemoteServices.fechingGetApi(

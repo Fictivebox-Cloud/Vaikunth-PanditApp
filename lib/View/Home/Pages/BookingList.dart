@@ -9,6 +9,7 @@ import '../../../Util/utils.dart';
 import '../../../consts/themescolor.dart';
 import '../../../view_model/BookingViewDetails/Complete_Bookings.dart';
 import '../../../view_model/home_tab/Accept_Booking_Api.dart';
+import '../../../view_model/home_tab/Reject_Booking_VM.dart';
 
 class BookingListTitl extends StatefulWidget {
   Booking_Request_View_Model? booking_request_view_model;
@@ -122,7 +123,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                             .response!
                                             .bookinglist![index]
                                             .bookingPujaDate
-                                            .toString(),
+                                            ??"",
                                         style: GoogleFonts.lato(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600,
@@ -143,18 +144,30 @@ class _BookingListTitlState extends State<BookingListTitl> {
 
 
                                           PopupMenuButton(itemBuilder: (context) =>[
-                                            PopupMenuItem( child: Row(
-                                              children: [
-                                                Image.asset(ImageConst().REJECT),
-                                                SizedBox(width: 8,),
-                                                Text("Reject Booking")
-                                              ],
+                                            PopupMenuItem( child:
+                                            InkWell(
+                                              onTap: (){
+                                                Utils.toastMessage(REJECTED_BOOKING);
+
+                                                Reject_Booking_VM rejectbooking =
+                                                Provider.of<Reject_Booking_VM>(context,
+                                                    listen: false);
+                                                rejectbooking.Reject_booking_Apicall(userbooking: booking_request_view_model.getbookinglistModel!.response!.bookinglist?[index].bookingId.toString() ?? "");
+
+                                                booking_request_view_model.getbookinglistModel!.response!.bookinglist!.removeAt(index);
+
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Image.asset(ImageConst().REJECT),
+                                                  SizedBox(width: 8,),
+                                                  Text("Reject Booking")
+                                                ],
+                                              ),
                                             ))
                                           ]
 
                                           ),
-
-
 
                                     ],
                                   ),
@@ -255,34 +268,14 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                       onTap: () {
                                         setState(() {
                                           Utils.toastMessage(ACCEPT_BOOKING);
-                                          accept_bookingapi = Provider
-                                              .of<Accept_Booking_Api>(
-                                              context,
-                                              listen: false);
-                                          accept_bookingapi?.getAccept_booking_Api(
-                                              userbooking:
-                                              booking_request_view_model
-                                                  .getbookinglistModel!
-                                                  .response!
-                                                  .bookinglist?[
-                                              index]
-                                                  .bookingId
-                                                  .toString() ??
-                                                  "");
-                                          CompleteBookingViewModel
-                                          completeBookingViewModel =
-                                          Provider.of<
-                                              CompleteBookingViewModel>(
-                                              context,
-                                              listen: false);
-                                          completeBookingViewModel
-                                              .completebookingAPIcall();
+                                          accept_bookingapi = Provider.of<Accept_Booking_Api>(context,listen: false);
+                                          accept_bookingapi?.getAccept_booking_Api(userbooking: booking_request_view_model.getbookinglistModel!.response!.bookinglist?[index].bookingId.toString() ?? "");
 
-                                          booking_request_view_model
-                                              .getbookinglistModel!
-                                              .response!
-                                              .bookinglist!
-                                              .removeAt(index);
+                                          CompleteBookingViewModel completeBookingViewModel =
+                                          Provider.of<CompleteBookingViewModel>(context, listen: false);
+                                          completeBookingViewModel.completebookingAPIcall();
+
+                                          booking_request_view_model.getbookinglistModel!.response!.bookinglist!.removeAt(index);
                                         });
                                       },
                                       child: Container(
@@ -330,7 +323,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
               );
             },
             itemCount: booking_request_view_model
-                .getbookinglistModel!.response!.bookinglist!.length,
+                .getbookinglistModel?.response!.bookinglist!.length ?? 0,
           );
   }
 }

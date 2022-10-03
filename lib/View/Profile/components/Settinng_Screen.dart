@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/consts/image_const.dart';
 import 'package:panditapp/consts/text_const.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 import '../../../consts/themescolor.dart';
@@ -22,7 +25,9 @@ class _Setting_ScreenState extends State<Setting_Screen> {
 
   Widget privacyPolicyDesign(){
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        _privacypolicyURL(context);
+      },
       child: Container(
         width: double.infinity,
         height: 52,
@@ -56,9 +61,12 @@ class _Setting_ScreenState extends State<Setting_Screen> {
     );
   }
 
+
   Widget termsConditionsDesign(){
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        _launchURL(context);
+      },
       child: Container(
         width: double.infinity,
         height: 52,
@@ -139,6 +147,8 @@ class _Setting_ScreenState extends State<Setting_Screen> {
     );
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
@@ -162,12 +172,40 @@ class _Setting_ScreenState extends State<Setting_Screen> {
                 SizedBox(
                   height: 16,
                 ),
-                helpSupportDesign()
+                helpSupportDesign(),
+
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+
+
+  void _launchURL(BuildContext context) async {
+    try {
+      launch('https://vaikunth.fictivebox.com/t&c',
+       /*   customTabsOption: CustomTabsOption(
+            toolbarColor: Theme.of(context).primaryColor,
+          )*/
+      );
+    }
+    catch(e) {
+      debugPrint(e.toString());
+    }
+  }
+  void _privacypolicyURL(BuildContext context) async {
+    try {
+      launch('https://vaikunth.fictivebox.com/privacypolicy',
+        /*   customTabsOption: CustomTabsOption(
+            toolbarColor: Theme.of(context).primaryColor,
+          )*/
+      );
+    }
+    catch(e) {
+      debugPrint(e.toString());
+    }
   }
 }

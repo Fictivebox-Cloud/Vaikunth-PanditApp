@@ -12,10 +12,10 @@ class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
   bool _loading = false;
   CheckBookingConfirmOtpModel? _bookingConfirmOtpModel;
   UserError? _userError;
-  bool? _valueReturn;
+  bool _valueReturn = false;
 
   bool get loading => _loading;
-
+  bool get valueReturn => _valueReturn;
   CheckBookingConfirmOtpModel? get getcheckBookingConfirmOtpModel =>
       _bookingConfirmOtpModel;
 
@@ -37,7 +37,7 @@ class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> getCheckBookingConfirm(
+  Future getCheckBookingConfirm(
       {required dynamic userBooking_id, otpcode}) async {
     setLoading(true);
     String userId = await LoggedInUserBloc.instance().getUserId();
@@ -49,6 +49,7 @@ class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
     var response = await ApiRemoteServices.fechingGetApi(
         apiUrl: GET_CHECK_BOOKING_OTP, apiData: data);
     if (response is Success) {
+      print("DATA LOGIN${response.response}");
       Object data =
           checkBookingConfirmOtpModelFromJson(response.response as String);
       setGetCheckBookingConfirmOtpModel(data as CheckBookingConfirmOtpModel);
@@ -62,8 +63,5 @@ class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
       notifyListeners();
     }
     setLoading(false);
-    return _valueReturn!;
-
   }
-
 }

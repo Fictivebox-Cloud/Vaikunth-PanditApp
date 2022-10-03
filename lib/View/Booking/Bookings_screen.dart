@@ -339,7 +339,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                         completeBookingViewModel
                                             .completebokingmodel!
                                             .response!
-                                            .compbookinglist?[index]
+                                            .compbookinglist![index]
                                             .poojaDate ??
                                             "",
                                         style: GoogleFonts.lato(
