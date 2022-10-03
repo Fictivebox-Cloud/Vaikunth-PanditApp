@@ -287,7 +287,8 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                           height: 263,
                           child: Column(
                             children: [
-                              Expanded(child: Monthly_Graph_Screen()),
+                              Expanded(
+                                  child: Monthly_Graph_Screen()),
                             ],
                           ),
                         ),

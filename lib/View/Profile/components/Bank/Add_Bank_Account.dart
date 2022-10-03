@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/consts/text_const.dart';
 import 'package:panditapp/view_model/Profile/Bank%20Account%20Details/Store_bank_VM.dart';
 import 'package:provider/provider.dart';
+import '../../../../Util/utils.dart';
 import '../../../../Widgets/circular_loader.dart';
 import '../../../../consts/themescolor.dart';
 import 'Personal_Bank_Details.dart';
@@ -80,6 +81,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                   left: 16, right: 16, bottom: 22, top: 16),
               child: GestureDetector(
                 onTap: () {
+                  Utils.toastMessage(ADDBANKACCOUNT);
                   Store_Bank_VM storebank =
                       Provider.of<Store_Bank_VM>(context, listen: false);
                   storebank.Store_Bank_APIcall(

@@ -18,6 +18,7 @@ class RouteName{
   static const  String Profile_Screen= 'profile_screen';
   static const  String Notifications_screen= 'notifications_screen';
   static const  String Life_Time_Puja= 'life_time_puja';
+  static const  String Add_Bank_Account= 'add_Bank_Account';
 
 }
 
