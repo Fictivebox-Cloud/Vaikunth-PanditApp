@@ -260,7 +260,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                                                   .completebokingmodel!
                                                                   .response!
                                                                   .upcomingbookinglist![index]
-                                                                  .id)));
+                                                                  .id.toString())));
                                             },
                                             child: Text(
                                               VIEW_DETAILS,
@@ -340,7 +340,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                             .completebokingmodel!
                                             .response!
                                             .compbookinglist![index]
-                                            .poojaDate ??
+                                            .poojaDate.toString() ??
                                             "",
                                         style: GoogleFonts.lato(
                                             fontSize: 14,

@@ -7,6 +7,7 @@ import '../View/Earning/components/Life_Time_Puja.dart';
 import '../View/Home/Home_Screen.dart';
 import '../View/Home/Pages/Notifications_screen.dart';
 import '../View/Profile/Profile.dart';
+import '../View/Profile/components/Bank/Add_Bank_Account.dart';
 import '../View/Splash_onboarding/Onboarding.dart';
 import '../View/Splash_onboarding/splash_screen.dart';
 import '../View/login_flow/OTP_Verify.dart';
@@ -38,6 +39,8 @@ class Routes{
         return MaterialPageRoute(builder: (BuildContext context)=>const Notifications_screen() );
       case RouteName.Life_time_puja:
         return MaterialPageRoute(builder: (BuildContext context)=>const LifeTimePuja() );
+      case RouteName.Add_Bank_Account:
+        return MaterialPageRoute(builder: (BuildContext context)=> Add_Bank_Account() );
 
 
         default:
