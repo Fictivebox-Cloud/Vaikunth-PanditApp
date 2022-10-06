@@ -9,6 +9,7 @@ import '../../Consts/text_const.dart';
 import '../../Widgets/circular_loader.dart';
 import '../../consts/themescolor.dart';
 import '../../route_app/page_navigeter_name_route.dart';
+import '../../view_model/Earnings_View_Model/GraphViewModel/WeekDayWiseDataVM.dart';
 import '../../view_model/Earnings_View_Model/Life_Time_Pujas_VM.dart';
 import '../../view_model/Earnings_View_Model/WithDrawMoney_VM.dart';
 import '../../view_model/home_tab/Reject_Booking_VM.dart';
@@ -114,6 +115,11 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                             ),
                             GestureDetector(
                               onTap: () {
+                                WeekdataPerdayVM weekdataperday =
+                                    Provider.of<WeekdataPerdayVM>(context, listen: false);
+                                weekdataperday.WeekdataPerdayApicall();
+
+
                                 With_Draw_Money_VM withdrawmoney=
                                 Provider.of<With_Draw_Money_VM>(context, listen: false);
                                 withdrawmoney.WithDrawMoney_APIcall();
