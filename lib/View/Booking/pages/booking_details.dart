@@ -16,21 +16,21 @@ import '../../../Consts/text_const.dart';
 import '../../../view_model/BookingViewDetails/Check_Booking_Confirm_OTP.dart';
 import '../../../view_model/BookingViewDetails/ViewDetails_VM.dart';
 
-class Booking_Details_Screen extends StatefulWidget {
+class BookingDetailsScreen extends StatefulWidget {
   var bookingId;
   var userOTP;
 
-  Booking_Details_Screen({Key? key, this.bookingId, this.userOTP})
+  BookingDetailsScreen({Key? key, this.bookingId, this.userOTP})
       : super(key: key);
 
   @override
-  State<Booking_Details_Screen> createState() => _Booking_Details_ScreenState();
+  State<BookingDetailsScreen> createState() => _BookingDetailsScreenState();
 }
 
-class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
+class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
 
   var ht, wt;
-  late Puja_Confirm_OTP puja_Confirm_OTP;
+  late PujaConfirmOTP puja_Confirm_OTP;
 
   late ViewDetailVM viewdetailVM;
   TextEditingController otpController = TextEditingController();
@@ -42,7 +42,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
     viewdetailVM = Provider.of<ViewDetailVM>(context, listen: false);
     viewdetailVM.viewdetailAPIcall(userbooking: widget.bookingId);
 
-    puja_Confirm_OTP = Provider.of<Puja_Confirm_OTP>(context, listen: false);
+    puja_Confirm_OTP = Provider.of<PujaConfirmOTP>(context, listen: false);
     puja_Confirm_OTP.getPujaCofirmOtp(userBooking_id: widget.bookingId);
 
     wt = MediaQuery
@@ -334,7 +334,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
   }
 
   bottomSheet({required String bookingId}) {
-    return Consumer<Check_Booking_Confirm_OTP_View_Model>(
+    return Consumer<CheckBookingConfirmOTPViewModel>(
       builder: (context, provider, child) {
         return Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
@@ -395,7 +395,7 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                   // provider.loading ? null :  provider.valueReturn ?
                   Navigator
                       .push(context, MaterialPageRoute(
-                      builder: (context) => Booking_Progress()));
+                      builder: (context) => BookingProgress()));
                   //: toast();
                 },
                 child: Container(

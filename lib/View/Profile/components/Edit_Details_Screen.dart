@@ -11,23 +11,23 @@ import '../../../view_model/Profile/edit_profile_view_model.dart';
 import '../../../view_model/Login/Service_VM.dart';
 
 
-class Edit_Details_Screen extends StatefulWidget {
+class EditDetailsScreen extends StatefulWidget {
   final String? servicename;
 
-  Edit_Details_Screen({Key? key, this.servicename}) : super(key: key);
+  EditDetailsScreen({Key? key, this.servicename}) : super(key: key);
 
   @override
-  State<Edit_Details_Screen> createState() => _Edit_Details_ScreenState();
+  State<EditDetailsScreen> createState() => _EditDetailsScreenState();
 }
 
-class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
+class _EditDetailsScreenState extends State<EditDetailsScreen> {
   var ht, wt;
   int _selectedIndex = 0;
   TextEditingController? _namecontroller;
   TextEditingController? _citycontroller;
-  Edit_profile_View_model? edit_profile_view_modelVM;
-  City_List_Api? city_list_api;
-  Personal_Detail_View_Model? personal_detail_view_model;
+  EditProfileViewModel? edit_profile_view_modelVM;
+  CityListApi? city_list_api;
+  PersonalDetailViewModel? personal_detail_view_model;
   late ServiceVM serviceVM;
 
   final List<Map<String, dynamic>> _allUsers = [
@@ -206,9 +206,9 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
   Widget build(BuildContext context) {
     serviceVM = Provider.of<ServiceVM>(context, listen: false);
     edit_profile_view_modelVM =
-        Provider.of<Edit_profile_View_model>(context, listen: false);
+        Provider.of<EditProfileViewModel>(context, listen: false);
     personal_detail_view_model =
-        Provider.of<Personal_Detail_View_Model>(context, listen: false);
+        Provider.of<PersonalDetailViewModel>(context, listen: false);
     personal_detail_view_model!.getpersonalDetailApiCall();
     city_list_api = Provider.of(context, listen: false);
 
@@ -219,7 +219,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
         appBar: AppBar(
           title: Text(EDITDETAILS),
         ),
-        body: Consumer<Edit_profile_View_model>(
+        body: Consumer<EditProfileViewModel>(
           builder: (context, provider, child) {
             return SafeArea(
               child: SingleChildScrollView(
@@ -405,7 +405,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Edit_Details_Screen(
+                            builder: (context) => EditDetailsScreen(
                                   servicename: provider.serviceModel!.response!
                                       .serviceslist![_selectedIndex].name,
                                 )));

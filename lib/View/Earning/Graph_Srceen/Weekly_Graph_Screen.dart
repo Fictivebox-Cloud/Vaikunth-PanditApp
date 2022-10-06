@@ -6,8 +6,8 @@ import '../../../Consts/themescolor.dart';
 import '../../../model/Graph_Model/Bar_Chart_Model.dart';
 import '../../../view_model/Earnings_View_Model/GraphViewModel/WeekDayWiseDataVM.dart';
 
-class Weekly_Graph_Screen extends StatelessWidget {
-  Weekly_Graph_Screen({Key? key}) : super(key: key);
+class WeeklyGraphScreen extends StatelessWidget {
+  WeeklyGraphScreen({Key? key}) : super(key: key);
   late WeekdataPerdayVM weekdataPerdayVM;
  // WeekdataPerdayVM weekdataperday;
 

@@ -9,14 +9,14 @@ import '../../../../view_model/Profile/Bank Account Details/Bank_List_VM.dart';
 import '../../../../view_model/Profile/Bank Account Details/Update_Bank_VM.dart';
 import 'Personal_Bank_Details.dart';
 
-class Bank_Account_Screen extends StatefulWidget {
+class BankAccountScreen extends StatefulWidget {
   String? id;
   String? name;
   String? accountNumber;
   String? bankName;
   String? ifscCode;
 
-  Bank_Account_Screen({
+  BankAccountScreen({
     Key? key,
     this.id,
     this.name,
@@ -26,7 +26,7 @@ class Bank_Account_Screen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<Bank_Account_Screen> createState() => _Bank_Account_ScreenState();
+  State<BankAccountScreen> createState() => _BankAccountScreenState();
 }
 
 class UpperCaseTextFormatter extends TextInputFormatter {
@@ -40,7 +40,7 @@ class UpperCaseTextFormatter extends TextInputFormatter {
   }
 }
 
-class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
+class _BankAccountScreenState extends State<BankAccountScreen> {
   List<dynamic> countries = [];
   String? couuntryId;
 
@@ -74,19 +74,19 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
     _banknamecontroller.text = widget.bankName.toString();
   }
 
-  late BankList_VM bankList_VM;
+  late BankListVM bankList_VM;
 
   Future<void> _refresh(bool reload, BuildContext context) {
-    bankList_VM = Provider.of<BankList_VM>(context, listen: false);
+    bankList_VM = Provider.of<BankListVM>(context, listen: false);
     bankList_VM.bankListAPIcall();
     return Future.delayed(const Duration(seconds: 0));
   }
 
   @override
   Widget build(BuildContext context) {
-    BankList_VM bankList_VM = context.watch<BankList_VM>();
+    BankListVM bankList_VM = context.watch<BankListVM>();
 
-    return Consumer<BankList_VM>(
+    return Consumer<BankListVM>(
       builder: (context, provider, child) {
         return Scaffold(
           //Bottom button
@@ -95,8 +95,8 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                 const EdgeInsets.only(left: 16, right: 16, bottom: 22, top: 16),
             child: GestureDetector(
               onTap: () {
-                Update_Bank_VM updatebanklist =
-                    Provider.of<Update_Bank_VM>(context, listen: false);
+                UpdateBankVM updatebanklist =
+                    Provider.of<UpdateBankVM>(context, listen: false);
                 updatebanklist.Update_Bank_APIcall(
                   id: widget.id,
                   name: _namecontroller.text,
@@ -108,7 +108,7 @@ class _Bank_Account_ScreenState extends State<Bank_Account_Screen> {
                 Navigator.pop(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Persional_Bank_Details(
+                        builder: (context) => PersionalBankDetails(
                               bank_id:"" ,
                             )));
               },

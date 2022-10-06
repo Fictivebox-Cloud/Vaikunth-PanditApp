@@ -8,7 +8,7 @@ import '../../Util/Api_collection.dart';
 import '../../Util/login_in_User.dart';
 import '../../model/profile/id_card_model.dart';
 
-class Id_card_view_model_View with ChangeNotifier {
+class IdCardViewModelView with ChangeNotifier {
   bool _loading = false;
   PanditDetailsIdcradModel? _panditDetailsIdcradModel;
   UserError? _userError;
@@ -20,7 +20,7 @@ class Id_card_view_model_View with ChangeNotifier {
       _panditDetailsIdcradModel;
 
   UserError? get userError => _userError;
-  Id_card_view_model_View(){
+  IdCardViewModelView(){
   getPanditDetailsId();
 }
 

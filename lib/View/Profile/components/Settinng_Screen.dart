@@ -12,14 +12,14 @@ import '../../../consts/themescolor.dart';
 import '../../../view_model/Profile/Help_Support_Details_VM.dart';
 import 'Help&Support.dart';
 
-class Setting_Screen extends StatefulWidget {
-  const Setting_Screen({Key? key}) : super(key: key);
+class SettingScreen extends StatefulWidget {
+  const SettingScreen({Key? key}) : super(key: key);
 
   @override
-  State<Setting_Screen> createState() => _Setting_ScreenState();
+  State<SettingScreen> createState() => _SettingScreenState();
 }
 
-class _Setting_ScreenState extends State<Setting_Screen> {
+class _SettingScreenState extends State<SettingScreen> {
   var ht, wt;
 
 
@@ -112,7 +112,7 @@ class _Setting_ScreenState extends State<Setting_Screen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => Help_Support_Screen()));
+                builder: (context) => HelpSupportScreen()));
       },
       child: Container(
         width: double.infinity,

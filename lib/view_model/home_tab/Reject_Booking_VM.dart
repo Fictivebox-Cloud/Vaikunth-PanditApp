@@ -9,7 +9,7 @@ import '../../Util/login_in_User.dart';
 import '../../model/Booking Model/Reject_Booking_Model.dart';
 
 
-class Reject_Booking_VM extends ChangeNotifier {
+class RejectBookingVM extends ChangeNotifier {
   bool _loading = false;
   RejectBookingModel? _rejectBookingModel;
   UserError? _userError;

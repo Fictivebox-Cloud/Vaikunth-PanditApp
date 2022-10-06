@@ -9,14 +9,14 @@ import '../../../../Widgets/circular_loader.dart';
 import '../../../../consts/themescolor.dart';
 import 'Personal_Bank_Details.dart';
 
-class Add_Bank_Account extends StatefulWidget {
+class AddBankAccount extends StatefulWidget {
   String? id;
   String? name;
   String? accountNumber;
   String? bankName;
   String? ifscCode;
 
-  Add_Bank_Account({
+  AddBankAccount({
     Key? key,
     this.id,
     this.name,
@@ -26,7 +26,7 @@ class Add_Bank_Account extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<Add_Bank_Account> createState() => _Add_Bank_AccountState();
+  State<AddBankAccount> createState() => _AddBankAccountState();
 }
 
 class UpperCaseTextFormatter extends TextInputFormatter {
@@ -40,7 +40,7 @@ class UpperCaseTextFormatter extends TextInputFormatter {
   }
 }
 
-class _Add_Bank_AccountState extends State<Add_Bank_Account> {
+class _AddBankAccountState extends State<AddBankAccount> {
   List<dynamic> countries = [];
   String? couuntryId;
 
@@ -70,9 +70,9 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
 
   @override
   Widget build(BuildContext context) {
-    Store_Bank_VM store_bank_vm = context.watch<Store_Bank_VM>();
+    StoreBankVM store_bank_vm = context.watch<StoreBankVM>();
 
-    return Consumer<Store_Bank_VM>(
+    return Consumer<StoreBankVM>(
       builder: (context, provider, child) {
         return Scaffold(
             //Bottom button
@@ -82,8 +82,8 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
               child: GestureDetector(
                 onTap: () {
                   Utils.toastMessage(ADDBANKACCOUNT);
-                  Store_Bank_VM storebank =
-                      Provider.of<Store_Bank_VM>(context, listen: false);
+                  StoreBankVM storebank =
+                      Provider.of<StoreBankVM>(context, listen: false);
                   storebank.Store_Bank_APIcall(
                     name: _namecontroller.text.toString(),
                     accountno: _accountnocontroller.text,
@@ -94,7 +94,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                   Navigator.pop(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Persional_Bank_Details(
+                          builder: (context) => PersionalBankDetails(
                                 bank_id: ""
                               )));
                 },

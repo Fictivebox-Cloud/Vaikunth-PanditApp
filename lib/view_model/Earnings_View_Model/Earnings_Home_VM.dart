@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Util/login_in_User.dart';
 import '../../model/Earnings/earnings_home_model.dart';
 
-class Earnings_Home_VM with ChangeNotifier {
+class EarningsHomeVM with ChangeNotifier {
   bool _loading = false;
   EarningsHomeModel? _earningsHomeModel;
   UserError? _userError;

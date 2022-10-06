@@ -20,16 +20,16 @@ import '../../view_model/Profile/Bank Account Details/Pandit_Bank_List_VM.dart';
 import '../../view_model/Login/Service_VM.dart';
 import '../../view_model/home_tab/Reject_Booking_VM.dart';
 
-class Photo_Upload extends StatefulWidget {
+class PhotoUpload extends StatefulWidget {
   final String? name, mobile;
 
-  const Photo_Upload({Key? key, this.name, this.mobile}) : super(key: key);
+  const PhotoUpload({Key? key, this.name, this.mobile}) : super(key: key);
 
   @override
-  State<Photo_Upload> createState() => _MyAppState();
+  State<PhotoUpload> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<Photo_Upload> {
+class _MyAppState extends State<PhotoUpload> {
   File? pickedImage;
   var ht, wt;
 
@@ -285,20 +285,20 @@ class _MyAppState extends State<Photo_Upload> {
                               Provider.of<ServiceVM>(context, listen: false);
                           serviceVM.serviceAPIcall();
 
-                          BankList_VM banklist =
-                              Provider.of<BankList_VM>(context, listen: false);
+                          BankListVM banklist =
+                              Provider.of<BankListVM>(context, listen: false);
                           banklist.bankListAPIcall();
 
-                          Delete_Bank_VM deletebank =
-                          Provider.of<Delete_Bank_VM>(context, listen: false);
+                          DeleteBankVM deletebank =
+                          Provider.of<DeleteBankVM>(context, listen: false);
                           deletebank.Delete_Bank_APIcall();
 
-                          With_Draw_Money_VM withdrawmoney=
-                          Provider.of<With_Draw_Money_VM>(context, listen: false);
+                          WithDrawMoneyVM withdrawmoney=
+                          Provider.of<WithDrawMoneyVM>(context, listen: false);
                           withdrawmoney.WithDrawMoney_APIcall();
 
-                          Pandit_Bank_List_VM panditbanklist =
-                              Provider.of<Pandit_Bank_List_VM>(context,
+                          PanditBankListVM panditbanklist =
+                              Provider.of<PanditBankListVM>(context,
                                   listen: false);
                           panditbanklist.panditbankListAPIcall();
 
@@ -313,7 +313,7 @@ class _MyAppState extends State<Photo_Upload> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Servies_you_screen(
+                                  builder: (context) => ServiesYouScreen(
                                       name: widget.name,
                                       photo: pickedImage,
                                       mobile: widget.mobile)));

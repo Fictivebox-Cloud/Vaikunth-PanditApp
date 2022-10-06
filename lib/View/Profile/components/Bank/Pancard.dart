@@ -5,13 +5,13 @@ import '../../../../view_model/Profile/Personal_Detail_View_Model.dart';
 
 class PanCardScreen extends StatelessWidget {
   PanCardScreen({Key? key}) : super(key: key);
-  late Personal_Detail_View_Model personal_detail_view_model;
+  late PersonalDetailViewModel personal_detail_view_model;
 
   @override
   Widget build(BuildContext context) {
     personal_detail_view_model = Provider.of(context, listen: false);
     personal_detail_view_model.getpersonalDetailApiCall();
-    return Consumer<Personal_Detail_View_Model>(
+    return Consumer<PersonalDetailViewModel>(
       builder: (context, provider, child) {
         return Scaffold(
           appBar: AppBar(),

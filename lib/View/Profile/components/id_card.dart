@@ -11,29 +11,29 @@ import '../../../view_model/Profile/Personal_Detail_View_Model.dart';
 import 'Bank/Pancard.dart';
 import 'Bank/View_Decuments.dart';
 
-class Id_card_Screen extends StatefulWidget {
-  const Id_card_Screen({Key? key}) : super(key: key);
+class IdCardScreen extends StatefulWidget {
+  const IdCardScreen({Key? key}) : super(key: key);
 
   @override
-  State<Id_card_Screen> createState() => _Id_card_ScreenState();
+  State<IdCardScreen> createState() => _IdCardScreenState();
 }
 
-class _Id_card_ScreenState extends State<Id_card_Screen> {
+class _IdCardScreenState extends State<IdCardScreen> {
   var ht, wt;
 
-  late Personal_Detail_View_Model personal_detail_view_model;
-  Future<void> _refresh(bool reload, BuildContext context){
-    personal_detail_view_model= Provider.of<Personal_Detail_View_Model>(context,listen: false);
+  late PersonalDetailViewModel personal_detail_view_model;
+
+  Future<void> _refresh(bool reload, BuildContext context) {
+    personal_detail_view_model =
+        Provider.of<PersonalDetailViewModel>(context, listen: false);
     personal_detail_view_model.getpersonalDetailApiCall();
     return Future.delayed(const Duration(seconds: 0));
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     personal_detail_view_model =
-        Provider.of<Personal_Detail_View_Model>(context, listen: false);
+        Provider.of<PersonalDetailViewModel>(context, listen: false);
     personal_detail_view_model.getpersonalDetailApiCall();
 
     return Scaffold(
@@ -44,7 +44,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
         body: _ui(personal_detail_view_model, context));
   }
 
-  _ui(Personal_Detail_View_Model personal_detail_view_model,
+  _ui(PersonalDetailViewModel personal_detail_view_model,
       BuildContext context) {
     if (personal_detail_view_model.loading) {
       return Center(
@@ -61,9 +61,9 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
     return _listDesign(personal_detail_view_model, context);
   }
 
-  _listDesign(Personal_Detail_View_Model id_card_view_model_view,
+  _listDesign(PersonalDetailViewModel id_card_view_model_view,
       BuildContext context) {
-    return Consumer<Personal_Detail_View_Model>(
+    return Consumer<PersonalDetailViewModel>(
       builder: (context, provider, child) {
         return SingleChildScrollView(
           child: Padding(
@@ -212,7 +212,7 @@ class _Id_card_ScreenState extends State<Id_card_Screen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => View_Decuments()));
+                                    builder: (context) => ViewDecuments()));
                           },
                           child: Container(
                             width: 116,

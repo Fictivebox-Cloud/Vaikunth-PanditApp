@@ -16,16 +16,16 @@ import 'package:panditapp/model/getterSetter.dart';
 
 import '../../consts/themescolor.dart';
 
-class Documents_Screen extends StatefulWidget {
+class DocumentsScreen extends StatefulWidget {
   final String? name4, mobile, servicesname;
   final File? photo4;
 
-  const Documents_Screen(
+  const DocumentsScreen(
       {Key? key, this.name4, this.photo4, this.mobile, this.servicesname})
       : super(key: key);
 
   @override
-  State<Documents_Screen> createState() => _Documents_ScreenState();
+  State<DocumentsScreen> createState() => _DocumentsScreenState();
 }
 class UpperCaseTextFormatter extends TextInputFormatter {
   @override
@@ -37,7 +37,7 @@ class UpperCaseTextFormatter extends TextInputFormatter {
     );
   }
 }
-class _Documents_ScreenState extends State<Documents_Screen> {
+class _DocumentsScreenState extends State<DocumentsScreen> {
   var ht, wt;
   File? pickedImage0;
   File? pickedImage1;
@@ -341,7 +341,7 @@ class _Documents_ScreenState extends State<Documents_Screen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Account_details(
+                                builder: (context) => Accountdetails(
                                     aadhar: _addharno.text,
                                     pancard: _panno.text,
                                     name5: widget.name4,

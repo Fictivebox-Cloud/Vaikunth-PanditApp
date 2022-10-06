@@ -9,14 +9,14 @@ import '../../../consts/text_const.dart';
 import '../../../consts/themescolor.dart';
 import '../../../view_model/Profile/Help_Support_Details_VM.dart';
 
-class Help_Support_Screen extends StatefulWidget {
-  const Help_Support_Screen({Key? key}) : super(key: key);
+class HelpSupportScreen extends StatefulWidget {
+  const HelpSupportScreen({Key? key}) : super(key: key);
 
   @override
-  State<Help_Support_Screen> createState() => _Help_Support_ScreenState();
+  State<HelpSupportScreen> createState() => _HelpSupportScreenState();
 }
 
-class _Help_Support_ScreenState extends State<Help_Support_Screen> {
+class _HelpSupportScreenState extends State<HelpSupportScreen> {
   var ht, wt;
 
   @override

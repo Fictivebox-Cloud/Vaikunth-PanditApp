@@ -5,16 +5,16 @@ import '../../../Consts/text_const.dart';
 import '../../../consts/themescolor.dart';
 import '../../../view_model/BookingViewDetails/ViewDetails_VM.dart';
 
-class Booking_Progress extends StatefulWidget {
+class BookingProgress extends StatefulWidget {
   var bookingId;
 
-  Booking_Progress({Key? key, this.bookingId}) : super(key: key);
+  BookingProgress({Key? key, this.bookingId}) : super(key: key);
 
   @override
-  State<Booking_Progress> createState() => _Booking_ProgressState();
+  State<BookingProgress> createState() => _BookingProgressState();
 }
 
-class _Booking_ProgressState extends State<Booking_Progress> {
+class _BookingProgressState extends State<BookingProgress> {
   var ht, wt;
 
   @override

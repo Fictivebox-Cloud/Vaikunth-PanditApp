@@ -9,18 +9,18 @@ import '../../consts/themescolor.dart';
 import '../../view_model/Login/Service_VM.dart';
 import 'city_screen.dart';
 
-class Servies_you_screen extends StatefulWidget {
+class ServiesYouScreen extends StatefulWidget {
   final String? name, mobile;
   final File? photo;
 
-  const Servies_you_screen({Key? key, this.name, this.photo, this.mobile})
+  const ServiesYouScreen({Key? key, this.name, this.photo, this.mobile})
       : super(key: key);
 
   @override
-  State<Servies_you_screen> createState() => _Servies_you_screenState();
+  State<ServiesYouScreen> createState() => _ServiesYouScreenState();
 }
 
-class _Servies_you_screenState extends State<Servies_you_screen> {
+class _ServiesYouScreenState extends State<ServiesYouScreen> {
   var ht, wt;
   var servicecontroller;
 
@@ -133,7 +133,7 @@ class _Servies_you_screenState extends State<Servies_you_screen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => City_Screen(
+                                    builder: (context) => CityScreen(
                                           name3: widget.name,
                                           photo3: widget.photo,
                                           mobile: widget.mobile,

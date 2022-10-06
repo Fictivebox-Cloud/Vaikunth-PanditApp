@@ -8,7 +8,7 @@ import '../../Util/Api_collection.dart';
 import '../../Util/login_in_User.dart';
 import '../../model/Profile_Screen/personal_detail_model.dart';
 
-class Personal_Detail_View_Model with ChangeNotifier{
+class PersonalDetailViewModel with ChangeNotifier{
   bool _loading = false;
   PersonalDetailModel? _detailModel;
   UserError? _userError;

@@ -6,16 +6,16 @@ import 'package:panditapp/View/Home/Home_Screen.dart';
 import '../../../Consts/text_const.dart';
 import '../../../consts/themescolor.dart';
 
-class Money_transferred_succesfully extends StatefulWidget {
-  const Money_transferred_succesfully({Key? key}) : super(key: key);
+class MoneyTransferredSuccesfully extends StatefulWidget {
+  const MoneyTransferredSuccesfully({Key? key}) : super(key: key);
 
   @override
-  State<Money_transferred_succesfully> createState() =>
-      _Money_transferred_succesfullyState();
+  State<MoneyTransferredSuccesfully> createState() =>
+      _MoneyTransferredSuccesfullyState();
 }
 
-class _Money_transferred_succesfullyState
-    extends State<Money_transferred_succesfully> {
+class _MoneyTransferredSuccesfullyState
+    extends State<MoneyTransferredSuccesfully> {
   var ht, wt;
 
   @override
@@ -81,7 +81,7 @@ class _Money_transferred_succesfullyState
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Home_Screen()),
+                                  builder: (context) => HomeScreen()),
                               (Route<dynamic> route) => false);
                         },
                         child: Text(

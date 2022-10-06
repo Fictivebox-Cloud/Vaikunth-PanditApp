@@ -10,7 +10,7 @@ import '../../Util/login_in_User.dart';
 import '../../model/Booking Model/acept_booking_model.dart';
 import 'booking_request_view_model.dart';
 
-class Accept_Booking_Api extends ChangeNotifier {
+class AcceptBookingApi extends ChangeNotifier {
   bool _loading = false;
   AcceptBookingModel? _acceptBookingModel;
   UserError? _userError;

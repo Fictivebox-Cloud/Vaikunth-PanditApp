@@ -16,12 +16,12 @@ class LifeTimePuja extends StatefulWidget {
 
 class _LifeTimePujaState extends State<LifeTimePuja> {
   var ht, wt;
-  late Life_Time_Puja_List_VM life_time_puja_list_vm;
+  late LifeTimePujaListVM life_time_puja_list_vm;
 
 
   Future<void> _refresh(bool reload, BuildContext context){
 
-     life_time_puja_list_vm = Provider.of<Life_Time_Puja_List_VM?>(context,listen: false)!;
+     life_time_puja_list_vm = Provider.of<LifeTimePujaListVM?>(context,listen: false)!;
     life_time_puja_list_vm.lifetimepujaAPIcall();
 
     return Future.delayed(const Duration(seconds: 0));
@@ -32,7 +32,7 @@ class _LifeTimePujaState extends State<LifeTimePuja> {
 
   @override
   Widget build(BuildContext context) {
-    life_time_puja_list_vm = context.watch<Life_Time_Puja_List_VM?>()!;
+    life_time_puja_list_vm = context.watch<LifeTimePujaListVM?>()!;
 
    // _refresh(reload);
     wt = MediaQuery.of(context).size.width;

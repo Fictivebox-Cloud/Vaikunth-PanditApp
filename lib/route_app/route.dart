@@ -21,26 +21,26 @@ class Routes{
       case RouteName.SplashScreen:
         return MaterialPageRoute(builder: (BuildContext context)=>const SplashScreen() );
       case RouteName.Onboarding_Screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const Onboarding_Screen() );
+        return MaterialPageRoute(builder: (BuildContext context)=>const OnboardingScreen() );
       case RouteName.Home_Screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const Home_Screen() );
+        return MaterialPageRoute(builder: (BuildContext context)=>const HomeScreen() );
       case RouteName.PhoneNumber_Screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const PhoneNumber_Screen() );
+        return MaterialPageRoute(builder: (BuildContext context)=>const PhoneNumberScreen() );
 
       case RouteName.OTP_verify:
-        return MaterialPageRoute(builder: (BuildContext context)=>OTP_verify() );
+        return MaterialPageRoute(builder: (BuildContext context)=>OTPVerify() );
 
       case RouteName.Name_screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>Name_Screen() );
+        return MaterialPageRoute(builder: (BuildContext context)=>NameScreen() );
 
       case RouteName.Profile_Screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const Profile_Screen() );
+        return MaterialPageRoute(builder: (BuildContext context)=>const ProfileScreen() );
       case RouteName.Notifications_screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const Notifications_screen() );
+        return MaterialPageRoute(builder: (BuildContext context)=>const NotificationsScreen() );
       case RouteName.Life_time_puja:
         return MaterialPageRoute(builder: (BuildContext context)=>const LifeTimePuja() );
       case RouteName.Add_Bank_Account:
-        return MaterialPageRoute(builder: (BuildContext context)=> Add_Bank_Account() );
+        return MaterialPageRoute(builder: (BuildContext context)=> AddBankAccount() );
 
 
         default:

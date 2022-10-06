@@ -8,7 +8,7 @@ import '../../consts/user_Error.dart';
 import '../../model/Booking Model/booking_model.dart';
 import '../../repo/api_remote_services.dart';
 
-class Booking_Request_View_Model with ChangeNotifier{
+class BookingRequestViewModel with ChangeNotifier{
 
   bool _loading = false;
   GetBookingListModel? _getBookingListModel;
@@ -16,7 +16,7 @@ class Booking_Request_View_Model with ChangeNotifier{
   bool _isRejectBooking = false;
   
 
-  Booking_Request_View_Model (){
+  BookingRequestViewModel (){
     getbookingApiCall(true);
     notifyListeners();
   }

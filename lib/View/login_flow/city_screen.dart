@@ -9,19 +9,19 @@ import '../../Consts/text_const.dart';
 import '../../consts/themescolor.dart';
 import 'Documents_screen.dart';
 
-class City_Screen extends StatefulWidget {
+class CityScreen extends StatefulWidget {
   final String? name3, mobile, servicesname;
   final File? photo3;
 
-  const City_Screen(
+  const CityScreen(
       {Key? key, this.name3, this.photo3, this.mobile, this.servicesname})
       : super(key: key);
 
   @override
-  State<City_Screen> createState() => _City_ScreenState();
+  State<CityScreen> createState() => _CityScreenState();
 }
 
-class _City_ScreenState extends State<City_Screen> {
+class _CityScreenState extends State<CityScreen> {
   var ht, wt;
   late List _city;
   TextEditingController editingController = TextEditingController();
@@ -29,11 +29,11 @@ class _City_ScreenState extends State<City_Screen> {
   late Timer timeHandle;
 
   // var items = List<String>();
-  late City_List_Api? city_list_api;
+  late CityListApi? city_list_api;
 
   @override
   Widget build(BuildContext context) {
-    city_list_api = context.watch<City_List_Api>();
+    city_list_api = context.watch<CityListApi>();
     return Scaffold(
         backgroundColor: white,
         body: SafeArea(
@@ -131,7 +131,7 @@ class _City_ScreenState extends State<City_Screen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Documents_Screen(
+                                builder: (context) => DocumentsScreen(
                                     name4: widget.name3,
                                     photo4: widget.photo3,
                                     mobile: widget.mobile,
