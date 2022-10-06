@@ -12,6 +12,7 @@ import 'package:panditapp/model/getterSetter.dart';
 import 'package:panditapp/view_model/Earnings_View_Model/Life_Time_Pujas_VM.dart';
 import 'package:provider/provider.dart';
 import '../../consts/themescolor.dart';
+import '../../view_model/Earnings_View_Model/GraphViewModel/WeekDayWiseDataVM.dart';
 import '../../view_model/Earnings_View_Model/WithDrawMoney_VM.dart';
 import '../../view_model/Profile/Bank Account Details/Bank_List_VM.dart';
 import '../../view_model/Profile/Bank Account Details/Delete_Bank_VM.dart';
@@ -301,10 +302,10 @@ class _MyAppState extends State<Photo_Upload> {
                                   listen: false);
                           panditbanklist.panditbankListAPIcall();
 
-                          //  Life_Time_Puja_List_VM lifetimepuja =
-                          // Provider.of<Life_Time_Puja_List_VM>(context,
+                          // WeekdataPerdayVM weekdataperday =
+                          // Provider.of<WeekdataPerdayVM>(context,
                           //     listen: false);
-                          // lifetimepuja.lifetimepujaAPIcall(reload);
+                          // weekdataperday.WeekdataPerdayApicall();
 
                           GetterloginSetter getterloginsetter =
                               GetterloginSetter();
