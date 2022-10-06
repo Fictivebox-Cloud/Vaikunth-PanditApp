@@ -28,19 +28,11 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
   late Life_Time_Puja_List_VM life_time_puja_list_vm;
   var ht, wt;
 
-
   Future<void> _refresh(bool reload, BuildContext context){
     earnings_home_vm = Provider.of<Earnings_Home_VM?>(context,listen: false)!;
     earnings_home_vm.earningshomeAPIcall(reload);
-
-    // life_time_puja_list_vm = Provider.of<Life_Time_Puja_List_VM?>(context,listen: false)!;
-    // life_time_puja_list_vm.lifetimepujaAPIcall(reload);
-
     return Future.delayed(const Duration(seconds: 0));
-
-
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +41,8 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
     weekdataperday.WeekdataPerdayApicall();
 
     earnings_home_vm = context.watch<Earnings_Home_VM?>()!;
-
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: white,
       body:earnings_home_vm.loading? Center(child: CircularLoader(),) : SafeArea(
@@ -65,259 +55,277 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
           displacement: 0,
           child: Column(
             children: [
-              Container(
-                width: double.infinity,
-                height: ht * 0.2,
-                color: kPrimaryColor,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        MY_EARNINGS,
-                        style: GoogleFonts.lato(
-                            color: white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      width: wt * 0.9,
-                      height: 60,
-                      decoration: BoxDecoration(
-                          color: white,
-                          borderRadius: BorderRadius.circular(4)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceAround,
-                              children: [
-                                Text(
-                                  WALLET,
-                                  style: GoogleFonts.lato(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: kSecondaryColor),
-                                ),
-                                Text(
-                                  //"₹2518.00"
-                                  "₹ ${earnings_home_vm.earningsHomeModel?.response!.walletvalue ?? ""}",
-                                  style: GoogleFonts.lato(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                      color: h1Color),
-                                )
-                              ],
-                            ),
-                            GestureDetector(
-                              onTap: () {
-
-                                With_Draw_Money_VM withdrawmoney=
-                                Provider.of<With_Draw_Money_VM>(context, listen: false);
-                                withdrawmoney.WithDrawMoney_APIcall();
-
-                                showModalBottomSheet(
-                                    context: context,
-                                    builder: (builder) => bottomSheet(),
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(4),
-                                        )));
-                              },
-                              child: Container(
-                                width: wt * 0.3,
-                                //height: ht * 0.07,
-                                height: 44,
-                                decoration: BoxDecoration(
-                                    color: b1Color,
-                                    borderRadius: BorderRadius.circular(4)),
-                                child: Center(
-                                    child: Text(
-                                      WITHDRAW,
-                                      style: GoogleFonts.lato(
-                                          color: white,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 18),
-                                    )),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              myEarningAppBar(),
               SizedBox(
                 height: 16,
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 12, right: 12),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: 156,
-                              height: 68,
-                              decoration: BoxDecoration(
-                                  color: b1Color,
-                                  borderRadius: BorderRadius.circular(4)),
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 8),
-                                child: Column(
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      LIFE_TIME_EARNINGS,
-                                      style: GoogleFonts.lato(
-                                          color: Color(0xffECF1F6),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                    Text(
-                                      //"₹23652.25"
-                                      "₹ ${earnings_home_vm.earningsHomeModel?.response!.lifetimeearnings ?? ""}",
-                                      style: GoogleFonts.lato(
-                                          color: white,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 18),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                life_time_puja_list_vm = Provider.of<Life_Time_Puja_List_VM?>(context,listen: false)!;
-                                life_time_puja_list_vm.lifetimepujaAPIcall();
-                                Navigator.pushNamed(context, RouteName.Life_time_puja);
-                              },
-                              child: Container(
-                                width: 156,
-                                height: 68,
-                                decoration: BoxDecoration(
-                                    color: blueColor,
-                                    borderRadius: BorderRadius.circular(4)),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 8),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        LIFE_TIME_PUJA,
-                                        style: GoogleFonts.lato(
-                                            color: const Color(
-                                              0xffECF1F6,
-                                            ),
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 14),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Text(
-                                            //"152"
-                                            "₹ ${earnings_home_vm.earningsHomeModel?.response!.lifetimepuja ?? ""}",
-                                            style: GoogleFonts.lato(
-                                                color: white,
-                                                fontSize: 18,
-                                                fontWeight:
-                                                FontWeight.w600),
-                                          ),
-                                          Icon(
-                                            Icons.arrow_right,
-                                            color: white,
-                                          )
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 24,
-                        ),
-                        Text(
-                          WEEKLY,
-                          style: GoogleFonts.lato(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: h1Color),
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-
-                        //Bar_Chart_Screen(),
-
-                        Container(
-                          width: double.infinity,
-                          height: 263,
-                          child: Column(
-                            children: [
-                              Expanded(child: Weekly_Graph_Screen()),
-                            ],
-                          ),
-                        ),
-
-
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Text(
-                          MONTHLY,
-                          style: GoogleFonts.lato(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: h1Color),
-                        ),
-                        SizedBox(
-                          height: 24,
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 263,
-                          child: Column(
-                            children: [
-                              Expanded(
-                                  child: Monthly_Graph_Screen()),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: 24,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              )
+              bodyMyEarning()
             ],
           ),
         ),
+      ),
+    );
+  }
+  Widget myEarningAppBar(){
+    return Container(
+      width: double.infinity,
+      height: ht * 0.2,
+      color: kPrimaryColor,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 12),
+            child: Text(
+              MY_EARNINGS,
+              style: GoogleFonts.lato(
+                  color: white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          walletContainer()
+        ],
+      ),
+    );
+  }
+  Widget bodyMyEarning(){
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 12, right: 12),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              lifeTimePujas_earning_Container(),
+              SizedBox(
+                height: 24,
+              ),
+              Text(
+                WEEKLY,
+                style: GoogleFonts.lato(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    color: h1Color),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              //Bar_Chart_Screen(),
+              weekly_Container(),
+              const SizedBox(
+                height: 24,
+              ),
+              Text(
+                MONTHLY,
+                style: GoogleFonts.lato(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    color: h1Color),
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              monthly_Container(),
+              SizedBox(
+                height: 24,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+  Widget walletContainer(){
+    return Container(
+      width: wt * 0.9,
+      height: 60,
+      decoration: BoxDecoration(
+          color: white,
+          borderRadius: BorderRadius.circular(4)),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment:
+              MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  WALLET,
+                  style: GoogleFonts.lato(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: kSecondaryColor),
+                ),
+                Text(
+                  //"₹2518.00"
+                  "₹ ${earnings_home_vm.earningsHomeModel?.response!.walletvalue ?? ""}",
+                  style: GoogleFonts.lato(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: h1Color),
+                )
+              ],
+            ),
+            GestureDetector(
+              onTap: () {
+                WeekdataPerdayVM weekdataperday =
+                Provider.of<WeekdataPerdayVM>(context, listen: false);
+                weekdataperday.WeekdataPerdayApicall();
+
+
+                With_Draw_Money_VM withdrawmoney=
+                Provider.of<With_Draw_Money_VM>(context, listen: false);
+                withdrawmoney.WithDrawMoney_APIcall();
+
+                showModalBottomSheet(
+                    context: context,
+                    builder: (builder) => bottomSheet(),
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(4),
+                        )));
+              },
+              child: Container(
+                width: wt * 0.3,
+                //height: ht * 0.07,
+                height: 44,
+                decoration: BoxDecoration(
+                    color: b1Color,
+                    borderRadius: BorderRadius.circular(4)),
+                child: Center(
+                    child: Text(
+                      WITHDRAW,
+                      style: GoogleFonts.lato(
+                          color: white,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),
+                    )),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+  Widget lifeTimePujas_earning_Container(){
+    return  Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          width: 156,
+          height: 68,
+          decoration: BoxDecoration(
+              color: b1Color,
+              borderRadius: BorderRadius.circular(4)),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Column(
+              crossAxisAlignment:
+              CrossAxisAlignment.start,
+              mainAxisAlignment:
+              MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  LIFE_TIME_EARNINGS,
+                  style: GoogleFonts.lato(
+                      color: Color(0xffECF1F6),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400),
+                ),
+                Text(
+                  //"₹23652.25"
+                  "₹ ${earnings_home_vm.earningsHomeModel?.response!.lifetimeearnings ?? ""}",
+                  style: GoogleFonts.lato(
+                      color: white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18),
+                )
+              ],
+            ),
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            life_time_puja_list_vm = Provider.of<Life_Time_Puja_List_VM?>(context,listen: false)!;
+            life_time_puja_list_vm.lifetimepujaAPIcall();
+            Navigator.pushNamed(context, RouteName.Life_time_puja);
+          },
+          child: Container(
+            width: 156,
+            height: 68,
+            decoration: BoxDecoration(
+                color: blueColor,
+                borderRadius: BorderRadius.circular(4)),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Column(
+                mainAxisAlignment:
+                MainAxisAlignment.spaceAround,
+                crossAxisAlignment:
+                CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    LIFE_TIME_PUJA,
+                    style: GoogleFonts.lato(
+                        color: const Color(
+                          0xffECF1F6,
+                        ),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14),
+                  ),
+                  Row(
+                    mainAxisAlignment:
+                    MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        //"152"
+                        "₹ ${earnings_home_vm.earningsHomeModel?.response!.lifetimepuja ?? ""}",
+                        style: GoogleFonts.lato(
+                            color: white,
+                            fontSize: 18,
+                            fontWeight:
+                            FontWeight.w600),
+                      ),
+                      Icon(
+                        Icons.arrow_right,
+                        color: white,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+  Widget weekly_Container(){
+    return Container(
+      width: double.infinity,
+      height: 263,
+      child: Column(
+        children: [
+          Expanded(child: Weekly_Graph_Screen()),
+        ],
+      ),
+    );
+  }
+  Widget monthly_Container(){
+    return Container(
+      width: double.infinity,
+      height: 263,
+      child: Column(
+        children: [
+          Expanded(
+              child: Monthly_Graph_Screen()),
+        ],
       ),
     );
   }

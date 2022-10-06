@@ -392,9 +392,11 @@ class _Booking_Details_ScreenState extends State<Booking_Details_Screen> {
                   provider.getCheckBookingConfirm(
                       userBooking_id: widget.bookingId,
                       otpcode: "1234".toString());
-                  provider.loading ? null :  provider.valueReturn ? Navigator
+                  // provider.loading ? null :  provider.valueReturn ?
+                  Navigator
                       .push(context, MaterialPageRoute(
-                      builder: (context) => Booking_Progress())) : toast();
+                      builder: (context) => Booking_Progress()));
+                  //: toast();
                 },
                 child: Container(
                   width: double.infinity,

@@ -100,6 +100,7 @@ class _Add_Bank_AccountState extends State<Add_Bank_Account> {
                 },
                 child: provider.loading
                     ? Container(
+                  alignment: Alignment.center,
                         child: const CircularProgressIndicator(
                           color: kPrimaryColor,
                         ),
