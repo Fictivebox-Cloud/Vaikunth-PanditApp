@@ -91,7 +91,7 @@ class Weekly_Graph_Screen extends StatelessWidget {
                       Column(
                         children:  [
                           Text(//"Dec 7-13"
-                           "${weekdataPerdayVM.weekdataPerdayModel!.response!.weekdata![0].myDate ?? ""}",
+                           "${weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![0].myDate.toString().split(" ")[0] ?? ""}",
                           ),
                           Text("₹1200.00"),
                         ],
@@ -124,7 +124,7 @@ class Weekly_Graph_Screen extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            totalBooking( weekdataPerdayVM.weekdataPerdayModel!.response!.online ?? 0,  weekdataPerdayVM.weekdataPerdayModel!.response!.offline ?? 0)
+                            totalBooking( weekdataPerdayVM.weekdataPerdayModel?.response!.online ?? 0,  weekdataPerdayVM.weekdataPerdayModel?.response!.offline ?? 0)
                             //weekdataPerdayVM.weekdataPerdayModel.response.weekdata[]
                             ,
                             style: TextStyle(
@@ -145,7 +145,7 @@ class Weekly_Graph_Screen extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            weekdataPerdayVM.weekdataPerdayModel!.response!.online.toString(),
+                            weekdataPerdayVM.weekdataPerdayModel?.response!.online.toString() ?? "",
                             //"2",
                             style: TextStyle(
                                 color: h1Color,
@@ -165,7 +165,7 @@ class Weekly_Graph_Screen extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(//"77",
-                            weekdataPerdayVM.weekdataPerdayModel!.response!.offline.toString(),
+                            weekdataPerdayVM.weekdataPerdayModel?.response!.offline.toString() ?? "",
                             //provider.weekdataPerdayModel.response?.online ??"",
                             style: TextStyle(
                                 color: h1Color,

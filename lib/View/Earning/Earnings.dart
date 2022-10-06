@@ -28,6 +28,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
   late Life_Time_Puja_List_VM life_time_puja_list_vm;
   var ht, wt;
 
+
   Future<void> _refresh(bool reload, BuildContext context){
     earnings_home_vm = Provider.of<Earnings_Home_VM?>(context,listen: false)!;
     earnings_home_vm.earningshomeAPIcall(reload);
@@ -43,8 +44,11 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    earnings_home_vm = context.watch<Earnings_Home_VM?>()!;
+    WeekdataPerdayVM weekdataperday =
+    Provider.of<WeekdataPerdayVM>(context, listen: false);
+    weekdataperday.WeekdataPerdayApicall();
 
+    earnings_home_vm = context.watch<Earnings_Home_VM?>()!;
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
@@ -115,10 +119,6 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                WeekdataPerdayVM weekdataperday =
-                                    Provider.of<WeekdataPerdayVM>(context, listen: false);
-                                weekdataperday.WeekdataPerdayApicall();
-
 
                                 With_Draw_Money_VM withdrawmoney=
                                 Provider.of<With_Draw_Money_VM>(context, listen: false);
