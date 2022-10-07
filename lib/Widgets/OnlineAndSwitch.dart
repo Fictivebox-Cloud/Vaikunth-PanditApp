@@ -20,8 +20,8 @@ class _SwitchOfState extends State<SwitchOf> {
     return CupertinoSwitch(
         value: value,
         onChanged: (value)=> setState(() {
-          OnlineOflineViewModel online_ofline_view_model= Provider.of<OnlineOflineViewModel>(context,listen: false);
-            online_ofline_view_model.getOnlineOfline;
+          OnlineOflineViewModel onlineOflineViewModel= Provider.of<OnlineOflineViewModel>(context,listen: false);
+            onlineOflineViewModel.getOnlineOfline;
         })
     );
   }
