@@ -281,32 +281,6 @@ class _MyAppState extends State<PhotoUpload> {
                     child: TextButton(
                         // File? pickedImage;
                         onPressed: () {
-                          ServiceVM serviceVM =
-                              Provider.of<ServiceVM>(context, listen: false);
-                          serviceVM.serviceAPIcall();
-
-                          BankListVM banklist =
-                              Provider.of<BankListVM>(context, listen: false);
-                          banklist.bankListAPIcall();
-
-                          DeleteBankVM deletebank =
-                          Provider.of<DeleteBankVM>(context, listen: false);
-                          deletebank.Delete_Bank_APIcall();
-
-                          WithDrawMoneyVM withdrawmoney=
-                          Provider.of<WithDrawMoneyVM>(context, listen: false);
-                          withdrawmoney.WithDrawMoney_APIcall();
-
-                          PanditBankListVM panditbanklist =
-                              Provider.of<PanditBankListVM>(context,
-                                  listen: false);
-                          panditbanklist.panditbankListAPIcall();
-
-                          // WeekdataPerdayVM weekdataperday =
-                          // Provider.of<WeekdataPerdayVM>(context,
-                          //     listen: false);
-                          // weekdataperday.WeekdataPerdayApicall();
-
                           GetterloginSetter getterloginsetter =
                               GetterloginSetter();
                           getterloginsetter.Photo = pickedImage;

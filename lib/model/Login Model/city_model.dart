@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final cityModel = cityModelFromJson(jsonString);
+//     final modelapi = modelapiFromJson(jsonString);
 
 import 'dart:convert';
 
-CityModel cityModelFromJson(String str) => CityModel.fromJson(json.decode(str));
+Modelapi modelapiFromJson(String str) => Modelapi.fromJson(json.decode(str));
 
-String cityModelToJson(CityModel data) => json.encode(data.toJson());
+String modelapiToJson(Modelapi data) => json.encode(data.toJson());
 
-class CityModel {
-  CityModel({
+class Modelapi {
+  Modelapi({
     this.success,
     this.message,
     this.response,
@@ -19,7 +19,7 @@ class CityModel {
   String? message;
   Response? response;
 
-  factory CityModel.fromJson(Map<String, dynamic> json) => CityModel(
+  factory Modelapi.fromJson(Map<String, dynamic> json) => Modelapi(
     success: json["success"] == null ? null : json["success"],
     message: json["message"] == null ? null : json["message"],
     response: json["response"] == null ? null : Response.fromJson(json["response"]),
@@ -46,6 +46,8 @@ class Response {
   Map<String, dynamic> toJson() => {
     "citylist": citylist == null ? null : List<dynamic>.from(citylist!.map((x) => x.toJson())),
   };
+
+  where(Function(dynamic element) param0) {}
 }
 
 class Citylist {

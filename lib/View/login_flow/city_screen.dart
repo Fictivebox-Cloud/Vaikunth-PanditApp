@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,7 +8,9 @@ import 'package:panditapp/view_model/Login/CityListApi.dart';
 import 'package:provider/provider.dart';
 import '../../Consts/text_const.dart';
 import '../../consts/themescolor.dart';
+import '../../model/Login Model/city_model.dart';
 import 'Documents_screen.dart';
+import 'package:http/http.dart' as http;
 
 class CityScreen extends StatefulWidget {
   final String? name3, mobile, servicesname;
@@ -28,12 +31,30 @@ class _CityScreenState extends State<CityScreen> {
   late String textValue;
   late Timer timeHandle;
 
-  // var items = List<String>();
+
   late CityListApi? city_list_api;
+  void initState(){
+    super.initState();
+    _getDataFromApi();
+  }
+  Modelapi? modelapi;
+  void _getDataFromApi()async{
+    var headers = {
+      'Authorization': 'Basic YW05dVpVQXlPVGM0OlJrbFVUa1ZUVTBBak1USXo=',
+    };
+    var url = 'https://vaikunth.fictivebox.com/api/getcitylist';
+    var respones = await http.post(Uri.parse(url,),headers:headers );
+    print(respones.body);
+    setState(() {
+      modelapi = Modelapi.fromJson(json.decode(respones.body));
+      print(respones.body);
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    city_list_api = context.watch<CityListApi>();
+
     return Scaffold(
         backgroundColor: white,
         body: SafeArea(
@@ -63,7 +84,7 @@ class _CityScreenState extends State<CityScreen> {
                                 width: 48, height: 2, color: kSecondaryColor),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 24,
                         ),
                         Text(
@@ -71,45 +92,24 @@ class _CityScreenState extends State<CityScreen> {
                           style: GoogleFonts.lato(
                               fontWeight: FontWeight.w500, fontSize: 24),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 32,
                         ),
-                        Container(
+                        SizedBox(
                           height: 48,
-                          child: TextField(
-                            cursorColor: colorPrimary,
-                            controller: editingController,
-                            //keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                                prefixIcon: const Icon(
-                                  Icons.search,
-                                  color: p1Color,
-                                ),
-                                fillColor: grey,
-                                hintText: SEARCH_YOUR_CITY,
-                                hintStyle: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: kSecondaryColor),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: colorPrimary, width: 2.0),
-                                  // borderRadius: BorderRadius.circular(25.0),
-                                ),
-                                border: OutlineInputBorder(
-
-                                    //borderRadius: BorderRadius.circular(24)
-                                    )),
-                            inputFormatters: [
-                              //LengthLimitingTextInputFormatter(10),
-                              FilteringTextInputFormatter.allow(
-                                  RegExp("[a-z A-Z 0-9]")),
-                            ],
+                          child: Autocomplete<Citylist>(
+                            optionsBuilder: (TextEditingValue value){
+                              return
+                                // modelapi!.data!.where((element) => element.firstName!.toLowerCase().contains(value.text.toLowerCase())).toList();
+                                modelapi!.response!.where((element) => element.firstName!.toLowerCase().contains(value.text.toLowerCase()));
+                            },
+                            onSelected: (value)=> print(value.name),
+                            displayStringForOption: (Citylist d)=> '${d.name!} ${d.name !}',
                           ),
                         ),
 
                         //Text("${widget.servicesname}"),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                       ],
@@ -117,7 +117,7 @@ class _CityScreenState extends State<CityScreen> {
                   ),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
                 child: Container(

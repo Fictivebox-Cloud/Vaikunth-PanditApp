@@ -47,6 +47,7 @@ class ServiceVM with ChangeNotifier{
         apiUrl:GET_SERVICE_API,);
     if(response is Success){
       Object data = serviceModelFromJson(response.response as String);
+      print(response.response);
 
       setServiceModel(data as ServiceModel);
 

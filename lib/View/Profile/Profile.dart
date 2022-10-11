@@ -8,25 +8,19 @@ import 'package:panditapp/View/Profile/components/Settinng_Screen.dart';
 import 'package:panditapp/View/Profile/components/id_card.dart';
 import 'package:panditapp/View/login_flow/Phone_Number.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../Util/login_in_User.dart';
 import '../../consts/image_const.dart';
 import '../../consts/text_const.dart';
 import '../../consts/themescolor.dart';
 import '../../view_model/Login/Service_VM.dart';
-
 import 'components/Bank/Personal_Bank_Details.dart';
-
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
-
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
-
 class _ProfileScreenState extends State<ProfileScreen> {
   var ht, wt;
-
   Widget bodyProfile(){
     return Expanded(
       child: SingleChildScrollView(
@@ -76,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               fontSize: 14,
                               color: white),
                         ),
-                        Icon(Icons.arrow_forward_ios,
+                        const Icon(Icons.arrow_forward_ios,
                             color: white, size: 15.0)
                       ],
                     ),
@@ -84,13 +78,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
             ),
-            vaikunth_id_card_Container(),
-            bank_account_details_Container(),
-            my_booking_Container(),
-            my_earnings_Container(),
-            settingd_Container(),
-            logout_Container(),
-            SizedBox(
+            vaikunthIdCardContainer(),
+            bankAccountDetailsContainer(),
+            myBookingContainer(),
+            myEarningsContainer(),
+            settingdContainer(),
+            logoutContainer(),
+            const SizedBox(
               height: 17,
             )
           ],
@@ -98,13 +92,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
- Widget vaikunth_id_card_Container(){
+ Widget vaikunthIdCardContainer(){
     return GestureDetector(
       onTap: () {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => IdCardScreen()));
+                builder: (context) => const IdCardScreen()));
       },
       child: Padding(
         padding:
@@ -118,7 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             border:
             Border.all(width: 1, color: kSecondaryColor),
             boxShadow: [
-              BoxShadow(
+              const BoxShadow(
                   color: kSecondaryColor,
                   spreadRadius: 2,
                   blurRadius: 4,
@@ -133,7 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Row(
                   children: [
                     Image.asset(ImageConst().IDCARD),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     Column(
@@ -168,7 +162,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
  }
- Widget bank_account_details_Container(){
+ Widget bankAccountDetailsContainer(){
     return Padding(
       padding:
       const EdgeInsets.only(left: 16, right: 16, top: 10),
@@ -190,7 +184,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             border:
             Border.all(width: 1, color: kSecondaryColor),
             boxShadow: [
-              BoxShadow(
+              const BoxShadow(
                   color: kSecondaryColor,
                   spreadRadius: 2,
                   blurRadius: 4,
@@ -206,7 +200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   //
                   children: [
                     Image.asset(ImageConst().BANK),
-                    SizedBox(
+                    const SizedBox(
                       width: 33,
                     ),
                     Column(
@@ -243,7 +237,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
  }
- Widget my_booking_Container(){
+ Widget myBookingContainer(){
     return Padding(
       padding:
       const EdgeInsets.only(left: 16, right: 16, top: 10),
@@ -252,7 +246,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => BookingsScreen()));
+                  builder: (context) => const BookingsScreen()));
         },
         child: Container(
           width: double.infinity,
@@ -263,7 +257,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             border:
             Border.all(width: 1, color: kSecondaryColor),
             boxShadow: [
-              BoxShadow(
+              const BoxShadow(
                   color: kSecondaryColor,
                   spreadRadius: 2,
                   blurRadius: 4,
@@ -278,7 +272,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Row(
                   children: [
                     Image.asset(ImageConst().ORDER),
-                    SizedBox(
+                    const SizedBox(
                       width: 30,
                     ),
                     Column(
@@ -313,7 +307,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
  }
- Widget my_earnings_Container(){
+ Widget myEarningsContainer(){
     return Padding(
       padding:
       const EdgeInsets.only(left: 16, right: 16, top: 10),
@@ -322,7 +316,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => EarningsScreen()));
+                  builder: (context) => const EarningsScreen()));
         },
         child: Container(
           width: double.infinity,
@@ -333,7 +327,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             border:
             Border.all(width: 1, color: kSecondaryColor),
             boxShadow: [
-              BoxShadow(
+              const BoxShadow(
                   color: kSecondaryColor,
                   spreadRadius: 2,
                   blurRadius: 4,
@@ -348,7 +342,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Row(
                   children: [
                     Image.asset(ImageConst().RUPSS),
-                    SizedBox(
+                    const SizedBox(
                       width: 33,
                     ),
                     Column(
@@ -383,7 +377,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
  }
- Widget settingd_Container(){
+ Widget settingdContainer(){
     return Padding(
       padding:
       const EdgeInsets.only(left: 16, right: 16, top: 10),
@@ -392,7 +386,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => SettingScreen()));
+                  builder: (context) => const SettingScreen()));
         },
         child: Container(
           width: double.infinity,
@@ -403,7 +397,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             border:
             Border.all(width: 1, color: kSecondaryColor),
             boxShadow: [
-              BoxShadow(
+              const BoxShadow(
                   color: kSecondaryColor,
                   spreadRadius: 2,
                   blurRadius: 4,
@@ -418,7 +412,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Row(
                   children: [
                     Image.asset(ImageConst().SETTING),
-                    SizedBox(
+                    const SizedBox(
                       width: 21,
                     ),
                     Column(
@@ -454,7 +448,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
  }
- Widget logout_Container(){
+ Widget logoutContainer(){
     return Padding(
       padding:
       const EdgeInsets.only(left: 16, right: 16, top: 15),
@@ -470,7 +464,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               borderRadius: BorderRadius.circular(8),
               border: Border.all(width: 1, color: Colors.red),
               boxShadow: [
-                BoxShadow(
+                const BoxShadow(
                     color: kSecondaryColor,
                     spreadRadius: 2,
                     blurRadius: 4,
@@ -557,18 +551,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             borderRadius: BorderRadius.circular(4),
                             color: kPrimaryColor),
                         child: CupertinoButton(
-                            child: Text(LOGOUT),
+                            child: const Text(LOGOUT),
                             onPressed: () async {
                               {
-                                // SharedPreferences prefs =
-                                //     await SharedPreferences.getInstance();
-                                // prefs.remove('name');
                                 await LoggedInUserBloc.instance().logout(context);
                                 Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext ctx) =>
-                                            PhoneNumberScreen()),
+                                            const PhoneNumberScreen()),
                                     (route) => false);
                               }
                             }))
