@@ -20,11 +20,11 @@ import '../../view_model/Login/ApiCallLogin.dart';
 import '../../view_model/BookingViewDetails/Complete_Bookings.dart';
 import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 
-class Account_details extends StatefulWidget {
+class Accountdetails extends StatefulWidget {
   final String? aadhar, pancard, name5, mobile, servicesname;
   final File? photo5, photoaadharfront, photoaadharback, pan;
 
-  Account_details({
+  Accountdetails({
     Key? key,
     this.aadhar,
     this.pancard,
@@ -38,7 +38,7 @@ class Account_details extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<Account_details> createState() => _Account_detailsState();
+  State<Accountdetails> createState() => _AccountdetailsState();
 }
 
 class UpperCaseTextFormatter extends TextInputFormatter {
@@ -53,7 +53,7 @@ class UpperCaseTextFormatter extends TextInputFormatter {
 }
 
 
-class _Account_detailsState extends State<Account_details> {
+class _AccountdetailsState extends State<Accountdetails> {
   var ht, wt;
 
   TextEditingController _accountno = TextEditingController();
@@ -64,7 +64,7 @@ class _Account_detailsState extends State<Account_details> {
 
   List<dynamic> countries = [];
   String? countryId;
-  late BankList_VM bankList_VM;
+  late BankListVM bankList_VM;
 
   countryList() {
     setState(() {
@@ -101,7 +101,7 @@ class _Account_detailsState extends State<Account_details> {
   @override
   Widget build(BuildContext context) {
     //ServiceVM serviceVM = context.watch<ServiceVM>();
-    bankList_VM = context.watch<BankList_VM>();
+    bankList_VM = context.watch<BankListVM>();
     //countryList();
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
@@ -294,7 +294,7 @@ class _Account_detailsState extends State<Account_details> {
 
                               FilteringTextInputFormatter.deny(
                                   RegExp(r'\s')),
-                            LengthLimitingTextInputFormatter(10),
+                            LengthLimitingTextInputFormatter(11),
                             UpperCaseTextFormatter(),
                             FilteringTextInputFormatter.allow(
                                 RegExp("[a-z A-Z 0-9]")),
@@ -318,6 +318,7 @@ class _Account_detailsState extends State<Account_details> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
                       color: kPrimaryColor),
+
                   child: TextButton(
                       onPressed: () async {
                         // GetterloginSetter s = GetterloginSetter();
@@ -336,7 +337,7 @@ class _Account_detailsState extends State<Account_details> {
                           aadharnumber: widget.aadhar,
                           pannumber: widget.pancard,
                           account_number: _getterloginSetter.Account,
-                          bank: this.countries,
+                          bank: countries,
                           ifsc: _getterloginSetter.ifsc,
                           photo: widget.photo5,
                           aadharbackphoto: widget.photoaadharback,
@@ -344,16 +345,19 @@ class _Account_detailsState extends State<Account_details> {
                           panfile: widget.pan,
                         );
 
+                        print("Registration test${api}");
+
+
                         LoggedInUserBloc.instance().getUserId();
 
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Home_Screen()));
+                                builder: (context) => HomeScreen()));
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Home_Screen()),
+                                builder: (context) => HomeScreen()),
                             (Route<dynamic> route) => false);
                       },
                       child: Text(

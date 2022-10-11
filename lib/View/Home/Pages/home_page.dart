@@ -9,18 +9,18 @@ import '../../../Consts/text_const.dart';
 import '../../../consts/image_const.dart';
 import '../../../consts/themescolor.dart';
 import '../../../route_app/page_navigeter_name_route.dart';
-class Home_page_Screen extends StatefulWidget {
+class HomePageScreen extends StatefulWidget {
   @override
-  State<Home_page_Screen> createState() => _Home_page_ScreenState();
+  State<HomePageScreen> createState() => _HomePageScreenState();
 }
 
-class _Home_page_ScreenState extends State<Home_page_Screen> {
+class _HomePageScreenState extends State<HomePageScreen> {
   var ht, wt;
-  late Online_Ofline_View_Model _online_ofline_view_model;
-  late Booking_Request_View_Model booking_request_view_model;
+  late OnlineOflineViewModel _online_ofline_view_model;
+  late BookingRequestViewModel booking_request_view_model;
 
   Future<void> _refresh(bool reload, BuildContext context){
-     booking_request_view_model= Provider.of<Booking_Request_View_Model>(context,listen: false);
+     booking_request_view_model= Provider.of<BookingRequestViewModel>(context,listen: false);
     booking_request_view_model.getbookingApiCall(reload);
     return Future.delayed(const Duration(seconds: 0));
   }
@@ -31,8 +31,8 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
   }
   @override
   Widget build(BuildContext context) {
-    Booking_Request_View_Model booking_request_view_model =
-        context.watch<Booking_Request_View_Model>();
+    BookingRequestViewModel booking_request_view_model =
+        context.watch<BookingRequestViewModel>();
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -49,7 +49,7 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
       ),
     );
   }
-  _listDesign(Booking_Request_View_Model booking_request_view_model,
+  _listDesign(BookingRequestViewModel booking_request_view_model,
       BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,7 +119,7 @@ class _Home_page_ScreenState extends State<Home_page_Screen> {
               textSize: 16,
               onChanged: (val) {
                 _online_ofline_view_model =
-                    Provider.of<Online_Ofline_View_Model>(context,
+                    Provider.of<OnlineOflineViewModel>(context,
                         listen: false);
                 _online_ofline_view_model.getonlineofline(
                     userStatus: val ? "1" : "0");

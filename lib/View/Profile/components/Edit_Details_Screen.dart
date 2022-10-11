@@ -10,24 +10,25 @@ import '../../../view_model/Profile/Personal_Detail_View_Model.dart';
 import '../../../view_model/Profile/edit_profile_view_model.dart';
 import '../../../view_model/Login/Service_VM.dart';
 
-
-class Edit_Details_Screen extends StatefulWidget {
+class EditDetailsScreen extends StatefulWidget {
   final String? servicename;
 
-  Edit_Details_Screen({Key? key, this.servicename}) : super(key: key);
+  EditDetailsScreen({Key? key, this.servicename}) : super(key: key);
 
   @override
-  State<Edit_Details_Screen> createState() => _Edit_Details_ScreenState();
+  State<EditDetailsScreen> createState() => _EditDetailsScreenState();
 }
 
-class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
+class _EditDetailsScreenState extends State<EditDetailsScreen> {
   var ht, wt;
-  int _selectedIndex = 0;
+  int servicename = 0;
+  String? data;
   TextEditingController? _namecontroller;
+  TextEditingController? _servicecontroller;
   TextEditingController? _citycontroller;
-  Edit_profile_View_model? edit_profile_view_modelVM;
-  City_List_Api? city_list_api;
-  Personal_Detail_View_Model? personal_detail_view_model;
+  EditProfileViewModel? edit_profile_view_modelVM;
+  CityListApi? city_list_api;
+  PersonalDetailViewModel? personal_detail_view_model;
   late ServiceVM serviceVM;
 
   final List<Map<String, dynamic>> _allUsers = [
@@ -70,10 +71,9 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
     setState(() {
       _foundUsers = results;
     });
-
   }
 
-  Widget fastTextFiledDesgin(){
+  Widget fastTextFiledDesgin() {
     return Center(
       child: SizedBox(
         width: double.infinity,
@@ -84,40 +84,38 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
             //keyboardType: TextInputType.number,
             decoration: InputDecoration(
                 fillColor: grey,
-                hintText: personal_detail_view_model
-                    ?.presonalDetailModel
-                    ?.response
-                    ?.panditDetails
-                    ?.panditFirstName ??
+                hintText: personal_detail_view_model?.presonalDetailModel
+                        ?.response?.panditDetails?.panditFirstName ??
                     "",
                 hintStyle: TextStyle(fontSize: 15),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                      color: colorPrimary, width: 2.0),
+                  borderSide: const BorderSide(color: colorPrimary, width: 2.0),
                   // borderRadius: BorderRadius.circular(25.0),
                 ),
                 border: OutlineInputBorder(
 
-                  //borderRadius: BorderRadius.circular(24)
-                ))),
+                    //borderRadius: BorderRadius.circular(24)
+                    ))),
       ),
     );
   }
-  Widget servicesOfferedDesgin(){
+
+  Widget servicesOfferedDesgin() {
     return Column(
       children: [
-        Row(
+        /*  Row(
           children: [
             Image.asset(ImageConst().CHOPADA_PUJAN_BOOK),
             SizedBox(
               width: 23,
             ),
             Text(
+              //_namecontroller:name
               personal_detail_view_model
                   ?.presonalDetailModel
                   ?.response
                   ?.panditDetails
-                  ?.panditServices ??
+                  ?.panditServices??
                   "",
               style: GoogleFonts.lato(
                   fontWeight: FontWeight.w400,
@@ -128,7 +126,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
         ),
         SizedBox(
           height: 14,
-        ),
+        ),*/
         Row(
           children: [
             Image.asset(ImageConst().CEMETERYE),
@@ -136,7 +134,9 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
               width: 23,
             ),
             Text(
-              FUNERALSERVICES,
+              //_selectedIndex.toString(),
+              data ?? "",
+              //FUNERALSERVICES,
               style: GoogleFonts.lato(
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
@@ -166,12 +166,12 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                   height: 46,
                   child: Center(
                       child: Text(
-                        ADDREMOVESERVICES,
-                        style: GoogleFonts.lato(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: kPrimaryColor),
-                      )),
+                    ADDREMOVESERVICES,
+                    style: GoogleFonts.lato(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: kPrimaryColor),
+                  )),
                 ),
               ),
             )),
@@ -179,7 +179,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
     );
   }
 
-  Widget cityTextFiledDesgin(){
+  Widget cityTextFiledDesgin() {
     return Center(
       child: TextField(
           scrollPadding: EdgeInsets.zero,
@@ -194,8 +194,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
             hintText: LOCATION,
             hintStyle: TextStyle(fontSize: 15),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                  color: colorPrimary, width: 2.0),
+              borderSide: const BorderSide(color: colorPrimary, width: 2.0),
               // borderRadius: BorderRadius.circular(25.0),
             ),
           )),
@@ -206,9 +205,9 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
   Widget build(BuildContext context) {
     serviceVM = Provider.of<ServiceVM>(context, listen: false);
     edit_profile_view_modelVM =
-        Provider.of<Edit_profile_View_model>(context, listen: false);
+        Provider.of<EditProfileViewModel>(context, listen: false);
     personal_detail_view_model =
-        Provider.of<Personal_Detail_View_Model>(context, listen: false);
+        Provider.of<PersonalDetailViewModel>(context, listen: false);
     personal_detail_view_model!.getpersonalDetailApiCall();
     city_list_api = Provider.of(context, listen: false);
 
@@ -219,7 +218,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
         appBar: AppBar(
           title: Text(EDITDETAILS),
         ),
-        body: Consumer<Edit_profile_View_model>(
+        body: Consumer<EditProfileViewModel>(
           builder: (context, provider, child) {
             return SafeArea(
               child: SingleChildScrollView(
@@ -280,7 +279,6 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                           SizedBox(
                             height: 10,
                           ),
-
                           cityTextFiledDesgin(),
                           SizedBox(
                             height: 100,
@@ -300,7 +298,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                                         ?.fachingEditDetailsModel(
                                             pandit_name: _namecontroller,
                                             pandit_city: _citycontroller,
-                                            pandit_services: _selectedIndex);
+                                            pandit_services: servicename);
                                   },
                                   child: Container(
                                     width: wt * 0.9,
@@ -310,7 +308,7 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                                         color: kPrimaryColor),
                                     child: Center(
                                         child: Text(
-                                          SAVE,
+                                      SAVE,
                                       style: GoogleFonts.lato(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 16,
@@ -402,13 +400,11 @@ class _Edit_Details_ScreenState extends State<Edit_Details_Screen> {
                 GestureDetector(
                   onTap: () {
                     print("Container clickedd");
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Edit_Details_Screen(
-                                  servicename: provider.serviceModel!.response!
-                                      .serviceslist![_selectedIndex].name,
-                                )));
+                    setState(() {
+                      data = provider.serviceModel!.response!
+                          .serviceslist![provider.index ?? 1].name;
+                    });
+                    Navigator.pop(context);
                   },
                   child: Container(
                     width: wt * 0.9,

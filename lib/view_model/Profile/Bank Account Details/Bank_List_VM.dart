@@ -8,7 +8,7 @@ import '../../../Util/login_in_User.dart';
 import '../../../model/Profile_Screen/Bank_Account Details/bank_list_model.dart';
 import '../../../model/Login Model/service_model.dart';
 
-class BankList_VM with ChangeNotifier{
+class BankListVM with ChangeNotifier{
   bool _loading = false;
   BankListModel? _bankListModel;
   UserError? _userError;
@@ -22,7 +22,7 @@ class BankList_VM with ChangeNotifier{
     notifyListeners();
   }
 
-  BankList_VM(){
+  BankListVM(){
     bankListAPIcall();
   }
 

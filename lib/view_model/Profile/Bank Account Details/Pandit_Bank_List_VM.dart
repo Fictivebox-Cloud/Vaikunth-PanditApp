@@ -9,7 +9,7 @@ import '../../../model/Profile_Screen/Bank_Account Details/bank_list_model.dart'
 import '../../../model/Profile_Screen/Bank_Account Details/pandit_bank_list_model.dart';
 import '../../../model/Login Model/service_model.dart';
 
-class Pandit_Bank_List_VM with ChangeNotifier{
+class PanditBankListVM with ChangeNotifier{
   bool _loading = false;
   PanditBankListModel? _panditBankListModel;
   UserError? _userError;
@@ -32,7 +32,7 @@ class Pandit_Bank_List_VM with ChangeNotifier{
     notifyListeners();
   }
 
-  Pandit_Bank_List_VM(){
+  PanditBankListVM(){
     panditbankListAPIcall();
   }
 

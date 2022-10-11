@@ -9,7 +9,7 @@ import '../../Util/login_in_User.dart';
 import '../../model/Earnings/Life_Time_Puja_List.dart';
 import '../../model/Earnings/earnings_home_model.dart';
 
-class Life_Time_Puja_List_VM with ChangeNotifier {
+class LifeTimePujaListVM with ChangeNotifier {
   bool _loading = false;
   LifeTimePujaListModel? _lifeTimePujaListModel;
   UserError? _userError;

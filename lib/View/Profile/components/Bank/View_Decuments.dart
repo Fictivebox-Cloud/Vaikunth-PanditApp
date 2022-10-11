@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../../../../view_model/Profile/Personal_Detail_View_Model.dart';
 
-class View_Decuments extends StatelessWidget {
-  late Personal_Detail_View_Model personal_detail_view_model;
+class ViewDecuments extends StatelessWidget {
+  late PersonalDetailViewModel personal_detail_view_model;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class View_Decuments extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(),
-        body: Consumer<Personal_Detail_View_Model>(
+        body: Consumer<PersonalDetailViewModel>(
           builder: (context, provider, child) {
             return Column(
               children: [

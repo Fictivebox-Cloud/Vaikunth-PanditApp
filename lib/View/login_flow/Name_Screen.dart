@@ -9,16 +9,16 @@ import 'package:panditapp/model/getterSetter.dart';
 
 import '../../consts/themescolor.dart';
 
-class Name_Screen extends StatefulWidget {
+class NameScreen extends StatefulWidget {
   String? mobile;
 
-  Name_Screen({Key? key, this.mobile}) : super(key: key);
+  NameScreen({Key? key, this.mobile}) : super(key: key);
 
   @override
-  State<Name_Screen> createState() => _Name_ScreenState();
+  State<NameScreen> createState() => _NameScreenState();
 }
 
-class _Name_ScreenState extends State<Name_Screen> {
+class _NameScreenState extends State<NameScreen> {
   var ht, wt;
   var isLoading = true.obs;
   var _namecontroller = TextEditingController();
@@ -156,7 +156,7 @@ class _Name_ScreenState extends State<Name_Screen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Photo_Upload(
+                                  builder: (context) => PhotoUpload(
                                         name: _namecontroller.text,
                                         mobile: widget.mobile,
                                       )));

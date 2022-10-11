@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Util/Api_collection.dart';
 import '../../Util/login_in_User.dart';
 
-class Puja_Confirm_OTP with ChangeNotifier {
+class PujaConfirmOTP with ChangeNotifier {
   bool _loading = false;
   PujaConfirmOtpModel? _puja_confirm_otp;
   UserError? _userError;

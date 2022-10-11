@@ -10,16 +10,16 @@ import '../../consts/themescolor.dart';
 import '../../route_app/page_navigeter_name_route.dart';
 import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 import '../../view_model/home_tab/booking_request_view_model.dart';
-class PhoneNumber_Screen extends StatefulWidget {
-  const PhoneNumber_Screen({Key? key}) : super(key: key);
+class PhoneNumberScreen extends StatefulWidget {
+  const PhoneNumberScreen({Key? key}) : super(key: key);
 
   @override
-  State<PhoneNumber_Screen> createState() => _PhoneNumber_ScreenState();
+  State<PhoneNumberScreen> createState() => _PhoneNumberScreenState();
 }
 
-class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
+class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
   var phoneController = TextEditingController();
-  Booking_Request_View_Model? booking_request_view_model;
+  BookingRequestViewModel? booking_request_view_model;
 
   var ht, wt;
 
@@ -78,7 +78,7 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => OTP_verify(
+                              builder: (context) => OTPVerify(
                                     mobile: phoneController.text,
                                   )));
                       // Navigator.pushNamed(context, RouteName.OTP_verify);

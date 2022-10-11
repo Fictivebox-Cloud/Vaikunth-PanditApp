@@ -17,16 +17,16 @@ import '../../Consts/text_const.dart';
 import '../../Util/login_in_User.dart';
 import '../../consts/themescolor.dart';
 
-class OTP_verify extends StatefulWidget {
+class OTPVerify extends StatefulWidget {
   String? mobile;
 
-  OTP_verify({Key? key, this.mobile}) : super(key: key);
+  OTPVerify({Key? key, this.mobile}) : super(key: key);
 
   @override
-  State<OTP_verify> createState() => _OTP_verifyState();
+  State<OTPVerify> createState() => _OTPVerifyState();
 }
 
-class _OTP_verifyState extends State<OTP_verify> {
+class _OTPVerifyState extends State<OTPVerify> {
   TextEditingController otpController = TextEditingController();
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   SmsAutoFill smsAutoFill = SmsAutoFill();
@@ -36,7 +36,7 @@ class _OTP_verifyState extends State<OTP_verify> {
   @override
   void initState() {
     phoneNumberVerification();
-    startTimer();
+    //startTimer();
   }
 
   Future<void> phoneNumberVerification() async {
@@ -107,13 +107,13 @@ class _OTP_verifyState extends State<OTP_verify> {
             .toString());
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const Home_Screen()),
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
             (route) => false);
       } else {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-                builder: (context) => Name_Screen(
+                builder: (context) => NameScreen(
                       mobile: widget.mobile,
                     )),
             (route) => false);
@@ -122,20 +122,20 @@ class _OTP_verifyState extends State<OTP_verify> {
 
   }
 
-  void startTimer(){
-    const onsec = Duration(seconds: 1);
-    Timer timer = Timer.periodic(onsec, (timer) {
-    if(strat ==0 ){
-     setState(() {
-       timer.cancel();
-     });
-    }else{
-      setState(() {
-        strat --;
-      });
-    }
-    });
-  }
+  // void startTimer(){
+  //   const onsec = Duration(seconds: 1);
+  //   Timer timer = Timer.periodic(onsec, (timer) {
+  //   if(strat ==0 ){
+  //    setState(() {
+  //      timer.cancel();
+  //    });
+  //   }else{
+  //     // setState(() {
+  //     //   strat --;
+  //     // });
+  //   }
+  //   });
+  // }
 
   var ht, wt;
 

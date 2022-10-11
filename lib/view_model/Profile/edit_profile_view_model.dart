@@ -10,7 +10,7 @@ import '../../Util/Api_collection.dart';
 import '../../Util/login_in_User.dart';
 import '../../model/Profile_Screen/Edit_Profile/edit_profile.dart';
 
-class Edit_profile_View_model with ChangeNotifier{
+class EditProfileViewModel with ChangeNotifier{
 
   bool _loading = false;
   EditDetailsModel? _editDetailsModel;

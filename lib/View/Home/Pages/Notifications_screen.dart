@@ -5,14 +5,14 @@ import '../../../Consts/text_const.dart';
 import '../../../consts/themescolor.dart';
 import '../../../view_model/Notification_VM.dart';
 
-class Notifications_screen extends StatefulWidget {
-  const Notifications_screen({Key? key}) : super(key: key);
+class NotificationsScreen extends StatefulWidget {
+  const NotificationsScreen({Key? key}) : super(key: key);
 
   @override
-  State<Notifications_screen> createState() => _Notifications_screenState();
+  State<NotificationsScreen> createState() => _NotificationsScreenState();
 }
 
-class _Notifications_screenState extends State<Notifications_screen> {
+class _NotificationsScreenState extends State<NotificationsScreen> {
   var ht, wt;
  // late NotificationVM notificationVM;
 

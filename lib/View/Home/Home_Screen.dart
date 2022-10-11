@@ -10,21 +10,21 @@ import '../../consts/themescolor.dart';
 import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 import '../../view_model/home_tab/booking_request_view_model.dart';
 
-class Home_Screen extends StatefulWidget {
-  const Home_Screen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<Home_Screen> createState() => _Home_ScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 
-class _Home_ScreenState extends State<Home_Screen> {
+class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   final screen = [
-    Home_page_Screen(),
-    Earnings_Screen(),
-    Bookings_Screen(),
-    Profile_Screen(),
+    HomePageScreen(),
+    EarningsScreen(),
+    BookingsScreen(),
+    ProfileScreen(),
   ];
 
   @override

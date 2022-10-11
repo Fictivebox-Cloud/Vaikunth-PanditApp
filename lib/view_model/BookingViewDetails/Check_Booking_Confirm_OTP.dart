@@ -8,7 +8,7 @@ import '../../Util/Api_collection.dart';
 import '../../Util/login_in_User.dart';
 import '../../model/Booking_View_Details/check_booking_otp_model.dart';
 
-class Check_Booking_Confirm_OTP_View_Model with ChangeNotifier {
+class CheckBookingConfirmOTPViewModel with ChangeNotifier {
   bool _loading = false;
   CheckBookingConfirmOtpModel? _bookingConfirmOtpModel;
   UserError? _userError;

@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Util/Api_collection.dart';
 import '../../Util/login_in_User.dart';
 
-class Online_Ofline_View_Model extends ChangeNotifier {
+class OnlineOflineViewModel extends ChangeNotifier {
   bool _loading = false;
   OnlineOflineModel? _getonlineOflineModel;
   UserError? _userError;

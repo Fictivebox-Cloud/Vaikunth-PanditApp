@@ -17,14 +17,14 @@ import '../../view_model/Login/Service_VM.dart';
 
 import 'components/Bank/Personal_Bank_Details.dart';
 
-class Profile_Screen extends StatefulWidget {
-  const Profile_Screen({Key? key}) : super(key: key);
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<Profile_Screen> createState() => _Profile_ScreenState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _Profile_ScreenState extends State<Profile_Screen> {
+class _ProfileScreenState extends State<ProfileScreen> {
   var ht, wt;
 
   Widget bodyProfile(){
@@ -56,7 +56,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Edit_Details_Screen()));
+                          builder: (context) => EditDetailsScreen()));
                 },
                 child: Container(
                   width: 119,
@@ -84,384 +84,12 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                 ),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Id_card_Screen()));
-              },
-              child: Padding(
-                padding:
-                const EdgeInsets.only(left: 16, right: 16, top: 10),
-                child: Container(
-                  width: double.infinity,
-                  height: 64,
-                  decoration: BoxDecoration(
-                    color: white,
-                    borderRadius: BorderRadius.circular(8),
-                    border:
-                    Border.all(width: 1, color: kSecondaryColor),
-                    boxShadow: [
-                      BoxShadow(
-                          color: kSecondaryColor,
-                          spreadRadius: 2,
-                          blurRadius: 4,
-                          offset: Offset(-1, 1))
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(ImageConst().IDCARD),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.center,
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  VAIKUNTHIDCARD,
-                                  style: GoogleFonts.lato(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: h1Color),
-                                ),
-                                Text(
-                                  VIEWYOURVAIKUNTHIDCARD,
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: kSecondaryColor),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                        Image.asset(ImageConst().ARROW),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-              const EdgeInsets.only(left: 16, right: 16, top: 10),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Persional_Bank_Details(
-                            bank_id: '',
-                          )));
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 64,
-                  decoration: BoxDecoration(
-                    color: white,
-                    borderRadius: BorderRadius.circular(8),
-                    border:
-                    Border.all(width: 1, color: kSecondaryColor),
-                    boxShadow: [
-                      BoxShadow(
-                          color: kSecondaryColor,
-                          spreadRadius: 2,
-                          blurRadius: 4,
-                          offset: Offset(-1, 1))
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          //
-                          children: [
-                            Image.asset(ImageConst().BANK),
-                            SizedBox(
-                              width: 33,
-                            ),
-                            Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.center,
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
-                              children: [
-                                Hero(
-                                    tag: "_text",
-                                    child: Text(
-                                      BANK_ACCOUNT_DETAILS,
-                                      style: GoogleFonts.lato(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                          color: h1Color),
-                                    )),
-                                Text(
-                                  MANAGEBANK_ACCOUNT_DETAILS,
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: kSecondaryColor),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                        Image.asset(ImageConst().ARROW),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-              const EdgeInsets.only(left: 16, right: 16, top: 10),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Bookings_Screen()));
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 64,
-                  decoration: BoxDecoration(
-                    color: white,
-                    borderRadius: BorderRadius.circular(8),
-                    border:
-                    Border.all(width: 1, color: kSecondaryColor),
-                    boxShadow: [
-                      BoxShadow(
-                          color: kSecondaryColor,
-                          spreadRadius: 2,
-                          blurRadius: 4,
-                          offset: Offset(-1, 1))
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(ImageConst().ORDER),
-                            SizedBox(
-                              width: 30,
-                            ),
-                            Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.center,
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  MYBOOKING,
-                                  style: GoogleFonts.lato(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: h1Color),
-                                ),
-                                Text(
-                                  TRACK_ALL_YOUR_ORDERS_HERE,
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: kSecondaryColor),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                        Image.asset(ImageConst().ARROW),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-              const EdgeInsets.only(left: 16, right: 16, top: 10),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Earnings_Screen()));
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 64,
-                  decoration: BoxDecoration(
-                    color: white,
-                    borderRadius: BorderRadius.circular(8),
-                    border:
-                    Border.all(width: 1, color: kSecondaryColor),
-                    boxShadow: [
-                      BoxShadow(
-                          color: kSecondaryColor,
-                          spreadRadius: 2,
-                          blurRadius: 4,
-                          offset: Offset(-1, 1))
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(ImageConst().RUPSS),
-                            SizedBox(
-                              width: 33,
-                            ),
-                            Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.center,
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  MY_EARNINGS,
-                                  style: GoogleFonts.lato(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: h1Color),
-                                ),
-                                Text(
-                                  TRACK_ALL_YOUR_ORDERS_HERE,
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: kSecondaryColor),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                        Image.asset(ImageConst().ARROW),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-              const EdgeInsets.only(left: 16, right: 16, top: 10),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Setting_Screen()));
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 64,
-                  decoration: BoxDecoration(
-                    color: white,
-                    borderRadius: BorderRadius.circular(8),
-                    border:
-                    Border.all(width: 1, color: kSecondaryColor),
-                    boxShadow: [
-                      BoxShadow(
-                          color: kSecondaryColor,
-                          spreadRadius: 2,
-                          blurRadius: 4,
-                          offset: Offset(-1, 1))
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(ImageConst().SETTING),
-                            SizedBox(
-                              width: 21,
-                            ),
-                            Column(
-                              mainAxisAlignment:
-                              MainAxisAlignment.center,
-                              crossAxisAlignment:
-                              CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  SETTING,
-                                  style: GoogleFonts.lato(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: h1Color),
-                                ),
-                                Text(
-                                  ACCESS_APP_SETTING_HERE,
-                                  style: GoogleFonts.lato(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: kSecondaryColor),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                        Image.asset(ImageConst().ARROW),
-                        // Icon(Icons.arrow_forward)
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding:
-              const EdgeInsets.only(left: 16, right: 16, top: 15),
-              child: GestureDetector(
-                onTap: () {
-                  _showlogoutDigalog();
-                },
-                child: Container(
-                    width: double.infinity,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: Colors.red),
-                      boxShadow: [
-                        BoxShadow(
-                            color: kSecondaryColor,
-                            spreadRadius: 2,
-                            blurRadius: 4,
-                            offset: Offset(-1, 1))
-                      ],
-                    ),
-                    child: Center(
-                        child: Text(
-                          LOGOUT,
-                          style: GoogleFonts.lato(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: logoutclr),
-                        ))),
-              ),
-            ),
+            vaikunth_id_card_Container(),
+            bank_account_details_Container(),
+            my_booking_Container(),
+            my_earnings_Container(),
+            settingd_Container(),
+            logout_Container(),
             SizedBox(
               height: 17,
             )
@@ -470,7 +98,396 @@ class _Profile_ScreenState extends State<Profile_Screen> {
       ),
     );
   }
-
+ Widget vaikunth_id_card_Container(){
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => IdCardScreen()));
+      },
+      child: Padding(
+        padding:
+        const EdgeInsets.only(left: 16, right: 16, top: 10),
+        child: Container(
+          width: double.infinity,
+          height: 64,
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(8),
+            border:
+            Border.all(width: 1, color: kSecondaryColor),
+            boxShadow: [
+              BoxShadow(
+                  color: kSecondaryColor,
+                  spreadRadius: 2,
+                  blurRadius: 4,
+                  offset: Offset(-1, 1))
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(ImageConst().IDCARD),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Column(
+                      mainAxisAlignment:
+                      MainAxisAlignment.center,
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          VAIKUNTHIDCARD,
+                          style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: h1Color),
+                        ),
+                        Text(
+                          VIEWYOURVAIKUNTHIDCARD,
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              color: kSecondaryColor),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Image.asset(ImageConst().ARROW),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+ }
+ Widget bank_account_details_Container(){
+    return Padding(
+      padding:
+      const EdgeInsets.only(left: 16, right: 16, top: 10),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PersionalBankDetails(
+                    bank_id: '',
+                  )));
+        },
+        child: Container(
+          width: double.infinity,
+          height: 64,
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(8),
+            border:
+            Border.all(width: 1, color: kSecondaryColor),
+            boxShadow: [
+              BoxShadow(
+                  color: kSecondaryColor,
+                  spreadRadius: 2,
+                  blurRadius: 4,
+                  offset: Offset(-1, 1))
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  //
+                  children: [
+                    Image.asset(ImageConst().BANK),
+                    SizedBox(
+                      width: 33,
+                    ),
+                    Column(
+                      mainAxisAlignment:
+                      MainAxisAlignment.center,
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+                        Hero(
+                            tag: "_text",
+                            child: Text(
+                              BANK_ACCOUNT_DETAILS,
+                              style: GoogleFonts.lato(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: h1Color),
+                            )),
+                        Text(
+                          MANAGEBANK_ACCOUNT_DETAILS,
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              color: kSecondaryColor),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Image.asset(ImageConst().ARROW),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+ }
+ Widget my_booking_Container(){
+    return Padding(
+      padding:
+      const EdgeInsets.only(left: 16, right: 16, top: 10),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => BookingsScreen()));
+        },
+        child: Container(
+          width: double.infinity,
+          height: 64,
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(8),
+            border:
+            Border.all(width: 1, color: kSecondaryColor),
+            boxShadow: [
+              BoxShadow(
+                  color: kSecondaryColor,
+                  spreadRadius: 2,
+                  blurRadius: 4,
+                  offset: Offset(-1, 1))
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(ImageConst().ORDER),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Column(
+                      mainAxisAlignment:
+                      MainAxisAlignment.center,
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          MYBOOKING,
+                          style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: h1Color),
+                        ),
+                        Text(
+                          TRACK_ALL_YOUR_ORDERS_HERE,
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              color: kSecondaryColor),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Image.asset(ImageConst().ARROW),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+ }
+ Widget my_earnings_Container(){
+    return Padding(
+      padding:
+      const EdgeInsets.only(left: 16, right: 16, top: 10),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => EarningsScreen()));
+        },
+        child: Container(
+          width: double.infinity,
+          height: 64,
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(8),
+            border:
+            Border.all(width: 1, color: kSecondaryColor),
+            boxShadow: [
+              BoxShadow(
+                  color: kSecondaryColor,
+                  spreadRadius: 2,
+                  blurRadius: 4,
+                  offset: Offset(-1, 1))
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(ImageConst().RUPSS),
+                    SizedBox(
+                      width: 33,
+                    ),
+                    Column(
+                      mainAxisAlignment:
+                      MainAxisAlignment.center,
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          MY_EARNINGS,
+                          style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: h1Color),
+                        ),
+                        Text(
+                          TRACK_ALL_YOUR_ORDERS_HERE,
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              color: kSecondaryColor),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Image.asset(ImageConst().ARROW),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+ }
+ Widget settingd_Container(){
+    return Padding(
+      padding:
+      const EdgeInsets.only(left: 16, right: 16, top: 10),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SettingScreen()));
+        },
+        child: Container(
+          width: double.infinity,
+          height: 64,
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(8),
+            border:
+            Border.all(width: 1, color: kSecondaryColor),
+            boxShadow: [
+              BoxShadow(
+                  color: kSecondaryColor,
+                  spreadRadius: 2,
+                  blurRadius: 4,
+                  offset: Offset(-1, 1))
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(ImageConst().SETTING),
+                    SizedBox(
+                      width: 21,
+                    ),
+                    Column(
+                      mainAxisAlignment:
+                      MainAxisAlignment.center,
+                      crossAxisAlignment:
+                      CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          SETTING,
+                          style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: h1Color),
+                        ),
+                        Text(
+                          ACCESS_APP_SETTING_HERE,
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              color: kSecondaryColor),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Image.asset(ImageConst().ARROW),
+                // Icon(Icons.arrow_forward)
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+ }
+ Widget logout_Container(){
+    return Padding(
+      padding:
+      const EdgeInsets.only(left: 16, right: 16, top: 15),
+      child: GestureDetector(
+        onTap: () {
+          _showlogoutDigalog();
+        },
+        child: Container(
+            width: double.infinity,
+            height: 48,
+            decoration: BoxDecoration(
+              color: white,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(width: 1, color: Colors.red),
+              boxShadow: [
+                BoxShadow(
+                    color: kSecondaryColor,
+                    spreadRadius: 2,
+                    blurRadius: 4,
+                    offset: Offset(-1, 1))
+              ],
+            ),
+            child: Center(
+                child: Text(
+                  LOGOUT,
+                  style: GoogleFonts.lato(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: logoutclr),
+                ))),
+      ),
+    );
+ }
 
   @override
   Widget build(BuildContext context) {
@@ -551,7 +568,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext ctx) =>
-                                            PhoneNumber_Screen()),
+                                            PhoneNumberScreen()),
                                     (route) => false);
                               }
                             }))

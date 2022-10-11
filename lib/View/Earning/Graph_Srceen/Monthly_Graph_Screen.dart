@@ -5,8 +5,8 @@ import '../../../Consts/themescolor.dart';
 
 import '../../../model/Graph_Model/Monthly_Graph_Model.dart';
 
-class Monthly_Graph_Screen extends StatelessWidget {
-  Monthly_Graph_Screen({Key? key}) : super(key: key);
+class MonthlyGraphScreen extends StatelessWidget {
+  MonthlyGraphScreen({Key? key}) : super(key: key);
 
   final List<MonthlyGraphModel> data = [
     MonthlyGraphModel(

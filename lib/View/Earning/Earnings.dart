@@ -16,20 +16,20 @@ import '../../view_model/home_tab/Reject_Booking_VM.dart';
 import 'Graph_Srceen/Monthly_Graph_Screen.dart';
 import 'Graph_Srceen/Weekly_Graph_Screen.dart';
 
-class Earnings_Screen extends StatefulWidget {
-  const Earnings_Screen({Key? key}) : super(key: key);
+class EarningsScreen extends StatefulWidget {
+  const EarningsScreen({Key? key}) : super(key: key);
 
   @override
-  State<Earnings_Screen> createState() => _Earnings_ScreenState();
+  State<EarningsScreen> createState() => _EarningsScreenState();
 }
 
-class _Earnings_ScreenState extends State<Earnings_Screen> {
-  late Earnings_Home_VM earnings_home_vm;
-  late Life_Time_Puja_List_VM life_time_puja_list_vm;
+class _EarningsScreenState extends State<EarningsScreen> {
+  late EarningsHomeVM earnings_home_vm;
+  late LifeTimePujaListVM life_time_puja_list_vm;
   var ht, wt;
 
   Future<void> _refresh(bool reload, BuildContext context){
-    earnings_home_vm = Provider.of<Earnings_Home_VM?>(context,listen: false)!;
+    earnings_home_vm = Provider.of<EarningsHomeVM?>(context,listen: false)!;
     earnings_home_vm.earningshomeAPIcall(reload);
     return Future.delayed(const Duration(seconds: 0));
   }
@@ -40,7 +40,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
     Provider.of<WeekdataPerdayVM>(context, listen: false);
     weekdataperday.WeekdataPerdayApicall();
 
-    earnings_home_vm = context.watch<Earnings_Home_VM?>()!;
+    earnings_home_vm = context.watch<EarningsHomeVM?>()!;
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -179,8 +179,8 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                 weekdataperday.WeekdataPerdayApicall();
 
 
-                With_Draw_Money_VM withdrawmoney=
-                Provider.of<With_Draw_Money_VM>(context, listen: false);
+                WithDrawMoneyVM withdrawmoney=
+                Provider.of<WithDrawMoneyVM>(context, listen: false);
                 withdrawmoney.WithDrawMoney_APIcall();
 
                 showModalBottomSheet(
@@ -252,7 +252,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
         ),
         InkWell(
           onTap: () {
-            life_time_puja_list_vm = Provider.of<Life_Time_Puja_List_VM?>(context,listen: false)!;
+            life_time_puja_list_vm = Provider.of<LifeTimePujaListVM?>(context,listen: false)!;
             life_time_puja_list_vm.lifetimepujaAPIcall();
             Navigator.pushNamed(context, RouteName.Life_time_puja);
           },
@@ -312,7 +312,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
       height: 263,
       child: Column(
         children: [
-          Expanded(child: Weekly_Graph_Screen()),
+          Expanded(child: WeeklyGraphScreen()),
         ],
       ),
     );
@@ -324,7 +324,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
       child: Column(
         children: [
           Expanded(
-              child: Monthly_Graph_Screen()),
+              child: MonthlyGraphScreen()),
         ],
       ),
     );
@@ -417,7 +417,7 @@ class _Earnings_ScreenState extends State<Earnings_Screen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  Money_transferred_succesfully()));
+                                  MoneyTransferredSuccesfully()));
                     },
                     child: Text(
                       SEND_MONEY_TO_BANK_ACCOUNT,

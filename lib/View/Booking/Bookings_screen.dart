@@ -2,26 +2,24 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Consts/image_const.dart';
-import 'package:panditapp/View/Booking/pages/Booking_Details.dart';
+import 'package:panditapp/View/Booking/pages/booking_details.dart';
 import 'package:panditapp/Widgets/circular_loader.dart';
 import 'package:provider/provider.dart';
 
 import '../../Consts/text_const.dart';
 import '../../consts/themescolor.dart';
 import '../../view_model/BookingViewDetails/Complete_Bookings.dart';
-import '../../view_model/Profile/Bank Account Details/Delete_Bank_VM.dart';
 
-class Bookings_Screen extends StatefulWidget {
-  const Bookings_Screen({Key? key}) : super(key: key);
+class BookingsScreen extends StatefulWidget {
+  const BookingsScreen({Key? key}) : super(key: key);
 
   @override
-  State<Bookings_Screen> createState() => _Bookings_ScreenState();
+  State<BookingsScreen> createState() => _BookingsScreenState();
 }
 
-class _Bookings_ScreenState extends State<Bookings_Screen> {
-  late TabController _controller;
+class _BookingsScreenState extends State<BookingsScreen> {
   var ht, wt;
-  bool Small = false;
+  bool small = false;
 
   late CompleteBookingViewModel completeBookingViewModel;
   Future<void> _refresh(bool reload, BuildContext context){
@@ -53,7 +51,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
               child: Column(
                 children: [
                   TabBar(
-                    labelStyle: TextStyle(fontSize: Small ? 13.0 : 18.0),
+                    labelStyle: TextStyle(fontSize: small ? 13.0 : 18.0),
                     labelColor: h1Color,
                     unselectedLabelColor: const Color(0Xff999EA3),
                     tabs: const [
@@ -255,7 +253,7 @@ class _Bookings_ScreenState extends State<Bookings_Screen> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          Booking_Details_Screen(
+                                                          BookingDetailsScreen(
                                                               bookingId: completeBookingViewModel
                                                                   .completebokingmodel!
                                                                   .response!

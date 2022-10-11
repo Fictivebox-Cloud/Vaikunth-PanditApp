@@ -6,7 +6,7 @@ import 'package:panditapp/repo/api_remote_services.dart';
 import '../../../Util/login_in_User.dart';
 import '../../../model/Profile_Screen/Bank_Account Details/DeleteBank_model.dart';
 
-class Delete_Bank_VM with ChangeNotifier{
+class DeleteBankVM with ChangeNotifier{
   bool _loading = false;
   DeleteBankModel? _deleteBankModel;
   UserError? _userError;

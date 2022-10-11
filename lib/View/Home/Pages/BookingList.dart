@@ -12,7 +12,7 @@ import '../../../view_model/home_tab/Accept_Booking_Api.dart';
 import '../../../view_model/home_tab/Reject_Booking_VM.dart';
 
 class BookingListTitl extends StatefulWidget {
-  Booking_Request_View_Model? booking_request_view_model;
+  BookingRequestViewModel? booking_request_view_model;
 
   BookingListTitl(this.booking_request_view_model);
 
@@ -21,13 +21,13 @@ class BookingListTitl extends StatefulWidget {
 }
 
 class _BookingListTitlState extends State<BookingListTitl> {
-  Accept_Booking_Api? accept_bookingapi;
+  AcceptBookingApi? accept_bookingapi;
 
   bool isRejectBooking = false;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<Booking_Request_View_Model>(
+    return Consumer<BookingRequestViewModel>(
       builder: (_, data, __) {
         if (data.loading) {
           return const Center(
@@ -42,7 +42,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
     );
   }
 
-  _ui(Booking_Request_View_Model? booking_request_view_model,
+  _ui(BookingRequestViewModel? booking_request_view_model,
       BuildContext context) {
     return booking_request_view_model!
                 .getbookinglistModel?.response!.bookinglist!.length ==
@@ -149,8 +149,8 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                               onTap: (){
                                                 Utils.toastMessage(REJECTED_BOOKING);
 
-                                                Reject_Booking_VM rejectbooking =
-                                                Provider.of<Reject_Booking_VM>(context,
+                                                RejectBookingVM rejectbooking =
+                                                Provider.of<RejectBookingVM>(context,
                                                     listen: false);
                                                 rejectbooking.Reject_booking_Apicall(userbooking: booking_request_view_model.getbookinglistModel!.response!.bookinglist?[index].bookingId.toString() ?? "");
 
@@ -268,7 +268,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                       onTap: () {
                                         setState(() {
                                           Utils.toastMessage(ACCEPT_BOOKING);
-                                          accept_bookingapi = Provider.of<Accept_Booking_Api>(context,listen: false);
+                                          accept_bookingapi = Provider.of<AcceptBookingApi>(context,listen: false);
                                           accept_bookingapi?.getAccept_booking_Api(userbooking: booking_request_view_model.getbookinglistModel!.response!.bookinglist?[index].bookingId.toString() ?? "");
 
                                           CompleteBookingViewModel completeBookingViewModel =

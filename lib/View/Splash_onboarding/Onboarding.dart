@@ -9,14 +9,14 @@ import '../login_flow/Phone_Number.dart';
 import 'Onbording_Model.dart';
 import '../../consts/SizeConfig.dart';
 
-class Onboarding_Screen extends StatefulWidget {
-  const Onboarding_Screen({Key? key}) : super(key: key);
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({Key? key}) : super(key: key);
 
   @override
-  State<Onboarding_Screen> createState() => _Onboarding_ScreenState();
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _Onboarding_ScreenState extends State<Onboarding_Screen> {
+class _OnboardingScreenState extends State<OnboardingScreen> {
   var ht, wt;
   int currentIndex = 0;
   late PageController _controller;
@@ -133,7 +133,7 @@ class _Onboarding_ScreenState extends State<Onboarding_Screen> {
                             context,
                             MaterialPageRoute(
                                 builder: (_) =>
-                                    PhoneNumber_Screen()));
+                                    PhoneNumberScreen()));
                       }
                       _controller.nextPage(
                         duration: Duration(microseconds: 100),

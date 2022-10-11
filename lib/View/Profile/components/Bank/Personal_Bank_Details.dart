@@ -12,19 +12,19 @@ import '../../../../view_model/Profile/Bank Account Details/Update_Bank_VM.dart'
 import 'Add_Bank_Account.dart';
 import 'Bank Account Details.dart';
 
-class Persional_Bank_Details extends StatefulWidget {
+class PersionalBankDetails extends StatefulWidget {
   String bank_id;
 
-  Persional_Bank_Details({Key? key, required this.bank_id}) : super(key: key);
+  PersionalBankDetails({Key? key, required this.bank_id}) : super(key: key);
 
   @override
-  State<Persional_Bank_Details> createState() => _Persional_Bank_DetailsState();
+  State<PersionalBankDetails> createState() => _PersionalBankDetailsState();
 }
 
-class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
+class _PersionalBankDetailsState extends State<PersionalBankDetails> {
   TextEditingController bname = TextEditingController();
   Future<void> _refresh(bool reload, BuildContext context){
-    Pandit_Bank_List_VM panditbanklist = Provider.of<Pandit_Bank_List_VM>(context,listen: false);
+    PanditBankListVM panditbanklist = Provider.of<PanditBankListVM>(context,listen: false);
     panditbanklist.panditbankListAPIcall();
     return Future.delayed(const Duration(seconds: 0));
 
@@ -33,7 +33,7 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
 
   @override
   Widget build(BuildContext context) {
-    Pandit_Bank_List_VM panditbanklist = context.watch<Pandit_Bank_List_VM>();
+    PanditBankListVM panditbanklist = context.watch<PanditBankListVM>();
     return RefreshIndicator(
       onRefresh: () async{
         await _refresh(true, context);
@@ -126,7 +126,7 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            Bank_Account_Screen(
+                                                            BankAccountScreen(
                                                               id: panditbanklist
                                                                   .panditBankListModel!
                                                                   .response!
@@ -176,11 +176,10 @@ class _Persional_Bank_DetailsState extends State<Persional_Bank_Details> {
                                           ),
                                           InkWell(
                                               onTap: () {
-                                                panditbanklist.panditBankListModel!.response!.panditbanklist!.removeAt(index);
-                                                Delete_Bank_VM deletebank =
-                                                Provider.of<Delete_Bank_VM>(context, listen: false);
+                                                DeleteBankVM deletebank =
+                                                Provider.of<DeleteBankVM>(context, listen: false);
                                                 deletebank.Delete_Bank_APIcall(id: panditbanklist.panditBankListModel!.response!.panditbanklist![index].id.toString()).toString();
-
+                                                panditbanklist.panditBankListModel!.response!.panditbanklist!.removeAt(index);
 
                                               },
                                               child: Text(

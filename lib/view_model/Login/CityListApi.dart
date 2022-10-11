@@ -10,7 +10,7 @@ import '../../model/Login Model/city_model.dart';
 
 import 'package:http/http.dart' as http;
 
-class City_List_Api extends ChangeNotifier {
+class CityListApi extends ChangeNotifier {
 
  bool _loading = false;
  CityModel? _cityModel;

@@ -6,7 +6,7 @@ import 'package:panditapp/repo/api_remote_services.dart';
 import '../../../Util/login_in_User.dart';
 import '../../model/Earnings/WithDrawMoneyModel.dart';
 
-class With_Draw_Money_VM with ChangeNotifier{
+class WithDrawMoneyVM with ChangeNotifier{
   bool _loading = false;
   WithDrawMoneyModel? _withDrawMoneyModel;
   UserError? _userError;

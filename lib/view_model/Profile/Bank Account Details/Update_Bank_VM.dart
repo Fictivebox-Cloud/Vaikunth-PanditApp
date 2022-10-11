@@ -9,7 +9,7 @@ import '../../../model/Profile_Screen/Bank_Account Details/update_bank_model.dar
 import '../../../model/Profile_Screen/Settings/help_support_details_model.dart';
 import '../../../model/Login Model/service_model.dart';
 
-class Update_Bank_VM with ChangeNotifier{
+class UpdateBankVM with ChangeNotifier{
   bool _loading = false;
   UpdateBankModel? _updateBankModel;
   UserError? _userError;

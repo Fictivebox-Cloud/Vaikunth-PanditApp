@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../Util/login_in_User.dart';
 import '../../../model/Profile_Screen/Bank_Account Details/store_bank_model.dart';
 
-class Store_Bank_VM with ChangeNotifier{
+class StoreBankVM with ChangeNotifier{
   bool _loading = false;
   StoreBankModel? _storeBankModel;
   UserError? _userError;
