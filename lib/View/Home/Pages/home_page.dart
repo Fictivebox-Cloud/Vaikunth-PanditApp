@@ -123,7 +123,9 @@ class _HomePageScreenState extends State<HomePageScreen> {
                         listen: false);
                 _online_ofline_view_model.getonlineofline(
                     userStatus: val ? "1" : "0");
-              },
+              }, onTap: (){},
+              onDoubleTap: (){},
+              onSwipe: () {},
             ),
           ),
           InkWell(

@@ -78,12 +78,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color PrimaryColor = kPrimaryColor;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: PrimaryColor,
-          appBarTheme: AppBarTheme(color: PrimaryColor)),
+          primaryColor: kPrimaryColor,
+          appBarTheme: AppBarTheme(color: kPrimaryColor)),
           initialRoute:RouteName.SplashScreen,
           onGenerateRoute: Routes.generateRoutes,
     );

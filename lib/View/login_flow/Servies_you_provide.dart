@@ -28,7 +28,7 @@ class _ServiesYouScreenState extends State<ServiesYouScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ServiceVM serviceVM = context.watch<ServiceVM>();
+    ServiceVM serviceVM = Provider.of<ServiceVM>(context,listen: false);
 
     TextEditingController editingController = TextEditingController();
     wt = MediaQuery.of(context).size.width;
@@ -101,9 +101,9 @@ class _ServiesYouScreenState extends State<ServiesYouScreen> {
                                               : kSecondaryColor)),
                                   child: Center(
                                       child: Text(
-                                        serviceVM.serviceModel!.response!
+                                        serviceVM.serviceModel?.response!
                                             .serviceslist![index].name
-                                            .toString(),
+                                            ??"",
                                         style: GoogleFonts.lato(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 16),
