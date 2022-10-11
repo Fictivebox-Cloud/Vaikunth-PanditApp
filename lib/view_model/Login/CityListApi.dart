@@ -13,12 +13,12 @@ import 'package:http/http.dart' as http;
 class CityListApi extends ChangeNotifier {
 
  bool _loading = false;
- CityModel? _cityModel;
+
  UserError? _userError;
 
 
  bool get loading => _loading;
- CityModel? get getCityModel => _cityModel;
+
  UserError? get userError => _userError;
 
 
@@ -27,10 +27,7 @@ class CityListApi extends ChangeNotifier {
   notifyListeners();
  }
 
- setGetCityModel(CityModel cityModel){
-  _cityModel = cityModel;
-  notifyListeners();
- }
+
  setUserError(UserError userError){
   _userError =userError;
   notifyListeners();
@@ -46,8 +43,7 @@ class CityListApi extends ChangeNotifier {
 
 
   if(response is Success){
-   Object data = cityModelFromJson(response.response as String);
-   setGetCityModel(data as CityModel);
+
 
   }
   else if(response is Failure){

@@ -1,14 +1,23 @@
+import 'dart:convert';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import '../../../consts/image_const.dart';
 import '../../../consts/text_const.dart';
 import '../../../consts/themescolor.dart';
+import '../../../model/Login Model/city_model.dart';
+import '../../../repo/api_remote_services.dart';
 import '../../../view_model/Login/CityListApi.dart';
 import '../../../view_model/Profile/Personal_Detail_View_Model.dart';
 import '../../../view_model/Profile/edit_profile_view_model.dart';
 import '../../../view_model/Login/Service_VM.dart';
+
+import 'package:http/http.dart' as http;
+
+
 
 
 class EditDetailsScreen extends StatefulWidget {
@@ -30,48 +39,23 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
   PersonalDetailViewModel? personal_detail_view_model;
   late ServiceVM serviceVM;
 
-  final List<Map<String, dynamic>> _allUsers = [
-    {"id": 1, "name": "Andy", "age": 29},
-    {"id": 2, "name": "Aragon", "age": 40},
-    {"id": 3, "name": "Bob", "age": 5},
-    {"id": 4, "name": "Barbara", "age": 35},
-    {"id": 5, "name": "Candy", "age": 21},
-    {"id": 6, "name": "Colin", "age": 55},
-    {"id": 7, "name": "Audra", "age": 30},
-    {"id": 8, "name": "Banana", "age": 14},
-    {"id": 9, "name": "Caversky", "age": 100},
-    {"id": 10, "name": "Becky", "age": 32},
-  ];
 
-  List<Map<String, dynamic>> _foundUsers = [];
 
-  @override
-  initState() {
-    // at the beginning, all users are shown
-    _foundUsers = _allUsers;
+  void initState(){
     super.initState();
+    _getDataFromApi();
   }
 
-  // This function is called whenever the text field changes
-  void _runFilter(String enteredKeyword) {
-    List<Map<String, dynamic>> results = [];
-    if (enteredKeyword.isEmpty) {
-      // if the search field is empty or only contains white-space, we'll display all users
-      results = _allUsers;
-    } else {
-      results = _allUsers
-          .where((user) =>
-              user["name"].toLowerCase().contains(enteredKeyword.toLowerCase()))
-          .toList();
-      // we use the toLowerCase() method to make it case-insensitive
-    }
+  Modelapi? modelapi;
+  void _getDataFromApi()async{
+    var respones = await http.get(Uri.parse('https://vaikunth.fictivebox.com/api/'));
 
-    // Refresh the UI
+
     setState(() {
-      _foundUsers = results;
+      city_list_api!.getCityListApiCall();
     });
-
   }
+
 
   Widget fastTextFiledDesgin(){
     return Center(
@@ -81,7 +65,6 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
         child: TextField(
             cursorColor: colorPrimary,
             controller: _namecontroller,
-            //keyboardType: TextInputType.number,
             decoration: InputDecoration(
                 fillColor: grey,
                 hintText: personal_detail_view_model
@@ -94,9 +77,8 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
                 focusedBorder: OutlineInputBorder(
                   borderSide: const BorderSide(
                       color: colorPrimary, width: 2.0),
-                  // borderRadius: BorderRadius.circular(25.0),
                 ),
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
 
                   //borderRadius: BorderRadius.circular(24)
                 ))),
@@ -180,29 +162,21 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
   }
 
   Widget cityTextFiledDesgin(){
-    return Center(
-      child: TextField(
-          scrollPadding: EdgeInsets.zero,
-          onChanged: (value) {
-            _runFilter(value);
-          },
-          cursorColor: colorPrimary,
-          controller: _citycontroller,
-          //keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-            fillColor: grey,
-            hintText: LOCATION,
-            hintStyle: TextStyle(fontSize: 15),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                  color: colorPrimary, width: 2.0),
-              // borderRadius: BorderRadius.circular(25.0),
-            ),
-          )),
+
+    return Container(
+      child: Autocomplete<Citylist>(
+        optionsBuilder: (TextEditingValue value){
+          return
+           // modelapi!.data!.where((element) => element.firstName!.toLowerCase().contains(value.text.toLowerCase())).toList();
+           modelapi!.response?.where((element) => element.firstName!.toLowerCase().contains(value.text.toLowerCase())).toList();
+        },
+        onSelected: (value)=> print(value.name),
+        displayStringForOption: (Citylist d)=> '${d.name!} ${d.name !}',
+      ),
     );
   }
 
-  @override
+
   Widget build(BuildContext context) {
     serviceVM = Provider.of<ServiceVM>(context, listen: false);
     edit_profile_view_modelVM =
@@ -283,7 +257,7 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
 
                           cityTextFiledDesgin(),
                           SizedBox(
-                            height: 100,
+                            height: 250,
                           ),
                           provider.loading
                               ? Container(
@@ -401,14 +375,15 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
 
                 GestureDetector(
                   onTap: () {
-                    print("Container clickedd");
-                    Navigator.push(
+
+                    Navigator.pop(
                         context,
                         MaterialPageRoute(
                             builder: (context) => EditDetailsScreen(
                                   servicename: provider.serviceModel!.response!
                                       .serviceslist![_selectedIndex].name,
                                 )));
+
                   },
                   child: Container(
                     width: wt * 0.9,

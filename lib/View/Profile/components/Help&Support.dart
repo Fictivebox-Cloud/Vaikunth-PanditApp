@@ -3,7 +3,6 @@ import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../Widgets/circular_loader.dart';
 import '../../../consts/text_const.dart';
 import '../../../consts/themescolor.dart';

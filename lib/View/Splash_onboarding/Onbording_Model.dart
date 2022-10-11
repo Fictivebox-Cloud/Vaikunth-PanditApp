@@ -1,12 +1,8 @@
-
-
 class OnBoarding {
   final String title;
   final String description;
   final String Skip;
   final String Back;
-
-
   OnBoarding({
     required this.title,
     required this.description,
@@ -15,7 +11,6 @@ class OnBoarding {
 
   });
 }
-
 List<OnBoarding> onboardingContents = [
   OnBoarding(
     title: 'Welcome to Baikhunt Pandit',
@@ -28,14 +23,12 @@ List<OnBoarding> onboardingContents = [
     description: 'Welcome to Baikhunt Pandit',
       Skip:  'Skip',
       Back: 'Back'
-
   ),
   OnBoarding(
       title: 'Welcome to Baikhunt Pandit',
       description: 'Welcome to Baikhunt Pandit',
       Skip:  'Skip',
       Back: 'Back'
-
   ),
 
 ];

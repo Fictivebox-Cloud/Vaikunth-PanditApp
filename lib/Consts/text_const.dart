@@ -29,7 +29,7 @@ const String ENTEROTP = "Enter the 6 digit OTP";
 const String RECIVESOTPINPHONE =
     "Ask for 6 digit code received by the user on their mobile number";
 
-const String SERVICESYOUOFFER = "Services we offer";
+const String SERVICESYOUOFFER = "Services you offer";
 const String PUJA = "Puja";
 const String ASTROLOGY = "Astrology";
 const String FUNERALSERVICES = "Funeral Services";
