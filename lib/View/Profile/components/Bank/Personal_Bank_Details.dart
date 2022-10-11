@@ -109,7 +109,7 @@ class _PersionalBankDetailsState extends State<PersionalBankDetails> {
                                         panditbanklist
                                             .panditBankListModel!
                                             .response!
-                                            .panditbanklist![0]
+                                            .panditbanklist![index]
                                              .accountHolderName
                                             .toString(),
                                         style: GoogleFonts.lato(

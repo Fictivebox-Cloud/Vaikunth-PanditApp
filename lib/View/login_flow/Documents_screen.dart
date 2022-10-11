@@ -288,7 +288,7 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
                         child: TextField(
                           cursorColor: colorPrimary,
                           controller: _panno,
-                          keyboardType: TextInputType.number,
+                          //keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               //prefixIcon: const Icon(Icons.search,color: p1Color,),
                               fillColor: grey,
@@ -309,8 +309,8 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10),
                             UpperCaseTextFormatter(),
-                            FilteringTextInputFormatter.allow(
-                                RegExp("[a-zA-Z0-9]")),
+                            // FilteringTextInputFormatter.allow(
+                            //     RegExp("[a-zA-Z0-9]")),
                           ],
                           textCapitalization:TextCapitalization.characters,
                         ),

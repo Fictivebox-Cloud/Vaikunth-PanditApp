@@ -294,7 +294,7 @@ class _AccountdetailsState extends State<Accountdetails> {
 
                               FilteringTextInputFormatter.deny(
                                   RegExp(r'\s')),
-                            LengthLimitingTextInputFormatter(10),
+                            LengthLimitingTextInputFormatter(11),
                             UpperCaseTextFormatter(),
                             FilteringTextInputFormatter.allow(
                                 RegExp("[a-z A-Z 0-9]")),
@@ -318,6 +318,7 @@ class _AccountdetailsState extends State<Accountdetails> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
                       color: kPrimaryColor),
+
                   child: TextButton(
                       onPressed: () async {
                         // GetterloginSetter s = GetterloginSetter();
@@ -336,13 +337,16 @@ class _AccountdetailsState extends State<Accountdetails> {
                           aadharnumber: widget.aadhar,
                           pannumber: widget.pancard,
                           account_number: _getterloginSetter.Account,
-                          bank: this.countries,
+                          bank: countries,
                           ifsc: _getterloginSetter.ifsc,
                           photo: widget.photo5,
                           aadharbackphoto: widget.photoaadharback,
                           aadharfrontphoto: widget.photoaadharfront,
                           panfile: widget.pan,
                         );
+
+                        print("Registration test${api}");
+
 
                         LoggedInUserBloc.instance().getUserId();
 

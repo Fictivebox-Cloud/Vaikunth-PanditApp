@@ -12,59 +12,95 @@ class WeeklyGraphScreen extends StatelessWidget {
  // WeekdataPerdayVM weekdataperday;
 
   final List<WeeklyGraphModel> data = [
+
     WeeklyGraphModel(
-      year: "2",
-      financial: 250,
+      my_date: "1",
+      perdaybooking: 400,
+      color: charts.ColorUtil.fromDartColor(Colors.purple),
+    ),
+    WeeklyGraphModel(
+      my_date: "2",
+      perdaybooking: 250,
       color: charts.ColorUtil.fromDartColor(Colors.blueGrey),
     ),
     WeeklyGraphModel(
-      year: "3",
-      financial: 300,
+      my_date: "3",
+      perdaybooking: 300,
       color: charts.ColorUtil.fromDartColor(Colors.red),
     ),
     WeeklyGraphModel(
-      year: "4",
-      financial: 100,
+      my_date: "4",
+      perdaybooking: 100,
       color: charts.ColorUtil.fromDartColor(Colors.green),
     ),
     WeeklyGraphModel(
-      year: "5",
-      financial: 450,
+      my_date: "5",
+      perdaybooking: 450,
       color: charts.ColorUtil.fromDartColor(Colors.yellow),
     ),
     WeeklyGraphModel(
-      year: "6",
-      financial: 630,
+      my_date: "6",
+      perdaybooking: 630,
       color: charts.ColorUtil.fromDartColor(Colors.lightBlueAccent),
     ),
     WeeklyGraphModel(
-      year: "7",
-      financial: 950,
+      my_date: "7",
+      perdaybooking: 950,
       color: charts.ColorUtil.fromDartColor(Colors.pink),
     ),
-    WeeklyGraphModel(
-      year: "8",
-      financial: 400,
-      color: charts.ColorUtil.fromDartColor(Colors.purple),
-    ),
-  ];
 
+  ];
   String totalBooking(int online, int offline) {
     return (online + offline).toString();
   }
-
   @override
   Widget build(BuildContext context) {
     weekdataPerdayVM = context.watch<WeekdataPerdayVM>();
 
-
-
     List<charts.Series<WeeklyGraphModel, String>> series = [
       charts.Series(
-        id: "financial",
-        data: data,
-        domainFn: (WeeklyGraphModel series, _) => series.year,
-        measureFn: (WeeklyGraphModel series, _) => series.financial,
+        id: "perdaybooking",
+        data: [
+
+          WeeklyGraphModel(
+            my_date: weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![0].myDate.toString() .split(" ")[0].replaceRange(0, 5, "")?? "",
+            perdaybooking: weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![0].perdaybooking ?? 0,
+            color: charts.ColorUtil.fromDartColor(kPrimaryColor),
+          ),
+          WeeklyGraphModel(
+            my_date: weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![1].myDate.toString() .split(" ")[0].replaceRange(0, 5, "")?? "",
+            perdaybooking: weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![1].perdaybooking ?? 0,
+            color: charts.ColorUtil.fromDartColor(kPrimaryColor),
+          ),
+          WeeklyGraphModel(
+            my_date: weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![2].myDate.toString() .split(" ")[0].replaceRange(0, 5, "")?? "",
+            perdaybooking: weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![2].perdaybooking ?? 0,
+            color: charts.ColorUtil.fromDartColor(kPrimaryColor),
+          ),
+          WeeklyGraphModel(
+            my_date: weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![3].myDate.toString() .split(" ")[0].replaceRange(0, 5, "")?? "",
+            perdaybooking:  weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![3].perdaybooking ?? 0,
+            color: charts.ColorUtil.fromDartColor(kPrimaryColor),
+          ),
+          WeeklyGraphModel(
+            my_date: weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![4].myDate.toString() .split(" ")[0].replaceRange(0, 5, "")?? "",
+            perdaybooking:  weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![4].perdaybooking ?? 0,
+            color: charts.ColorUtil.fromDartColor(kPrimaryColor),
+          ),
+          WeeklyGraphModel(
+            my_date: weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![5].myDate.toString() .split(" ")[0].replaceRange(0, 5, "")?? "",
+            perdaybooking:  weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![5].perdaybooking ?? 0,
+            color: charts.ColorUtil.fromDartColor(kPrimaryColor),
+          ),
+          WeeklyGraphModel(
+            my_date: weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![6].myDate.toString() .split(" ")[0].replaceRange(0, 5, "")?? "",
+            perdaybooking:  weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![6].perdaybooking ?? 0,
+            color: charts.ColorUtil.fromDartColor(kPrimaryColor),
+          ),
+
+        ],
+        domainFn: (WeeklyGraphModel series, _) => series.my_date,
+        measureFn: (WeeklyGraphModel series, _) => series.perdaybooking,
         colorFn: (WeeklyGraphModel series, _) => series.color,
       ),
     ];
@@ -124,9 +160,9 @@ class WeeklyGraphScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            totalBooking( weekdataPerdayVM.weekdataPerdayModel?.response!.online ?? 0,  weekdataPerdayVM.weekdataPerdayModel?.response!.offline ?? 0)
+                            totalBooking( weekdataPerdayVM.weekdataPerdayModel?.response!.online ?? 0,  weekdataPerdayVM.weekdataPerdayModel?.response!.offline ?? 0),
                             //weekdataPerdayVM.weekdataPerdayModel.response.weekdata[]
-                            ,
+
                             style: TextStyle(
                                 color: h1Color,
                                 fontSize: 16,

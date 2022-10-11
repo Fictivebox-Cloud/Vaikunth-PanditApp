@@ -19,13 +19,13 @@ class Routes{
     final argume = settings.arguments;
     switch(settings.name){
       case RouteName.SplashScreen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const SplashScreen() );
+        return MaterialPageRoute(builder: (BuildContext context)=> SplashScreen() );
       case RouteName.Onboarding_Screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const OnboardingScreen() );
+        return MaterialPageRoute(builder: (BuildContext context)=> OnboardingScreen() );
       case RouteName.Home_Screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const HomeScreen() );
+        return MaterialPageRoute(builder: (BuildContext context)=> HomeScreen() );
       case RouteName.PhoneNumber_Screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const PhoneNumberScreen() );
+        return MaterialPageRoute(builder: (BuildContext context)=> PhoneNumberScreen() );
 
       case RouteName.OTP_verify:
         return MaterialPageRoute(builder: (BuildContext context)=>OTPVerify() );
@@ -34,11 +34,11 @@ class Routes{
         return MaterialPageRoute(builder: (BuildContext context)=>NameScreen() );
 
       case RouteName.Profile_Screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const ProfileScreen() );
+        return MaterialPageRoute(builder: (BuildContext context)=> ProfileScreen() );
       case RouteName.Notifications_screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>const NotificationsScreen() );
+        return MaterialPageRoute(builder: (BuildContext context)=> NotificationsScreen() );
       case RouteName.Life_time_puja:
-        return MaterialPageRoute(builder: (BuildContext context)=>const LifeTimePuja() );
+        return MaterialPageRoute(builder: (BuildContext context)=> LifeTimePuja() );
       case RouteName.Add_Bank_Account:
         return MaterialPageRoute(builder: (BuildContext context)=> AddBankAccount() );
 

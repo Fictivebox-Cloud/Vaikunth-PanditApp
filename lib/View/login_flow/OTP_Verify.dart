@@ -36,7 +36,7 @@ class _OTPVerifyState extends State<OTPVerify> {
   @override
   void initState() {
     phoneNumberVerification();
-    startTimer();
+    //startTimer();
   }
 
   Future<void> phoneNumberVerification() async {
@@ -122,20 +122,20 @@ class _OTPVerifyState extends State<OTPVerify> {
 
   }
 
-  void startTimer(){
-    const onsec = Duration(seconds: 1);
-    Timer timer = Timer.periodic(onsec, (timer) {
-    if(strat ==0 ){
-     setState(() {
-       timer.cancel();
-     });
-    }else{
-      setState(() {
-        strat --;
-      });
-    }
-    });
-  }
+  // void startTimer(){
+  //   const onsec = Duration(seconds: 1);
+  //   Timer timer = Timer.periodic(onsec, (timer) {
+  //   if(strat ==0 ){
+  //    setState(() {
+  //      timer.cancel();
+  //    });
+  //   }else{
+  //     // setState(() {
+  //     //   strat --;
+  //     // });
+  //   }
+  //   });
+  // }
 
   var ht, wt;
 
