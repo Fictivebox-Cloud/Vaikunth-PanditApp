@@ -25,13 +25,13 @@ class Routes{
       case RouteName.Home_Screen:
         return MaterialPageRoute(builder: (BuildContext context)=> HomeScreen() );
       case RouteName.PhoneNumber_Screen:
-        return MaterialPageRoute(builder: (BuildContext context)=> PhoneNumberScreen() );
+        return MaterialPageRoute(builder: (BuildContext context)=> PhoneNumber_Screen() );
 
       case RouteName.OTP_verify:
-        return MaterialPageRoute(builder: (BuildContext context)=>OTPVerify() );
+        return MaterialPageRoute(builder: (BuildContext context)=>OTP_verify() );
 
       case RouteName.Name_screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>NameScreen() );
+        return MaterialPageRoute(builder: (BuildContext context)=>Name_Screen() );
 
       case RouteName.Profile_Screen:
         return MaterialPageRoute(builder: (BuildContext context)=> ProfileScreen() );

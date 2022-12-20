@@ -11,6 +11,7 @@ import '../../model/Booking_View_Details/check_booking_otp_model.dart';
 class CheckBookingConfirmOTPViewModel with ChangeNotifier {
   bool _loading = false;
   CheckBookingConfirmOtpModel? _bookingConfirmOtpModel;
+  
   UserError? _userError;
   bool _valueReturn = false;
 

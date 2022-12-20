@@ -17,26 +17,26 @@ import '../../Consts/text_const.dart';
 import '../../Util/login_in_User.dart';
 import '../../consts/themescolor.dart';
 
-class OTPVerify extends StatefulWidget {
+class OTP_verify extends StatefulWidget {
   String? mobile;
 
-  OTPVerify({Key? key, this.mobile}) : super(key: key);
+  OTP_verify({Key? key, this.mobile}) : super(key: key);
 
   @override
-  State<OTPVerify> createState() => _OTPVerifyState();
+  State<OTP_verify> createState() => _OTP_verifyState();
 }
 
-class _OTPVerifyState extends State<OTPVerify> {
+class _OTP_verifyState extends State<OTP_verify> {
   TextEditingController otpController = TextEditingController();
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   SmsAutoFill smsAutoFill = SmsAutoFill();
   String? strVerificationId;
-  int strat =30;
+  int start =30;
 
   @override
   void initState() {
     phoneNumberVerification();
-    //startTimer();
+    startTimer();
   }
 
   Future<void> phoneNumberVerification() async {
@@ -91,13 +91,13 @@ class _OTPVerifyState extends State<OTPVerify> {
       final User? user =
           (await firebaseAuth.signInWithCredential(credential)).user;
       print("OTP Verify User ${user}");
-      userRegistrationStatus();
+      userRegistartionStatus();
     } catch (e) {
       print("Failed to sign in: " + e.toString());
     }
   }
 
-  userRegistrationStatus() async {
+  userRegistartionStatus() async {
 
     NumberVerifyViewModel numberVerifyViewModel = NumberVerifyViewModel();
     numberVerifyViewModel.NumberVerifyAPIcall(widget.mobile).then((value) {
@@ -113,7 +113,7 @@ class _OTPVerifyState extends State<OTPVerify> {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-                builder: (context) => NameScreen(
+                builder: (context) => Name_Screen(
                       mobile: widget.mobile,
                     )),
             (route) => false);
@@ -122,20 +122,27 @@ class _OTPVerifyState extends State<OTPVerify> {
 
   }
 
-  // void startTimer(){
-  //   const onsec = Duration(seconds: 1);
-  //   Timer timer = Timer.periodic(onsec, (timer) {
-  //   if(strat ==0 ){
-  //    setState(() {
-  //      timer.cancel();
-  //    });
-  //   }else{
-  //     // setState(() {
-  //     //   strat --;
-  //     // });
-  //   }
-  //   });
-  // }
+  void startTimer(){
+    const onsec = Duration(seconds: 1);
+    Timer timer = Timer.periodic(onsec, (timer) {
+    if(start ==0 ){
+     setState(() {
+       timer.cancel();
+     });
+    }else{
+      setState(() {
+        start --;
+      });
+    }
+    });
+  }
+
+
+  @override
+  void dispose() {
+    start = 0;
+    super.dispose();
+  }
 
   var ht, wt;
 
@@ -210,7 +217,7 @@ class _OTPVerifyState extends State<OTPVerify> {
                           ,RichText(text: TextSpan(
                             children: [
                               TextSpan(text: RESEND_OTP,style: GoogleFonts.lato(fontSize: 16,fontWeight: FontWeight.w500,color: p1Color))
-                              ,TextSpan(text: "00:$strat ",
+                              ,TextSpan(text: "00:$start ",
                               style: GoogleFonts.lato(fontSize: 16,color: Colors.red)
                               ),
                         TextSpan(text: "sec",

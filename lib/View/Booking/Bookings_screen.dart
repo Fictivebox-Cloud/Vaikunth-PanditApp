@@ -51,7 +51,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
               child: Column(
                 children: [
                   TabBar(
-                    labelStyle: TextStyle(fontSize: small ? 13.0 : 18.0),
+                    labelStyle: TextStyle(fontSize: small ? 15.0 : 18.0),
                     labelColor: h1Color,
                     unselectedLabelColor: const Color(0Xff999EA3),
                     tabs: const [

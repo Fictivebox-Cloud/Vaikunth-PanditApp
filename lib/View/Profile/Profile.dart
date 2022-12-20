@@ -511,9 +511,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   _showlogoutDigalog() {
-    return showDialog(
+    return
+      showDialog(
         context: context,
-        builder: (context) => AlertDialog(
+        builder: (context) =>
+            AlertDialog(
               title: Image.asset(
                 ImageConst().LOGOUT_IMAGES,
                 width: 62,
@@ -559,7 +561,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (BuildContext ctx) =>
-                                            const PhoneNumberScreen()),
+                                            const PhoneNumber_Screen()),
                                     (route) => false);
                               }
                             }))

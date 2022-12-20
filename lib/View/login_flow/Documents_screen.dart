@@ -16,16 +16,16 @@ import 'package:panditapp/model/getterSetter.dart';
 
 import '../../consts/themescolor.dart';
 
-class DocumentsScreen extends StatefulWidget {
+class Documents_Screen extends StatefulWidget {
   final String? name4, mobile, servicesname;
   final File? photo4;
 
-  const DocumentsScreen(
+  const Documents_Screen(
       {Key? key, this.name4, this.photo4, this.mobile, this.servicesname})
       : super(key: key);
 
   @override
-  State<DocumentsScreen> createState() => _DocumentsScreenState();
+  State<Documents_Screen> createState() => _Documents_ScreenState();
 }
 class UpperCaseTextFormatter extends TextInputFormatter {
   @override
@@ -37,7 +37,7 @@ class UpperCaseTextFormatter extends TextInputFormatter {
     );
   }
 }
-class _DocumentsScreenState extends State<DocumentsScreen> {
+class _Documents_ScreenState extends State<Documents_Screen> {
   var ht, wt;
   File? pickedImage0;
   File? pickedImage1;
@@ -309,8 +309,8 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(10),
                             UpperCaseTextFormatter(),
-                            // FilteringTextInputFormatter.allow(
-                            //     RegExp("[a-zA-Z0-9]")),
+                            FilteringTextInputFormatter.allow(
+                                RegExp("[a-zA-Z0-9]")),
                           ],
                           textCapitalization:TextCapitalization.characters,
                         ),
@@ -341,7 +341,7 @@ class _DocumentsScreenState extends State<DocumentsScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Accountdetails(
+                                builder: (context) => Account_details(
                                     aadhar: _addharno.text,
                                     pancard: _panno.text,
                                     name5: widget.name4,
