@@ -26,8 +26,6 @@ class _BookingsScreenState extends State<BookingsScreen> {
     completeBookingViewModel= Provider.of<CompleteBookingViewModel>(context,listen: false);
     completeBookingViewModel.completebookingAPIcall();
     return Future.delayed(const Duration(seconds: 0));
-
-
   }
 
 
@@ -95,7 +93,6 @@ class _BookingsScreenState extends State<BookingsScreen> {
       displacement: 0,
       child: Container(
           child: ListView.builder(
-
             itemBuilder: (context, int index) {
               return Container(
                 child: Column(

@@ -29,16 +29,16 @@ class _ServiesYouScreenState extends State<ServiesYouScreen> {
   @override
   Widget build(BuildContext context) {
     ServiceVM serviceVM = Provider.of<ServiceVM>(context,listen: false);
-
+    serviceVM.serviceAPIcall();
     TextEditingController editingController = TextEditingController();
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       body: serviceVM.loading
-          ? Center(child: CircularLoader())
+          ? const Center(child: CircularProgressIndicator(color: kPrimaryColor,))
           : SafeArea(
-        child: Column(
+          child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
@@ -64,7 +64,7 @@ class _ServiesYouScreenState extends State<ServiesYouScreen> {
                           width: 48, height: 2, color: kSecondaryColor),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   Text(
@@ -73,11 +73,11 @@ class _ServiesYouScreenState extends State<ServiesYouScreen> {
                         fontWeight: FontWeight.w500, fontSize: 24),
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                     height: 32,
                   ),
-                  //Text("Photo url${widget.photo}"),
-                  //Text("name${widget.name}"),
+                  // Text("Photo url${widget.photo}"),
+                  // Text("name${widget.name}"),
                   Container(
                       width: double.infinity,
                       height: 400,
@@ -110,15 +110,15 @@ class _ServiesYouScreenState extends State<ServiesYouScreen> {
                                       )),
                                 ),
                               ),
-                          separatorBuilder: (context, index) => SizedBox(
+                          separatorBuilder: (context, index) => const SizedBox(
                             height: 12,
                           ),
-                          itemCount: serviceVM.serviceModel?.response!
-                              .serviceslist!.length??0 )),
+                          itemCount: serviceVM.serviceModel!.response!
+                              .serviceslist!.length )),
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding:
               const EdgeInsets.only(left: 16, right: 16, bottom: 24),

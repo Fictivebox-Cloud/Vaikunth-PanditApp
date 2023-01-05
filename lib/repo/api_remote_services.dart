@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import '../Util/getHeader.dart';
 
 class ApiRemoteServices {
-  static Future<Object?> fechingGetApi({String? apiUrl, dynamic? apiData}) async {
+  static Future<Object?> fechingGetApi({String? apiUrl, dynamic apiData}) async {
     try {
       var url = Uri.parse(apiUrl!);
       Map<String,String> header = await getHeader();

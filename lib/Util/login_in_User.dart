@@ -9,8 +9,6 @@ class LoggedInUserBloc {
 
   static const _USERID_KEY = "__user_id__";
 
-
-
   LoggedInUserBloc._private();
   static LoggedInUserBloc? _instance;
 
