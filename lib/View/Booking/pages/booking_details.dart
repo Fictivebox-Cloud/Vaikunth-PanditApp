@@ -1,6 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:maps_launcher/maps_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
@@ -37,6 +38,10 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
   SmsAutoFill smsAutoFill = SmsAutoFill();
   String? strVerificationId;
 
+  Future _launchMap(double lat, double long) async {
+    MapsLauncher.launchCoordinates(lat, long);
+  }
+
   @override
   Widget build(BuildContext context) {
     viewdetailVM = Provider.of<ViewDetailVM>(context, listen: false);
@@ -66,256 +71,257 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                 ? const Center(
               child: CircularProgressIndicator(color: colorPrimary,),)
                 : SingleChildScrollView(
-              child: Expanded(
-                child: Column(
-                  children: [
-                    Center(child: Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Text(BOOKINGNO, style: GoogleFonts.lato(
+              child: Column(
+                children: [
+                  Center(child: Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Text(BOOKINGNO, style: GoogleFonts.lato(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        color: h1Color),),
+                  )),
+                  Text(
+                    viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0]
+                        .orderId.toString(), style: GoogleFonts.lato(
+                      fontSize: 18,
+                      color: h1Color,
+                      fontWeight: FontWeight.w500),)
+                  , Container(
+                    width: double.infinity,
+                    height: 40,
+                    color: bgColor,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, right: 16),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(viewdetailVM.viewdetailmodel!.response!
+                              .viewdetaildata![0].name.toString(),
+                            style: GoogleFonts.lato(fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: kPrimaryColor),),
+                          InkWell(
+                            onTap: () {
+                              FlutterPhoneDirectCaller.callNumber(
+                                  "${viewdetailVM.viewdetailmodel!.response!
+                                      .viewdetaildata![0].phone}");
+                            },
+                            child: Container(
+                              width: 140,
+                              height: 32,
+                              decoration: BoxDecoration(
+                                  color: white,
+                                  borderRadius: BorderRadius.circular(40)
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceEvenly,
+                                children: [
+                                  const Icon(
+                                    Icons.call, color: kPrimaryColor,),
+                                  Text(CALLNOW
+                                    , style: GoogleFonts.lato(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                        color: kPrimaryColor),)
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 19,),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16, right: 16),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.calendar_month, color: kPrimaryColor,),
+                            const SizedBox(width: 11,),
+                            //Text("Mon 05/Oct/2021"),
+                            Text(viewdetailVM.viewdetailmodel!.response!
+                                .viewdetaildata![0].bookingPujaDate.toString()
+                                .split(" ")[0]),
+                          ],
+                        ),
+                        const SizedBox(height: 19,),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.access_time, color: kPrimaryColor,),
+                            const SizedBox(width: 11,),
+
+                            Text(viewdetailVM.viewdetailmodel!.response!
+                                .viewdetaildata![0].bookingPujaDate.toString()
+                                .replaceRange(0, 11, "")),
+                          ],
+                        ),
+                        const SizedBox(height: 19,),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.location_on, color: kPrimaryColor,),
+                            const SizedBox(width: 11,),
+                            Text(viewdetailVM.viewdetailmodel!.response!
+                                .viewdetaildata![0].cityname.toString())
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 26,),
+                  Container(
+                    width: double.infinity,
+                    height: 40,
+                    color: bgColor,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, top: 8),
+                      child: Text(ITEMS, style: GoogleFonts.lato(
                           fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                          color: h1Color),),
-                    )),
-                    Text(
-                      viewdetailVM.viewdetailmodel!.response!.viewdetaildata![0]
-                          .orderId.toString(), style: GoogleFonts.lato(
-                        fontSize: 18,
-                        color: h1Color,
-                        fontWeight: FontWeight.w500),)
-                    , Container(
-                      width: double.infinity,
-                      height: 40,
-                      color: bgColor,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 16, right: 16),
-                        child: Row(
+                          fontSize: 18,
+                          color: kPrimaryColor),),
+                    ),
+                  ),
+                  const SizedBox(height: 16,),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "1 x ${viewdetailVM.viewdetailmodel!.response!
+                                  .viewdetaildata![0].poojaTitle
+                                  .toString()}",),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        Row(
+                          children: const [
+                            Text("2 x Astrology Session"),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24,),
+                  Container(
+                    width: double.infinity,
+                    height: 40,
+                    color: bgColor,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 16, top: 8),
+                      child: Text(EARNINGS, style: GoogleFonts.lato(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          color: kPrimaryColor),),
+                    ),
+                  ),
+                  const SizedBox(height: 24,),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16, right: 16),
+                    child: Column(
+                      children: [
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(viewdetailVM.viewdetailmodel!.response!
-                                .viewdetaildata![0].name.toString(),
-                              style: GoogleFonts.lato(fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: kPrimaryColor),),
-                            InkWell(
-                              onTap: () {
-                                FlutterPhoneDirectCaller.callNumber(
-                                    "${viewdetailVM.viewdetailmodel!.response!
-                                        .viewdetaildata![0].phone}");
-                              },
-                              child: Container(
-                                width: 140,
-                                height: 32,
-                                decoration: BoxDecoration(
-                                    color: white,
-                                    borderRadius: BorderRadius.circular(40)
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .spaceEvenly,
-                                  children: [
-                                    const Icon(
-                                      Icons.call, color: kPrimaryColor,),
-                                    Text(CALLNOW
-                                      , style: GoogleFonts.lato(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14,
-                                          color: kPrimaryColor),)
-                                  ],
-                                ),
-                              ),
-                            )
+                            const Text(PUJAEARNING),
+                            Text("₹${viewdetailVM.viewdetailmodel!.response!
+                                .viewdetaildata![0].bookingPaidAmount
+                                .toString()}"),
+                          ],
+                        ),
+                        const SizedBox(height: 10,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text(VISITING_CHARGE),
+                            Text("₹200")
+                          ],
+                        ),
+                        const SizedBox(height: 10,),
+                        const DottedLine(),
+                        const SizedBox(height: 10,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(TOTAL, style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w400)),
+                            Text("₹${viewdetailVM.viewdetailmodel!.response!
+                                .viewdetaildata![0].bookingPaidAmount
+                                .toString()}"),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24,),
+                  InkWell(
+                    onTap: () {
+                      _launchMap(18.92181, 72.83469);
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 16),
+                      width: double.infinity,
+                      height: 48,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4)
+                          , border: Border.all(
+                          width: 2,
+                          color: buttonColor
+                      )
+                      ),
+                      child:
+                      Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.navigation, color: buttonColor,),
+                            Text(NAVIGATE, style: GoogleFonts.lato(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: buttonColor),)
                           ],
                         ),
                       ),
                     ),
-                    const SizedBox(height: 19,),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.calendar_month, color: kPrimaryColor,),
-                              const SizedBox(width: 11,),
-                              //Text("Mon 05/Oct/2021"),
-                              Text(viewdetailVM.viewdetailmodel!.response!
-                                  .viewdetaildata![0].bookingPujaDate.toString()
-                                  .split(" ")[0]),
-                            ],
-                          ),
-                          const SizedBox(height: 19,),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.access_time, color: kPrimaryColor,),
-                              const SizedBox(width: 11,),
-
-                              Text(viewdetailVM.viewdetailmodel!.response!
-                                  .viewdetaildata![0].bookingPujaDate.toString()
-                                  .replaceRange(0, 11, "")),
-                            ],
-                          ),
-                          const SizedBox(height: 19,),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.location_on, color: kPrimaryColor,),
-                              const SizedBox(width: 11,),
-                              Text(viewdetailVM.viewdetailmodel!.response!
-                                  .viewdetaildata![0].cityname.toString())
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 26,),
-                    Container(
-                      width: double.infinity,
-                      height: 40,
-                      color: bgColor,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 16, top: 8),
-                        child: Text(ITEMS, style: GoogleFonts.lato(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18,
-                            color: kPrimaryColor),),
-                      ),
-                    ),
-                    const SizedBox(height: 16,),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "1 x ${viewdetailVM.viewdetailmodel!.response!
-                                    .viewdetaildata![0].poojaTitle
-                                    .toString()}",),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 16,
-                          ),
-                          Row(
-                            children: const [
-                              Text("2 x Astrology Session"),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 24,),
-                    Container(
-                      width: double.infinity,
-                      height: 40,
-                      color: bgColor,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 16, top: 8),
-                        child: Text(EARNINGS, style: GoogleFonts.lato(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18,
-                            color: kPrimaryColor),),
-                      ),
-                    ),
-                    const SizedBox(height: 24,),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(PUJAEARNING),
-                              Text("₹${viewdetailVM.viewdetailmodel!.response!
-                                  .viewdetaildata![0].bookingPaidAmount
-                                  .toString()}"),
-                            ],
-                          ),
-                          const SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
-                              Text(VISITING_CHARGE),
-                              Text("₹200")
-                            ],
-                          ),
-                          const SizedBox(height: 10,),
-                          const DottedLine(),
-                          const SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(TOTAL, style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w400)),
-                              Text("₹${viewdetailVM.viewdetailmodel!.response!
-                                  .viewdetaildata![0].bookingPaidAmount
-                                  .toString()}"),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 24,),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
+                  ),
+                  const SizedBox(height: 24,),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16, right: 16),
+                    child: InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (builder) => bottomSheet(
+                              bookingId: viewdetailVM.viewdetailmodel!
+                                  .response!.viewdetaildata![0].bookingId
+                                  .toString()),
+                        );
+                        puja_Confirm_OTP.getPujaCofirmOtp(
+                            userBooking_id: widget.bookingId);
+                      },
                       child: Container(
                         width: double.infinity,
                         height: 48,
                         decoration: BoxDecoration(
+                            color: buttonColor,
                             borderRadius: BorderRadius.circular(4)
-                            , border: Border.all(
-                            width: 2,
-                            color: buttonColor
-                        )
                         ),
-                        child:
-                        Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.navigation, color: buttonColor,),
-                              Text(NAVIGATE, style: GoogleFonts.lato(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: buttonColor),)
-                            ],
-                          ),
-                        ),
+                        child: Center(child: Text(NEXT,
+                          style: GoogleFonts.lato(color: white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20),)),
                       ),
                     ),
-                    const SizedBox(height: 24,),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: InkWell(
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (builder) => bottomSheet(
-                                bookingId: viewdetailVM.viewdetailmodel!
-                                    .response!.viewdetaildata![0].bookingId
-                                    .toString()),
-                          );
-                          puja_Confirm_OTP.getPujaCofirmOtp(
-                              userBooking_id: widget.bookingId);
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          height: 48,
-                          decoration: BoxDecoration(
-                              color: buttonColor,
-                              borderRadius: BorderRadius.circular(4)
-                          ),
-                          child: Center(child: Text(NEXT,
-                            style: GoogleFonts.lato(color: white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20),)),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+                  )
+                ],
               ),
             ),
           )
@@ -384,8 +390,8 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
               provider.loading ? Container(
                   width: double.infinity,
                   alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: CircularProgressIndicator(color: kPrimaryColor,),
                   )) : InkWell(
                 onTap: () {

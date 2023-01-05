@@ -40,8 +40,8 @@ class LifeTimePujaListVM with ChangeNotifier {
     String userId = await LoggedInUserBloc.instance().getUserId();
 
     Map<String, dynamic> data = {
-     // "pandit_id": userId,
-      "pandit_id": "7"
+      "pandit_id": userId,
+      //"pandit_id": "7"
 
     };
 

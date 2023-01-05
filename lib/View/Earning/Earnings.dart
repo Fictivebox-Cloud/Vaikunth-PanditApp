@@ -361,7 +361,7 @@ class _EarningsScreenState extends State<EarningsScreen> {
 
           Expanded(
 
-            child: ListView.builder(itemBuilder: (context , int index){
+            child:ListView.builder(itemBuilder: (context , int index){
 
               @override
               initState(){

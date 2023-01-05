@@ -79,7 +79,7 @@ class ApiCallLogin extends ChangeNotifier {
     print("RRRegistration test Govind  ${map}");
 
     String body = json.encode(map);
-    var url = Uri.parse("https://vaikunth.fictivebox.com/api/register");
+    var url = Uri.parse("https://dev-env.vaikunth.co/api/register");
 
 
     var request = http.MultipartRequest('POST', url);

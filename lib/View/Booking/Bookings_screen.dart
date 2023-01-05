@@ -20,14 +20,13 @@ class BookingsScreen extends StatefulWidget {
 class _BookingsScreenState extends State<BookingsScreen> {
   var ht, wt;
   bool small = false;
-
   late CompleteBookingViewModel completeBookingViewModel;
+
   Future<void> _refresh(bool reload, BuildContext context){
     completeBookingViewModel= Provider.of<CompleteBookingViewModel>(context,listen: false);
     completeBookingViewModel.completebookingAPIcall();
     return Future.delayed(const Duration(seconds: 0));
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
               child: Column(
                 children: [
                   TabBar(
-                    labelStyle: TextStyle(fontSize: small ? 13.0 : 18.0),
+                    labelStyle: TextStyle(fontSize: small ? 15.0 : 18.0),
                     labelColor: h1Color,
                     unselectedLabelColor: const Color(0Xff999EA3),
                     tabs: const [
@@ -132,7 +131,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                             completeBookingViewModel
                                                 .completebokingmodel
                                                 ?.response!
-                                                .upcomingbookinglist![index]
+                                                .upcomingbookinglist?[index]
                                                 .bookingPujaDate ??
                                                 "",
                                             style: GoogleFonts.lato(
@@ -168,7 +167,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                       completeBookingViewModel
                                           .completebokingmodel
                                           ?.response!
-                                          .upcomingbookinglist![index]
+                                          .upcomingbookinglist?[index]
                                           .name ??
                                           "",
                                       style: GoogleFonts.lato(
@@ -193,7 +192,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 16),
                                   child: Text(
-                                    "1 x ${completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist![index].poojaTitle ?? ""}",
+                                    "1 x ${completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist?[index].poojaTitle ?? ""}",
                                     style: GoogleFonts.lato(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14,
@@ -224,9 +223,9 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(TOTAL_EARNING),
+                                    const Text(TOTAL_EARNING),
                                     Text(
-                                      "${completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist![index].bookingPaidAmount ?? ""}",
+                                      "${completeBookingViewModel.completebokingmodel?.response!.upcomingbookinglist?[index].bookingPaidAmount ?? ""}",
                                       style: GoogleFonts.lato(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w500,
@@ -254,7 +253,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                                               bookingId: completeBookingViewModel
                                                                   .completebokingmodel!
                                                                   .response!
-                                                                  .upcomingbookinglist![index]
+                                                                  .upcomingbookinglist?[index]
                                                                   .id.toString())));
                                             },
                                             child: Text(
@@ -277,14 +276,12 @@ class _BookingsScreenState extends State<BookingsScreen> {
               );
             },
             itemCount: completeBookingViewModel
-                .completebokingmodel?.response!.upcomingbookinglist!.length,
+                .completebokingmodel?.response?.upcomingbookinglist?.length,
           )),
     );
   }
 
   Widget CompletedPage() {
-    int index;
-
     return RefreshIndicator(
       onRefresh: () async{
         await _refresh(true, context);
@@ -294,10 +291,9 @@ class _BookingsScreenState extends State<BookingsScreen> {
       displacement: 0,
       child: ListView.builder(
         itemCount: completeBookingViewModel
-            .completebokingmodel?.response!.compbookinglist!.length,
+            .completebokingmodel?.response?.compbookinglist?.length,
         itemBuilder: (context, int index) {
-          return Container(
-            child: Column(
+          return Column(
               children: [
                 Stack(
                   children: [
@@ -334,7 +330,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                         completeBookingViewModel
                                             .completebokingmodel!
                                             .response!
-                                            .compbookinglist![0]
+                                            .compbookinglist?[index]
                                             .poojaDate ??
                                             "",
                                         style: GoogleFonts.lato(
@@ -363,7 +359,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                   completeBookingViewModel
                                       .completebokingmodel!
                                       .response!
-                                      .compbookinglist![0]
+                                      .compbookinglist?[index]
                                       .hostname ??
                                       "",
                                   style: GoogleFonts.lato(
@@ -388,7 +384,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                             Padding(
                               padding: const EdgeInsets.only(left: 16),
                               child: Text(
-                                "1 x ${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].poojaTitle ?? ""}",
+                                "1 x ${completeBookingViewModel.completebokingmodel!.response!.compbookinglist?[index].poojaTitle ?? ""}",
                                 style: GoogleFonts.lato(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 14,
@@ -419,9 +415,9 @@ class _BookingsScreenState extends State<BookingsScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(TOTAL_EARNING),
+                                const Text(TOTAL_EARNING),
                                 Text(
-                                  "${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].totalEarning ?? ""}",
+                                  "${completeBookingViewModel.completebokingmodel!.response!.compbookinglist?[index].totalEarning ?? ""}",
                                   style: GoogleFonts.lato(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
@@ -457,8 +453,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                   ],
                 ),
               ],
-            ),
-          );
+            );
         },
         //itemCount: 5,
 
@@ -478,7 +473,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
           child: ListView.builder(
 
             itemCount: completeBookingViewModel
-                .completebokingmodel?.response!.cancelbookinglist!.length,
+                .completebokingmodel?.response?.cancelbookinglist?.length,
             itemBuilder: (context, int index) {
               return Container(
                 child: Column(
@@ -517,7 +512,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                             completeBookingViewModel
                                                 .completebokingmodel
                                                 ?.response!
-                                                .cancelbookinglist![0]
+                                                .cancelbookinglist?[index]
                                                 .bookingPujaDate ??
                                                 "",
                                             //"Mon 05/Oct/2021",
@@ -552,7 +547,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                       completeBookingViewModel
                                           .completebokingmodel
                                           ?.response!
-                                          .cancelbookinglist![index]
+                                          .cancelbookinglist?[index]
                                           .name ??
                                           "",
                                       style: GoogleFonts.lato(
@@ -577,7 +572,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 16),
                                   child: Text(
-                                    "1 x ${completeBookingViewModel.completebokingmodel?.response!.cancelbookinglist![index].poojaTitle ?? ""}",
+                                    "1 x ${completeBookingViewModel.completebokingmodel?.response!.cancelbookinglist?[index].poojaTitle ?? ""}",
                                     style: GoogleFonts.lato(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14,
@@ -610,4 +605,5 @@ class _BookingsScreenState extends State<BookingsScreen> {
           ),
         ));
   }
+
 }

@@ -40,7 +40,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       ),
                       title: Text(
                         notificationVM.notificationModel?.response!
-                            .noticationslist![0].poojaTitle
+                            .noticationslist![index].poojaTitle
                             ??"",
                         style: GoogleFonts.lato(
                             color: h1Color,

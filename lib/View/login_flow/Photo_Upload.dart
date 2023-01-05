@@ -20,16 +20,16 @@ import '../../view_model/Profile/Bank Account Details/Pandit_Bank_List_VM.dart';
 import '../../view_model/Login/Service_VM.dart';
 import '../../view_model/home_tab/Reject_Booking_VM.dart';
 
-class PhotoUpload extends StatefulWidget {
+class Photo_Upload extends StatefulWidget {
   final String? name, mobile;
 
-  const PhotoUpload({Key? key, this.name, this.mobile}) : super(key: key);
+  const Photo_Upload({Key? key, this.name, this.mobile}) : super(key: key);
 
   @override
-  State<PhotoUpload> createState() => _MyAppState();
+  State<Photo_Upload> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<PhotoUpload> {
+class _MyAppState extends State<Photo_Upload> {
   File? pickedImage;
   var ht, wt;
 
@@ -281,13 +281,39 @@ class _MyAppState extends State<PhotoUpload> {
                     child: TextButton(
                         // File? pickedImage;
                         onPressed: () {
+                          ServiceVM serviceVM =
+                              Provider.of<ServiceVM>(context, listen: false);
+                          serviceVM.serviceAPIcall();
+
+                          BankListVM banklist =
+                              Provider.of<BankListVM>(context, listen: false);
+                          banklist.bankListAPIcall();
+
+                          DeleteBankVM deletebank =
+                          Provider.of<DeleteBankVM>(context, listen: false);
+                          deletebank.Delete_Bank_APIcall();
+
+                          WithDrawMoneyVM withdrawmoney=
+                          Provider.of<WithDrawMoneyVM>(context, listen: false);
+                          withdrawmoney.WithDrawMoney_APIcall();
+
+                          PanditBankListVM panditbanklist =
+                              Provider.of<PanditBankListVM>(context,
+                                  listen: false);
+                          panditbanklist.panditbankListAPIcall();
+
+                          // WeekdataPerdayVM weekdataperday =
+                          // Provider.of<WeekdataPerdayVM>(context,
+                          //     listen: false);
+                          // weekdataperday.WeekdataPerdayApicall();
+
                           GetterloginSetter getterloginsetter =
                               GetterloginSetter();
                           getterloginsetter.Photo = pickedImage;
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ServiesYouScreen(
+                                  builder: (context) => Servies_you_screen(
                                       name: widget.name,
                                       photo: pickedImage,
                                       mobile: widget.mobile)));

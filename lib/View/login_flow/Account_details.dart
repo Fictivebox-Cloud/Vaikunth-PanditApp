@@ -20,11 +20,11 @@ import '../../view_model/Login/ApiCallLogin.dart';
 import '../../view_model/BookingViewDetails/Complete_Bookings.dart';
 import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 
-class Accountdetails extends StatefulWidget {
+class Account_details extends StatefulWidget {
   final String? aadhar, pancard, name5, mobile, servicesname;
   final File? photo5, photoaadharfront, photoaadharback, pan;
 
-  Accountdetails({
+  Account_details({
     Key? key,
     this.aadhar,
     this.pancard,
@@ -36,9 +36,8 @@ class Accountdetails extends StatefulWidget {
     this.pan,
     this.servicesname,
   }) : super(key: key);
-
   @override
-  State<Accountdetails> createState() => _AccountdetailsState();
+  State<Account_details> createState() => _Account_detailsState();
 }
 
 class UpperCaseTextFormatter extends TextInputFormatter {
@@ -53,7 +52,7 @@ class UpperCaseTextFormatter extends TextInputFormatter {
 }
 
 
-class _AccountdetailsState extends State<Accountdetails> {
+class _Account_detailsState extends State<Account_details> {
   var ht, wt;
 
   TextEditingController _accountno = TextEditingController();
@@ -165,7 +164,16 @@ class _AccountdetailsState extends State<Accountdetails> {
                         style: GoogleFonts.lato(
                             fontWeight: FontWeight.w500, fontSize: 24),
                       ),
-
+               // Text(widget.name5.toString()),
+               // Text(widget.servicesname.toString()),
+               // Text(widget.mobile.toString()),
+               // Text(widget.aadhar.toString()),
+               // Text(widget.pan.toString()),
+               // Text(widget.pancard.toString()),
+               // Text(widget.photo5.toString()),
+               // Text(widget.photoaadharback.toString()),
+               // Text(widget.photoaadharfront.toString()),
+               // Text(widget.photoaadharfront.toString()),
                       SizedBox(
                         height: 32,
                       ),
@@ -307,6 +315,7 @@ class _AccountdetailsState extends State<Accountdetails> {
                 ),
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
 
@@ -318,7 +327,6 @@ class _AccountdetailsState extends State<Accountdetails> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
                       color: kPrimaryColor),
-
                   child: TextButton(
                       onPressed: () async {
                         // GetterloginSetter s = GetterloginSetter();
@@ -326,7 +334,9 @@ class _AccountdetailsState extends State<Accountdetails> {
                         _getterloginSetter.choosebank = _choosebank.text;
                         // s.name = _namecontroller.text;
                         _getterloginSetter.ifsc = _ifsccode.text;
-
+                      print(" Govind Ifsc code$_ifsccode");
+                      print(" Govind account$_accountno");
+                      print(" Govind choose bank$_choosebank");
 
 
                         api.fechingloginApi(
@@ -337,16 +347,16 @@ class _AccountdetailsState extends State<Accountdetails> {
                           aadharnumber: widget.aadhar,
                           pannumber: widget.pancard,
                           account_number: _getterloginSetter.Account,
-                          bank: countries,
+                          //account_number: "1110001100023432",
+                         // bank: this.countries,
+                          bank: "PNB",
                           ifsc: _getterloginSetter.ifsc,
+                         // ifsc: "SBIN0011513",
                           photo: widget.photo5,
                           aadharbackphoto: widget.photoaadharback,
                           aadharfrontphoto: widget.photoaadharfront,
                           panfile: widget.pan,
                         );
-
-                        print("Registration test${api}");
-
 
                         LoggedInUserBloc.instance().getUserId();
 
