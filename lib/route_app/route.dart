@@ -10,8 +10,8 @@ import '../View/Profile/Profile.dart';
 import '../View/Profile/components/Bank/Add_Bank_Account.dart';
 import '../View/Splash_onboarding/Onboarding.dart';
 import '../View/Splash_onboarding/splash_screen.dart';
-import '../View/login_flow/OTP_Verify.dart';
-import '../View/login_flow/Phone_Number.dart';
+import '../View/login_flow/otp_verify.dart';
+import '../View/login_flow/phone_number.dart';
 
 class Routes{
 

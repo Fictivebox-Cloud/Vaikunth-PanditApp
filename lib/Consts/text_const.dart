@@ -1,3 +1,22 @@
+//Splash & Onboarding
+const String REGISTER_PANDIT = "Register Pandit";
+const String WELCOME_TO_BAIKHUBT_PANDIT = "Welcome to Vaikhunt Pandit";
+const String EARN_UPTO = "Earn upto 40k/month";
+const String FLEXIBLE_TIMINGS = "Flexible timings and puja’s";
+const String SIGN_IN = "Sign in";
+const String DEVELOPED_BY = "Developed by ";
+const String FICTIVEBOX = "Fictivebox";
+
+///Login & Registeration
+const String ENTER_YOUR_PHONE_NUMBER = "Enter Your Phone Number";
+const String SEND_OTP = "Send OTP";
+const String NUMBER_VALIDATION = "Please enter 10 digits number";
+const String OTP_AUTHENTICATION = "OTP Authentication";
+const String AUTHENTICATION_CODE = "An authentication code has been\nsent to ";
+const String CONFIRM = "Confirm";
+const String WRONG_OTP = "You enter a wrong OTP";
+const String REACHED_OTP_LIMIT = "You reached on maximum OTP limit or Somrthing went wrong";
+
 
 const String APPNAME = "Vaikhunt";
 const String ENTER_OTP = "Enter OTP";
@@ -8,12 +27,11 @@ const String NAME = "Name";
 const String NEXT = "Next";
 const String CONTINUE = "Continue";
 const String SKIP = "Skip";
-const String BANCK = "Back";
+const String BACK = "Back";
 const String MYPROFILE = "My Profile";
 const String EDITDETAILS = "Edit Details";
 const String VAIKUNTHIDCARD = "Vaikunth ID Card";
 const String VIEWYOURVAIKUNTHIDCARD = "View your Vaikunth ID card";
-const String WELCOMETOBAIKHUBTPANDIT = "Welcome to Vaikhunt Pandit";
 const String ENTERYOURNAME = "Enter Your Name";
 const String PHOTO = "Photo";
 const String UPLOADYOURPHOTO = "Upload your photo";
@@ -21,7 +39,6 @@ const String OPENCAMERA = "Open Camera";
 const String OPENFILE = "Open Files";
 const String LOCATION = "Location";
 
-const String ENTERYOURPHONENUMBER = "Enter Your Phone Number";
 
 const String TOTAL = "Total";
 const String NAVIGATE = "Navigate";
@@ -53,8 +70,8 @@ const String FINISH = "Finish";
 const String ACCOUNT_HOLDER_NAME = "Account Holder Name";
 const String UPDATE_BANK_DETAILS = "Update bank details";
 const String ADDBANKACCOUNT = "Add bank account";
-const String SENDOTP = "Send OTP";
-const String ENTER_YOU_PHONE_NUMBER = "Enter You Phone Number";
+
+const String PHONE_NUMBER = "Phone Number";
 
 const String SAVE = "Save";
 const String ADD_OTHER_BANK = "Add other bank";

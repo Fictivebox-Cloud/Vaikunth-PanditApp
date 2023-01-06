@@ -11,7 +11,6 @@ class ApiRemoteServices {
     try {
       var url = Uri.parse(apiUrl!);
       Map<String,String> header = await getHeader();
-
       var response = await http
           .post(url, body: apiData, headers: header)
           .timeout(const Duration(seconds: timeoutSession));

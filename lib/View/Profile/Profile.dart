@@ -6,7 +6,7 @@ import 'package:panditapp/View/Earning/Earnings.dart';
 import 'package:panditapp/View/Profile/components/Edit_Details_Screen.dart';
 import 'package:panditapp/View/Profile/components/Settinng_Screen.dart';
 import 'package:panditapp/View/Profile/components/id_card.dart';
-import 'package:panditapp/View/login_flow/Phone_Number.dart';
+import 'package:panditapp/View/login_flow/phone_number.dart';
 import 'package:provider/provider.dart';
 import '../../Util/login_in_User.dart';
 import '../../consts/image_const.dart';

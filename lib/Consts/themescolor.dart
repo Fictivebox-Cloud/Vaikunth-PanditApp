@@ -14,12 +14,14 @@ const Color b1Color = Color(0xff6363BE);
 const Color blueColor = Color(0xff32326F);
 const Color blackColor = Color(0xff232323);
 const Color textFiledColor = Color(0xffCACACA);
-const Color grey = Color(0xffF5F5F5FF);
-const Color grey300 = Color(0xffE0E0E0FF);
+const Color grey = Color(0xffF5F5F5);
+const Color grey300 = Color(0xffE0E0E0);
 const Color divider = Color(0xffECF1F6);
 const Color black = Color(0xff262626);
 const Color red = Color(0xffFF1313);
 const Color logoutclr = Color(0xffC70000);
 const Color dividerr = Color(0xffCACACA);
+const Color TEXTFIELD_BORDER_COLOR = Color(0xffF2F2F2);
+const Color TEXTFIELD_BACKGROUND_COLOR = Color(0xffFBFBFB);
 
 

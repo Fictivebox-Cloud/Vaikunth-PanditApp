@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-import '../../consts/text_const.dart';
+import '../../Consts/text_const.dart';
 import '../../consts/themescolor.dart';
-import '../../route_app/page_navigeter_name_route.dart';
-import '../login_flow/Phone_Number.dart';
+import '../login_flow/phone_number.dart';
 import 'Onbording_Model.dart';
-import '../../consts/SizeConfig.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -17,7 +14,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  var ht, wt;
+  var height, width;
   int currentIndex = 0;
   late PageController _controller;
 
@@ -33,123 +30,88 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     super.dispose();
   }
 
-  Widget topContainerDesign(){
+  Widget topContainerDesign() {
     return Expanded(
-        flex: 2,
-        child: Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: Color.fromRGBO(240, 100, 20, 0.3),
-          child: PageView.builder(
-            controller: _controller,
-            itemCount: onboardingContents.length,
-            onPageChanged: (int index) {
-              setState(() {
-                currentIndex = index;
-              });
-            },
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, RouteName.PhoneNumber_Screen);
-                      },
-                      child: Text(
-                        SKIP,
-                        textAlign: TextAlign.end,
-                        style: GoogleFonts.lato(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      BANCK,
-                      textAlign: TextAlign.end,
-                      style: GoogleFonts.lato(
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ));
+      flex: 3,
+      child: SizedBox(
+        height: double.infinity,
+        width: double.infinity,
+        child: PageView.builder(
+          controller: _controller,
+          itemCount: onboardingContents.length,
+          onPageChanged: (int index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          itemBuilder: (context, index) => Container(),
+
+        ),
+      ),
+    );
+  }
+
+  navigate() {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (_) => const PhoneNumber_Screen()));
   }
 
   Widget bottomContainerDesign() {
     return Expanded(
-        flex: 1,
+        flex: 2,
         child: Container(
-          padding: EdgeInsets.only(left: 16, right: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16,),
           color: Colors.white,
           child: Column(
             children: [
-              const SizedBox(
-                height: 32,
+              SizedBox(
+                height: height * 0.03,
               ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(onboardingContents.length,
-                          (index) => buildContainer(index, context))),
+                      (index) => buildContainer(index, context))),
               SizedBox(
-                height: ht * 0.046,
+                height: height * 0.046,
               ),
               Text(
-                WELCOMETOBAIKHUBTPANDIT,
+                currentIndex == 0 ? WELCOME_TO_BAIKHUBT_PANDIT : currentIndex == 1 ? EARN_UPTO : FLEXIBLE_TIMINGS,
                 style: GoogleFonts.lato(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: h1Color),
+                    fontWeight: FontWeight.bold, fontSize: 18, color: h1Color),
               ),
-              //text,
               SizedBox(
-                height: ht * 0.012,
+                height: height * 0.012,
               ),
               Text(
-                  'Lorem Ipsum is simply dummy text of the printing and \n                                   typesetting industry.',
+                  'Lorem Ipsum is simply dummy text of the printing and \n typesetting industry.',
+                  textAlign: TextAlign.center,
                   style: GoogleFonts.lato(color: p1Color)),
               SizedBox(
-                height: ht * 0.032,
+                height: height * 0.032,
               ),
-              Container(
-                //padding: EdgeInsets.only(left: 16,right: 16,top),
+              SizedBox(
                 width: double.infinity,
-                height: ht * 0.06,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: kPrimaryColor),
-                child: TextButton(
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    alignment: Alignment.center,
+                    padding: MaterialStateProperty.resolveWith((states) => const EdgeInsets.symmetric(vertical: 13,)),
+                    backgroundColor: MaterialStateColor.resolveWith((states) => colorPrimary),
+                  ),
                     onPressed: () {
-                      if (currentIndex ==
-                          onboardingContents.length - 1) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) =>
-                                    PhoneNumber_Screen()));
-                      }
-                      _controller.nextPage(
-                        duration: Duration(microseconds: 100),
-                        curve: Curves.bounceIn,
-                      );
-                    },
-                    child: Text(
-                      currentIndex == onboardingContents.length - 1
-                          ? CONTINUE
-                          : NEXT,
-                      style: GoogleFonts.lato(
-                          color: white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20),
-                    )),
-              )
+                      navigate();
+                }, child: Text(REGISTER_PANDIT, style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  color: white,
+                ),)),
+              ),
+              TextButton(onPressed: () {
+                navigate();
+              }, child: Text(SIGN_IN, style: GoogleFonts.poppins(
+                fontSize: 14,
+                color: h1Color,
+              ),))
             ],
           ),
         ));
@@ -157,12 +119,37 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    wt = MediaQuery.of(context).size.width;
-    ht = MediaQuery.of(context).size.height;
-    SizeConfig().init(context);
-
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Colors.white,
+        bottomNavigationBar: Container(
+          width: double.infinity,
+          height: 20,
+          alignment: Alignment.center,
+          child: Text.rich(
+              TextSpan(
+            children: [
+              TextSpan(
+                text: DEVELOPED_BY,
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                  color: p1Color,
+                ),
+              ),
+              TextSpan(
+                text: FICTIVEBOX,
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: h1Color,
+              ),
+              ),
+            ],
+          ),
+          ),
+        ),
         body: SafeArea(
           child: Column(
             children: [
@@ -170,14 +157,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               bottomContainerDesign(),
             ],
           ),
-        ));
+        ),
+    );
   }
 
   Container buildContainer(int index, BuildContext context) {
     return Container(
-      width: wt * 0.1,
-      height: 4,
-      margin: EdgeInsets.only(right: 5),
+      width: width * 0.15,
+      height: 3,
+      margin: EdgeInsets.only(right: width * 0.03),
       decoration: BoxDecoration(
           color: currentIndex == index ? kPrimaryColor : kSecondaryColor,
           borderRadius: BorderRadius.circular(10)),

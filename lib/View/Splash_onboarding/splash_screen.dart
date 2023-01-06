@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../Consts/image_const.dart';
 import '../../Util/login_in_User.dart';
 import '../../consts/text_const.dart';
 import '../../consts/themescolor.dart';
@@ -16,10 +18,10 @@ class _SplashScreenState extends State<SplashScreen> {
    String userId = await LoggedInUserBloc.instance().getUserId();
 
     Timer(
-        Duration(seconds: 2),
+        const Duration(seconds: 3),
         () => userId == null || userId == "" || userId == "0"?
-        Navigator.pushNamed(context, RouteName.Onboarding_Screen):
-        Navigator.pushNamed(context, RouteName.Home_Screen)
+        Navigator.pushReplacementNamed(context, RouteName.Onboarding_Screen):
+        Navigator.pushReplacementNamed(context, RouteName.Home_Screen)
     );
   }
   @override
@@ -34,15 +36,9 @@ class _SplashScreenState extends State<SplashScreen> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           color: kPrimaryColor,
-          child: Center(
-            child: Text(
-              APPNAME,
-              style: GoogleFonts.lato(
-                fontWeight: FontWeight.w800,
-                color: Colors.white,
-                fontSize: 32,
-              ),
-            ),
+          alignment: Alignment.center,
+          child: SvgPicture.asset(
+            ImageConst().SPLASH_LOGO,
           )),
     );
   }
