@@ -52,8 +52,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
               padding: const EdgeInsets.only(top: 27.5),
               child: Column(
                 children: [
-                  appBar(),
-                  //AppBarcomon(),
+                  AppBarcomon(),
                   TabBar(
                     labelStyle: TextStyle(fontSize: small ? 15.0 : 18.0),
                     labelColor: h1Color,

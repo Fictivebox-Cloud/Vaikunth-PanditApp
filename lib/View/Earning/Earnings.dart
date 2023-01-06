@@ -6,6 +6,8 @@ import 'package:panditapp/View/Earning/components/Money_transferred_succesfully.
 import 'package:panditapp/view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 import 'package:provider/provider.dart';
 import '../../Consts/text_const.dart';
+import '../../Util/Appbar.dart';
+import '../../Util/TotalEarningGrapgComman.dart';
 import '../../Widgets/circular_loader.dart';
 import '../../consts/themescolor.dart';
 import '../../route_app/page_navigeter_name_route.dart';
@@ -55,7 +57,12 @@ class _EarningsScreenState extends State<EarningsScreen> {
           displacement: 0,
           child: Column(
             children: [
-              myEarningAppBar(),
+              AppBarcomon(),
+              Padding(
+                padding: const EdgeInsets.only(left: 16,right: 16,top: 12),
+                child: TotalEarningGraph(),
+              ),
+              //myEarningAppBar(),
               SizedBox(
                 height: 16,
               ),
@@ -99,7 +106,8 @@ class _EarningsScreenState extends State<EarningsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              lifeTimePujas_earning_Container(),
+             // TotalEarningGraph(),
+             // lifeTimePujas_earning_Container(),
               SizedBox(
                 height: 24,
               ),

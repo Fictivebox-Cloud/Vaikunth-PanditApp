@@ -25,8 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     HomePageScreen(),
     EarningsScreen(),
     BookingsScreen(),
-    AppBarcomon(),
-   // ProfileScreen(),
+    ProfileScreen(),
   ];
 
   @override
