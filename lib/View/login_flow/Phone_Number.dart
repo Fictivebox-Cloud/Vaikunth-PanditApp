@@ -73,7 +73,8 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(4), //color: Colors.red
                   ),
-                  child: ElevatedButton(
+                  child:
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                           context,

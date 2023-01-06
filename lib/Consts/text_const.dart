@@ -97,9 +97,11 @@ const String VISITING_CHARGE = "Visiting Charge";
 const String BOOKING_INPROGRESS = "Booking in Progress";
 const String BOOKING_STATUS = "Booking Status";
 
-const String TOTAL_EARNING = "Total Earnings:";
+const String TOTAL_EARNING = "Total Earnings: ";
+const String BOOKING_BY = "Booking by: ";
 const String VIEW_DETAILS = "View Details";
 const String BOOKING_LIST = "Booking List";
+const String BOOKING_NO = "Booking no ";
 const String VIEWEARNINGS = "ViewEarnings";
 const String CANCELLED = "Cancelled";
 
@@ -115,6 +117,7 @@ const String SEND_MONEY_TO_BANK_ACCOUNT = "Send money to account";
 
 const String NO_BOOKING_REQUESTS = "No booking requests";
 const String ACCEPT_BOOKING = "Accepted Booking";
+const String ACCEPT = "Accept";
 const String ACCEPT_BOOKING_IN = "Accept booking in ";
 
 const String WELCOME_TO_VAIKUNTH = "Welcome to Vaikunth";

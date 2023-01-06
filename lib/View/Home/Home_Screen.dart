@@ -5,6 +5,7 @@ import 'package:panditapp/View/Home/Pages/home_page.dart';
 import 'package:panditapp/View/Profile/Profile.dart';
 import 'package:provider/provider.dart';
 import '../../Consts/text_const.dart';
+import '../../Util/Appbar.dart';
 import '../../consts/image_const.dart';
 import '../../consts/themescolor.dart';
 import '../../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
@@ -24,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
     HomePageScreen(),
     EarningsScreen(),
     BookingsScreen(),
-    ProfileScreen(),
+    AppBarcomon(),
+   // ProfileScreen(),
   ];
 
   @override
