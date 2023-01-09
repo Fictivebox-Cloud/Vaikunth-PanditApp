@@ -59,7 +59,7 @@ class _EarningsScreenState extends State<EarningsScreen> {
             children: [
               AppBarcomon(),
               Padding(
-                padding: const EdgeInsets.only(left: 16,right: 16,top: 12),
+                padding: const EdgeInsets.only(left: 16,right: 16,top: 15),
                 child: TotalEarningGraph(),
               ),
               //myEarningAppBar(),

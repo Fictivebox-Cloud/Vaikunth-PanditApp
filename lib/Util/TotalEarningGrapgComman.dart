@@ -94,7 +94,7 @@ class _TotalEarningGraphState extends State<TotalEarningGraph> {
                                   listen: false);
                           _online_ofline_view_model.getonlineofline(
                               userStatus: val ? "1" : "0");
-                        },
+                        }, onTap: (){}, onDoubleTap: (){}, onSwipe: (){},
                       ),
                     ),
                   ],
@@ -114,7 +114,7 @@ class _TotalEarningGraphState extends State<TotalEarningGraph> {
                 //color: Colors.red,
                 child: Column(
                   children: [
-                    Text("today Earn"),
+                    Text("Today Earn"),
                     Text("700"),
                   ],
                 ),

@@ -36,9 +36,9 @@ class ServiceVM with ChangeNotifier{
     notifyListeners();
   }
 
-  ServiceVm(){
-    serviceAPIcall();
-  }
+  // ServiceVm(){
+  //   serviceAPIcall();
+  // }
 
   serviceAPIcall() async{
     setLoading(true);
@@ -48,8 +48,8 @@ class ServiceVM with ChangeNotifier{
     if(response is Success){
       Object data = serviceModelFromJson(response.response as String);
       print(response.response);
-
       setServiceModel(data as ServiceModel);
+      notifyListeners();
 
     }
     else if (response is Failure){
