@@ -108,6 +108,7 @@ class _Name_ScreenState extends State<Name_Screen> {
                           child: SizedBox(
                             height: 48,
                             child:
+
                             TextField(
                               cursorColor: colorPrimary,
                               controller: _namecontroller,
