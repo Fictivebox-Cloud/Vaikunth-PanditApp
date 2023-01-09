@@ -1,3 +1,25 @@
+const String REGISTER_PANDIT = "Register Pandit";
+const String WELCOME_TO_BAIKHUBT_PANDIT = "Welcome to Vaikhunt Pandit";
+const String EARN_UPTO = "Earn upto 40k/month";
+const String FLEXIBLE_TIMINGS = "Flexible timings and puja’s";
+const String SIGN_IN = "Sign in";
+const String DEVELOPED_BY = "Developed by ";
+const String FICTIVEBOX = "Fictivebox";
+
+///Login & Registeration
+const String ENTER_YOUR_PHONE_NUMBER = "Enter Your Phone Number";
+const String ENTER_YOUR_NAME = "Enter Your Name";
+const String SEND_OTP = "Send OTP";
+const String NUMBER_VALIDATION = "Please enter 10 digits number";
+const String NAME_VALIDATION = "Please enter your name";
+const String FILL_YOUR_PROFILE_DETAILS = "Fill Your Profile Details.";
+const String OTP_AUTHENTICATION = "OTP Authentication";
+const String AUTHENTICATION_CODE = "An authentication code has been\nsent to ";
+const String CONFIRM = "Confirm";
+const String WRONG_OTP = "You enter a wrong OTP";
+const String CLICK_PICTURE = "Click Picture";
+const String REACHED_OTP_LIMIT = "You reached on maximum OTP limit or Somrthing went wrong";
+
 
 const String APPNAME = "Vaikhunt";
 const String ENTER_OTP = "Enter OTP";
@@ -8,7 +30,7 @@ const String NAME = "Name";
 const String NEXT = "Next";
 const String CONTINUE = "Continue";
 const String SKIP = "Skip";
-const String BANCK = "Back";
+const String BACK = "Back";
 const String MYPROFILE = "My Profile";
 const String EDITDETAILS = "Edit Details";
 const String VAIKUNTHIDCARD = "Vaikunth ID Card";

@@ -31,7 +31,7 @@ class Routes{
         return MaterialPageRoute(builder: (BuildContext context)=>OTP_verify() );
 
       case RouteName.Name_screen:
-        return MaterialPageRoute(builder: (BuildContext context)=>Name_Screen() );
+        return MaterialPageRoute(builder: (BuildContext context)=>NameScreen() );
 
       case RouteName.Profile_Screen:
         return MaterialPageRoute(builder: (BuildContext context)=> ProfileScreen() );

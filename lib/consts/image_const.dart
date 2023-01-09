@@ -1,4 +1,5 @@
 class ImageConst {
+
   final String MAP_PIN = "assets/images/map-pin.png";
   final String ARROW = "assets/images/arow.png";
   final String profile = "assets/images/profilea.svg";
@@ -32,4 +33,6 @@ class ImageConst {
   final String TERMS_AND_CONDITIONS_IMAGES = "assets/images/terms-and-conditions.png";
   final String MANU = "assets/images/manu.png";
   final String SUCCESS_GIF = "assets/images/success.gif";
+  final String SPLASH_LOGO = "assets/svgs/splash_logo.svg";
+
 }
