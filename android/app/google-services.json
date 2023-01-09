@@ -22,6 +22,43 @@
           }
         },
         {
+          "client_id": "238550610107-nadmp3p02un87prrlo48ni4fvt2teh22.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.panditapp",
+            "certificate_hash": "d7a791781b649e15a54026dd2ec170ef7c3d6592"
+          }
+        },
+        {
+          "client_id": "238550610107-p6ee5abt7nutupocqled6joguj7eiqsd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOo764uDx08NAYx7O1mmiM1S37G_uTxH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238550610107-p6ee5abt7nutupocqled6joguj7eiqsd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238550610107:android:718527877ff4f06c70399e",
+        "android_client_info": {
+          "package_name": "com.vaikunth.vaikunth"
+        }
+      },
+      "oauth_client": [
+        {
           "client_id": "238550610107-p6ee5abt7nutupocqled6joguj7eiqsd.apps.googleusercontent.com",
           "client_type": 3
         }

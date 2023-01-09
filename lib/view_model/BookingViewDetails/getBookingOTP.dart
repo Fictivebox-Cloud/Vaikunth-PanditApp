@@ -1,0 +1,58 @@
+import 'package:flutter/cupertino.dart';
+import 'package:panditapp/Util/api_status.dart';
+import 'package:panditapp/consts/user_Error.dart';
+import 'package:panditapp/model/Booking_View_Details/booking_view_details.dart';
+import 'package:panditapp/repo/api_remote_services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../Util/Api_collection.dart';
+import '../../Util/login_in_User.dart';
+
+class PujaConfirmOTP with ChangeNotifier {
+  bool _loading = false;
+  PujaConfirmOtpModel? _puja_confirm_otp;
+  UserError? _userError;
+
+  bool get loading => _loading;
+
+  PujaConfirmOtpModel? get getPujaConfirmModel => _puja_confirm_otp;
+
+  UserError? get userError => _userError;
+
+  setLoading(bool loading) {
+    _loading = loading;
+    notifyListeners();
+  }
+
+  setGetPujaCofirmOTP(PujaConfirmOtpModel puja) {
+    _puja_confirm_otp = puja;
+    notifyListeners();
+  }
+
+  setUserError(UserError userError) {
+    _userError = userError;
+    notifyListeners();
+  }
+
+  getPujaCofirmOtp({required dynamic userBooking_id}) async {
+    setLoading(true);
+    String userId = await LoggedInUserBloc.instance().getUserId();
+
+    setLoading(true);
+    Map<String, dynamic> data = {
+      "pandit_id": userId,
+      "booking_id": userBooking_id.toString()
+    };
+    var response = await ApiRemoteServices.fechingGetApi(
+        apiUrl: GET_SENDPUJAOTP_API, apiData: data);
+    if (response is Success) {
+      Object data = pujaConfirmOtpModelFromJson(response.response as String);
+      setGetPujaCofirmOTP(data as PujaConfirmOtpModel);
+    } else if (response is Failure) {
+      UserError userError =
+          UserError(code: response.code, message: response.errorResponse);
+      setUserError(userError);
+    }
+    setLoading(false);
+  }
+}

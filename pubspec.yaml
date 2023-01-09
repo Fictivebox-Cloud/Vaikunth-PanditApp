@@ -40,7 +40,7 @@ dependencies:
   im_stepper: ^1.0.1+1
   image_picker: ^0.8.5+3
   flutter_switch: ^0.3.2
-  lite_rolling_switch: ^0.1.1
+  lite_rolling_switch: ^1.0.0
   table_calendar: ^3.0.6
   syncfusion_flutter_charts: ^20.2.36
   dotted_line: ^3.1.0
@@ -48,14 +48,35 @@ dependencies:
   flutter_week_view: ^1.2.2
   charts_flutter: ^0.12.0
   dotted_border: ^2.0.0+2
-  firebase_auth: ^3.4.2
-  firebase_core: ^1.19.2
+
   flutter_bloc: ^8.0.1
   pin_code_fields: ^7.4.0
+  flutter_typeahead: ^3.0.0-nullsafety.0
+  sailor: ^0.5.0
 
+
+
+  nav_router: ^0.0.7
   get: ^4.6.5
   awesome_dialog: ^2.2.1
   responsive_builder: ^0.4.2
+  shared_preferences: ^2.0.15
+
+  provider: ^6.0.3
+  firebase_auth: ^3.7.0
+  sms_autofill: ^2.2.0
+  firebase_core: ^1.21.1
+  shimmer: ^2.0.0
+  flutter_phone_direct_caller: ^2.1.1
+  url_launcher: ^6.1.5
+  snippet_coder_utils: ^1.0.12
+  autocomplete_textfield: ^2.0.1
+  fluttertoast: ^8.0.9
+  charts_flutter_new: ^0.12.0
+  flutter_custom_tabs: ^1.0.4
+
+  maps_launcher: ^2.0.1
+
 
 
 dev_dependencies:
