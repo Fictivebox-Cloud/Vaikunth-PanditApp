@@ -5,10 +5,10 @@ const Color kPrimaryColor =  Color(0xffFF7D33);
 const Color kSecondaryColor = Color(0xffCACACA);
 const Color kScaffoldBackground = Color(0xffFFF3E9);
 const Color p1Color = Color(0xff6E798C);
-const ColorTextColor = Color(0xff7C7C7C);
+const Color TextColor = Color(0xff7C7C7C);
 const Color white = Color(0xffFFFFFF);
 const Color h1Color = Color(0xff343D48);
-const Color buttonColor = Color(0xff109D03);
+const Color buttonColor = Color(0xff7CC344);
 const Color bottonColor2 = Color(0xfff5f5f5);
 const Color bgColor = Color.fromRGBO(255, 125, 51, 0.15);
 const Color btn = Color(0xff109D03);
@@ -23,6 +23,7 @@ const Color black = Color(0xff262626);
 const Color red = Color(0xffFF1313);
 const Color logoutclr = Color(0xffC70000);
 const Color dividerr = Color(0xffCACACA);
-//const Color rejtclr = Color(0xffC0BCBC);
+const Color graphcolor = Color(0xffFAA82C);
+//const Color rejtclr = Color(7CC344;);
 
 

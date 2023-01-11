@@ -6,6 +6,7 @@ const String ENTER_THE_6_DIGIT_CODE_RECEIVED_ON_YOUR_MOBILE =
 const String RESEND_OTP = "Resend OTP  ";
 const String NAME = "Name";
 const String NEXT = "Next";
+const String DONE = "Done";
 const String CONTINUE = "Continue";
 const String SKIP = "Skip";
 const String BANCK = "Back";
@@ -26,8 +27,9 @@ const String ENTERYOURPHONENUMBER = "Enter Your Phone Number";
 const String TOTAL = "Total";
 const String NAVIGATE = "Navigate";
 const String ENTEROTP = "Enter the 6 digit OTP";
-const String RECIVESOTPINPHONE =
-    "Ask for 6 digit code received by the user on their mobile number";
+const String OTP = "Enter the 4 digit OTP";
+const String RECIVESOTPINPHONE = "Ask for 6 digit code received by the user on their mobile number";
+const String OTPINPHONE = "Ask for 4 digit code received by the user on their mobile number";
 
 const String SERVICESYOUOFFER = "Services you offer";
 const String PUJA = "Puja";
@@ -89,6 +91,7 @@ const String ADREMOVESERVICE = "Add/Remove services you offered.";
 
 const String BOOKINGDETAILS = "Booking Details";
 const String BOOKINGNO = "Booking Number";
+const String BOOKINGID = "Booking no";
 const String CALLNOW = "Call Now";
 const String ITEMS = "Items";
 const String EARNINGS = "Earnings";
