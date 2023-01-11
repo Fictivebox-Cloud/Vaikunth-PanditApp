@@ -85,7 +85,7 @@ class _MoneyTransferredSuccesfullyState
                               (Route<dynamic> route) => false);
                         },
                         child: Text(
-                          "Done",
+                          DONE,
                           style: GoogleFonts.lato(
                               fontSize: 20,
                               color: white,

@@ -145,7 +145,8 @@ class _MyAppState extends State<Photo_Upload> {
     ht = MediaQuery.of(context).size.height;
     return WillPopScope(
       onWillPop: () async => true,
-      child: GetMaterialApp(
+      child:
+      GetMaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           backgroundColor: Colors.white,

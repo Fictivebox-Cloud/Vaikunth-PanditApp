@@ -143,6 +143,16 @@ const String TOTAL_BOOKING = "Total Booking";
 const String ONLINE = "online";
 const String OFFLINE = "Offline";
 
+//Editmyprofile
+const String FULLNAME = "Full Name";
+//const String EDIT = "Edit";
+const String PUJASERVICE = "Puja Service";
+const String AADHARNO = "Aadhar Card No.";
+const String PANNO = "PAN Card No.";
+const String PERMANENTADDRESS = "Permanent address";
+
+
+
 // Api Error
 
 const invalidResponse = 100;

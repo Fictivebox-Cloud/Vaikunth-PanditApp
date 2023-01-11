@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:panditapp/View/Booking/Bookings_screen.dart';
 import 'package:panditapp/View/Earning/Earnings.dart';
 import 'package:panditapp/View/Home/Pages/home_page.dart';
-import 'package:panditapp/View/Profile/Profile.dart';
+import 'package:panditapp/View/Profile/profile/Profile.dart';
 import 'package:provider/provider.dart';
 import '../../Consts/text_const.dart';
 import '../../Util/Appbar.dart';
