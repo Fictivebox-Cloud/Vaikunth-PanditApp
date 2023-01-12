@@ -53,36 +53,40 @@ class _HomePageScreenState extends State<HomePageScreen> {
   }
   _listDesign(BookingRequestViewModel booking_request_view_model,
       BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        //appBar(),
-        AppBarcomon(),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16,top: 15),
-            child: Column(
-              children: [
-                TotalEarningGraph(),
-                SizedBox(height: 30,),
+    return Container(
+      color: Colors.white,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //appBar(),
+          AppBarcomon(),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16,top: 15),
+              child: Column(
+                children: [
+                  TotalEarningGraph(),
+                  SizedBox(height: 30,),
 
-              ],
+                ],
+              ),
             ),
           ),
-        ),
 
-        Expanded(
-            child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(BOOKINGS_REQUEST, style: GoogleFonts.lato(fontWeight: FontWeight.w600, fontSize: 18, color: h1Color),),
-                    SizedBox(height: 9,),
-                    Text("Lorem Ipsum is simply dummy"),
-                    Text("text of the printing."),
-                    BookingListTitl(booking_request_view_model),
-                  ],
-                )))
-      ],
+          Expanded(
+              child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(BOOKINGS_REQUEST, style: GoogleFonts.lato(fontWeight: FontWeight.w600, fontSize: 18, color: h1Color),),
+                      SizedBox(height: 9,),
+                      Text("Lorem Ipsum is simply dummy"),
+                      Text("text of the printing."),
+
+                      BookingListTitl(booking_request_view_model),
+                    ],
+                  )))
+        ],
+      ),
     );
   }
 

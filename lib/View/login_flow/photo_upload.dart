@@ -114,7 +114,7 @@ class _PhotoUploadState extends State<PhotoUpload> {
   pickImage(ImageSource imageType) async {
     try {
       final photo =
-          await ImagePicker().pickImage(source: imageType, imageQuality: 20);
+      await ImagePicker().pickImage(source: imageType, imageQuality: 20);
       if (photo == null) return;
       final tempImage = File(photo.path);
       setState(() {
@@ -161,7 +161,7 @@ class _PhotoUploadState extends State<PhotoUpload> {
             MaterialStateColor.resolveWith((states) => white),
           ),
           onPressed: () {
-           Navigator.pop(context);
+            Navigator.pop(context);
           },
           child: Text(
             BACK,
@@ -191,13 +191,13 @@ class _PhotoUploadState extends State<PhotoUpload> {
             MaterialStateColor.resolveWith((states) => pickedImage != null ? colorPrimary : white),
           ),
           onPressed: () {
-           pickedImage != null ? Navigator.push(
-               context,
-               MaterialPageRoute(
-                   builder: (context) => ServiceScreen(
-                       name: widget.name,
-                       photo: pickedImage,
-                       mobile: widget.mobile))) : null;
+            pickedImage != null ? Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ServiceScreen(
+                        name: widget.name,
+                        photo: pickedImage,
+                        mobile: widget.mobile))) : null;
           },
           child: Text(
             NEXT,
@@ -217,93 +217,93 @@ class _PhotoUploadState extends State<PhotoUpload> {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
-          backgroundColor: backGroundColor,
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      backgroundColor: backGroundColor,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          stepContainer(color: kSecondaryColor,),
-                          stepContainer(color: kPrimaryColor,),
-                          stepContainer(color: kSecondaryColor,),
-                          stepContainer(color: kSecondaryColor,),
-                          stepContainer(color: kSecondaryColor,),
-                          stepContainer(color: kSecondaryColor,),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                     Text(
-                FILL_YOUR_PROFILE_DETAILS,
-                          style: GoogleFonts.poppins(
-                            color: h1Color,
-                              fontWeight: FontWeight.w700, fontSize: 20),
-                        ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Text(
-                          CLICK_PICTURE,
-                          style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: p1Color),
-                        ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            ClipOval(
-                                  child:
-                                  pickedImage != null
-                                      ? Image.file(
-                                    pickedImage!,
-                                    width: 170,
-                                    height: 170,
-                                    fit: BoxFit.cover,
-                                  )
-                                      : InkWell(
-                                    onTap: imagePickerOption,
-                                    child: Image.asset(
-                                      ImageConst().UPLOAD_IMAGES,
-                                      width: 170,
-                                      height: 170,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                            pickedImage != null ? Positioned(
-                                bottom: 20,
-                                right: 0,
-                                child: InkWell(
-                                  onTap: imagePickerOption,
-                                  child: SvgPicture.asset(
-                              ImageConst().EDIT_PROFILE,
-                            ),
-                                )) : Container(),
-                          ],
-                        ),
-                      ),
+                      stepContainer(color: kSecondaryColor,),
+                      stepContainer(color: kPrimaryColor,),
+                      stepContainer(color: kSecondaryColor,),
+                      stepContainer(color: kSecondaryColor,),
+                      stepContainer(color: kSecondaryColor,),
+                      stepContainer(color: kSecondaryColor,),
                     ],
                   ),
-                  button(),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    FILL_YOUR_PROFILE_DETAILS,
+                    style: GoogleFonts.poppins(
+                        color: h1Color,
+                        fontWeight: FontWeight.w700, fontSize: 20),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Text(
+                    CLICK_PICTURE,
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        color: p1Color),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        ClipOval(
+                          child:
+                          pickedImage != null
+                              ? Image.file(
+                            pickedImage!,
+                            width: 170,
+                            height: 170,
+                            fit: BoxFit.cover,
+                          )
+                              : InkWell(
+                            onTap: imagePickerOption,
+                            child: Image.asset(
+                              ImageConst().UPLOAD_IMAGES,
+                              width: 170,
+                              height: 170,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        pickedImage != null ? Positioned(
+                            bottom: 20,
+                            right: 0,
+                            child: InkWell(
+                              onTap: imagePickerOption,
+                              child: SvgPicture.asset(
+                                ImageConst().EDIT_PROFILE,
+                              ),
+                            )) : Container(),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-            ),
+              button(),
+            ],
           ),
-        );
+        ),
+      ),
+    );
   }
 }

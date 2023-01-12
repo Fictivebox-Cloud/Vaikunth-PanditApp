@@ -89,8 +89,6 @@ class _BookingListTitlState extends State<BookingListTitl> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
 
-
-
                         const SizedBox(
                           height: 4,
                         ),
@@ -209,10 +207,11 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                   width:90,
                                   height: 36,
                                   decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
+                                    border: Border.all(color: Color(0xffF5F5F5)),
                                       borderRadius:
                                       BorderRadius.circular(12),
-                                      color: Color(0xfff5f5f5)),
+                                      //color: Colors.white
+                                  ),
                                   child: Center(
                                       child: Text(
                                         "Reject",
@@ -256,7 +255,8 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                   decoration: BoxDecoration(
                                       borderRadius:
                                       BorderRadius.circular(12),
-                                      color: Color(0xfff5f5f5)),
+                                      color: Color(0xfff5f5f5)
+                                  ),
                                   child: Center(
                                       child: Text(
                                         ACCEPT,

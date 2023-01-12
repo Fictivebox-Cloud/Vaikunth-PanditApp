@@ -1,5 +1,6 @@
 import 'package:charts_flutter_new/flutter.dart' as charts;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../../Consts/text_const.dart';
 import '../../../Consts/themescolor.dart';
 
@@ -12,22 +13,22 @@ class MonthlyGraphScreen extends StatelessWidget {
     MonthlyGraphModel(
       year: "Week 1",
       financial: 250,
-      color: charts.ColorUtil.fromDartColor(Colors.blueGrey),
+      color: charts.ColorUtil.fromDartColor(graphcolor),
     ),
     MonthlyGraphModel(
       year: "Week 2",
       financial: 300,
-      color: charts.ColorUtil.fromDartColor(Colors.red),
+      color: charts.ColorUtil.fromDartColor(graphcolor),
     ),
     MonthlyGraphModel(
       year: "Week 3",
       financial: 100,
-      color: charts.ColorUtil.fromDartColor(Colors.green),
+      color: charts.ColorUtil.fromDartColor(graphcolor),
     ),
     MonthlyGraphModel(
       year: "Week 4",
       financial: 450,
-      color: charts.ColorUtil.fromDartColor(Colors.yellow),
+      color: charts.ColorUtil.fromDartColor(graphcolor),
     ),
 
   ];
@@ -48,11 +49,11 @@ class MonthlyGraphScreen extends StatelessWidget {
       body:  Container(
         decoration: BoxDecoration(
             color: white,
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(width: 1, color:p1Color)),
+            borderRadius: BorderRadius.circular(33),
+            border: Border.all(width: 1, color:kPrimaryColor)),
         child: Padding(
           padding: const EdgeInsets.only(
-              left: 16, right: 16, top: 10),
+              left: 20, right: 20, top: 10,bottom: 24),
           child:
           Column(
             children: [
@@ -66,9 +67,13 @@ class MonthlyGraphScreen extends StatelessWidget {
                     Icons.arrow_back_ios,
                   ),
                   Column(
-                    children: const [
-                      Text("Dec 7-13"),
-                      Text("₹1200.00"),
+                    children:  [
+                      Text("Dec 7-13",style: GoogleFonts.lato(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14),),
+                      Text("₹1200.00",style: GoogleFonts.lato(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18),),
                     ],
                   ),
                   const Icon(Icons.arrow_forward_ios)

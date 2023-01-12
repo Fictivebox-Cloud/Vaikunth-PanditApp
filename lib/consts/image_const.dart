@@ -2,7 +2,7 @@ class ImageConst {
 
   final String MAP_PIN = "assets/images/map-pin.png";
   final String ARROW = "assets/images/arow.png";
-  final String profile = "assets/images/profilea.svg";
+  final String profile = "assets/images/usericon.svg";
   final String AADHARBACK = "assets/images/aadharback.png";
   final String AADHARFRONT = "assets/images/aadharfront.png";
   final String BANK = "assets/images/bank.png";
@@ -36,4 +36,9 @@ class ImageConst {
   final String SPLASH_LOGO = "assets/svgs/splash_logo.svg";
   final String EDIT_PROFILE = "assets/svgs/edit_profile.svg";
 
+  final String USERICON = "assets/images/usericon.svg";
+  final String BACKICON = "assets/images/lefticon.svg";
+  //final String LOGOUT = "assets/images/logout.svg";
+
 }
+
