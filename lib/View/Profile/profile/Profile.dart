@@ -27,7 +27,7 @@ class ProfileScreen extends StatefulWidget {
 }
 class _ProfileScreenState extends State<ProfileScreen> {
   var ht, wt;
-  Widget bodyProfile(){
+/*  Widget bodyProfile(){
     return Expanded(
       child: SingleChildScrollView(
         child: Column(
@@ -487,7 +487,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ))),
       ),
     );
- }
+ }*/
 
   @override
   Widget build(BuildContext context) {
@@ -624,9 +624,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(children: [
                   SizedBox(height: 20,),
                   InkWell(
-                    // onTap: (){
-                    //   Navigator.push(context, MaterialPageRoute(builder: (context)=>Your_ProfileScreen()));
-                    // },
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>Editmyprofile()));                    },
                     child: Row(
                       children: [
                         Container(
@@ -643,7 +645,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Text("Govind Kumar",style: GoogleFonts.mukta(fontSize:20,fontWeight: FontWeight.w400 ),),
                           InkWell(
                               onTap: (){
-
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -658,11 +659,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Divider(),
                   SizedBox(height: 20,),
                   //My Profile
-                  Row(children: [
-                    SvgPicture.asset(IMG().PROFILE),
-                    SizedBox(width: 14,),
-                    Text(MYPROFILE,style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 18),),
-                  ],),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>Editmyprofile()));
+                    },
+                    child: Row(children: [
+                      SvgPicture.asset(IMG().PROFILE),
+                      SizedBox(width: 14,),
+                      Text(MYPROFILE,style: GoogleFonts.lato(fontWeight: FontWeight.w400,fontSize: 18),),
+                    ],),
+                  ),
                   SizedBox(height: 20,),
                   Divider(),
                   SizedBox(height: 20,),

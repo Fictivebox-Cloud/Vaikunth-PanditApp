@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/consts/image_const.dart';
 import 'package:panditapp/consts/text_const.dart';
@@ -8,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
+import '../../../Util/picture/image.dart';
 import '../../../consts/themescolor.dart';
 import '../../../view_model/Profile/Help_Support_Details_VM.dart';
 import 'Help&Support.dart';
@@ -148,6 +150,25 @@ class _SettingScreenState extends State<SettingScreen> {
   }
 
 
+  Widget Appbar() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 25,top: 20,),
+      child: Row (children: [
+        InkWell(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: SvgPicture.asset(IMG().BACKICON)),
+        SizedBox(width: 12,),
+
+        Text(SETTING, style: GoogleFonts.lato(
+            fontSize: 20,
+            color: h1Color,
+            fontWeight: FontWeight.w700),),
+
+      ],),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -155,15 +176,13 @@ class _SettingScreenState extends State<SettingScreen> {
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: white,
-      appBar: AppBar(
-        title: Text(SETTING),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
+            padding: const EdgeInsets.only(left: 16, right: 16,),
             child: Column(
               children: [
+                Appbar(),
                 privacyPolicyDesign(),
                 SizedBox(
                   height: 16,

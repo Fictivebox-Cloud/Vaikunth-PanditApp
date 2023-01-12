@@ -28,6 +28,7 @@ const Color EDITCOLOR = Color(0xff618E00);
 const Color BORDERCOLOR = Color(0xffE9ECEF);
 const Color BUTTONBORDERCOLOR = Color(0xffF5F5F5);
 const Color CANCELCOLOR = Color(0XFFC0BCBC);
+const Color CALLBTNCOLOR = Color(0XFFFFF0E8);
 //const Color rejtclr = Color(7CC344;);
 
 
