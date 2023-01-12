@@ -7,7 +7,7 @@ import '../../model/Login Model/service_model.dart';
 
 class ServiceVM with ChangeNotifier{
   bool _loading = false;
-  int? _index;
+  int? _index = -1;
   ServiceModel? _serviceModel;
   UserError? _userError;
 
@@ -20,7 +20,6 @@ class ServiceVM with ChangeNotifier{
     _index = index;
     notifyListeners();
   }
-
 
   setLoading(loading){
     _loading = loading;
@@ -36,13 +35,12 @@ class ServiceVM with ChangeNotifier{
     notifyListeners();
   }
 
-  // ServiceVm(){
-  //   serviceAPIcall();
-  // }
+  ServiceVm(){
+    serviceAPIcall();
+  }
 
   serviceAPIcall() async{
     setLoading(true);
-
     var response = await ApiRemoteServices.fechingGetApi(
         apiUrl:GET_SERVICE_API,);
     if(response is Success){

@@ -7,57 +7,52 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:238550610107:android:e5916371c4b9eac870399e",
-        "android_client_info": {
-          "package_name": "com.example.panditapp"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "238550610107-f9fa256jt3p0hvcbrqckmcp7ilkc9kha.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.panditapp",
-            "certificate_hash": "a6b8693efab3aa77186a578bdc9ce10fab43c914"
-          }
-        },
-        {
-          "client_id": "238550610107-nadmp3p02un87prrlo48ni4fvt2teh22.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.panditapp",
-            "certificate_hash": "d7a791781b649e15a54026dd2ec170ef7c3d6592"
-          }
-        },
-        {
-          "client_id": "238550610107-p6ee5abt7nutupocqled6joguj7eiqsd.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCOo764uDx08NAYx7O1mmiM1S37G_uTxH8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "238550610107-p6ee5abt7nutupocqled6joguj7eiqsd.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:238550610107:android:718527877ff4f06c70399e",
         "android_client_info": {
           "package_name": "com.vaikunth.vaikunth"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "238550610107-3ong4gdkpsalsoh6ldd78ifk3oej89g1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vaikunth.vaikunth",
+            "certificate_hash": "086756ef398fe1230ada6d30d6c98be7d3a7b34d"
+          }
+        },
+        {
+          "client_id": "238550610107-4uj5rpfi55uc8d6s3nodcca0h432c32i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vaikunth.vaikunth",
+            "certificate_hash": "97c822c732a9553553aa9df210bdc54846bde0ee"
+          }
+        },
+        {
+          "client_id": "238550610107-a7c3b0ncuqn7v7usbpfpp6m8lh1fl1ci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vaikunth.vaikunth",
+            "certificate_hash": "d7a791781b649e15a54026dd2ec170ef7c3d6592"
+          }
+        },
+        {
+          "client_id": "238550610107-c6320vocqd7c8g41mo5a32mlatg1khra.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vaikunth.vaikunth",
+            "certificate_hash": "a6b8693efab3aa77186a578bdc9ce10fab43c914"
+          }
+        },
+        {
+          "client_id": "238550610107-m5qnva1uiteli5392c5hnbngdh3f1770.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vaikunth.vaikunth",
+            "certificate_hash": "49ad2842dbf12358c38488275d1d6fdc1fff3c41"
+          }
+        },
         {
           "client_id": "238550610107-p6ee5abt7nutupocqled6joguj7eiqsd.apps.googleusercontent.com",
           "client_type": 3

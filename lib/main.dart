@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:panditapp/consts/themescolor.dart';
-import 'package:panditapp/route_app/page_navigeter_name_route.dart';
 import 'package:panditapp/route_app/route.dart';
 import 'package:panditapp/view_model/Earnings_View_Model/GraphViewModel/WeekDayWiseDataVM.dart';
 import 'package:panditapp/view_model/Earnings_View_Model/Life_Time_Pujas_VM.dart';
@@ -30,6 +29,10 @@ import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:panditapp/view_model/Login/verification_number_api.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'View/login_flow/Name_Screen.dart';
+import 'route_app/page_navigeter_name_route.dart';
+import 'view_model/Login/registeration_view_model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,6 +70,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => RejectBookingVM()),
         ChangeNotifierProvider(create: (_) => LifeTimePujaListVM()),
         ChangeNotifierProvider(create: (_) => WeekdataPerdayVM()),
+        ChangeNotifierProvider(create: (_) => RegisterationViewModel()),
       ],
       child: const MyApp(),
     ),
@@ -84,8 +88,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primaryColor: kPrimaryColor,
           appBarTheme: AppBarTheme(color: kPrimaryColor)),
-          initialRoute:RouteName.SplashScreen,
+          //initialRoute:RouteName.SplashScreen,
           onGenerateRoute: Routes.generateRoutes,
+      home: NameScreen(mobile: "8700810675",),
     );
   }
 }

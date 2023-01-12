@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 const colorPrimary = Color(0xffFF7D33);
 const Color kPrimaryColor =  Color(0xffFF7D33);
 const Color kSecondaryColor = Color(0xffCACACA);
+const Color backGroundColor = Color(0xffFFFFFF);
 const Color kScaffoldBackground = Color(0xffFFF3E9);
 const Color p1Color = Color(0xff6E798C);
 const Color TextColor = Color(0xff7C7C7C);
@@ -23,12 +24,15 @@ const Color black = Color(0xff262626);
 const Color red = Color(0xffFF1313);
 const Color logoutclr = Color(0xffC70000);
 const Color dividerr = Color(0xffCACACA);
+const Color DIVIDER_2 = Color(0xffC0BCBC);
+const Color TEXTFIELD_BORDER_COLOR = Color(0xffF2F2F2);
+const Color TEXTFIELD_BACKGROUND_COLOR = Color(0xffFBFBFB);
 const Color graphcolor = Color(0xffFAA82C);
 const Color EDITCOLOR = Color(0xff618E00);
 const Color BORDERCOLOR = Color(0xffE9ECEF);
 const Color BUTTONBORDERCOLOR = Color(0xffF5F5F5);
 const Color CANCELCOLOR = Color(0XFFC0BCBC);
 const Color CALLBTNCOLOR = Color(0XFFFFF0E8);
-//const Color rejtclr = Color(7CC344;);
+const Color divider = Color(0xffF2F2F2);
 
 
