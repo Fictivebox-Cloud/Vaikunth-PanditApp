@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:panditapp/consts/themescolor.dart';
-import 'package:panditapp/route_app/page_navigeter_name_route.dart';
 import 'package:panditapp/route_app/route.dart';
 import 'package:panditapp/view_model/Earnings_View_Model/GraphViewModel/WeekDayWiseDataVM.dart';
 import 'package:panditapp/view_model/Earnings_View_Model/Life_Time_Pujas_VM.dart';
@@ -32,6 +31,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'View/login_flow/Name_Screen.dart';
+import 'route_app/page_navigeter_name_route.dart';
 import 'view_model/Login/registeration_view_model.dart';
 
 Future<void> main() async {
@@ -90,7 +90,7 @@ class MyApp extends StatelessWidget {
           appBarTheme: AppBarTheme(color: kPrimaryColor)),
           //initialRoute:RouteName.SplashScreen,
           onGenerateRoute: Routes.generateRoutes,
-      home: NameScreen(mobile: "8700810662",),
+      home: NameScreen(mobile: "8700810675",),
     );
   }
 }

@@ -11,8 +11,6 @@ import 'package:panditapp/View/Home/Home_Screen.dart';
 import 'package:panditapp/View/login_flow/name_screen.dart';
 import 'package:panditapp/view_model/Login/verification_number_api.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 import '../../Consts/text_const.dart';

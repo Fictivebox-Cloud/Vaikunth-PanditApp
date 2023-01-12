@@ -78,7 +78,10 @@ dependencies:
   maps_launcher: ^2.0.1
   flutter_svg: ^1.1.6
   modal_bottom_sheet: ^2.1.2
-
+  geolocator: ^9.0.2
+  geocoding: ^2.0.5
+  dropdown_button2: ^1.2.2
+  flutter_dropdown_x: ^0.0.2
 
 dev_dependencies:
   flutter_test:

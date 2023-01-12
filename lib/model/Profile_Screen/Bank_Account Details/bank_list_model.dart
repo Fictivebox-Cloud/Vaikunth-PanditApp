@@ -52,22 +52,28 @@ class Banklist {
   Banklist({
     this.id,
     this.bankName,
+  //  this.bankIfsc,
     this.status,
   });
 
   int? id;
   String? bankName;
+ // String? bankIfsc;
   String? status;
 
   factory Banklist.fromJson(Map<String, dynamic> json) => Banklist(
     id: json["id"] == null ? null : json["id"],
     bankName: json["bank_name"] == null ? null : json["bank_name"],
+   // bankIfsc: json["bank_ifsc"] == null ? null : json["bank_ifsc"],
     status: json["status"] == null ? null : json["status"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id == null ? null : id,
     "bank_name": bankName == null ? null : bankName,
+    //"bank_ifsc": bankIfsc == null ? null : bankIfsc,
     "status": status == null ? null : status,
   };
 }
+
+

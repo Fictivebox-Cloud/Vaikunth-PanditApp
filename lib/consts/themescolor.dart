@@ -6,7 +6,7 @@ const Color kSecondaryColor = Color(0xffCACACA);
 const Color backGroundColor = Color(0xffFFFFFF);
 const Color kScaffoldBackground = Color(0xffFFF3E9);
 const Color p1Color = Color(0xff6E798C);
-const ColorTextColor = Color(0xff7C7C7C);
+const Color TextColor = Color(0xff7C7C7C);
 const Color white = Color(0xffFFFFFF);
 const Color h1Color = Color(0xff343D48);
 const Color buttonColor = Color(0xff109D03);
@@ -24,6 +24,7 @@ const Color black = Color(0xff262626);
 const Color red = Color(0xffFF1313);
 const Color logoutclr = Color(0xffC70000);
 const Color dividerr = Color(0xffCACACA);
+const Color DIVIDER_2 = Color(0xffC0BCBC);
 const Color TEXTFIELD_BORDER_COLOR = Color(0xffF2F2F2);
 const Color TEXTFIELD_BACKGROUND_COLOR = Color(0xffFBFBFB);
 

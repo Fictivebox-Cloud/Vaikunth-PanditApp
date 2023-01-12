@@ -1,3 +1,4 @@
+///Splash & Onboarding
 const String REGISTER_PANDIT = "Register Pandit";
 const String WELCOME_TO_BAIKHUBT_PANDIT = "Welcome to Vaikhunt Pandit";
 const String EARN_UPTO = "Earn upto 40k/month";
@@ -18,7 +19,21 @@ const String AUTHENTICATION_CODE = "An authentication code has been\nsent to ";
 const String CONFIRM = "Confirm";
 const String WRONG_OTP = "You enter a wrong OTP";
 const String CLICK_PICTURE = "Click Picture";
+const String SELECT_YOUR_PERFECTLY = "Select Your perfectly";
+const String SELECT_YOUR_CITY = "Select your city";
+const String CURRENT_LOCATION = "Current location";
+const String USING_GPS = "Using GPS";
+const String CLICK_ADHAR_CARD_PICTURE = "Click Adhar Card Picture";
+const String CLICK_PAN_CARD_PICTURE = "Click PAN Card Picture";
 const String REACHED_OTP_LIMIT = "You reached on maximum OTP limit or Somrthing went wrong";
+const String ADHAR = "Enter your Adhar Card No.";
+const String PANCARD = "Enter your Pan Card No.";
+const String ACCOUNT_HOLDER_NAME = "Account holder name";
+const String ACCOUNT_NUMBER = "Account number";
+const String CONFIRM_ACCOUNT_NUMBER = "Confirm account number";
+const String IFSC_CODE = "IFSC Code";
+const String BANK_DETAIL = "Bank Detail";
+const String SAVE = "Save";
 
 
 const String APPNAME = "Vaikhunt";
@@ -70,15 +85,12 @@ const String ENTER_YOUR_PAN_NO = "Enter Your PAN No";
 const String ACCOUNT_DETAILS = "Account details";
 const String ACCOUNT_NO = "Account No.";
 const String CHOOSE_BANK = "Choose Bank";
-const String IFSC_CODE = "IFSC Code";
 const String FINISH = "Finish";
-const String ACCOUNT_HOLDER_NAME = "Account Holder Name";
 const String UPDATE_BANK_DETAILS = "Update bank details";
 const String ADDBANKACCOUNT = "Add bank account";
 const String SENDOTP = "Send OTP";
 const String ENTER_YOU_PHONE_NUMBER = "Enter You Phone Number";
 
-const String SAVE = "Save";
 const String ADD_OTHER_BANK = "Add other bank";
 const String BANK_ACCOUNT_DETAILS = "Bank Account Details";
 const String MANAGEBANK_ACCOUNT_DETAILS = "Manage your bank account details";
@@ -100,7 +112,6 @@ const String IDCARD = "ID Card";
 const String NOTAPPROVED = "Not Approved";
 const String APPROVED = "Approved";
 const String OTHERDOCUMENTS = "Other Documents";
-const String ADHAR = "Adhar";
 const String VIEW = "View";
 const String PANN = "PAN";
 const String FAHPCOBD = "For any help, please contact on below details";

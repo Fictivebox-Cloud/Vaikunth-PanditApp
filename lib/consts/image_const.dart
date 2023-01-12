@@ -34,5 +34,6 @@ class ImageConst {
   final String MANU = "assets/images/manu.png";
   final String SUCCESS_GIF = "assets/images/success.gif";
   final String SPLASH_LOGO = "assets/svgs/splash_logo.svg";
+  final String EDIT_PROFILE = "assets/svgs/edit_profile.svg";
 
 }

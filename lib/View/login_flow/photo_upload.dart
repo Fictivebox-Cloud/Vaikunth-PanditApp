@@ -1,12 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:panditapp/consts/image_const.dart';
 import 'package:panditapp/consts/text_const.dart';
 import '../../consts/themescolor.dart';
-import 'Servies_you_provide.dart';
+import 'service_screen.dart';
 
 class PhotoUpload extends StatefulWidget {
   final String? name, mobile;
@@ -193,7 +194,7 @@ class _PhotoUploadState extends State<PhotoUpload> {
            pickedImage != null ? Navigator.push(
                context,
                MaterialPageRoute(
-                   builder: (context) => Servies_you_screen(
+                   builder: (context) => ServiceScreen(
                        name: widget.name,
                        photo: pickedImage,
                        mobile: widget.mobile))) : null;
@@ -262,84 +263,43 @@ class _PhotoUploadState extends State<PhotoUpload> {
                       ),
                       Align(
                         alignment: Alignment.center,
-                        child: ClipOval(
-                              child:
-                              pickedImage != null
-                                  ? Image.file(
-                                pickedImage!,
-                                width: 170,
-                                height: 170,
-                                fit: BoxFit.cover,
-                              )
-                                  : InkWell(
-                                onTap: imagePickerOption,
-                                child: Image.asset(
-                                  ImageConst().UPLOAD_IMAGES,
-                                  width: 170,
-                                  height: 170,
-                                  fit: BoxFit.cover,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            ClipOval(
+                                  child:
+                                  pickedImage != null
+                                      ? Image.file(
+                                    pickedImage!,
+                                    width: 170,
+                                    height: 170,
+                                    fit: BoxFit.cover,
+                                  )
+                                      : InkWell(
+                                    onTap: imagePickerOption,
+                                    child: Image.asset(
+                                      ImageConst().UPLOAD_IMAGES,
+                                      width: 170,
+                                      height: 170,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                            pickedImage != null ? Positioned(
+                                bottom: 20,
+                                right: 0,
+                                child: InkWell(
+                                  onTap: imagePickerOption,
+                                  child: SvgPicture.asset(
+                              ImageConst().EDIT_PROFILE,
                             ),
+                                )) : Container(),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                   button(),
-                  // const SizedBox(
-                  //   height: 20,
-                  // ),
-                  // Spacer(),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
-                  //   child: Container(
-                  //     child: Container(
-                  //       width: double.infinity,
-                  //       height: 48,
-                  //       decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(4),
-                  //           color: kPrimaryColor),
-                  //       child: TextButton(
-                  //           // File? pickedImage;
-                  //           onPressed: () {
-                  //             ServiceVM serviceVM =
-                  //                 Provider.of<ServiceVM>(context, listen: false);
-                  //             serviceVM.serviceAPIcall();
-                  //
-                  //             BankListVM banklist =
-                  //                 Provider.of<BankListVM>(context, listen: false);
-                  //             banklist.bankListAPIcall();
-                  //
-                  //             DeleteBankVM deletebank =
-                  //             Provider.of<DeleteBankVM>(context, listen: false);
-                  //             deletebank.Delete_Bank_APIcall();
-                  //
-                  //             WithDrawMoneyVM withdrawmoney=
-                  //             Provider.of<WithDrawMoneyVM>(context, listen: false);
-                  //             withdrawmoney.WithDrawMoney_APIcall();
-                  //
-                  //             PanditBankListVM panditbanklist =
-                  //                 Provider.of<PanditBankListVM>(context,
-                  //                     listen: false);
-                  //             panditbanklist.panditbankListAPIcall();
-                  //
-                  //             Navigator.push(
-                  //                 context,
-                  //                 MaterialPageRoute(
-                  //                     builder: (context) => Servies_you_screen(
-                  //                         name: widget.name,
-                  //                         photo: pickedImage,
-                  //                         mobile: widget.mobile)));
-                  //           },
-                  //           child: Text(
-                  //             NEXT,
-                  //             style: GoogleFonts.lato(
-                  //                 color: white,
-                  //                 fontSize: 24,
-                  //                 fontWeight: FontWeight.w600),
-                  //           )),
-                  //     ),
-                  //   ),
-                  // )
                 ],
               ),
             ),
