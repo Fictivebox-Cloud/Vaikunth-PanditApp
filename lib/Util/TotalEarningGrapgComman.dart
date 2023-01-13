@@ -112,11 +112,15 @@ class _TotalEarningGraphState extends State<TotalEarningGraph> {
                 height: 62,
                 width: double.infinity,
                 //color: Colors.red,
-                child: Column(
-                  children: [
-                    Text("Today Earn"),
-                    Text("700"),
-                  ],
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Today Earn",style: GoogleFonts.lato(fontSize: 15,fontWeight: FontWeight.w400,color: Color(0xff7C7C7C)),),
+                      Text("₹700.00",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w700),),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -130,12 +134,16 @@ class _TotalEarningGraphState extends State<TotalEarningGraph> {
                 height: 62,
                 width: double.infinity,
                 //color: Colors.orangeAccent,
-                child: Column(
-                  children: [
-                    Text("Total Visits"),
-                    Text("100"),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Total Visits",style: GoogleFonts.lato(fontSize: 15,fontWeight: FontWeight.w400,color: Color(0xff7C7C7C)),),
+                      Text("100",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w700),)
 
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

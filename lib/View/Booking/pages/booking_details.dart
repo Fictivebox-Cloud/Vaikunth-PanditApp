@@ -59,7 +59,9 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
         .size
         .height;
 
-    return SafeArea(
+    return
+
+      SafeArea(
       child: Scaffold(
           backgroundColor: white,
 
@@ -290,6 +292,7 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                     const SizedBox(height: 24,),
                     InkWell(
                       onTap: () {
+
                         showModalBottomSheet(
                           context: context,
                           builder: (builder) => bottomSheet(
@@ -398,12 +401,12 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                     child: CircularProgressIndicator(color: kPrimaryColor,),
                   )) : InkWell(
                 onTap: () {
+
                   provider.getCheckBookingConfirm(
                       userBooking_id: widget.bookingId,
                       otpcode: "1234".toString());
                   // provider.loading ? null :  provider.valueReturn ?
-                  Navigator
-                      .push(context, MaterialPageRoute(
+                  Navigator.pushReplacement(context, MaterialPageRoute(
                       builder: (context) => BookingProgress()));
                   //: toast();
                 },

@@ -318,7 +318,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                         padding: const EdgeInsets.only(left: 24,right:24),
                         alignment: Alignment.bottomCenter,
                         width: double.infinity,
-                        height: 241,
+                       // height: 241,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(25),
                             border: Border.all(width: 1, color: kPrimaryColor)),
@@ -417,24 +417,24 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                     color: h1Color),
                               ),
                             ),
-                            const SizedBox(height: 8,),
-                            Container(
-                              width: double.infinity,
-                              height: 48,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: const Color(0xff7CC344)),
-                              child: Center(
-                                  child: TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        VIEWEARNINGS,
-                                        style: GoogleFonts.lato(
-                                            fontSize: 14,
-                                            color: white,
-                                            fontWeight: FontWeight.w700),
-                                      ))),
-                            )
+                            const SizedBox(height: 20,),
+                            // Container(
+                            //   width: double.infinity,
+                            //   height: 48,
+                            //   decoration: BoxDecoration(
+                            //       borderRadius: BorderRadius.circular(12),
+                            //       color: const Color(0xff7CC344)),
+                            //   child: Center(
+                            //       child: TextButton(
+                            //           onPressed: () {},
+                            //           child: Text(
+                            //             VIEWEARNINGS,
+                            //             style: GoogleFonts.lato(
+                            //                 fontSize: 14,
+                            //                 color: white,
+                            //                 fontWeight: FontWeight.w700),
+                            //           ))),
+                            // )
                           ],
                         ),
                       ),

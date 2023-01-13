@@ -34,34 +34,40 @@ class _BookingProgressState extends State<BookingProgress> {
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
-    return Scaffold(
-      backgroundColor: white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Appbar(),
+    return WillPopScope(
+      onWillPop: () {
+        return Future.value(); // if true allow back else block it
+      },
+      child: Scaffold(
 
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+        backgroundColor: white,
+        body: SafeArea(
+          child: Column(
+            children: [
+              Appbar(),
 
-                      BookingStatus(),
-                      DetailPage(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        BookingStatus(),
+                        DetailPage(),
+                        SizedBox(height: 20,),
+                        Button(),
                       SizedBox(height: 20,),
-                      Button(),
-                    SizedBox(height: 20,),
 
 
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -73,7 +79,7 @@ class _BookingProgressState extends State<BookingProgress> {
       child: Row (children: [
         InkWell(
             onTap: (){
-              Navigator.pop(context);
+              //Navigator.pop(context);
             },
             child: SvgPicture.asset("assets/images/lefticon.svg")),
      SizedBox(width: 12,),
