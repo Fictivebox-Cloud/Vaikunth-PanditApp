@@ -74,7 +74,6 @@ dependencies:
   fluttertoast: ^8.0.9
   charts_flutter_new: ^0.12.0
   flutter_custom_tabs: ^1.0.4
-  flutter_svg: ^1.1.5
 
 
   maps_launcher: ^2.0.1
