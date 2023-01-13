@@ -39,12 +39,11 @@ class CompleteBookingViewModel with ChangeNotifier {
   }
 
   completebookingAPIcall() async {
-    String userId = await LoggedInUserBloc.instance().getUserId();
     setLoading(true);
+    String userId = await LoggedInUserBloc.instance().getUserId();
     var data = {
       "pandit_id": userId
     };
-
     var respones = await ApiRemoteServices.fechingGetApi(
         apiUrl: GET_COMPLETEBOOKING_API, apiData: data);
     if (respones is Success) {

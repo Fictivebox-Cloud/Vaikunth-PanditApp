@@ -17,8 +17,8 @@ class PersonalDetailViewModel with ChangeNotifier{
   PersonalDetailModel? get presonalDetailModel => _detailModel;
   UserError? get userError =>_userError;
 
-  setLoading(loading){
-    _loading= _loading;
+  setLoading(bool loading){
+    _loading = loading;
     notifyListeners();
   }
   setPersonalDetailModel(PersonalDetailModel personalDetailModel){
@@ -36,6 +36,7 @@ class PersonalDetailViewModel with ChangeNotifier{
     String userId = await LoggedInUserBloc.instance().getUserId();
     Map<String, dynamic>data={
       "pandit_id": userId,
+      //"pandit_id": 7.toString(),
     };
     var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_PERSONALDETAIL_API,apiData: data);
     if(response is Success){

@@ -27,25 +27,24 @@ class _BookingsScreenState extends State<BookingsScreen> {
     completeBookingViewModel= Provider.of<CompleteBookingViewModel>(context,listen: false);
     completeBookingViewModel.completebookingAPIcall();
     return Future.delayed(const Duration(seconds: 0));
-
-
   }
 
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     completeBookingViewModel = Provider.of<CompleteBookingViewModel>(context,listen: false);
     completeBookingViewModel.completebookingAPIcall();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return
 
        Scaffold(
           backgroundColor: white,
-          body: completeBookingViewModel.loading
-              ? const Center(child: CircularLoader())
-              : DefaultTabController(
+          body: DefaultTabController(
             length: 3,
             child: Padding(
               padding: const EdgeInsets.only(top: 27.5),
@@ -149,7 +148,14 @@ class _BookingsScreenState extends State<BookingsScreen> {
       color: kPrimaryColor,
       strokeWidth: 5,
       displacement: 0,
-      child: Container(
+      child:
+
+    Consumer<CompleteBookingViewModel>(
+    builder: (_, provider, __) => provider.loading
+    ? const Center(child: CircularLoader())
+        :
+
+      Container(
           child: ListView.builder(
 
             itemBuilder: (context, int index)
@@ -293,21 +299,31 @@ class _BookingsScreenState extends State<BookingsScreen> {
             },
             itemCount: completeBookingViewModel
                 .completebokingmodel?.response?.upcomingbookinglist?.length,
-          )),
+          )    )),
     );
   }
 
   Widget CompletedPage() {
     int index;
 
-    return RefreshIndicator(
+    return
+
+      Consumer<CompleteBookingViewModel>(
+          builder: (_, provider, __) => provider.loading
+              ? const Center(child: CircularLoader())
+              :
+
+      RefreshIndicator(
       onRefresh: () async{
         await _refresh(true, context);
       },
       color: kPrimaryColor,
       strokeWidth: 5,
       displacement: 0,
-      child: ListView.builder(
+      child:
+
+
+      ListView.builder(
         itemCount: completeBookingViewModel
             .completebokingmodel?.response!.compbookinglist!.length,
         itemBuilder: (context, int index) {
@@ -452,6 +468,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
         //itemCount: 5,
 
       ),
+    )
     );
   }
 
@@ -464,7 +481,13 @@ class _BookingsScreenState extends State<BookingsScreen> {
           color: kPrimaryColor,
           strokeWidth: 5,
           displacement: 0,
-          child: ListView.builder(
+          child:
+    Consumer<CompleteBookingViewModel>(
+    builder: (_, provider, __) => provider.loading
+    ? const Center(child: CircularLoader())
+        :
+
+          ListView.builder(
 
             itemCount: completeBookingViewModel
                 .completebokingmodel?.response!.cancelbookinglist!.length,
@@ -590,6 +613,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
             //itemCount: 20,
 
           ),
+    )
         ));
   }
 }
