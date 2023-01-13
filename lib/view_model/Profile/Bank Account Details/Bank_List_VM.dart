@@ -88,6 +88,7 @@ class BankListVM with ChangeNotifier{
         File? aadharbackphoto,
         File? panfile,
         String? apiUrl,
+        String? accountHolderName,
         BuildContext? context,
       }) async {
     setLoading(true);
@@ -104,6 +105,7 @@ class BankListVM with ChangeNotifier{
     map['pandit_pan_number'] = pannumber.toString();
     map['pandit_account_number'] = account_number.toString();
     map['pandit_bank'] = bank;
+    map['account_holder_name'] = accountHolderName.toString();
     map['pandit_ifsc'] = ifsc;
 
     var url = Uri.parse("https://dev-env.vaikunth.co/api/register");

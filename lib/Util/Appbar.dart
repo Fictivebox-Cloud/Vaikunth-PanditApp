@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../Consts/themescolor.dart';
 import '../route_app/page_navigeter_name_route.dart';
+import '../view_model/Profile/Personal_Detail_View_Model.dart';
 
 class AppBarcomon extends StatefulWidget {
   const AppBarcomon({Key? key}) : super(key: key);
@@ -12,6 +14,14 @@ class AppBarcomon extends StatefulWidget {
 }
 
 class _AppBarcomonState extends State<AppBarcomon> {
+  late PersonalDetailViewModel? personaldetailviewmodel;
+
+
+  @override
+  void initState() {
+    personaldetailviewmodel = Provider.of<PersonalDetailViewModel>(context, listen: false);
+    personaldetailviewmodel?.getpersonalDetailApiCall();
+  }
   @override
   Widget build(BuildContext context) {
     return
@@ -25,16 +35,19 @@ class _AppBarcomonState extends State<AppBarcomon> {
               onTap: () {
                 Navigator.pushNamed(context, RouteName.Profile_Screen);
               },
-              child: const CircleAvatar(
+              child: CircleAvatar(
                 radius: 20,
-                backgroundImage: NetworkImage(
-                    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80'),
+                backgroundImage:
+                NetworkImage(personaldetailviewmodel?.presonalDetailModel?.response?.panditDetails?.panditImage.toString() ?? "",),
                 backgroundColor: Colors.transparent,
               ),
             ),
 
             SizedBox(width: 8,),
-            Text("Govind Kumar",style: GoogleFonts.lato(fontSize: 16,fontWeight:FontWeight.w800,),),
+            Text(
+              personaldetailviewmodel?.presonalDetailModel
+                  ?.response?.panditDetails?.panditFirstName ?? "",
+              style: GoogleFonts.lato(fontSize: 16,fontWeight:FontWeight.w800,),),
 
             // SizedBox(
             //   height: 31,

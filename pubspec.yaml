@@ -83,6 +83,7 @@ dependencies:
   geocoding: ^2.0.5
   dropdown_button2: ^1.2.2
   flutter_dropdown_x: ^0.0.2
+  date_format: ^2.0.6
 
 dev_dependencies:
   flutter_test:

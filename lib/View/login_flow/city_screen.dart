@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/model/Login%20Model/city_model.dart';
 import 'package:panditapp/view_model/Login/CityListApi.dart';
 import 'package:provider/provider.dart';
 import '../../Widgets/circular_loader.dart';
@@ -33,11 +35,13 @@ class _CityScreenState extends State<CityScreen> {
 
   @override
   void initState() {
-    city_list_api = Provider.of<CityListApi>(context, listen: false,);
+    city_list_api = Provider.of<CityListApi>(
+      context,
+      listen: false,
+    );
     city_list_api?.getCityListApiCall();
     super.initState();
   }
-
 
   Future<Position> determinePosition() async {
     bool serviceEnabled;
@@ -62,15 +66,22 @@ class _CityScreenState extends State<CityScreen> {
     return await Geolocator.getCurrentPosition();
   }
 
-  Future<void> getAddressFromLatLng(var lat, var long) async {
-    await placemarkFromCoordinates(
-
-        lat, long)
+  Future<void> getAddressFromLatLng(var lat, var long, [List<Citylist>? citylist]) async {
+    await placemarkFromCoordinates(lat, long)
         .then((List<Placemark> placemarks) {
       Placemark place = placemarks[0];
-      print(place.administrativeArea);
+      print(place.locality);
+      citylist?.forEach((element) {
+        if(element.name == place.locality) {
+          navigate(id: element.id.toString());
+        } else {
+          navigate(id: place.locality);
+        }
+      });
     }).catchError((e) {
-      debugPrint(e);
+      debugPrint(e.toString());
+      Fluttertoast.showToast(
+          msg: "Something went wrong\n Please select city manually");
     });
   }
 
@@ -78,14 +89,12 @@ class _CityScreenState extends State<CityScreen> {
     return Container(
       width: MediaQuery.of(context).size.width * 0.12,
       height: 4,
-      decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(40)
-      ),
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(40)),
     );
   }
 
-  Widget gpsLocation() {
+  Widget gpsLocation([List<Citylist>? citylist]) {
     return Container(
       width: double.infinity,
       height: 50,
@@ -107,8 +116,8 @@ class _CityScreenState extends State<CityScreen> {
       ),
       child: GestureDetector(
         onTap: () async {
-          var ss =  await determinePosition();
-          getAddressFromLatLng(ss.latitude , ss.longitude);
+          var coordinates = await determinePosition();
+          getAddressFromLatLng(coordinates.latitude, coordinates.longitude, citylist);
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -141,141 +150,168 @@ class _CityScreenState extends State<CityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: backGroundColor,
-        body: body(),
+      backgroundColor: backGroundColor,
+      body: body(),
     );
   }
 
   Widget searchTextField() {
-    return Consumer<CityListApi>(builder: (_, provider, __) => TextField(
-      cursorColor: colorPrimary,
-      controller: editingController,
-      onChanged: (value) {
-        provider.setCityList(value);
-      },
-      decoration: InputDecoration(
-        prefixIcon: const Icon(
-          CupertinoIcons.search,
-          color: p1Color,
+    return Consumer<CityListApi>(
+      builder: (_, provider, __) => TextField(
+        cursorColor: colorPrimary,
+        controller: editingController,
+        onChanged: (value) {
+          provider.setCityList(value);
+        },
+        decoration: InputDecoration(
+          prefixIcon: const Icon(
+            CupertinoIcons.search,
+            color: p1Color,
+          ),
+          filled: true,
+          fillColor: TEXTFIELD_BACKGROUND_COLOR,
+          hintText: SEARCH_YOUR_CITY,
+          hintStyle: GoogleFonts.lato(
+              fontWeight: FontWeight.w400, fontSize: 16, color: p1Color),
+          focusedBorder: OutlineInputBorder(
+            borderSide:
+                const BorderSide(color: TEXTFIELD_BORDER_COLOR, width: 1.0),
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+          enabled: true,
+          enabledBorder: OutlineInputBorder(
+            borderSide:
+                const BorderSide(color: TEXTFIELD_BORDER_COLOR, width: 1.0),
+            borderRadius: BorderRadius.circular(5.0),
+          ),
         ),
-        filled: true,
-        fillColor: TEXTFIELD_BACKGROUND_COLOR,
-        hintText: SEARCH_YOUR_CITY,
-        hintStyle: GoogleFonts.lato(
-            fontWeight: FontWeight.w400,
-            fontSize: 16,
-            color: p1Color
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-              color: TEXTFIELD_BORDER_COLOR, width: 1.0),
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        enabled: true,
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-              color: TEXTFIELD_BORDER_COLOR, width: 1.0),
-          borderRadius: BorderRadius.circular(5.0),
-        ),
+        inputFormatters: [
+          //LengthLimitingTextInputFormatter(10),
+          FilteringTextInputFormatter.allow(RegExp("[a-z A-Z]")),
+        ],
       ),
-      inputFormatters: [
-        //LengthLimitingTextInputFormatter(10),
-        FilteringTextInputFormatter.allow(
-            RegExp("[a-z A-Z]")),
-      ],
-    ),);
+    );
+  }
+
+  navigate({String? id}) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => DocumentScreen(
+              name: widget.name,
+              profilePic: widget.photo,
+              mobile: widget.mobile,
+              servicesname:
+              widget.servicesname,
+              cityId: id,
+            )));
   }
 
   Widget gpsAndCityList() {
-    return Expanded(
-      child: Stack(
-        children: [
-          gpsLocation(),
-          Consumer<CityListApi>(builder: (_, provider, __) =>  provider.showCityList ? Container(
-            margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-            decoration: BoxDecoration(
-              color: TEXTFIELD_BACKGROUND_COLOR,
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: ListView.separated(itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DocumentScreen(
-                            name: widget.name,
-                            profilePic: widget.photo,
-                            mobile: widget.mobile,
-                            servicesname: widget.servicesname,
-                            cityId: provider.cityList?[index].id.toString(),
-                          )));
-                },
-                child: Text(provider.cityList?[index].name ?? "", style: GoogleFonts.lato(
-                    fontSize: 16,
-                    color: h1Color),),),
-            ), separatorBuilder: (context, index) => const Divider(
-              color: p1Color,
-              thickness: 1,
-            ), itemCount: provider.cityList?.length ?? 0),
-          ) : Container(),
-          ),
-        ],
+    return Consumer<CityListApi>(
+      builder: (_, provider, __) => Expanded(
+        child: Stack(
+          children: [
+            gpsLocation(provider.cityListModel?.response?.citylist),
+            provider.showCityList
+                ? Container(
+                    margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                    decoration: BoxDecoration(
+                      color: TEXTFIELD_BACKGROUND_COLOR,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: ListView.separated(
+                        itemBuilder: (context, index) => Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                 navigate(id: provider.cityList?[index].id.toString());
+                                },
+                                child: Text(
+                                  provider.cityList?[index].name ?? "",
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16, color: h1Color),
+                                ),
+                              ),
+                            ),
+                        separatorBuilder: (context, index) => const Divider(
+                              color: p1Color,
+                              thickness: 1,
+                            ),
+                        itemCount: provider.cityList?.length ?? 0),
+                  )
+                : Container(),
+          ],
+        ),
       ),
     );
   }
 
   Widget body() {
-    return Consumer<CityListApi>(builder: (_, provider, __) => provider.loading ? const Center(child: CircularLoader()) : SafeArea(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Consumer<CityListApi>(
+        builder: (_, provider, __) => provider.loading
+            ? const Center(child: CircularLoader())
+            : SafeArea(
+                child: Column(
                   children: [
-                    stepContainer(color: kSecondaryColor,),
-                    stepContainer(color: kSecondaryColor,),
-                    stepContainer(color: kSecondaryColor,),
-                    stepContainer(color: kPrimaryColor,),
-                    stepContainer(color: kSecondaryColor,),
-                    stepContainer(color: kSecondaryColor,),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              stepContainer(
+                                color: kSecondaryColor,
+                              ),
+                              stepContainer(
+                                color: kSecondaryColor,
+                              ),
+                              stepContainer(
+                                color: kSecondaryColor,
+                              ),
+                              stepContainer(
+                                color: kPrimaryColor,
+                              ),
+                              stepContainer(
+                                color: kSecondaryColor,
+                              ),
+                              stepContainer(
+                                color: kSecondaryColor,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Text(
+                            FILL_YOUR_PROFILE_DETAILS,
+                            style: GoogleFonts.poppins(
+                                color: h1Color,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 20),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Text(
+                            SELECT_YOUR_CITY,
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: p1Color),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          searchTextField(),
+                        ],
+                      ),
+                    ),
+                    gpsAndCityList(),
                   ],
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  FILL_YOUR_PROFILE_DETAILS,
-                  style: GoogleFonts.poppins(
-                      color: h1Color,
-                      fontWeight: FontWeight.w700, fontSize: 20),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  SELECT_YOUR_CITY,
-                  style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: p1Color),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                searchTextField(),
-              ],
-            ),
-          ),
-          gpsAndCityList(),
-        ],
-      ),
-    ));
+              ));
   }
-
 }

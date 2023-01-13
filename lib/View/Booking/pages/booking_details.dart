@@ -1,4 +1,6 @@
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +36,10 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
   SmsAutoFill smsAutoFill = SmsAutoFill();
   String? strVerificationId;
 
-  Future _launchMap(double lat, double long) async {
-    MapsLauncher.launchCoordinates(lat, long);
+  Future _launchMap(var address) async {
+    var coordinates = await locationFromAddress(address);
+    print(coordinates);
+    MapsLauncher.launchCoordinates(coordinates.first.latitude, coordinates.first.longitude);
   }
 
   @override
@@ -255,7 +259,7 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                     const SizedBox(height: 24,),
                     InkWell(
                       onTap: () {
-                        _launchMap(18.92181, 72.83469);
+                        _launchMap(viewdetailVM.viewdetailmodel?.response?.viewdetaildata?.first.address);
                       },
                       child: Container(
                         //margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -359,10 +363,20 @@ class _BookingDetailsScreenState extends State<BookingDetailsScreen> {
                 appContext: context,
                 length: 4,
                 onChanged: (value) {
-                  if (value.length == 4) {
-                    print("object vk");
-                    //puja_Confirm_OTP.getPujaCofirmOtp(userBooking_id: widget.bookingId);
-                  };
+                  if(value.length == 4) {
+                    if(otpController.text == "1234") {
+                      print("Id ${widget.bookingId}");
+                      provider.getCheckBookingConfirm(
+                          userBooking_id: widget.bookingId,
+                          otpcode: "1234".toString());
+                      // provider.loading ? null :  provider.valueReturn ?
+                      Navigator
+                          .push(context, MaterialPageRoute(
+                          builder: (context) => BookingProgress()));
+                    } else {
+                      Fluttertoast.showToast(msg: "Invalid OTP");
+                    }
+                  }
                 },
                 pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
