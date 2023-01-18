@@ -5,12 +5,13 @@ import 'package:panditapp/View/Home/Pages/BookingList.dart';
 import 'package:panditapp/view_model/home_tab/Online_Ofline_view_model.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
-import '../../../Consts/text_const.dart';
+import '../../../consts/text_const.dart';
 import '../../../Util/Appbar.dart';
 import '../../../Util/TotalEarningGrapgComman.dart';
 import '../../../consts/image_const.dart';
 import '../../../consts/themescolor.dart';
 import '../../../route_app/page_navigeter_name_route.dart';
+
 class HomePageScreen extends StatefulWidget {
   @override
   State<HomePageScreen> createState() => _HomePageScreenState();
@@ -79,8 +80,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
                     children: [
                       Text(BOOKINGS_REQUEST, style: GoogleFonts.lato(fontWeight: FontWeight.w600, fontSize: 18, color: h1Color),),
                       SizedBox(height: 9,),
-                      Text("Lorem Ipsum is simply dummy"),
-                      Text("text of the printing."),
+                      Container(
+                          width: wt * 0.7,
+                          alignment: Alignment.center,
+                          child: Text(Home_Screen_Line, textAlign: TextAlign.center, style: GoogleFonts.lato(fontWeight: FontWeight.w500, fontSize: 16, color: h1Color))),
                       BookingListTitl(booking_request_view_model),
                     ],
                   )))

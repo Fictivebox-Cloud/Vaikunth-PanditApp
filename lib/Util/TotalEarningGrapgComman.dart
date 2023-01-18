@@ -4,6 +4,7 @@ import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:provider/provider.dart';
 
 import '../Consts/themescolor.dart';
+import '../view_model/Earnings_View_Model/Earnings_Home_VM.dart';
 import '../view_model/Profile/Personal_Detail_View_Model.dart';
 import '../view_model/home_tab/Online_Ofline_view_model.dart';
 import '../view_model/home_tab/booking_request_view_model.dart';
@@ -18,6 +19,8 @@ class _TotalEarningGraphState extends State<TotalEarningGraph> {
   late OnlineOflineViewModel _online_ofline_view_model;
   late BookingRequestViewModel booking_request_view_model;
   late PersonalDetailViewModel? personaldetailviewmodel;
+  late EarningsHomeVM earnings_home_vm;
+
 
 
   @override
@@ -30,6 +33,7 @@ class _TotalEarningGraphState extends State<TotalEarningGraph> {
 
   @override
   Widget build(BuildContext context) {
+    earnings_home_vm = context.watch<EarningsHomeVM>();
     return Consumer<OnlineOflineViewModel>(
       builder: (_, provider, __) => Container(
         padding: EdgeInsets.only(left: 16,right: 16,top: 1),
@@ -70,7 +74,7 @@ class _TotalEarningGraphState extends State<TotalEarningGraph> {
                     children: [
                       Text("Total Earning",style: GoogleFonts.lato(fontSize:14,fontWeight: FontWeight.w400,color:Color(0xff7C7C7C)),),
                       Spacer(),
-                      Text("₹20000.00",style: GoogleFonts.lato(fontSize:24,fontWeight: FontWeight.w700),),
+                      Text("₹${earnings_home_vm.earningsHomeModel?.response?.lifetimeearnings ?? "0.00"}",style: GoogleFonts.lato(fontSize:24,fontWeight: FontWeight.w700),),
                     ],
                   ),
                 ),
@@ -127,7 +131,7 @@ class _TotalEarningGraphState extends State<TotalEarningGraph> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Today Earn",style: GoogleFonts.lato(fontSize: 15,fontWeight: FontWeight.w400,color: Color(0xff7C7C7C)),),
-                        Text("₹700.00",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w700),),
+                        Text("₹${earnings_home_vm.earningsHomeModel?.response?.lifetimeearnings ?? "0.00"}",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w700),),
                       ],
                     ),
                   ),
@@ -149,7 +153,7 @@ class _TotalEarningGraphState extends State<TotalEarningGraph> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Total Visits",style: GoogleFonts.lato(fontSize: 15,fontWeight: FontWeight.w400,color: Color(0xff7C7C7C)),),
-                        Text("100",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w700),)
+                        Text(earnings_home_vm.earningsHomeModel?.response?.lifetimepuja.toString() ?? "0",style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.w700),)
 
                       ],
                     ),

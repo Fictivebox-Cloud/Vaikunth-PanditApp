@@ -49,9 +49,8 @@ class _BookingListTitlState extends State<BookingListTitl> {
                 .getbookinglistModel?.response!.bookinglist!.length ==
             0
         ? Container(
-            //height: 500,
+            height: MediaQuery.of(context).size.height * 0.3,
             width: double.infinity,
-            alignment: Alignment.center,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

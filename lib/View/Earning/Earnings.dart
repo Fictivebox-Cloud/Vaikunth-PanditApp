@@ -25,52 +25,64 @@ class _EarningsScreenState extends State<EarningsScreen> {
   late LifeTimePujaListVM life_time_puja_list_vm;
   var ht, wt;
 
-  Future<void> _refresh(bool reload, BuildContext context){
-    earnings_home_vm = Provider.of<EarningsHomeVM?>(context,listen: false)!;
+  Future<void> _refresh(bool reload, BuildContext context) {
+    earnings_home_vm = Provider.of<EarningsHomeVM?>(context, listen: false)!;
     earnings_home_vm.earningshomeAPIcall(reload);
     return Future.delayed(const Duration(seconds: 0));
   }
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     WeekdataPerdayVM weekdataperday =
-    Provider.of<WeekdataPerdayVM>(context, listen: false);
+        Provider.of<WeekdataPerdayVM>(context, listen: false);
     weekdataperday.WeekdataPerdayApicall();
+    earnings_home_vm = Provider.of<EarningsHomeVM>(context, listen: false);
+    earnings_home_vm.earningshomeAPIcall(false);
+  }
 
-    earnings_home_vm = context.watch<EarningsHomeVM?>()!;
+  @override
+  Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
-    return Scaffold(
-      backgroundColor: white,
-      body:earnings_home_vm.loading? Center(child: CircularLoader(),) : SafeArea(
-        child: RefreshIndicator(
-          onRefresh: () async{
-            await _refresh(true, context);
-          },
-          color: kPrimaryColor,
-          strokeWidth: 5,
-          displacement: 0,
-          child: Column(
-            children: [
-              AppBarcomon(),
-              Padding(
-                padding: const EdgeInsets.only(left: 16,right: 16,top: 15),
-                child:
-                //TotalEarningGraph(),
-                graph(),
+    return Consumer<EarningsHomeVM>(
+      builder: (_, provider, __) => Scaffold(
+        backgroundColor: white,
+        body: earnings_home_vm.loading
+            ? Center(
+                child: CircularLoader(),
+              )
+            : SafeArea(
+                child: RefreshIndicator(
+                  onRefresh: () async {
+                    await _refresh(true, context);
+                  },
+                  color: kPrimaryColor,
+                  strokeWidth: 5,
+                  displacement: 0,
+                  child: Column(
+                    children: [
+                      AppBarcomon(),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(left: 16, right: 16, top: 15),
+                        child:
+                            //TotalEarningGraph(),
+                            graph(),
+                      ),
+                      //myEarningAppBar(),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      bodyMyEarning()
+                    ],
+                  ),
+                ),
               ),
-              //myEarningAppBar(),
-              SizedBox(
-                height: 16,
-              ),
-              bodyMyEarning()
-            ],
-          ),
-        ),
       ),
     );
   }
-  Widget bodyMyEarning(){
+
+  Widget bodyMyEarning() {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.only(left: 12, right: 12),
@@ -78,9 +90,9 @@ class _EarningsScreenState extends State<EarningsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             // walletContainer(),
-             // TotalEarningGraph(),
-             // lifeTimePujas_earning_Container(),
+              // walletContainer(),
+              // TotalEarningGraph(),
+              // lifeTimePujas_earning_Container(),
               SizedBox(
                 height: 24,
               ),
@@ -124,9 +136,8 @@ class _EarningsScreenState extends State<EarningsScreen> {
     );
   }
 
-  Widget weekly_Container(){
+  Widget weekly_Container() {
     return Container(
-
       width: double.infinity,
       height: 263,
       child: Column(
@@ -136,21 +147,22 @@ class _EarningsScreenState extends State<EarningsScreen> {
       ),
     );
   }
-  Widget monthly_Container(){
+
+  Widget monthly_Container() {
     return Container(
       width: double.infinity,
       height: 278,
       child: Column(
         children: [
-          Expanded(
-              child: MonthlyGraphScreen()),
+          Expanded(child: MonthlyGraphScreen()),
         ],
       ),
     );
   }
-  Widget graph(){
-    return  Container(
-      padding: EdgeInsets.only(left: 16,right: 16,top: 1),
+
+  Widget graph() {
+    return Container(
+      padding: EdgeInsets.only(left: 16, right: 16, top: 1),
       height: 168,
       //width: d,
       decoration: BoxDecoration(
@@ -168,122 +180,167 @@ class _EarningsScreenState extends State<EarningsScreen> {
           ],
 
           //border: Border.all(color: Colors.red),
-          borderRadius: BorderRadius.all(Radius.circular(20))
-      ),
+          borderRadius: BorderRadius.all(Radius.circular(20))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Row(children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                decoration: BoxDecoration(
-                  //color: Colors.blue,
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
-                // color: Colors.blue,
-                height:62 ,
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Total Earning",style: GoogleFonts.lato(fontSize:14,fontWeight: FontWeight.w400,color:Color(0xff7C7C7C)),),
-                    Spacer(),
-                    Text( "₹ ${earnings_home_vm.earningsHomeModel?.response!.walletvalue ?? ""}",style: GoogleFonts.lato(fontSize:24,fontWeight: FontWeight.w700),),
-                  ],
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                      //color: Colors.blue,
+                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                  // color: Colors.blue,
+                  height: 62,
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Total Earning",
+                        style: GoogleFonts.lato(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff7C7C7C)),
+                      ),
+                      Spacer(),
+                      Text(
+                        "₹ ${earnings_home_vm.earningsHomeModel?.response!.walletvalue ?? "0"}",
+                        style: GoogleFonts.lato(
+                            fontSize: 24, fontWeight: FontWeight.w700),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            //Spacer(),
-            SizedBox(width: 16,),
-            Expanded(
-              flex: 1,
-              child: Container(
-                decoration: BoxDecoration(
-                  //color: Colors.red,
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
-                width: double.infinity,
-                height: 62,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                  SizedBox(
-                    height: 33,
-                    width: double.infinity,
-                    child: ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Color(0xff449473)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(40.0),
-                    //side: BorderSide(color: Colors.red)
-              )
-            )
-    ),
-                        onPressed: (){
-                          showModalBottomSheet(
-                              context: context,
-                              builder: (builder) => bottomSheet(),
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.vertical(
+              //Spacer(),
+              SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                      //color: Colors.red,
+                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                  width: double.infinity,
+                  height: 62,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 33,
+                        width: double.infinity,
+                        child: ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xff449473)),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(40.0),
+                                  //side: BorderSide(color: Colors.red)
+                                ))),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (builder) => bottomSheet(),
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
                                     top: Radius.circular(4),
                                   )));
-
-                        },
-                        child: Text(WITHDRAW)
-                    ),
-                  )
-                  ],
+                            },
+                            child: Text(WITHDRAW)),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xffE2FFF3),
+                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                  height: 62,
+                  width: double.infinity,
+                  //color: Colors.red,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Today Earn",
+                        style: GoogleFonts.lato(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Text(
+                        "₹${earnings_home_vm
+                                .earningsHomeModel?.response!.lifetimeearnings
+                                .toString() ??
+                            "0.0"}",
+                        style: GoogleFonts.lato(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            )
-          ],),
-          Row(children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Color(0xffE2FFF3),
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
-                height: 62,
-                width: double.infinity,
-                //color: Colors.red,
-                child: Column(
-                  children: [
-                    Text("Today Earn"),
-                    Text("700"),
-                  ],
+              SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xffFFD1CC),
+                      borderRadius: BorderRadius.all(Radius.circular(5))),
+                  height: 62,
+                  width: double.infinity,
+                  //color: Colors.orangeAccent,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Total Visits",
+                        style: GoogleFonts.lato(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Text(
+                        earnings_home_vm
+                                .earningsHomeModel?.response!.lifetimepuja
+                                .toString() ??
+                            "0",
+                        style: GoogleFonts.lato(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SizedBox(width: 16,),
-            Expanded(
-              flex: 1,
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Color(0xffFFD1CC),
-                    borderRadius: BorderRadius.all(Radius.circular(5))),
-                height: 62,
-                width: double.infinity,
-                //color: Colors.orangeAccent,
-                child: Column(
-                  children: [
-                    Text("Total Visits"),
-                    Text("100"),
-
-                  ],
-                ),
-              ),
-            ),
-          ],),
-
-
-
-        ],),
+            ],
+          ),
+        ],
+      ),
     );
   }
+
   Widget bottomSheet() {
-   // List<int> _selectedItems = List<>();
+    // List<int> _selectedItems = List<>();
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 333,
@@ -309,51 +366,45 @@ class _EarningsScreenState extends State<EarningsScreen> {
           SizedBox(
             height: 16,
           ),
-
-
           Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, int index) {
+                @override
+                initState() {
+                  super.initState();
+                  setState(() {
+                    index;
+                  });
+                }
 
-            child:ListView.builder(itemBuilder: (context , int index){
-
-              @override
-              initState(){
-                super.initState();
-                setState(() {
-                  index;
-                });
-              }
-              return Row(
-                children: [
-                  Radio(value: index, groupValue: 0, onChanged: (value) {}),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "IndusInd Bank",
-                        style: GoogleFonts.lato(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: p1Color),
-                      ),
-                      Text(
-                        "2541XXXXXXXX2653",
-                        style: GoogleFonts.lato(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12,
-                            color: h1Color),
-                      )
-                    ],
-                  )
-                ],
-              );
-
-
-            },
+                return Row(
+                  children: [
+                    Radio(value: index, groupValue: 0, onChanged: (value) {}),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "IndusInd Bank",
+                          style: GoogleFonts.lato(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: p1Color),
+                        ),
+                        Text(
+                          "2541XXXXXXXX2653",
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12,
+                              color: h1Color),
+                        )
+                      ],
+                    )
+                  ],
+                );
+              },
               itemCount: 11,
             ),
           ),
-
-
           SizedBox(
             height: 15,
           ),

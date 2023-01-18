@@ -36,6 +36,9 @@ const String BANK_DETAIL = "Bank Detail";
 const String SAVE = "Save";
 const String SELECT_BANK = "Select Bank";
 
+///Home Screen
+const String Home_Screen_Line = "Here is the list of people who requested your expert assistance.";
+
 ///Profile>>Bank
 const String BANK_ACCOUNT_DETAILS = "Bank Account Details";
 const String AAD_ACCOUNT = "Add Account";
