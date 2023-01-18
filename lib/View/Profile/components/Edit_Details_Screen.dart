@@ -206,9 +206,9 @@ class _EditDetailsScreenState extends State<EditDetailsScreen> {
     serviceVM = Provider.of<ServiceVM>(context, listen: false);
     edit_profile_view_modelVM =
         Provider.of<EditProfileViewModel>(context, listen: false);
-    personal_detail_view_model =
-        Provider.of<PersonalDetailViewModel>(context, listen: false);
+    personal_detail_view_model = Provider.of<PersonalDetailViewModel>(context, listen: false);
     personal_detail_view_model!.getpersonalDetailApiCall();
+
     city_list_api = Provider.of(context, listen: false);
 
     wt = MediaQuery.of(context).size.width;

@@ -10,6 +10,7 @@ class ApiRemoteServices {
   static Future<Object?> fechingGetApi({String? apiUrl, dynamic apiData}) async {
     try {
       var url = Uri.parse(apiUrl!);
+      log("API: $url");
       Map<String,String> header = await getHeader();
 
       var response = await http

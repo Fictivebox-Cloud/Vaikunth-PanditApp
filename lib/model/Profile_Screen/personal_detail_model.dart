@@ -37,22 +37,26 @@ class Response {
     this.panditDetails,
     this.panditIDcard,
     this.panditbanklist,
+    this.percentage,
   });
 
   PanditDetails? panditDetails;
   List<PanditIDcard>? panditIDcard;
   List<Panditbanklist>? panditbanklist;
+  int? percentage;
 
   factory Response.fromJson(Map<String, dynamic> json) => Response(
     panditDetails: json["panditDetails"] == null ? null : PanditDetails.fromJson(json["panditDetails"]),
     panditIDcard: json["panditIDcard"] == null ? null : List<PanditIDcard>.from(json["panditIDcard"].map((x) => PanditIDcard.fromJson(x))),
     panditbanklist: json["panditbanklist"] == null ? null : List<Panditbanklist>.from(json["panditbanklist"].map((x) => Panditbanklist.fromJson(x))),
+      percentage: json['percentage'] ?? 0,
   );
 
   Map<String, dynamic> toJson() => {
     "panditDetails": panditDetails == null ? null : panditDetails!.toJson(),
     "panditIDcard": panditIDcard == null ? null : List<dynamic>.from(panditIDcard!.map((x) => x.toJson())),
     "panditbanklist": panditbanklist == null ? null : List<dynamic>.from(panditbanklist!.map((x) => x.toJson())),
+    "percentage": percentage,
   };
 }
 
@@ -69,6 +73,8 @@ class PanditDetails {
     this.panditImage,
     this.panditCity,
     this.panditVerified,
+    this.cityname,
+    this.onlinestatus,
   });
 
   int? id;
@@ -82,6 +88,9 @@ class PanditDetails {
   String? panditImage;
   dynamic? panditCity;
   int? panditVerified;
+  String? cityname;
+  String? onlinestatus;
+
 
   factory PanditDetails.fromJson(Map<String, dynamic> json) => PanditDetails(
     id: json["id"] == null ? null : json["id"],
@@ -95,6 +104,8 @@ class PanditDetails {
     panditImage: json["pandit_image"] == null ? null : json["pandit_image"],
     panditCity: json["pandit_city"],
     panditVerified: json["pandit_verified"] == null ? null : json["pandit_verified"],
+      cityname: json['cityname'] == null ? null : json['cityname'],
+    onlinestatus: json['onlinestatus'] == null ? null : json['onlinestatus'],
   );
 
   Map<String, dynamic> toJson() => {
@@ -109,6 +120,8 @@ class PanditDetails {
     "pandit_image": panditImage == null ? null : panditImage,
     "pandit_city": panditCity,
     "pandit_verified": panditVerified == null ? null : panditVerified,
+    "cityname" : cityname == null ? null : cityname,
+    "onlinestatus" : onlinestatus == null ? null : onlinestatus,
   };
 }
 

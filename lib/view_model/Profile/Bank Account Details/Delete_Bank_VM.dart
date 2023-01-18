@@ -24,6 +24,7 @@ class DeleteBankVM with ChangeNotifier{
     _deleteBankModel = deleteBankModel;
     notifyListeners();
   }
+
   setUserError(UserError userError){
     _userError = _userError;
     notifyListeners();
@@ -40,7 +41,6 @@ class DeleteBankVM with ChangeNotifier{
         apiUrl:GET_DELETEBANK_API,apiData: data);
     if(response is Success){
       Object data = deleteBankModelFromJson(response.response as String);
-      print("Govind delete  bank account ${response.response as String}");
       setDeleteBankModel(data as DeleteBankModel);
     }
     else if (response is Failure){

@@ -230,7 +230,7 @@ class _EarningsScreenState extends State<EarningsScreen> {
                                   )));
 
                         },
-                        child: Text("Withdrow")
+                        child: Text(WITHDRAW)
                     ),
                   )
                   ],

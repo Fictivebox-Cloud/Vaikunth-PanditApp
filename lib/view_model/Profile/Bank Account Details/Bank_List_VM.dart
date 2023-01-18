@@ -18,14 +18,14 @@ class BankListVM with ChangeNotifier{
   bool _loading = false;
   BankListModel? _bankListModel;
   UserError? _userError;
-  List? _bankList;
   String? _value;
+  bool? _isFirst = true;
 
   bool get loading => _loading;
   BankListModel? get bankListModel => _bankListModel;
   UserError? get userError => _userError;
-  List? get bankList => _bankList;
   String? get value => _value;
+  bool? get isFirst => _isFirst;
 
   setLoading(loading){
     _loading = loading;
@@ -42,19 +42,19 @@ class BankListVM with ChangeNotifier{
     notifyListeners();
   }
 
-  setBankList(BankListModel bankListModel) {
-    _bankListModel?.response?.banklist?.forEach((element) {
-      _bankList?.add(element?.bankName ?? "");
-    });
-    notifyListeners();
-  }
 
   setUserError(UserError userError){
     _userError = userError;
     notifyListeners();
   }
 
-  bankListAPIcall() async{
+  setIsFirst(bool data) {
+    Future.delayed(Duration(seconds: 2));
+    _isFirst = data;
+    notifyListeners();
+  }
+
+  bankListAPIcall({Map? data}) async{
     setLoading(true);
     _value = null;
     var response = await ApiRemoteServices.fechingGetApi(
@@ -63,7 +63,6 @@ class BankListVM with ChangeNotifier{
     if(response is Success){
       Object data = bankListModelFromJson(response.response as String);
       setBankListModel(data as BankListModel);
-      setBankList(data);
     }
     else if (response is Failure){
       UserError userError  =
@@ -71,6 +70,7 @@ class BankListVM with ChangeNotifier{
       setUserError(userError);
     }
     setLoading(false);
+    setIsFirst(false);
   }
 
   Future fechingloginApi(

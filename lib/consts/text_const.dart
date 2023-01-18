@@ -34,7 +34,19 @@ const String CONFIRM_ACCOUNT_NUMBER = "Confirm account number";
 const String IFSC_CODE = "IFSC Code";
 const String BANK_DETAIL = "Bank Detail";
 const String SAVE = "Save";
+const String SELECT_BANK = "Select Bank";
 
+///Profile>>Bank
+const String BANK_ACCOUNT_DETAILS = "Bank Account Details";
+const String AAD_ACCOUNT = "Add Account";
+const String PRIMARY = "Primary";
+const String SET_AS_PRIMARY = "Set as Primary";
+const String PROFILE_BANK_DIALOG = "Are you sure delete this Account?";
+const String ACCOUNT_NO_DOT = "Account No.: ";
+const String BANK_NAME_DOT = "Bank Name.: ";
+
+///Profile>>My Profile
+const String FULL_NAME = "Full Name";
 
 const String APPNAME = "Vaikhunt";
 const String ENTER_OTP = "Enter OTP";
@@ -94,7 +106,6 @@ const String SENDOTP = "Send OTP";
 const String ENTER_YOU_PHONE_NUMBER = "Enter You Phone Number";
 
 const String ADD_OTHER_BANK = "Add other bank";
-const String BANK_ACCOUNT_DETAILS = "Bank Account Details";
 const String MANAGEBANK_ACCOUNT_DETAILS = "Manage your bank account details";
 const String TRACK_ALL_YOUR_ORDERS_HERE = "Track all your orders here";
 const String EDIT = "Edit";

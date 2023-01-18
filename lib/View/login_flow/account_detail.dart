@@ -52,19 +52,23 @@ class UpperCaseTextFormatter extends TextInputFormatter {
 class _AccountDetailState extends State<AccountDetail> {
   var ht, wt;
 
-  TextEditingController _accountNumber = TextEditingController();
-  TextEditingController _confirmAccountNumber = TextEditingController();
-  TextEditingController _accountHolderName = TextEditingController();
-  TextEditingController _ifscCode = TextEditingController();
+  final TextEditingController _bankName = TextEditingController();
+  final TextEditingController _accountNumber = TextEditingController();
+  final TextEditingController _confirmAccountNumber = TextEditingController();
+  final TextEditingController _accountHolderName = TextEditingController();
+  final TextEditingController _ifscCode = TextEditingController();
 
   late BankListVM bankList_VM;
   String? bankNameValue;
+  bool isBankListVisible = false;
+  List list = [];
+  String searchValue = "";
 
   @override
   void initState() {
     // TODO: implement initState
     bankList_VM = Provider.of<BankListVM>(context, listen: false);
-    bankList_VM.bankListAPIcall();
+    bankList_VM.bankListAPIcall(data: {});
     super.initState();
   }
 
@@ -312,13 +316,14 @@ class _AccountDetailState extends State<AccountDetail> {
       ),
       inputFormatters: [
         //LengthLimitingTextInputFormatter(10),
-        FilteringTextInputFormatter.allow(RegExp("[a-z A-Z]")),
+        UpperCaseTextFormatter(),
+        FilteringTextInputFormatter.allow(RegExp("[a-z A-Z 0-9]")),
       ],
     );
   }
 
   Widget button() {
-    return (bankNameValue == null ||
+    return (_bankName.text.isEmpty ||
             _ifscCode.text.isEmpty ||
             _accountNumber.text.isEmpty ||
             _accountHolderName.text.isEmpty ||
@@ -346,7 +351,7 @@ class _AccountDetailState extends State<AccountDetail> {
                   aadharnumber: widget.aadhar,
                   pannumber: widget.pancard,
                   account_number: _accountNumber.text,
-                  bank: bankNameValue,
+                  bank: _bankName.text,
                   ifsc: _ifscCode.text,
                   photo: widget.photo,
                   aadharbackphoto: widget.photoaadharback,
@@ -369,87 +374,239 @@ class _AccountDetailState extends State<AccountDetail> {
     ;
   }
 
+  Widget bankName() {
+    return Consumer<BankListVM>(
+      builder: (_, provider, __) => TextField(
+        cursorColor: colorPrimary,
+        controller: _bankName,
+        style: GoogleFonts.poppins(
+          fontSize: 14,
+          color: h1Color,
+        ),
+        readOnly: true,
+        onTap: () {
+          setState(() {
+            list.clear();
+            provider.bankListModel?.response?.banklist?.forEach((element) {
+              list.add(element.bankName);
+            });
+            isBankListVisible = !isBankListVisible;
+          });
+        },
+        decoration: InputDecoration(
+          hintText: SELECT_BANK,
+          helperStyle: GoogleFonts.poppins(
+            fontSize: 14,
+            color: p1Color,
+          ),
+          suffixIcon: isBankListVisible ? const Icon(Icons.keyboard_arrow_up, color: h1Color,) : const Icon(Icons.keyboard_arrow_down, color: h1Color,),
+          filled: true,
+          fillColor: TEXTFIELD_BACKGROUND_COLOR,
+          focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: TEXTFIELD_BORDER_COLOR, width: 1.0),
+          ),
+          enabled: true,
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: TEXTFIELD_BORDER_COLOR, width: 1.0),
+          ),
+        ),
+        inputFormatters: [
+          //LengthLimitingTextInputFormatter(10),
+          FilteringTextInputFormatter.allow(RegExp("[a-z A-Z]")),
+        ],
+      ),
+    );
+  }
+
+  Widget bankList() {
+    return Container(
+      width: double.infinity,
+      height: 400,
+      decoration: BoxDecoration(
+        color: TEXTFIELD_BACKGROUND_COLOR,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        children: [
+          searchBank(),
+          Expanded(child: Consumer<BankListVM>(
+              builder: (_, provider, __) {
+                return ListView.separated(
+                    padding: const EdgeInsets.all(16),
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _bankName.text = list[index];
+                          isBankListVisible = !isBankListVisible;
+                        });
+                      },
+                      child: Text(list[index] ?? "", style:  GoogleFonts.poppins(
+                        fontSize: 16,
+                        color: h1Color,
+                      ),),
+                    ), separatorBuilder: (context, index) => const Divider(), itemCount: list.length ?? 0);
+              }
+          ))
+        ],
+      ),
+    );
+  }
+
+  Widget searchBank() {
+    return Consumer<BankListVM>(
+      builder: (_, provider, __) => TextField(
+        cursorColor: colorPrimary,
+        style: GoogleFonts.poppins(
+          fontSize: 14,
+          color: h1Color,
+        ),
+        onChanged: (value) {
+          setState(() {
+            if (value.length > 2) {
+              list = list.where((element) => element.toString().toLowerCase().contains(value.toLowerCase())).toList();
+            } else {
+              list.clear();
+              provider.bankListModel?.response?.banklist?.forEach((element) {
+                list.add(element.bankName);
+              });
+            }
+          });
+        },
+        decoration: InputDecoration(
+          enabledBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kPrimaryColor),
+          ),
+          focusedBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kPrimaryColor),
+          ),
+          border: const UnderlineInputBorder(
+            borderSide: BorderSide(color: kPrimaryColor),
+          ),
+          hintText: SELECT_BANK,
+          helperStyle: GoogleFonts.poppins(
+            fontSize: 14,
+            color: p1Color,
+          ),
+          filled: true,
+          fillColor: TEXTFIELD_BACKGROUND_COLOR,
+          focusColor: kPrimaryColor,
+          // focusedBorder: const OutlineInputBorder(
+          //   borderSide: BorderSide(color: TEXTFIELD_BORDER_COLOR, width: 0.0),
+          // ),
+          // enabled: true,
+          // enabledBorder: const OutlineInputBorder(
+          //   borderSide: BorderSide(color: TEXTFIELD_BORDER_COLOR, width: 0.0),
+          // ),
+        ),
+        inputFormatters: [
+          //LengthLimitingTextInputFormatter(10),
+          FilteringTextInputFormatter.allow(RegExp("[a-z A-Z]")),
+        ],
+      ),
+    );
+  }
+
   Widget body() {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        stepContainer(
-                          color: kSecondaryColor,
+    return Consumer<BankListVM>(
+      builder: (_, provider, __) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          stepContainer(
+                            color: kSecondaryColor,
+                          ),
+                          stepContainer(
+                            color: kSecondaryColor,
+                          ),
+                          stepContainer(
+                            color: kSecondaryColor,
+                          ),
+                          stepContainer(
+                            color: kSecondaryColor,
+                          ),
+                          stepContainer(
+                            color: kSecondaryColor,
+                          ),
+                          stepContainer(
+                            color: kPrimaryColor,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        FILL_YOUR_PROFILE_DETAILS,
+                        style: GoogleFonts.poppins(
+                            color: h1Color,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 20,
                         ),
-                        stepContainer(
-                          color: kSecondaryColor,
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Text(
+                        BANK_DETAIL,
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: p1Color,
                         ),
-                        stepContainer(
-                          color: kSecondaryColor,
-                        ),
-                        stepContainer(
-                          color: kSecondaryColor,
-                        ),
-                        stepContainer(
-                          color: kSecondaryColor,
-                        ),
-                        stepContainer(
-                          color: kPrimaryColor,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      FILL_YOUR_PROFILE_DETAILS,
-                      style: GoogleFonts.poppins(
-                          color: h1Color,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      BANK_DETAIL,
-                      style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: p1Color),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    dropDown(),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    accountHolderName(),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    accountNumber(),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    confirmAccountNumber(),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    ifscCode(),
-                  ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      //dropDown(),
+                      bankName(),
+                      isBankListVisible
+                          ? Container()
+                          : const SizedBox(
+                        height: 10,
+                      ),
+                      isBankListVisible ? bankList() : Container(),
+                      isBankListVisible
+                          ? Container()
+                          : accountHolderName(),
+                      isBankListVisible
+                          ? Container()
+                          : const SizedBox(
+                        height: 10,
+                      ),
+                      isBankListVisible
+                          ? Container()
+                          : accountNumber(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      isBankListVisible
+                          ? Container()
+                          : confirmAccountNumber(),
+                      isBankListVisible
+                          ? Container()
+                          : const SizedBox(
+                        height: 10,
+                      ),
+                      isBankListVisible
+                          ? Container()
+                          : ifscCode(),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            button(),
-          ],
+              button(),
+            ],
+          ),
         ),
       ),
     );

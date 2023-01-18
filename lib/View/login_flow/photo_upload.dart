@@ -126,7 +126,6 @@ class _PhotoUploadState extends State<PhotoUpload> {
     }
   }
 
-
   Widget stepContainer({Color? color}) {
     return Container(
       width: wt * 0.12,

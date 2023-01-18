@@ -34,5 +34,11 @@ const Color BUTTONBORDERCOLOR = Color(0xffF5F5F5);
 const Color CANCELCOLOR = Color(0XFFC0BCBC);
 const Color CALLBTNCOLOR = Color(0XFFFFF0E8);
 const Color divider = Color(0xffF2F2F2);
+const Color BACK_ICON_BACKGROUND_COLOR = Color(0xFFEFEFEF);
+const Color GREEN_COLOR = Color(0xFF45D700);
+const Color GREY_COLOR = Color(0xFFC4C4C4);
+const Color BANK_ACCOUNT_BORDER_COLOR = Color(0xFF65D176);
+const Color CHECK_BACKGROUND_COLOR = Color(0xFF4CAF50);
+const Color CHECK_BORDER_COLOR = Color(0xFFC3C3C3);
 
 

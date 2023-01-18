@@ -9,14 +9,14 @@ import '../../../../view_model/Profile/Bank Account Details/Bank_List_VM.dart';
 import '../../../../view_model/Profile/Bank Account Details/Update_Bank_VM.dart';
 import 'Personal_Bank_Details.dart';
 
-class BankAccountScreen extends StatefulWidget {
+class BankAccountDetail extends StatefulWidget {
   String? id;
   String? name;
   String? accountNumber;
   String? bankName;
   String? ifscCode;
 
-  BankAccountScreen({
+  BankAccountDetail({
     Key? key,
     this.id,
     this.name,
@@ -26,7 +26,7 @@ class BankAccountScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<BankAccountScreen> createState() => _BankAccountScreenState();
+  State<BankAccountDetail> createState() => _BankAccountDetailState();
 }
 
 class UpperCaseTextFormatter extends TextInputFormatter {
@@ -40,7 +40,7 @@ class UpperCaseTextFormatter extends TextInputFormatter {
   }
 }
 
-class _BankAccountScreenState extends State<BankAccountScreen> {
+class _BankAccountDetailState extends State<BankAccountDetail> {
   List<dynamic> countries = [];
   String? couuntryId;
 

@@ -1,3 +1,4 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:panditapp/consts/image_const.dart';
 import 'package:panditapp/view_model/home_tab/booking_request_view_model.dart';
 import 'package:provider/provider.dart';
@@ -107,7 +108,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                         const SizedBox(
                           height: 3,
                         ),
-                        Text(BOOKING_NO+"#098767",
+                        Text("$BOOKING_NO #${booking_request_view_model.getbookinglistModel?.response?.bookinglist?[index].orderId ?? ""}",
                           style: GoogleFonts.lato(
                               fontSize: 14,
                               color:Colors.grey,
@@ -177,7 +178,11 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                           .response!
                                           .bookinglist![index]
                                           .bookingPujaDate.toString()
-                                          .split(" ")[1]
+                                          .replaceRange(10, booking_request_view_model
+                                          .getbookinglistModel!
+                                          .response!
+                                          .bookinglist![index]
+                                          .bookingPujaDate.toString().length, "")
                                           ??"" ,
                                    // "03:56",
                                     style: GoogleFonts.lato(
@@ -191,7 +196,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                         InkWell(
                                 onTap: () {
                                   setState(() {
-                                    Utils.toastMessage("rejected");
+                                    Fluttertoast.showToast(msg: "Booking Reject");
                                    // Utils.toastMessage(REJECTED_BOOKING);
                                                     RejectBookingVM rejectbooking =
                                                     Provider.of<RejectBookingVM>(context,
@@ -217,7 +222,7 @@ class _BookingListTitlState extends State<BookingListTitl> {
                                         "Reject",
                                         style: GoogleFonts.lato(
                                             fontSize: 16,
-                                            color: dividerr,
+                                            color: DIVIDER_2,
                                             fontWeight:
                                             FontWeight.w500),
                                       )),
@@ -237,7 +242,8 @@ class _BookingListTitlState extends State<BookingListTitl> {
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    Utils.toastMessage(ACCEPT_BOOKING);
+                                    // Utils.toastMessage(ACCEPT_BOOKING);
+                                    Fluttertoast.showToast(msg: ACCEPT_BOOKING);
                                     accept_bookingapi = Provider.of<AcceptBookingApi>(context,listen: false);
                                     accept_bookingapi?.getAccept_booking_Api(userbooking: booking_request_view_model.getbookinglistModel!.response!.bookinglist?[index].bookingId.toString() ?? "");
 

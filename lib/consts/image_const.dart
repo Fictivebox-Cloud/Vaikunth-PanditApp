@@ -35,9 +35,12 @@ class ImageConst {
   final String SUCCESS_GIF = "assets/images/success.gif";
   final String SPLASH_LOGO = "assets/svgs/splash_logo.svg";
   final String EDIT_PROFILE = "assets/svgs/edit_profile.svg";
+  final String DEFAULT_PROFILE = "assets/svgs/default_profile.svg";
 
   final String USERICON = "assets/images/usericon.svg";
   final String BACKICON = "assets/images/lefticon.svg";
+  //final String BACKICON = "assets/images/lefticon.svg";
+  final String BACK_ARROW = "assets/images/back_arrow.png";
   //final String LOGOUT = "assets/images/logout.svg";
 
 }

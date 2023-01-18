@@ -27,25 +27,24 @@ class _BookingsScreenState extends State<BookingsScreen> {
     completeBookingViewModel= Provider.of<CompleteBookingViewModel>(context,listen: false);
     completeBookingViewModel.completebookingAPIcall();
     return Future.delayed(const Duration(seconds: 0));
-
-
   }
 
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     completeBookingViewModel = Provider.of<CompleteBookingViewModel>(context,listen: false);
     completeBookingViewModel.completebookingAPIcall();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return
 
        Scaffold(
           backgroundColor: white,
-          body: completeBookingViewModel.loading
-              ? const Center(child: CircularLoader())
-              : DefaultTabController(
+          body: DefaultTabController(
             length: 3,
             child: Padding(
               padding: const EdgeInsets.only(top: 27.5),
@@ -53,6 +52,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                 children: [
                   const AppBarcomon(),
                   TabBar(
+                    indicatorColor: kPrimaryColor,
                     labelStyle: TextStyle(fontSize: small ? 15.0 : 18.0),
                     labelColor: h1Color,
                     unselectedLabelColor: const Color(0Xff999EA3),
@@ -108,26 +108,6 @@ class _BookingsScreenState extends State<BookingsScreen> {
           const SizedBox(width: 8,),
           Text("Govind Kumar",style: GoogleFonts.lato(fontSize: 16,fontWeight:FontWeight.w800,),),
 
-          // SizedBox(
-          //   height: 31,
-          //   width: 120,
-          //   child: LiteRollingSwitch(
-          //     textOn: "Online",
-          //     value: true,
-          //     textOff: "Ofline",
-          //     colorOn: btn,
-          //     colorOff: p1Color,
-          //     textSize: 16,
-          //     onChanged: (val) {
-          //       _online_ofline_view_model =
-          //           Provider.of<OnlineOflineViewModel>(context,
-          //               listen: false);
-          //       _online_ofline_view_model.getonlineofline(
-          //           userStatus: val ? "1" : "0");
-          //     },
-          //   ),
-          // ),
-
           const Spacer(),
           InkWell(
             onTap: () {
@@ -149,7 +129,14 @@ class _BookingsScreenState extends State<BookingsScreen> {
       color: kPrimaryColor,
       strokeWidth: 5,
       displacement: 0,
-      child: Container(
+      child:
+
+    Consumer<CompleteBookingViewModel>(
+    builder: (_, provider, __) => provider.loading
+    ? const Center(child: CircularLoader())
+        :
+
+      Container(
           child: ListView.builder(
 
             itemBuilder: (context, int index)
@@ -195,7 +182,10 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                   //     .upcomingbookinglist![index]
                                   //     .name ??
                                   //     "",
-                                  BOOKING_NO+"#098767",
+                                  "$BOOKING_NO #${   completeBookingViewModel
+                                      .completebokingmodel
+                                      ?.response!
+                                      .upcomingbookinglist?[index].orderId}",
                                   style: GoogleFonts.lato(
                                       fontSize: 14,
                                       color:Colors.grey,
@@ -273,7 +263,8 @@ class _BookingsScreenState extends State<BookingsScreen> {
                                                                 .id.toString())));
                                           },
                                           child: Text(
-                                            "Visit on 13 March",
+                                            //"Visit on 13 March",
+                                            VIEW_DETAILS,
                                             style: GoogleFonts.lato(
                                                 fontSize: 16,
                                                 color: white,
@@ -291,166 +282,178 @@ class _BookingsScreenState extends State<BookingsScreen> {
               );
             },
             itemCount: completeBookingViewModel
-                .completebokingmodel?.response?.upcomingbookinglist?.length,
-          )),
+                .completebokingmodel?.response?.upcomingbookinglist?.length ?? 0,
+          )    )),
     );
   }
 
   Widget CompletedPage() {
     int index;
 
-    return RefreshIndicator(
+    return
+
+      Consumer<CompleteBookingViewModel>(
+          builder: (_, provider, __) => provider.loading
+              ? const Center(child: CircularLoader())
+              :
+
+      RefreshIndicator(
       onRefresh: () async{
         await _refresh(true, context);
       },
       color: kPrimaryColor,
       strokeWidth: 5,
       displacement: 0,
-      child: ListView.builder(
-        itemCount: completeBookingViewModel
-            .completebokingmodel?.response!.compbookinglist!.length,
-        itemBuilder: (context, int index) {
-          return Container(
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 24,right:24),
-                        alignment: Alignment.bottomCenter,
-                        width: double.infinity,
-                        height: 241,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            border: Border.all(width: 1, color: kPrimaryColor)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+      child:
 
-                            const SizedBox(height: 24,),
-                            Text(
-                              completeBookingViewModel
-                                  .completebokingmodel
-                                  ?.response!
-                                  .compbookinglist![index]
-                                  .poojaTitle ??
-                                  "",
-                              //"Puja title katha",
-                              style: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16,
-                                  //color: kPrimaryColor
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 3,
-                            ),
-                            Text(
-                              // completeBookingViewModel
-                              //     .completebokingmodel
-                              //     ?.response!
-                              //     .compbookinglist![index]
-                              //     .name ??
-                              //     "",
-                              BOOKING_NO+"#098767",
-                              style: GoogleFonts.lato(
-                                  fontSize: 12,
-                                  color:Colors.grey,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              completeBookingViewModel
-                                  .completebokingmodel
-                                  ?.response!
-                                  .compbookinglist![index]
-                                  .bookingPujaDate ??
-                                  "",
-                              // "13 march 2022 12:40",
-                              style: GoogleFonts.lato(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700,
-                                  color: blackColor),
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            Text(
-                              completeBookingViewModel
-                                  .completebokingmodel
-                                  ?.response!
-                                  .compbookinglist![index].address ?? "",
-                              //"H 32 noida ,uttar pradesh",
-                              style: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 14,
-                                  color: h1Color),
-                            ),
-                            // const Padding(
-                            //   padding: EdgeInsets.only(
-                            //       left: 16, right: 16, top: 10),
-                            //   child: DottedLine(),
-                            // ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(BOOKING_BY+"${ completeBookingViewModel
+
+      ListView.builder(
+        itemCount: completeBookingViewModel
+            .completebokingmodel?.response?.compbookinglist?.length ?? 0,
+        itemBuilder: (context, int index) {
+          return Column(
+            children: [
+              Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      padding: const EdgeInsets.only(left: 24,right:24),
+                      alignment: Alignment.bottomCenter,
+                      width: double.infinity,
+                     // height: 241,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(width: 1, color: kPrimaryColor)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          const SizedBox(height: 24,),
+                          Text(
+                            completeBookingViewModel
                                 .completebokingmodel
                                 ?.response!
-                                .compbookinglist![index].hostname ?? ""}",
-                              // "Govind kumar",
+                                .compbookinglist![index]
+                                .poojaTitle ??
+                                "",
+                            //"Puja title katha",
+                            style: GoogleFonts.lato(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                //color: kPrimaryColor
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 3,
+                          ),
+                          Text(
+                            // completeBookingViewModel
+                            //     .completebokingmodel
+                            //     ?.response!
+                            //     .compbookinglist![index]
+                            //     .name ??
+                            //     "",
+                            "$BOOKING_NO #${completeBookingViewModel
+                                .completebokingmodel
+                                ?.response!
+                                .compbookinglist![index].orderId}",
+                            style: GoogleFonts.lato(
+                                fontSize: 12,
+                                color:Colors.grey,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            completeBookingViewModel
+                                .completebokingmodel
+                                ?.response!
+                                .compbookinglist![index]
+                                .bookingPujaDate ??
+                                "",
+                            // "13 march 2022 12:40",
+                            style: GoogleFonts.lato(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: blackColor),
+                          ),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            completeBookingViewModel
+                                .completebokingmodel
+                                ?.response!
+                                .compbookinglist![index].address ?? "",
+                            //"H 32 noida ,uttar pradesh",
+                            style: GoogleFonts.lato(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
+                                color: h1Color),
+                          ),
+                          // const Padding(
+                          //   padding: EdgeInsets.only(
+                          //       left: 16, right: 16, top: 10),
+                          //   child: DottedLine(),
+                          // ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Text(BOOKING_BY+"${ completeBookingViewModel
+                              .completebokingmodel
+                              ?.response!
+                              .compbookinglist![index].hostname ?? ""}",
+                            // "Govind kumar",
+                            style: GoogleFonts.lato(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: h1Color),
+                          ),
+                          const SizedBox(height: 11,),
+
+
+                          Center(
+                            child: Text(
+                              TOTAL_EARNING+"${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].totalEarning ?? ""}",
                               style: GoogleFonts.lato(
                                   fontSize: 14,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w900,
                                   color: h1Color),
                             ),
-                            const SizedBox(height: 11,),
-
-
-                            Center(
-                              child: Text(
-                                TOTAL_EARNING+"${completeBookingViewModel.completebokingmodel!.response!.compbookinglist![index].totalEarning ?? ""}",
-                                style: GoogleFonts.lato(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w900,
-                                    color: h1Color),
-                              ),
-                            ),
-                            const SizedBox(height: 8,),
-                            Container(
-                              width: double.infinity,
-                              height: 48,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: const Color(0xff7CC344)),
-                              child: Center(
-                                  child: TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        VIEWEARNINGS,
-                                        style: GoogleFonts.lato(
-                                            fontSize: 14,
-                                            color: white,
-                                            fontWeight: FontWeight.w700),
-                                      ))),
-                            )
-                          ],
-                        ),
+                          ),
+                          const SizedBox(height: 20,),
+                          // Container(
+                          //   width: double.infinity,
+                          //   height: 48,
+                          //   decoration: BoxDecoration(
+                          //       borderRadius: BorderRadius.circular(12),
+                          //       color: const Color(0xff7CC344)),
+                          //   child: Center(
+                          //       child: TextButton(
+                          //           onPressed: () {},
+                          //           child: Text(
+                          //             VIEWEARNINGS,
+                          //             style: GoogleFonts.lato(
+                          //                 fontSize: 14,
+                          //                 color: white,
+                          //                 fontWeight: FontWeight.w700),
+                          //           ))),
+                          // )
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           );
         },
         //itemCount: 5,
 
       ),
+    )
     );
   }
 
@@ -463,132 +466,139 @@ class _BookingsScreenState extends State<BookingsScreen> {
           color: kPrimaryColor,
           strokeWidth: 5,
           displacement: 0,
-          child: ListView.builder(
+          child:
+    Consumer<CompleteBookingViewModel>(
+    builder: (_, provider, __) => provider.loading
+    ? const Center(child: CircularLoader())
+        :
 
+          ListView.builder(
             itemCount: completeBookingViewModel
-                .completebokingmodel?.response!.cancelbookinglist!.length,
+                .completebokingmodel?.response?.cancelbookinglist?.length ?? 0,
             itemBuilder: (context, int index) {
-              return Container(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 24,right: 24,top: 20),
-                        //alignment: Alignment.bottomCenter,
-                        width: double.infinity,
-                        height: 160,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
-                            border: Border.all(width: 1, color: kPrimaryColor)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                           // SizedBox(height: 24,),
-                           /* Text(
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      padding: const EdgeInsets.only(left: 24,right: 24,top: 20),
+                      //alignment: Alignment.bottomCenter,
+                      width: double.infinity,
+                      height: 160,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(width: 1, color: kPrimaryColor)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                         // SizedBox(height: 24,),
+                         /* Text(
+                            "${completeBookingViewModel.completebokingmodel?.response!
+                              .cancelbookinglist![index].poojaTitle ?? ""}   " "(Cancel)",
+                            //"Puja title katha",
+                            style: GoogleFonts.lato(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: kPrimaryColor),
+                          ),*/
+                          Row(children: [
+                            Text(
                               "${completeBookingViewModel.completebokingmodel?.response!
-                                .cancelbookinglist![index].poojaTitle ?? ""}   " "(Cancel)",
+                                  .cancelbookinglist![index].poojaTitle ?? ""}",
+                              //"Puja title katha",
+                              style: GoogleFonts.lato(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                 // color: kPrimaryColor
+                              ),
+                            ),
+                            Text(" (Cancel)",
                               //"Puja title katha",
                               style: GoogleFonts.lato(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,
                                   color: kPrimaryColor),
-                            ),*/
-                            Row(children: [
-                              Text(
-                                "${completeBookingViewModel.completebokingmodel?.response!
-                                    .cancelbookinglist![index].poojaTitle ?? ""}",
-                                //"Puja title katha",
-                                style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                   // color: kPrimaryColor
-                                ),
-                              ),
-                              Text(" (Cancel)",
-                                //"Puja title katha",
-                                style: GoogleFonts.lato(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                    color: kPrimaryColor),
-                              ),
-                            ],),
-                            const SizedBox(
-                              height: 3,
                             ),
-                            Text(
-                              // completeBookingViewModel
-                              //     .completebokingmodel
-                              //     ?.response!
-                              //     .upcomingbookinglist![index]
-                              //     .name ??
-                              //     "",
-                              BOOKING_NO+"#098767",
-                              style: GoogleFonts.lato(
-                                  fontSize: 14,
-                                  color:Colors.grey,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              completeBookingViewModel
-                                  .completebokingmodel
-                                  ?.response!
-                                  .cancelbookinglist![index]
-                                  .bookingPujaDate ??
-                                  "",
-                              // "13 march 2022 12:40",
-                              style: GoogleFonts.lato(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: blackColor),
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            Text(
-                              completeBookingViewModel
-                                  .completebokingmodel
-                                  ?.response!
-                                  .cancelbookinglist![index].poojaTitle ?? "",
-                              //"H 32 noida ,uttar pradesh",
-                              style: GoogleFonts.lato(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                  color: h1Color),
-                            ),
-                            // const Padding(
-                            //   padding: EdgeInsets.only(
-                            //       left: 16, right: 16, top: 10),
-                            //   child: DottedLine(),
-                            // ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(BOOKING_BY+"${ completeBookingViewModel
+                          ],),
+                          const SizedBox(
+                            height: 3,
+                          ),
+                          Text(
+                            // completeBookingViewModel
+                            //     .completebokingmodel
+                            //     ?.response!
+                            //     .upcomingbookinglist![index]
+                            //     .name ??
+                            //     "",
+                            "$BOOKING_NO #${   completeBookingViewModel
                                 .completebokingmodel
                                 ?.response!
-                                .cancelbookinglist![index].name ?? ""}",
-                              // "Govind kumar",
-                              style: GoogleFonts.lato(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: h1Color),
-                            ),
+                                .cancelbookinglist![index].orderId}",
+                            style: GoogleFonts.lato(
+                                fontSize: 14,
+                                color:Colors.grey,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            completeBookingViewModel
+                                .completebokingmodel
+                                ?.response!
+                                .cancelbookinglist![index]
+                                .bookingPujaDate ??
+                                "",
+                            // "13 march 2022 12:40",
+                            style: GoogleFonts.lato(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: blackColor),
+                          ),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Text(
+                            completeBookingViewModel
+                                .completebokingmodel
+                                ?.response!
+                                .cancelbookinglist![index].poojaTitle ?? "",
+                            //"H 32 noida ,uttar pradesh",
+                            style: GoogleFonts.lato(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: h1Color),
+                          ),
+                          // const Padding(
+                          //   padding: EdgeInsets.only(
+                          //       left: 16, right: 16, top: 10),
+                          //   child: DottedLine(),
+                          // ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Text(BOOKING_BY+"${ completeBookingViewModel
+                              .completebokingmodel
+                              ?.response!
+                              .cancelbookinglist![index].name ?? ""}",
+                            // "Govind kumar",
+                            style: GoogleFonts.lato(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: h1Color),
+                          ),
 
-                          ],
-                        ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               );
             },
             //itemCount: 20,
 
           ),
+    )
         ));
   }
 }

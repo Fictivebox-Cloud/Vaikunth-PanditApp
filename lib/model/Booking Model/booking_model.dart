@@ -52,6 +52,7 @@ class Bookinglist {
   Bookinglist({
     this.id,
     this.bookingId,
+    this.orderId,
     this.poojaTitle,
     this.poojaDate,
     this.address,
@@ -68,6 +69,7 @@ class Bookinglist {
 
   int? id;
   int? bookingId;
+  String? orderId;
   String? poojaTitle;
   dynamic? poojaDate;
   String? address;
@@ -84,6 +86,7 @@ class Bookinglist {
   factory Bookinglist.fromJson(Map<String, dynamic> json) => Bookinglist(
     id: json["id"] == null ? null : json["id"],
     bookingId: json["booking_id"] == null ? null : json["booking_id"],
+    orderId: json["order_id"] == null ? null : json["order_id"],
     poojaTitle: json["pooja_title"] == null ? null : json["pooja_title"],
     poojaDate: json["pooja_date"],
     address: json["address"] == null ? null : json["address"],
@@ -101,6 +104,7 @@ class Bookinglist {
   Map<String, dynamic> toJson() => {
     "id": id == null ? null : id,
     "booking_id": bookingId == null ? null : bookingId,
+    "order_id": orderId == null ? null : orderId,
     "pooja_title": poojaTitle == null ? null : poojaTitle,
     "pooja_date": poojaDate,
     "address": address == null ? null : address,

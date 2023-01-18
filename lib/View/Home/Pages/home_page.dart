@@ -81,7 +81,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
                       SizedBox(height: 9,),
                       Text("Lorem Ipsum is simply dummy"),
                       Text("text of the printing."),
-
                       BookingListTitl(booking_request_view_model),
                     ],
                   )))

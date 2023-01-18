@@ -88,10 +88,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primaryColor: kPrimaryColor,
           appBarTheme: AppBarTheme(color: kPrimaryColor)),
-          //zinitialRoute:RouteName.SplashScreen,
+          initialRoute:RouteName.SplashScreen,
           onGenerateRoute: Routes.generateRoutes,
-
-       home: NameScreen(mobile: "8700810213",),
+     // home: NameScreen(mobile: "8700810675",),
     );
   }
 }

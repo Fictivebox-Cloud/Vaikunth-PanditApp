@@ -102,6 +102,7 @@ class Cancelbookinglist {
 
 class Compbookinglist {
   Compbookinglist({
+    this.orderId,
     this.poojaTitle,
     this.poojaDate,
     this.address,
@@ -118,6 +119,7 @@ class Compbookinglist {
     this.hostname,
   });
 
+  String? orderId;
   String? poojaTitle;
   String? poojaDate;
   String? address;
@@ -134,6 +136,7 @@ class Compbookinglist {
   String? hostname;
 
   factory Compbookinglist.fromJson(Map<String, dynamic> json) => Compbookinglist(
+    orderId: json["order_id"] == null ? null : json["order_id"],
     poojaTitle: json["pooja_title"] == null ? null : json["pooja_title"],
     poojaDate: json["pooja_date"] == null ? null : json["pooja_date"],
     address: json["address"] == null ? null : json["address"],
@@ -151,6 +154,7 @@ class Compbookinglist {
   );
 
   Map<String, dynamic> toJson() => {
+    "order_id": orderId == null ? null : orderId,
     "pooja_title": poojaTitle == null ? null : poojaTitle,
     "pooja_date": poojaDate == null ? null : poojaDate,
     "address": address == null ? null : address,
@@ -171,6 +175,7 @@ class Compbookinglist {
 class Upcomingbookinglist {
   Upcomingbookinglist({
     this.id,
+    this.orderId,
     this.bookingPaymenttype,
     this.bookingPaidAmount,
     this.bookingRemainingTransactionId,
@@ -190,6 +195,7 @@ class Upcomingbookinglist {
   });
 
   int? id;
+  String? orderId;
   String? bookingPaymenttype;
   int? bookingPaidAmount;
   int? bookingRemainingTransactionId;
@@ -209,6 +215,7 @@ class Upcomingbookinglist {
 
   factory Upcomingbookinglist.fromJson(Map<String, dynamic> json) => Upcomingbookinglist(
     id: json["id"] == null ? null : json["id"],
+    orderId: json["order_id"] == null ? null : json["order_id"],
     bookingPaymenttype: json["booking_paymenttype"] == null ? null : json["booking_paymenttype"],
     bookingPaidAmount: json["booking_paid_amount"] == null ? null : json["booking_paid_amount"],
     bookingRemainingTransactionId: json["booking_remaining_transaction_id"] == null ? null : json["booking_remaining_transaction_id"],
@@ -229,6 +236,7 @@ class Upcomingbookinglist {
 
   Map<String, dynamic> toJson() => {
     "id": id == null ? null : id,
+    "order_id": orderId == null ? null : orderId,
     "booking_paymenttype": bookingPaymenttype == null ? null : bookingPaymenttype,
     "booking_paid_amount": bookingPaidAmount == null ? null : bookingPaidAmount,
     "booking_remaining_transaction_id": bookingRemainingTransactionId == null ? null : bookingRemainingTransactionId,

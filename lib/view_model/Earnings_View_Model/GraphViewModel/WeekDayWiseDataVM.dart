@@ -41,8 +41,8 @@ class WeekdataPerdayVM extends ChangeNotifier {
     print("Pandit App = ${userId}");
     setLoading(true);
     Map<String, dynamic> data = {
-     //"pandit_id": userId,
-     "pandit_id": "7",
+     "pandit_id": userId,
+     //"pandit_id": "7",
 
 
     };

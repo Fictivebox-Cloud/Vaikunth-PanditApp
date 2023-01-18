@@ -59,6 +59,7 @@ class Panditbanklist {
     this.bankAccountNo,
     this.panNo,
     this.aadharNo,
+    this.defaultBank,
     this.createdAt,
     this.updatedAt,
   });
@@ -72,6 +73,7 @@ class Panditbanklist {
   String? bankAccountNo;
   String? panNo;
   String? aadharNo;
+  String? defaultBank;
   DateTime? createdAt;
   DateTime? updatedAt;
 
@@ -85,6 +87,7 @@ class Panditbanklist {
     bankAccountNo: json["bank_account_no"] == null ? null : json["bank_account_no"],
     panNo: json["pan_no"] == null ? null : json["pan_no"],
     aadharNo: json["aadhar_no"] == null ? null : json["aadhar_no"],
+    defaultBank: json["defaultBank"] == null ? null : json["defaultBank"],
     createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
     updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
   );
@@ -99,6 +102,7 @@ class Panditbanklist {
     "bank_account_no": bankAccountNo == null ? null : bankAccountNo,
     "pan_no": panNo == null ? null : panNo,
     "aadhar_no": aadharNo == null ? null : aadharNo,
+    "defaultBank": defaultBank == null ? null : defaultBank,
     "created_at": createdAt == null ? null : createdAt?.toIso8601String(),
     "updated_at": updatedAt == null ? null : updatedAt?.toIso8601String(),
   };

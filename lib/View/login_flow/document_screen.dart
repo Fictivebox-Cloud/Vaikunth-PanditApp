@@ -298,7 +298,8 @@ class _DocumentScreenState extends State<DocumentScreen> {
       ),
       inputFormatters: [
         //LengthLimitingTextInputFormatter(10),
-        FilteringTextInputFormatter.allow(RegExp("[A-Z 0-9]")),
+        UpperCaseTextFormatter(),
+        FilteringTextInputFormatter.allow(RegExp("[A-Z a-z 0-9]")),
       ],
     );
   }

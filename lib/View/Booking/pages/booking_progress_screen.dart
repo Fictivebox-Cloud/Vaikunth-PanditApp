@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:panditapp/View/Home/Home_Screen.dart';
 import 'package:provider/provider.dart';
 import '../../../Consts/text_const.dart';
+import '../../../Util/utils.dart';
 import '../../../consts/themescolor.dart';
+import '../../../route_app/page_navigeter_name_route.dart';
 import '../../../view_model/BookingViewDetails/ViewDetails_VM.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -30,172 +34,40 @@ class _BookingProgressState extends State<BookingProgress> {
 
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
-    return Scaffold(
-      backgroundColor: white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Appbar(),
+    return WillPopScope(
+      onWillPop: () {
+        return Future.value(); // if true allow back else block it
+      },
+      child: Scaffold(
 
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+        backgroundColor: white,
+        body: SafeArea(
+          child: Column(
+            children: [
+              Appbar(),
 
-                      BookingStatus(),
-                      DetailPage(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16,right: 16,top: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        BookingStatus(),
+                        DetailPage(),
+                        SizedBox(height: 20,),
+                        Button(),
                       SizedBox(height: 20,),
-                      Button(),
-                    SizedBox(height: 20,),
 
-                    /*  Expanded(
-                        flex: 1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: double.infinity,
-                              height: 80,
-                              color: kPrimaryColor,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 16, top: 12),
-                                      child: Center(
-                                        child: Row(
-                                          children: [
-                                            Icon(
-                                              Icons.arrow_back,
-                                              color: white,
-                                            ),
-                                            SizedBox(
-                                              width: 64,
-                                            ),
-                                            Center(
-                                                child: Text(
-                                              BOOKING_INPROGRESS,
-                                              style: GoogleFonts.lato(
-                                                  color: white,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 18),
-                                            )),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 16,
-                                  ),
-                                  Text(
-                                    viewdetailVM.viewdetailmodel!.response!
-                                        .viewdetaildata![0].name
-                                        .toString(),
-                                    style: GoogleFonts.lato(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                        color: white),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 16, top: 16),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.calendar_month,
-                                        color: kPrimaryColor,
-                                      ),
-                                      SizedBox(
-                                        width: 7,
-                                      ),
-                                      Text(
-                                        //"Mon 05/Oct/2021"
-                                        viewdetailVM.viewdetailmodel!.response!
-                                            .viewdetaildata![0].bookingPujaDate
-                                            .toString()
-                                            .split(" ")
-                                            .first,
-                                        style: GoogleFonts.lato(
-                                            fontWeight: FontWeight.w500, fontSize: 14),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.access_time,
-                                        color: kPrimaryColor,
-                                      ),
-                                      SizedBox(
-                                        width: 7,
-                                      ),
-                                      Text(
-                                        viewdetailVM.viewdetailmodel!.response!
-                                            .viewdetaildata![0].bookingPujaDate
-                                            .toString()
-                                            .replaceRange(0, 11, ""),
-                                        style: GoogleFonts.lato(
-                                            fontSize: 14, fontWeight: FontWeight.w500),
-                                      )
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.location_on,
-                                        color: kPrimaryColor,
-                                      ),
-                                      SizedBox(
-                                        width: 7,
-                                      ),
-                                      Text(
-                                        viewdetailVM.viewdetailmodel!.response!
-                                            .viewdetaildata![0].cityname
-                                            .toString(),
-                                        style: GoogleFonts.lato(
-                                            fontWeight: FontWeight.w500, fontSize: 14),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 48,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 16),
-                              child: Text(
-                                BOOKING_STATUS,
-                                style: GoogleFonts.lato(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),*/
 
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -207,7 +79,7 @@ class _BookingProgressState extends State<BookingProgress> {
       child: Row (children: [
         InkWell(
             onTap: (){
-              Navigator.pop(context);
+              //Navigator.pop(context);
             },
             child: SvgPicture.asset("assets/images/lefticon.svg")),
      SizedBox(width: 12,),
@@ -320,14 +192,20 @@ class _BookingProgressState extends State<BookingProgress> {
 
   Widget Button(){
     return  InkWell(
-      onTap: () {},
+      onTap: () {
+        Fluttertoast.showToast(msg: "pooja completed");
+
+        Navigator.pushReplacementNamed(context, RouteName.Home_Screen);
+      },
       child: Container(
+
         width: double.infinity,
         height: 48,
         decoration: BoxDecoration(
             color: buttonColor,
             borderRadius: BorderRadius.circular(4)),
         child: Center(
+
             child: Text(
               DONE,
               style: GoogleFonts.lato(

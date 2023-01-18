@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Util/Api_collection.dart';
 import '../../Util/login_in_User.dart';
+import '../../model/Profile_Screen/Profile Percentage/percentage_detail_model.dart';
 import '../../model/Profile_Screen/personal_detail_model.dart';
 
 class PersonalDetailViewModel with ChangeNotifier{
@@ -17,18 +18,19 @@ class PersonalDetailViewModel with ChangeNotifier{
   PersonalDetailModel? get presonalDetailModel => _detailModel;
   UserError? get userError =>_userError;
 
-  setLoading(loading){
-    _loading= _loading;
+  setLoading(bool loading){
+    _loading = loading;
     notifyListeners();
   }
+
   setPersonalDetailModel(PersonalDetailModel personalDetailModel){
     _detailModel = personalDetailModel;
     notifyListeners();
   }
+
   setUserError(UserError userError){
     _userError =_userError;
     notifyListeners();
-
   }
 
   getpersonalDetailApiCall()async{
@@ -36,6 +38,7 @@ class PersonalDetailViewModel with ChangeNotifier{
     String userId = await LoggedInUserBloc.instance().getUserId();
     Map<String, dynamic>data={
       "pandit_id": userId,
+      //"pandit_id": 7.toString(),
     };
     var response = await ApiRemoteServices.fechingGetApi(apiUrl: GET_PERSONALDETAIL_API,apiData: data);
     if(response is Success){
@@ -45,10 +48,8 @@ class PersonalDetailViewModel with ChangeNotifier{
     }else if(response is Failure){
       UserError userError = UserError(code: response.code,message: response.errorResponse);
       setUserError(userError);
-
     }
     setLoading(false);
-
   }
 
 }
