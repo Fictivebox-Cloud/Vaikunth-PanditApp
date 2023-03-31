@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:flutter/src/material/bottom_sheet.dart';
 import 'package:panditapp/consts/text_const.dart';
 
 import 'package:panditapp/View/login_flow/account_detail.dart';
@@ -305,7 +305,7 @@ class _DocumentScreenState extends State<DocumentScreen> {
   }
 
   void imagePickerOption({String? type}) {
-    showMaterialModalBottomSheet(
+    showModalBottomSheet(
       context: context,
       builder: (context) => SingleChildScrollView(
         child: ClipRRect(

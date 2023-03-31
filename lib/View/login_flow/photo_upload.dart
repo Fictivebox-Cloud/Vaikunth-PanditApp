@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:panditapp/consts/image_const.dart';
 import 'package:panditapp/consts/text_const.dart';
 import '../../consts/themescolor.dart';
 import 'service_screen.dart';
+import 'package:flutter/src/material/bottom_sheet.dart';
 
 class PhotoUpload extends StatefulWidget {
   final String? name, mobile;
@@ -22,7 +22,7 @@ class _PhotoUploadState extends State<PhotoUpload> {
   var ht, wt;
 
   void imagePickerOption() {
-    showMaterialModalBottomSheet(
+    showModalBottomSheet(
       context: context,
       builder: (context) => SingleChildScrollView(
         child: ClipRRect(
@@ -34,7 +34,9 @@ class _PhotoUploadState extends State<PhotoUpload> {
             color: Colors.white,
             height: ht * 0.25,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: ht * 0.01,),
+              padding: EdgeInsets.symmetric(
+                vertical: ht * 0.01,
+              ),
               child: Column(
                 children: [
                   Row(
@@ -114,7 +116,7 @@ class _PhotoUploadState extends State<PhotoUpload> {
   pickImage(ImageSource imageType) async {
     try {
       final photo =
-      await ImagePicker().pickImage(source: imageType, imageQuality: 20);
+          await ImagePicker().pickImage(source: imageType, imageQuality: 20);
       if (photo == null) return;
       final tempImage = File(photo.path);
       setState(() {
@@ -130,10 +132,8 @@ class _PhotoUploadState extends State<PhotoUpload> {
     return Container(
       width: wt * 0.12,
       height: 4,
-      decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(40)
-      ),
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(40)),
     );
   }
 
@@ -145,19 +145,17 @@ class _PhotoUploadState extends State<PhotoUpload> {
           style: ButtonStyle(
             alignment: Alignment.center,
             elevation: MaterialStateProperty.resolveWith((states) => 0.0),
-            padding: MaterialStateProperty.resolveWith(
-                    (states) => EdgeInsets.symmetric(
-                    vertical: 13, horizontal: wt * 0.15
-                )),
-            shape: MaterialStateProperty.resolveWith((states) => RoundedRectangleBorder(
-              side: const BorderSide(
-                color: divider,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(5),
-            )),
-            backgroundColor:
-            MaterialStateColor.resolveWith((states) => white),
+            padding: MaterialStateProperty.resolveWith((states) =>
+                EdgeInsets.symmetric(vertical: 13, horizontal: wt * 0.15)),
+            shape: MaterialStateProperty.resolveWith(
+                (states) => RoundedRectangleBorder(
+                      side: const BorderSide(
+                        color: divider,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    )),
+            backgroundColor: MaterialStateColor.resolveWith((states) => white),
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -174,29 +172,31 @@ class _PhotoUploadState extends State<PhotoUpload> {
         ElevatedButton(
           style: ButtonStyle(
             alignment: Alignment.center,
-            elevation: MaterialStateProperty.resolveWith((states) => pickedImage != null ? 5.0 : 0.0),
-            padding: MaterialStateProperty.resolveWith(
-                    (states) => EdgeInsets.symmetric(
-                    vertical: 13, horizontal: wt * 0.15
-                )),
-            shape: MaterialStateProperty.resolveWith((states) => RoundedRectangleBorder(
-              side: BorderSide(
-                color: pickedImage != null ? colorPrimary : divider,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(5),
-            )),
-            backgroundColor:
-            MaterialStateColor.resolveWith((states) => pickedImage != null ? colorPrimary : white),
+            elevation: MaterialStateProperty.resolveWith(
+                (states) => pickedImage != null ? 5.0 : 0.0),
+            padding: MaterialStateProperty.resolveWith((states) =>
+                EdgeInsets.symmetric(vertical: 13, horizontal: wt * 0.15)),
+            shape: MaterialStateProperty.resolveWith(
+                (states) => RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: pickedImage != null ? colorPrimary : divider,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    )),
+            backgroundColor: MaterialStateColor.resolveWith(
+                (states) => pickedImage != null ? colorPrimary : white),
           ),
           onPressed: () {
-            pickedImage != null ? Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ServiceScreen(
-                        name: widget.name,
-                        photo: pickedImage,
-                        mobile: widget.mobile))) : null;
+            pickedImage != null
+                ? Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ServiceScreen(
+                            name: widget.name,
+                            photo: pickedImage,
+                            mobile: widget.mobile)))
+                : null;
           },
           child: Text(
             NEXT,
@@ -230,12 +230,24 @@ class _PhotoUploadState extends State<PhotoUpload> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      stepContainer(color: kSecondaryColor,),
-                      stepContainer(color: kPrimaryColor,),
-                      stepContainer(color: kSecondaryColor,),
-                      stepContainer(color: kSecondaryColor,),
-                      stepContainer(color: kSecondaryColor,),
-                      stepContainer(color: kSecondaryColor,),
+                      stepContainer(
+                        color: kSecondaryColor,
+                      ),
+                      stepContainer(
+                        color: kPrimaryColor,
+                      ),
+                      stepContainer(
+                        color: kSecondaryColor,
+                      ),
+                      stepContainer(
+                        color: kSecondaryColor,
+                      ),
+                      stepContainer(
+                        color: kSecondaryColor,
+                      ),
+                      stepContainer(
+                        color: kSecondaryColor,
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -245,7 +257,8 @@ class _PhotoUploadState extends State<PhotoUpload> {
                     FILL_YOUR_PROFILE_DETAILS,
                     style: GoogleFonts.poppins(
                         color: h1Color,
-                        fontWeight: FontWeight.w700, fontSize: 20),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20),
                   ),
                   const SizedBox(
                     height: 30,
@@ -266,33 +279,34 @@ class _PhotoUploadState extends State<PhotoUpload> {
                       alignment: Alignment.center,
                       children: [
                         ClipOval(
-                          child:
-                          pickedImage != null
+                          child: pickedImage != null
                               ? Image.file(
-                            pickedImage!,
-                            width: 170,
-                            height: 170,
-                            fit: BoxFit.cover,
-                          )
+                                  pickedImage!,
+                                  width: 170,
+                                  height: 170,
+                                  fit: BoxFit.cover,
+                                )
                               : InkWell(
-                            onTap: imagePickerOption,
-                            child: Image.asset(
-                              ImageConst().UPLOAD_IMAGES,
-                              width: 170,
-                              height: 170,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                                  onTap: imagePickerOption,
+                                  child: Image.asset(
+                                    ImageConst().UPLOAD_IMAGES,
+                                    width: 170,
+                                    height: 170,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                         ),
-                        pickedImage != null ? Positioned(
-                            bottom: 20,
-                            right: 0,
-                            child: InkWell(
-                              onTap: imagePickerOption,
-                              child: SvgPicture.asset(
-                                ImageConst().EDIT_PROFILE,
-                              ),
-                            )) : Container(),
+                        pickedImage != null
+                            ? Positioned(
+                                bottom: 20,
+                                right: 0,
+                                child: InkWell(
+                                  onTap: imagePickerOption,
+                                  child: SvgPicture.asset(
+                                    ImageConst().EDIT_PROFILE,
+                                  ),
+                                ))
+                            : Container(),
                       ],
                     ),
                   ),

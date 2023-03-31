@@ -14,7 +14,7 @@ import '../../../View/Home/Home_Screen.dart';
 import '../../../model/Profile_Screen/Bank_Account Details/bank_list_model.dart';
 import 'package:http/http.dart' as http;
 
-class BankListVM with ChangeNotifier{
+class BankListVM with ChangeNotifier {
   bool _loading = false;
   BankListModel? _bankListModel;
   UserError? _userError;
@@ -27,7 +27,7 @@ class BankListVM with ChangeNotifier{
   String? get value => _value;
   bool? get isFirst => _isFirst;
 
-  setLoading(loading){
+  setLoading(loading) {
     _loading = loading;
     notifyListeners();
   }
@@ -42,8 +42,7 @@ class BankListVM with ChangeNotifier{
     notifyListeners();
   }
 
-
-  setUserError(UserError userError){
+  setUserError(UserError userError) {
     _userError = userError;
     notifyListeners();
   }
@@ -54,43 +53,42 @@ class BankListVM with ChangeNotifier{
     notifyListeners();
   }
 
-  bankListAPIcall({Map? data}) async{
+  bankListAPIcall({Map? data}) async {
     setLoading(true);
     _value = null;
     var response = await ApiRemoteServices.fechingGetApi(
-        apiUrl:GET_GETBANK_API,
+      apiUrl: GET_GETBANK_API,
     );
-    if(response is Success){
+    if (response is Success) {
       Object data = bankListModelFromJson(response.response as String);
       setBankListModel(data as BankListModel);
-    }
-    else if (response is Failure){
-      UserError userError  =
-      UserError(code: response.code,message: response.errorResponse);
+    } else if (response is Failure) {
+      UserError userError =
+          UserError(code: response.code, message: response.errorResponse);
       setUserError(userError);
     }
     setLoading(false);
     setIsFirst(false);
   }
 
-  Future fechingloginApi(
-      {var mobile,
-        var name,
-        var services,
-        var city,
-        var aadharnumber,
-        var pannumber,
-        var account_number,
-        var bank,
-        var ifsc,
-        File? photo,
-        File? aadharfrontphoto,
-        File? aadharbackphoto,
-        File? panfile,
-        String? apiUrl,
-        String? accountHolderName,
-        BuildContext? context,
-      }) async {
+  Future fechingloginApi({
+    var mobile,
+    var name,
+    var services,
+    var city,
+    var aadharnumber,
+    var pannumber,
+    var account_number,
+    var bank,
+    var ifsc,
+    File? photo,
+    File? aadharfrontphoto,
+    File? aadharbackphoto,
+    File? panfile,
+    String? apiUrl,
+    String? accountHolderName,
+    BuildContext? context,
+  }) async {
     setLoading(true);
     var headers = {
       'Authorization': 'Basic YW05dVpVQXlPVGM0OlJrbFVUa1ZUVTBBak1USXo=',
@@ -129,23 +127,22 @@ class BankListVM with ChangeNotifier{
     );
     request.headers.addAll(headers);
     final response = await request.send();
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       var result = await http.Response.fromStream(response);
       var data = jsonDecode(result.body);
       log(data.toString());
-      if(data['success']) {
+      if (data['success']) {
         setLoading(false);
-        LoggedInUserBloc.instance().setUserId(data['response']['pandit_register_id'].toString());
+        LoggedInUserBloc.instance()
+            .setUserId(data['response']['pandit_register_id'].toString());
         Navigator.pushAndRemoveUntil(
             context!,
-            MaterialPageRoute(
-                builder: (context) => const HomeScreen()),
-                (Route<dynamic> route) => false);
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
+            (Route<dynamic> route) => false);
       } else {
         setLoading(false);
         Fluttertoast.showToast(msg: "Something Went Wrong");
       }
     }
   }
-
 }

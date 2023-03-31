@@ -1,12 +1,18 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:panditapp/Consts/text_const.dart';
+import 'package:panditapp/View/login_flow/name_screen.dart';
 import 'package:panditapp/View/login_flow/otp_verify.dart';
 import 'package:panditapp/consts/image_const.dart';
+import 'package:panditapp/model/Login%20Model/register_response_model.dart';
 import '../../consts/themescolor.dart';
+import '../../model/Login Model/number_verify_model.dart';
+import '../../view_model/Login/verification_number_api.dart';
 import '../../view_model/home_tab/booking_request_view_model.dart';
 
 class PhoneNumber_Screen extends StatefulWidget {
@@ -15,7 +21,6 @@ class PhoneNumber_Screen extends StatefulWidget {
   @override
   State<PhoneNumber_Screen> createState() => _PhoneNumber_ScreenState();
 }
-
 
 class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
   var phoneController = TextEditingController();
@@ -41,12 +46,14 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start  ,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     ENTER_YOUR_PHONE_NUMBER,
                     style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w400, color: h1Color, fontSize: 16),
+                        fontWeight: FontWeight.w400,
+                        color: h1Color,
+                        fontSize: 16),
                   ),
                   const SizedBox(
                     height: 10,
@@ -78,8 +85,22 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
           backgroundColor:
               MaterialStateColor.resolveWith((states) => colorPrimary),
         ),
-        onPressed: () {
-          if (phoneController.text.length == 10) {
+        onPressed: () async {
+          NumberVerifyViewModel numberVerifyViewModel = NumberVerifyViewModel();
+          NumberVerifyModel numberVerifyModel =
+              await numberVerifyViewModel.NumberVerifyAPIcall(
+                  phoneController.text.toString(), "", "0");
+
+          if (numberVerifyModel.response != null) {
+            if (numberVerifyModel.response!.notRegistered == true) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => NameScreen(
+                            mobile: phoneController.text,
+                          )));
+            }
+          } else if (phoneController.text.length == 10) {
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -87,7 +108,16 @@ class _PhoneNumber_ScreenState extends State<PhoneNumber_Screen> {
                           mobile: phoneController.text,
                         )));
           } else {
-            Fluttertoast.showToast(msg: NUMBER_VALIDATION);
+            if (phoneController.text.length == 10) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => OTP_verify(
+                            mobile: phoneController.text,
+                          )));
+            } else {
+              Fluttertoast.showToast(msg: NUMBER_VALIDATION);
+            }
           }
         },
         child: Text(

@@ -11,7 +11,7 @@ import '../../model/Booking_View_Details/check_booking_otp_model.dart';
 class CheckBookingConfirmOTPViewModel with ChangeNotifier {
   bool _loading = false;
   CheckBookingConfirmOtpModel? _bookingConfirmOtpModel;
-  
+
   UserError? _userError;
   bool _valueReturn = false;
 
@@ -54,14 +54,14 @@ class CheckBookingConfirmOTPViewModel with ChangeNotifier {
       Object data =
           checkBookingConfirmOtpModelFromJson(response.response as String);
       setGetCheckBookingConfirmOtpModel(data as CheckBookingConfirmOtpModel);
-      _valueReturn =  true;
+      _valueReturn = true;
       print("value => ${valueReturn}");
       notifyListeners();
     } else if (response is Failure) {
       UserError userError =
           UserError(code: response.code, message: response.errorResponse);
       setUserError(userError);
-      _valueReturn =  false;
+      _valueReturn = false;
       notifyListeners();
     }
     setLoading(false);

@@ -342,8 +342,9 @@ class _AccountDetailState extends State<AccountDetail> {
                 backgroundColor:
                     MaterialStateColor.resolveWith((states) => colorPrimary),
               ),
-              onPressed: () {
-                bankList_VM.fechingloginApi(
+              onPressed: () async {
+                print(widget.mobile.toString() + " " + widget.name.toString());
+                await bankList_VM.fechingloginApi(
                   mobile: widget.mobile,
                   name: widget.name,
                   services: widget.servicesname,
@@ -399,7 +400,15 @@ class _AccountDetailState extends State<AccountDetail> {
             fontSize: 14,
             color: p1Color,
           ),
-          suffixIcon: isBankListVisible ? const Icon(Icons.keyboard_arrow_up, color: h1Color,) : const Icon(Icons.keyboard_arrow_down, color: h1Color,),
+          suffixIcon: isBankListVisible
+              ? const Icon(
+                  Icons.keyboard_arrow_up,
+                  color: h1Color,
+                )
+              : const Icon(
+                  Icons.keyboard_arrow_down,
+                  color: h1Color,
+                ),
           filled: true,
           fillColor: TEXTFIELD_BACKGROUND_COLOR,
           focusedBorder: const OutlineInputBorder(
@@ -429,24 +438,27 @@ class _AccountDetailState extends State<AccountDetail> {
       child: Column(
         children: [
           searchBank(),
-          Expanded(child: Consumer<BankListVM>(
-              builder: (_, provider, __) {
-                return ListView.separated(
-                    padding: const EdgeInsets.all(16),
-                    itemBuilder: (context, index) => GestureDetector(
+          Expanded(child: Consumer<BankListVM>(builder: (_, provider, __) {
+            return ListView.separated(
+                padding: const EdgeInsets.all(16),
+                itemBuilder: (context, index) => GestureDetector(
                       onTap: () {
                         setState(() {
                           _bankName.text = list[index];
                           isBankListVisible = !isBankListVisible;
                         });
                       },
-                      child: Text(list[index] ?? "", style:  GoogleFonts.poppins(
-                        fontSize: 16,
-                        color: h1Color,
-                      ),),
-                    ), separatorBuilder: (context, index) => const Divider(), itemCount: list.length ?? 0);
-              }
-          ))
+                      child: Text(
+                        list[index] ?? "",
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          color: h1Color,
+                        ),
+                      ),
+                    ),
+                separatorBuilder: (context, index) => const Divider(),
+                itemCount: list.length ?? 0);
+          }))
         ],
       ),
     );
@@ -463,7 +475,12 @@ class _AccountDetailState extends State<AccountDetail> {
         onChanged: (value) {
           setState(() {
             if (value.length > 2) {
-              list = list.where((element) => element.toString().toLowerCase().contains(value.toLowerCase())).toList();
+              list = list
+                  .where((element) => element
+                      .toString()
+                      .toLowerCase()
+                      .contains(value.toLowerCase()))
+                  .toList();
             } else {
               list.clear();
               provider.bankListModel?.response?.banklist?.forEach((element) {
@@ -548,9 +565,9 @@ class _AccountDetailState extends State<AccountDetail> {
                       Text(
                         FILL_YOUR_PROFILE_DETAILS,
                         style: GoogleFonts.poppins(
-                            color: h1Color,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
+                          color: h1Color,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
                         ),
                       ),
                       const SizedBox(
@@ -559,9 +576,9 @@ class _AccountDetailState extends State<AccountDetail> {
                       Text(
                         BANK_DETAIL,
                         style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                            color: p1Color,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: p1Color,
                         ),
                       ),
                       const SizedBox(
@@ -572,34 +589,26 @@ class _AccountDetailState extends State<AccountDetail> {
                       isBankListVisible
                           ? Container()
                           : const SizedBox(
-                        height: 10,
-                      ),
+                              height: 10,
+                            ),
                       isBankListVisible ? bankList() : Container(),
-                      isBankListVisible
-                          ? Container()
-                          : accountHolderName(),
+                      isBankListVisible ? Container() : accountHolderName(),
                       isBankListVisible
                           ? Container()
                           : const SizedBox(
-                        height: 10,
-                      ),
-                      isBankListVisible
-                          ? Container()
-                          : accountNumber(),
+                              height: 10,
+                            ),
+                      isBankListVisible ? Container() : accountNumber(),
                       const SizedBox(
                         height: 10,
                       ),
-                      isBankListVisible
-                          ? Container()
-                          : confirmAccountNumber(),
+                      isBankListVisible ? Container() : confirmAccountNumber(),
                       isBankListVisible
                           ? Container()
                           : const SizedBox(
-                        height: 10,
-                      ),
-                      isBankListVisible
-                          ? Container()
-                          : ifscCode(),
+                              height: 10,
+                            ),
+                      isBankListVisible ? Container() : ifscCode(),
                     ],
                   ),
                 ),

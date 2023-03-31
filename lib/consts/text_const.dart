@@ -1,4 +1,6 @@
 ///Splash & Onboarding
+// ignore_for_file: constant_identifier_names
+
 const String REGISTER_PANDIT = "Register Pandit";
 const String WELCOME_TO_BAIKHUBT_PANDIT = "Welcome to Vaikhunt Pandit";
 const String EARN_UPTO = "Earn upto 40k/month";
@@ -25,7 +27,8 @@ const String CURRENT_LOCATION = "Current location";
 const String USING_GPS = "Using GPS";
 const String CLICK_ADHAR_CARD_PICTURE = "Click Adhar Card Picture";
 const String CLICK_PAN_CARD_PICTURE = "Click PAN Card Picture";
-const String REACHED_OTP_LIMIT = "You reached on maximum OTP limit or Somrthing went wrong";
+const String REACHED_OTP_LIMIT =
+    "You reached on maximum OTP limit or Somrthing went wrong";
 const String ADHAR = "Enter your Adhar Card No.";
 const String PANCARD = "Enter your Pan Card No.";
 const String ACCOUNT_HOLDER_NAME = "Account holder name";
@@ -37,7 +40,8 @@ const String SAVE = "Save";
 const String SELECT_BANK = "Select Bank";
 
 ///Home Screen
-const String Home_Screen_Line = "Here is the list of people who requested your expert assistance.";
+const String Home_Screen_Line =
+    "Here is the list of people who requested your expert assistance.";
 
 ///Profile>>Bank
 const String BANK_ACCOUNT_DETAILS = "Bank Account Details";
@@ -80,8 +84,10 @@ const String TOTAL = "Total";
 const String NAVIGATE = "Navigate";
 const String ENTEROTP = "Enter the 6 digit OTP";
 const String OTP = "Enter the 4 digit OTP";
-const String RECIVESOTPINPHONE = "Ask for 6 digit code received by the user on their mobile number";
-const String OTPINPHONE = "Ask for 4 digit code received by the user on their mobile number";
+const String RECIVESOTPINPHONE =
+    "Ask for 6 digit code received by the user on their mobile number";
+const String OTPINPHONE =
+    "Ask for 4 digit code received by the user on their mobile number";
 
 const String SERVICESYOUOFFER = "Services you offer";
 const String PUJA = "Puja";
@@ -197,8 +203,6 @@ const String PUJASERVICE = "Puja Service";
 const String AADHARNO = "Aadhar Card No.";
 const String PANNO = "PAN Card No.";
 const String PERMANENTADDRESS = "Permanent address";
-
-
 
 // Api Error
 

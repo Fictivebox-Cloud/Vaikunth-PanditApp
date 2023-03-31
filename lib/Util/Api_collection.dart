@@ -1,4 +1,6 @@
 //const String BASEURL = "https://vaikunth.fictivebox.com/api/";
+// ignore_for_file: constant_identifier_names
+
 const String BASEURL = "https://dev-env.vaikunth.co/api/";
 const String GET_BOOKING_LIST = "${BASEURL}getbookinglist";
 const String GET_LOGIN_API = "${BASEURL}register";
@@ -18,7 +20,7 @@ const String GET_GET_BANK_BY_ID_API = "${BASEURL}getbankbyid";
 const String GET_GETPANDITBANKLIST_API = "${BASEURL}getpanditbanklist";
 const String GET_GETHELP_API = "${BASEURL}gethelp";
 const String GET_PERSONALDETAIL_API = "${BASEURL}personaldetail";
-const String  GET_UPDATEBANK_API = "${BASEURL}updatebank";
+const String GET_UPDATEBANK_API = "${BASEURL}updatebank";
 const String GET_STOREBANK_API = "${BASEURL}storebank";
 const String GET_UPDATEPROFILE_API = "${BASEURL}updateprofile";
 const String GET_EARNINGSHOME_API = "${BASEURL}earningshome";

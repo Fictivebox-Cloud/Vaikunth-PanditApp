@@ -1,7 +1,9 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 const colorPrimary = Color(0xffFF7D33);
-const Color kPrimaryColor =  Color(0xffFF7D33);
+const Color kPrimaryColor = Color(0xffFF7D33);
 const Color kSecondaryColor = Color(0xffCACACA);
 const Color backGroundColor = Color(0xffFFFFFF);
 const Color kScaffoldBackground = Color(0xffFFF3E9);
@@ -40,5 +42,3 @@ const Color GREY_COLOR = Color(0xFFC4C4C4);
 const Color BANK_ACCOUNT_BORDER_COLOR = Color(0xFF65D176);
 const Color CHECK_BACKGROUND_COLOR = Color(0xFF4CAF50);
 const Color CHECK_BORDER_COLOR = Color(0xFFC3C3C3);
-
-

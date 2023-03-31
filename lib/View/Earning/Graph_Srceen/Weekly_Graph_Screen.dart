@@ -20,132 +20,182 @@ class WeeklyGraphScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     weekdataPerdayVM = context.watch<WeekdataPerdayVM>();
-    print(DateTime.now().toString().replaceRange(10, DateTime
-        .now()
-        .toString()
-        .length, ""),);
+    print(
+      DateTime.now()
+          .toString()
+          .replaceRange(10, DateTime.now().toString().length, ""),
+    );
     print(weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata?.isEmpty);
     List<charts.Series<WeeklyGraphModel, String>> series = [
       charts.Series(
         id: "perdaybooking",
         data: [
           WeeklyGraphModel(
-            my_date: weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata
-                ?.isEmpty ?? true ? DateTime.now().toString().replaceRange(
-                10, DateTime
-                .now()
-                .toString()
-                .length, "") : weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?[0].myDate.toString().split(" ")[0].replaceRange(
-                0, 5, "") ?? DateTime.now().toString().replaceRange(10, DateTime
-                .now()
-                .toString()
-                .length, ""),
-            perdaybooking: weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?.isEmpty ?? true ? 0 : weekdataPerdayVM
-                .weekdataPerdayModel?.response?.weekdata?[0].perdaybooking ?? 0,
+            my_date: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? DateTime.now()
+                    .toString()
+                    .replaceRange(10, DateTime.now().toString().length, "")
+                : weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?[0].myDate
+                        .toString()
+                        .split(" ")[0]
+                        .replaceRange(0, 5, "") ??
+                    DateTime.now()
+                        .toString()
+                        .replaceRange(10, DateTime.now().toString().length, ""),
+            perdaybooking: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? 0
+                : weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata?[0]
+                        .perdaybooking ??
+                    0,
             color: charts.ColorUtil.fromDartColor(graphcolor),
           ),
           WeeklyGraphModel(
-            my_date: weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata
-                ?.isEmpty ?? true ? DateTime.now().toString().replaceRange(
-                10, DateTime
-                .now()
-                .toString()
-                .length, "") : weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?[1].myDate.toString().split(" ")[0].replaceRange(
-                0, 5, "") ?? DateTime.now().toString().replaceRange(10, DateTime
-                .now()
-                .toString()
-                .length, ""),
-            perdaybooking: weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?.isEmpty ?? true ? 0 : weekdataPerdayVM
-                .weekdataPerdayModel?.response?.weekdata?[1].perdaybooking ?? 0,
+            my_date: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? DateTime.now()
+                    .toString()
+                    .replaceRange(10, DateTime.now().toString().length, "")
+                : weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?[1].myDate
+                        .toString()
+                        .split(" ")[0]
+                        .replaceRange(0, 5, "") ??
+                    DateTime.now()
+                        .toString()
+                        .replaceRange(10, DateTime.now().toString().length, ""),
+            perdaybooking: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? 0
+                : weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata?[1]
+                        .perdaybooking ??
+                    0,
             color: charts.ColorUtil.fromDartColor(graphcolor),
           ),
           WeeklyGraphModel(
-            my_date: weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata
-                ?.isEmpty ?? true ? DateTime.now().toString().replaceRange(
-                10, DateTime
-                .now()
-                .toString()
-                .length, "") : weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?[2].myDate.toString().split(" ")[0].replaceRange(
-                0, 5, "") ?? DateTime.now().toString().replaceRange(10, DateTime
-                .now()
-                .toString()
-                .length, ""),
-            perdaybooking: weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?.isEmpty ?? true ? 0 : weekdataPerdayVM
-                .weekdataPerdayModel?.response?.weekdata?[2].perdaybooking ?? 0,
+            my_date: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? DateTime.now()
+                    .toString()
+                    .replaceRange(10, DateTime.now().toString().length, "")
+                : weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?[2].myDate
+                        .toString()
+                        .split(" ")[0]
+                        .replaceRange(0, 5, "") ??
+                    DateTime.now()
+                        .toString()
+                        .replaceRange(10, DateTime.now().toString().length, ""),
+            perdaybooking: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? 0
+                : weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata?[2]
+                        .perdaybooking ??
+                    0,
             color: charts.ColorUtil.fromDartColor(graphcolor),
           ),
           WeeklyGraphModel(
-            my_date: weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata
-                ?.isEmpty ?? true ? DateTime.now().toString().replaceRange(
-                10, DateTime
-                .now()
-                .toString()
-                .length, "") : weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?[3].myDate.toString().split(" ")[0].replaceRange(
-                0, 5, "") ?? DateTime.now().toString().replaceRange(10, DateTime
-                .now()
-                .toString()
-                .length, ""),
-            perdaybooking: weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?.isEmpty ?? true ? 0 : weekdataPerdayVM
-                .weekdataPerdayModel?.response?.weekdata?[3].perdaybooking ?? 0,
+            my_date: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? DateTime.now()
+                    .toString()
+                    .replaceRange(10, DateTime.now().toString().length, "")
+                : weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?[3].myDate
+                        .toString()
+                        .split(" ")[0]
+                        .replaceRange(0, 5, "") ??
+                    DateTime.now()
+                        .toString()
+                        .replaceRange(10, DateTime.now().toString().length, ""),
+            perdaybooking: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? 0
+                : weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata?[3]
+                        .perdaybooking ??
+                    0,
             color: charts.ColorUtil.fromDartColor(graphcolor),
           ),
           WeeklyGraphModel(
-            my_date: weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata
-                ?.isEmpty ?? true ? DateTime.now().toString().replaceRange(
-                10, DateTime
-                .now()
-                .toString()
-                .length, "") : weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?[4].myDate.toString().split(" ")[0].replaceRange(
-                0, 5, "") ?? DateTime.now().toString().replaceRange(10, DateTime
-                .now()
-                .toString()
-                .length, ""),
-            perdaybooking: weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?.isEmpty ?? true ? 0 : weekdataPerdayVM
-                .weekdataPerdayModel?.response?.weekdata?[4].perdaybooking ?? 0,
+            my_date: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? DateTime.now()
+                    .toString()
+                    .replaceRange(10, DateTime.now().toString().length, "")
+                : weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?[4].myDate
+                        .toString()
+                        .split(" ")[0]
+                        .replaceRange(0, 5, "") ??
+                    DateTime.now()
+                        .toString()
+                        .replaceRange(10, DateTime.now().toString().length, ""),
+            perdaybooking: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? 0
+                : weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata?[4]
+                        .perdaybooking ??
+                    0,
             color: charts.ColorUtil.fromDartColor(graphcolor),
           ),
           WeeklyGraphModel(
-            my_date: weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata
-                ?.isEmpty ?? true ? DateTime.now().toString().replaceRange(
-                10, DateTime
-                .now()
-                .toString()
-                .length, "") : weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?[5].myDate.toString().split(" ")[0].replaceRange(
-                0, 5, "") ?? DateTime.now().toString().replaceRange(10, DateTime
-                .now()
-                .toString()
-                .length, ""),
-            perdaybooking: weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?.isEmpty ?? true ? 0 : weekdataPerdayVM
-                .weekdataPerdayModel?.response?.weekdata?[5].perdaybooking ?? 0,
+            my_date: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? DateTime.now()
+                    .toString()
+                    .replaceRange(10, DateTime.now().toString().length, "")
+                : weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?[5].myDate
+                        .toString()
+                        .split(" ")[0]
+                        .replaceRange(0, 5, "") ??
+                    DateTime.now()
+                        .toString()
+                        .replaceRange(10, DateTime.now().toString().length, ""),
+            perdaybooking: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? 0
+                : weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata?[5]
+                        .perdaybooking ??
+                    0,
             color: charts.ColorUtil.fromDartColor(graphcolor),
           ),
           WeeklyGraphModel(
-            my_date: weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata
-                ?.isEmpty ?? true ? DateTime.now().toString().replaceRange(
-                10, DateTime
-                .now()
-                .toString()
-                .length, "") : weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?[6].myDate.toString().split(" ")[0].replaceRange(
-                0, 5, "") ?? DateTime.now().toString().replaceRange(10, DateTime
-                .now()
-                .toString()
-                .length, ""),
-            perdaybooking: weekdataPerdayVM.weekdataPerdayModel?.response
-                ?.weekdata?.isEmpty ?? true ? 0 : weekdataPerdayVM
-                .weekdataPerdayModel?.response?.weekdata?[6].perdaybooking ?? 0,
+            my_date: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? DateTime.now()
+                    .toString()
+                    .replaceRange(10, DateTime.now().toString().length, "")
+                : weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?[6].myDate
+                        .toString()
+                        .split(" ")[0]
+                        .replaceRange(0, 5, "") ??
+                    DateTime.now()
+                        .toString()
+                        .replaceRange(10, DateTime.now().toString().length, ""),
+            perdaybooking: weekdataPerdayVM
+                        .weekdataPerdayModel?.response?.weekdata?.isEmpty ??
+                    true
+                ? 0
+                : weekdataPerdayVM.weekdataPerdayModel?.response?.weekdata?[6]
+                        .perdaybooking ??
+                    0,
             color: charts.ColorUtil.fromDartColor(graphcolor),
           ),
         ],
@@ -177,24 +227,21 @@ class WeeklyGraphScreen extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          Text( //"Dec 7-13"
-                            "${weekdataPerdayVM.weekdataPerdayModel?.response!
-                                .weekdata?.isEmpty ?? true ? DateTime.now().toString().replaceRange(10, DateTime
-                                .now()
-                                .toString()
-                                .length, "") : weekdataPerdayVM
-                                .weekdataPerdayModel?.response!.weekdata![0]
-                                .myDate.toString()
-                                .split(" ")[0] ?? ""}",
+                          Text(
+                            //"Dec 7-13"
+                            "${weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata?.isEmpty ?? true ? DateTime.now().toString().replaceRange(10, DateTime.now().toString().length, "") : weekdataPerdayVM.weekdataPerdayModel?.response!.weekdata![0].myDate.toString().split(" ")[0] ?? ""}",
                             style: GoogleFonts.lato(
-                              //color: white,
+                                //color: white,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 14),
                           ),
-                          Text("₹1200.00", style: GoogleFonts.lato(
-                            //color: white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18),),
+                          Text(
+                            "₹1200.00",
+                            style: GoogleFonts.lato(
+                                //color: white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18),
+                          ),
                         ],
                       ),
                       Icon(Icons.arrow_forward_ios)
@@ -227,9 +274,11 @@ class WeeklyGraphScreen extends StatelessWidget {
                           Text(
                             totalBooking(
                                 weekdataPerdayVM.weekdataPerdayModel?.response!
-                                    .online ?? 0,
+                                        .online ??
+                                    0,
                                 weekdataPerdayVM.weekdataPerdayModel?.response!
-                                    .offline ?? 0),
+                                        .offline ??
+                                    0),
                             //weekdataPerdayVM.weekdataPerdayModel.response.weekdata[]
 
                             style: TextStyle(
@@ -250,8 +299,10 @@ class WeeklyGraphScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            weekdataPerdayVM.weekdataPerdayModel?.response!
-                                .online.toString() ?? "",
+                            weekdataPerdayVM
+                                    .weekdataPerdayModel?.response!.online
+                                    .toString() ??
+                                "",
                             //"2",
                             style: TextStyle(
                                 color: h1Color,
@@ -270,9 +321,12 @@ class WeeklyGraphScreen extends StatelessWidget {
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400),
                           ),
-                          Text( //"77",
-                            weekdataPerdayVM.weekdataPerdayModel?.response!
-                                .offline.toString() ?? "",
+                          Text(
+                            //"77",
+                            weekdataPerdayVM
+                                    .weekdataPerdayModel?.response!.offline
+                                    .toString() ??
+                                "",
                             //provider.weekdataPerdayModel.response?.online ??"",
                             style: TextStyle(
                                 color: h1Color,

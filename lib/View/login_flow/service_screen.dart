@@ -40,9 +40,11 @@ class _ServiceScreenState extends State<ServiceScreen> {
     ht = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Consumer<ServiceVM>(builder: (_, provider, __) => provider.loading
-          ? const Center(child: CircularLoader())
-          : serviceScreen(list: provider.serviceModel?.response?.serviceslist)),
+      body: Consumer<ServiceVM>(
+          builder: (_, provider, __) => provider.loading
+              ? const Center(child: CircularLoader())
+              : serviceScreen(
+                  list: provider.serviceModel?.response?.serviceslist)),
     );
   }
 
@@ -50,10 +52,8 @@ class _ServiceScreenState extends State<ServiceScreen> {
     return Container(
       width: wt * 0.12,
       height: 4,
-      decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(40)
-      ),
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(40)),
     );
   }
 
@@ -65,19 +65,17 @@ class _ServiceScreenState extends State<ServiceScreen> {
           style: ButtonStyle(
             alignment: Alignment.center,
             elevation: MaterialStateProperty.resolveWith((states) => 0.0),
-            padding: MaterialStateProperty.resolveWith(
-                    (states) => EdgeInsets.symmetric(
-                    vertical: 13, horizontal: wt * 0.15
-                )),
-            shape: MaterialStateProperty.resolveWith((states) => RoundedRectangleBorder(
-              side: const BorderSide(
-                color: divider,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(5),
-            )),
-            backgroundColor:
-            MaterialStateColor.resolveWith((states) => white),
+            padding: MaterialStateProperty.resolveWith((states) =>
+                EdgeInsets.symmetric(vertical: 13, horizontal: wt * 0.15)),
+            shape: MaterialStateProperty.resolveWith(
+                (states) => RoundedRectangleBorder(
+                      side: const BorderSide(
+                        color: divider,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    )),
+            backgroundColor: MaterialStateColor.resolveWith((states) => white),
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -95,35 +93,34 @@ class _ServiceScreenState extends State<ServiceScreen> {
           builder: (_, provider, __) => ElevatedButton(
             style: ButtonStyle(
               alignment: Alignment.center,
-              elevation: MaterialStateProperty.resolveWith((states) => provider.index != -1 ? 5.0 : 0.0),
-              padding: MaterialStateProperty.resolveWith(
-                      (states) => EdgeInsets.symmetric(
-                      vertical: 13, horizontal: wt * 0.15
-                  )),
-              shape: MaterialStateProperty.resolveWith((states) => RoundedRectangleBorder(
-                side: BorderSide(
-                  color: provider.index != -1 ? colorPrimary : divider,
-                  width: 1,
-                ),
-                borderRadius: BorderRadius.circular(5),
-              )),
-              backgroundColor:
-              MaterialStateColor.resolveWith((states) => provider.index != -1 ? colorPrimary : white),
+              elevation: MaterialStateProperty.resolveWith(
+                  (states) => provider.index != -1 ? 5.0 : 0.0),
+              padding: MaterialStateProperty.resolveWith((states) =>
+                  EdgeInsets.symmetric(vertical: 13, horizontal: wt * 0.15)),
+              shape: MaterialStateProperty.resolveWith(
+                  (states) => RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: provider.index != -1 ? colorPrimary : divider,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(5),
+                      )),
+              backgroundColor: MaterialStateColor.resolveWith(
+                  (states) => provider.index != -1 ? colorPrimary : white),
             ),
             onPressed: () {
-              provider.index != -1 ?  Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CityScreen(
-                        name: widget.name,
-                        photo: widget.photo,
-                        mobile: widget.mobile,
-                        servicesname: serviceVM
-                            .serviceModel!
-                            .response!
-                            .serviceslist![_selectedIndex]
-                            .name,
-                      ))) : null;
+              provider.index != -1
+                  ? Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CityScreen(
+                                name: widget.name,
+                                photo: widget.photo,
+                                mobile: widget.mobile,
+                                servicesname: serviceVM.serviceModel!.response!
+                                    .serviceslist![_selectedIndex].name,
+                              )))
+                  : null;
             },
             child: Text(
               NEXT,
@@ -144,32 +141,32 @@ class _ServiceScreenState extends State<ServiceScreen> {
       builder: (_, provider, __) => Flexible(
         child: ListView.separated(
           padding: const EdgeInsets.symmetric(vertical: 12),
-          itemBuilder: (context, index) =>
-              GestureDetector(
-                onTap: () {
-                  provider.setIndex(index);
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
-                  decoration: BoxDecoration(
-                      color: provider.index == index ? kPrimaryColor : white,
-                      borderRadius:
-                      BorderRadius.circular(5),
-                      border: Border.all(
-                          color: provider.index == index
-                              ? kPrimaryColor
-                              : kSecondaryColor)),
-                  child: Center(
-                      child: Text(
-                        list![index].name
-                            .toString(),
-                        style: GoogleFonts.poppins(
-                            color:  provider.index == index ? white : h1Color,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16),
-                      )),
-                ),
-              ),
+          itemBuilder: (context, index) => GestureDetector(
+            onTap: () {
+              provider.setIndex(index);
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 16),
+              decoration: BoxDecoration(
+                  color: provider.index == index ? kPrimaryColor : white,
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(
+                      color: provider.index == index
+                          ? kPrimaryColor
+                          : kSecondaryColor)),
+              child: Center(
+                  child: Text(
+                list![index].name.toString(),
+                style: GoogleFonts.poppins(
+                    color: provider.index == index ? white : h1Color,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16),
+              )),
+            ),
+          ),
           separatorBuilder: (context, index) => const SizedBox(
             height: 20,
           ),
@@ -194,12 +191,24 @@ class _ServiceScreenState extends State<ServiceScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      stepContainer(color: kSecondaryColor,),
-                      stepContainer(color: kSecondaryColor,),
-                      stepContainer(color: kPrimaryColor,),
-                      stepContainer(color: kSecondaryColor,),
-                      stepContainer(color: kSecondaryColor,),
-                      stepContainer(color: kSecondaryColor,),
+                      stepContainer(
+                        color: kSecondaryColor,
+                      ),
+                      stepContainer(
+                        color: kSecondaryColor,
+                      ),
+                      stepContainer(
+                        color: kPrimaryColor,
+                      ),
+                      stepContainer(
+                        color: kSecondaryColor,
+                      ),
+                      stepContainer(
+                        color: kSecondaryColor,
+                      ),
+                      stepContainer(
+                        color: kSecondaryColor,
+                      ),
                     ],
                   ),
                   const SizedBox(
@@ -209,7 +218,8 @@ class _ServiceScreenState extends State<ServiceScreen> {
                     FILL_YOUR_PROFILE_DETAILS,
                     style: GoogleFonts.poppins(
                         color: h1Color,
-                        fontWeight: FontWeight.w700, fontSize: 20),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20),
                   ),
                   const SizedBox(
                     height: 30,
@@ -231,5 +241,4 @@ class _ServiceScreenState extends State<ServiceScreen> {
       ),
     );
   }
-
 }

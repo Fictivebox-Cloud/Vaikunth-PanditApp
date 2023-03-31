@@ -77,27 +77,23 @@ class _BookingListTitlState extends State<BookingListTitl> {
                 child: Container(
                   width: double.infinity,
                   height: 213,
-                  decoration:  BoxDecoration(
+                  decoration: BoxDecoration(
                     //color: Colors.red,
-                   border: Border.all(color: kPrimaryColor),
+                    border: Border.all(color: kPrimaryColor),
                     borderRadius: BorderRadius.all(Radius.circular(35)),
-
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 20,right: 20,top: 20),
+                    padding:
+                        const EdgeInsets.only(left: 20, right: 20, top: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         const SizedBox(
                           height: 4,
                         ),
                         Text(
-                          booking_request_view_model
-                              .getbookinglistModel!
-                              .response!
-                              .bookinglist![index]
-                              .poojaTitle ??
+                          booking_request_view_model.getbookinglistModel!
+                                  .response!.bookinglist![index].poojaTitle ??
                               "",
                           style: GoogleFonts.lato(
                               fontWeight: FontWeight.w700,
@@ -107,10 +103,11 @@ class _BookingListTitlState extends State<BookingListTitl> {
                         const SizedBox(
                           height: 3,
                         ),
-                        Text("$BOOKING_NO #${booking_request_view_model.getbookinglistModel?.response?.bookinglist?[index].orderId ?? ""}",
+                        Text(
+                          "$BOOKING_NO #${booking_request_view_model.getbookinglistModel?.response?.bookinglist?[index].orderId ?? ""}",
                           style: GoogleFonts.lato(
                               fontSize: 14,
-                              color:Colors.grey,
+                              color: Colors.grey,
                               fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(
@@ -118,11 +115,11 @@ class _BookingListTitlState extends State<BookingListTitl> {
                         ),
                         Text(
                           booking_request_view_model
-                              .getbookinglistModel!
-                              .response!
-                              .bookinglist![index]
-                              .bookingPujaDate
-                              ??"",
+                                  .getbookinglistModel!
+                                  .response!
+                                  .bookinglist![index]
+                                  .bookingPujaDate ??
+                              "",
                           style: GoogleFonts.lato(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -132,147 +129,170 @@ class _BookingListTitlState extends State<BookingListTitl> {
                           height: 4,
                         ),
                         Text(
-                          booking_request_view_model
-                              .getbookinglistModel!
-                              .response!
-                              .bookinglist![index]
-                              .cityname ??
+                          booking_request_view_model.getbookinglistModel!
+                                  .response!.bookinglist![index].cityname ??
                               "",
                           style: GoogleFonts.lato(
                               fontWeight: FontWeight.w400,
                               fontSize: 14,
                               color: h1Color),
                         ),
-
                         const SizedBox(
                           height: 8,
                         ),
                         Text(
                           BOOKING_BY +
-                              "Govind kumar",
+                              (booking_request_view_model.getbookinglistModel!
+                                      .response!.bookinglist![index].hostname ??
+                                  "__"),
                           style: GoogleFonts.lato(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                               color: h1Color),
                         ),
-
-                        SizedBox(height: 15,),
+                        SizedBox(
+                          height: 15,
+                        ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-
                             Container(
                               //width:double.infinity,
                               height: 36,
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(12),
-                                  //color: buttonColor
+                                borderRadius: BorderRadius.circular(12),
+                                //color: buttonColor
                               ),
                               child: Center(
                                   child: Text(
-                                      booking_request_view_model
-                                          .getbookinglistModel!
-                                          .response!
-                                          .bookinglist![index]
-                                          .bookingPujaDate.toString()
-                                          .replaceRange(10, booking_request_view_model
-                                          .getbookinglistModel!
-                                          .response!
-                                          .bookinglist![index]
-                                          .bookingPujaDate.toString().length, "")
-                                          ??"" ,
-                                   // "03:56",
-                                    style: GoogleFonts.lato(
-                                        fontSize: 18,
-                                        color: kPrimaryColor,
-                                        fontWeight:
-                                        FontWeight.w900),
-                                  )),
+                                booking_request_view_model
+                                        .getbookinglistModel!
+                                        .response!
+                                        .bookinglist![index]
+                                        .bookingPujaDate
+                                        .toString()
+                                        .replaceRange(
+                                            10,
+                                            booking_request_view_model
+                                                .getbookinglistModel!
+                                                .response!
+                                                .bookinglist![index]
+                                                .bookingPujaDate
+                                                .toString()
+                                                .length,
+                                            "") ??
+                                    "",
+                                // "03:56",
+                                style: GoogleFonts.lato(
+                                    fontSize: 18,
+                                    color: kPrimaryColor,
+                                    fontWeight: FontWeight.w900),
+                              )),
                             ),
 
-                        InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    Fluttertoast.showToast(msg: "Booking Reject");
-                                   // Utils.toastMessage(REJECTED_BOOKING);
-                                                    RejectBookingVM rejectbooking =
-                                                    Provider.of<RejectBookingVM>(context,
-                                                        listen: false);
-                                                    rejectbooking.Reject_booking_Apicall(userbooking: booking_request_view_model.getbookinglistModel!.response!.bookinglist?[index].bookingId.toString() ?? "");
-
-                                                    booking_request_view_model.getbookinglistModel!.response!.bookinglist!.removeAt(index);
-
-                                  });
-                                },
-                                child:
-                                Container(
-                                  width:90,
-                                  height: 36,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Color(0xffF5F5F5)),
-                                      borderRadius:
-                                      BorderRadius.circular(12),
-                                      //color: Colors.white
-                                  ),
-                                  child: Center(
-                                      child: Text(
-                                        "Reject",
-                                        style: GoogleFonts.lato(
-                                            fontSize: 16,
-                                            color: DIVIDER_2,
-                                            fontWeight:
-                                            FontWeight.w500),
-                                      )),
-                                )),
-
-
-
-                            booking_request_view_model.loading
-                                ? Container(
-                              child: const Center(
-                                  child:
-                                  CircularProgressIndicator(
-                                    color: kPrimaryColor,
-                                  )),
-                            )
-                                :
                             InkWell(
                                 onTap: () {
                                   setState(() {
-                                    // Utils.toastMessage(ACCEPT_BOOKING);
-                                    Fluttertoast.showToast(msg: ACCEPT_BOOKING);
-                                    accept_bookingapi = Provider.of<AcceptBookingApi>(context,listen: false);
-                                    accept_bookingapi?.getAccept_booking_Api(userbooking: booking_request_view_model.getbookinglistModel!.response!.bookinglist?[index].bookingId.toString() ?? "");
+                                    Fluttertoast.showToast(
+                                        msg: "Booking Reject");
+                                    // Utils.toastMessage(REJECTED_BOOKING);
+                                    RejectBookingVM rejectbooking =
+                                        Provider.of<RejectBookingVM>(context,
+                                            listen: false);
+                                    rejectbooking.Reject_booking_Apicall(
+                                        userbooking: booking_request_view_model
+                                                .getbookinglistModel!
+                                                .response!
+                                                .bookinglist?[index]
+                                                .bookingId
+                                                .toString() ??
+                                            "");
 
-                                    CompleteBookingViewModel completeBookingViewModel =
-                                    Provider.of<CompleteBookingViewModel>(context, listen: false);
-                                    completeBookingViewModel.completebookingAPIcall();
-
-                                    booking_request_view_model.getbookinglistModel!.response!.bookinglist!.removeAt(index);
+                                    booking_request_view_model
+                                        .getbookinglistModel!
+                                        .response!
+                                        .bookinglist!
+                                        .removeAt(index);
                                   });
                                 },
-                                child:
-                                Container(
-                                  width:90,
+                                child: Container(
+                                  width: 90,
                                   height: 36,
                                   decoration: BoxDecoration(
-                                      borderRadius:
-                                      BorderRadius.circular(12),
-                                      color: Color(0xfff5f5f5)
+                                    border:
+                                        Border.all(color: Color(0xffF5F5F5)),
+                                    borderRadius: BorderRadius.circular(12),
+                                    //color: Colors.white
                                   ),
                                   child: Center(
                                       child: Text(
+                                    "Reject",
+                                    style: GoogleFonts.lato(
+                                        fontSize: 16,
+                                        color: DIVIDER_2,
+                                        fontWeight: FontWeight.w500),
+                                  )),
+                                )),
+
+                            booking_request_view_model.loading
+                                ? Container(
+                                    child: const Center(
+                                        child: CircularProgressIndicator(
+                                      color: kPrimaryColor,
+                                    )),
+                                  )
+                                : InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        // Utils.toastMessage(ACCEPT_BOOKING);
+                                        Fluttertoast.showToast(
+                                            msg: ACCEPT_BOOKING);
+                                        accept_bookingapi =
+                                            Provider.of<AcceptBookingApi>(
+                                                context,
+                                                listen: false);
+                                        accept_bookingapi?.getAccept_booking_Api(
+                                            userbooking:
+                                                booking_request_view_model
+                                                        .getbookinglistModel!
+                                                        .response!
+                                                        .bookinglist?[index]
+                                                        .bookingId
+                                                        .toString() ??
+                                                    "");
+
+                                        CompleteBookingViewModel
+                                            completeBookingViewModel = Provider
+                                                .of<CompleteBookingViewModel>(
+                                                    context,
+                                                    listen: false);
+                                        completeBookingViewModel
+                                            .completebookingAPIcall();
+
+                                        booking_request_view_model
+                                            .getbookinglistModel!
+                                            .response!
+                                            .bookinglist!
+                                            .removeAt(index);
+                                      });
+                                    },
+                                    child: Container(
+                                      width: 90,
+                                      height: 36,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          color: Color(0xfff5f5f5)),
+                                      child: Center(
+                                          child: Text(
                                         ACCEPT,
                                         style: GoogleFonts.lato(
                                             fontSize: 16,
                                             color: kPrimaryColor,
-                                            fontWeight:
-                                            FontWeight.w500),
+                                            fontWeight: FontWeight.w500),
                                       )),
-                                )),
-
+                                    )),
 
                             // Padding(
                             //   padding: const EdgeInsets.only(
@@ -318,11 +338,8 @@ class _BookingListTitlState extends State<BookingListTitl> {
                             //             )),
                             //       )),
                             // )
-
-                        ],),
-
-
-
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -330,7 +347,8 @@ class _BookingListTitlState extends State<BookingListTitl> {
               );
             },
             itemCount: booking_request_view_model
-                .getbookinglistModel?.response!.bookinglist!.length ?? 0,
+                    .getbookinglistModel?.response!.bookinglist!.length ??
+                0,
           );
   }
 }

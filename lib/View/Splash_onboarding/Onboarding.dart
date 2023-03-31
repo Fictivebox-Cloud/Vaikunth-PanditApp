@@ -45,7 +45,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             });
           },
           itemBuilder: (context, index) => Container(),
-
         ),
       ),
     );
@@ -53,16 +52,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   navigate() {
     Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (_) => const PhoneNumber_Screen()));
+        context, MaterialPageRoute(builder: (_) => const PhoneNumber_Screen()));
   }
 
   Widget bottomContainerDesign() {
     return Expanded(
         flex: 2,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16,),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+          ),
           color: Colors.white,
           child: Column(
             children: [
@@ -77,7 +76,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 height: height * 0.046,
               ),
               Text(
-                currentIndex == 0 ? WELCOME_TO_BAIKHUBT_PANDIT : currentIndex == 1 ? EARN_UPTO : FLEXIBLE_TIMINGS,
+                currentIndex == 0
+                    ? WELCOME_TO_BAIKHUBT_PANDIT
+                    : currentIndex == 1
+                        ? EARN_UPTO
+                        : FLEXIBLE_TIMINGS,
                 style: GoogleFonts.lato(
                     fontWeight: FontWeight.bold, fontSize: 18, color: h1Color),
               ),
@@ -94,24 +97,37 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  style: ButtonStyle(
-                    alignment: Alignment.center,
-                    padding: MaterialStateProperty.resolveWith((states) => const EdgeInsets.symmetric(vertical: 13,)),
-                    backgroundColor: MaterialStateColor.resolveWith((states) => colorPrimary),
-                  ),
+                    style: ButtonStyle(
+                      alignment: Alignment.center,
+                      padding: MaterialStateProperty.resolveWith(
+                          (states) => const EdgeInsets.symmetric(
+                                vertical: 13,
+                              )),
+                      backgroundColor: MaterialStateColor.resolveWith(
+                          (states) => colorPrimary),
+                    ),
                     onPressed: () {
                       navigate();
-                }, child: Text(REGISTER_PANDIT, style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: white,
-                ),)),
+                    },
+                    child: Text(
+                      REGISTER_PANDIT,
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        color: white,
+                      ),
+                    )),
               ),
-              TextButton(onPressed: () {
-                navigate();
-              }, child: Text(SIGN_IN, style: GoogleFonts.poppins(
-                fontSize: 14,
-                color: h1Color,
-              ),))
+              TextButton(
+                  onPressed: () {
+                    navigate();
+                  },
+                  child: Text(
+                    SIGN_IN,
+                    style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      color: h1Color,
+                    ),
+                  ))
             ],
           ),
         ));
@@ -122,13 +138,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     return Scaffold(
-        backgroundColor: backGroundColor,
-        bottomNavigationBar: Container(
-          width: double.infinity,
-          height: 20,
-          alignment: Alignment.center,
-          child: Text.rich(
-              TextSpan(
+      backgroundColor: backGroundColor,
+      bottomNavigationBar: Container(
+        width: double.infinity,
+        height: 20,
+        alignment: Alignment.center,
+        child: Text.rich(
+          TextSpan(
             children: [
               TextSpan(
                 text: DEVELOPED_BY,
@@ -140,24 +156,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               TextSpan(
                 text: FICTIVEBOX,
-                  style: GoogleFonts.poppins(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: h1Color,
-              ),
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                  color: h1Color,
+                ),
               ),
             ],
           ),
-          ),
         ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              topContainerDesign(),
-              bottomContainerDesign(),
-            ],
-          ),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            topContainerDesign(),
+            bottomContainerDesign(),
+          ],
         ),
+      ),
     );
   }
 

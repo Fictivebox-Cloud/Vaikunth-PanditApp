@@ -22,16 +22,17 @@ class _HomePageScreenState extends State<HomePageScreen> {
   late OnlineOflineViewModel _online_ofline_view_model;
   late BookingRequestViewModel booking_request_view_model;
 
-  Future<void> _refresh(bool reload, BuildContext context){
-     booking_request_view_model= Provider.of<BookingRequestViewModel>(context,listen: false);
+  Future<void> _refresh(bool reload, BuildContext context) {
+    booking_request_view_model =
+        Provider.of<BookingRequestViewModel>(context, listen: false);
     booking_request_view_model.getbookingApiCall(reload);
     return Future.delayed(const Duration(seconds: 0));
   }
 
-  void initState(){
+  void initState() {
     super.initState();
-
   }
+
   @override
   Widget build(BuildContext context) {
     BookingRequestViewModel booking_request_view_model =
@@ -39,19 +40,18 @@ class _HomePageScreenState extends State<HomePageScreen> {
     wt = MediaQuery.of(context).size.width;
     ht = MediaQuery.of(context).size.height;
     return SafeArea(
-      child:  RefreshIndicator(
-          onRefresh: () async{
-           await _refresh(true, context);
-          },
-          color: kPrimaryColor,
-          strokeWidth: 5,
-          displacement: 0,
-        child: Scaffold(
-          body: _listDesign(booking_request_view_model, context)
-        ),
+      child: RefreshIndicator(
+        onRefresh: () async {
+          await _refresh(true, context);
+        },
+        color: kPrimaryColor,
+        strokeWidth: 5,
+        displacement: 0,
+        child: Scaffold(body: _listDesign(booking_request_view_model, context)),
       ),
     );
   }
+
   _listDesign(BookingRequestViewModel booking_request_view_model,
       BuildContext context) {
     return Container(
@@ -63,12 +63,13 @@ class _HomePageScreenState extends State<HomePageScreen> {
           AppBarcomon(),
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16,top: 15),
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 15),
               child: Column(
                 children: [
                   TotalEarningGraph(),
-                  SizedBox(height: 30,),
-
+                  SizedBox(
+                    height: 30,
+                  ),
                 ],
               ),
             ),
@@ -77,20 +78,29 @@ class _HomePageScreenState extends State<HomePageScreen> {
           Expanded(
               child: SingleChildScrollView(
                   child: Column(
-                    children: [
-                      Text(BOOKINGS_REQUEST, style: GoogleFonts.lato(fontWeight: FontWeight.w600, fontSize: 18, color: h1Color),),
-                      SizedBox(height: 9,),
-                      Container(
-                          width: wt * 0.7,
-                          alignment: Alignment.center,
-                          child: Text(Home_Screen_Line, textAlign: TextAlign.center, style: GoogleFonts.lato(fontWeight: FontWeight.w500, fontSize: 16, color: h1Color))),
-                      BookingListTitl(booking_request_view_model),
-                    ],
-                  )))
+            children: [
+              Text(
+                BOOKINGS_REQUEST,
+                style: GoogleFonts.lato(
+                    fontWeight: FontWeight.w600, fontSize: 18, color: h1Color),
+              ),
+              SizedBox(
+                height: 9,
+              ),
+              Container(
+                  width: wt * 0.7,
+                  alignment: Alignment.center,
+                  child: Text(Home_Screen_Line,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: h1Color))),
+              BookingListTitl(booking_request_view_model),
+            ],
+          )))
         ],
       ),
     );
   }
-
-
 }
